@@ -1,0 +1,413 @@
+{
+  "base_config_file_sha256": "896b2f8b52e53f121211e6b5bfab573804527402ff69d1615f185edfa933a50d",
+  "base_config_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/configs/examples/high_fidelity_shared_forward_window.yaml",
+  "base_config_resolved_sha256": "39cab48840410b4a11e5593395acb146cd71c226da435dfebe0446e7356ec6ec",
+  "interpretation": {
+    "formal_full_window_qualification_claimed": false,
+    "raw_metrics_are_primary": true,
+    "thresholds_relaxed_after_results": false
+  },
+  "material_comparison_points": 129,
+  "mesh_comparison": {
+    "definition": "same_window_24_24_32_vs_20_20_30",
+    "left": "fine",
+    "left_minimum_normalized_guard": 7.566645359280319e-05,
+    "metrics": {
+      "max_bob_angular_velocity_rad_s": 0.0002512482016518852,
+      "max_bob_attachment_position_m": 1.2628111181745005e-08,
+      "max_bob_orientation_angle_rad": 5.187659020879645e-07,
+      "max_bob_position_m": 3.607710963304811e-09,
+      "max_bob_velocity_m_s": 2.009191224093933e-06,
+      "max_junction_position_m": 7.216078868332865e-07,
+      "max_junction_velocity_m_s": 0.0003204315256597756,
+      "max_mechanical_energy_J": 1.5631200234178522e-07,
+      "max_normalized_guard_margin": 0.0031721856826918415,
+      "max_rod_position_m": 0.00012230629753439814,
+      "max_rod_signed_axial_force_N": 0.0051864136456585275,
+      "max_rod_tension_N": 0.0051864136456585275,
+      "max_rod_velocity_m_s": 0.011735731198392949,
+      "max_support_reaction_N": 1.6720973797373917e-05,
+      "rms_bob_angular_velocity_rad_s": 5.6740673927984994e-05,
+      "rms_bob_attachment_position_m": 4.190091717394991e-09,
+      "rms_bob_orientation_angle_rad": 2.5384300199195937e-07,
+      "rms_bob_position_m": 1.3930597470971826e-09,
+      "rms_bob_velocity_m_s": 6.737573801305085e-07,
+      "rms_junction_position_m": 2.2884056702322005e-07,
+      "rms_junction_velocity_m_s": 0.00010518541790825159,
+      "rms_mechanical_energy_J": 1.4432075873964538e-07,
+      "rms_normalized_guard_margin": 0.0011869550438358002,
+      "rms_rod_position_m": 1.3377479098511026e-05,
+      "rms_rod_signed_axial_force_N": 0.0011395475450861968,
+      "rms_rod_tension_N": 0.0011394558272243358,
+      "rms_rod_velocity_m_s": 0.0007193449209730348,
+      "rms_support_reaction_N": 3.4220418222089252e-06
+    },
+    "per_guard": {
+      "AERODYNAMIC_CHORD_LENGTH": {
+        "left_minimum_normalized": 0.046858381622243,
+        "max_normalized_difference": 0.0031307480702114435,
+        "right_minimum_normalized": 0.04998138343718609,
+        "rms_normalized_difference": 0.003125692517159038
+      },
+      "BENDING_TURN_CLEARANCE": {
+        "left_minimum_normalized": 1.9912222381126417,
+        "max_normalized_difference": 0.0013789298898809754,
+        "right_minimum_normalized": 1.9899991820119507,
+        "rms_normalized_difference": 0.0013080483321198442
+      },
+      "BOB_ROD_CLEARANCE": {
+        "left_minimum_normalized": 0.04824176489051022,
+        "max_normalized_difference": 1.7705675500703788e-05,
+        "right_minimum_normalized": 0.048259260652541845,
+        "rms_normalized_difference": 1.7366384088861203e-05
+      },
+      "BOB_SOCKET_CUT_CLEARANCE": {
+        "left_minimum_normalized": 0.04824176489051022,
+        "max_normalized_difference": 1.7705675500703788e-05,
+        "right_minimum_normalized": 0.048259260652541845,
+        "rms_normalized_difference": 1.7366384088861203e-05
+      },
+      "BOB_SOCKET_MATERIAL_EXTENT": {
+        "left_minimum_normalized": 0.9334418823176606,
+        "max_normalized_difference": 3.3306690738754696e-16,
+        "right_minimum_normalized": 0.9334418823176609,
+        "rms_normalized_difference": 3.3306690738754696e-16
+      },
+      "BOB_SOCKET_RADIAL_MONOTONICITY": {
+        "left_minimum_normalized": 0.0005532934088285689,
+        "max_normalized_difference": 3.90741980724888e-05,
+        "right_minimum_normalized": 0.0005903134298616356,
+        "rms_normalized_difference": 3.7792486664158015e-05
+      },
+      "JUNCTION_SOCKET_CUT_CLEARANCE": {
+        "left_minimum_normalized": 0.012230782161588584,
+        "max_normalized_difference": 0.00010788450049825128,
+        "right_minimum_normalized": 0.012240579558095962,
+        "rms_normalized_difference": 5.811507248815367e-05
+      },
+      "JUNCTION_SOCKET_MATERIAL_EXTENT": {
+        "left_minimum_normalized": 0.8638036809815951,
+        "max_normalized_difference": 0.0,
+        "right_minimum_normalized": 0.8638036809815951,
+        "rms_normalized_difference": 0.0
+      },
+      "JUNCTION_SOCKET_PROJECTIVE_OPENING": {
+        "left_minimum_normalized": 0.25278531936631854,
+        "max_normalized_difference": 0.0031721856826918415,
+        "right_minimum_normalized": 0.2530656023119686,
+        "rms_normalized_difference": 0.001710258499007461
+      },
+      "MINIMUM_SEGMENT_LENGTH": {
+        "left_minimum_normalized": 0.0156200104133906,
+        "max_normalized_difference": 0.0010437867497832126,
+        "right_minimum_normalized": 0.01666134909207704,
+        "rms_normalized_difference": 0.00104217885891699
+      },
+      "ROD_SELF_CLEARANCE": {
+        "left_minimum_normalized": 7.566645359280319e-05,
+        "max_normalized_difference": 3.6769721507673133e-06,
+        "right_minimum_normalized": 7.242494725593599e-05,
+        "rms_normalized_difference": 3.341000182069846e-06
+      }
+    },
+    "right": "mesh_coarse",
+    "right_minimum_normalized_guard": 7.242494725593599e-05
+  },
+  "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "parallel_execution": {
+    "blas_threads_per_worker": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "method": "POSIX_fork_three_independent_processes",
+    "shared_fine_preparation": true,
+    "shared_fine_preparation_wall_seconds": 42.97433543299849
+  },
+  "representative_window_s": 0.01,
+  "runs": {
+    "fine": {
+      "accepted_time_count": 1282,
+      "all_scientific_arrays_finite": true,
+      "config_sha256": "355ea04d50f6707760fe8d44aa451f9f0d8e9e1da6b056e1e42707e52dd2fe91",
+      "event_count": 12,
+      "label": "fine",
+      "max_step_s": 7.8125e-06,
+      "maximum_abs_energy_balance_residual": 1.5045391049397124e-11,
+      "maximum_quaternion_norm_error": 1.5543122344752192e-15,
+      "maximum_signed_axial_force_N": 0.16462053392516976,
+      "maximum_tension_N": 0.16462053392516976,
+      "mesh": {
+        "lower": 32,
+        "upper_A": 24,
+        "upper_B": 24
+      },
+      "minimum_aero_dissipation_rate_W": 0.0,
+      "minimum_axial_dissipation_rate_W": 0.0,
+      "minimum_normalized_guard_by_component": {
+        "AERODYNAMIC_CHORD_LENGTH": 0.046858381622243,
+        "BENDING_TURN_CLEARANCE": 1.9912222381126417,
+        "BOB_ROD_CLEARANCE": 0.04824176489051022,
+        "BOB_SOCKET_CUT_CLEARANCE": 0.04824176489051022,
+        "BOB_SOCKET_MATERIAL_EXTENT": 0.9334418823176606,
+        "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0005532934088285689,
+        "JUNCTION_SOCKET_CUT_CLEARANCE": 0.012230782161588584,
+        "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8638036809815951,
+        "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.25278531936631854,
+        "MINIMUM_SEGMENT_LENGTH": 0.0156200104133906,
+        "ROD_SELF_CLEARANCE": 7.566645359280319e-05
+      },
+      "minimum_normalized_guard_margin": 7.566645359280319e-05,
+      "minimum_signed_axial_force_N": -0.003832001748020747,
+      "minimum_tension_N": 0.0,
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "output_dt_s": 7.8125e-06,
+      "output_sample_count": 1281,
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "bob_held": true,
+        "hessian_workers": null,
+        "iterations": 5391,
+        "mode": "held_endpoint_bilateral_stable_equilibrium",
+        "residual_inf_N": 1.5437046920157953e-09,
+        "selected_hessian_min_eigenvalue_N_m": null,
+        "selected_seed": "gravity_plane"
+      },
+      "solver_runtime_seconds": 434.7059693439951,
+      "t_end_s": 0.01,
+      "valid_interval_s": [
+        0.0,
+        0.01
+      ],
+      "worker_integration_wall_seconds": 1246.9887395370024,
+      "worker_preparation_wall_seconds": 0.0,
+      "worker_wall_seconds": 1246.9887517799943
+    },
+    "mesh_coarse": {
+      "accepted_time_count": 1282,
+      "all_scientific_arrays_finite": true,
+      "config_sha256": "ce3050793f2361ca9e11ece6c148f5539405ee549d07db9f62ea845243d8e788",
+      "event_count": 10,
+      "label": "mesh_coarse",
+      "max_step_s": 7.8125e-06,
+      "maximum_abs_energy_balance_residual": 1.5049879474596292e-11,
+      "maximum_quaternion_norm_error": 1.1102230246251565e-15,
+      "maximum_signed_axial_force_N": 0.16462681312179636,
+      "maximum_tension_N": 0.16462681312179636,
+      "mesh": {
+        "lower": 30,
+        "upper_A": 20,
+        "upper_B": 20
+      },
+      "minimum_aero_dissipation_rate_W": 0.0,
+      "minimum_axial_dissipation_rate_W": 0.0,
+      "minimum_normalized_guard_by_component": {
+        "AERODYNAMIC_CHORD_LENGTH": 0.04998138343718609,
+        "BENDING_TURN_CLEARANCE": 1.9899991820119507,
+        "BOB_ROD_CLEARANCE": 0.048259260652541845,
+        "BOB_SOCKET_CUT_CLEARANCE": 0.048259260652541845,
+        "BOB_SOCKET_MATERIAL_EXTENT": 0.9334418823176609,
+        "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0005903134298616356,
+        "JUNCTION_SOCKET_CUT_CLEARANCE": 0.012240579558095962,
+        "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8638036809815951,
+        "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.2530656023119686,
+        "MINIMUM_SEGMENT_LENGTH": 0.01666134909207704,
+        "ROD_SELF_CLEARANCE": 7.242494725593599e-05
+      },
+      "minimum_normalized_guard_margin": 7.242494725593599e-05,
+      "minimum_signed_axial_force_N": -0.00382865298453108,
+      "minimum_tension_N": 0.0,
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "output_dt_s": 7.8125e-06,
+      "output_sample_count": 1281,
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "bob_held": true,
+        "hessian_workers": null,
+        "iterations": 5398,
+        "mode": "held_endpoint_bilateral_stable_equilibrium",
+        "residual_inf_N": 1.306714858577895e-09,
+        "selected_hessian_min_eigenvalue_N_m": null,
+        "selected_seed": "gravity_plane"
+      },
+      "solver_runtime_seconds": 344.6700561050093,
+      "t_end_s": 0.01,
+      "valid_interval_s": [
+        0.0,
+        0.01
+      ],
+      "worker_integration_wall_seconds": 990.009054322989,
+      "worker_preparation_wall_seconds": 41.81426168700273,
+      "worker_wall_seconds": 1031.8275605020026
+    },
+    "time_2h": {
+      "accepted_time_count": 647,
+      "all_scientific_arrays_finite": true,
+      "config_sha256": "9ec72d6ecf58eeb1dfcfc6f9957b7051804a610acb800fc62b22fb8a77e4383d",
+      "event_count": 12,
+      "label": "time_2h",
+      "max_step_s": 1.5625e-05,
+      "maximum_abs_energy_balance_residual": 1.5045265573762083e-11,
+      "maximum_quaternion_norm_error": 1.3322676295501878e-15,
+      "maximum_signed_axial_force_N": 0.16462053392516976,
+      "maximum_tension_N": 0.16462053392516976,
+      "mesh": {
+        "lower": 32,
+        "upper_A": 24,
+        "upper_B": 24
+      },
+      "minimum_aero_dissipation_rate_W": 0.0,
+      "minimum_axial_dissipation_rate_W": 0.0,
+      "minimum_normalized_guard_by_component": {
+        "AERODYNAMIC_CHORD_LENGTH": 0.046858381622243,
+        "BENDING_TURN_CLEARANCE": 1.9912222381126368,
+        "BOB_ROD_CLEARANCE": 0.04824176489051022,
+        "BOB_SOCKET_CUT_CLEARANCE": 0.04824176489051022,
+        "BOB_SOCKET_MATERIAL_EXTENT": 0.9334418823176606,
+        "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0005532934088285689,
+        "JUNCTION_SOCKET_CUT_CLEARANCE": 0.012230782161588584,
+        "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8638036809815951,
+        "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.25278531936631854,
+        "MINIMUM_SEGMENT_LENGTH": 0.0156200104133906,
+        "ROD_SELF_CLEARANCE": 7.566645359280319e-05
+      },
+      "minimum_normalized_guard_margin": 7.566645359280319e-05,
+      "minimum_signed_axial_force_N": -0.003832001748020747,
+      "minimum_tension_N": 0.0,
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "output_dt_s": 7.8125e-06,
+      "output_sample_count": 1281,
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "bob_held": true,
+        "hessian_workers": null,
+        "iterations": 5391,
+        "mode": "held_endpoint_bilateral_stable_equilibrium",
+        "residual_inf_N": 1.5437046920157953e-09,
+        "selected_hessian_min_eigenvalue_N_m": null,
+        "selected_seed": "gravity_plane"
+      },
+      "solver_runtime_seconds": 219.3260708029993,
+      "t_end_s": 0.01,
+      "valid_interval_s": [
+        0.0,
+        0.01
+      ],
+      "worker_integration_wall_seconds": 1038.3001781019993,
+      "worker_preparation_wall_seconds": 0.0,
+      "worker_wall_seconds": 1038.300190014008
+    }
+  },
+  "schema_version": "YPS-HF-REPRESENTATIVE-SENSITIVITY-1.0",
+  "scope": "personal_research_representative_short_window_not_formal_six_candidate_qualification",
+  "series_npz_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/validation/representative_hf_sensitivity_series.npz",
+  "series_npz_sha256": "34d2d4747b232d55fb9db7e308f38988a544314c16c166d8d87d677281d0dfcc",
+  "source_hash_end_sha256": "0e12494439d5781857c76892f5161236d9c35bc809c0f3907df92df7905b2a5e",
+  "source_hash_start_sha256": "0e12494439d5781857c76892f5161236d9c35bc809c0f3907df92df7905b2a5e",
+  "source_stable_during_study": true,
+  "study_wall_seconds": 1290.2492446100077,
+  "time_step_comparison": {
+    "definition": "same_24_24_32_mesh_same_preparation_h_vs_2h",
+    "left": "fine",
+    "left_minimum_normalized_guard": 7.566645359280319e-05,
+    "metrics": {
+      "max_bob_angular_velocity_rad_s": 1.5965492606618854e-11,
+      "max_bob_attachment_position_m": 8.881784197001252e-16,
+      "max_bob_orientation_angle_rad": 2.9802322387695312e-08,
+      "max_bob_position_m": 8.881784197001252e-16,
+      "max_bob_velocity_m_s": 1.2771095698263445e-13,
+      "max_junction_position_m": 6.522560269672795e-15,
+      "max_junction_velocity_m_s": 1.030171200080976e-10,
+      "max_mechanical_energy_J": 1.7763568394002505e-15,
+      "max_normalized_guard_margin": 5.530575997170217e-12,
+      "max_rod_position_m": 6.139533326177116e-14,
+      "max_rod_signed_axial_force_N": 3.5578377466372046e-09,
+      "max_rod_tension_N": 3.5578377466372046e-09,
+      "max_rod_velocity_m_s": 1.474833298455852e-09,
+      "max_support_reaction_N": 1.278477324007099e-12,
+      "rms_bob_angular_velocity_rad_s": 5.188368453992365e-13,
+      "rms_bob_attachment_position_m": 2.1613365146942201e-16,
+      "rms_bob_orientation_angle_rad": 6.609153189849015e-09,
+      "rms_bob_position_m": 2.1586447647295236e-16,
+      "rms_bob_velocity_m_s": 5.110029354156387e-15,
+      "rms_junction_position_m": 1.1944261759861576e-15,
+      "rms_junction_velocity_m_s": 2.8605267060724507e-12,
+      "rms_mechanical_energy_J": 3.07445959374453e-16,
+      "rms_normalized_guard_margin": 2.9209581342722013e-13,
+      "rms_rod_position_m": 4.439334453962345e-15,
+      "rms_rod_signed_axial_force_N": 2.357816477412967e-11,
+      "rms_rod_tension_N": 2.351218081821103e-11,
+      "rms_rod_velocity_m_s": 5.467815433577273e-12,
+      "rms_support_reaction_N": 2.764326083484469e-13
+    },
+    "per_guard": {
+      "AERODYNAMIC_CHORD_LENGTH": {
+        "left_minimum_normalized": 0.046858381622243,
+        "max_normalized_difference": 1.086630785351872e-14,
+        "right_minimum_normalized": 0.046858381622243,
+        "rms_normalized_difference": 1.0553810787572268e-15
+      },
+      "BENDING_TURN_CLEARANCE": {
+        "left_minimum_normalized": 1.9912222381126417,
+        "max_normalized_difference": 3.441691376337985e-14,
+        "right_minimum_normalized": 1.9912222381126368,
+        "rms_normalized_difference": 1.4784773362455778e-14
+      },
+      "BOB_ROD_CLEARANCE": {
+        "left_minimum_normalized": 0.04824176489051022,
+        "max_normalized_difference": 3.12944115066216e-15,
+        "right_minimum_normalized": 0.04824176489051022,
+        "rms_normalized_difference": 9.805376442968551e-16
+      },
+      "BOB_SOCKET_CUT_CLEARANCE": {
+        "left_minimum_normalized": 0.04824176489051022,
+        "max_normalized_difference": 3.12944115066216e-15,
+        "right_minimum_normalized": 0.04824176489051022,
+        "rms_normalized_difference": 9.805376442968551e-16
+      },
+      "BOB_SOCKET_MATERIAL_EXTENT": {
+        "left_minimum_normalized": 0.9334418823176606,
+        "max_normalized_difference": 0.0,
+        "right_minimum_normalized": 0.9334418823176606,
+        "rms_normalized_difference": 0.0
+      },
+      "BOB_SOCKET_RADIAL_MONOTONICITY": {
+        "left_minimum_normalized": 0.0005532934088285689,
+        "max_normalized_difference": 6.678685382510707e-16,
+        "right_minimum_normalized": 0.0005532934088285689,
+        "rms_normalized_difference": 1.3447586734857036e-16
+      },
+      "JUNCTION_SOCKET_CUT_CLEARANCE": {
+        "left_minimum_normalized": 0.012230782161588584,
+        "max_normalized_difference": 1.9336268697323078e-13,
+        "right_minimum_normalized": 0.012230782161588584,
+        "rms_normalized_difference": 3.274410783692968e-14
+      },
+      "JUNCTION_SOCKET_MATERIAL_EXTENT": {
+        "left_minimum_normalized": 0.8638036809815951,
+        "max_normalized_difference": 0.0,
+        "right_minimum_normalized": 0.8638036809815951,
+        "rms_normalized_difference": 0.0
+      },
+      "JUNCTION_SOCKET_PROJECTIVE_OPENING": {
+        "left_minimum_normalized": 0.25278531936631854,
+        "max_normalized_difference": 5.530575997170217e-12,
+        "right_minimum_normalized": 0.25278531936631854,
+        "rms_normalized_difference": 9.681033776192933e-13
+      },
+      "MINIMUM_SEGMENT_LENGTH": {
+        "left_minimum_normalized": 0.0156200104133906,
+        "max_normalized_difference": 1.9911156057261792e-14,
+        "right_minimum_normalized": 0.0156200104133906,
+        "rms_normalized_difference": 1.2680400252386326e-15
+      },
+      "ROD_SELF_CLEARANCE": {
+        "left_minimum_normalized": 7.566645359280319e-05,
+        "max_normalized_difference": 5.427651600733996e-16,
+        "right_minimum_normalized": 7.566645359280319e-05,
+        "rms_normalized_difference": 1.6677192241562587e-16
+      }
+    },
+    "right": "time_2h",
+    "right_minimum_normalized_guard": 7.566645359280319e-05
+  }
+}

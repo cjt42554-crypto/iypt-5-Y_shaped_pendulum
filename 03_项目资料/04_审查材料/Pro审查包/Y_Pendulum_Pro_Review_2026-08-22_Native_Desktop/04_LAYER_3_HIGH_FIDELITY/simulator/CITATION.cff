@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use YP-FPSim, cite this software and retain the exact configuration and provenance files."
+title: "YP-FPSim: First-principles fixed-knot Y-pendulum simulator"
+version: "1.0.0rc1"
+date-released: 2026-08-18
+authors:
+  - name: "OpenAI"
+license: MIT
+type: software

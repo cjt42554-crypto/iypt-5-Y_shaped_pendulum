@@ -1,0 +1,177 @@
+schema_version: '1.0'
+run:
+  name: desktop_quick_shared
+  mode: high_fidelity
+  seed: 20260821
+  output_directory: /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/gui_v2_validation_short_both_20260822/high_fidelity
+  claim_level: VERIFIED
+  validation_manifest: null
+environment:
+  gravity:
+  - 0.0
+  - 0.0
+  - 9.80665
+  air_density: 1.2
+  air_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+supports:
+  A:
+    type: fixed
+    position:
+    - -0.15
+    - 0.0
+    - 0.0
+    motion: null
+  B:
+    type: fixed
+    position:
+    - 0.15
+    - 0.0
+    - 0.0
+    motion: null
+junction:
+  mass: 0.003
+  drag_linear: 0.0
+bob:
+  mass: 0.08
+  radius: 0.01999794636444272
+  drag:
+    enabled: true
+    model: quadratic_plus_linear
+    cd: 5.306254425059426
+    linear_coefficient: 0.0015
+  buoyancy: true
+cables:
+  upper_A:
+    rest_length: 0.288
+    diameter: 0.003
+    density: 1414.710605261292
+    young_modulus: 1697652.7263135503
+    axial_viscosity: 1414.710605261292
+    elements: 12
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_linear_normal_per_length: 0.001
+    drag_linear_tangent_per_length: 0.0001
+    drag_enabled: true
+    material_model: linear_kelvin_voigt_tension_only
+    table_file: null
+    table_calibration_length: null
+  upper_B:
+    rest_length: 0.288
+    diameter: 0.003
+    density: 1414.710605261292
+    young_modulus: 1697652.7263135503
+    axial_viscosity: 1414.710605261292
+    elements: 12
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_linear_normal_per_length: 0.001
+    drag_linear_tangent_per_length: 0.0001
+    drag_enabled: true
+    material_model: linear_kelvin_voigt_tension_only
+    table_file: null
+    table_calibration_length: null
+  lower:
+    rest_length: 0.326
+    diameter: 0.003
+    density: 1697.6527263135504
+    young_modulus: 1697652.7263135503
+    axial_viscosity: 1697.6527263135504
+    elements: 20
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_linear_normal_per_length: 0.001
+    drag_linear_tangent_per_length: 0.0001
+    drag_enabled: true
+    material_model: linear_kelvin_voigt_tension_only
+    table_file: null
+    table_calibration_length: null
+initial_condition:
+  type: held_endpoint_equilibrium_release
+  phi:
+    value: 0.0
+    unit: rad
+  theta:
+    value: 0.0
+    unit: rad
+  phi_dot:
+    value: 0.0
+    unit: rad/s
+  theta_dot:
+    value: 0.0
+    unit: rad/s
+  bob_position:
+  - 0.035
+  - 0.02
+  - 0.6
+  junction_position:
+  - 0.0
+  - 0.0
+  - 0.25
+  bob_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  junction_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  bob_angular_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  state_file: null
+  positions_file: null
+  velocities_file: null
+solver:
+  profile: quick
+  t_end: 0.0002
+  output_dt: 2.5e-06
+  max_step: 1.25e-06
+  mass_matrix: lumped
+  method: Radau
+  resolve_longitudinal_waves: true
+  analytic_jacobian: true
+  allow_subminimum_mesh: false
+  static:
+    method: energy_minimize
+    force_tolerance: 1.0e-08
+    max_iterations: 200
+    continuation_steps: 6
+    line_search_min: 1.0e-05
+  rtol: 1.0e-08
+  position_atol: 1.0e-10
+  velocity_atol: 1.0e-09
+  quaternion_atol: 1.0e-10
+  angular_velocity_atol: 1.0e-09
+  newmark_beta: 0.25
+  newmark_gamma: 0.5
+  newmark_max_iterations: 24
+  newmark_force_tolerance: 1.0e-08
+  newmark_line_search_min: 1.0e-05
+analysis:
+  target_ratio:
+  - 3
+  - 2
+  phase_tolerance: 0.2
+  slow_period_count: 10
+  compute_spectrum: true
+  compute_uncertainty: false
+observer:
+  type: orthographic_xy
+  camera: null
+high_fidelity:
+  model_id: HF-DISCRETE-ROD-RIGID-BOB-1.0
+  axial_material_model: passive_unilateral_bilateral_kelvin_voigt_blend
+  bending_stiffness_scale: 1.0
+  compression_regularization_scale: 1.0
+  controlled_limit_study: false
+  bob_inertia_factor: 0.4
+  bob_attachment_radius_fraction: 1.0
+  bob_contact_radius_fraction: 1.0
+  quaternion_stabilization_rate: 1.0
+  contact_guard_enabled: true
+  minimum_clearance: 0.0002

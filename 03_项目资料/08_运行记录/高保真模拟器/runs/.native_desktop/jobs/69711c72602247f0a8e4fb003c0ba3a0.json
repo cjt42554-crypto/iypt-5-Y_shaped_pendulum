@@ -1,0 +1,68 @@
+{
+  "record": {
+    "backend": "forward",
+    "batch_id": "445ea8742aca45d1bd9f0a1e1063aa8c",
+    "command": [
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python",
+      "-m",
+      "ypendulum.ui.desktop_worker",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T150524043793Z_a6c88d06a2a7.json",
+      "--backend",
+      "forward",
+      "--output",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T150524043793Z_a6c88d06a2a7-r001__20260822T150524047711Z__69711c7260"
+    ],
+    "command_sha256": "4fdede3b3bb87403955afb281929695c22c7b9c8b3a44e31eb140c1c5be72cb9",
+    "config_identity_end": null,
+    "config_identity_launch": null,
+    "config_identity_submit": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T150524043793Z_a6c88d06a2a7.json",
+      "backend": "forward",
+      "label": "desktop_case",
+      "raw_file_bytes": 18420,
+      "raw_file_sha256": "7c229e8fff48d25fa3ae7f92849d810ecd7daffad39f45d8f437df3617388e04",
+      "request_sha256": "a6c88d06a2a7d0d3bec403be6600a5c55b0ce524d3d69b5da45ba0addc45a971",
+      "scan_coordinates": {},
+      "shared_input_audit": null
+    },
+    "config_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T150524043793Z_a6c88d06a2a7.json",
+    "ended_at_utc": "2026-08-22T15:05:25.734075+00:00",
+    "identifier": "69711c72602247f0a8e4fb003c0ba3a0",
+    "label": "001-20260822T150524043793Z_a6c88d06a2a7-r001",
+    "last_observed_at_utc": "2026-08-22T15:05:25.734088+00:00",
+    "log_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/logs/69711c72602247f0a8e4fb003c0ba3a0.log",
+    "output_assessment": null,
+    "output_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T150524043793Z_a6c88d06a2a7-r001__20260822T150524047711Z__69711c7260",
+    "pid": null,
+    "plugin_id": "iypt_2027_y_pendulum_desktop",
+    "process_group_id": null,
+    "process_start_ticks": null,
+    "repetition": 1,
+    "return_code": null,
+    "revision": 2,
+    "scan_coordinates": {},
+    "schema_version": "YPS-RESEARCH-PLATFORM-JOB-1.0",
+    "started_at_utc": null,
+    "state": "STOPPED",
+    "state_history": [
+      {
+        "action": "SUBMIT",
+        "at_utc": "2026-08-22T15:05:24.048710+00:00",
+        "detail": "Immutable command and configuration identity recorded.",
+        "next_state": "QUEUED",
+        "previous_state": null
+      },
+      {
+        "action": "CANCEL_QUEUED",
+        "at_utc": "2026-08-22T15:05:25.734088+00:00",
+        "detail": "Cancelled before process launch.",
+        "next_state": "STOPPED",
+        "previous_state": "QUEUED"
+      }
+    ],
+    "submitted_at_utc": "2026-08-22T15:05:24.048710+00:00",
+    "terminal_reason": "Cancelled before process launch."
+  },
+  "record_sha256": "1ed1a45cc5ceb13216f74f77a71b18353b92ab87dfc0267fefbd1ffac13fb96f",
+  "schema_version": "YPS-RESEARCH-PLATFORM-JOB-ENVELOPE-1.0"
+}

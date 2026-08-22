@@ -1,0 +1,24 @@
+{
+  "duration_s": 0.2,
+  "frequency_fast_hz": null,
+  "frequency_slow_hz": null,
+  "frequency_ratio": null,
+  "frequency_analysis_reliable": false,
+  "frequency_candidate_fast_hz": 1.2500000288823476,
+  "frequency_candidate_slow_hz": 1.2500000228966495,
+  "frequency_fast_fit_r2": 0.9999971870800763,
+  "frequency_slow_fit_r2": 0.9999930893954031,
+  "frequency_fast_observed_cycles": 0.2500000057764695,
+  "frequency_slow_observed_cycles": 0.2500000045793299,
+  "frequency_fast_reliability_reason": "only_0.25_cycles_observed;frequency_at_search_boundary",
+  "frequency_slow_reliability_reason": "only_0.25_cycles_observed;frequency_at_search_boundary",
+  "target_ratio": [
+    3,
+    2
+  ],
+  "phase_drift_rad_s": null,
+  "hilbert_phase_drift_rad_s": null,
+  "phase_fit_rms_rad": null,
+  "state_closure_error": null,
+  "max_abs_energy_balance_residual": 1.1272977241654136e-15
+}

@@ -1,0 +1,419 @@
+{
+  "average_cpu_utilization_percent": 100.00046078994531,
+  "average_equivalent_cpu_cores": 1.0000046078994531,
+  "comparisons": {
+    "bob_attachment_position": {
+      "exactly_equal": false,
+      "max_absolute_difference": 3.469446951953614e-18,
+      "passed": true,
+      "rms_absolute_difference": 2.2856244721439318e-20,
+      "scale": 0.6159162771206035,
+      "shape_equal": true,
+      "tolerance": 8.079581385603017e-13
+    },
+    "bob_quaternion": {
+      "exactly_equal": false,
+      "max_absolute_difference": 2.220446049250313e-16,
+      "passed": true,
+      "rms_absolute_difference": 8.924975190534435e-18,
+      "scale": 1.0,
+      "shape_equal": true,
+      "tolerance": 1e-12
+    },
+    "cable_position__lower": {
+      "exactly_equal": false,
+      "max_absolute_difference": 3.469446951953614e-18,
+      "passed": true,
+      "rms_absolute_difference": 3.919813631397779e-21,
+      "scale": 0.6159162771206035,
+      "shape_equal": true,
+      "tolerance": 8.079581385603017e-13
+    },
+    "cable_position__upper_A": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.2629553495565691,
+      "shape_equal": true,
+      "tolerance": 6.314776747782845e-13
+    },
+    "cable_position__upper_B": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.2629553495565691,
+      "shape_equal": true,
+      "tolerance": 6.314776747782845e-13
+    },
+    "cable_velocity__lower": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 1.4407445997250874,
+      "shape_equal": true,
+      "tolerance": 1.2203722998625437e-12
+    },
+    "cable_velocity__upper_A": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.6437416002933698,
+      "shape_equal": true,
+      "tolerance": 8.218708001466849e-13
+    },
+    "cable_velocity__upper_B": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.5822085818529877,
+      "shape_equal": true,
+      "tolerance": 7.911042909264939e-13
+    },
+    "energy__aero_dissipation_rate": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.0024517907208246306,
+      "shape_equal": true,
+      "tolerance": 5.012258953604123e-13
+    },
+    "energy__air_work_rate": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 2.2250738585072014e-308,
+      "shape_equal": true,
+      "tolerance": 5e-13
+    },
+    "energy__axial_dissipation_rate": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.023141536283962295,
+      "shape_equal": true,
+      "tolerance": 5.115707681419811e-13
+    },
+    "energy__balance_residual": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 7.914037742054811e-11,
+      "shape_equal": true,
+      "tolerance": 5.000000000395702e-13
+    },
+    "energy__dissipation_aero": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.00014991695769442175,
+      "shape_equal": true,
+      "tolerance": 5.000749584788472e-13
+    },
+    "energy__dissipation_axial": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.0007863980217563031,
+      "shape_equal": true,
+      "tolerance": 5.003931990108782e-13
+    },
+    "energy__elastic_axial": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.024940049382063414,
+      "shape_equal": true,
+      "tolerance": 5.124700246910317e-13
+    },
+    "energy__elastic_bending": {
+      "exactly_equal": false,
+      "max_absolute_difference": 8.470329472543003e-22,
+      "passed": true,
+      "rms_absolute_difference": 6.834245239710421e-24,
+      "scale": 3.2141825145531766e-05,
+      "shape_equal": true,
+      "tolerance": 5.000160709125727e-13
+    },
+    "energy__gravitational": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.5305216290109609,
+      "shape_equal": true,
+      "tolerance": 7.652608145054804e-13
+    },
+    "energy__kinetic": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.021450240873960413,
+      "shape_equal": true,
+      "tolerance": 5.107251204369802e-13
+    },
+    "energy__kinetic_bob_rotation": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 3.581066840762558e-05,
+      "shape_equal": true,
+      "tolerance": 5.000179053342038e-13
+    },
+    "energy__kinetic_bob_translation": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.019368772001819384,
+      "shape_equal": true,
+      "tolerance": 5.096843860009096e-13
+    },
+    "energy__kinetic_particles": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.0024728306449394053,
+      "shape_equal": true,
+      "tolerance": 5.012364153224697e-13
+    },
+    "energy__mechanical": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.4854326694714129,
+      "shape_equal": true,
+      "tolerance": 7.427163347357064e-13
+    },
+    "energy__support_work_rate": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 2.2250738585072014e-308,
+      "shape_equal": true,
+      "tolerance": 5e-13
+    },
+    "energy__work_air": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 2.2250738585072014e-308,
+      "shape_equal": true,
+      "tolerance": 5e-13
+    },
+    "energy__work_support": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 2.2250738585072014e-308,
+      "shape_equal": true,
+      "tolerance": 5e-13
+    },
+    "guard__AERODYNAMIC_CHORD_LENGTH": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.0165804667094337,
+      "shape_equal": true,
+      "tolerance": 5.082902333547168e-13
+    },
+    "guard__BENDING_TURN_CLEARANCE": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 1.9996591742115424,
+      "shape_equal": true,
+      "tolerance": 1.4998295871057711e-12
+    },
+    "guard__BOB_ROD_CLEARANCE": {
+      "exactly_equal": false,
+      "max_absolute_difference": 6.938893903907228e-18,
+      "passed": true,
+      "rms_absolute_difference": 2.1326235897606508e-18,
+      "scale": 0.02182162584435105,
+      "shape_equal": true,
+      "tolerance": 5.109108129221755e-13
+    },
+    "guard__BOB_SOCKET_CUT_CLEARANCE": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.02182162584435105,
+      "shape_equal": true,
+      "tolerance": 5.109108129221755e-13
+    },
+    "guard__BOB_SOCKET_MATERIAL_EXTENT": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.30430205363555735,
+      "shape_equal": true,
+      "tolerance": 6.521510268177787e-13
+    },
+    "guard__BOB_SOCKET_RADIAL_MONOTONICITY": {
+      "exactly_equal": false,
+      "max_absolute_difference": 2.710505431213761e-20,
+      "passed": true,
+      "rms_absolute_difference": 7.608525661168507e-21,
+      "scale": 0.00011025673882122308,
+      "shape_equal": true,
+      "tolerance": 5.000551283694106e-13
+    },
+    "guard__JUNCTION_SOCKET_CUT_CLEARANCE": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.00435726189948008,
+      "shape_equal": true,
+      "tolerance": 5.0217863094974e-13
+    },
+    "guard__JUNCTION_SOCKET_MATERIAL_EXTENT": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.2816,
+      "shape_equal": true,
+      "tolerance": 6.408000000000001e-13
+    },
+    "guard__JUNCTION_SOCKET_PROJECTIVE_OPENING": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.2860852503499346,
+      "shape_equal": true,
+      "tolerance": 6.430426251749672e-13
+    },
+    "guard__MINIMUM_SEGMENT_LENGTH": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.005526375115337343,
+      "shape_equal": true,
+      "tolerance": 5.027631875576687e-13
+    },
+    "guard__ROD_SELF_CLEARANCE": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.00015752414288775122,
+      "shape_equal": true,
+      "tolerance": 5.000787620714438e-13
+    },
+    "reaction__support_A": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.6981979562263454,
+      "shape_equal": true,
+      "tolerance": 8.490989781131727e-13
+    },
+    "reaction__support_B": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.4094371487165706,
+      "shape_equal": true,
+      "tolerance": 7.047185743582853e-13
+    },
+    "signed_axial_force__lower": {
+      "exactly_equal": false,
+      "max_absolute_difference": 1.1102230246251565e-16,
+      "passed": true,
+      "rms_absolute_difference": 1.5593496792992006e-19,
+      "scale": 1.0852798580755236,
+      "shape_equal": true,
+      "tolerance": 1.0426399290377618e-12
+    },
+    "signed_axial_force__upper_A": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.818362821822383,
+      "shape_equal": true,
+      "tolerance": 9.091814109111914e-13
+    },
+    "signed_axial_force__upper_B": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.482305048536967,
+      "shape_equal": true,
+      "tolerance": 7.411525242684835e-13
+    },
+    "tension__lower": {
+      "exactly_equal": false,
+      "max_absolute_difference": 1.1102230246251565e-16,
+      "passed": true,
+      "rms_absolute_difference": 1.5593496792992006e-19,
+      "scale": 1.0852798580755236,
+      "shape_equal": true,
+      "tolerance": 1.0426399290377618e-12
+    },
+    "tension__upper_A": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.818362821822383,
+      "shape_equal": true,
+      "tolerance": 9.091814109111914e-13
+    },
+    "tension__upper_B": {
+      "exactly_equal": true,
+      "max_absolute_difference": 0.0,
+      "passed": true,
+      "rms_absolute_difference": 0.0,
+      "scale": 0.482305048536967,
+      "shape_equal": true,
+      "tolerance": 7.411525242684835e-13
+    }
+  },
+  "config": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/validation/target_hf_0p12_raw/config_resolved.yaml",
+  "config_sha256": "1dae21ef71d652d3361c0a70fe18116927073b42eab8c66b76d29244551239af",
+  "event_count": 12,
+  "events_identity_equal": true,
+  "passed": true,
+  "peak_process_tree_rss_bytes": 478261248,
+  "process_tree_cpu_seconds": 191.074493,
+  "samples": 15361,
+  "schema": "YPS-HF-FULL-POSTPROCESS-BENCHMARK-1.0",
+  "simulation_gpu_backend": "NOT_USED_CPU_ONLY",
+  "source_result": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/validation/target_hf_0p12_raw/result.h5",
+  "source_result_sha256": "b1ba3b0fb343d31f95de596fd40c5dfef98b2df7736b40e11085b3cff464eb81",
+  "system_gpu_memory_mib_max": 846.0,
+  "system_gpu_utilization_percent_max": 14.0,
+  "system_gpu_utilization_percent_mean": 7.0,
+  "wall_seconds": 191.07361255200522,
+  "workers": 1
+}

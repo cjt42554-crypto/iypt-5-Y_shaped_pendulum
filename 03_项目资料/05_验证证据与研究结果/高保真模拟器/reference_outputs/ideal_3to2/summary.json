@@ -1,0 +1,29 @@
+{
+  "run_name": "ideal_3to2",
+  "model": "A1",
+  "claim_level": "VERIFIED",
+  "status": "success",
+  "duration_s": 8.0,
+  "frequency_fast_hz": 0.8810982202873033,
+  "frequency_slow_hz": 0.5874317342581634,
+  "frequency_ratio": 1.4999159372960942,
+  "frequency_analysis_reliable": true,
+  "frequency_candidate_fast_hz": 0.8810982202873033,
+  "frequency_candidate_slow_hz": 0.5874317342581634,
+  "frequency_fast_fit_r2": 0.9999986404600445,
+  "frequency_slow_fit_r2": 0.999999457081498,
+  "frequency_fast_observed_cycles": 7.048785762298427,
+  "frequency_slow_observed_cycles": 4.699453874065307,
+  "frequency_fast_reliability_reason": "ok",
+  "frequency_slow_reliability_reason": "ok",
+  "target_ratio": [
+    3,
+    2
+  ],
+  "phase_drift_rad_s": -0.0006205412032132693,
+  "hilbert_phase_drift_rad_s": 0.09748643088735666,
+  "phase_fit_rms_rad": 0.3976661813057729,
+  "state_closure_error": 0.000798551584234261,
+  "max_relative_energy_drift": 1.5212292375394084e-13,
+  "event": null
+}

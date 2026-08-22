@@ -1,0 +1,316 @@
+$ /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python -c import numpy as np; np.trapz = getattr(np, 'trapz', np.trapezoid); from y_pendulum_forward.cli import main; raise SystemExit(main()) run /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T152255478919Z_dd1a6f10d9ac-r001__20260822T152255483208Z__0c283eceae/forward_config.json --output /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T152255478919Z_dd1a6f10d9ac-r001__20260822T152255483208Z__0c283eceae/forward --no-plots
+{
+  "model_id": "FWD-CABLE-1.0",
+  "program_version": "2.0.0-research",
+  "numerical_model_id": "NUM-FWD-CABLE-P1-BDF-1.0",
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI",
+  "contract_status": [
+    "COMPLETED"
+  ],
+  "numerical_status": "SUCCESS_SINGLE_RUN",
+  "tau": 8.0,
+  "returned_interval": "[0,8.0]",
+  "sample_count": 1601,
+  "events": [],
+  "diagnostics": {
+    "energy_scale": 0.8197392856575999,
+    "energy_scale_components": {
+      "gravitational": 0.8197392856575999,
+      "energy_variation": 0.0023295991212167744,
+      "stored": 0.014424380056127636,
+      "absolute_work_integral": 0.0023132223071716035
+    },
+    "max_absolute_energy_power_residual_physical_traction": 3.2214393422381506e-05,
+    "max_absolute_energy_power_residual_algebraic_reaction": 3.2214393422381506e-05,
+    "max_relative_energy_power_residual_physical_traction": 3.929834032114116e-05,
+    "max_relative_energy_power_residual_algebraic_reaction": 3.929834032114116e-05,
+    "min_D_ax": 0.0,
+    "min_D_string": 0.0,
+    "min_D_b": 0.0,
+    "max_boundary_reaction_difference": 0.021053175335606095,
+    "sampled_guard_minima": {
+      "lambda_min:A": 0.8123180372986112,
+      "lambda_min:B": 0.8123180372986112,
+      "lambda_min:lower": 0.8467282800429197,
+      "material:A:lambda_lower": "+inf",
+      "material:A:lambda_upper": "+inf",
+      "material:A:rate_lower": "+inf",
+      "material:A:rate_upper": "+inf",
+      "material:B:lambda_lower": "+inf",
+      "material:B:lambda_upper": "+inf",
+      "material:B:rate_lower": "+inf",
+      "material:B:rate_upper": "+inf",
+      "material:lower:lambda_lower": "+inf",
+      "material:lower:lambda_upper": "+inf",
+      "material:lower:rate_lower": "+inf",
+      "material:lower:rate_upper": "+inf"
+    },
+    "guard_component_scales": {
+      "LAMBDA_MIN:A:element:0": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:0": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:0": 1.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:0": 5.835312164362379,
+      "MATERIAL_DOMAIN:A:rate_upper:element:0": 5.835312164362379,
+      "LAMBDA_MIN:A:element:1": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:1": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:1": 1.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:1": 5.835312164362379,
+      "MATERIAL_DOMAIN:A:rate_upper:element:1": 5.835312164362379,
+      "LAMBDA_MIN:B:element:0": 1.0,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:0": 1.0,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:0": 1.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:0": 5.835312164362379,
+      "MATERIAL_DOMAIN:B:rate_upper:element:0": 5.835312164362379,
+      "LAMBDA_MIN:B:element:1": 1.0,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:1": 1.0,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:1": 1.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:1": 5.835312164362379,
+      "MATERIAL_DOMAIN:B:rate_upper:element:1": 5.835312164362379,
+      "LAMBDA_MIN:lower:element:0": 1.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:0": 1.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:0": 1.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:0": 5.835312164362379,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:0": 5.835312164362379,
+      "LAMBDA_MIN:lower:element:1": 1.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:1": 1.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:1": 1.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:1": 5.835312164362379,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:1": 5.835312164362379,
+      "LAMBDA_MIN:lower:element:2": 1.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:2": 1.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:2": 1.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:2": 5.835312164362379,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:2": 5.835312164362379
+    },
+    "custom_guard_length_scales": {},
+    "sampled_guard_violation": null,
+    "solver_message": "The solver successfully reached the end of the integration interval.",
+    "nfev": 35685,
+    "njev": 79,
+    "nlu": 2389,
+    "mass_matrix": {
+      "symmetry_inf_norm": 0.0,
+      "minimum_eigenvalue": 0.0006446239240883474,
+      "condition_number": 124.77858377367923
+    },
+    "preparation": {
+      "mode": "DIRECT_STATE"
+    },
+    "refinement_qualification": "SINGLE_RUN_CANDIDATE",
+    "solver_warnings": [],
+    "array_fields_in_trajectory_npz": {
+      "P_base_algebraic": [
+        1601
+      ],
+      "reaction_algebraic": {
+        "A": [
+          1601,
+          3
+        ],
+        "B": [
+          1601,
+          3
+        ]
+      },
+      "sampled_guard_component_series": {
+        "LAMBDA_MIN:A:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:0": [
+          1601
+        ],
+        "LAMBDA_MIN:A:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:1": [
+          1601
+        ],
+        "LAMBDA_MIN:B:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:0": [
+          1601
+        ],
+        "LAMBDA_MIN:B:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:1": [
+          1601
+        ],
+        "LAMBDA_MIN:lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:0": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:0": [
+          1601
+        ],
+        "LAMBDA_MIN:lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:1": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:1": [
+          1601
+        ],
+        "LAMBDA_MIN:lower:element:2": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:2": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:2": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:2": [
+          1601
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:2": [
+          1601
+        ]
+      },
+      "sampled_guard_series": {
+        "lambda": [
+          1601
+        ],
+        "material_lambda": [
+          1601
+        ],
+        "material_rate": [
+          1601
+        ]
+      }
+    }
+  },
+  "observations": {
+    "status": [
+      "OBSERVATION_INPUT_VALID"
+    ],
+    "operator": "orthographic",
+    "errors": [],
+    "sample_count": 801,
+    "valid_count": 801
+  },
+  "metadata": {
+    "program_version": "2.0.0-research",
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "numerical_model_id": "NUM-FWD-CABLE-P1-BDF-1.0",
+    "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "units": "SI",
+    "config_sha256": "02e72600ca82022c6e1d17c07f56e2435245b13de61feb41417e2760210d1905",
+    "physical_input_sha256": "b092266865e74ad7974fd8d2fdc3e88e9df1e7e80d92584e49e34e2da76e8f49",
+    "numerical_config_sha256": "8661f982a11897900225316fdcc907367b1b644f279302cf1120be2c6cf435a4",
+    "observation_input_sha256": "48f424d1e482dd23cbb11684c4ed990e3ba5ae08a53f6a2e9d63c6ae4e8fb46d",
+    "source_tree_sha256": "c1a158645722a968282761b3cf3c69c82ca6e49326a0a0dfa16bee62330ada56",
+    "runtime_versions": {
+      "python": "3.12.3",
+      "numpy": "2.5.2",
+      "scipy": "1.18.0",
+      "matplotlib": "3.11.1",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39"
+    },
+    "integrator": "BDF",
+    "rtol": 1e-07,
+    "effective_rtol": 1e-07,
+    "atol": 1e-09,
+    "atol_position": 1e-09,
+    "atol_velocity": 1e-09,
+    "effective_atol_vector": {
+      "position": 1e-09,
+      "velocity": 1e-09
+    },
+    "max_step": 0.005,
+    "event_cluster_tolerance": 1e-08,
+    "quadrature_order": 7,
+    "elements": {
+      "A": 2,
+      "B": 2,
+      "lower": 3
+    },
+    "node_ids": [
+      "support_A",
+      "support_B",
+      "junction",
+      "bob",
+      "A:node:1",
+      "B:node:1",
+      "lower:node:1",
+      "lower:node:2"
+    ],
+    "branch_nodes": {
+      "A": [
+        0,
+        4,
+        2
+      ],
+      "B": [
+        1,
+        5,
+        2
+      ],
+      "lower": [
+        2,
+        6,
+        7,
+        3
+      ]
+    },
+    "initial_regularization": "none",
+    "constitutive_positive_part": "exact max(candidate,0)",
+    "initial_trace_check": "analytic polynomial schema plus 2049-point material-domain audit; not an H2 proof",
+    "source_tree_sha256_at_end": "c1a158645722a968282761b3cf3c69c82ca6e49326a0a0dfa16bee62330ada56",
+    "source_tree_stable_during_run": true
+  }
+}
+output: /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T152255478919Z_dd1a6f10d9ac-r001__20260822T152255483208Z__0c283eceae/forward

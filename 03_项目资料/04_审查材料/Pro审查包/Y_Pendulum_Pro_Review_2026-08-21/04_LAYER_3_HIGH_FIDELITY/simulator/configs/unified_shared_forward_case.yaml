@@ -1,0 +1,22 @@
+schema_version: YPS-UNIFIED-CASE-1.0
+problem_id: IYPT-2027-05-Y-PENDULUM
+units: SI
+
+forward:
+  project_root: ../../../前向理论数值计算/y_pendulum_forward_solver
+  config: configs/cable_example.json
+  delivery_root: validation/delivery_root.json
+  expected_config_file_sha256: cb09ec1a3a3780565a9d4169fd076a81ccf3309ca9e027804fe0a130b99ba808
+  expected_delivery_root_sha256: dec497d42e0384f403b4c652a40799e389702a94b4299b24a4555f2bd9ea93ef
+  model_id: FWD-CABLE-1.0
+
+high_fidelity:
+  config: examples/high_fidelity_shared_forward_window.yaml
+  expected_config_file_sha256: 896b2f8b52e53f121211e6b5bfab573804527402ff69d1615f185edfa933a50d
+  validation_spec: high_fidelity_shared_forward_validation.yaml
+  expected_validation_spec_file_sha256: af02a2ae141a02aaad9fe35c8a60855eb6e6ccfcefc9de508c77f91a2623490c
+  model_id: HF-DISCRETE-ROD-RIGID-BOB-1.0
+
+comparison:
+  window_s: 0.12
+  observer_contract: ORTHOGRAPHIC_XY_METRE-1.0

@@ -1,0 +1,288 @@
+running sdist
+running egg_info
+writing src/ypendulum.egg-info/PKG-INFO
+writing dependency_links to src/ypendulum.egg-info/dependency_links.txt
+writing entry points to src/ypendulum.egg-info/entry_points.txt
+writing requirements to src/ypendulum.egg-info/requires.txt
+writing top-level names to src/ypendulum.egg-info/top_level.txt
+reading manifest file 'src/ypendulum.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.json' under directory 'benchmarks'
+warning: no files found matching '*.yaml' under directory '.github'
+no previously-included directories found matching 'runs'
+no previously-included directories found matching 'dist'
+no previously-included directories found matching 'build'
+no previously-included directories found matching '.git'
+no previously-included directories found matching '.pytest_cache'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+warning: no previously-included files matching '__pycache__' found anywhere in distribution
+warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+warning: no previously-included files found matching 'validation/python_artifact_checksums.txt'
+adding license file 'LICENSE'
+writing manifest file 'src/ypendulum.egg-info/SOURCES.txt'
+running check
+creating ypendulum-1.0.0rc1
+creating ypendulum-1.0.0rc1/.github/workflows
+creating ypendulum-1.0.0rc1/benchmarks
+creating ypendulum-1.0.0rc1/configs
+creating ypendulum-1.0.0rc1/configs/examples
+creating ypendulum-1.0.0rc1/configs/schemas
+creating ypendulum-1.0.0rc1/docs
+creating ypendulum-1.0.0rc1/docs/adr
+creating ypendulum-1.0.0rc1/examples
+creating ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+creating ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+creating ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+creating ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison
+creating ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison/result
+creating ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+creating ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+creating ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+creating ypendulum-1.0.0rc1/scripts
+creating ypendulum-1.0.0rc1/src/ypendulum
+creating ypendulum-1.0.0rc1/src/ypendulum.egg-info
+creating ypendulum-1.0.0rc1/src/ypendulum/analysis
+creating ypendulum-1.0.0rc1/src/ypendulum/calibration
+creating ypendulum-1.0.0rc1/src/ypendulum/config
+creating ypendulum-1.0.0rc1/src/ypendulum/elements
+creating ypendulum-1.0.0rc1/src/ypendulum/forces
+creating ypendulum-1.0.0rc1/src/ypendulum/geometry
+creating ypendulum-1.0.0rc1/src/ypendulum/io
+creating ypendulum-1.0.0rc1/src/ypendulum/materials
+creating ypendulum-1.0.0rc1/src/ypendulum/models
+creating ypendulum-1.0.0rc1/src/ypendulum/observers
+creating ypendulum-1.0.0rc1/src/ypendulum/solvers
+creating ypendulum-1.0.0rc1/src/ypendulum/ui
+creating ypendulum-1.0.0rc1/tests
+creating ypendulum-1.0.0rc1/tests/integration
+creating ypendulum-1.0.0rc1/tests/property
+creating ypendulum-1.0.0rc1/tests/regression
+creating ypendulum-1.0.0rc1/tests/unit
+creating ypendulum-1.0.0rc1/validation
+creating ypendulum-1.0.0rc1/validation/experiment_templates
+creating ypendulum-1.0.0rc1/validation/generated/final_full
+creating ypendulum-1.0.0rc1/validation/generated/full_latest
+creating ypendulum-1.0.0rc1/validation/generated/installed_fast
+creating ypendulum-1.0.0rc1/validation/generated/release
+creating ypendulum-1.0.0rc1/validation/regression
+copying files to ypendulum-1.0.0rc1...
+copying .dockerignore -> ypendulum-1.0.0rc1
+copying .gitignore -> ypendulum-1.0.0rc1
+copying CHANGELOG.md -> ypendulum-1.0.0rc1
+copying CITATION.cff -> ypendulum-1.0.0rc1
+copying CODEX_CONTINUATION_AND_ENVIRONMENT_GAPS.md -> ypendulum-1.0.0rc1
+copying Dockerfile -> ypendulum-1.0.0rc1
+copying LICENSE -> ypendulum-1.0.0rc1
+copying MANIFEST.in -> ypendulum-1.0.0rc1
+copying README.md -> ypendulum-1.0.0rc1
+copying THIRD_PARTY_NOTICES.md -> ypendulum-1.0.0rc1
+copying pyproject.toml -> ypendulum-1.0.0rc1
+copying .github/workflows/ci.yml -> ypendulum-1.0.0rc1/.github/workflows
+copying benchmarks/performance_report.md -> ypendulum-1.0.0rc1/benchmarks
+copying benchmarks/run_performance.py -> ypendulum-1.0.0rc1/benchmarks
+copying configs/sweep_example.yaml -> ypendulum-1.0.0rc1/configs
+copying configs/uncertainty_example.yaml -> ypendulum-1.0.0rc1/configs
+copying configs/examples/analytic_3to2.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/camera_projection.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/convergence_bdf_small.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/convergence_smooth.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/elastic_strings.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/finite_junction.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/full_production_short.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/full_quick_3to2.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/full_quick_newmark_3to2.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/ideal_3to2.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/material_curve.csv -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/prescribed_support.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/slack_retension.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/examples/tabulated_material.yaml -> ypendulum-1.0.0rc1/configs/examples
+copying configs/schemas/simulation_config.schema.json -> ypendulum-1.0.0rc1/configs/schemas
+copying configs/schemas/validation_manifest.schema.json -> ypendulum-1.0.0rc1/configs/schemas
+copying docs/api.md -> ypendulum-1.0.0rc1/docs
+copying docs/calibration_and_validation.md -> ypendulum-1.0.0rc1/docs
+copying docs/frozen_specification.md -> ypendulum-1.0.0rc1/docs
+copying docs/limitations.md -> ypendulum-1.0.0rc1/docs
+copying docs/numerical_method.md -> ypendulum-1.0.0rc1/docs
+copying docs/theory.md -> ypendulum-1.0.0rc1/docs
+copying docs/theory_source.md -> ypendulum-1.0.0rc1/docs
+copying docs/user_guide.md -> ypendulum-1.0.0rc1/docs
+copying docs/adr/ADR-0001-axial-cable-scope.md -> ypendulum-1.0.0rc1/docs/adr
+copying docs/adr/ADR-0002-tabulated-material-mesh-objectivity.md -> ypendulum-1.0.0rc1/docs/adr
+copying docs/adr/ADR-0003-second-order-newmark.md -> ypendulum-1.0.0rc1/docs/adr
+copying examples/README.md -> ypendulum-1.0.0rc1/examples
+copying examples/reference_outputs/analytic_3to2/analysis.json -> ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+copying examples/reference_outputs/analytic_3to2/config_resolved.yaml -> ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+copying examples/reference_outputs/analytic_3to2/provenance.json -> ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+copying examples/reference_outputs/analytic_3to2/report.md -> ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+copying examples/reference_outputs/analytic_3to2/simulate_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+copying examples/reference_outputs/analytic_3to2/summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/analytic_3to2
+copying examples/reference_outputs/calibration/axial_calibration.json -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/calibration/axial_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/calibration/axial_synthetic.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/calibration/axial_tabulated_curve.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/calibration/damping_calibration.json -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/calibration/damping_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/calibration/damping_synthetic.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/calibration
+copying examples/reference_outputs/camera_projection/analysis.json -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/config_resolved.yaml -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/diagnostics.json -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/events.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/provenance.json -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/report.md -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/simulate_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/camera_projection/summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/camera_projection
+copying examples/reference_outputs/experiment_comparison/cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison
+copying examples/reference_outputs/experiment_comparison/ground_truth.txt -> ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison
+copying examples/reference_outputs/experiment_comparison/synthetic_xyz.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison
+copying examples/reference_outputs/experiment_comparison/result/experiment_aligned.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison/result
+copying examples/reference_outputs/experiment_comparison/result/experiment_comparison.json -> ypendulum-1.0.0rc1/examples/reference_outputs/experiment_comparison/result
+copying examples/reference_outputs/full_quick_3to2/analysis.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/config_resolved.yaml -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/diagnostics.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/events.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/observer_summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/provenance.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/report.md -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/simulate_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_3to2/summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/analysis.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/config_resolved.yaml -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/diagnostics.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/events.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/observer_summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/provenance.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/report.md -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/simulate_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/full_quick_newmark_3to2/summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/full_quick_newmark_3to2
+copying examples/reference_outputs/ideal_3to2/analysis.json -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/config_resolved.yaml -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/diagnostics.json -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/events.csv -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/provenance.json -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/report.md -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/simulate_cli_output.json -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying examples/reference_outputs/ideal_3to2/summary.json -> ypendulum-1.0.0rc1/examples/reference_outputs/ideal_3to2
+copying scripts/build_release.py -> ypendulum-1.0.0rc1/scripts
+copying scripts/generate_regression_reference.py -> ypendulum-1.0.0rc1/scripts
+copying scripts/run_release_checks.py -> ypendulum-1.0.0rc1/scripts
+copying scripts/verify_release.py -> ypendulum-1.0.0rc1/scripts
+copying src/ypendulum/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum
+copying src/ypendulum/api.py -> ypendulum-1.0.0rc1/src/ypendulum
+copying src/ypendulum/cli.py -> ypendulum-1.0.0rc1/src/ypendulum
+copying src/ypendulum/validation_suite.py -> ypendulum-1.0.0rc1/src/ypendulum
+copying src/ypendulum/version.py -> ypendulum-1.0.0rc1/src/ypendulum
+copying src/ypendulum.egg-info/PKG-INFO -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+copying src/ypendulum.egg-info/SOURCES.txt -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+copying src/ypendulum.egg-info/dependency_links.txt -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+copying src/ypendulum.egg-info/entry_points.txt -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+copying src/ypendulum.egg-info/requires.txt -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+copying src/ypendulum.egg-info/top_level.txt -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+copying src/ypendulum/analysis/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/ablation.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/closure.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/diagnostics.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/energy.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/experiment.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/modes.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/phase.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/spectrum.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/sweep.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/tension_events.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/analysis/uncertainty.py -> ypendulum-1.0.0rc1/src/ypendulum/analysis
+copying src/ypendulum/calibration/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/calibration
+copying src/ypendulum/calibration/axial.py -> ypendulum-1.0.0rc1/src/ypendulum/calibration
+copying src/ypendulum/calibration/damping.py -> ypendulum-1.0.0rc1/src/ypendulum/calibration
+copying src/ypendulum/calibration/fit.py -> ypendulum-1.0.0rc1/src/ypendulum/calibration
+copying src/ypendulum/config/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/config
+copying src/ypendulum/config/manifest.py -> ypendulum-1.0.0rc1/src/ypendulum/config
+copying src/ypendulum/config/models.py -> ypendulum-1.0.0rc1/src/ypendulum/config
+copying src/ypendulum/config/units.py -> ypendulum-1.0.0rc1/src/ypendulum/config
+copying src/ypendulum/config/validation.py -> ypendulum-1.0.0rc1/src/ypendulum/config
+copying src/ypendulum/elements/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/elements
+copying src/ypendulum/elements/assembly.py -> ypendulum-1.0.0rc1/src/ypendulum/elements
+copying src/ypendulum/elements/cable3d.py -> ypendulum-1.0.0rc1/src/ypendulum/elements
+copying src/ypendulum/elements/mass.py -> ypendulum-1.0.0rc1/src/ypendulum/elements
+copying src/ypendulum/forces/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/forces
+copying src/ypendulum/forces/bob_aero.py -> ypendulum-1.0.0rc1/src/ypendulum/forces
+copying src/ypendulum/forces/cable_aero.py -> ypendulum-1.0.0rc1/src/ypendulum/forces
+copying src/ypendulum/forces/gravity.py -> ypendulum-1.0.0rc1/src/ypendulum/forces
+copying src/ypendulum/forces/rotating_frame.py -> ypendulum-1.0.0rc1/src/ypendulum/forces
+copying src/ypendulum/geometry/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/geometry
+copying src/ypendulum/geometry/reduced_geometry.py -> ypendulum-1.0.0rc1/src/ypendulum/geometry
+copying src/ypendulum/geometry/supports.py -> ypendulum-1.0.0rc1/src/ypendulum/geometry
+copying src/ypendulum/geometry/topology.py -> ypendulum-1.0.0rc1/src/ypendulum/geometry
+copying src/ypendulum/io/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/io
+copying src/ypendulum/io/csv.py -> ypendulum-1.0.0rc1/src/ypendulum/io
+copying src/ypendulum/io/hdf5.py -> ypendulum-1.0.0rc1/src/ypendulum/io
+copying src/ypendulum/io/provenance.py -> ypendulum-1.0.0rc1/src/ypendulum/io
+copying src/ypendulum/io/report.py -> ypendulum-1.0.0rc1/src/ypendulum/io
+copying src/ypendulum/materials/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/materials
+copying src/ypendulum/materials/base.py -> ypendulum-1.0.0rc1/src/ypendulum/materials
+copying src/ypendulum/materials/kelvin_voigt.py -> ypendulum-1.0.0rc1/src/ypendulum/materials
+copying src/ypendulum/materials/tabulated.py -> ypendulum-1.0.0rc1/src/ypendulum/materials
+copying src/ypendulum/models/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/models
+copying src/ypendulum/models/analytic.py -> ypendulum-1.0.0rc1/src/ypendulum/models
+copying src/ypendulum/models/full_cable.py -> ypendulum-1.0.0rc1/src/ypendulum/models
+copying src/ypendulum/models/state.py -> ypendulum-1.0.0rc1/src/ypendulum/models
+copying src/ypendulum/models/torus.py -> ypendulum-1.0.0rc1/src/ypendulum/models
+copying src/ypendulum/observers/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/observers
+copying src/ypendulum/observers/camera.py -> ypendulum-1.0.0rc1/src/ypendulum/observers
+copying src/ypendulum/observers/sampling.py -> ypendulum-1.0.0rc1/src/ypendulum/observers
+copying src/ypendulum/observers/synthetic_noise.py -> ypendulum-1.0.0rc1/src/ypendulum/observers
+copying src/ypendulum/solvers/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/solvers
+copying src/ypendulum/solvers/convergence.py -> ypendulum-1.0.0rc1/src/ypendulum/solvers
+copying src/ypendulum/solvers/dynamic.py -> ypendulum-1.0.0rc1/src/ypendulum/solvers
+copying src/ypendulum/solvers/newmark.py -> ypendulum-1.0.0rc1/src/ypendulum/solvers
+copying src/ypendulum/solvers/static.py -> ypendulum-1.0.0rc1/src/ypendulum/solvers
+copying src/ypendulum/ui/__init__.py -> ypendulum-1.0.0rc1/src/ypendulum/ui
+copying src/ypendulum/ui/app.py -> ypendulum-1.0.0rc1/src/ypendulum/ui
+copying tests/conftest.py -> ypendulum-1.0.0rc1/tests
+copying tests/integration/test_full_model.py -> ypendulum-1.0.0rc1/tests/integration
+copying tests/property/test_random_element_properties.py -> ypendulum-1.0.0rc1/tests/property
+copying tests/regression/test_release_metadata.py -> ypendulum-1.0.0rc1/tests/regression
+copying tests/regression/test_saved_reference.py -> ypendulum-1.0.0rc1/tests/regression
+copying tests/regression/test_validation_and_torus.py -> ypendulum-1.0.0rc1/tests/regression
+copying tests/unit/test_calibration.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_events_and_supports.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_experiment_comparison.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_frequency_and_modes.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_mass_forces_observer.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_materials_elements.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_units_and_config.py -> ypendulum-1.0.0rc1/tests/unit
+copying tests/unit/test_validation_manifest.py -> ypendulum-1.0.0rc1/tests/unit
+copying validation/actual_test_run_summary.md -> ypendulum-1.0.0rc1/validation
+copying validation/adversarial_review.md -> ypendulum-1.0.0rc1/validation
+copying validation/convergence_report.json -> ypendulum-1.0.0rc1/validation
+copying validation/convergence_report.md -> ypendulum-1.0.0rc1/validation
+copying validation/environment_inventory.json -> ypendulum-1.0.0rc1/validation
+copying validation/final_convergence_cli.json -> ypendulum-1.0.0rc1/validation
+copying validation/final_validation_cli.json -> ypendulum-1.0.0rc1/validation
+copying validation/long_window_convergence_report.md -> ypendulum-1.0.0rc1/validation
+copying validation/release_audit.md -> ypendulum-1.0.0rc1/validation
+copying validation/release_checks.json -> ypendulum-1.0.0rc1/validation
+copying validation/release_checks_stdout.json -> ypendulum-1.0.0rc1/validation
+copying validation/release_zip_verification.json -> ypendulum-1.0.0rc1/validation
+copying validation/release_zip_verification.stdout.json -> ypendulum-1.0.0rc1/validation
+copying validation/release_zip_verification_first.json -> ypendulum-1.0.0rc1/validation
+copying validation/release_zip_verification_first.stdout.json -> ypendulum-1.0.0rc1/validation
+copying validation/validation_report.json -> ypendulum-1.0.0rc1/validation
+copying validation/validation_report.md -> ypendulum-1.0.0rc1/validation
+copying validation/experiment_templates/axial_calibration.template.csv -> ypendulum-1.0.0rc1/validation/experiment_templates
+copying validation/experiment_templates/damping_envelope.template.csv -> ypendulum-1.0.0rc1/validation/experiment_templates
+copying validation/experiment_templates/trajectory_pixels.template.csv -> ypendulum-1.0.0rc1/validation/experiment_templates
+copying validation/experiment_templates/trajectory_xyz.template.csv -> ypendulum-1.0.0rc1/validation/experiment_templates
+copying validation/experiment_templates/validation_manifest.template.yaml -> ypendulum-1.0.0rc1/validation/experiment_templates
+copying validation/generated/final_full/validation_report.json -> ypendulum-1.0.0rc1/validation/generated/final_full
+copying validation/generated/final_full/validation_report.md -> ypendulum-1.0.0rc1/validation/generated/final_full
+copying validation/generated/full_latest/validation_report.json -> ypendulum-1.0.0rc1/validation/generated/full_latest
+copying validation/generated/full_latest/validation_report.md -> ypendulum-1.0.0rc1/validation/generated/full_latest
+copying validation/generated/installed_fast/validation_fast.json -> ypendulum-1.0.0rc1/validation/generated/installed_fast
+copying validation/generated/installed_fast/validation_fast.md -> ypendulum-1.0.0rc1/validation/generated/installed_fast
+copying validation/generated/release/validation_report.json -> ypendulum-1.0.0rc1/validation/generated/release
+copying validation/generated/release/validation_report.md -> ypendulum-1.0.0rc1/validation/generated/release
+copying validation/regression/reference_summary.json -> ypendulum-1.0.0rc1/validation/regression
+copying src/ypendulum.egg-info/SOURCES.txt -> ypendulum-1.0.0rc1/src/ypendulum.egg-info
+Writing ypendulum-1.0.0rc1/setup.cfg
+Creating tar archive
+removing 'ypendulum-1.0.0rc1' (and everything under it)
+ypendulum-1.0.0rc1.tar.gz

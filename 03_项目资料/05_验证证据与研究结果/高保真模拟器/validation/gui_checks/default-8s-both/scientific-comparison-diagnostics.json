@@ -1,0 +1,308 @@
+{
+  "schema": "YPS-FWD-HF-8S-DIAGNOSTIC-1.0",
+  "output_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70",
+  "request_sha256": "dc462a910a18f2f25e9ebc1f4bfa623480f1118c861eac9398490ddf45f47510",
+  "exact_common_time_grid": true,
+  "samples": 1601,
+  "window_s": [
+    0.0,
+    8.0
+  ],
+  "position_difference": {
+    "rms_m": 0.025856439816664852,
+    "maximum_m": 0.03921698510548394,
+    "component_rms_m": [
+      0.013745993128512914,
+      0.0035432680162948314,
+      0.021611302706417042
+    ],
+    "at_8s_m": [
+      0.019900413873318947,
+      0.007078133490193574,
+      0.024696194739369126
+    ]
+  },
+  "velocity_difference": {
+    "rms_m_s": 0.15906740592795904,
+    "maximum_m_s": 0.3341201642495822,
+    "component_rms_m_s": [
+      0.06726141651899198,
+      0.01649956492167928,
+      0.14319953154219486
+    ],
+    "at_8s_m_s": [
+      -0.11533846933651229,
+      0.026647211178831856,
+      0.08332336222813164
+    ]
+  },
+  "movement_from_initial": {
+    "forward_position_rms_m": 0.048852029294178416,
+    "high_fidelity_position_rms_m": 0.056711160436346775,
+    "forward_xy_span_m": [
+      0.07078453176975112,
+      0.03977578697088377
+    ],
+    "high_fidelity_xy_span_m": [
+      0.07837828884438888,
+      0.04042625915896826
+    ]
+  },
+  "modal_frequency_estimates": {
+    "coordinate_order": [
+      "support_axis_fast",
+      "gravity_plane_slow"
+    ],
+    "forward": [
+      {
+        "frequency_hz": 0.8075091581486834,
+        "amplitude_m": 0.0335478832428211,
+        "fit_r2": 0.9987054729795919,
+        "observed_cycles": 6.460073265189467,
+        "reliable": true,
+        "reason": "ok"
+      },
+      {
+        "frequency_hz": 0.6482195774076321,
+        "amplitude_m": 0.018900047008259858,
+        "fit_r2": 0.9987370821062979,
+        "observed_cycles": 5.185756619261057,
+        "reliable": true,
+        "reason": "ok"
+      }
+    ],
+    "high_fidelity": [
+      {
+        "frequency_hz": 0.7878798629828073,
+        "amplitude_m": 0.035524350412398056,
+        "fit_r2": 0.9967239619974728,
+        "observed_cycles": 6.303038903862459,
+        "reliable": true,
+        "reason": "ok"
+      },
+      {
+        "frequency_hz": 0.6387612107138307,
+        "amplitude_m": 0.019498592603454875,
+        "fit_r2": 0.9980015649409248,
+        "observed_cycles": 5.110089685710646,
+        "reliable": true,
+        "reason": "ok"
+      }
+    ],
+    "ratio_forward": 1.2457339862799024,
+    "ratio_high_fidelity": 1.2334497614567626
+  },
+  "initial_geometry_and_release": {
+    "junction_m": [
+      0.0,
+      0.0,
+      0.25
+    ],
+    "bob_com_m": [
+      0.035,
+      0.02,
+      0.6
+    ],
+    "hf_attachment_m": [
+      0.035,
+      0.02,
+      0.5800020536355572
+    ],
+    "lower_rest_length_m": 0.326,
+    "fwd_com_chord_m": 0.3523137805990563,
+    "hf_attachment_chord_m": 0.33245504268048814,
+    "fwd_chord_minus_rest_m": 0.026313780599056313,
+    "hf_chord_minus_rest_m": 0.006455042680488132,
+    "fwd_initial_lower_force_N": 0.9686054208241615,
+    "hf_initial_bob_end_lower_force_N": 0.21914896522923155,
+    "fwd_bob_net_force_N": [
+      -0.096224421511988,
+      -0.05498538372113599,
+      -0.17810644244987994
+    ],
+    "hf_bob_net_force_N": [
+      -0.02491802948269962,
+      -0.014238873990114066,
+      0.5668761440770004
+    ],
+    "fwd_bob_acceleration_m_s2": [
+      -1.2028052688998498,
+      -0.6873172965141998,
+      -2.2263305306234993
+    ],
+    "hf_bob_acceleration_m_s2": [
+      -0.31147536853374524,
+      -0.1779859248764258,
+      7.085951800962505
+    ],
+    "acceleration_difference_norm_m_s2": 9.368697329970157,
+    "hf_preparation_free_material_residual_inf_N": 1.3375585014574476e-10,
+    "hf_preparation_stability": "PSD_STABLE_LOCAL_MINIMUM"
+  },
+  "force_ranges": {
+    "fwd_lower_N": [
+      0.37666949716172754,
+      1.0014535781081748
+    ],
+    "hf_lower_signed_N": [
+      0.21914896522923155,
+      1.4018630437619066
+    ]
+  },
+  "statuses": {
+    "forward": {
+      "backend": "forward",
+      "contract_status": [
+        "COMPLETED"
+      ],
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "result_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70/forward",
+      "return_code": 0,
+      "status": "COMPLETE"
+    },
+    "high_fidelity": {
+      "backend": "high_fidelity",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "raw_guard_certificate": "NOT_RUN",
+      "result_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70/high_fidelity",
+      "return_code": 0,
+      "status": "COMPLETE",
+      "summary_status": "undetermined"
+    }
+  },
+  "selected_times": [
+    {
+      "time_s": 0.0,
+      "delta_position_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_difference_mm": 0.0,
+      "velocity_difference_m_s": 0.0
+    },
+    {
+      "time_s": 0.005,
+      "delta_position_mm": [
+        0.010970466237589238,
+        0.006269892426153528,
+        0.1146113996352005
+      ],
+      "position_difference_mm": 0.11530583509452269,
+      "velocity_difference_m_s": 0.04597815096907884
+    },
+    {
+      "time_s": 0.01,
+      "delta_position_mm": [
+        0.04296006916194861,
+        0.02455279141717545,
+        0.44973444709583976
+      ],
+      "position_difference_mm": 0.4524483175052985,
+      "velocity_difference_m_s": 0.08685037018089353
+    },
+    {
+      "time_s": 0.03,
+      "delta_position_mm": [
+        0.26400174429302287,
+        0.15076090638091802,
+        2.8220932957497835
+      ],
+      "position_difference_mm": 2.8384214524623417,
+      "velocity_difference_m_s": 0.13767427653226588
+    },
+    {
+      "time_s": 0.06,
+      "delta_position_mm": [
+        0.8423739591091467,
+        0.4838583217353747,
+        9.137316735518318
+      ],
+      "position_difference_mm": 9.18881221310355,
+      "velocity_difference_m_s": 0.29497758662857404
+    },
+    {
+      "time_s": 0.12,
+      "delta_position_mm": [
+        2.3804788244599986,
+        1.0188876731287988,
+        27.90801430239176
+      ],
+      "position_difference_mm": 28.027880294925254,
+      "velocity_difference_m_s": 0.3024053992234876
+    },
+    {
+      "time_s": 0.5,
+      "delta_position_mm": [
+        -2.006690884758088,
+        0.12259499928806393,
+        28.784608739843563
+      ],
+      "position_difference_mm": 28.85473164225757,
+      "velocity_difference_m_s": 0.26898974644034307
+    },
+    {
+      "time_s": 1.0,
+      "delta_position_mm": [
+        -4.70429522512711,
+        -1.9071435371721401,
+        28.65408986999396
+      ],
+      "position_difference_mm": 29.100248389218635,
+      "velocity_difference_m_s": 0.24164512258625834
+    },
+    {
+      "time_s": 2.0,
+      "delta_position_mm": [
+        -7.244103794788965,
+        1.959586834700479,
+        26.473289812778855
+      ],
+      "position_difference_mm": 27.516396818329756,
+      "velocity_difference_m_s": 0.2161282607980234
+    },
+    {
+      "time_s": 4.0,
+      "delta_position_mm": [
+        17.706532969343385,
+        -2.969769885938028,
+        24.524888579806504
+      ],
+      "position_difference_mm": 30.39425937281236,
+      "velocity_difference_m_s": 0.1537892036468153
+    },
+    {
+      "time_s": 6.0,
+      "delta_position_mm": [
+        -23.39428972171325,
+        -4.500219048276078,
+        12.517900185351483
+      ],
+      "position_difference_mm": 26.91175557477341,
+      "velocity_difference_m_s": 0.043901268863035615
+    },
+    {
+      "time_s": 8.0,
+      "delta_position_mm": [
+        19.900413873318946,
+        7.078133490193574,
+        24.696194739369126
+      ],
+      "position_difference_mm": 32.49659183113251,
+      "velocity_difference_m_s": 0.14476124849385377
+    }
+  ],
+  "sha256": {
+    "desktop_result.json": "950c2fe76e055ab5abe9c97990e063c1e68df4399ddce3630382f1f656888f14",
+    "forward_config.json": "2c6c32e1f4976d5e2e84f0dde1ae9f0ae8f53ffdd25518701dba7ac766f8bd3f",
+    "forward/result.json": "fd862e5021c18cdb818aa0d1f86dc1f2957b2c890e1f1d2343e10322832cb704",
+    "forward/trajectory.npz": "7bc1285dea4e44c18f1e4c06f51f240c5cefb836a8e9d49c79915fd3d9946c95",
+    "high_fidelity_config.yaml": "196e0bffdb4545fc0bcba0d4383252ce9d06cbfcdb7a4b4c1d3cdc382ee2a4f8",
+    "high_fidelity/summary.json": "b5563eba07e3e66ce94c706e8e3ef280ebf28cb9df3c8cac30753c9a227a614c",
+    "high_fidelity/diagnostics.json": "3d79143cc46509cd9acbe1654ae2ed74553006a82c2b1574efdfaac02e38b16e",
+    "high_fidelity/result.h5": "4653bdb63d29665c14cab2ee04f3af673556bf34e2d1ec84a349bf7f5e6e9d25",
+    "comparison/comparison.json": "ecee48b4abdef17b02b262975ebe38552fd8dc427702d87970a182a40ca56d30",
+    "comparison/comparison_series.npz": "186889e976ea115324a66abd731235fc4c0a5f9a7b544e55da6963b7e3d78d68"
+  }
+}

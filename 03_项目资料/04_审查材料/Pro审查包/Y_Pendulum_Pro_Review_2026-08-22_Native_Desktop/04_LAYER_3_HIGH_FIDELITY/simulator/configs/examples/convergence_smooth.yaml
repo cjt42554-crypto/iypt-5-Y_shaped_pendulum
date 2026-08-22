@@ -1,0 +1,188 @@
+schema_version: '1.0'
+run:
+  name: convergence_smooth
+  mode: full
+  seed: 20260818
+  output_directory: runs/convergence_smooth
+  claim_level: VERIFIED
+environment:
+  gravity:
+    value:
+    - 0
+    - 0
+    - -9.80665
+    unit: m/s^2
+    source: standard
+  air_density:
+    value: 1.2
+    unit: kg/m^3
+    source: assumed
+  air_velocity:
+    value:
+    - 0
+    - 0
+    - 0
+    unit: m/s
+supports:
+  A:
+    type: fixed
+    position:
+      value:
+      - -0.3
+      - 0
+      - 0
+      unit: m
+      source: measured
+  B:
+    type: fixed
+    position:
+      value:
+      - 0.3
+      - 0
+      - 0
+      unit: m
+      source: measured
+junction:
+  mass:
+    value: 0.0003
+    unit: kg
+    source: measured
+  drag_linear:
+    value: 0.0
+    unit: N*s/m
+bob:
+  mass:
+    value: 0.5
+    unit: kg
+    source: measured
+  radius:
+    value: 0.01
+    unit: m
+    source: measured
+  drag:
+    enabled: false
+    model: quadratic_plus_linear
+    cd:
+      value: 0.47
+      unit: dimensionless
+      source: literature_prior
+    linear_coefficient:
+      value: 0.0
+      unit: N*s/m
+  buoyancy: false
+cables:
+  upper_A:
+    rest_length:
+      value: 0.5
+      unit: m
+      source: measured
+    diameter:
+      value: 0.0005
+      unit: m
+      source: measured
+    density:
+      value: 1150
+      unit: kg/m^3
+      source: datasheet
+    young_modulus:
+      value: 2000000000.0
+      unit: Pa
+      source: datasheet
+    axial_viscosity:
+      value: 0.0
+      unit: Pa*s
+      source: assumed
+    elements: 3
+    drag_cd_normal: 1.2
+    drag_enabled: false
+    material_model: linear_kelvin_voigt_tension_only
+  upper_B:
+    inherit: upper_A
+  lower:
+    rest_length:
+      value: 0.32
+      unit: m
+      source: measured
+    diameter:
+      value: 0.0005
+      unit: m
+      source: measured
+    density:
+      value: 1150
+      unit: kg/m^3
+      source: datasheet
+    young_modulus:
+      value: 2000000000.0
+      unit: Pa
+      source: datasheet
+    axial_viscosity:
+      value: 0.0
+      unit: Pa*s
+      source: assumed
+    elements: 5
+    drag_cd_normal: 1.2
+    drag_enabled: false
+    material_model: linear_kelvin_voigt_tension_only
+initial_condition:
+  type: reduced_angles_release
+  phi:
+    value: 0.2
+    unit: degree
+  theta:
+    value: 0.1
+    unit: degree
+  phi_dot:
+    value: 0.0
+    unit: rad/s
+  theta_dot:
+    value: 0.0
+    unit: rad/s
+  bob_velocity:
+    value:
+    - 0
+    - 0
+    - 0
+    unit: m/s
+solver:
+  profile: quick
+  t_end:
+    value: 0.03
+    unit: s
+  output_dt:
+    value: 0.001
+    unit: s
+  max_step:
+    value: 0.0005
+    unit: s
+  mass_matrix: lumped
+  method: Radau
+  resolve_longitudinal_waves: false
+  analytic_jacobian: true
+  allow_subminimum_mesh: true
+  static:
+    method: continuation_newton
+    force_tolerance:
+      value: 1.0e-08
+      unit: N
+    max_iterations: 100
+    continuation_steps: 6
+    line_search_min: 1.0e-05
+  newmark_beta: 0.25
+  newmark_gamma: 0.5
+  newmark_max_iterations: 24
+  newmark_force_tolerance:
+    value: 1.0e-08
+    unit: N
+  newmark_line_search_min: 1.0e-05
+analysis:
+  target_ratio:
+  - 3
+  - 2
+  phase_tolerance:
+    value: 0.2
+    unit: rad
+  slow_period_count: 30
+  compute_spectrum: true
+  compute_uncertainty: false
+observer:
+  type: orthographic_xy

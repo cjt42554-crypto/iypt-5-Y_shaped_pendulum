@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "fast": false,
+  "cases": [
+    {
+      "case": "V-001",
+      "passed": true,
+      "metric": 8.881784197001252e-16,
+      "threshold": 1e-08,
+      "description": "Single-element extension F L/(EA).",
+      "details": {
+        "tension": 3.0000000000000027
+      }
+    },
+    {
+      "case": "V-002",
+      "passed": true,
+      "metric": 0.004065704249902427,
+      "threshold": 0.01,
+      "description": "Finite-element cable approaches an inextensible catenary.",
+      "details": {
+        "shape_rms": 3.5039370323987304e-05,
+        "endpoint_tension_error": 0.004065704249902427,
+        "optimizer_success": true
+      }
+    },
+    {
+      "case": "V-003",
+      "passed": true,
+      "metric": 0.00011423544376871403,
+      "threshold": 0.01,
+      "description": "First fixed-free longitudinal FE mode recovers c=sqrt(E/rho).",
+      "details": {
+        "omega": 2028.1209948252447,
+        "theory": 2027.889337986806
+      }
+    },
+    {
+      "case": "V-004",
+      "passed": true,
+      "metric": 0.0,
+      "threshold": 0.0005,
+      "description": "A1 pure fast mode matches the nonlinear pendulum period.",
+      "details": {
+        "numerical": 1.1074290370693647,
+        "theory": 1.1074290370693647
+      }
+    },
+    {
+      "case": "V-005",
+      "passed": true,
+      "metric": 0.0,
+      "threshold": 0.0005,
+      "description": "A1 pure slow mode matches the nonlinear pendulum period.",
+      "details": {
+        "numerical": 1.6611430777997813,
+        "theory": 1.6611430777997813
+      }
+    },
+    {
+      "case": "V-006",
+      "passed": true,
+      "metric": 1.843079377302365e-05,
+      "threshold": 0.0005,
+      "description": "H1 low modes recover rho^2=1+h/l in the light-string stiff limit.",
+      "details": {
+        "omega": [
+          3.8116273892326413,
+          5.717331085586304
+        ],
+        "ratio": 1.4999711413914778,
+        "theory": 1.499998787559791
+      }
+    },
+    {
+      "case": "V-007",
+      "passed": true,
+      "metric": 4.662412907756263e-12,
+      "threshold": 0.002,
+      "description": "Finite-junction transverse eigenvalues match the analytic two-root formula.",
+      "details": {
+        "numeric_omega2": [
+          14.808983885679744,
+          629.6600641242637
+        ],
+        "analytic_omega2": [
+          14.808983885673145,
+          629.6600641271995
+        ]
+      }
+    },
+    {
+      "case": "V-008",
+      "passed": true,
+      "metric": 0.08524645468842063,
+      "threshold": 0.1,
+      "description": "Distributed lower-string mass approaches the Rayleigh slope +1/12.",
+      "details": {
+        "slope": 0.07622946210929828,
+        "ratios": [
+          0.001,
+          0.003,
+          0.006,
+          0.01
+        ],
+        "shifts": [
+          3.4232764790642634e-05,
+          0.0002005040782284695,
+          0.0004492795853594522,
+          0.0007798078956324783
+        ]
+      }
+    },
+    {
+      "case": "V-009",
+      "passed": true,
+      "metric": 0.0,
+      "threshold": 1e-12,
+      "description": "When all lower elements are slack the bob is in free fall.",
+      "details": {
+        "bob_acceleration": [
+          0.0,
+          0.0,
+          -9.80665
+        ],
+        "active_count": 0
+      }
+    },
+    {
+      "case": "V-010",
+      "passed": true,
+      "metric": 7.395677257450041e-06,
+      "threshold": 0.001,
+      "description": "Unilateral retension timing converges and the work-energy ledger closes.",
+      "details": {
+        "time_coarse": 0.20196199771025497,
+        "time_fine": 0.20196199771025447,
+        "energy_coarse": 7.395677257450041e-06,
+        "energy_fine": 4.214171216059433e-07
+      }
+    },
+    {
+      "case": "V-011",
+      "passed": true,
+      "metric": 6.103641060396203e-10,
+      "threshold": 0.0002,
+      "description": "Mirror releases generate mirrored trajectories and swap upper tensions.",
+      "details": {
+        "trajectory": 6.318443019274965e-15,
+        "tension": 6.103641060396203e-10
+      }
+    },
+    {
+      "case": "V-012",
+      "passed": true,
+      "metric": 9.518205789172787e-05,
+      "threshold": 0.0001,
+      "description": "Light-string stiff-limit frequencies are independent of bob mass.",
+      "details": {
+        "omega_0.1": [
+          3.8116997662815315,
+          5.717595914340717
+        ],
+        "omega_0.4": [
+          3.81157896803561,
+          5.717051753589737
+        ]
+      }
+    },
+    {
+      "case": "V-013",
+      "passed": true,
+      "metric": 2.220446049250313e-16,
+      "threshold": 1e-10,
+      "description": "Pinhole distortion and finite-exposure averaging match independent analytic calculations.",
+      "details": {
+        "projection_abs": 0.0,
+        "exposure_abs": 2.220446049250313e-16
+      }
+    }
+  ]
+}

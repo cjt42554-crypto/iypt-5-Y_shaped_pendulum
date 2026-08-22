@@ -1,0 +1,24 @@
+{
+  "backend": "high_fidelity",
+  "backend_outcomes": {
+    "high_fidelity": {
+      "backend": "high_fidelity",
+      "numerical_status": "SUCCESS_EVENT",
+      "physical_status": "OUT_OF_SCOPE",
+      "raw_guard_certificate": "NOT_APPLICABLE",
+      "result_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T143059615245Z_b81ad5d00b44-r001__20260822T143059632602Z__b1cfa789e0/high_fidelity",
+      "return_code": 3,
+      "status": "OUT_OF_SCOPE_PREFIX",
+      "summary_status": "out_of_scope_prefix"
+    }
+  },
+  "comparison": null,
+  "ended_at_utc": "2026-08-22T14:31:02.579021+00:00",
+  "label": "desktop_case",
+  "message": "Scientific artifacts are readable. Inspect each backend's exact physical/numerical status before interpretation.",
+  "request_sha256": "b81ad5d00b44009585fccfa6298d8eb65cf36e1b3d2911881d339202e606bba3",
+  "scan_coordinates": {},
+  "schema_version": "YPS-DESKTOP-RESULT-1.0",
+  "started_at_utc": "2026-08-22T14:31:00.519917+00:00",
+  "status": "OUT_OF_SCOPE_PREFIX"
+}

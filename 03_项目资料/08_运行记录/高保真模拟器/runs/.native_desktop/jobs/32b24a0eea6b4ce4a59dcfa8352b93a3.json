@@ -1,0 +1,123 @@
+{
+  "record": {
+    "backend": "forward",
+    "batch_id": "dbf6f7d911994f70ae46fd736ac93699",
+    "command": [
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python",
+      "-m",
+      "ypendulum.ui.desktop_worker",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T053728116966Z_7117699b6eba.json",
+      "--backend",
+      "forward",
+      "--output",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T053728116966Z_7117699b6eba-r001__20260822T053728120917Z__32b24a0eea"
+    ],
+    "command_sha256": "6f6c947925d3bdebcea6feaa69035efb1566998e657da50819e9fa254d99bf96",
+    "config_identity_end": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T053728116966Z_7117699b6eba.json",
+      "backend": "forward",
+      "label": "desktop_case",
+      "raw_file_bytes": 17958,
+      "raw_file_sha256": "2d1ca0f7c05f08910a48f801736f0964edab988660c657136c83cafc45e8817d",
+      "request_sha256": "7117699b6ebaafb09af3ec0c8c6cd9cc3009cbc63ef31d8d90b89bf66f2d7980",
+      "scan_coordinates": {},
+      "shared_input_audit": null
+    },
+    "config_identity_launch": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T053728116966Z_7117699b6eba.json",
+      "backend": "forward",
+      "label": "desktop_case",
+      "raw_file_bytes": 17958,
+      "raw_file_sha256": "2d1ca0f7c05f08910a48f801736f0964edab988660c657136c83cafc45e8817d",
+      "request_sha256": "7117699b6ebaafb09af3ec0c8c6cd9cc3009cbc63ef31d8d90b89bf66f2d7980",
+      "scan_coordinates": {},
+      "shared_input_audit": null
+    },
+    "config_identity_submit": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T053728116966Z_7117699b6eba.json",
+      "backend": "forward",
+      "label": "desktop_case",
+      "raw_file_bytes": 17958,
+      "raw_file_sha256": "2d1ca0f7c05f08910a48f801736f0964edab988660c657136c83cafc45e8817d",
+      "request_sha256": "7117699b6ebaafb09af3ec0c8c6cd9cc3009cbc63ef31d8d90b89bf66f2d7980",
+      "scan_coordinates": {},
+      "shared_input_audit": null
+    },
+    "config_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T053728116966Z_7117699b6eba.json",
+    "ended_at_utc": "2026-08-22T05:37:35.305168+00:00",
+    "identifier": "32b24a0eea6b4ce4a59dcfa8352b93a3",
+    "label": "001-20260822T053728116966Z_7117699b6eba-r001",
+    "last_observed_at_utc": "2026-08-22T05:37:35.305179+00:00",
+    "log_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/logs/32b24a0eea6b4ce4a59dcfa8352b93a3.log",
+    "output_assessment": {
+      "accepted_return_codes": [
+        0
+      ],
+      "evidence": {
+        "backend_outcomes": {
+          "forward": {
+            "backend": "forward",
+            "contract_status": [
+              "COMPLETED"
+            ],
+            "numerical_status": "SUCCESS_SINGLE_RUN",
+            "result_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T053728116966Z_7117699b6eba-r001__20260822T053728120917Z__32b24a0eea/forward",
+            "return_code": 0,
+            "status": "COMPLETE"
+          }
+        },
+        "comparison": null,
+        "desktop_result": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T053728116966Z_7117699b6eba-r001__20260822T053728120917Z__32b24a0eea/desktop_result.json"
+      },
+      "input_identity_binding": {
+        "backend": "forward",
+        "request_sha256": "7117699b6ebaafb09af3ec0c8c6cd9cc3009cbc63ef31d8d90b89bf66f2d7980"
+      },
+      "reason": "请求的后端已产生可读科学结果。",
+      "request_binding": {
+        "backend": "forward"
+      },
+      "scientific_status": "COMPLETE",
+      "terminal_state": "COMPLETED"
+    },
+    "output_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T053728116966Z_7117699b6eba-r001__20260822T053728120917Z__32b24a0eea",
+    "pid": 6957,
+    "plugin_id": "iypt_2027_y_pendulum_desktop",
+    "process_group_id": 6957,
+    "process_start_ticks": 12198,
+    "repetition": 1,
+    "return_code": 0,
+    "revision": 14,
+    "scan_coordinates": {},
+    "schema_version": "YPS-RESEARCH-PLATFORM-JOB-1.0",
+    "started_at_utc": "2026-08-22T05:37:28.124703+00:00",
+    "state": "COMPLETED",
+    "state_history": [
+      {
+        "action": "SUBMIT",
+        "at_utc": "2026-08-22T05:37:28.122095+00:00",
+        "detail": "Immutable command and configuration identity recorded.",
+        "next_state": "QUEUED",
+        "previous_state": null
+      },
+      {
+        "action": "START",
+        "at_utc": "2026-08-22T05:37:28.124713+00:00",
+        "detail": "Started isolated process group 6957.",
+        "next_state": "RUNNING",
+        "previous_state": "QUEUED"
+      },
+      {
+        "action": "PROCESS_EXIT",
+        "at_utc": "2026-08-22T05:37:35.305179+00:00",
+        "detail": "请求的后端已产生可读科学结果。",
+        "next_state": "COMPLETED",
+        "previous_state": "RUNNING"
+      }
+    ],
+    "submitted_at_utc": "2026-08-22T05:37:28.122095+00:00",
+    "terminal_reason": "请求的后端已产生可读科学结果。"
+  },
+  "record_sha256": "1966fc7d34a04b4306ec0d70a0a59b7c4af4dd0ec5b983dd621d8fc86e364649",
+  "schema_version": "YPS-RESEARCH-PLATFORM-JOB-ENVELOPE-1.0"
+}

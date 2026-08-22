@@ -1,0 +1,98 @@
+{
+  "record": {
+    "backend": "forward",
+    "batch_id": "f50c6a0cef66442fab23e1e1d1f35dce",
+    "command": [
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python",
+      "-m",
+      "ypendulum.ui.desktop_worker",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065801413231Z_4e2f6af08924.json",
+      "--backend",
+      "forward",
+      "--output",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_pause_resume_stop_validation-0001-001-20260822T065801413231Z_4e2f6af08924-r0__20260822T065801416658Z__9fcc9efbc4"
+    ],
+    "command_sha256": "9eecf79c3068ee092cce145a7945bd777a21cb7704635ded96837d247194bf8e",
+    "config_identity_end": null,
+    "config_identity_launch": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065801413231Z_4e2f6af08924.json",
+      "backend": "forward",
+      "label": "gui_pause_resume_stop_validation",
+      "raw_file_bytes": 17946,
+      "raw_file_sha256": "305330486d7e74580149e7e1997a73644d4a0a19fd3306eded055a6b815d8750",
+      "request_sha256": "4e2f6af089243c3696433315fded43f4234c6addffb61e744304c129e73f9030",
+      "scan_coordinates": {},
+      "shared_input_audit": null
+    },
+    "config_identity_submit": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065801413231Z_4e2f6af08924.json",
+      "backend": "forward",
+      "label": "gui_pause_resume_stop_validation",
+      "raw_file_bytes": 17946,
+      "raw_file_sha256": "305330486d7e74580149e7e1997a73644d4a0a19fd3306eded055a6b815d8750",
+      "request_sha256": "4e2f6af089243c3696433315fded43f4234c6addffb61e744304c129e73f9030",
+      "scan_coordinates": {},
+      "shared_input_audit": null
+    },
+    "config_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065801413231Z_4e2f6af08924.json",
+    "ended_at_utc": "2026-08-22T06:58:01.967563+00:00",
+    "identifier": "9fcc9efbc46b4ca181e24efab7d4e9e1",
+    "label": "001-20260822T065801413231Z_4e2f6af08924-r001",
+    "last_observed_at_utc": "2026-08-22T06:58:01.967574+00:00",
+    "log_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/logs/9fcc9efbc46b4ca181e24efab7d4e9e1.log",
+    "output_assessment": null,
+    "output_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_pause_resume_stop_validation-0001-001-20260822T065801413231Z_4e2f6af08924-r0__20260822T065801416658Z__9fcc9efbc4",
+    "pid": 20789,
+    "plugin_id": "iypt_2027_y_pendulum_desktop",
+    "process_group_id": 20789,
+    "process_start_ticks": 495528,
+    "repetition": 1,
+    "return_code": -15,
+    "revision": 13,
+    "scan_coordinates": {},
+    "schema_version": "YPS-RESEARCH-PLATFORM-JOB-1.0",
+    "started_at_utc": "2026-08-22T06:58:01.421506+00:00",
+    "state": "STOPPED",
+    "state_history": [
+      {
+        "action": "SUBMIT",
+        "at_utc": "2026-08-22T06:58:01.417710+00:00",
+        "detail": "Immutable command and configuration identity recorded.",
+        "next_state": "QUEUED",
+        "previous_state": null
+      },
+      {
+        "action": "START",
+        "at_utc": "2026-08-22T06:58:01.421516+00:00",
+        "detail": "Started isolated process group 20789.",
+        "next_state": "RUNNING",
+        "previous_state": "QUEUED"
+      },
+      {
+        "action": "PAUSE",
+        "at_utc": "2026-08-22T06:58:01.506359+00:00",
+        "detail": "Sent SIGSTOP to the identity-verified process group.",
+        "next_state": "PAUSED",
+        "previous_state": "RUNNING"
+      },
+      {
+        "action": "RESUME",
+        "at_utc": "2026-08-22T06:58:01.668595+00:00",
+        "detail": "Sent SIGCONT to the identity-verified process group.",
+        "next_state": "RUNNING",
+        "previous_state": "PAUSED"
+      },
+      {
+        "action": "STOP",
+        "at_utc": "2026-08-22T06:58:01.967574+00:00",
+        "detail": "Stopped by operator with SIGTERM.",
+        "next_state": "STOPPED",
+        "previous_state": "RUNNING"
+      }
+    ],
+    "submitted_at_utc": "2026-08-22T06:58:01.417710+00:00",
+    "terminal_reason": "Stopped by operator with SIGTERM."
+  },
+  "record_sha256": "b232b76e67a277193428e00b79b62f6773f300f9cd1f0c7d163b4a4ab395d86d",
+  "schema_version": "YPS-RESEARCH-PLATFORM-JOB-ENVELOPE-1.0"
+}

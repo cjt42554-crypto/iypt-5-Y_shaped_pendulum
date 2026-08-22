@@ -1,0 +1,1835 @@
+{
+  "record": {
+    "backend": "both",
+    "batch_id": "bc492b170e744443b83dde76ca2f923d",
+    "command": [
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python",
+      "-m",
+      "ypendulum.ui.desktop_worker",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065154700571Z_dc462a910a18.json",
+      "--backend",
+      "both",
+      "--output",
+      "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70"
+    ],
+    "command_sha256": "607b552bff62ad936fedaca35caae11b2a7895a261056a2ecc260b3dc59be88c",
+    "config_identity_end": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065154700571Z_dc462a910a18.json",
+      "backend": "both",
+      "label": "gui_default_8s_both_validation",
+      "raw_file_bytes": 17941,
+      "raw_file_sha256": "8fe3288a4e205b05f711314ba8e2da40cc4f8ba7196f427206b99f144e0909ec",
+      "request_sha256": "dc462a910a18f2f25e9ebc1f4bfa623480f1118c861eac9398490ddf45f47510",
+      "scan_coordinates": {},
+      "shared_input_audit": {
+        "check_count": 53,
+        "checks": [
+          {
+            "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+            "field": "support_A.activation",
+            "forward_value": "constant",
+            "high_fidelity_value": {
+              "motion_is_none": true,
+              "type": "fixed"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+            "field": "support_B.activation",
+            "forward_value": "constant",
+            "high_fidelity_value": {
+              "motion_is_none": true,
+              "type": "fixed"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD zero provider <=> HF finite zero air velocity",
+            "field": "air_velocity.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "constant zero vector",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "junction_force.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "bob_force.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.A.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.B.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.lower.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "gravity_vector",
+            "forward_value": [
+              0.0,
+              0.0,
+              9.80665
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              9.80665
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 9.81665e-10,
+            "unit": "m/s^2"
+          },
+          {
+            "field": "support_A_position",
+            "forward_value": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "support_B_position",
+            "forward_value": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "junction_mass",
+            "forward_value": 0.003,
+            "high_fidelity_value": 0.003,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.3000000000000001e-12,
+            "unit": "kg"
+          },
+          {
+            "field": "bob_mass",
+            "forward_value": 0.08,
+            "high_fidelity_value": 0.08,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 9e-12,
+            "unit": "kg"
+          },
+          {
+            "field": "air_density",
+            "forward_value": 1.2,
+            "high_fidelity_value": 1.2,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.21e-10,
+            "unit": "kg/m^3"
+          },
+          {
+            "field": "air_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "expected_relation": "HF buoyancy must be enabled for the FWD displaced-volume buoyancy term",
+            "field": "bob.buoyancy.activation",
+            "forward_value": {
+              "bob_volume": 3.35e-05,
+              "rho_air": 1.2
+            },
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "HF drag switch/model must activate exactly the FWD linear/quadratic terms",
+            "field": "bob.drag.activation",
+            "forward_value": {
+              "linear_nonzero": true,
+              "quadratic_nonzero": true
+            },
+            "high_fidelity_value": {
+              "enabled": true,
+              "model": "quadratic_plus_linear"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "bob_volume",
+            "forward_value": 3.35e-05,
+            "high_fidelity_value": 3.350000000000002e-05,
+            "maximum_absolute_error": 2.0328790734103208e-20,
+            "passed": true,
+            "tolerance": 1.00335e-12,
+            "unit": "m^3"
+          },
+          {
+            "field": "bob_linear_drag",
+            "forward_value": 0.0015,
+            "high_fidelity_value": 0.0015,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.15e-12,
+            "unit": "N*s/m"
+          },
+          {
+            "field": "bob_quadratic_drag_coefficient",
+            "forward_value": 0.004,
+            "high_fidelity_value": 0.004,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.4e-12,
+            "unit": "kg/m"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.A.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.A.rest_length",
+            "forward_value": 0.288,
+            "high_fidelity_value": 0.288,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.98e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.A.linear_density",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.A.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.A.Ca",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.A.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.A.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.A.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.A.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.B.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.B.rest_length",
+            "forward_value": 0.288,
+            "high_fidelity_value": 0.288,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.98e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.B.linear_density",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.B.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.B.Ca",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.B.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.B.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.B.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.B.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.lower.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.lower.rest_length",
+            "forward_value": 0.326,
+            "high_fidelity_value": 0.326,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 3.3600000000000005e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.lower.linear_density",
+            "forward_value": 0.012,
+            "high_fidelity_value": 0.012,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.2000000000000003e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.lower.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.lower.Ca",
+            "forward_value": 0.012,
+            "high_fidelity_value": 0.012,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.2000000000000003e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.lower.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.lower.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.lower.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.lower.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "The frozen FWD complete cable state uses DIRECT_STATE while HF preserves the same J/bob state and independently equilibrates its additional rod material coordinates with the bilateral finite-rod law",
+            "field": "initial.protocol",
+            "forward_value": "DIRECT_STATE",
+            "high_fidelity_value": {
+              "compression_regularization_scale": 1.0,
+              "controlled_limit_study": false,
+              "type": "held_endpoint_equilibrium_release"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "initial.junction_position",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.25
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.25
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "initial.junction_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "field": "initial.bob_com_position",
+            "forward_value": [
+              0.035,
+              0.02,
+              0.6
+            ],
+            "high_fidelity_value": [
+              0.035,
+              0.02,
+              0.6
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 6.1e-11,
+            "unit": "m"
+          },
+          {
+            "field": "initial.bob_com_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "field": "comparison_horizon",
+            "forward_value": 8.0,
+            "high_fidelity_value": 8.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 8.01e-10,
+            "unit": "s"
+          }
+        ],
+        "forward_only_fields": [
+          "activation regularisation delta",
+          "material-domain and lambda guards",
+          "FWD-specific P1 quadrature and convergence thresholds"
+        ],
+        "hf_only_fields": [
+          "cable diameter and three-point bending stiffness",
+          "finite bob radius, inertia, quaternion and eccentric attachment",
+          "bob/rod and rod/rod clearance guards",
+          "HF-specific numerical tolerances and accepted-step certificate"
+        ],
+        "passed": true,
+        "schema_version": "YPS-SHARED-INPUT-AUDIT-1.0"
+      }
+    },
+    "config_identity_launch": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065154700571Z_dc462a910a18.json",
+      "backend": "both",
+      "label": "gui_default_8s_both_validation",
+      "raw_file_bytes": 17941,
+      "raw_file_sha256": "8fe3288a4e205b05f711314ba8e2da40cc4f8ba7196f427206b99f144e0909ec",
+      "request_sha256": "dc462a910a18f2f25e9ebc1f4bfa623480f1118c861eac9398490ddf45f47510",
+      "scan_coordinates": {},
+      "shared_input_audit": {
+        "check_count": 53,
+        "checks": [
+          {
+            "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+            "field": "support_A.activation",
+            "forward_value": "constant",
+            "high_fidelity_value": {
+              "motion_is_none": true,
+              "type": "fixed"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+            "field": "support_B.activation",
+            "forward_value": "constant",
+            "high_fidelity_value": {
+              "motion_is_none": true,
+              "type": "fixed"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD zero provider <=> HF finite zero air velocity",
+            "field": "air_velocity.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "constant zero vector",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "junction_force.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "bob_force.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.A.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.B.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.lower.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "gravity_vector",
+            "forward_value": [
+              0.0,
+              0.0,
+              9.80665
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              9.80665
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 9.81665e-10,
+            "unit": "m/s^2"
+          },
+          {
+            "field": "support_A_position",
+            "forward_value": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "support_B_position",
+            "forward_value": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "junction_mass",
+            "forward_value": 0.003,
+            "high_fidelity_value": 0.003,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.3000000000000001e-12,
+            "unit": "kg"
+          },
+          {
+            "field": "bob_mass",
+            "forward_value": 0.08,
+            "high_fidelity_value": 0.08,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 9e-12,
+            "unit": "kg"
+          },
+          {
+            "field": "air_density",
+            "forward_value": 1.2,
+            "high_fidelity_value": 1.2,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.21e-10,
+            "unit": "kg/m^3"
+          },
+          {
+            "field": "air_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "expected_relation": "HF buoyancy must be enabled for the FWD displaced-volume buoyancy term",
+            "field": "bob.buoyancy.activation",
+            "forward_value": {
+              "bob_volume": 3.35e-05,
+              "rho_air": 1.2
+            },
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "HF drag switch/model must activate exactly the FWD linear/quadratic terms",
+            "field": "bob.drag.activation",
+            "forward_value": {
+              "linear_nonzero": true,
+              "quadratic_nonzero": true
+            },
+            "high_fidelity_value": {
+              "enabled": true,
+              "model": "quadratic_plus_linear"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "bob_volume",
+            "forward_value": 3.35e-05,
+            "high_fidelity_value": 3.350000000000002e-05,
+            "maximum_absolute_error": 2.0328790734103208e-20,
+            "passed": true,
+            "tolerance": 1.00335e-12,
+            "unit": "m^3"
+          },
+          {
+            "field": "bob_linear_drag",
+            "forward_value": 0.0015,
+            "high_fidelity_value": 0.0015,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.15e-12,
+            "unit": "N*s/m"
+          },
+          {
+            "field": "bob_quadratic_drag_coefficient",
+            "forward_value": 0.004,
+            "high_fidelity_value": 0.004,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.4e-12,
+            "unit": "kg/m"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.A.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.A.rest_length",
+            "forward_value": 0.288,
+            "high_fidelity_value": 0.288,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.98e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.A.linear_density",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.A.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.A.Ca",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.A.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.A.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.A.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.A.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.B.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.B.rest_length",
+            "forward_value": 0.288,
+            "high_fidelity_value": 0.288,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.98e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.B.linear_density",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.B.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.B.Ca",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.B.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.B.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.B.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.B.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.lower.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.lower.rest_length",
+            "forward_value": 0.326,
+            "high_fidelity_value": 0.326,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 3.3600000000000005e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.lower.linear_density",
+            "forward_value": 0.012,
+            "high_fidelity_value": 0.012,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.2000000000000003e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.lower.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.lower.Ca",
+            "forward_value": 0.012,
+            "high_fidelity_value": 0.012,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.2000000000000003e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.lower.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.lower.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.lower.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.lower.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "The frozen FWD complete cable state uses DIRECT_STATE while HF preserves the same J/bob state and independently equilibrates its additional rod material coordinates with the bilateral finite-rod law",
+            "field": "initial.protocol",
+            "forward_value": "DIRECT_STATE",
+            "high_fidelity_value": {
+              "compression_regularization_scale": 1.0,
+              "controlled_limit_study": false,
+              "type": "held_endpoint_equilibrium_release"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "initial.junction_position",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.25
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.25
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "initial.junction_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "field": "initial.bob_com_position",
+            "forward_value": [
+              0.035,
+              0.02,
+              0.6
+            ],
+            "high_fidelity_value": [
+              0.035,
+              0.02,
+              0.6
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 6.1e-11,
+            "unit": "m"
+          },
+          {
+            "field": "initial.bob_com_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "field": "comparison_horizon",
+            "forward_value": 8.0,
+            "high_fidelity_value": 8.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 8.01e-10,
+            "unit": "s"
+          }
+        ],
+        "forward_only_fields": [
+          "activation regularisation delta",
+          "material-domain and lambda guards",
+          "FWD-specific P1 quadrature and convergence thresholds"
+        ],
+        "hf_only_fields": [
+          "cable diameter and three-point bending stiffness",
+          "finite bob radius, inertia, quaternion and eccentric attachment",
+          "bob/rod and rod/rod clearance guards",
+          "HF-specific numerical tolerances and accepted-step certificate"
+        ],
+        "passed": true,
+        "schema_version": "YPS-SHARED-INPUT-AUDIT-1.0"
+      }
+    },
+    "config_identity_submit": {
+      "absolute_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065154700571Z_dc462a910a18.json",
+      "backend": "both",
+      "label": "gui_default_8s_both_validation",
+      "raw_file_bytes": 17941,
+      "raw_file_sha256": "8fe3288a4e205b05f711314ba8e2da40cc4f8ba7196f427206b99f144e0909ec",
+      "request_sha256": "dc462a910a18f2f25e9ebc1f4bfa623480f1118c861eac9398490ddf45f47510",
+      "scan_coordinates": {},
+      "shared_input_audit": {
+        "check_count": 53,
+        "checks": [
+          {
+            "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+            "field": "support_A.activation",
+            "forward_value": "constant",
+            "high_fidelity_value": {
+              "motion_is_none": true,
+              "type": "fixed"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+            "field": "support_B.activation",
+            "forward_value": "constant",
+            "high_fidelity_value": {
+              "motion_is_none": true,
+              "type": "fixed"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD zero provider <=> HF finite zero air velocity",
+            "field": "air_velocity.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "constant zero vector",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "junction_force.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "bob_force.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.A.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.B.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+            "field": "distributed_force.lower.activation",
+            "forward_value": "zero",
+            "high_fidelity_value": "no corresponding HF external-force provider",
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "gravity_vector",
+            "forward_value": [
+              0.0,
+              0.0,
+              9.80665
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              9.80665
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 9.81665e-10,
+            "unit": "m/s^2"
+          },
+          {
+            "field": "support_A_position",
+            "forward_value": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "support_B_position",
+            "forward_value": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "junction_mass",
+            "forward_value": 0.003,
+            "high_fidelity_value": 0.003,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.3000000000000001e-12,
+            "unit": "kg"
+          },
+          {
+            "field": "bob_mass",
+            "forward_value": 0.08,
+            "high_fidelity_value": 0.08,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 9e-12,
+            "unit": "kg"
+          },
+          {
+            "field": "air_density",
+            "forward_value": 1.2,
+            "high_fidelity_value": 1.2,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.21e-10,
+            "unit": "kg/m^3"
+          },
+          {
+            "field": "air_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "expected_relation": "HF buoyancy must be enabled for the FWD displaced-volume buoyancy term",
+            "field": "bob.buoyancy.activation",
+            "forward_value": {
+              "bob_volume": 3.35e-05,
+              "rho_air": 1.2
+            },
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "expected_relation": "HF drag switch/model must activate exactly the FWD linear/quadratic terms",
+            "field": "bob.drag.activation",
+            "forward_value": {
+              "linear_nonzero": true,
+              "quadratic_nonzero": true
+            },
+            "high_fidelity_value": {
+              "enabled": true,
+              "model": "quadratic_plus_linear"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "bob_volume",
+            "forward_value": 3.35e-05,
+            "high_fidelity_value": 3.350000000000002e-05,
+            "maximum_absolute_error": 2.0328790734103208e-20,
+            "passed": true,
+            "tolerance": 1.00335e-12,
+            "unit": "m^3"
+          },
+          {
+            "field": "bob_linear_drag",
+            "forward_value": 0.0015,
+            "high_fidelity_value": 0.0015,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.15e-12,
+            "unit": "N*s/m"
+          },
+          {
+            "field": "bob_quadratic_drag_coefficient",
+            "forward_value": 0.004,
+            "high_fidelity_value": 0.004,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.4e-12,
+            "unit": "kg/m"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.A.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.A.rest_length",
+            "forward_value": 0.288,
+            "high_fidelity_value": 0.288,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.98e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.A.linear_density",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.A.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.A.Ca",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.A.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.A.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.A.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.A.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.B.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.B.rest_length",
+            "forward_value": 0.288,
+            "high_fidelity_value": 0.288,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.98e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.B.linear_density",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.B.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.B.Ca",
+            "forward_value": 0.01,
+            "high_fidelity_value": 0.01,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.B.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.B.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.B.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.B.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+            "field": "branch.lower.drag.activation",
+            "forward_value": true,
+            "high_fidelity_value": true,
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "branch.lower.rest_length",
+            "forward_value": 0.326,
+            "high_fidelity_value": 0.326,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 3.3600000000000005e-11,
+            "unit": "m"
+          },
+          {
+            "field": "branch.lower.linear_density",
+            "forward_value": 0.012,
+            "high_fidelity_value": 0.012,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.2000000000000003e-12,
+            "unit": "kg/m"
+          },
+          {
+            "field": "branch.lower.EA",
+            "forward_value": 12.0,
+            "high_fidelity_value": 12.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.201e-09,
+            "unit": "N"
+          },
+          {
+            "field": "branch.lower.Ca",
+            "forward_value": 0.012,
+            "high_fidelity_value": 0.012,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.2000000000000003e-12,
+            "unit": "N*s"
+          },
+          {
+            "field": "branch.lower.linear_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.lower.linear_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "N*s/m^2"
+          },
+          {
+            "field": "branch.lower.quadratic_drag_parallel",
+            "forward_value": 0.0001,
+            "high_fidelity_value": 0.0001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.01e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "field": "branch.lower.quadratic_drag_perpendicular",
+            "forward_value": 0.001,
+            "high_fidelity_value": 0.001,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1.1e-12,
+            "unit": "kg/m^2"
+          },
+          {
+            "expected_relation": "The frozen FWD complete cable state uses DIRECT_STATE while HF preserves the same J/bob state and independently equilibrates its additional rod material coordinates with the bilateral finite-rod law",
+            "field": "initial.protocol",
+            "forward_value": "DIRECT_STATE",
+            "high_fidelity_value": {
+              "compression_regularization_scale": 1.0,
+              "controlled_limit_study": false,
+              "type": "held_endpoint_equilibrium_release"
+            },
+            "passed": true,
+            "unit": "semantic"
+          },
+          {
+            "field": "initial.junction_position",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.25
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.25
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 2.6e-11,
+            "unit": "m"
+          },
+          {
+            "field": "initial.junction_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "field": "initial.bob_com_position",
+            "forward_value": [
+              0.035,
+              0.02,
+              0.6
+            ],
+            "high_fidelity_value": [
+              0.035,
+              0.02,
+              0.6
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 6.1e-11,
+            "unit": "m"
+          },
+          {
+            "field": "initial.bob_com_velocity",
+            "forward_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "high_fidelity_value": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 1e-12,
+            "unit": "m/s"
+          },
+          {
+            "field": "comparison_horizon",
+            "forward_value": 8.0,
+            "high_fidelity_value": 8.0,
+            "maximum_absolute_error": 0.0,
+            "passed": true,
+            "tolerance": 8.01e-10,
+            "unit": "s"
+          }
+        ],
+        "forward_only_fields": [
+          "activation regularisation delta",
+          "material-domain and lambda guards",
+          "FWD-specific P1 quadrature and convergence thresholds"
+        ],
+        "hf_only_fields": [
+          "cable diameter and three-point bending stiffness",
+          "finite bob radius, inertia, quaternion and eccentric attachment",
+          "bob/rod and rod/rod clearance guards",
+          "HF-specific numerical tolerances and accepted-step certificate"
+        ],
+        "passed": true,
+        "schema_version": "YPS-SHARED-INPUT-AUDIT-1.0"
+      }
+    },
+    "config_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/requests/20260822T065154700571Z_dc462a910a18.json",
+    "ended_at_utc": "2026-08-22T06:52:42.600301+00:00",
+    "identifier": "27d9ff9c70e54d438a66a5b68eb9e46c",
+    "label": "001-20260822T065154700571Z_dc462a910a18-r001",
+    "last_observed_at_utc": "2026-08-22T06:52:42.600313+00:00",
+    "log_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/.native_desktop/logs/27d9ff9c70e54d438a66a5b68eb9e46c.log",
+    "output_assessment": {
+      "accepted_return_codes": [
+        0
+      ],
+      "evidence": {
+        "backend_outcomes": {
+          "forward": {
+            "backend": "forward",
+            "contract_status": [
+              "COMPLETED"
+            ],
+            "numerical_status": "SUCCESS_SINGLE_RUN",
+            "result_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70/forward",
+            "return_code": 0,
+            "status": "COMPLETE"
+          },
+          "high_fidelity": {
+            "backend": "high_fidelity",
+            "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+            "physical_status": "UNDETERMINED",
+            "raw_guard_certificate": "NOT_RUN",
+            "result_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70/high_fidelity",
+            "return_code": 0,
+            "status": "COMPLETE",
+            "summary_status": "undetermined"
+          }
+        },
+        "comparison": {
+          "interpretation": "Model-form difference on the common returned interval; not a convergence error.",
+          "maximum_bob_position_difference_m": 0.03921698510548394,
+          "maximum_bob_velocity_difference_m_s": 0.3341201642495822,
+          "rms_bob_position_difference_m": 0.025856439816664852,
+          "rms_bob_velocity_difference_m_s": 0.15906740592795904,
+          "sample_count": 1601,
+          "schema_version": "YPS-DESKTOP-COMPARISON-1.0",
+          "status": "COMPARISON_COMPLETE",
+          "window_s": [
+            0.0,
+            8.0
+          ]
+        },
+        "desktop_result": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70/desktop_result.json"
+      },
+      "input_identity_binding": {
+        "backend": "both",
+        "request_sha256": "dc462a910a18f2f25e9ebc1f4bfa623480f1118c861eac9398490ddf45f47510"
+      },
+      "reason": "请求的后端已产生可读科学结果。",
+      "request_binding": {
+        "backend": "both"
+      },
+      "scientific_status": "COMPLETE",
+      "terminal_state": "COMPLETED"
+    },
+    "output_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/gui_default_8s_both_validation-0001-001-20260822T065154700571Z_dc462a910a18-r001__20260822T065154737475Z__27d9ff9c70",
+    "pid": 19179,
+    "plugin_id": "iypt_2027_y_pendulum_desktop",
+    "process_group_id": 19179,
+    "process_start_ticks": 458862,
+    "repetition": 1,
+    "return_code": 0,
+    "revision": 1784,
+    "scan_coordinates": {},
+    "schema_version": "YPS-RESEARCH-PLATFORM-JOB-1.0",
+    "started_at_utc": "2026-08-22T06:51:54.764854+00:00",
+    "state": "COMPLETED",
+    "state_history": [
+      {
+        "action": "SUBMIT",
+        "at_utc": "2026-08-22T06:51:54.749839+00:00",
+        "detail": "Immutable command and configuration identity recorded.",
+        "next_state": "QUEUED",
+        "previous_state": null
+      },
+      {
+        "action": "START",
+        "at_utc": "2026-08-22T06:51:54.764866+00:00",
+        "detail": "Started isolated process group 19179.",
+        "next_state": "RUNNING",
+        "previous_state": "QUEUED"
+      },
+      {
+        "action": "PROCESS_EXIT",
+        "at_utc": "2026-08-22T06:52:42.600313+00:00",
+        "detail": "请求的后端已产生可读科学结果。",
+        "next_state": "COMPLETED",
+        "previous_state": "RUNNING"
+      }
+    ],
+    "submitted_at_utc": "2026-08-22T06:51:54.749839+00:00",
+    "terminal_reason": "请求的后端已产生可读科学结果。"
+  },
+  "record_sha256": "3b5bb20cea1c3203a9fcf25165115665e09c4285afdd09f851c614e606a7b09b",
+  "schema_version": "YPS-RESEARCH-PLATFORM-JOB-ENVELOPE-1.0"
+}

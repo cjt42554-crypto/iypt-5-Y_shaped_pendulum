@@ -1,0 +1,162 @@
+analysis:
+  compute_spectrum: true
+  compute_uncertainty: false
+  phase_tolerance: 0.2
+  slow_period_count: 5
+  target_ratio:
+  - 3
+  - 2
+bob:
+  buoyancy: true
+  drag:
+    cd: 5.306254425059426
+    enabled: true
+    linear_coefficient: 0.0015
+    model: quadratic_plus_linear
+  mass: 0.08
+  radius: 0.01999794636444272
+cables:
+  lower:
+    axial_viscosity: 1697.6527263135504
+    density: 1697.6527263135504
+    diameter: 0.003
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_enabled: true
+    drag_linear_normal_per_length: 0.001
+    drag_linear_tangent_per_length: 0.0001
+    elements: 1
+    material_model: linear_kelvin_voigt_tension_only
+    rest_length: 0.326
+    table_calibration_length: null
+    table_file: null
+    young_modulus: 1697652.7263135503
+  upper_A:
+    axial_viscosity: 1414.710605261292
+    density: 1414.710605261292
+    diameter: 0.003
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_enabled: true
+    drag_linear_normal_per_length: 0.001
+    drag_linear_tangent_per_length: 0.0001
+    elements: 1
+    material_model: linear_kelvin_voigt_tension_only
+    rest_length: 0.288
+    table_calibration_length: null
+    table_file: null
+    young_modulus: 1697652.7263135503
+  upper_B:
+    axial_viscosity: 1414.710605261292
+    density: 1414.710605261292
+    diameter: 0.003
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_enabled: true
+    drag_linear_normal_per_length: 0.001
+    drag_linear_tangent_per_length: 0.0001
+    elements: 1
+    material_model: linear_kelvin_voigt_tension_only
+    rest_length: 0.288
+    table_calibration_length: null
+    table_file: null
+    young_modulus: 1697652.7263135503
+environment:
+  air_density: 1.2
+  air_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  gravity:
+  - 0.0
+  - 0.0
+  - 9.80665
+high_fidelity:
+  axial_material_model: passive_unilateral_bilateral_kelvin_voigt_blend
+  bending_stiffness_scale: 1.0
+  bob_attachment_radius_fraction: 1.0
+  bob_contact_radius_fraction: 1.0
+  bob_inertia_factor: 0.4
+  compression_regularization_scale: 1.0
+  contact_guard_enabled: true
+  controlled_limit_study: false
+  minimum_clearance: 0.0002
+  model_id: HF-DISCRETE-ROD-RIGID-BOB-1.0
+  quaternion_stabilization_rate: 1.0
+initial_condition:
+  bob_angular_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  bob_position:
+  - 0.035
+  - 0.02
+  - 0.6
+  bob_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  junction_position:
+  - 0.0
+  - 0.0
+  - 0.25
+  junction_velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+  type: held_endpoint_equilibrium_release
+junction:
+  drag_linear: 0.0
+  mass: 0.003
+observer:
+  camera: null
+  type: orthographic_xy
+run:
+  claim_level: DERIVED
+  mode: high_fidelity
+  name: desktop_multicycle_preview
+  output_directory: /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T082928276041Z_1c781bdd08f2-r001__20260822T082928314215Z__5a009ca582/high_fidelity
+  seed: 20260821
+  validation_manifest: null
+schema_version: '1.0'
+solver:
+  allow_subminimum_mesh: true
+  analytic_jacobian: true
+  angular_velocity_atol: 1.0e-09
+  mass_matrix: lumped
+  max_step: 0.005
+  method: BDF
+  newmark_beta: 0.25
+  newmark_force_tolerance: 1.0e-08
+  newmark_gamma: 0.5
+  newmark_line_search_min: 1.0e-05
+  newmark_max_iterations: 24
+  output_dt: 0.005
+  position_atol: 1.0e-09
+  profile: quick
+  quaternion_atol: 1.0e-09
+  resolve_longitudinal_waves: false
+  rtol: 1.0e-07
+  static:
+    continuation_steps: 6
+    force_tolerance: 1.0e-08
+    line_search_min: 1.0e-05
+    max_iterations: 200
+    method: energy_minimize
+  t_end: 8.0
+  velocity_atol: 1.0e-08
+supports:
+  A:
+    motion: null
+    position:
+    - -0.15
+    - 0.0
+    - 0.0
+    type: fixed
+  B:
+    motion: null
+    position:
+    - 0.15
+    - 0.0
+    - 0.0
+    type: fixed
