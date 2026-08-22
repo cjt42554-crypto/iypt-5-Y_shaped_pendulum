@@ -1,1 +1,1 @@
-# iypt-5-Y-
+# iypt-5-Y-shaped pendulum
