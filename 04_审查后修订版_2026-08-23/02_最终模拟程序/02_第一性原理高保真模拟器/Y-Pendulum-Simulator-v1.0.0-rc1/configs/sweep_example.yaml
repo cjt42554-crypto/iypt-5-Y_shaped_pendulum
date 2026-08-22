@@ -1,0 +1,7 @@
+base_config: examples/full_quick_3to2.yaml
+parameters:
+  initial_condition.phi:
+  - 2.0
+  - 4.0
+  - 6.0
+output_directory: runs/sweep_phi

@@ -1,0 +1,52 @@
+schema_version: YPS-MODEL-LADDER-AND-INITIAL-STATE-1.1
+models:
+  M0:
+    model_id: FWD-TENSION-CABLE-POINT-BOB-1.1
+    axial: unilateral_tension_only
+    bending_EI: 0
+    bob: point_mass
+  M1:
+    model_id: HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1
+    axial: exact_unilateral_tension_only
+    bending_EI: 0
+    bob: declared_point_limit
+  M2:
+    model_id: HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1
+    axial: exact_unilateral_tension_only
+    bending_EI: 0
+    bob: finite_rigid_body
+  M3:
+    model_id: HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1
+    axial: exact_unilateral_tension_only
+    bending_EI: independently_measured_per_branch
+    bob: finite_rigid_body
+  M4:
+    model_id: HF-BILATERAL-ROD-RIGID-BOB-1.1
+    axial: bilateral_compression_and_tension
+    bending_EI: independently_measured_per_branch
+    bob: finite_rigid_body
+  M5:
+    model_id: HF-BILATERAL-ROD-RIGID-BOB-1.1
+    axial: bilateral_compression_and_tension
+    bending_EI: independently_measured_per_branch
+    bob: finite_rigid_body
+    extras: [air, prescribed_support, joint_effects, observer]
+common_initial_state:
+  macro_required:
+    - support_A_position_velocity
+    - support_B_position_velocity
+    - junction_position_velocity
+    - bob_COM_position_velocity
+    - release_timestamp
+  strict_material_required:
+    - material_position_field_each_branch
+    - material_velocity_field_each_branch
+    - internal_strain_or_force_field
+  rigid_bob_required:
+    - orientation
+    - angular_velocity
+    - attachment_point_body_frame
+comparison:
+  adjacent_stages_only: true
+  force_full_model_agreement: false
+  model_selection_source: sealed_holdout_experiment

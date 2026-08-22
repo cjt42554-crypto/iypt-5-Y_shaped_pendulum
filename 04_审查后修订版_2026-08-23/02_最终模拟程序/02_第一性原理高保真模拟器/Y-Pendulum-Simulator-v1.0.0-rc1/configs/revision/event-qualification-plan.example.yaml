@@ -1,0 +1,37 @@
+schema_version: YPS-EVENT-QUALIFICATION-1.1
+# 阈值必须在运行前冻结。以下只是项目默认起点，不是普适误差标准。
+thresholds:
+  trajectory_normalized_rms: 0.001
+  event_time_absolute_s: 0.0001
+  event_time_relative: 0.005
+  peak_tension_relative: 0.02
+  tension_impulse_relative: 0.02
+  energy_residual_absolute: 1.0e-7
+runs:
+  - label: space-N
+    path: runs/event-qualification/space-N
+  - label: space-2N
+    path: runs/event-qualification/space-2N
+  - label: space-4N
+    path: runs/event-qualification/space-4N
+  - label: time-h
+    path: runs/event-qualification/time-h
+  - label: time-h2
+    path: runs/event-qualification/time-h2
+  - label: output-dt
+    path: runs/event-qualification/output-dt
+  - label: output-dt2
+    path: runs/event-qualification/output-dt2
+comparisons:
+  - left: space-N
+    right: space-2N
+    kind: space
+  - left: space-2N
+    right: space-4N
+    kind: space
+  - left: time-h
+    right: time-h2
+    kind: time
+  - left: output-dt
+    right: output-dt2
+    kind: output_bandwidth

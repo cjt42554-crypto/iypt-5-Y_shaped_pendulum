@@ -1,0 +1,13 @@
+{
+  "source_hash_start_sha256": "40728b9ba1269f8b8b9b654b1b04ed19974417a300bf50360fccc70e55e8478e",
+  "source_hash_end_sha256": "40728b9ba1269f8b8b9b654b1b04ed19974417a300bf50360fccc70e55e8478e",
+  "source_stable_during_run": true,
+  "config_resolved_sha256": "5b314bfa7ee49d3242ccbe65190cdd3a341b9d8ed71701e8db53c7d72e490b52",
+  "config_resolved_file_sha256": "a682c5dc2360fef135ad360feb0a8d264aef3fd381b7e985e8620ce76c741c00",
+  "config_stable_during_run": true,
+  "auxiliary_inputs_start": {},
+  "auxiliary_inputs_end": {},
+  "auxiliary_inputs_stable_during_run": true,
+  "model": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "units": "SI"
+}

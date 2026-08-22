@@ -1,0 +1,49 @@
+{
+  "timestamp_utc": "2026-08-18T16:45:58.358188+00:00",
+  "project_version": "1.0.0rc1",
+  "git_commit": null,
+  "source_hash_sha256": "cbb1c9176fdfabda3390ce72afd4070440576b03dff9992d2719195d7205d84d",
+  "config_hash_sha256": "82a84729663cefcede8c5417713553ed23535c227b540c9cee4bad052511b72a",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "executable": "/opt/pyvenv/bin/python",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pydantic": "2.13.4",
+    "pint": null,
+    "PyYAML": "6.0.3",
+    "h5py": "3.15.1",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8"
+  },
+  "seed": 20260818,
+  "solver": {
+    "solver_method": "Newmark",
+    "solver_profile": "quick",
+    "rtol": 1e-06,
+    "position_atol": 1e-08,
+    "velocity_atol": 1e-08,
+    "max_step": 0.0005,
+    "jacobian_kind": "sparse_effective_second_order_exact_piecewise"
+  },
+  "mesh": {
+    "nodes": 45,
+    "elements": 44,
+    "cable_elements": {
+      "upper_A": 12,
+      "upper_B": 12,
+      "lower": 20
+    },
+    "mass_matrix": "lumped"
+  },
+  "claim_level": "VERIFIED",
+  "assumptions": [
+    "fixed material knot; no sliding",
+    "axial cable/truss; no bending or torsion",
+    "bob force line through centre of mass"
+  ],
+  "environment": {
+    "OMP_NUM_THREADS": null
+  }
+}

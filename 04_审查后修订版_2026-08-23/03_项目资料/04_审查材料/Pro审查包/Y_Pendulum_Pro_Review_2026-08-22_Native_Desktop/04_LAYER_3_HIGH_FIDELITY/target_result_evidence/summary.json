@@ -1,0 +1,42 @@
+{
+  "run_name": "high_fidelity_shared_forward_window",
+  "model": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "claim_level": "VERIFIED",
+  "status": "undetermined",
+  "physical_status": "UNDETERMINED",
+  "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+  "valid_interval_s": [
+    0.0,
+    0.12
+  ],
+  "duration_s": 0.12,
+  "frequency_fast_hz": null,
+  "frequency_slow_hz": null,
+  "frequency_ratio": null,
+  "frequency_analysis_reliable": false,
+  "frequency_candidate_fast_hz": 2.083333389557065,
+  "frequency_candidate_slow_hz": 2.0833333841659916,
+  "frequency_fast_fit_r2": 0.9996501014983198,
+  "frequency_slow_fit_r2": 0.9996050861032562,
+  "frequency_fast_observed_cycles": 0.2500000067468478,
+  "frequency_slow_observed_cycles": 0.25000000609991896,
+  "frequency_fast_reliability_reason": "only_0.25_cycles_observed;frequency_at_search_boundary",
+  "frequency_slow_reliability_reason": "only_0.25_cycles_observed;frequency_at_search_boundary",
+  "target_ratio": [
+    3,
+    2
+  ],
+  "phase_drift_rad_s": null,
+  "hilbert_phase_drift_rad_s": null,
+  "phase_fit_rms_rad": null,
+  "state_closure_error": null,
+  "minimum_tension_N": 0.0,
+  "maximum_tension_N": 1.0852798580755236,
+  "minimum_signed_axial_force_N": -0.003832001748020747,
+  "maximum_signed_axial_force_N": 1.0852798580755236,
+  "max_abs_energy_balance_residual": 7.914037742054811e-11,
+  "maximum_quaternion_norm_error": 4.107825191113079e-15,
+  "bending_energy_fraction_peak": 0.16695231149282255,
+  "accepted_integration_step_count": 15361,
+  "event_count": 12
+}

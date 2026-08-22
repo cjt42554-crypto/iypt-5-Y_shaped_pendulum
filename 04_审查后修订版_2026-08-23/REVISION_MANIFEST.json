@@ -1,0 +1,32 @@
+{
+  "schema_version": "YPS-REVIEW-REVISION-MANIFEST-1.0",
+  "revision_date": "2026-08-23",
+  "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
+  "base_commit": "5cf8e2f3bbebfe1ff32926ef402ffaf70d87ef97",
+  "delivery_policy": {
+    "new_folder_only": true,
+    "original_root_paths_modified": false,
+    "original_project_subtrees_copied_by_git_tree_identity": true
+  },
+  "scientific_changes": [
+    "explicit model identities and evidence ceilings",
+    "independent per-branch EI overlays",
+    "revised HF runner with no certificate inheritance",
+    "GUI routing to the explicit-EI worker with overlay SHA-256 binding",
+    "M0-M5 ablation ladder",
+    "event-rich space/time/output qualification",
+    "finite-window frequency and structural claim guards",
+    "calibration, validation and prediction-holdout protocol"
+  ],
+  "checks": {
+    "pre_reconstruction_python_compileall": "PASS",
+    "pre_reconstruction_revision_unit_tests": "7 passed",
+    "pre_reconstruction_ablation_manifest_smoke": "PASS",
+    "final_git_tree_full_high_fidelity_target_run": "NOT_EXECUTED_IN_THIS_ENVIRONMENT"
+  },
+  "claim_boundary": {
+    "experimentally_validated": false,
+    "predictive": false,
+    "reason": "No sealed real-experiment calibration and holdout validation was supplied."
+  }
+}

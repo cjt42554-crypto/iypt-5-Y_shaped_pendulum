@@ -1,0 +1,1396 @@
+{
+  "file_count_excluding_manifest_and_sums": 275,
+  "files": [
+    {
+      "path": "00_COPY_PASTE_PROMPT.md",
+      "sha256": "433bb6d74bf0a1689548e3c9ae8760538fcb9de6b7fb70bfc717f3c4896b8e56",
+      "size_bytes": 1501
+    },
+    {
+      "path": "00_PRO_REVIEW_GUIDE.md",
+      "sha256": "764d73b27383d6ecee2d85962aca49966169f234c0c583213b9299e29876ab22",
+      "size_bytes": 11160
+    },
+    {
+      "path": "01_ALL_IN_ONE_THEORY_AND_HANDOFF.md",
+      "sha256": "dbd5cbf396d13b81ba1e391e1c564ea1eb292bf2d4eb1a56ae4de790e79bd258",
+      "size_bytes": 1550736
+    },
+    {
+      "path": "02_LAYER_1_FORWARD_THEORY/forward_theory.md",
+      "sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+      "size_bytes": 64883
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/layer2_overview.md",
+      "sha256": "fb768b372f690991c5e0699de5e8fa8e3f85a7e61d54433a092a42d3e9b91cfe",
+      "size_bytes": 704
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/numerical_theory.md",
+      "sha256": "14b9e5bae0778753acbc46757286b4d5e646b120698ddd2bc33e16158efa78a7",
+      "size_bytes": 44612
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/README.md",
+      "sha256": "45320b531e0aa4585e5759200e7b08ce1cd1bd3abe01e950f1c972e74886cf21",
+      "size_bytes": 9960
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/configs/cable_example.json",
+      "sha256": "cb09ec1a3a3780565a9d4169fd076a81ccf3309ca9e027804fe0a130b99ba808",
+      "size_bytes": 11056
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/configs/ensemble_torus_example.json",
+      "sha256": "5b466dc6d2657f0e3a8e9bed7b730509737d05ef8a169080a0281922b6edf503",
+      "size_bytes": 2852
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/configs/torus_example.json",
+      "sha256": "8cf387e6188758abc707dbc5e724b489b387e7531d14656a745740ea771ad921",
+      "size_bytes": 2711
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/pyproject.toml",
+      "sha256": "976171c635c29323259647a863a355f5342914e5c44754b73612716d571626f3",
+      "size_bytes": 465
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/requirements.txt",
+      "sha256": "27b0da662b70c4bb62fdcedf5764f1ec633cd917c245066bdf73b12364002f96",
+      "size_bytes": 41
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/run.py",
+      "sha256": "778c981144a2c41efcc8074ff80e6b6ddac1b53f37c56eda716fea7697655d4f",
+      "size_bytes": 186
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_activation.py",
+      "sha256": "3f7990c40823fd4a67acb69893554a7d24ea49310ef86cd32e4fabe3471d032d",
+      "size_bytes": 1744
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_cable.py",
+      "sha256": "51830a30163b3b8fc6b565e0dc064e01f424fe756bf2cc37e83c44d060aef49e",
+      "size_bytes": 28209
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_cli.py",
+      "sha256": "c9664d37ee8d7bd8d775649a73ef691b06676e604e1e96816f0b40bfb905f5ba",
+      "size_bytes": 4353
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_convergence.py",
+      "sha256": "f66572441aa7777eb2017189f084a03ef69b445d4acf7d1f398bc86030f9ed9d",
+      "size_bytes": 40403
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_ensemble.py",
+      "sha256": "841fe709d029ad4b6d5819b9026dd8fbe559bf5d32ad3979a3b677bd2563a6ef",
+      "size_bytes": 8021
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_io.py",
+      "sha256": "fc71952b1029dc63fa120464dff23065850dab3773ae6770539e4f3a83ecf58f",
+      "size_bytes": 4541
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_observations.py",
+      "sha256": "86c708312f4a9e004bbca6885c99eed29ed0ebaaec213296ca766079ecdb1c09",
+      "size_bytes": 3106
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/tests/test_torus.py",
+      "sha256": "c64917f3455f187a459169db69b90f382ad8f962da14695a6db021fddcfc7c60",
+      "size_bytes": 15081
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/artifact_manifest.json",
+      "sha256": "0a12aabf4bc47bf43828735736050340c4376d3aeec350d3fe30e004e94137ff",
+      "size_bytes": 14145
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/cable_convergence.json",
+      "sha256": "7eae68f0fafb8083adbe6c14c568cb5b267f22c17fa7897020fa06afaa3dcd72",
+      "size_bytes": 1584781
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/cable_convergence_failed_prefine_gate_2026-08-21.json",
+      "sha256": "7457ef0d2dc3f13a6570daaec7519e77d7ae8006f3bc29459afc82be7359f325",
+      "size_bytes": 1577037
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/delivery_root.json",
+      "sha256": "dec497d42e0384f403b4c652a40799e389702a94b4299b24a4555f2bd9ea93ef",
+      "size_bytes": 2026
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_cable/config.snapshot.json",
+      "sha256": "43960c77effff0c9ea742333ff1d9095a103355d24dbac59a915f92ba1323ae8",
+      "size_bytes": 11977
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_cable/result.json",
+      "sha256": "2ec211417a7ae7177463c997754f3c14f5563e1492a591e07ff1279442690267",
+      "size_bytes": 60224
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_cable/series.csv",
+      "sha256": "1d3326a1158659625f41fbd976f2b6751536639a51ce2ef46ae3fdc9c5884e3e",
+      "size_bytes": 1841909
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_ensemble_torus/ensemble.snapshot.json",
+      "sha256": "a3357dd015964cde6ec053ba14b6425049f9b90c211aaa343300ec36431837ba",
+      "size_bytes": 3381
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_ensemble_torus/manifest.json",
+      "sha256": "12de4dadc66dba5c76099db445ff41efa1ac8049683dba6c3346b9e00fda4845",
+      "size_bytes": 10654
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_torus/config.snapshot.json",
+      "sha256": "07e538ceabf178146a6e07d979206648585a9d30678a4400909c18b04933e78f",
+      "size_bytes": 2842
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_torus/result.json",
+      "sha256": "bd746daf9b68f3f68ea4627015fedc494d814955f3bc2498cbf32c445df52186",
+      "size_bytes": 3177
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_torus/series.csv",
+      "sha256": "f23aef7c6152d382020245ed92c3a8007942d30ef516eccf2debb08a02c4edec",
+      "size_bytes": 97927
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/reference_torus/trajectory.npz",
+      "sha256": "d228af6af40a2bb2082fb440183a9e3cda85e6067ba119d8346368570da920f9",
+      "size_bytes": 151871
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/validation/torus_convergence.json",
+      "sha256": "5b9836676f33374b7a51745bbc3570def1d7cb2518b225cd7488648e73af0a10",
+      "size_bytes": 33215
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/__init__.py",
+      "sha256": "2fe33bb408523f6f26ed1337a74d08f494c0e5b079837018a2c0e5b10d3d8ded",
+      "size_bytes": 631
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/activation.py",
+      "sha256": "94861d622aa46995fa173bb52afebe0308f594e19aa0eb9b66eca94346898a9f",
+      "size_bytes": 2223
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/cable.py",
+      "sha256": "00adeb06fb8292d5626d95249ed92206a84b5f3eb1fc217e98e7ae91e43fa2cc",
+      "size_bytes": 93772
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/cli.py",
+      "sha256": "32d498ae40c048c2169ef868b7750a38ef852d5f0ca75c144d45df73753cbc2e",
+      "size_bytes": 7632
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/contracts.py",
+      "sha256": "6d5266d0b9f50cdafc05811c0e3d581215c708e434d5b485792faa00cb9cefe6",
+      "size_bytes": 19063
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/convergence.py",
+      "sha256": "1cde32d54a282c46c13b9e17ca65a988b27d8070aa8f93de0de9c3b02b7d2c7f",
+      "size_bytes": 194028
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/ensemble.py",
+      "sha256": "c3f9100b27f66f7fd7a97e80c96c7dad5623908b22d9ebc6f55828bf6726d394",
+      "size_bytes": 19383
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/initial_fields.py",
+      "sha256": "84bd4fd57fac2fc45cab35ad05d7ef535d5d05d41b1dfd9f2bcdca77c275e46f",
+      "size_bytes": 2689
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/io.py",
+      "sha256": "afcdf858f659c8baea6227253d67fba9c042f96c1deca88cec35e1eff2df9a6b",
+      "size_bytes": 6664
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/observations.py",
+      "sha256": "72cb2d30017e46593a95e5909a405c1c18f4dd7dda822649254cf1a9eb1097c4",
+      "size_bytes": 12402
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/providers.py",
+      "sha256": "7b732ba0982ac0cb9b27d8dd93536da3a8b68e3ff94080644f37596d58ccbe29",
+      "size_bytes": 22647
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/runner.py",
+      "sha256": "1a1f02abb3b23a50e76b05db2031f4c991083d46a1171d621c3acaad6b74a252",
+      "size_bytes": 8813
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/solver/y_pendulum_forward/torus.py",
+      "sha256": "a7cef2c45868bedf5b045a9409b9347a45549f480de24dd83ded523349d10363",
+      "size_bytes": 29524
+    },
+    {
+      "path": "03_LAYER_2_NUMERICAL_THEORY_AND_SOLVER/stage2_acceptance_record.md",
+      "sha256": "6494d8d259934f5700b1d4720daae4517687de9cf1954f9cded49a72bf532e87",
+      "size_bytes": 14211
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/environment_inventory.json",
+      "sha256": "d326f1ea3ed0530aba32282a636de4567b167403129468a892d07eb1e3906cbe",
+      "size_bytes": 638
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/hf_theory_and_program.md",
+      "sha256": "67f8b8de88f4aa090825a573e6a34ec8cd35cb0f82ede8722f82114290e6bde9",
+      "size_bytes": 37298
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_baseline_1ms.gnu-time.txt",
+      "sha256": "a954e30081599c0294b642b0cd71480c06de63d2f118de363e7ad6f66402257f",
+      "size_bytes": 1079
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_baseline_final_1ms.gnu-time.txt",
+      "sha256": "510504224f8ccb6ab494b97ff636f3c5e7b93e6be84340a22a01dfc3804255e6",
+      "size_bytes": 1038
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_baseline_final_1ms.json",
+      "sha256": "4cd7e67db03814530ceb94db8d9a1ec04290d1a4110e67ed58c1d7f9d99cf7f9",
+      "size_bytes": 8023
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_baseline_serial_1ms.gnu-time.txt",
+      "sha256": "3652d9e28231a7344fc994a9c845dbb064b20e767d9818318a164fa3aeef1932",
+      "size_bytes": 1081
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_checkpoint_resume_1ms.gnu-time.txt",
+      "sha256": "29dff00cd3d6336a73c2276fdf5df9497e75ef49230ab61491f9c6de998e462e",
+      "size_bytes": 1130
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_checkpoint_resume_1ms.json",
+      "sha256": "3eabbf7c9b1cd153bf85ba8296997eb57d60429702fc1d8b079c95410612c40d",
+      "size_bytes": 8218
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_checkpoint_save_1ms.gnu-time.txt",
+      "sha256": "5c75be2269a22802e53ed8dd881e2532f616e086425482798703cffa7ecc6765",
+      "size_bytes": 1110
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_checkpoint_save_1ms.json",
+      "sha256": "104cf4f0326f2556e34a492b603656768fce54aaa41d181b70b603cccf1f35f5",
+      "size_bytes": 8222
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_checkpoint_resume.json",
+      "sha256": "9c962f4b4a5a4bafd48aa3f136b81b98eede49cf042740fa388fba40df0c9ef3",
+      "size_bytes": 13606
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_dedup.json",
+      "sha256": "a3d3425a264857fe8d5332b5df711744afdf1daba8cd8a65643ea80912f2f731",
+      "size_bytes": 13525
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_final_optimized_12.json",
+      "sha256": "219d0b843013efa0df0f87aec46ad2516c89a031db42a7f8da65f9b9b3805989",
+      "size_bytes": 13608
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_final_optimized_8.json",
+      "sha256": "3800c4b34defa10daf2f7754b7ada3f97886a7794ccbc89464c5bf6a778f88a5",
+      "size_bytes": 13605
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_parallel12.json",
+      "sha256": "e465b17b862e1a770d81f383ae7458e8566ce8938ae79ef641e1153bfe2d570a",
+      "size_bytes": 13530
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_parallel8.json",
+      "sha256": "b2752e7313d31de6cc3f20351f6a75873df134f1eff1de9e3e3eb693e105c8fa",
+      "size_bytes": 13532
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_baseline_vs_vectorized_parallel12.json",
+      "sha256": "00d8fc21fd14fec050e3c093723cb96d421fc605d993952e65925c644b4006c6",
+      "size_bytes": 13609
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_checkpoint_save_vs_resume.json",
+      "sha256": "ffb5967c309ac141adbbca74629b703185743b00e9ed1c0cd18b85a031954629",
+      "size_bytes": 13393
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_compare_final_save_vs_resume_12.json",
+      "sha256": "4dd25faa2673a28213ebfd1602463c1f84e2899b3560da723866bf2d272a9d98",
+      "size_bytes": 13545
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_dedup_serial_1ms.gnu-time.txt",
+      "sha256": "f4c7efa3d68318c934e8558d607a147551befe7b379d4f756f1b15392570739b",
+      "size_bytes": 1039
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_dedup_serial_1ms.json",
+      "sha256": "de9ff8a83939f73c3172c093769b595c682fa104115d6e2ac3d7e9a1501ef929",
+      "size_bytes": 8006
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_final_checkpoint_resume_12_1ms.gnu-time.txt",
+      "sha256": "838e6e39cc9e0e9a029e1109a8720216f20307ce0a443dde553ef2edb100b858",
+      "size_bytes": 1228
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_final_checkpoint_resume_12_1ms.json",
+      "sha256": "1245dc2dbbff5f46c901edd0bfdd560382aa7bf6e83d242127c03d3ff86895b8",
+      "size_bytes": 8506
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_final_optimized_12_1ms.gnu-time.txt",
+      "sha256": "dc9b68596d1ddcfc1e74079cfc799cdaf7b483973c3de436185cecf1e98506d4",
+      "size_bytes": 1200
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_final_optimized_12_1ms.json",
+      "sha256": "3a30ae913b5bbabcf8fbfb13e4893b7134c9bc1344d7583c5e84bc0f50557616",
+      "size_bytes": 8519
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_final_optimized_8_1ms.gnu-time.txt",
+      "sha256": "bc8209e6eaf35d11a639a6019810a7f88a198afc641cfb6de34fbd2beadd4c49",
+      "size_bytes": 1194
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_final_optimized_8_1ms.json",
+      "sha256": "1ec958027b420a4fb82e35e2cee1f4332fa1a7c9032729b69920407762bae582",
+      "size_bytes": 8514
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_full_postprocess_12.gnu-time.txt",
+      "sha256": "ed8f00a7200e18cd822669ea4ebc506fe08ba024cfc4c9377d1a1480f1a63f14",
+      "size_bytes": 1077
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_full_postprocess_12.json",
+      "sha256": "a45326ccfa2453d4858ccc9913203a9c175313553da3401d15228348d6b9834e",
+      "size_bytes": 13293
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_full_postprocess_8.gnu-time.txt",
+      "sha256": "929a5027a8b5245706be377bc2c81e003d6181ef261f14685884b19cf2787bab",
+      "size_bytes": 1074
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_full_postprocess_8.json",
+      "sha256": "97e90662804c5c836e8cc72e04273d654f1d5d9e17a74c8d00bbf2d2931ebd86",
+      "size_bytes": 13291
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_full_postprocess_serial.gnu-time.txt",
+      "sha256": "3c977941b07e4f7a4f2d0d706d9a52a25b24ef069f546637aac96679d3b872c2",
+      "size_bytes": 1076
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_full_postprocess_serial.json",
+      "sha256": "2c83d901449f582bd75e0c3a10c38112bfb8f87d73738a07f616228cb7f7d4d4",
+      "size_bytes": 13294
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_parallel_12workers_1ms.gnu-time.txt",
+      "sha256": "c3b02dee0c3fa762d50ac66b55d3f9e3fde620f95c00adb4a5e787fa8b44a6d5",
+      "size_bytes": 1042
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_parallel_12workers_1ms.json",
+      "sha256": "60308828b8a09c7809b615a83ad6eb93ca1da2be8847f8beebec49caa3b5eda6",
+      "size_bytes": 8002
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_parallel_8workers_1ms.gnu-time.txt",
+      "sha256": "c439cd40d17daf56eba6f38db55d6889a9904584d16b30ec2cfbf8785822c610",
+      "size_bytes": 1040
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_parallel_8workers_1ms.json",
+      "sha256": "96751ae3f4d8a264ffadbd83d04bb4a839803904469a4c4740fe3a26564e27e5",
+      "size_bytes": 8002
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_parallel_smoke_0p05ms.json",
+      "sha256": "3a0ee154d4fe9167f6a14a46c3e94e002a622b4970285d68abc99942c737c001",
+      "size_bytes": 7553
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_spawn_12_checkpoint_1ms.gnu-time.txt",
+      "sha256": "ec14835b4b691f58ac52e3b2cf434d5ca2325631cb332bbb7be2a00ba9b17341",
+      "size_bytes": 1218
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_spawn_12_checkpoint_1ms.json",
+      "sha256": "4a3da5f2baa1ddb4725b0e9a182475100ef75c2aec55a7f0d25f3c30bc50fb60",
+      "size_bytes": 8490
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_spawn_8_checkpoint_1ms.gnu-time.txt",
+      "sha256": "db11e92a4282a8dc2fcb4bc94111dee49259dd6c6904d6c427c59c1161c86699",
+      "size_bytes": 1215
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_spawn_8_checkpoint_1ms.json",
+      "sha256": "e77a0ce90d81018a31ac2e51a5ae822e659b61baf200696cd0714dc1df823343",
+      "size_bytes": 8482
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_spawn_serial_checkpoint_1ms.gnu-time.txt",
+      "sha256": "b8a0cfa907f23e95b20b27f0adba0d9fc1b94231caf3c1603b68f4518f0ede1a",
+      "size_bytes": 1213
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_spawn_serial_checkpoint_1ms.json",
+      "sha256": "00360f4f2ff30069b9e82a1e7d13aba7789117272c387108cb412a20f54c4070",
+      "size_bytes": 8498
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_vectorized_parallel12_1ms.gnu-time.txt",
+      "sha256": "d7ec91d5fb690a45f198bb464ae521eaef31d795bbcf0895f465e4f9b1a80f2d",
+      "size_bytes": 1047
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/hf_vectorized_parallel12_1ms.json",
+      "sha256": "899e14b608fe0a09b2ef6e1eef356ca4659791ef2ef1df2e851089617ea75978",
+      "size_bytes": 8004
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/performance_evidence/performance_optimization_report.json",
+      "sha256": "5ec2ffb9f7c68b4afcefe73d010cc5b5a4beb13367ddf1ac5c62ea0772216c55",
+      "size_bytes": 5005
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/representative_hf_sensitivity.json",
+      "sha256": "a2fb9189174522d10d3a6b228c29a362d224faf33942a30c3f5e3cf3257b4160",
+      "size_bytes": 18517
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/CHANGELOG.md",
+      "sha256": "eaed3a72cbe1061e271838e55bc98ccf2aea5c869b061fa5bd128ac4ef364d46",
+      "size_bytes": 2798
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/CITATION.cff",
+      "sha256": "68d53f6101c7bb6ed2af6b4fa3b2212e561a789dc6f015b50a43179590345525",
+      "size_bytes": 297
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/LICENSE",
+      "sha256": "7de1e115d165f176e68f962acdb809b5ab8d8ae78d3981e0701392b2ac50c713",
+      "size_bytes": 1063
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/README.md",
+      "sha256": "417847209e144d480ebdbcc6651df8f9e1365bc55e709e638604c9e4d5eebe56",
+      "size_bytes": 9780
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/analytic_3to2.yaml",
+      "sha256": "8e4a0901852c631852335cfb8ee9c28da1fc30255d6398a539cb68bcd5a43290",
+      "size_bytes": 3203
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/camera_projection.yaml",
+      "sha256": "bf2f83173509e70bdfe9e5d386250fbe3d0f983719848798773069abc2c4d241",
+      "size_bytes": 3720
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/convergence_bdf_small.yaml",
+      "sha256": "1cd5abb4d583cdfea2fe03d2d6b2767d3391ae0ff513284e6d3c11ab8ee83e9b",
+      "size_bytes": 3272
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/convergence_smooth.yaml",
+      "sha256": "7e9eb4056b5561fefb19d2710338583f571d6f75d370bbec7aa580b983d56883",
+      "size_bytes": 3234
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/elastic_strings.yaml",
+      "sha256": "23e12717601cd46585ef77777fd16e2e108bfa5d044198c6226437160f9fc83f",
+      "size_bytes": 3270
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/finite_junction.yaml",
+      "sha256": "af95fe9f7d5c88347adf65c508159822d1bceddb0182952d8083a923c01a1709",
+      "size_bytes": 3203
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/full_production_short.yaml",
+      "sha256": "87f0fd4110d70f8d9869a0840a5d115a2e2c0533c102c3bfcfd9b7b2820ad87b",
+      "size_bytes": 3253
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/full_quick_3to2.yaml",
+      "sha256": "aac4e2a798cf01da5e76151e4640a4076c1979126bc744d08074b47c01804822",
+      "size_bytes": 3205
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/full_quick_newmark_3to2.yaml",
+      "sha256": "3facd886cc6a6bbe7dc05801a5750e8c85577a9a4439972c70599b07be918430",
+      "size_bytes": 3248
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/high_fidelity_independence_torque.yaml",
+      "sha256": "7b20e51942164c0902d50b54b8f0a9aba9d9d18f51bb91bfab3aa75a53c4f40b",
+      "size_bytes": 4254
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/high_fidelity_shared_forward_window.yaml",
+      "sha256": "896b2f8b52e53f121211e6b5bfab573804527402ff69d1615f185edfa933a50d",
+      "size_bytes": 5877
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/ideal_3to2.yaml",
+      "sha256": "996dce670a479f61af043a3987a31609254f108a5b5089762a3a73f75429ee75",
+      "size_bytes": 3198
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/prescribed_support.yaml",
+      "sha256": "2994f7dd3a3c00915580c14de697ff846b2d752b0c6c31d4e9f4fdae20b192bb",
+      "size_bytes": 3675
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/slack_retension.yaml",
+      "sha256": "5f401b2347119e533515b5de1a9596b667f6a83ac16d7cb0378ea219196d13ec",
+      "size_bytes": 3245
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/examples/tabulated_material.yaml",
+      "sha256": "d628d6baa6292e0fa56996f9f396f61cdc174db67b2b482ca1fd853031cac189",
+      "size_bytes": 3367
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/high_fidelity_independence_validation.yaml",
+      "sha256": "c1e8384c964dd7e010f28f1e2c0f70518c01074b9756e507fc86ceed1faabcf3",
+      "size_bytes": 2107
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/high_fidelity_shared_forward_validation.yaml",
+      "sha256": "af02a2ae141a02aaad9fe35c8a60855eb6e6ccfcefc9de508c77f91a2623490c",
+      "size_bytes": 5700
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/schemas/simulation_config.schema.json",
+      "sha256": "bcad31efa26e258710bcea0a54ec169e29ba2b548ca778d5aca9b998b4c7f508",
+      "size_bytes": 17167
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/schemas/validation_manifest.schema.json",
+      "sha256": "f2c4c80b07170497eab38b2db9be6ffc6a347aea91fdb97a931e8c6d251280f9",
+      "size_bytes": 1047
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/sweep_example.yaml",
+      "sha256": "6ff11a8d39b58978946fb0cf6b93cd38bfb9ac341d1bfc7f9cafd75adf82dde7",
+      "size_bytes": 137
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/uncertainty_example.yaml",
+      "sha256": "05bb051861175390d84854aca60176d9d8e38146c74aeda677850e98f8b5f7ef",
+      "size_bytes": 339
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/configs/unified_shared_forward_case.yaml",
+      "sha256": "8335956031aa17ea05bb106aa443967dc6bcbb354a2a94dc2b939a1df41ce897",
+      "size_bytes": 933
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/adr/ADR-0001-axial-cable-scope.md",
+      "sha256": "cd270f662fef53c963600beddb59a47ba32a7c328eeb8ddbc4978b1e0e432932",
+      "size_bytes": 624
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/adr/ADR-0002-tabulated-material-mesh-objectivity.md",
+      "sha256": "f38d4221509877bcf64eca14b5f8f1dc9bf6162a4521fe6db4b1fbfbe396e9de",
+      "size_bytes": 499
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/adr/ADR-0003-second-order-newmark.md",
+      "sha256": "77fd9619118277d3037946140433d722899fdb913b7f3960015c6eb65e7c9d2d",
+      "size_bytes": 509
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/api.md",
+      "sha256": "969d6fe4a03b66a21464a8213c5ffbcace531d09ee0bd6a9cc66f6ae8ca94c9f",
+      "size_bytes": 5717
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/calibration_and_validation.md",
+      "sha256": "587dd29a94a6fa35fea24588d91d86437380c67111b61abbab3148d8ece7f734",
+      "size_bytes": 2225
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/frozen_specification.md",
+      "sha256": "48c006cec96b1e04ae50720b25787192609700a7c22c61700949033c6872338c",
+      "size_bytes": 57109
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/limitations.md",
+      "sha256": "2fbdf1385cfd98ece94cfc42b7af74b1e5d6aa8e2bff0fc0a3f287316e0dc643",
+      "size_bytes": 2292
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/numerical_method.md",
+      "sha256": "b2c7023d2a33110172f4592a2095cdaf6dc53529f331af72a7f93bf794a2dc92",
+      "size_bytes": 2812
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/performance_optimization.md",
+      "sha256": "ffceaacaba754338a177bed2ec075754da6d42947b83cea62aaa4dc18cd3a8f8",
+      "size_bytes": 6314
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/theory.md",
+      "sha256": "c4c08eb4b9484d04924f410bb8c142118ce395258eccca49c8e897417da99eb3",
+      "size_bytes": 3418
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/theory_source.md",
+      "sha256": "dfe2aec4027d854449b2a3293cf868a0131864ee510e3de2dbfa0b216908de64",
+      "size_bytes": 141522
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/docs/user_guide.md",
+      "sha256": "151c71e3f1aebd298766813b43969b3bb6c021aedd6f695f7a8cf3bb9b58c829",
+      "size_bytes": 8644
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/pyproject.toml",
+      "sha256": "67da1ec145750be475c6e815a93fc7b51f9a47848bb6aae5716409513522d73b",
+      "size_bytes": 1133
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/scripts/benchmark_hf_performance.py",
+      "sha256": "5231a3e60960bf2db934d5503cdc5c698b68caba040c74f704bbbce3d81e0806",
+      "size_bytes": 30761
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/scripts/build_release.py",
+      "sha256": "1612cec233aab7096deefdb7f7ab4ee32172c1dd1f712e2f64555f4b1578ff93",
+      "size_bytes": 4647
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/scripts/generate_regression_reference.py",
+      "sha256": "9f5d89fc4a0d5a37cec93ffdbc4ce7768439b10447347b1288c6b6d344ebfff5",
+      "size_bytes": 2793
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/scripts/run_release_checks.py",
+      "sha256": "ba09c69ca5226b4d223deb95470cd51ba2b06b2d8618b00c04a2778dcffcd4f1",
+      "size_bytes": 2678
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/scripts/run_representative_hf_sensitivity.py",
+      "sha256": "cb31c5508cc0b01f909ab7f0fd60ef033f46082a9854bc7e457a480e80ed3b72",
+      "size_bytes": 25060
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/scripts/verify_release.py",
+      "sha256": "cf0fd518b5b316ea0726272593a0419050aed657207594fbb94f4612c3ee2831",
+      "size_bytes": 3531
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/__init__.py",
+      "sha256": "c3eb121fddf8a75c1a234406c60e987e3d952f1b31ced9e8c44cfc733b1920fd",
+      "size_bytes": 569
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/__init__.py",
+      "sha256": "b424ef2e1404a3dfcfca59d1383c9fcf9f4a2b6948c5c3a00edabffe84d69420",
+      "size_bytes": 1490
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/ablation.py",
+      "sha256": "b178fcb2afe33ceb83732a71bea8844cc1f4c7d1eec21452af5f7e88d1c20182",
+      "size_bytes": 3444
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/closure.py",
+      "sha256": "1b0be9895ebefb0ec145b5f0b26a30fbc0cc62c44afb1eba10bc9262c16fc319",
+      "size_bytes": 1527
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/diagnostics.py",
+      "sha256": "7a5dfcbd32822145106996a581ddec884329d9e234cc8f55ce0e8c325c526f80",
+      "size_bytes": 28603
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/energy.py",
+      "sha256": "dcca9380404a2ee985015d5d6c4c08d1c3d32584f6f9bafb2bbf89773778e15e",
+      "size_bytes": 432
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/experiment.py",
+      "sha256": "f221ec2c760875775440463bd83b0042ac4e399936a766b4ca3e0f857d934296",
+      "size_bytes": 14442
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/modes.py",
+      "sha256": "4a5f525ea544c4a88273993428e7d673977d51bd82fbfaf41d4e87e277318f82",
+      "size_bytes": 12346
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/phase.py",
+      "sha256": "e97422de6f056e28ff5fedc8cad9d214bb66b5fb32e52d42620d9a33c41c347a",
+      "size_bytes": 1465
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/spectrum.py",
+      "sha256": "d767e36b8bb01e44a57b627b8ee628160b16e604460902fdfe94adf959fbd28f",
+      "size_bytes": 699
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/sweep.py",
+      "sha256": "6c904fdd8b0bc369a482eefa746ace650a549bda8b94345a62f8691c6cfc1c66",
+      "size_bytes": 2222
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/tension_events.py",
+      "sha256": "70c3c58fb0a0a7dce2a9411ffb54279b2f0dacc321e0b98b53e0e4de3550d59c",
+      "size_bytes": 8535
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/analysis/uncertainty.py",
+      "sha256": "f1ad463420e458550c505bc6645ff7dfa18b4bc0b36219ae06803ffb426ec5c3",
+      "size_bytes": 5086
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/api.py",
+      "sha256": "8b4f6e3190ee74c956051b9cc7b51c86a870da2e667c2df73452ed3f5a9b3159",
+      "size_bytes": 52180
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/calibration/__init__.py",
+      "sha256": "3877bae433cc5573f817f3595dc19565226c2777b27b86bf6c232a0ff6f329cd",
+      "size_bytes": 501
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/calibration/axial.py",
+      "sha256": "1d9d4069719d3fd2af42b916e4aa76b709917c9e5e6e55e6371918a65a403042",
+      "size_bytes": 5277
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/calibration/damping.py",
+      "sha256": "f1469a7d470ee5ecbb6e11d5c52a5a7bc505e93975fec195ea57113264c6649d",
+      "size_bytes": 4097
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/calibration/fit.py",
+      "sha256": "c1fa0193090782e208536c1e7e87e94986a9dcc4338316954d059e19727075db",
+      "size_bytes": 453
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/cli.py",
+      "sha256": "1c18754b2b0e3066ce17e62d7794fa5c109b51d4a7d53f917e9cc004673d08b2",
+      "size_bytes": 19682
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/config/__init__.py",
+      "sha256": "0313a1a1d8b5fd9f7d4964d7b43db65c627df7e76c6dec3b947e63ad963b69fb",
+      "size_bytes": 699
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/config/identity.py",
+      "sha256": "eacace750e6009501ac1b34f9ad97dca73d1b48e05559905e61429a3c660e2e5",
+      "size_bytes": 3586
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/config/manifest.py",
+      "sha256": "ed49a13d13e93605b99bd02f524d81bbf3e7327e5c155b0d7d03da722faa96b8",
+      "size_bytes": 10755
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/config/models.py",
+      "sha256": "2431667615d3ac252aed15d721b74a26ca62decfbd99e46f91bb7a6ace149e79",
+      "size_bytes": 12442
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/config/units.py",
+      "sha256": "4c1d1f3d1d67ce6fa407e5fa194cb5de164483fc201ea22d3122abfc31d988c4",
+      "size_bytes": 9682
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/config/validation.py",
+      "sha256": "52732122705ab09ddce8a9754c36a12d3be325ee73d927aaa1cc0d08899e0821",
+      "size_bytes": 48679
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/elements/__init__.py",
+      "sha256": "4834de181107cf070b83152a303b388e0ceaf2f291c31bb4539505f9e0b568b0",
+      "size_bytes": 480
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/elements/assembly.py",
+      "sha256": "034f39c69918a1d66990ad90b3529b2cd82cecf033fe700adf5c677bd3c3f850",
+      "size_bytes": 1512
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/elements/cable3d.py",
+      "sha256": "183956e0a4dc8aa530276b3f392c110227d53785009f3a08f086965a7c1609d9",
+      "size_bytes": 5283
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/elements/mass.py",
+      "sha256": "d5396847c592500f9c53d856e09331d66bece052abd21f18e8a63b8d013131bf",
+      "size_bytes": 1660
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/forces/__init__.py",
+      "sha256": "ac45d8fa0e1eb120c559ca1b6f4fee62dae0713a5d20674771a724efb27efed9",
+      "size_bytes": 364
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/forces/bob_aero.py",
+      "sha256": "bfb7d50359c449a10c9eedb94eb9b9ae9634d203eac547a486c019a0fdd58548",
+      "size_bytes": 1031
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/forces/cable_aero.py",
+      "sha256": "5c08ef416e443a32ad47961d92006b87103bc6cd3a39c80865c1986732e97170",
+      "size_bytes": 2440
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/forces/gravity.py",
+      "sha256": "e73fb81f7d444dcb962fcd073d1efcfc88358532cee63292f5adf5e7d9a27268",
+      "size_bytes": 651
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/forces/rotating_frame.py",
+      "sha256": "5cade3dc6e423651cf8d86be8aea5a53b30f92a4a54f5c6ee9f6032041a78f7e",
+      "size_bytes": 844
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/geometry/__init__.py",
+      "sha256": "486585d0ede69f764661000b6996090f9b351011572e04f955f55cd322e15ff1",
+      "size_bytes": 517
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/geometry/reduced_geometry.py",
+      "sha256": "4011cfcdff93de87d79b08f357ddb004bfbdabdf4e0d7aa21a093814aaedadfc",
+      "size_bytes": 4237
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/geometry/supports.py",
+      "sha256": "c68e1a648fb53ca6dd87f65b67a6ad1eb5be88fc1e92b4c68157471a6405bb43",
+      "size_bytes": 3684
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/geometry/topology.py",
+      "sha256": "f827336b5e47fc06de82f1685a4e7ccd6e8e97938b3ca91dfc18549c15d1fd2a",
+      "size_bytes": 11612
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/__init__.py",
+      "sha256": "53aad0eee11f80758a94ef2bc83e20a8ebd94bd7388725102bf775d54f92c523",
+      "size_bytes": 801
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/certificate_io.py",
+      "sha256": "1121301a9e6732f26866775624021da01e25325cc7239acce7af2050b885952b",
+      "size_bytes": 12034
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/independence.py",
+      "sha256": "2bcbabee25b1a695469cfd3cc569f8038d94e91f7cf4b353de5f9c5d196e9efa",
+      "size_bytes": 14635
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/model.py",
+      "sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6",
+      "size_bytes": 90717
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/reference.py",
+      "sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa",
+      "size_bytes": 49790
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/solver.py",
+      "sha256": "03fa4c0774040509c354baca7ac80a10e55145d5a3b53e74e64ea3ab31bc4579",
+      "size_bytes": 109070
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/state.py",
+      "sha256": "767b4ff24bc3e89b1d044b5373e7e79841aa34e6acd11d73d358f16aaefa8147",
+      "size_bytes": 1505
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/hf/validation.py",
+      "sha256": "b5b1370c7398bc3d204711ff805db65f4aa1e23d12d253439376c0798b622471",
+      "size_bytes": 192437
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/io/__init__.py",
+      "sha256": "4dc68c6d79a758a9792f3bc453b82baee91e572e7a4373bfa833163fb192068d",
+      "size_bytes": 498
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/io/csv.py",
+      "sha256": "d828c3600c04304c21e0f451d477b29a8f5a76d0769ebdce4c546ef3f3aa5780",
+      "size_bytes": 974
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/io/hdf5.py",
+      "sha256": "62fa4afc6501fe0a2029015d226c9cc8e384f47b795befafb05b681f9c179be9",
+      "size_bytes": 15765
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/io/provenance.py",
+      "sha256": "fa70084e076b919d2550c1c461c6a5231d1a1cc9f91c79d1730f52ce4454bc90",
+      "size_bytes": 3662
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/io/report.py",
+      "sha256": "c0b6a3926a832c347b1988773c66ed148e9439f4b2b2e88ddbdba720d00a104f",
+      "size_bytes": 1418
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/materials/__init__.py",
+      "sha256": "c9cb647231323f845223d9bad56d737d93d80c1b91943a16987e97d82522f633",
+      "size_bytes": 210
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/materials/base.py",
+      "sha256": "5dee486500125b95d0987225eb1b6b41c9799cdf2205b875e87bca413ce87ef7",
+      "size_bytes": 558
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/materials/kelvin_voigt.py",
+      "sha256": "e5b4ef9b3c799556be3076ce83c52bfff315d1c2279340977837a148d8d5c8a7",
+      "size_bytes": 1698
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/materials/tabulated.py",
+      "sha256": "13ed962a748ddd179cc2d01e62500892f3421b4bcfa2ee2e1bc24074b3124428",
+      "size_bytes": 6815
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/models/__init__.py",
+      "sha256": "a564ccfc85f217905846f5e20c6c506614a5cd1129c406671cd2df3769f95346",
+      "size_bytes": 252
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/models/analytic.py",
+      "sha256": "6b22cc83c0c8b485437a03d2ab45ea8939276dbf39d6d83d9a685cd6a22708fa",
+      "size_bytes": 1916
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/models/full_cable.py",
+      "sha256": "6e43c0a1a4cb72f388dbafdd5daa7b8045a584a1079f0ed40d3146ce785c60ca",
+      "size_bytes": 17683
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/models/state.py",
+      "sha256": "ce791df84a0de103cbf380c9b9d8917eb49d0451a053788e25177ef19d36413c",
+      "size_bytes": 1074
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/models/torus.py",
+      "sha256": "17ced29fb2187c7936cb213e2f4dbf6a21f3863d39dfc461c1d011af068ad769",
+      "size_bytes": 6209
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/observers/__init__.py",
+      "sha256": "9d4cc0c66fb2b1367d74c68d046a681864d700336f801f00ad487b0fcb58fa1c",
+      "size_bytes": 200
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/observers/camera.py",
+      "sha256": "b17b8f6a830750939c906d6bbb741c6c6a21d96274bcb021bbd71787b106a581",
+      "size_bytes": 2024
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/observers/sampling.py",
+      "sha256": "744cb13c4d83fe88bc536c2b0da876f5e29923de6f437c3d83a15a6f54fbb564",
+      "size_bytes": 1618
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/observers/synthetic_noise.py",
+      "sha256": "cbc68026bf1cb1f2c7027d9e45214c7a230e3dccf53c97e175b80ca09be18f66",
+      "size_bytes": 387
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/solvers/__init__.py",
+      "sha256": "654e00a23e7d34a1c1ab1fbabc092316fc650d3fb14fa724944815fa6c372a47",
+      "size_bytes": 600
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/solvers/convergence.py",
+      "sha256": "0c94e625fcd4dadb8e092691b2432a18d8ec111fd3140216a51cc7b56e2274e3",
+      "size_bytes": 10948
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/solvers/dynamic.py",
+      "sha256": "6c86e57fe8aa2abbccca22e7b914839905459e7792fc84771ba3110350ee0975",
+      "size_bytes": 12644
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/solvers/newmark.py",
+      "sha256": "5c2814b22d2f2d94f11aa19df681a3ec8d652a741b36b83ad905bb7ced69546d",
+      "size_bytes": 8646
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/solvers/static.py",
+      "sha256": "bbd29dd8e5a073df428e38acc2ad6cc214ab9f31e742cc705913e58de449da3c",
+      "size_bytes": 26420
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/ui/__init__.py",
+      "sha256": "9e43100a9b5e6d43b65569d73dae2121377120506f6b12be770b005db5880bc4",
+      "size_bytes": 33
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/ui/app.py",
+      "sha256": "f079e25245414dff759deb0c87610f01519054fb33164862795e1b4f720bf8e4",
+      "size_bytes": 26043
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/ui/platform.py",
+      "sha256": "fcf9607c439074b9f2603c10d9aec5657c41f78e60034ad65804f26cbf4aaca8",
+      "size_bytes": 38638
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/ui/problem_plugins.py",
+      "sha256": "98cbe9407be90af383a7dfec7d413379c965274fde959c3d069578c153c7d43c",
+      "size_bytes": 21094
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/unified/__init__.py",
+      "sha256": "1dcf415bae51990abf5e19a354cd2ae111c957f0ced8a203476b3d35c28c860e",
+      "size_bytes": 604
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/unified/adapters.py",
+      "sha256": "2181e1fcd48b48c9d60ecf2a91e5f8181499629bcead41bb9513577079899f7d",
+      "size_bytes": 18113
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/unified/comparison.py",
+      "sha256": "28047d5a303af6f83b6b9317cf6de012a370773029dbea16d0fb9eef8f5f5bee",
+      "size_bytes": 10396
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/unified/contracts.py",
+      "sha256": "664d6910f50b2c39f68e118cd9fe14a03173d965ae6ba13512e8d71df3532fc7",
+      "size_bytes": 34181
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/unified/experiment.py",
+      "sha256": "269b3e19bbcdf3898ae1abe860bb56ce08f76f80da44b5af6444ee3c7196227f",
+      "size_bytes": 9948
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/unified/jobs.py",
+      "sha256": "2ba96eb36bf21188fc0309c90d76d3156f8a13ec6efe2da6addced60b0fac71f",
+      "size_bytes": 5869
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/validation_suite.py",
+      "sha256": "7e4dd05b448314e97e3d543c42aa6941f1b7a1aa7cb7f2cc650396a74267b670",
+      "size_bytes": 23194
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/src/ypendulum/version.py",
+      "sha256": "8b00e2d13533e3948c60896c844021f943deaea21eee7c546af6cb630120491f",
+      "size_bytes": 25
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/conftest.py",
+      "sha256": "bd6f7418c677551525bf645d25daf2e1ecfe3e1f12d2e4069a8b275b63f2cfad",
+      "size_bytes": 3232
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/integration/test_full_model.py",
+      "sha256": "41aedc74193094ac4ccc97e3b78a1dd1c95a6838779f879055048f96f0062775",
+      "size_bytes": 9016
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/integration/test_hf_validation.py",
+      "sha256": "079fe8245623e38ff95847c016be08055c166c528e69cf1c4f340da11df36403",
+      "size_bytes": 38499
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/integration/test_high_fidelity_api.py",
+      "sha256": "60b6c61b57e64d65ebee4ca0e0d758466e008415b8c789bf8c40d07920f50bb1",
+      "size_bytes": 10850
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/integration/test_unified_platform.py",
+      "sha256": "14469f5c7cc8c362622f3de30c41c79a6b12f68d6320e019a69238609fa6bb26",
+      "size_bytes": 14334
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/property/test_random_element_properties.py",
+      "sha256": "80c2e03f7c244f4e4d7a876f8496a38d24ccb2a305e812d19eae00d4590970a6",
+      "size_bytes": 875
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/regression/test_release_metadata.py",
+      "sha256": "571d4637c4cc0b282b50788aacac1c1b43ab75fced0dfeb5ef26314d6cb1c385",
+      "size_bytes": 721
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/regression/test_saved_reference.py",
+      "sha256": "935bb1ae88dd47fe9c4b699fa563da5be975bd93727010d46aa37f68d8bb0f04",
+      "size_bytes": 2117
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/regression/test_validation_and_torus.py",
+      "sha256": "093256c306cd7847cdce14373be79f6c727efefebee0c939e44d133e4d67f9ef",
+      "size_bytes": 643
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_calibration.py",
+      "sha256": "06f0a417c1f7ba56e0323a7b81577efca9d83353fc78520addc7c9776ce761ce",
+      "size_bytes": 1532
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_cli_status_contract.py",
+      "sha256": "034dd2ea1d07041204911c973cc4974e5c8e8effe4c553701551e5105bcdd1ab",
+      "size_bytes": 5481
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_energy_ledger.py",
+      "sha256": "2b9b644fb233e745ae15fc9716652cedc05ae34c6c1eb4a90d0c26c7e51c2950",
+      "size_bytes": 2434
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_events_and_supports.py",
+      "sha256": "b0b589d224e6d50c0ea7f7b0c05f567b8a8e57b0cf95bd70cf274be1e5a2c2f6",
+      "size_bytes": 1410
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_experiment_comparison.py",
+      "sha256": "1d039e603db8ea6cc31c3cc769e276a8f2183c9fa7624cfe9a2093972e51526e",
+      "size_bytes": 1474
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_frequency_and_modes.py",
+      "sha256": "7cb6ed8e6913a9ff95d42e3f2e56d2d656c4448f74b7e78b1e903cd2f7258d53",
+      "size_bytes": 1018
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_high_fidelity_model.py",
+      "sha256": "6bcbf03e27ce31c3987f4994bd88d08b608fb27eddd47bda15d469cb12bb4ab8",
+      "size_bytes": 48330
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_mass_forces_observer.py",
+      "sha256": "cc0681ed89eb0b9e79dfabf151c1882fce6c71c6fbba8b4a60feaf1664d56778",
+      "size_bytes": 1591
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_materials_elements.py",
+      "sha256": "7005a5cb488c77ab2c50660b176fb14851c1aaee43879ea55d7846c5d7508b19",
+      "size_bytes": 3304
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_ui_platform.py",
+      "sha256": "2c40acdb62d0b75225587820946a92d0330ca4069eef2a6a3a53a401dee539bd",
+      "size_bytes": 13917
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_ui_problem_plugins.py",
+      "sha256": "74c491ef26f99d99ba5ec2572ca7784df6932a02fbcfb59faa5c6f88d1fa9028",
+      "size_bytes": 6607
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_units_and_config.py",
+      "sha256": "3daaeb6cf71338cd63b035a7a0b743ab7dd08fd5fa9629a3d4045ee10157a458",
+      "size_bytes": 15547
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/simulator/tests/unit/test_validation_manifest.py",
+      "sha256": "017fb7ae325ef9697862d6e2998f8dd3e1e40bf75a4507adb2048935a5779885",
+      "size_bytes": 5432
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/stage3_handoff.md",
+      "sha256": "c42c6b257efeb482904ba76963b9461f9bae8b14eade661f2135c37068a2f771",
+      "size_bytes": 7148
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/HF_H5_DATASET_INVENTORY.json",
+      "sha256": "b79ae2809de5ad4c4e0cd2192617c579badf1ca0f8f617010dd1748a93e680de",
+      "size_bytes": 53203
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/HF_TARGET_DOWNSAMPLED_301.csv",
+      "sha256": "6dc8a6acae665069e3e2cdedbb7a87d43c2a853fbd040cd4f0a254ae4512efd7",
+      "size_bytes": 269495
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/config_original.yaml",
+      "sha256": "a3403397bdd242a20cd8b3099dc5123c3c6847ffc078cee5f2ec954f00a986e2",
+      "size_bytes": 6951
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/config_resolved.yaml",
+      "sha256": "1dae21ef71d652d3361c0a70fe18116927073b42eab8c66b76d29244551239af",
+      "size_bytes": 3700
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/config_source.yaml",
+      "sha256": "896b2f8b52e53f121211e6b5bfab573804527402ff69d1615f185edfa933a50d",
+      "size_bytes": 5877
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/diagnostics.json",
+      "sha256": "1f627891e04b1b919c3b5bd5fe460ffd589ec37003ec3f97f321356819483b8f",
+      "size_bytes": 12868
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/events.csv",
+      "sha256": "3af52d59ec85cbd4b1627f286db3f50128dbd9103d50bbc46f0e162a486bea69",
+      "size_bytes": 2214
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/events.json",
+      "sha256": "3a8022c8ff4f72a618bc6744c7e1e01a9d60a49c082c7d2ed93e4ba2c4badacd",
+      "size_bytes": 4685
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/execution_identity.json",
+      "sha256": "a8c0129805fbcddd4a2c247e4f6abfd6213666581c11972e0ce903d3860e2f9c",
+      "size_bytes": 634
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/observer_summary.json",
+      "sha256": "8ffde3479b5ca07d2ba9834cba436614805826d0b4823d5501d60b1d79eb6bc9",
+      "size_bytes": 141
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/plots/energy_audit.png",
+      "sha256": "26f15e0f6f0983c8b2519ec6219a855b6d1d10effe4a928ddb853324ea260df3",
+      "size_bytes": 52801
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/plots/lissajous_xy.png",
+      "sha256": "52f6c6acb0afc4b58651e4085ab2e592665e929a8891047f09756729cf05bb8a",
+      "size_bytes": 35218
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/plots/tension.png",
+      "sha256": "963e1476f5a327ab3dba144a79b97ba7650d921522f755659526b782758350c4",
+      "size_bytes": 62225
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/provenance.json",
+      "sha256": "0804f16c2c9f0ff661ad0601d72edc52047a3fb0dc47e962210d49907fd8ee68",
+      "size_bytes": 1608
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/report.md",
+      "sha256": "3a5d8964b5fadecf2ace9d46af004cf4697b40f6110b8f159712db835861eb34",
+      "size_bytes": 11598
+    },
+    {
+      "path": "04_LAYER_3_HIGH_FIDELITY/target_result_evidence/summary.json",
+      "sha256": "4bb8ad93ab2eec217e4cb0ead1cd871c3635c9a79c797bdc0f6f2f38a79524eb",
+      "size_bytes": 1540
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/analysis/torus_structure_analysis.py",
+      "sha256": "895a1340bdeca678f1d44a783bba15c9fcab7e9489401ecf0b4e581ced0c2020",
+      "size_bytes": 31072
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/figures/finite_amplitude_compensation.png",
+      "sha256": "e64c0ba9dc0e9221d709f4735ff01e52df78fdcee3c32caaa6d0ff343bfea0c7",
+      "size_bytes": 107512
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/figures/geometry_frequency_design.png",
+      "sha256": "f2aa8c1ad02c61cdace094ff757e3ee0afbc26c8f8ed9e71ad6fe62cf5e9c436",
+      "size_bytes": 69973
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/figures/taut_domain_map.png",
+      "sha256": "eaa2b17004afbc9fb569fb11a4685511eea3c7f84a12ac324aa3e9fee07f8a4a",
+      "size_bytes": 68694
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/results/structural_analysis_results.json",
+      "sha256": "f1f0789e6ea6910f4d351d21da01e7a6bb4f91ac34169251d0df13a89a42ace1",
+      "size_bytes": 27632
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/results/taut_domain_scan.csv",
+      "sha256": "764e49371e02befc04f226c6de7bbafa0eaa726ba9054da1b833a510f9577fc5",
+      "size_bytes": 114184
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/stage4_handoff.md",
+      "sha256": "f1603d7ce3deb27bb5b64ad672b45fa0600bc49318bd760923d38aedfdb7d8f9",
+      "size_bytes": 4573
+    },
+    {
+      "path": "05_LAYER_4_STRUCTURAL_THEORY/structural_theory.md",
+      "sha256": "ae7d3b5ecde45603af4b57426972ae94374c9f0e256da9f4973f834a9f064c6d",
+      "size_bytes": 47403
+    },
+    {
+      "path": "07_EVIDENCE/EXCLUDED_BINARY_ARTIFACTS.json",
+      "sha256": "154e8faa2b81f1e0ecf498f3822d9c080fd6c0effa477fcf956aa25174789a73",
+      "size_bytes": 7781
+    },
+    {
+      "path": "07_EVIDENCE/EXCLUDED_BINARY_ARTIFACTS.md",
+      "sha256": "bc129cf6f15221bf88197dc06af95e82018a78eb7fee01c5d10b18372f3bbf55",
+      "size_bytes": 4939
+    },
+    {
+      "path": "07_EVIDENCE/PACKAGE_BUILD_REPORT.json",
+      "sha256": "a7e821725da657a0d332de4f76a526101d6cda6f8cb081b883e574bf2c995806",
+      "size_bytes": 595
+    },
+    {
+      "path": "master_delivery.md",
+      "sha256": "32dfdd3b5dbca70313e2504cab7ef0cbfd6e9fc24bbf34726a9bee249fa64bfa",
+      "size_bytes": 11610
+    },
+    {
+      "path": "original_requirements.md",
+      "sha256": "e4c622f6a236642ce6c8eb94f8ad45097f268b016919bb0d1965108cfa23918e",
+      "size_bytes": 14904
+    }
+  ],
+  "identities": {
+    "hf_target_h5_sha256": "b1ba3b0fb343d31f95de596fd40c5dfef98b2df7736b40e11085b3cff464eb81",
+    "stage1_forward_theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "stage2_delivery_root_sha256": "dec497d42e0384f403b4c652a40799e389702a94b4299b24a4555f2bd9ea93ef",
+    "stage2_numerical_theory_sha256": "14b9e5bae0778753acbc46757286b4d5e646b120698ddd2bc33e16158efa78a7",
+    "stage3_handoff_sha256": "c42c6b257efeb482904ba76963b9461f9bae8b14eade661f2135c37068a2f771",
+    "stage3_source_tree_sha256": "e2476a8e77d75feee2630e8619472cdee1e35a364017ce514aa0b227227b14f4",
+    "stage3_theory_sha256": "67f8b8de88f4aa090825a573e6a34ec8cd35cb0f82ede8722f82114290e6bde9",
+    "stage4_analysis_script_sha256": "895a1340bdeca678f1d44a783bba15c9fcab7e9489401ecf0b4e581ced0c2020",
+    "stage4_results_sha256": "f1f0789e6ea6910f4d351d21da01e7a6bb4f91ac34169251d0df13a89a42ace1",
+    "stage4_theory_sha256": "ae7d3b5ecde45603af4b57426972ae94374c9f0e256da9f4973f834a9f064c6d"
+  },
+  "package_name": "Y_Pendulum_Pro_Review_2026-08-21",
+  "schema": "YPS-PRO-REVIEW-PACKAGE-1.0",
+  "scope": "personal scientific-computing prototype review package",
+  "total_bytes_excluding_manifest_and_sums": 10686178
+}

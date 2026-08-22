@@ -1,0 +1,6 @@
+{
+  "operator_id": "orthographic_xy_world",
+  "value_unit": "m",
+  "coordinate_source": "rigid_bob_center_of_mass",
+  "sample_count": 17
+}

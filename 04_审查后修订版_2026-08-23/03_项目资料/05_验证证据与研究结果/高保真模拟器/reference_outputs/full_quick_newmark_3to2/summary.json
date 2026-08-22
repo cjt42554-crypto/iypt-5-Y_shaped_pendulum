@@ -1,0 +1,42 @@
+{
+  "run_name": "full_quick_newmark_3to2",
+  "model": "H1",
+  "claim_level": "VERIFIED",
+  "status": "success",
+  "duration_s": 0.2,
+  "frequency_fast_hz": null,
+  "frequency_slow_hz": null,
+  "frequency_ratio": null,
+  "frequency_analysis_reliable": false,
+  "frequency_candidate_fast_hz": 1.2500000288822806,
+  "frequency_candidate_slow_hz": 1.2500000228966541,
+  "frequency_fast_fit_r2": 0.9999971870744615,
+  "frequency_slow_fit_r2": 0.9999930894029362,
+  "frequency_fast_observed_cycles": 0.25000000577645615,
+  "frequency_slow_observed_cycles": 0.25000000457933086,
+  "frequency_fast_reliability_reason": "only_0.25_cycles_observed;frequency_at_search_boundary",
+  "frequency_slow_reliability_reason": "only_0.25_cycles_observed;frequency_at_search_boundary",
+  "target_ratio": [
+    3,
+    2
+  ],
+  "phase_drift_rad_s": null,
+  "hilbert_phase_drift_rad_s": null,
+  "phase_fit_rms_rad": null,
+  "state_closure_error": null,
+  "minimum_tension_N": 2.76196791005227,
+  "maximum_tension_N": 4.926062211660791,
+  "event_count": 3,
+  "configuration_claim_cap": "VERIFIED",
+  "requested_claim_supported": true,
+  "run_validity_status": "pass",
+  "observable_support": {
+    "low_frequency_motion": true,
+    "stationary_two_frequency_fit": false,
+    "cable_waveform": false,
+    "retension_peak": false
+  },
+  "max_abs_balance_residual": 1.9099429574626546e-11,
+  "final_balance_residual": -1.9099429574626546e-11,
+  "finite": true
+}

@@ -1,0 +1,37 @@
+{
+  "reference_format": "YP-FPSim deterministic regression v1",
+  "analytic": {
+    "omega_fast": 5.535863189241584,
+    "omega_slow": 3.690575459494389,
+    "frequency_ratio": 1.5000000000000002
+  },
+  "torus": {
+    "final_state": [
+      0.06646991320528917,
+      -0.016337652526062826,
+      -0.11647815599460228,
+      0.18385463430084031
+    ],
+    "final_position": [
+      0.021254712717389258,
+      -0.011751041880043844,
+      -0.719197345988097
+    ],
+    "relative_energy_drift": 1.5212292375394084e-13
+  },
+  "h1": {
+    "static_force_residual_N": 9.401397446998083e-10,
+    "static_minimum_eigenvalue_s-2": 13.458348099823453,
+    "mode_frequencies_hz": [
+      0.5838697973786553,
+      0.8641143457294451
+    ],
+    "final_bob_position": [
+      0.0011159875288526686,
+      0.001264376915168798,
+      -0.7288435376041529
+    ],
+    "maximum_tension_N": 4.903924549693036,
+    "maximum_energy_balance_residual": 1.2495046514350366e-16
+  }
+}

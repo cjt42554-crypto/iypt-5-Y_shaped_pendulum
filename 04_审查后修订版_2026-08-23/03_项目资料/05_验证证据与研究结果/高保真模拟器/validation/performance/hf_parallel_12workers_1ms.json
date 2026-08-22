@@ -1,0 +1,171 @@
+{
+  "accepted_samples": 130,
+  "average_equivalent_cpu_cores": 1.9050624961362586,
+  "average_process_cpu_utilization_percent": 190.50624961362584,
+  "config_file_sha256": "896b2f8b52e53f121211e6b5bfab573804527402ff69d1615f185edfa933a50d",
+  "config_path": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/configs/examples/high_fidelity_shared_forward_window.yaml",
+  "diagnostics": {
+    "guard_component_metadata": {
+      "AERODYNAMIC_CHORD_LENGTH": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "BENDING_TURN_CLEARANCE": {
+        "scale": 1.0,
+        "tolerance": 2.2737367544323206e-13,
+        "unit": "dimensionless"
+      },
+      "BOB_ROD_CLEARANCE": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "BOB_SOCKET_CUT_CLEARANCE": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "BOB_SOCKET_MATERIAL_EXTENT": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "BOB_SOCKET_RADIAL_MONOTONICITY": {
+        "scale": 0.10627600000000001,
+        "tolerance": 2.4164364731404932e-14,
+        "unit": "m^2"
+      },
+      "JUNCTION_SOCKET_CUT_CLEARANCE": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "JUNCTION_SOCKET_MATERIAL_EXTENT": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "JUNCTION_SOCKET_PROJECTIVE_OPENING": {
+        "scale": 1.0,
+        "tolerance": 2.2737367544323206e-13,
+        "unit": "dimensionless"
+      },
+      "MINIMUM_SEGMENT_LENGTH": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      },
+      "ROD_SELF_CLEARANCE": {
+        "scale": 0.326,
+        "tolerance": 7.412381819449365e-14,
+        "unit": "m"
+      }
+    },
+    "maximum_energy_balance_residual": 1.5045391049397124e-11,
+    "minimum_guard_margins": {
+      "AERODYNAMIC_CHORD_LENGTH": 0.015275832408851218,
+      "BENDING_TURN_CLEARANCE": 1.9914283370808508,
+      "BOB_ROD_CLEARANCE": 0.015726815354306332,
+      "BOB_SOCKET_CUT_CLEARANCE": 0.015726815354306332,
+      "BOB_SOCKET_MATERIAL_EXTENT": 0.30430205363555735,
+      "BOB_SOCKET_RADIAL_MONOTONICITY": 5.880181031666499e-05,
+      "JUNCTION_SOCKET_CUT_CLEARANCE": 0.003987234984677878,
+      "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.2816,
+      "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.25278531936631854,
+      "MINIMUM_SEGMENT_LENGTH": 0.0050921233947653355,
+      "ROD_SELF_CLEARANCE": 2.466726387125384e-05
+    },
+    "nfev": 920,
+    "njev": 3,
+    "nlu": 250
+  },
+  "events_canonical_json": "[{\"axial_regime\":\"COMPRESSION\",\"branch\":\"lower\",\"material_segment\":27,\"signed_axial_force_N\":-6.22289899140024e-05,\"tensile_force_N\":0.0,\"time\":0.0,\"time_resolution\":\"sample_exact_at_initial_state\",\"type\":\"HF_SEGMENT_INITIAL_AXIAL_REGIME\"},{\"axial_regime_after\":\"TENSION\",\"axial_regime_before\":\"COMPRESSION\",\"bracket_end_s\":0.0003828125,\"bracket_start_s\":0.000375,\"branch\":\"lower\",\"material_segment\":27,\"signed_axial_force_after_N\":5.706494315358004e-08,\"signed_axial_force_before_N\":-3.5956830502516224e-06,\"time\":0.0003828125,\"time_resolution\":\"bounded_by_output_samples_not_a_solver_root\",\"type\":\"HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET\"},{\"axial_regime\":\"COMPRESSION\",\"branch\":\"lower\",\"material_segment\":28,\"signed_axial_force_N\":-0.0011393693168303906,\"tensile_force_N\":0.0,\"time\":0.0,\"time_resolution\":\"sample_exact_at_initial_state\",\"type\":\"HF_SEGMENT_INITIAL_AXIAL_REGIME\"},{\"axial_regime\":\"COMPRESSION\",\"branch\":\"lower\",\"material_segment\":29,\"signed_axial_force_N\":-0.002020312851590565,\"tensile_force_N\":0.0,\"time\":0.0,\"time_resolution\":\"sample_exact_at_initial_state\",\"type\":\"HF_SEGMENT_INITIAL_AXIAL_REGIME\"},{\"axial_regime\":\"COMPRESSION\",\"branch\":\"lower\",\"material_segment\":30,\"signed_axial_force_N\":-0.002689529177669128,\"tensile_force_N\":0.0,\"time\":0.0,\"time_resolution\":\"sample_exact_at_initial_state\",\"type\":\"HF_SEGMENT_INITIAL_AXIAL_REGIME\"},{\"axial_regime\":\"COMPRESSION\",\"branch\":\"lower\",\"material_segment\":31,\"signed_axial_force_N\":-0.0032222080148191375,\"tensile_force_N\":0.0,\"time\":0.0,\"time_resolution\":\"sample_exact_at_initial_state\",\"type\":\"HF_SEGMENT_INITIAL_AXIAL_REGIME\"},{\"axial_regime\":\"COMPRESSION\",\"branch\":\"lower\",\"material_segment\":32,\"signed_axial_force_N\":-0.003832001748020747,\"tensile_force_N\":0.0,\"time\":0.0,\"time_resolution\":\"sample_exact_at_initial_state\",\"type\":\"HF_SEGMENT_INITIAL_AXIAL_REGIME\"}]",
+  "integration_wall_seconds": 39.438596277002944,
+  "label": "parallel_12workers",
+  "measured_total_wall_seconds": 43.55677368500619,
+  "model_construction_wall_seconds": 0.0028308159962762147,
+  "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+  "output_dt_seconds": 7.8125e-06,
+  "peak_process_tree_rss_bytes": 214089728,
+  "physical_status": "UNDETERMINED",
+  "postprocess_and_solver_overhead_wall_seconds": 4.077881001008791,
+  "presentation_samples": 129,
+  "process_tree_cpu_seconds": 82.978376,
+  "resolved_short_config_sha256": "b1e24010e78084196e285f14526220459a77db3b3156c99b005072222eed3f37",
+  "schema": "YPS-HF-PERFORMANCE-BENCHMARK-1.0",
+  "scientific_array_keys": [
+    "bob_angular_velocity",
+    "bob_attachment_position",
+    "bob_position",
+    "bob_quaternion",
+    "bob_velocity",
+    "cable_positions__lower",
+    "cable_positions__upper_A",
+    "cable_positions__upper_B",
+    "cable_velocities__lower",
+    "cable_velocities__upper_A",
+    "cable_velocities__upper_B",
+    "energy__aero_dissipation_rate",
+    "energy__air_work_rate",
+    "energy__axial_dissipation_rate",
+    "energy__balance_residual",
+    "energy__dissipation_aero",
+    "energy__dissipation_axial",
+    "energy__elastic_axial",
+    "energy__elastic_bending",
+    "energy__gravitational",
+    "energy__kinetic",
+    "energy__kinetic_bob_rotation",
+    "energy__kinetic_bob_translation",
+    "energy__kinetic_particles",
+    "energy__mechanical",
+    "energy__support_work_rate",
+    "energy__work_air",
+    "energy__work_support",
+    "guard__AERODYNAMIC_CHORD_LENGTH",
+    "guard__BENDING_TURN_CLEARANCE",
+    "guard__BOB_ROD_CLEARANCE",
+    "guard__BOB_SOCKET_CUT_CLEARANCE",
+    "guard__BOB_SOCKET_MATERIAL_EXTENT",
+    "guard__BOB_SOCKET_RADIAL_MONOTONICITY",
+    "guard__JUNCTION_SOCKET_CUT_CLEARANCE",
+    "guard__JUNCTION_SOCKET_MATERIAL_EXTENT",
+    "guard__JUNCTION_SOCKET_PROJECTIVE_OPENING",
+    "guard__MINIMUM_SEGMENT_LENGTH",
+    "guard__ROD_SELF_CLEARANCE",
+    "integration_bob_angular_velocity",
+    "integration_bob_position",
+    "integration_bob_quaternion",
+    "integration_bob_velocity",
+    "integration_particle_positions",
+    "integration_particle_velocities",
+    "integration_time",
+    "junction_position",
+    "junction_velocity",
+    "particle_positions",
+    "particle_velocities",
+    "reaction__support_A",
+    "reaction__support_B",
+    "signed_axial_force__lower",
+    "signed_axial_force__upper_A",
+    "signed_axial_force__upper_B",
+    "tension__lower",
+    "tension__upper_A",
+    "tension__upper_B",
+    "time"
+  ],
+  "simulation_gpu_backend": "NOT_USED_CPU_ONLY",
+  "solver_total_wall_seconds": 43.516477278011735,
+  "source_result_h5": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/validation/target_hf_0p12_raw/result.h5",
+  "source_result_sha256": "b1ba3b0fb343d31f95de596fd40c5dfef98b2df7736b40e11085b3cff464eb81",
+  "source_tree_hash": "a53d31bb0c16ae4ada68126c093c71b36257caccc6d389b5f7c3d72e32b48fba",
+  "system_gpu_memory_mib_max": 680.0,
+  "system_gpu_utilization_percent_max": 9.0,
+  "system_gpu_utilization_percent_mean": 9.0,
+  "valid_interval": [
+    0.0,
+    0.001
+  ],
+  "window_seconds": 0.001
+}

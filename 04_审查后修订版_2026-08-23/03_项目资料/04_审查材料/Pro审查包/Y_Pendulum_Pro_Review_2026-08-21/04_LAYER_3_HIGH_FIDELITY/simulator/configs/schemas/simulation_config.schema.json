@@ -1,0 +1,768 @@
+{
+  "$defs": {
+    "AnalysisConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "target_ratio": {
+          "default": [
+            3,
+            2
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Target Ratio",
+          "type": "array"
+        },
+        "phase_tolerance": {
+          "title": "Phase Tolerance"
+        },
+        "slow_period_count": {
+          "default": 30,
+          "title": "Slow Period Count",
+          "type": "integer"
+        },
+        "compute_spectrum": {
+          "default": true,
+          "title": "Compute Spectrum",
+          "type": "boolean"
+        },
+        "compute_uncertainty": {
+          "default": false,
+          "title": "Compute Uncertainty",
+          "type": "boolean"
+        }
+      },
+      "title": "AnalysisConfig",
+      "type": "object"
+    },
+    "BobConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "mass": {
+          "title": "Mass"
+        },
+        "radius": {
+          "title": "Radius"
+        },
+        "drag": {
+          "$ref": "#/$defs/DragConfig"
+        },
+        "buoyancy": {
+          "default": false,
+          "title": "Buoyancy",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mass",
+        "radius"
+      ],
+      "title": "BobConfig",
+      "type": "object"
+    },
+    "CableConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "rest_length": {
+          "title": "Rest Length"
+        },
+        "diameter": {
+          "title": "Diameter"
+        },
+        "density": {
+          "title": "Density"
+        },
+        "young_modulus": {
+          "title": "Young Modulus"
+        },
+        "axial_viscosity": {
+          "title": "Axial Viscosity"
+        },
+        "elements": {
+          "default": 12,
+          "title": "Elements",
+          "type": "integer"
+        },
+        "drag_cd_normal": {
+          "default": 1.2,
+          "title": "Drag Cd Normal",
+          "type": "number"
+        },
+        "drag_enabled": {
+          "default": false,
+          "title": "Drag Enabled",
+          "type": "boolean"
+        },
+        "material_model": {
+          "default": "linear_kelvin_voigt_tension_only",
+          "enum": [
+            "linear_kelvin_voigt_tension_only",
+            "tabulated_tension_extension"
+          ],
+          "title": "Material Model",
+          "type": "string"
+        },
+        "table_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Table File"
+        },
+        "table_calibration_length": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Table Calibration Length"
+        }
+      },
+      "required": [
+        "rest_length",
+        "diameter",
+        "density",
+        "young_modulus"
+      ],
+      "title": "CableConfig",
+      "type": "object"
+    },
+    "CablesConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "upper_A": {
+          "$ref": "#/$defs/CableConfig"
+        },
+        "upper_B": {
+          "$ref": "#/$defs/CableConfig"
+        },
+        "lower": {
+          "$ref": "#/$defs/CableConfig"
+        }
+      },
+      "required": [
+        "upper_A",
+        "upper_B",
+        "lower"
+      ],
+      "title": "CablesConfig",
+      "type": "object"
+    },
+    "CameraConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "intrinsic_matrix": {
+          "anyOf": [
+            {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Intrinsic Matrix"
+        },
+        "rotation_world_to_camera": {
+          "anyOf": [
+            {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rotation World To Camera"
+        },
+        "translation_world_to_camera": {
+          "title": "Translation World To Camera"
+        },
+        "distortion": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Distortion",
+          "type": "array"
+        },
+        "frame_rate": {
+          "title": "Frame Rate"
+        },
+        "exposure_time": {
+          "title": "Exposure Time"
+        }
+      },
+      "title": "CameraConfig",
+      "type": "object"
+    },
+    "DragConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "model": {
+          "default": "quadratic_plus_linear",
+          "enum": [
+            "quadratic",
+            "linear",
+            "quadratic_plus_linear"
+          ],
+          "title": "Model",
+          "type": "string"
+        },
+        "cd": {
+          "title": "Cd"
+        },
+        "linear_coefficient": {
+          "title": "Linear Coefficient"
+        }
+      },
+      "title": "DragConfig",
+      "type": "object"
+    },
+    "EnvironmentConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "gravity": {
+          "title": "Gravity"
+        },
+        "air_density": {
+          "title": "Air Density"
+        },
+        "air_velocity": {
+          "title": "Air Velocity"
+        }
+      },
+      "title": "EnvironmentConfig",
+      "type": "object"
+    },
+    "InitialConditionConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "default": "static_equilibrium",
+          "enum": [
+            "static_equilibrium",
+            "reduced_angles_release",
+            "cartesian_release",
+            "direct_state",
+            "restart"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "phi": {
+          "title": "Phi"
+        },
+        "theta": {
+          "title": "Theta"
+        },
+        "phi_dot": {
+          "title": "Phi Dot"
+        },
+        "theta_dot": {
+          "title": "Theta Dot"
+        },
+        "bob_position": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bob Position"
+        },
+        "bob_velocity": {
+          "title": "Bob Velocity"
+        },
+        "state_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State File"
+        },
+        "positions_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Positions File"
+        },
+        "velocities_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Velocities File"
+        }
+      },
+      "title": "InitialConditionConfig",
+      "type": "object"
+    },
+    "JunctionConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "mass": {
+          "title": "Mass"
+        },
+        "drag_linear": {
+          "title": "Drag Linear"
+        }
+      },
+      "required": [
+        "mass"
+      ],
+      "title": "JunctionConfig",
+      "type": "object"
+    },
+    "ObserverConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "default": "orthographic_xy",
+          "enum": [
+            "orthographic_xy",
+            "pinhole"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "camera": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CameraConfig"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "ObserverConfig",
+      "type": "object"
+    },
+    "PrescribedMotionConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "default": "stationary",
+          "enum": [
+            "stationary",
+            "sinusoidal",
+            "table"
+          ],
+          "title": "Model",
+          "type": "string"
+        },
+        "amplitude": {
+          "title": "Amplitude"
+        },
+        "frequency": {
+          "title": "Frequency"
+        },
+        "phase": {
+          "title": "Phase"
+        },
+        "table_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Table File"
+        },
+        "table_calibration_length": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Table Calibration Length"
+        }
+      },
+      "title": "PrescribedMotionConfig",
+      "type": "object"
+    },
+    "RunConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": "ypendulum_run",
+          "title": "Name",
+          "type": "string"
+        },
+        "mode": {
+          "default": "full",
+          "enum": [
+            "analytic",
+            "torus",
+            "full"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "seed": {
+          "default": 20260818,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "output_directory": {
+          "default": "runs/ypendulum_run",
+          "title": "Output Directory",
+          "type": "string"
+        },
+        "claim_level": {
+          "default": "VERIFIED",
+          "enum": [
+            "DERIVED",
+            "VERIFIED",
+            "CALIBRATED",
+            "VALIDATED",
+            "PREDICTIVE",
+            "OUT_OF_SCOPE"
+          ],
+          "title": "Claim Level",
+          "type": "string"
+        },
+        "validation_manifest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validation Manifest"
+        }
+      },
+      "title": "RunConfig",
+      "type": "object"
+    },
+    "SolverConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "default": "quick",
+          "enum": [
+            "quick",
+            "production",
+            "reference"
+          ],
+          "title": "Profile",
+          "type": "string"
+        },
+        "t_end": {
+          "title": "T End"
+        },
+        "output_dt": {
+          "title": "Output Dt"
+        },
+        "max_step": {
+          "anyOf": [
+            {},
+            {
+              "const": "auto",
+              "type": "string"
+            }
+          ],
+          "default": "auto",
+          "title": "Max Step"
+        },
+        "mass_matrix": {
+          "default": "consistent",
+          "enum": [
+            "consistent",
+            "lumped"
+          ],
+          "title": "Mass Matrix",
+          "type": "string"
+        },
+        "method": {
+          "default": "Radau",
+          "enum": [
+            "Radau",
+            "BDF",
+            "Newmark"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "resolve_longitudinal_waves": {
+          "default": false,
+          "title": "Resolve Longitudinal Waves",
+          "type": "boolean"
+        },
+        "analytic_jacobian": {
+          "default": true,
+          "title": "Analytic Jacobian",
+          "type": "boolean"
+        },
+        "allow_subminimum_mesh": {
+          "default": false,
+          "title": "Allow Subminimum Mesh",
+          "type": "boolean"
+        },
+        "static": {
+          "$ref": "#/$defs/StaticSolverConfig"
+        },
+        "rtol": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rtol"
+        },
+        "position_atol": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position Atol"
+        },
+        "velocity_atol": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Velocity Atol"
+        },
+        "newmark_beta": {
+          "default": 0.25,
+          "title": "Newmark Beta",
+          "type": "number"
+        },
+        "newmark_gamma": {
+          "default": 0.5,
+          "title": "Newmark Gamma",
+          "type": "number"
+        },
+        "newmark_max_iterations": {
+          "default": 24,
+          "title": "Newmark Max Iterations",
+          "type": "integer"
+        },
+        "newmark_force_tolerance": {
+          "title": "Newmark Force Tolerance"
+        },
+        "newmark_line_search_min": {
+          "default": 1e-05,
+          "title": "Newmark Line Search Min",
+          "type": "number"
+        }
+      },
+      "title": "SolverConfig",
+      "type": "object"
+    },
+    "StaticSolverConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "default": "continuation_newton",
+          "enum": [
+            "continuation_newton",
+            "energy_minimize"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "force_tolerance": {
+          "title": "Force Tolerance"
+        },
+        "max_iterations": {
+          "default": 80,
+          "title": "Max Iterations",
+          "type": "integer"
+        },
+        "continuation_steps": {
+          "default": 6,
+          "title": "Continuation Steps",
+          "type": "integer"
+        },
+        "line_search_min": {
+          "default": 1e-05,
+          "title": "Line Search Min",
+          "type": "number"
+        }
+      },
+      "title": "StaticSolverConfig",
+      "type": "object"
+    },
+    "SupportConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "default": "fixed",
+          "enum": [
+            "fixed",
+            "prescribed"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "position": {
+          "title": "Position"
+        },
+        "motion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrescribedMotionConfig"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "position"
+      ],
+      "title": "SupportConfig",
+      "type": "object"
+    },
+    "SupportsConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "A": {
+          "$ref": "#/$defs/SupportConfig"
+        },
+        "B": {
+          "$ref": "#/$defs/SupportConfig"
+        }
+      },
+      "required": [
+        "A",
+        "B"
+      ],
+      "title": "SupportsConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "run": {
+      "$ref": "#/$defs/RunConfig"
+    },
+    "environment": {
+      "$ref": "#/$defs/EnvironmentConfig"
+    },
+    "supports": {
+      "$ref": "#/$defs/SupportsConfig"
+    },
+    "junction": {
+      "$ref": "#/$defs/JunctionConfig"
+    },
+    "bob": {
+      "$ref": "#/$defs/BobConfig"
+    },
+    "cables": {
+      "$ref": "#/$defs/CablesConfig"
+    },
+    "initial_condition": {
+      "$ref": "#/$defs/InitialConditionConfig"
+    },
+    "solver": {
+      "$ref": "#/$defs/SolverConfig"
+    },
+    "analysis": {
+      "$ref": "#/$defs/AnalysisConfig"
+    },
+    "observer": {
+      "$ref": "#/$defs/ObserverConfig"
+    },
+    "source_path": {
+      "anyOf": [
+        {
+          "format": "path",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Path"
+    }
+  },
+  "required": [
+    "run",
+    "supports",
+    "junction",
+    "bob",
+    "cables"
+  ],
+  "title": "SimulationConfig",
+  "type": "object"
+}

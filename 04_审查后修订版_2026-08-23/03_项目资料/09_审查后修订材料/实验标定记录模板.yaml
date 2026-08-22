@@ -1,0 +1,60 @@
+schema_version: YPS-CALIBRATION-RECORD-1.1
+record_status: TEMPLATE_NOT_MEASURED
+apparatus_id: null
+date_utc: null
+environment:
+  temperature_C: null
+  humidity_percent: null
+branches:
+  upper_A:
+    rest_length_m: null
+    linear_density_kg_m: null
+    axial_calibration_file: null
+    bending_calibration_file: null
+    EA_N: null
+    axial_viscosity_N_s: null
+    EI_N_m2: null
+    EI_source: independent_bending_measurement_required
+  upper_B:
+    rest_length_m: null
+    linear_density_kg_m: null
+    axial_calibration_file: null
+    bending_calibration_file: null
+    EA_N: null
+    axial_viscosity_N_s: null
+    EI_N_m2: null
+    EI_source: independent_bending_measurement_required
+  lower:
+    rest_length_m: null
+    linear_density_kg_m: null
+    axial_calibration_file: null
+    bending_calibration_file: null
+    EA_N: null
+    axial_viscosity_N_s: null
+    EI_N_m2: null
+    EI_source: independent_bending_measurement_required
+junction:
+  mass_kg: null
+  absorbed_length_by_branch_m: null
+  slip_test_file: null
+bob:
+  mass_kg: null
+  radius_m: null
+  inertia_kg_m2: null
+  attachment_body_m: null
+supports:
+  positions_m: null
+  motion_file: null
+  compliance_test_file: null
+camera:
+  calibration_file: null
+  exposure_s: null
+  timestamp_validation_file: null
+data_split:
+  calibration_run_ids: []
+  validation_run_ids: []
+  prediction_holdout_run_ids: []
+checks:
+  raw_files_sealed: false
+  hashes_recorded: false
+  validation_not_used_for_fitting: false

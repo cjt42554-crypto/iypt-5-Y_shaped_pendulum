@@ -1,0 +1,29 @@
+{
+  "run_name": "camera_projection",
+  "model": "A1",
+  "claim_level": "VERIFIED",
+  "status": "success",
+  "duration_s": 2.0,
+  "frequency_fast_hz": null,
+  "frequency_slow_hz": null,
+  "frequency_ratio": null,
+  "frequency_analysis_reliable": false,
+  "frequency_candidate_fast_hz": 0.881148401491901,
+  "frequency_candidate_slow_hz": 0.5876105038894218,
+  "frequency_fast_fit_r2": 0.9999998924085177,
+  "frequency_slow_fit_r2": 0.9999995650904268,
+  "frequency_fast_observed_cycles": 1.762296802983802,
+  "frequency_slow_observed_cycles": 1.1752210077788436,
+  "frequency_fast_reliability_reason": "only_1.76_cycles_observed",
+  "frequency_slow_reliability_reason": "only_1.18_cycles_observed",
+  "target_ratio": [
+    3,
+    2
+  ],
+  "phase_drift_rad_s": null,
+  "hilbert_phase_drift_rad_s": null,
+  "phase_fit_rms_rad": null,
+  "state_closure_error": null,
+  "max_relative_energy_drift": 1.5873696391715568e-13,
+  "event": null
+}

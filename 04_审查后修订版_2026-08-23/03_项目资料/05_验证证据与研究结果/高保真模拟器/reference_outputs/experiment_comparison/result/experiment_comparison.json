@@ -1,0 +1,41 @@
+{
+  "run_directory": "runs/ideal_3to2",
+  "experiment_csv": "examples/reference_outputs/experiment_comparison/synthetic_xyz.csv",
+  "observation_kind": "cartesian_xyz",
+  "components": 3,
+  "experiment_samples_total": 870,
+  "overlap_samples": 870,
+  "overlap_fraction": 1.0,
+  "time_shift_s": 0.021000000101539882,
+  "time_shift_definition": "prediction evaluated at experiment_time + time_shift_s",
+  "time_shift_optimisation_success": true,
+  "planar_rotation_rad": 0.034999999983430605,
+  "translation": [
+    0.0040000000002354845,
+    -0.0029999999992592397,
+    0.0009999999999898979
+  ],
+  "nuisance_parameters_fitted": [
+    "time_shift",
+    "translation",
+    "planar_rotation"
+  ],
+  "rms_component_error": 7.749281953314144e-12,
+  "normalized_rms_error": 4.3863311651205833e-10,
+  "rms_point_error": 1.3422150065316691e-11,
+  "maximum_point_error": 1.8905920612908573e-11,
+  "mean_component_bias": [
+    1.5166056768512031e-18,
+    -2.4823868017040236e-18,
+    1.4394615767553753e-15
+  ],
+  "component_rms_error": [
+    8.806850585576742e-12,
+    1.0120946832484656e-11,
+    3.9991293205631125e-13
+  ],
+  "r_squared_global": 1.0,
+  "chamfer_distance": 1.2823202123529472e-11,
+  "hausdorff_distance": 1.8905920612908573e-11,
+  "validation_interpretation": "Fitted nuisance parameters must be calibrated and frozen before using this metric on a validation set."
+}

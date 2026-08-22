@@ -1,0 +1,30 @@
+{
+  "captured_at_utc": "2026-08-18T16:50:00Z",
+  "python": "3.13.5 (GCC 14.2.0)",
+  "python_executable": "/opt/pyvenv/bin/python",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "available_core": [
+    "numpy",
+    "scipy",
+    "pydantic",
+    "PyYAML",
+    "h5py",
+    "pandas",
+    "matplotlib",
+    "plotly",
+    "pytest"
+  ],
+  "missing_or_unusable_for_release_audit": [
+    "pint",
+    "streamlit",
+    "hypothesis",
+    "ruff",
+    "mypy",
+    "python -m build"
+  ],
+  "uv": {
+    "version": "0.10.0",
+    "lock_status": "not generated",
+    "reason": "offline dependency cache lacks h5py and other declared packages"
+  }
+}

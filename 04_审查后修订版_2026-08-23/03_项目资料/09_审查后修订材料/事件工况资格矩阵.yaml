@@ -1,0 +1,35 @@
+schema_version: YPS-EVENT-QUALIFICATION-MATRIX-1.1
+thresholds_frozen_before_runs: true
+provisional_thresholds:
+  trajectory_normalized_rms: 0.001
+  event_time_absolute_s: 0.0001
+  event_time_relative: 0.005
+  peak_tension_relative: 0.02
+  tension_impulse_relative: 0.02
+  energy_residual_absolute: 1.0e-7
+studies:
+  spatial:
+    levels: [N, 2N, 4N]
+    freeze: [physical_parameters, time_tolerances, output_dt, initial_state]
+  temporal:
+    levels: [h, h_over_2, h_over_4]
+    freeze: [mesh, physical_parameters, output_dt, initial_state]
+  output_bandwidth:
+    levels: [dt_out, dt_out_over_2, dt_out_over_4]
+    freeze: [mesh, solver_tolerances, physical_parameters, initial_state]
+  cross_solver:
+    methods: [Radau, BDF]
+    freeze: [mesh, tolerances, output_dt, physical_parameters, initial_state]
+required_outputs:
+  - bob_and_junction_trajectory
+  - event_type_branch_segment_order
+  - event_time
+  - peak_tension
+  - tension_impulse
+  - signed_axial_force
+  - bending_energy_fraction
+  - energy_balance_residual
+pass_policy:
+  event_signature_exact: true
+  all_metrics_must_pass: true
+  one_successful_run_is_insufficient: true

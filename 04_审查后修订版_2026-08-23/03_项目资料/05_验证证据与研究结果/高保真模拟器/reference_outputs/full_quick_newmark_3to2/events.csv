@@ -1,0 +1,4 @@
+cable,element_local_index,time,type,value
+upper_A,0,0.0,cable_peak_tension,3.312812556768384
+upper_B,0,0.2,cable_peak_tension,2.9374612042383954
+lower,0,0.2,cable_peak_tension,4.926062211660791

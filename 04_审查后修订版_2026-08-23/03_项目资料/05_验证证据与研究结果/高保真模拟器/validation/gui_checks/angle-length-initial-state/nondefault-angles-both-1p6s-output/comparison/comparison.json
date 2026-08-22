@@ -1,0 +1,14 @@
+{
+  "interpretation": "Model-form difference on the common returned interval; not a convergence error.",
+  "maximum_bob_position_difference_m": 0.03938976314422826,
+  "maximum_bob_velocity_difference_m_s": 0.3330433876944074,
+  "rms_bob_position_difference_m": 0.023487916857214033,
+  "rms_bob_velocity_difference_m_s": 0.21067646177389138,
+  "sample_count": 321,
+  "schema_version": "YPS-DESKTOP-COMPARISON-1.0",
+  "status": "COMPARISON_COMPLETE",
+  "window_s": [
+    0.0,
+    1.6
+  ]
+}

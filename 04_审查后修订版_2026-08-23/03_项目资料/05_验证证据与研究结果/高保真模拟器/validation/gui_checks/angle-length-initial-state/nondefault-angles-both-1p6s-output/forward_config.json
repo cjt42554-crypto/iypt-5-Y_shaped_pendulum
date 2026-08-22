@@ -1,0 +1,425 @@
+{
+  "initial_state": {
+    "branches": {
+      "A": {
+        "position": {
+          "coefficients": [
+            [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            [
+              0.15,
+              -0.013294260065196614,
+              0.25366959346622314
+            ]
+          ],
+          "kind": "polynomial"
+        },
+        "velocity": {
+          "coefficients": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "kind": "polynomial"
+        }
+      },
+      "B": {
+        "position": {
+          "coefficients": [
+            [
+              0.15,
+              0.0,
+              0.0
+            ],
+            [
+              -0.15,
+              -0.013294260065196614,
+              0.25366959346622314
+            ]
+          ],
+          "kind": "polynomial"
+        },
+        "velocity": {
+          "coefficients": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "kind": "polynomial"
+        }
+      },
+      "lower": {
+        "position": {
+          "coefficients": [
+            [
+              0.0,
+              -0.013294260065196614,
+              0.25366959346622314
+            ],
+            [
+              0.04708077695426366,
+              -0.03577010259628953,
+              0.3551111096567295
+            ]
+          ],
+          "kind": "polynomial"
+        },
+        "velocity": {
+          "coefficients": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "kind": "polynomial"
+        }
+      }
+    },
+    "mode": "DIRECT_STATE",
+    "r_J": [
+      0.0,
+      -0.013294260065196614,
+      0.25366959346622314
+    ],
+    "r_m": [
+      0.04708077695426366,
+      -0.049064362661486144,
+      0.6087807031229526
+    ],
+    "v_J": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "v_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "inputs": {
+    "air_velocity": {
+      "kind": "zero"
+    },
+    "bob_force": {
+      "kind": "zero"
+    },
+    "distributed_forces": {
+      "A": {
+        "kind": "zero"
+      },
+      "B": {
+        "kind": "zero"
+      },
+      "lower": {
+        "kind": "zero"
+      }
+    },
+    "exit_guards": [],
+    "junction_force": {
+      "kind": "zero"
+    },
+    "support_A": {
+      "kind": "constant",
+      "value": [
+        -0.15,
+        0.0,
+        0.0
+      ]
+    },
+    "support_B": {
+      "kind": "constant",
+      "value": [
+        0.15,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "metadata": {
+    "purpose": "research-grade forward-model reference configuration; not the independent high-fidelity backend",
+    "validation_tolerance_basis": {
+      "dynamics_certificate_basis": "a dyadic 0--0.004 s production-mesh study resolved the non-equilibrium initial axial transient; at 15.625 microseconds the normalized Simpson rate/signed-cumulative/absolute-cumulative defects were 1.8094e-4, 2.2785e-8, and 3.1516e-8, and all three decreased again at 7.8125 microseconds",
+      "dynamics_certificate_output_step_s": 1.5625e-05,
+      "maximum_bob_position_difference_m": 2e-06,
+      "maximum_bob_velocity_difference_m_per_s": 0.0002,
+      "maximum_internal_position_difference_m": 0.0002,
+      "maximum_internal_velocity_difference_m_per_s": 0.05,
+      "maximum_normalized_absolute_cumulative_defect": 2e-06,
+      "maximum_normalized_rate_defect": 0.001,
+      "maximum_normalized_signed_cumulative_defect": 2e-06,
+      "maximum_tension_difference_N": 0.05,
+      "policy": "the production configuration is the finest refinement level; bob observables retain micrometre/sub-mm-per-second gates, while the canonical P1 cable and junction fields are non-default experimental observables with wider but explicit rounded sub-millimetre and 5e-2 m/s research-use resolutions; every raw error remains reported",
+      "status": "frozen before the final acceptance run; these are numerical-use tolerances, not experimental uncertainty"
+    }
+  },
+  "model_id": "FWD-CABLE-1.0",
+  "numerics": {
+    "atol": 1e-09,
+    "elements": {
+      "A": 2,
+      "B": 2,
+      "lower": 3
+    },
+    "event_cluster_tolerance": 1e-08,
+    "max_step": 0.005,
+    "method": "BDF",
+    "output_dt": 0.005,
+    "quadrature_order": 7,
+    "rtol": 1e-07
+  },
+  "observation": {
+    "axis_1": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "axis_2": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "record_times": {
+      "kind": "uniform",
+      "start": 0.0,
+      "step": 0.01,
+      "stop": 8.0
+    },
+    "t0": 0.0,
+    "type": "orthographic"
+  },
+  "physical": {
+    "T": 1.6,
+    "bob_c1": 0.0015,
+    "bob_c2": 0.004,
+    "bob_mass": 0.08,
+    "bob_volume": 3.35e-05,
+    "branches": {
+      "A": {
+        "Ca": 0.01,
+        "EA": 12.0,
+        "L0": 0.288,
+        "c_parallel": 0.0001,
+        "c_perp": 0.001,
+        "d_parallel": 0.0001,
+        "d_perp": 0.001,
+        "delta": 0.004,
+        "material_domain": {
+          "kind": "open_box",
+          "lambda_lower": 0.2,
+          "lambda_upper": 1.5,
+          "rate_lower": -50.0,
+          "rate_upper": 50.0
+        },
+        "mu": 0.01
+      },
+      "B": {
+        "Ca": 0.01,
+        "EA": 12.0,
+        "L0": 0.288,
+        "c_parallel": 0.0001,
+        "c_perp": 0.001,
+        "d_parallel": 0.0001,
+        "d_perp": 0.001,
+        "delta": 0.004,
+        "material_domain": {
+          "kind": "open_box",
+          "lambda_lower": 0.2,
+          "lambda_upper": 1.5,
+          "rate_lower": -50.0,
+          "rate_upper": 50.0
+        },
+        "mu": 0.01
+      },
+      "lower": {
+        "Ca": 0.012,
+        "EA": 12.0,
+        "L0": 0.326,
+        "c_parallel": 0.0001,
+        "c_perp": 0.001,
+        "d_parallel": 0.0001,
+        "d_perp": 0.001,
+        "delta": 0.004,
+        "material_domain": {
+          "kind": "open_box",
+          "lambda_lower": 0.2,
+          "lambda_upper": 1.5,
+          "rate_lower": -50.0,
+          "rate_upper": 50.0
+        },
+        "mu": 0.012
+      }
+    },
+    "e_z": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "g": 9.80665,
+    "junction_mass": 0.003,
+    "lambda_min": 0.2,
+    "rho_air": 1.2
+  },
+  "schema_version": "YPS-FWD-CONFIG-1.0",
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI",
+  "validation": {
+    "expected_contract_status": [
+      "COMPLETED"
+    ],
+    "physics_checks": {
+      "boundary_reaction_floor": 1e-08,
+      "boundary_reaction_ratio_slack": 1.05,
+      "maximum_energy_metric": 1e-05,
+      "maximum_mass_condition_number": 100000.0,
+      "maximum_mass_symmetry_inf_norm": 1e-14,
+      "maximum_negative_dissipation": 1e-12,
+      "maximum_negative_returned_custom_guard_margin": 1e-10,
+      "maximum_negative_returned_lambda_margin": 1e-10,
+      "maximum_negative_returned_material_lambda_margin": 1e-10,
+      "maximum_negative_returned_material_rate_margin": 1e-10,
+      "maximum_normalized_absolute_dynamics_defect": 2e-06,
+      "maximum_normalized_cumulative_dynamics_defect": 2e-06,
+      "maximum_normalized_dynamics_defect": 0.001,
+      "minimum_completed_custom_guard_margin": 0.0001,
+      "minimum_completed_lambda_margin": 0.0001,
+      "minimum_completed_material_lambda_margin": 0.0001,
+      "minimum_completed_material_rate_margin": 0.0001,
+      "minimum_mass_eigenvalue": 1e-07
+    },
+    "schema_version": "YPS-FWD-VALIDATION-1.0",
+    "studies": {
+      "quadrature": {
+        "cauchy_ratio_slack": 1.05,
+        "comparison_time_step": 1.5625e-05,
+        "energy_floor": 1e-07,
+        "energy_ratio_slack": 1.05,
+        "guard_variation_safety_factor": 4.0,
+        "material_comparison_points": 65,
+        "max_finest_boundary_reaction_difference": 0.001,
+        "max_finest_event_time_difference": 1e-08,
+        "max_finest_max_bob_position": 1e-09,
+        "max_finest_max_bob_velocity": 1e-06,
+        "max_finest_max_cable_position": 1e-09,
+        "max_finest_max_cable_velocity": 1e-06,
+        "max_finest_max_dissipation_power": 1e-07,
+        "max_finest_max_energy": 1e-08,
+        "max_finest_max_input_power": 1e-07,
+        "max_finest_max_junction_position": 1e-09,
+        "max_finest_max_junction_velocity": 1e-06,
+        "max_finest_max_stretch": 1e-07,
+        "max_finest_max_stretch_rate": 0.0001,
+        "max_finest_max_tension": 1e-05,
+        "max_finest_rms_bob_position": 1e-10,
+        "max_finest_rms_bob_velocity": 1e-07,
+        "max_finest_rms_cable_position": 1e-10,
+        "max_finest_rms_cable_velocity": 1e-07,
+        "max_finest_rms_dissipation_power": 1e-08,
+        "max_finest_rms_energy": 1e-09,
+        "max_finest_rms_input_power": 1e-08,
+        "max_finest_rms_junction_position": 1e-10,
+        "max_finest_rms_junction_velocity": 1e-07,
+        "max_finest_rms_stretch": 1e-08,
+        "max_finest_rms_stretch_rate": 1e-05,
+        "max_finest_rms_tension": 1e-06,
+        "minimum_comparison_samples": 100,
+        "normalized_numerical_floor": 1e-06
+      },
+      "space": {
+        "cauchy_ratio_slack": 1.05,
+        "comparison_time_step": 1.5625e-05,
+        "energy_floor": 1e-07,
+        "energy_ratio_slack": 1.05,
+        "guard_variation_safety_factor": 4.0,
+        "material_comparison_points": 65,
+        "max_finest_boundary_reaction_difference": 0.001,
+        "max_finest_event_time_difference": 1e-08,
+        "max_finest_max_bob_position": 2e-06,
+        "max_finest_max_bob_velocity": 0.0002,
+        "max_finest_max_cable_position": 0.0002,
+        "max_finest_max_cable_velocity": 0.05,
+        "max_finest_max_dissipation_power": 0.005,
+        "max_finest_max_energy": 0.0002,
+        "max_finest_max_input_power": 0.005,
+        "max_finest_max_junction_position": 0.0001,
+        "max_finest_max_junction_velocity": 0.01,
+        "max_finest_max_stretch": 0.002,
+        "max_finest_max_stretch_rate": 0.2,
+        "max_finest_max_tension": 0.05,
+        "max_finest_rms_bob_position": 1.2e-06,
+        "max_finest_rms_bob_velocity": 0.0001,
+        "max_finest_rms_cable_position": 3e-05,
+        "max_finest_rms_cable_velocity": 0.01,
+        "max_finest_rms_dissipation_power": 0.001,
+        "max_finest_rms_energy": 0.0001,
+        "max_finest_rms_input_power": 0.001,
+        "max_finest_rms_junction_position": 5e-05,
+        "max_finest_rms_junction_velocity": 0.003,
+        "max_finest_rms_stretch": 0.0005,
+        "max_finest_rms_stretch_rate": 0.05,
+        "max_finest_rms_tension": 0.01,
+        "minimum_comparison_samples": 100,
+        "normalized_numerical_floor": 1e-06
+      },
+      "time": {
+        "cauchy_ratio_slack": 1.05,
+        "comparison_time_step": 1.5625e-05,
+        "energy_floor": 1e-07,
+        "energy_ratio_slack": 1.05,
+        "guard_variation_safety_factor": 4.0,
+        "material_comparison_points": 65,
+        "max_finest_boundary_reaction_difference": 0.001,
+        "max_finest_event_time_difference": 1e-08,
+        "max_finest_max_bob_position": 1e-09,
+        "max_finest_max_bob_velocity": 1e-06,
+        "max_finest_max_cable_position": 1e-09,
+        "max_finest_max_cable_velocity": 1e-06,
+        "max_finest_max_dissipation_power": 1e-07,
+        "max_finest_max_energy": 1e-08,
+        "max_finest_max_input_power": 1e-07,
+        "max_finest_max_junction_position": 1e-09,
+        "max_finest_max_junction_velocity": 1e-06,
+        "max_finest_max_stretch": 1e-07,
+        "max_finest_max_stretch_rate": 0.0001,
+        "max_finest_max_tension": 1e-05,
+        "max_finest_rms_bob_position": 1e-10,
+        "max_finest_rms_bob_velocity": 1e-07,
+        "max_finest_rms_cable_position": 1e-10,
+        "max_finest_rms_cable_velocity": 1e-07,
+        "max_finest_rms_dissipation_power": 1e-08,
+        "max_finest_rms_energy": 1e-09,
+        "max_finest_rms_input_power": 1e-08,
+        "max_finest_rms_junction_position": 1e-10,
+        "max_finest_rms_junction_velocity": 1e-07,
+        "max_finest_rms_stretch": 1e-08,
+        "max_finest_rms_stretch_rate": 1e-05,
+        "max_finest_rms_tension": 1e-06,
+        "minimum_comparison_samples": 100,
+        "normalized_numerical_floor": 1e-06
+      }
+    }
+  }
+}

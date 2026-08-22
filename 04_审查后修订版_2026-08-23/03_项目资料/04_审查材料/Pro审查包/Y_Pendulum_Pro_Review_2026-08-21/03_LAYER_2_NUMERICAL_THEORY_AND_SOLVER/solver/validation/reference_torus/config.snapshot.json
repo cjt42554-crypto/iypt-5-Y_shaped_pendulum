@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "purpose": "research-grade analytic-torus forward-model reference configuration; not the independent high-fidelity backend",
+    "validation_tolerance_basis": {
+      "policy": "the production configuration is the finest time-refinement level and every acceptance threshold is frozen in validation before execution",
+      "status": "numerical-use tolerances only; not experimental uncertainty"
+    }
+  },
+  "model_id": "FWD-TORUS-1.0",
+  "numerics": {
+    "atol": 1e-12,
+    "event_cluster_tolerance": 1e-09,
+    "max_step": 0.01,
+    "method": "DOP853",
+    "output_dt": 0.002,
+    "rtol": 1e-10
+  },
+  "observation": {
+    "axis_1": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "axis_2": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "record_times": {
+      "kind": "uniform",
+      "start": 0.0,
+      "step": 0.01,
+      "stop": 2.0
+    },
+    "t0": 0.0,
+    "type": "orthographic"
+  },
+  "physical": {
+    "A": [
+      -0.15,
+      0.0,
+      0.0
+    ],
+    "B": [
+      0.15,
+      0.0,
+      0.0
+    ],
+    "T": 2.0,
+    "e_z": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "g": 9.80665,
+    "initial_state": [
+      0.08,
+      0.12,
+      0.0,
+      0.0
+    ],
+    "lower_length": 0.35,
+    "mass": 0.08,
+    "s_A": 0.35,
+    "s_B": 0.35
+  },
+  "schema_version": "YPS-FWD-CONFIG-1.0",
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI",
+  "validation": {
+    "expected_contract_status": [
+      "COMPLETED"
+    ],
+    "physics_checks": {
+      "maximum_abs_geometry_residual": 1e-10,
+      "maximum_energy_metric": 1e-09,
+      "maximum_negative_Q_T": 1e-10,
+      "maximum_negative_returned_R": 1e-10,
+      "maximum_negative_returned_tension": 1e-10,
+      "maximum_normalized_absolute_dynamics_defect": 1e-07,
+      "maximum_normalized_cumulative_dynamics_defect": 1e-08,
+      "maximum_normalized_dynamics_defect": 1e-06,
+      "minimum_completed_R": 0.001,
+      "minimum_completed_tension": 0.001
+    },
+    "schema_version": "YPS-FWD-VALIDATION-1.0",
+    "studies": {
+      "time": {
+        "cauchy_ratio_slack": 1.05,
+        "comparison_time_step": 0.002,
+        "energy_floor": 1e-12,
+        "energy_ratio_slack": 1.05,
+        "guard_variation_safety_factor": 4.0,
+        "max_finest_event_time_difference": 1e-08,
+        "max_finest_max_angle": 1e-08,
+        "max_finest_max_angular_rate": 1e-07,
+        "max_finest_max_bob_position": 1e-09,
+        "max_finest_max_energy": 1e-09,
+        "max_finest_max_tension": 1e-07,
+        "max_finest_rms_angle": 1e-09,
+        "max_finest_rms_angular_rate": 1e-08,
+        "max_finest_rms_bob_position": 1e-10,
+        "max_finest_rms_energy": 1e-10,
+        "max_finest_rms_tension": 1e-08,
+        "minimum_comparison_samples": 500,
+        "normalized_numerical_floor": 1e-06
+      }
+    }
+  }
+}

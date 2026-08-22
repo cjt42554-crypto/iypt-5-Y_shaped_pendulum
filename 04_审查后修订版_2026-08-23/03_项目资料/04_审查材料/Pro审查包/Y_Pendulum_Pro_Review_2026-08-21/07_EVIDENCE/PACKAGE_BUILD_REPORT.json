@@ -1,0 +1,18 @@
+{
+  "all_in_one_size_bytes": 1550736,
+  "downsample": {
+    "column_count": 45,
+    "first_source_index": 0,
+    "last_source_index": 15360,
+    "output_sha256": "6dc8a6acae665069e3e2cdedbb7a87d43c2a853fbd040cd4f0a254ae4512efd7",
+    "row_count": 301,
+    "source_sample_count": 15361
+  },
+  "excluded_binary_count": 23,
+  "frozen_identities_verified": true,
+  "hdf5_all_numeric_datasets_finite": true,
+  "hdf5_dataset_count": 69,
+  "package_name": "Y_Pendulum_Pro_Review_2026-08-21",
+  "schema": "YPS-PRO-REVIEW-PACKAGE-BUILD-REPORT-1.0",
+  "scope": "personal scientific-computing prototype"
+}
