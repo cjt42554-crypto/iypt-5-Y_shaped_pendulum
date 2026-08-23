@@ -1,21 +1,45 @@
 # Scientific revision layer
 
-The inherited simulator remains intact inside this copied project. New code is under:
+The inherited simulator remains intact inside this copied project. The
+corrective implementation is isolated under `src/ypendulum/scientific_revision/`
+and does not modify the original repository-root simulator or theory trees.
 
-```text
-src/ypendulum/scientific_revision/
-```
+The scientific identities are deliberately distinct:
 
-The revision layer intentionally does not overwrite the original HF validation vocabulary. Runs that change compression, EI or the bob limit receive a new model identity and a separate result bundle.
+- FWD is a unilateral tension-cable / point-bob forward model;
+- revised HF is a discrete flexible-rod / finite-rigid-bob model;
+- the unilateral HF limit is an ablation identity, not a production certificate;
+- structural torus statements remain separate from experiment-facing predictions.
+
+HF does not mean automatically closer to experiment. Changing compression,
+branch EI, bob inertia/attachment, contact or external mechanisms changes the
+model form and forbids inheritance of the original HF certificate.
 
 Key modules:
 
-- `overlay.py`: explicit per-branch EI and model identity;
-- `revised_model.py`: injects the overlay into a freshly assembled HF model;
-- `runner.py`: revised run output in the inherited HDF5 display layout, without inheriting the original certificate;
-- `ablation.py`: M0--M5 model ladder;
-- `event_qualification.py`: event-rich refinement matrix;
-- `scientific_guard.py`: finite-window frequency and mechanism display guard;
-- `revised_desktop.py`: overlay selector, corrected labels and conservative interpretation;
-- `revised_desktop_adapter.py` / `revised_desktop_worker.py`: route GUI HF tasks through the explicit-EI runner and bind the overlay hash;
-- `structural_audit.py`: finite-window structural evidence audit.
+- `numerics.py`: NumPy-1.26/current trapezoid compatibility without monkeypatching;
+- `overlay.py`: per-branch EI, model identity and immutable raw/canonical sealing;
+- `model_identity.py`: machine-derived evidence state transitions;
+- `runner.py`: sealed config/overlay/common-state inputs and conservative reports;
+- `common_state.py`: exact HF material-state bytes plus deterministic FWD mapping;
+- `ablation.py`: executable M0–M5 chain with adjacent-change whitelists;
+- `event_qualification.py`: pre-frozen matrix executor and separate diagnostics;
+- `revised_desktop_worker.py`: GUI dispatch through the sealed overlay copy;
+- `scientific_guard.py` and `structural_audit.py`: finite-window claim guards.
+
+Every revised run reports these separately:
+
+```text
+model_claim_ceiling
+requested_analysis_level
+actual_evidence_level
+evidence_bundle_sha256
+downgrade_reasons
+```
+
+An overlay never grants evidence. Without a matching machine evidence bundle,
+the actual level is `MODEL_CONSISTENT`. A short event matrix or M0–M5 smoke may
+support code-path verification, but it is explicitly not
+`NUMERICALLY_QUALIFIED`, `EXPERIMENTALLY_VALIDATED` or `PREDICTIVE`.
+
+See `configs/revision/README.md` for reproducible commands and boundaries.
