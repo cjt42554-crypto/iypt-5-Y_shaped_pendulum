@@ -7,7 +7,7 @@
   **7e08546d0a6e06b19f3331088a2427a01b9142c7**。
 - 规范分支：**main**，也是唯一允许长期存在和直接 commit/push 的分支。
 - 整理开始时所在的 **codex/correct-04-scientific-revision** 仅作为历史来源；整理成果合入
-  **main** 后删除，不作为后续工作入口。
+  **main** 后已删除，不再作为后续工作入口。
 - 当前目标：保留并复核纠正后的候选，完成新路径复现、独立审查和后续数值资格；
   未经明确批准不晋升到根目录 01/02/03。
 
@@ -26,6 +26,9 @@
 
 ~~~text
 WORKSPACE_ORGANIZED = true
+GIT_BRANCH_POLICY = main_only
+GOVERNANCE_MERGED_TO_MAIN = true
+GOVERNANCE_PUSHED = true
 CANDIDATE_PROMOTED = false
 HISTORICAL_CODE_EVIDENCE = CODE_VERIFIED
 READY_FOR_NUMERICAL_QUALIFICATION = true
