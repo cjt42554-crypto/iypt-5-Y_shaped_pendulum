@@ -20,11 +20,10 @@ from .overlay import load_overlay
 from .revised_desktop_adapter import RevisedDesktopYPendulumAdapter
 from .scientific_guard import frequency_preview, preview_spectrum
 
-
 base.DesktopYPendulumAdapter = RevisedDesktopYPendulumAdapter
 base.BACKEND_LABELS = {
     "前向仅受拉柔索 (FWD-CABLE)": "forward",
-    "显式 EI 双边柔性杆 (HF-ROD)": "high_fidelity",
+    "离散柔性杆—有限刚体摆球 (HF-ROD)": "high_fidelity",
     "同输入双后端（模型形式差异）": "both",
 }
 base.BACKEND_NAMES = {value: key for key, value in base.BACKEND_LABELS.items()}
@@ -63,8 +62,8 @@ class ScientificRevisionDesktopApp(base.YPendulumDesktopApp):
                 "前向预测数值后端与第一性原理高保真后端共用输入合同；"
                 "理论、求解与证据状态分别呈现。"
             ): (
-                "前向仅受拉柔索与显式 EI 双边柔性杆共用宏观输入；"
-                "模型形式、完整初态与证据等级分别呈现。"
+                "前向仅受拉柔索与离散柔性杆—有限刚体摆球 HF 后端共用宏观输入；"
+                "HF 名称不表示其自动更接近实验，模型形式、完整初态与证据等级分别呈现。"
             ),
         }
         try:
@@ -139,7 +138,9 @@ class ScientificRevisionDesktopApp(base.YPendulumDesktopApp):
             self.overlay_description_var.set(
                 f"模型：{overlay.model_id}\nEI：{values}\n"
                 f"压缩权重：{overlay.compression_scale:.6g}；"
-                f"证据上限：{overlay.effective_claim.value}；SHA-256 {digest[:12]}…\n"
+                f"模型声明上限：{overlay.model_claim_ceiling.value}；"
+                "无机器证据包时实际等级：MODEL_CONSISTENT；"
+                f"SHA-256 {digest[:12]}…\n"
                 f"文件：{path}"
             )
             if hasattr(self, "inline_error"):

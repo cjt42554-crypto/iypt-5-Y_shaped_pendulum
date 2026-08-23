@@ -30,7 +30,8 @@ from ypendulum.ui.desktop_worker import (
 )
 
 from .desktop_contract import scientific_revision_metadata, user_scan_coordinates
-from .overlay import load_overlay
+from .model_identity import derive_evidence_assessment
+from .overlay import load_overlay_bytes, seal_overlay_bytes
 
 
 def _sha256_file(path: Path) -> str:
@@ -41,23 +42,31 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _verified_overlay(request: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
+def _verified_overlay(
+    request: dict[str, Any],
+) -> tuple[bytes, Path, dict[str, Any]]:
     metadata = scientific_revision_metadata(request)
     path = Path(metadata["overlay_path"]).expanduser().resolve()
     if not path.is_file():
         raise FileNotFoundError(f"科学修订 overlay 不存在：{path}")
-    actual = _sha256_file(path)
+    raw = path.read_bytes()
+    actual = hashlib.sha256(raw).hexdigest()
     if actual != metadata["overlay_sha256"]:
         raise ValueError(
             "科学修订 overlay 在请求封存后发生变化："
             f"expected={metadata['overlay_sha256']}, actual={actual}"
         )
-    overlay = load_overlay(path)
-    return path, {
-        "path": str(path),
-        "sha256": actual,
+    overlay = load_overlay_bytes(raw, source_label=str(path))
+    assessment = derive_evidence_assessment(
+        requested_analysis_level=overlay.requested_analysis_level,
+        model_claim_ceiling=overlay.model_claim_ceiling,
+        evidence=None,
+    )
+    return raw, path, {
+        "original_source_path_for_information_only": str(path),
+        "source_sha256": actual,
         "model_id": overlay.model_id,
-        "effective_claim": overlay.effective_claim.value,
+        **assessment.to_dict(),
         "branch_EI_N_m2": {
             name: value.value_N_m2 for name, value in overlay.branch_bending.items()
         },
@@ -89,7 +98,22 @@ def run_request(request_path: Path, backend: str, output: Path) -> int:
 
     try:
         if backend in {"high_fidelity", "both"}:
-            overlay_path, revision = _verified_overlay(request)
+            overlay_raw, original_overlay_path, revision = _verified_overlay(request)
+            sealed_overlay = seal_overlay_bytes(
+                overlay_raw,
+                output / "inputs",
+                original_source_path_for_information_only=str(original_overlay_path),
+            )
+            overlay_path = sealed_overlay.raw_path
+            revision.update(
+                {
+                    "sealed_overlay_path": str(
+                        overlay_path.relative_to(output)
+                    ),
+                    "overlay_raw_sha256": sealed_overlay.raw_sha256,
+                    "overlay_canonical_sha256": sealed_overlay.canonical_sha256,
+                }
+            )
         else:
             overlay_path = None
 
@@ -103,13 +127,8 @@ def run_request(request_path: Path, backend: str, output: Path) -> int:
             code = _run_and_relay(
                 [
                     sys.executable,
-                    "-c",
-                    (
-                        "import numpy as np; "
-                        "np.trapz = getattr(np, 'trapz', np.trapezoid); "
-                        "from y_pendulum_forward.cli import main; "
-                        "raise SystemExit(main())"
-                    ),
+                    "-m",
+                    "y_pendulum_forward.cli",
                     "run",
                     str(forward_config_path),
                     "--output",
@@ -156,6 +175,8 @@ def run_request(request_path: Path, backend: str, output: Path) -> int:
                     str(hf_config_path),
                     "--overlay",
                     str(overlay_path),
+                    "--expected-overlay-sha256",
+                    sealed_overlay.raw_sha256,
                     "--output",
                     str(hf_directory),
                 ],

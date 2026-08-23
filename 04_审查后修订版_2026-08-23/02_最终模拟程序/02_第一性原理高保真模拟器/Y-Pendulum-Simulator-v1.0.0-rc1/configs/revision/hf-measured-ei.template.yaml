@@ -18,7 +18,7 @@ branch_bending_stiffness:
 bob_mode: finite
 point_limit_fraction: 0.001
 contact_guard_mode: inherited
-requested_claim: CODE_VERIFIED
+requested_analysis_level: CODE_VERIFIED
 initial_state_semantics: backend_prepared_material_state_explicitly_reported
 notes:
   - EI 不得仅由拉伸 E 与直径推导后标记为 measured。

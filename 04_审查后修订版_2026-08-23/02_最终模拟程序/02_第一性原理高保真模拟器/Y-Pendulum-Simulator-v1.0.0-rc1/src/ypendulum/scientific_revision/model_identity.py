@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass
-from enum import Enum
-from typing import Any, Mapping
+from enum import StrEnum
+from typing import Any
 
 
-class EvidenceLevel(str, Enum):
+class EvidenceLevel(StrEnum):
     MODEL_CONSISTENT = "MODEL_CONSISTENT"
     CODE_VERIFIED = "CODE_VERIFIED"
     NUMERICALLY_QUALIFIED = "NUMERICALLY_QUALIFIED"
@@ -22,6 +23,10 @@ _EVIDENCE_RANK = {
     EvidenceLevel.EXPERIMENTALLY_VALIDATED: 3,
     EvidenceLevel.PREDICTIVE: 4,
 }
+
+_EVIDENCE_ORDER = tuple(
+    sorted(EvidenceLevel, key=lambda item: _EVIDENCE_RANK[item])
+)
 
 
 @dataclass(frozen=True)
@@ -41,6 +46,26 @@ class ModelIdentity:
         payload["claim_ceiling"] = self.claim_ceiling.value
         payload["notes"] = list(self.notes)
         return payload
+
+
+@dataclass(frozen=True)
+class EvidenceAssessment:
+    """Machine-derived evidence state shown by runners, GUI workers and reports."""
+
+    model_claim_ceiling: EvidenceLevel
+    requested_analysis_level: EvidenceLevel
+    actual_evidence_level: EvidenceLevel
+    evidence_bundle_sha256: str | None
+    downgrade_reasons: tuple[str, ...]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "model_claim_ceiling": self.model_claim_ceiling.value,
+            "requested_analysis_level": self.requested_analysis_level.value,
+            "actual_evidence_level": self.actual_evidence_level.value,
+            "evidence_bundle_sha256": self.evidence_bundle_sha256,
+            "downgrade_reasons": list(self.downgrade_reasons),
+        }
 
 
 MODEL_IDENTITIES: Mapping[str, ModelIdentity] = {
@@ -138,6 +163,8 @@ def evidence_transition_allowed(
     current: str | EvidenceLevel,
     target: str | EvidenceLevel,
     evidence: Mapping[str, Any],
+    *,
+    source_commit: str | None = None,
 ) -> tuple[bool, tuple[str, ...]]:
     current_level = parse_evidence_level(current)
     target_level = parse_evidence_level(target)
@@ -150,9 +177,27 @@ def evidence_transition_allowed(
             missing.append("tests_passed")
         if not bool(evidence.get("energy_and_invariant_checks_passed")):
             missing.append("energy_and_invariant_checks_passed")
+        if not bool(evidence.get("input_identity_complete")):
+            missing.append("input_identity_complete")
+        clean = evidence.get(
+            "clean_worktree",
+            evidence.get("clean_worktree_at_evidence_generation", False),
+        )
+        if not bool(clean):
+            missing.append("clean_worktree")
+        if not bool(evidence.get("contact_guards_enabled")):
+            missing.append("contact_guards_enabled")
+        recorded_commit = evidence.get("git_commit")
+        commit_matches = bool(evidence.get("source_commit_matches"))
+        if source_commit is not None:
+            commit_matches = recorded_commit == source_commit
+        if not commit_matches:
+            missing.append("source_commit_matches")
     if _EVIDENCE_RANK[target_level] >= _EVIDENCE_RANK[EvidenceLevel.NUMERICALLY_QUALIFIED]:
         if not bool(evidence.get("space_time_output_refinement_passed")):
             missing.append("space_time_output_refinement_passed")
+        if not bool(evidence.get("solver_crosscheck_passed")):
+            missing.append("solver_crosscheck_passed")
         if not bool(evidence.get("event_signature_stable")):
             missing.append("event_signature_stable")
         if not bool(evidence.get("thresholds_frozen_before_runs")):
@@ -170,3 +215,63 @@ def evidence_transition_allowed(
         if not bool(evidence.get("prediction_interval_coverage_passed")):
             missing.append("prediction_interval_coverage_passed")
     return not missing, tuple(missing)
+
+
+def derive_evidence_assessment(
+    *,
+    requested_analysis_level: str | EvidenceLevel,
+    model_claim_ceiling: str | EvidenceLevel,
+    evidence: Mapping[str, Any] | None,
+    evidence_bundle_sha256: str | None = None,
+    source_commit: str | None = None,
+) -> EvidenceAssessment:
+    """Derive, rather than accept, the evidence level for a run.
+
+    A user overlay may request a target and a model identity supplies an upper
+    ceiling.  Neither grants evidence.  The function walks every transition in
+    order and stops at the first missing machine condition.
+    """
+
+    requested = parse_evidence_level(requested_analysis_level)
+    ceiling = parse_evidence_level(model_claim_ceiling)
+    allowed_target = lower_evidence_level(requested, ceiling)
+    actual = EvidenceLevel.MODEL_CONSISTENT
+    reasons: list[str] = []
+    evidence_mapping: Mapping[str, Any] = {} if evidence is None else evidence
+
+    if evidence is None:
+        reasons.append("missing_evidence_bundle")
+    else:
+        for candidate in _EVIDENCE_ORDER[1:]:
+            if _EVIDENCE_RANK[candidate] > _EVIDENCE_RANK[allowed_target]:
+                break
+            permitted, missing = evidence_transition_allowed(
+                actual,
+                candidate,
+                evidence_mapping,
+                source_commit=source_commit,
+            )
+            if not permitted:
+                reasons.extend(missing)
+                break
+            actual = candidate
+
+    if _EVIDENCE_RANK[requested] > _EVIDENCE_RANK[ceiling]:
+        reasons.append("requested_analysis_level_exceeds_model_claim_ceiling")
+    if evidence is not None and _EVIDENCE_RANK[actual] < _EVIDENCE_RANK[allowed_target]:
+        next_level = _EVIDENCE_ORDER[_EVIDENCE_RANK[actual] + 1]
+        _allowed, missing = evidence_transition_allowed(
+            actual,
+            next_level,
+            evidence_mapping,
+            source_commit=source_commit,
+        )
+        reasons.extend(missing)
+
+    return EvidenceAssessment(
+        model_claim_ceiling=ceiling,
+        requested_analysis_level=requested,
+        actual_evidence_level=actual,
+        evidence_bundle_sha256=evidence_bundle_sha256,
+        downgrade_reasons=tuple(dict.fromkeys(reasons)),
+    )

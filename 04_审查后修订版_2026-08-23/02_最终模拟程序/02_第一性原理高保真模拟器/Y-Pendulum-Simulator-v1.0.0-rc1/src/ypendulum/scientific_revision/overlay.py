@@ -2,16 +2,21 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
-from dataclasses import asdict, dataclass, replace
+import os
+import tempfile
+from collections.abc import Mapping
+from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 import yaml
 
 from .model_identity import (
     EvidenceLevel,
+    derive_evidence_assessment,
     get_model_identity,
     lower_evidence_level,
     parse_evidence_level,
@@ -48,7 +53,15 @@ class RevisionOverlay:
     notes: tuple[str, ...] = ()
 
     @property
-    def effective_claim(self) -> EvidenceLevel:
+    def model_claim_ceiling(self) -> EvidenceLevel:
+        return get_model_identity(self.model_id).claim_ceiling
+
+    @property
+    def requested_analysis_level(self) -> EvidenceLevel:
+        return self.requested_claim
+
+    @property
+    def requested_ceiling(self) -> EvidenceLevel:
         identity = get_model_identity(self.model_id)
         return lower_evidence_level(self.requested_claim, identity.claim_ceiling)
 
@@ -63,20 +76,57 @@ class RevisionOverlay:
             "bob_mode": self.bob_mode,
             "point_limit_fraction": self.point_limit_fraction,
             "contact_guard_mode": self.contact_guard_mode,
-            "requested_claim": self.requested_claim.value,
-            "effective_claim": self.effective_claim.value,
+            "requested_analysis_level": self.requested_analysis_level.value,
+            "model_claim_ceiling": self.model_claim_ceiling.value,
             "initial_state_semantics": self.initial_state_semantics,
             "notes": list(self.notes),
         }
 
 
-def _load_mapping(path: str | Path) -> dict[str, Any]:
-    source = Path(path)
-    text = source.read_text(encoding="utf-8")
-    payload = json.loads(text) if source.suffix.lower() == ".json" else yaml.safe_load(text)
+@dataclass(frozen=True)
+class SealedOverlayInput:
+    overlay: RevisionOverlay
+    raw_path: Path
+    raw_sha256: str
+    canonical_path: Path
+    canonical_sha256: str
+    manifest_path: Path
+
+
+def _mapping_from_bytes(raw: bytes, *, source_label: str) -> dict[str, Any]:
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"{source_label} 不是有效 UTF-8 overlay。") from exc
+    payload = yaml.safe_load(text)
     if not isinstance(payload, dict):
         raise ValueError("修订 overlay 根节点必须是映射。")
     return payload
+
+
+def _load_mapping(path: str | Path) -> dict[str, Any]:
+    source = Path(path)
+    return _mapping_from_bytes(source.read_bytes(), source_label=str(source))
+
+
+def _atomic_write(path: Path, payload: bytes) -> None:
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="wb",
+            dir=path.parent,
+            prefix=f".{path.name}.tmp-",
+            delete=False,
+        ) as stream:
+            stream.write(payload)
+            stream.flush()
+            os.fsync(stream.fileno())
+            temporary = Path(stream.name)
+        os.replace(temporary, path)
+    except Exception:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+        raise
 
 
 def _quantity_to_ei(value: Any, *, path: str) -> BranchBendingSpecification:
@@ -123,12 +173,15 @@ def overlay_from_mapping(payload: Mapping[str, Any]) -> RevisionOverlay:
         "point_limit_fraction",
         "contact_guard_mode",
         "requested_claim",
+        "requested_analysis_level",
         "initial_state_semantics",
         "notes",
     }
     unknown = set(payload) - allowed
     if unknown:
         raise ValueError(f"修订 overlay 含未知字段：{sorted(unknown)}")
+    if "requested_claim" in payload and "requested_analysis_level" in payload:
+        raise ValueError("requested_claim 与 requested_analysis_level 不能同时出现。")
     schema = str(payload.get("schema_version", ""))
     if schema != OVERLAY_SCHEMA:
         raise ValueError(f"overlay schema 必须是 {OVERLAY_SCHEMA!r}，实际为 {schema!r}。")
@@ -176,7 +229,10 @@ def overlay_from_mapping(payload: Mapping[str, Any]) -> RevisionOverlay:
         point_limit_fraction=point_fraction,
         contact_guard_mode=contact_mode,
         requested_claim=parse_evidence_level(
-            payload.get("requested_claim", EvidenceLevel.CODE_VERIFIED.value)
+            payload.get(
+                "requested_analysis_level",
+                payload.get("requested_claim", EvidenceLevel.CODE_VERIFIED.value),
+            )
         ),
         initial_state_semantics=str(payload.get("initial_state_semantics", "backend_native")),
         notes=notes,
@@ -187,11 +243,114 @@ def load_overlay(path: str | Path) -> RevisionOverlay:
     return overlay_from_mapping(_load_mapping(path))
 
 
+def load_overlay_bytes(raw: bytes, *, source_label: str = "overlay bytes") -> RevisionOverlay:
+    return overlay_from_mapping(_mapping_from_bytes(raw, source_label=source_label))
+
+
+def seal_overlay_bytes(
+    raw: bytes,
+    input_directory: str | Path,
+    *,
+    original_source_path_for_information_only: str,
+) -> SealedOverlayInput:
+    """Seal exactly the bytes already checked by a caller.
+
+    The mutable source path is never opened here.  Both parsing and all later
+    subprocess dispatch are bound to ``overlay.raw`` inside the run package.
+    """
+
+    overlay = load_overlay_bytes(raw, source_label=original_source_path_for_information_only)
+    directory = Path(input_directory).expanduser().resolve()
+    directory.mkdir(parents=True, exist_ok=False)
+    raw_sha = hashlib.sha256(raw).hexdigest()
+    canonical = (
+        json.dumps(
+            overlay.to_dict(),
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            allow_nan=False,
+        )
+        + "\n"
+    ).encode("utf-8")
+    canonical_sha = hashlib.sha256(canonical).hexdigest()
+    raw_path = directory / "overlay.raw"
+    canonical_path = directory / "overlay.canonical.json"
+    _atomic_write(raw_path, raw)
+    _atomic_write(directory / "overlay.raw.sha256", f"{raw_sha}\n".encode("ascii"))
+    _atomic_write(canonical_path, canonical)
+    _atomic_write(
+        directory / "overlay.canonical.sha256",
+        f"{canonical_sha}\n".encode("ascii"),
+    )
+    manifest = {
+        "schema_version": "YPS-SEALED-OVERLAY-1.0",
+        "overlay_raw": raw_path.name,
+        "overlay_raw_sha256": raw_sha,
+        "overlay_canonical": canonical_path.name,
+        "overlay_canonical_sha256": canonical_sha,
+        "original_source_path_for_information_only": (
+            original_source_path_for_information_only
+        ),
+        "identity_uses_original_source_path": False,
+    }
+    manifest_path = directory / "overlay-input.json"
+    _atomic_write(
+        manifest_path,
+        (
+            json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True)
+            + "\n"
+        ).encode("utf-8"),
+    )
+    return SealedOverlayInput(
+        overlay=overlay,
+        raw_path=raw_path,
+        raw_sha256=raw_sha,
+        canonical_path=canonical_path,
+        canonical_sha256=canonical_sha,
+        manifest_path=manifest_path,
+    )
+
+
+def seal_overlay_source(
+    source_path: str | Path,
+    input_directory: str | Path,
+    *,
+    expected_sha256: str | None = None,
+) -> SealedOverlayInput:
+    source = Path(source_path).expanduser().resolve()
+    raw = source.read_bytes()
+    actual = hashlib.sha256(raw).hexdigest()
+    if expected_sha256 is not None and actual != expected_sha256:
+        raise ValueError(
+            "科学修订 overlay 在请求封存后发生变化："
+            f"expected={expected_sha256}, actual={actual}"
+        )
+    return seal_overlay_bytes(
+        raw,
+        input_directory,
+        original_source_path_for_information_only=str(source),
+    )
+
+
+def verify_sealed_overlay(sealed: SealedOverlayInput) -> None:
+    raw = sealed.raw_path.read_bytes()
+    canonical = sealed.canonical_path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != sealed.raw_sha256:
+        raise ValueError("封存 overlay.raw 在运行前发生篡改。")
+    if hashlib.sha256(canonical).hexdigest() != sealed.canonical_sha256:
+        raise ValueError("封存 overlay.canonical.json 在运行前发生篡改。")
+    reparsed = load_overlay_bytes(raw, source_label=str(sealed.raw_path))
+    expected = json.loads(canonical.decode("utf-8"))
+    if reparsed.to_dict() != expected:
+        raise ValueError("封存 overlay 原始字节与规范表示不一致。")
+
+
 def dump_overlay(overlay: RevisionOverlay, path: str | Path) -> Path:
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
     payload = overlay.to_dict()
-    payload.pop("effective_claim", None)
+    payload.pop("model_claim_ceiling", None)
     target.write_text(
         yaml.safe_dump(payload, allow_unicode=True, sort_keys=False), encoding="utf-8"
     )
@@ -252,7 +411,11 @@ def apply_overlay_to_model(model: Any, overlay: RevisionOverlay) -> dict[str, An
         "schema_version": OVERLAY_SCHEMA,
         "model_identity": get_model_identity(overlay.model_id).to_dict(),
         "overlay": overlay.to_dict(),
-        "effective_claim": overlay.effective_claim.value,
+        **derive_evidence_assessment(
+            requested_analysis_level=overlay.requested_analysis_level,
+            model_claim_ceiling=overlay.model_claim_ceiling,
+            evidence=None,
+        ).to_dict(),
         "actual_branch_EI_N_m2": {
             name: float(model.branches[name].ei) for name in BRANCH_NAMES
         },

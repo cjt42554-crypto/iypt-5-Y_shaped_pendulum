@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from copy import deepcopy
-from typing import Any, Mapping
+from typing import Any
 
 OVERLAY_PATH_KEY = "__scientific_revision_overlay_path__"
 OVERLAY_SHA256_KEY = "__scientific_revision_overlay_sha256__"
