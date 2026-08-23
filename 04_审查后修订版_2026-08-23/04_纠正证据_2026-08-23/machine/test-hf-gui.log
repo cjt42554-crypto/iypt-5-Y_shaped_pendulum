@@ -1,0 +1,16 @@
+schema_version=YPS-CORRECTIVE-COMMAND-LOG-1.0
+name=HF and GUI full tests
+source_commit=2a7a039559dd05f757d5a70fa8af68b073507f0b
+started_at_utc=2026-08-23T10:54:43.464368Z
+ended_at_utc=2026-08-23T10:55:48.431332Z
+cwd=/tmp/yps-corrective-evidence-owaj_y9z/clean-checkout/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1
+command='/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python' -m pytest -q '--junitxml=/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/04_纠正证据_2026-08-23/machine/test-hf-gui.junit.xml'
+exit_code=0
+--- stdout ---
+........................................................................ [ 34%]
+........................................................................ [ 69%]
+................................................................         [100%]
+208 passed in 63.76s (0:01:03)
+
+--- stderr ---
+

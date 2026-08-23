@@ -1,0 +1,17 @@
+{
+  "certificate_inheritance": "FORBIDDEN",
+  "common_state": null,
+  "config_raw_path": "inputs/config.raw.yaml",
+  "config_raw_sha256": "6bdd4304a6908e921a06e6ee2a7e122fe21453c2c4c43d26bd1e53e54c8d5e25",
+  "config_resolved_sha256": "fedb02c9bc97e85351021252ce184a37d807abe6b50986d14369d122845e237b",
+  "evidence_bundle": null,
+  "initial_condition_canonical_sha256": "2a89f792c6bdbd1babe8d68b66bf13cd1f1509776a48d7256b7662d4e816b2cc",
+  "initial_state_semantics": "backend_prepared_material_state_explicitly_reported",
+  "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+  "overlay_canonical_path": "inputs/overlay.canonical.json",
+  "overlay_canonical_sha256": "db5f26744ce15ee010b069cb89e8a402218676a4df9a1563fa3de56859e6f6a1",
+  "overlay_raw_path": "inputs/overlay.raw",
+  "overlay_raw_sha256": "9cedf009c3868f756ba4512bc39ba5b5fc65c41ca38ad405051a008666ea90e6",
+  "preparation_mode": "geometric_direct_release_non_equilibrium",
+  "preparation_residual_inf_N": 0.5483563980094149
+}

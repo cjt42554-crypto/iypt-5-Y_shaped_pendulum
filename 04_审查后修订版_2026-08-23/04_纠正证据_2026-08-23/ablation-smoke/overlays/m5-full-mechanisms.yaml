@@ -1,0 +1,23 @@
+schema_version: YPS-SCIENTIFIC-REVISION-OVERLAY-1.1
+model_id: HF-BILATERAL-ROD-RIGID-BOB-1.1
+compression_scale: 1.0
+branch_bending_stiffness:
+  upper_A:
+    value: 6.75e-06
+    unit: N*m^2
+    source: provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement
+  upper_B:
+    value: 6.75e-06
+    unit: N*m^2
+    source: provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement
+  lower:
+    value: 6.75e-06
+    unit: N*m^2
+    source: provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement
+bob_mode: finite
+point_limit_fraction: 0.001
+contact_guard_mode: inherited
+requested_analysis_level: CODE_VERIFIED
+initial_state_semantics: sealed_common_hf_material_state
+notes:
+- M5：在同一初态上启用基础配置明确声明的外部机制。

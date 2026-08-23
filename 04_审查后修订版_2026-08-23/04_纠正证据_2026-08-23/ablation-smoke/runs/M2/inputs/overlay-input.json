@@ -1,0 +1,9 @@
+{
+  "identity_uses_original_source_path": false,
+  "original_source_path_for_information_only": "/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/04_纠正证据_2026-08-23/ablation-smoke/overlays/m2-unilateral-zero-ei-finite-bob.yaml",
+  "overlay_canonical": "overlay.canonical.json",
+  "overlay_canonical_sha256": "08201250c4734b80e54b68a677ff27854d00f0817f601494aca15c037511bac2",
+  "overlay_raw": "overlay.raw",
+  "overlay_raw_sha256": "c2ccaf7a4b479011e5ab62ba21b5eda8e3e060a9535eceb04aaa75234f4d0b68",
+  "schema_version": "YPS-SEALED-OVERLAY-1.0"
+}

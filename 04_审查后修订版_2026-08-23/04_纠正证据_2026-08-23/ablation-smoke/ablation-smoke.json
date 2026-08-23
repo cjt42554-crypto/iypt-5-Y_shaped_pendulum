@@ -1,0 +1,357 @@
+{
+  "actual_evidence_level": "MODEL_CONSISTENT",
+  "adjacent_diff_enforced": true,
+  "base_hf_config_sha256": "0d855cfb923089ba857ccfd51faf68df35722d5085f7d3d2206be707a519101a",
+  "common_state_canonical_sha256": "a95fb9c701bafd89d099fb73f30f00a227f53ac67fc866f0b3c9694d0094c608",
+  "common_state_enforced": true,
+  "common_state_manifest": "common-state/common-state.json",
+  "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+  "comparisons": [
+    {
+      "common_observable_trajectory_NRMS": 0.4588390629141609,
+      "energy_ledger": "stored_in_each_backend_run",
+      "event_sets": "reported_without_forcing_model_agreement",
+      "frequency_reliability": "UNAVAILABLE_SHORT_2MS_SMOKE",
+      "left": "M0",
+      "mapping_residuals": {
+        "left": {
+          "maximum_position_residual_m": 0.016666666666666607,
+          "maximum_velocity_residual_m_per_s": 0.0
+        },
+        "right": {
+          "hf_discrete_state_residual": 0.0
+        }
+      },
+      "right": "M1",
+      "schema_diff": [
+        "backend",
+        "initial_state_semantics",
+        "mapping_residuals",
+        "model_claim_ceiling",
+        "model_id"
+      ],
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "common_observable_trajectory_NRMS": 0.4826943040806335,
+      "energy_ledger": "stored_in_each_backend_run",
+      "event_sets": "reported_without_forcing_model_agreement",
+      "frequency_reliability": "UNAVAILABLE_SHORT_2MS_SMOKE",
+      "left": "M1",
+      "mapping_residuals": {
+        "left": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "right": {
+          "hf_discrete_state_residual": 0.0
+        }
+      },
+      "right": "M2",
+      "schema_diff": [
+        "bob_mode",
+        "contact_guard_mode"
+      ],
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "common_observable_trajectory_NRMS": 3.128306734896791e-09,
+      "energy_ledger": "stored_in_each_backend_run",
+      "event_sets": "reported_without_forcing_model_agreement",
+      "frequency_reliability": "UNAVAILABLE_SHORT_2MS_SMOKE",
+      "left": "M2",
+      "mapping_residuals": {
+        "left": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "right": {
+          "hf_discrete_state_residual": 0.0
+        }
+      },
+      "right": "M3",
+      "schema_diff": [
+        "branch_EI_N_m2"
+      ],
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "common_observable_trajectory_NRMS": 0.0,
+      "energy_ledger": "stored_in_each_backend_run",
+      "event_sets": "reported_without_forcing_model_agreement",
+      "frequency_reliability": "UNAVAILABLE_SHORT_2MS_SMOKE",
+      "left": "M3",
+      "mapping_residuals": {
+        "left": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "right": {
+          "hf_discrete_state_residual": 0.0
+        }
+      },
+      "right": "M4",
+      "schema_diff": [
+        "compression_scale",
+        "model_claim_ceiling",
+        "model_id",
+        "requested_analysis_level"
+      ],
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "common_observable_trajectory_NRMS": 0.0003436492389988009,
+      "energy_ledger": "stored_in_each_backend_run",
+      "event_sets": "reported_without_forcing_model_agreement",
+      "frequency_reliability": "UNAVAILABLE_SHORT_2MS_SMOKE",
+      "left": "M4",
+      "mapping_residuals": {
+        "left": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "right": {
+          "hf_discrete_state_residual": 0.0
+        }
+      },
+      "right": "M5",
+      "schema_diff": [
+        "external_mechanisms"
+      ],
+      "status": "DIAGNOSTIC_ONLY"
+    }
+  ],
+  "duration_s": 0.0015,
+  "experimentally_validated": false,
+  "forward_config_sha256": "cb09ec1a3a3780565a9d4169fd076a81ccf3309ca9e027804fe0a130b99ba808",
+  "generated_at_utc": "2026-08-23T10:56:41.409996Z",
+  "git_commit": "2a7a039559dd05f757d5a70fa8af68b073507f0b",
+  "interpretation": "这是 1--2 ms 的共同初态全链冒烟。相邻差异用于机制诊断，不要求 FWD 与 HF 完整模型一致，也不是生产资格或实验验证。",
+  "m0_executable": true,
+  "measured_overlay_sha256": "9cedf009c3868f756ba4512bc39ba5b5fc65c41ca38ad405051a008666ea90e6",
+  "numerically_qualified": false,
+  "plan_frozen": true,
+  "plan_id": "corrective-low-cost-ablation-smoke-2026-08-23",
+  "plan_sha256": "3b5bcaeadbc32f2fdd8863d30ff68f03165e49876c891a12de0a33031fc9a690",
+  "predictive": false,
+  "schema_version": "YPS-ABLATION-EXECUTION-2.0",
+  "source_unchanged_after_runs": true,
+  "stages": [
+    {
+      "descriptor": {
+        "backend": "FWD",
+        "bob_mode": "point_limit",
+        "branch_EI_N_m2": {
+          "lower": 0.0,
+          "upper_A": 0.0,
+          "upper_B": 0.0
+        },
+        "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+        "compression_scale": 0.0,
+        "contact_guard_mode": "disabled",
+        "external_mechanisms": [],
+        "initial_state_semantics": "deterministic_common_state_projection",
+        "mapping_residuals": {
+          "maximum_position_residual_m": 0.016666666666666607,
+          "maximum_velocity_residual_m_per_s": 0.0
+        },
+        "model_claim_ceiling": "CODE_VERIFIED",
+        "model_id": "FWD-TENSION-CABLE-POINT-BOB-1.1",
+        "requested_analysis_level": "MODEL_CONSISTENT"
+      },
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "run_directory": "runs/M0",
+      "stage": "M0",
+      "status": "COMPLETE"
+    },
+    {
+      "actual_evidence_level": "MODEL_CONSISTENT",
+      "descriptor": {
+        "backend": "HF",
+        "bob_mode": "point_limit",
+        "branch_EI_N_m2": {
+          "lower": 0.0,
+          "upper_A": 0.0,
+          "upper_B": 0.0
+        },
+        "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+        "compression_scale": 0.0,
+        "contact_guard_mode": "disabled",
+        "external_mechanisms": [],
+        "initial_state_semantics": "sealed_common_hf_material_state",
+        "mapping_residuals": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "model_claim_ceiling": "MODEL_CONSISTENT",
+        "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+        "requested_analysis_level": "MODEL_CONSISTENT"
+      },
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "run_directory": "runs/M1",
+      "stage": "M1",
+      "status": "COMPLETE"
+    },
+    {
+      "actual_evidence_level": "MODEL_CONSISTENT",
+      "descriptor": {
+        "backend": "HF",
+        "bob_mode": "finite",
+        "branch_EI_N_m2": {
+          "lower": 0.0,
+          "upper_A": 0.0,
+          "upper_B": 0.0
+        },
+        "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+        "compression_scale": 0.0,
+        "contact_guard_mode": "inherited",
+        "external_mechanisms": [],
+        "initial_state_semantics": "sealed_common_hf_material_state",
+        "mapping_residuals": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "model_claim_ceiling": "MODEL_CONSISTENT",
+        "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+        "requested_analysis_level": "MODEL_CONSISTENT"
+      },
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "run_directory": "runs/M2",
+      "stage": "M2",
+      "status": "COMPLETE"
+    },
+    {
+      "actual_evidence_level": "MODEL_CONSISTENT",
+      "descriptor": {
+        "backend": "HF",
+        "bob_mode": "finite",
+        "branch_EI_N_m2": {
+          "lower": 6.75e-06,
+          "upper_A": 6.75e-06,
+          "upper_B": 6.75e-06
+        },
+        "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+        "compression_scale": 0.0,
+        "contact_guard_mode": "inherited",
+        "external_mechanisms": [],
+        "initial_state_semantics": "sealed_common_hf_material_state",
+        "mapping_residuals": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "model_claim_ceiling": "MODEL_CONSISTENT",
+        "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+        "requested_analysis_level": "MODEL_CONSISTENT"
+      },
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "run_directory": "runs/M3",
+      "stage": "M3",
+      "status": "COMPLETE"
+    },
+    {
+      "actual_evidence_level": "MODEL_CONSISTENT",
+      "descriptor": {
+        "backend": "HF",
+        "bob_mode": "finite",
+        "branch_EI_N_m2": {
+          "lower": 6.75e-06,
+          "upper_A": 6.75e-06,
+          "upper_B": 6.75e-06
+        },
+        "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+        "compression_scale": 1.0,
+        "contact_guard_mode": "inherited",
+        "external_mechanisms": [],
+        "initial_state_semantics": "sealed_common_hf_material_state",
+        "mapping_residuals": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "model_claim_ceiling": "CODE_VERIFIED",
+        "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+        "requested_analysis_level": "CODE_VERIFIED"
+      },
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "run_directory": "runs/M4",
+      "stage": "M4",
+      "status": "COMPLETE"
+    },
+    {
+      "actual_evidence_level": "MODEL_CONSISTENT",
+      "descriptor": {
+        "backend": "HF",
+        "bob_mode": "finite",
+        "branch_EI_N_m2": {
+          "lower": 6.75e-06,
+          "upper_A": 6.75e-06,
+          "upper_B": 6.75e-06
+        },
+        "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+        "compression_scale": 1.0,
+        "contact_guard_mode": "inherited",
+        "external_mechanisms": [
+          "bob_aerodynamic_drag",
+          "bob_buoyancy",
+          "upper_A_aerodynamic_drag",
+          "upper_B_aerodynamic_drag",
+          "lower_aerodynamic_drag",
+          "declared_observer"
+        ],
+        "initial_state_semantics": "sealed_common_hf_material_state",
+        "mapping_residuals": {
+          "hf_discrete_state_residual": 0.0
+        },
+        "model_claim_ceiling": "CODE_VERIFIED",
+        "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+        "requested_analysis_level": "CODE_VERIFIED"
+      },
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "run_directory": "runs/M5",
+      "stage": "M5",
+      "status": "COMPLETE"
+    }
+  ],
+  "status": "PASS",
+  "transitions": [
+    {
+      "changed_roots": [
+        "backend",
+        "initial_state_semantics",
+        "mapping_residuals",
+        "model_claim_ceiling",
+        "model_id"
+      ],
+      "left": "M0",
+      "passed": true,
+      "right": "M1"
+    },
+    {
+      "changed_roots": [
+        "bob_mode",
+        "contact_guard_mode"
+      ],
+      "left": "M1",
+      "passed": true,
+      "right": "M2"
+    },
+    {
+      "changed_roots": [
+        "branch_EI_N_m2"
+      ],
+      "left": "M2",
+      "passed": true,
+      "right": "M3"
+    },
+    {
+      "changed_roots": [
+        "compression_scale",
+        "model_claim_ceiling",
+        "model_id",
+        "requested_analysis_level"
+      ],
+      "left": "M3",
+      "passed": true,
+      "right": "M4"
+    },
+    {
+      "changed_roots": [
+        "external_mechanisms"
+      ],
+      "left": "M4",
+      "passed": true,
+      "right": "M5"
+    }
+  ]
+}

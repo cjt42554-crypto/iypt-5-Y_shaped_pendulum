@@ -1,0 +1,9 @@
+{
+  "identity_uses_original_source_path": false,
+  "original_source_path_for_information_only": "/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/04_纠正证据_2026-08-23/ablation-smoke/overlays/m5-full-mechanisms.yaml",
+  "overlay_canonical": "overlay.canonical.json",
+  "overlay_canonical_sha256": "3e0357ec0e206a07ca4d681bea76eee79f3e011c9afd5d737ed020478bee065e",
+  "overlay_raw": "overlay.raw",
+  "overlay_raw_sha256": "81ca1f260c79fe5910189601ddb72bdd6f8b1ff8315af097d7146dd59f9af66b",
+  "schema_version": "YPS-SEALED-OVERLAY-1.0"
+}

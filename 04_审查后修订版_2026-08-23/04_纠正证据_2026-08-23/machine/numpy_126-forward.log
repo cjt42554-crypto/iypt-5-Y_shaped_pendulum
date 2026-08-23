@@ -1,0 +1,14 @@
+schema_version=YPS-CORRECTIVE-COMMAND-LOG-1.0
+name=numpy_126 forward compatibility
+source_commit=2a7a039559dd05f757d5a70fa8af68b073507f0b
+started_at_utc=2026-08-23T10:56:09.092556Z
+ended_at_utc=2026-08-23T10:56:28.394795Z
+cwd=/tmp/yps-corrective-evidence-owaj_y9z/clean-checkout/04_审查后修订版_2026-08-23/02_最终模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver
+command=/tmp/yps-numpy126-evidence-20418dc/bin/python -m pytest -q tests/test_cable.py tests/test_convergence.py
+exit_code=0
+--- stdout ---
+.............................................................   [100%]
+61 passed, 9 subtests passed in 19.15s
+
+--- stderr ---
+

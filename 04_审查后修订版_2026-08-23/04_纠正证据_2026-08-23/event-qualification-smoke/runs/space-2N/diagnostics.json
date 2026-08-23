@@ -1,0 +1,264 @@
+{
+  "accepted_integration_step_count": 12,
+  "accepted_integration_step_hard_cap": 1024,
+  "aerodynamic_chord_guard_m": 3.26e-15,
+  "angular_velocity_atol_rad_s": 1e-07,
+  "axial_material_model": "passive_unilateral_bilateral_kelvin_voigt_blend",
+  "bending_energy_fraction_peak": 2.002718067065024e-08,
+  "bending_turn_clearance_floor": 1e-08,
+  "bob_attachment_body_m": [
+    -0.0,
+    -0.0,
+    -0.02
+  ],
+  "bob_contact_radius_m": 0.02,
+  "bob_inertia_kg_m2": 1.2800000000000001e-05,
+  "bob_socket_rest_material_length_m": 0.02152,
+  "branch_beads": {
+    "lower": 6,
+    "upper_A": 4,
+    "upper_B": 4
+  },
+  "branch_bending_stiffness_N_m2": {
+    "lower": 6.75e-06,
+    "upper_A": 6.75e-06,
+    "upper_B": 6.75e-06
+  },
+  "cable_material_field_semantics": "E, eta, area parameter source only; HF axial_material_model owns the constitutive branch",
+  "checkpoint_original_integration_wall_seconds": null,
+  "compression_regularization_scale": 1.0,
+  "contact_registration_id": "FIXED_REST_MATERIAL_SOCKETS_PROJECTIVE_V2",
+  "contact_scope": "bob-vs-rod and rod-vs-rod root guards; friction, compliant contact, fracture, ground contact and knot sliding excluded",
+  "contact_topology_precomputed": true,
+  "energy_balance_scale_J": 0.3058603129288,
+  "energy_balance_scale_definition": "total_gravitational_force_scale_times_characteristic_length",
+  "geometry_singularity_floor_m": 3.26e-16,
+  "guard_component_metadata": {
+    "AERODYNAMIC_CHORD_LENGTH": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "BENDING_TURN_CLEARANCE": {
+      "scale": 1.0,
+      "tolerance": 2.2737367544323206e-13,
+      "unit": "dimensionless"
+    },
+    "BOB_ROD_CLEARANCE": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "BOB_SOCKET_CUT_CLEARANCE": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "BOB_SOCKET_MATERIAL_EXTENT": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "BOB_SOCKET_RADIAL_MONOTONICITY": {
+      "scale": 0.10627600000000001,
+      "tolerance": 2.4164364731404932e-14,
+      "unit": "m^2"
+    },
+    "JUNCTION_SOCKET_CUT_CLEARANCE": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "JUNCTION_SOCKET_MATERIAL_EXTENT": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "JUNCTION_SOCKET_PROJECTIVE_OPENING": {
+      "scale": 1.0,
+      "tolerance": 2.2737367544323206e-13,
+      "unit": "dimensionless"
+    },
+    "MINIMUM_SEGMENT_LENGTH": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    },
+    "ROD_SELF_CLEARANCE": {
+      "scale": 0.326,
+      "tolerance": 7.412381819449365e-14,
+      "unit": "m"
+    }
+  },
+  "integration_checkpoint_path": null,
+  "integration_checkpoint_reused": false,
+  "integration_checkpoint_schema": null,
+  "integration_wall_seconds": 0.11714124500031176,
+  "jacobian_kind": "colored_finite_difference_from_local_HF_dependency_graph",
+  "jacobian_sparsity_nnz": 1474,
+  "junction_contact_pair_count": 3,
+  "junction_index": 14,
+  "junction_pair_socket_rest_material_length_m": {
+    "upper_A__lower": 0.00604,
+    "upper_A__upper_B": 0.00604,
+    "upper_B__lower": 0.00604
+  },
+  "junction_socket_projective_opening_definition": "inf_{s,t>=0,s+t>0} ||p_i(s)-p_j(t)||^2/(s+t)^2 minus (required_center_separation/(2*socket_length))^2",
+  "length_guard_m": 3.26e-13,
+  "machine_scale_terminal_steps_coalesced": 0,
+  "max_abs_energy_balance_residual": 2.5298275550482167e-10,
+  "max_step_s": 0.000125,
+  "maximum_accepted_integration_step_s": 0.0001250000000000001,
+  "maximum_quaternion_norm_error": 1.1102230246251565e-16,
+  "maximum_signed_axial_force_N": 0.24008622234589044,
+  "maximum_tension_N": 0.24008622234589044,
+  "minimum_accepted_integration_step_s": 0.00012499999999999968,
+  "minimum_aerodynamic_chord_length_m": 0.08310994040220351,
+  "minimum_bending_turn_clearance": 1.9999999187029929,
+  "minimum_bob_contact_margin_m": 0.020366927829117174,
+  "minimum_bob_socket_cut_clearance_m": 0.020346927829117182,
+  "minimum_bob_socket_material_extent_m": 0.30448000000000003,
+  "minimum_bob_socket_radial_monotonicity_m2": 0.00043564819268567846,
+  "minimum_cell_wave_time_s": 0.0017181708620248196,
+  "minimum_contact_margin_m": 8.713703176784719e-05,
+  "minimum_junction_socket_cut_clearance_m": 0.0032716666666666675,
+  "minimum_junction_socket_material_extent_m": 0.28196,
+  "minimum_junction_socket_projective_opening": 0.20876736111111116,
+  "minimum_rod_self_contact_margin_m": 8.713703176784719e-05,
+  "minimum_segment_length_m": 0.02770203932986618,
+  "minimum_signed_axial_force_N": 0.14308529153798594,
+  "minimum_tension_N": 0.14308529153798594,
+  "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+  "nfev": 86,
+  "njev": 1,
+  "nlu": 24,
+  "particle_count": 15,
+  "physical_force_scale_N": 0.9382218188,
+  "physics_path": "local material beads + passive unilateral/bilateral KV blend + three-point bending + finite rigid bob",
+  "position_atol_m": 1e-08,
+  "postprocess_average_cpu_utilization_percent": 100.26321852442138,
+  "postprocess_average_equivalent_cpu_cores": 1.0026321852442137,
+  "postprocess_parallel_backend": "DETERMINISTIC_SERIAL_V1",
+  "postprocess_physical_core_count": 16,
+  "postprocess_process_tree_cpu_seconds": 0.040000000000000036,
+  "postprocess_wall_seconds": 0.03989498899863975,
+  "postprocess_worker_count": 1,
+  "preparation_audit": {},
+  "preparation_bob_held": false,
+  "preparation_force_residual_inf_N": 0.5483563980094149,
+  "preparation_iterations": 0,
+  "preparation_mode": "geometric_direct_release_non_equilibrium",
+  "presentation_sample_evaluation_wall_seconds": 0.0397104119983851,
+  "quaternion_atol": 1e-08,
+  "quaternion_stabilization_rate_s_inv": 1.0,
+  "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+  "resource_runtime_enforcement": "MANUAL_SCIPY_RADAU_BDF_ACCEPTED_STEP_CAP_V1",
+  "resource_upper_bound": {
+    "accepted_step_budget": 1024,
+    "accepted_step_hard_cap": 1024,
+    "accepted_step_limit": 2000001,
+    "accepted_trace_float_budget": 1054720,
+    "estimate_id": "HF_SINGLE_RUN_RESOURCE_HARD_CAP_V1",
+    "estimated_peak_memory_bytes": 11252380,
+    "estimated_result_bytes": 2248560,
+    "implicit_workspace_float_budget": 63654,
+    "nominal_accepted_steps": 13,
+    "output_sample_limit": 2000001,
+    "output_samples": 13,
+    "peak_memory_limit_bytes": 8589934592,
+    "presentation_float_budget": 6864,
+    "result_limit_bytes": 8589934592,
+    "runtime_enforcement_id": "MANUAL_SCIPY_RADAU_BDF_ACCEPTED_STEP_CAP_V1",
+    "serialized_result_float_budget": 224856,
+    "state_size": 103,
+    "total_elements": 14
+  },
+  "rtol": 1e-06,
+  "runtime_seconds": 0.11714124500031176,
+  "same_branch_full_contact_pair_count": {
+    "lower": 15,
+    "upper_A": 6,
+    "upper_B": 6
+  },
+  "same_branch_minimum_material_separation_m": {
+    "lower": 0.0030502000000000003,
+    "upper_A": 0.0030502000000000003,
+    "upper_B": 0.0030502000000000003
+  },
+  "same_branch_partial_contact_pair_count": {
+    "lower": 6,
+    "upper_A": 4,
+    "upper_B": 4
+  },
+  "scientific_revision": {
+    "actual_branch_EI_N_m2": {
+      "lower": 6.75e-06,
+      "upper_A": 6.75e-06,
+      "upper_B": 6.75e-06
+    },
+    "actual_compression_scale": 1.0,
+    "actual_evidence_level": "MODEL_CONSISTENT",
+    "bob_limit": {
+      "mode": "finite"
+    },
+    "contact_guard_enabled": true,
+    "downgrade_reasons": [
+      "missing_evidence_bundle"
+    ],
+    "evidence_bundle_sha256": null,
+    "model_claim_ceiling": "CODE_VERIFIED",
+    "model_identity": {
+      "axial_constitutive": "bilateral_kelvin_voigt_rod",
+      "bending_constitutive": "independently_specified_EI",
+      "bob_model": "finite_rigid_body_with_eccentric_attachment",
+      "claim_ceiling": "CODE_VERIFIED",
+      "compression_scale": 1.0,
+      "display_name_zh": "双边离散柔性杆—有限刚体摆球模型",
+      "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+      "notes": [
+        "该模型可承受压缩并具有弯曲能，不等同于仅受拉绳。",
+        "EI 必须作为独立参数给定；不能仅由拉伸 E 与直径自动认定为实验真值。"
+      ],
+      "role": "mechanism_resolving_rod_model"
+    },
+    "overlay": {
+      "bob_mode": "finite",
+      "branch_bending_stiffness": {
+        "lower": {
+          "source": "provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement",
+          "unit": "N*m^2",
+          "value": 6.75e-06
+        },
+        "upper_A": {
+          "source": "provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement",
+          "unit": "N*m^2",
+          "value": 6.75e-06
+        },
+        "upper_B": {
+          "source": "provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement",
+          "unit": "N*m^2",
+          "value": 6.75e-06
+        }
+      },
+      "compression_scale": 1.0,
+      "contact_guard_mode": "inherited",
+      "initial_state_semantics": "backend_prepared_material_state_explicitly_reported",
+      "model_claim_ceiling": "CODE_VERIFIED",
+      "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+      "notes": [
+        "该文件只是把旧代码隐含的 EI 显式化，不能作为实验材料的独立 EI 标定。",
+        "用于预测前必须替换为三支各自测量的 EI，并封存测量记录。"
+      ],
+      "point_limit_fraction": 0.001,
+      "requested_analysis_level": "CODE_VERIFIED",
+      "schema_version": "YPS-SCIENTIFIC-REVISION-OVERLAY-1.1"
+    },
+    "requested_analysis_level": "CODE_VERIFIED",
+    "schema_version": "YPS-SCIENTIFIC-REVISION-OVERLAY-1.1"
+  },
+  "solver_method": "Radau",
+  "state_size": 103,
+  "tension_zero_tolerance_N": 2.1332694332159008e-13,
+  "terminal_time_coalescing_tolerance_s": 4.145611919760125e-14,
+  "velocity_atol_m_s": 1e-07
+}

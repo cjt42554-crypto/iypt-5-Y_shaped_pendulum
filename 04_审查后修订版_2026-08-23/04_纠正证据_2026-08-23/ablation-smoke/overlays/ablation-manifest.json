@@ -1,0 +1,84 @@
+{
+  "common_initial_state_contract": {
+    "M0": "deterministic_polynomial_projection_with_reported_residual",
+    "M1_to_M5": "identical_raw_HF_state_bytes",
+    "bob": "COM_orientation_linear_and_angular_velocity",
+    "branches": "material_coordinates_positions_velocities_and_natural_lengths",
+    "junction": "position_and_velocity",
+    "supports": "positions_and_velocities"
+  },
+  "comparison_policy": {
+    "adjacent_stages_only": true,
+    "do_not_force_full_model_agreement": true,
+    "experimental_validation": false,
+    "production_qualification": false
+  },
+  "measured_overlay_sha256": "9cedf009c3868f756ba4512bc39ba5b5fc65c41ca38ad405051a008666ea90e6",
+  "schema_version": "YPS-SCIENTIFIC-REVISION-ABLATION-2.0",
+  "source_path_is_identity": false,
+  "stages": [
+    {
+      "executable": true,
+      "isolated_change": "reference",
+      "label": "FWD tension-cable / point-bob baseline",
+      "model_id": "FWD-TENSION-CABLE-POINT-BOB-1.1",
+      "overlay": null,
+      "stage": "M0"
+    },
+    {
+      "executable": true,
+      "initial_state_semantics": "sealed_common_hf_material_state",
+      "isolated_change": "backend_space_discretization_and_state_mapping",
+      "label": "M1：精确仅受拉、EI=0、声明的点摆球极限。",
+      "model_claim_ceiling": "MODEL_CONSISTENT",
+      "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+      "overlay": "m1-unilateral-zero-ei-point-limit.yaml",
+      "requested_analysis_level": "MODEL_CONSISTENT",
+      "stage": "M1"
+    },
+    {
+      "executable": true,
+      "initial_state_semantics": "sealed_common_hf_material_state",
+      "isolated_change": "finite_rigid_bob_and_eccentric_attachment",
+      "label": "M2：在完全相同的 HF 离散初态上恢复有限刚体摆球与偏心连接。",
+      "model_claim_ceiling": "MODEL_CONSISTENT",
+      "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+      "overlay": "m2-unilateral-zero-ei-finite-bob.yaml",
+      "requested_analysis_level": "MODEL_CONSISTENT",
+      "stage": "M2"
+    },
+    {
+      "executable": true,
+      "initial_state_semantics": "sealed_common_hf_material_state",
+      "isolated_change": "independent_branch_EI",
+      "label": "M3：只加入三支独立 EI；不重新平衡初态。",
+      "model_claim_ceiling": "MODEL_CONSISTENT",
+      "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+      "overlay": "m3-unilateral-measured-ei-finite-bob.yaml",
+      "requested_analysis_level": "MODEL_CONSISTENT",
+      "stage": "M3"
+    },
+    {
+      "executable": true,
+      "initial_state_semantics": "sealed_common_hf_material_state",
+      "isolated_change": "bilateral_compression_constitutive_law",
+      "label": "M4：只加入双边压缩本构；不重新平衡初态。",
+      "model_claim_ceiling": "CODE_VERIFIED",
+      "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+      "overlay": "m4-bilateral-measured-ei-finite-bob.yaml",
+      "requested_analysis_level": "CODE_VERIFIED",
+      "stage": "M4"
+    },
+    {
+      "executable": true,
+      "initial_state_semantics": "sealed_common_hf_material_state",
+      "isolated_change": "explicitly_enabled_external_mechanisms",
+      "label": "M5：在同一初态上启用基础配置明确声明的外部机制。",
+      "model_claim_ceiling": "CODE_VERIFIED",
+      "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+      "overlay": "m5-full-mechanisms.yaml",
+      "requested_analysis_level": "CODE_VERIFIED",
+      "stage": "M5"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+schema_version=YPS-CORRECTIVE-COMMAND-LOG-1.0
+name=evidence state positive and negative gates
+source_commit=2a7a039559dd05f757d5a70fa8af68b073507f0b
+started_at_utc=2026-08-23T10:56:32.882900Z
+ended_at_utc=2026-08-23T10:56:34.324155Z
+cwd=/tmp/yps-corrective-evidence-owaj_y9z/clean-checkout/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1
+command='/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python' -m pytest -q tests/unit/test_scientific_revision.py -k 'machine_evidence_can_grant or code_evidence_downgrades or runner_enforces_live_input or model_identity_caps'
+exit_code=0
+--- stdout ---
+........                                                                 [100%]
+8 passed, 14 deselected in 0.08s
+
+--- stderr ---
+

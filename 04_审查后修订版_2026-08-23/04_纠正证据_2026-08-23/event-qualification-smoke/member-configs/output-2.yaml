@@ -1,0 +1,279 @@
+schema_version: '1.0'
+run:
+  name: corrective_common_state_smoke
+  mode: high_fidelity
+  seed: 20260823
+  output_directory: runs/corrective-common-state-smoke
+  claim_level: DERIVED
+environment:
+  gravity:
+    value:
+    - 0.0
+    - 0.0
+    - 9.80665
+    unit: m/s^2
+    source: standard
+  air_density:
+    value: 1.2
+    unit: kg/m^3
+    source: smoke_input
+  air_velocity:
+    value:
+    - 0.0
+    - 0.0
+    - 0.0
+    unit: m/s
+    source: smoke_input
+supports:
+  A:
+    type: fixed
+    position:
+      value:
+      - -0.15
+      - 0.0
+      - 0.0
+      unit: m
+      source: smoke_input
+  B:
+    type: fixed
+    position:
+      value:
+      - 0.15
+      - 0.0
+      - 0.0
+      unit: m
+      source: smoke_input
+junction:
+  mass:
+    value: 0.003
+    unit: kg
+    source: smoke_input
+  drag_linear:
+    value: 0.0
+    unit: N*s/m
+    source: smoke_input
+bob:
+  mass:
+    value: 0.08
+    unit: kg
+    source: smoke_input
+  radius:
+    value: 0.02
+    unit: m
+    source: smoke_input
+  drag:
+    enabled: true
+    model: quadratic_plus_linear
+    cd:
+      value: 0.47
+      unit: dimensionless
+      source: smoke_input
+    linear_coefficient:
+      value: 0.0015
+      unit: N*s/m
+      source: smoke_input
+  buoyancy: true
+cables:
+  upper_A:
+    rest_length:
+      value: 0.288
+      unit: m
+      source: smoke_input
+    diameter:
+      value: 0.003
+      unit: m
+      source: smoke_input
+    density:
+      value: 1414.710605261292
+      unit: kg/m^3
+      source: smoke_input
+    young_modulus:
+      value: 1697652.7263135503
+      unit: Pa
+      source: smoke_input
+    axial_viscosity:
+      value: 1414.710605261292
+      unit: Pa*s
+      source: smoke_input
+    elements: 2
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_linear_normal_per_length:
+      value: 0.001
+      unit: N*s/m^2
+      source: smoke_input
+    drag_linear_tangent_per_length:
+      value: 0.0001
+      unit: N*s/m^2
+      source: smoke_input
+    drag_enabled: true
+    material_model: linear_kelvin_voigt_tension_only
+  upper_B:
+    rest_length:
+      value: 0.288
+      unit: m
+      source: smoke_input
+    diameter:
+      value: 0.003
+      unit: m
+      source: smoke_input
+    density:
+      value: 1414.710605261292
+      unit: kg/m^3
+      source: smoke_input
+    young_modulus:
+      value: 1697652.7263135503
+      unit: Pa
+      source: smoke_input
+    axial_viscosity:
+      value: 1414.710605261292
+      unit: Pa*s
+      source: smoke_input
+    elements: 2
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_linear_normal_per_length:
+      value: 0.001
+      unit: N*s/m^2
+      source: smoke_input
+    drag_linear_tangent_per_length:
+      value: 0.0001
+      unit: N*s/m^2
+      source: smoke_input
+    drag_enabled: true
+    material_model: linear_kelvin_voigt_tension_only
+  lower:
+    rest_length:
+      value: 0.326
+      unit: m
+      source: smoke_input
+    diameter:
+      value: 0.003
+      unit: m
+      source: smoke_input
+    density:
+      value: 1697.6527263135504
+      unit: kg/m^3
+      source: smoke_input
+    young_modulus:
+      value: 1697652.7263135503
+      unit: Pa
+      source: smoke_input
+    axial_viscosity:
+      value: 1697.6527263135504
+      unit: Pa*s
+      source: smoke_input
+    elements: 3
+    drag_cd_normal: 0.5555555555555556
+    drag_cd_tangent: 0.05555555555555556
+    drag_linear_normal_per_length:
+      value: 0.001
+      unit: N*s/m^2
+      source: smoke_input
+    drag_linear_tangent_per_length:
+      value: 0.0001
+      unit: N*s/m^2
+      source: smoke_input
+    drag_enabled: true
+    material_model: linear_kelvin_voigt_tension_only
+initial_condition:
+  type: geometric_direct_release
+  junction_position:
+    value:
+    - 0.0
+    - 0.0
+    - 0.25
+    unit: m
+    source: smoke_input
+  junction_velocity:
+    value:
+    - 0.0
+    - 0.0
+    - 0.0
+    unit: m/s
+    source: smoke_input
+  bob_position:
+    value:
+    - 0.035
+    - 0.02
+    - 0.6
+    unit: m
+    source: smoke_input
+  bob_velocity:
+    value:
+    - 0.0
+    - 0.0
+    - 0.0
+    unit: m/s
+    source: smoke_input
+  bob_angular_velocity:
+    value:
+    - 0.0
+    - 0.0
+    - 0.0
+    unit: rad/s
+    source: smoke_input
+solver:
+  profile: quick
+  t_end:
+    value: 0.0015
+    unit: s
+  output_dt:
+    value: 0.000125
+    unit: s
+  max_step:
+    value: 0.000125
+    unit: s
+  mass_matrix: lumped
+  method: Radau
+  resolve_longitudinal_waves: false
+  analytic_jacobian: true
+  allow_subminimum_mesh: true
+  rtol: 1.0e-06
+  position_atol:
+    value: 1.0e-08
+    unit: m
+  velocity_atol:
+    value: 1.0e-07
+    unit: m/s
+  quaternion_atol: 1.0e-08
+  angular_velocity_atol:
+    value: 1.0e-07
+    unit: rad/s
+  static:
+    method: continuation_newton
+    force_tolerance:
+      value: 1.0e-08
+      unit: N
+    max_iterations: 40
+    continuation_steps: 3
+    line_search_min: 1.0e-05
+analysis:
+  target_ratio:
+  - 3
+  - 2
+  phase_tolerance:
+    value: 0.2
+    unit: rad
+  slow_period_count: 2
+  compute_spectrum: false
+  compute_uncertainty: false
+observer:
+  type: orthographic_xy
+high_fidelity:
+  model_id: HF-DISCRETE-ROD-RIGID-BOB-1.0
+  axial_material_model: passive_unilateral_bilateral_kelvin_voigt_blend
+  bending_stiffness_scale: 1.0
+  compression_regularization_scale: 1.0
+  controlled_limit_study: false
+  bob_inertia_factor: 0.4
+  bob_attachment_radius_fraction: 1.0
+  bob_contact_radius_fraction: 1.0
+  quaternion_stabilization_rate:
+    value: 1.0
+    unit: 1/s
+    source: numerical
+  contact_guard_enabled: true
+  minimum_clearance:
+    value: 2.0e-05
+    unit: m

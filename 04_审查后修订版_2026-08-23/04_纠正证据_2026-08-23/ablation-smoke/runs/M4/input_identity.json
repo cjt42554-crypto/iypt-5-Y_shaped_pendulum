@@ -1,0 +1,115 @@
+{
+  "certificate_inheritance": "FORBIDDEN",
+  "common_state": {
+    "canonical_state_sha256": "a95fb9c701bafd89d099fb73f30f00a227f53ac67fc866f0b3c9694d0094c608",
+    "manifest_path": "common-state.json",
+    "manifest_sha256": "c011156de009107f16caef0c07efb815263f559b0bbf5915c31605d1cd24856d",
+    "mapping_residuals": {
+      "forward_polynomial": {
+        "lower": {
+          "maximum_position_mapping_residual_m": 0.016666666666666607,
+          "maximum_velocity_mapping_residual_m_per_s": 0.0,
+          "position_polynomial_coefficients": [
+            [
+              0.0,
+              0.0,
+              0.25
+            ],
+            [
+              0.035,
+              0.02,
+              0.35
+            ]
+          ],
+          "velocity_polynomial_coefficients": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "upper_A": {
+          "maximum_position_mapping_residual_m": 6.938893903907228e-18,
+          "maximum_velocity_mapping_residual_m_per_s": 0.0,
+          "position_polynomial_coefficients": [
+            [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            [
+              0.15,
+              0.0,
+              0.25
+            ]
+          ],
+          "velocity_polynomial_coefficients": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "upper_B": {
+          "maximum_position_mapping_residual_m": 6.938893903907228e-18,
+          "maximum_velocity_mapping_residual_m_per_s": 0.0,
+          "position_polynomial_coefficients": [
+            [
+              0.15,
+              0.0,
+              0.0
+            ],
+            [
+              -0.15,
+              0.0,
+              0.25
+            ]
+          ],
+          "velocity_polynomial_coefficients": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        }
+      },
+      "hf_discrete_state_residual": 0.0,
+      "interpretation": "M0 uses a deterministic endpoint-compatible degree-one projection; M1--M5 consume the exact same frozen HF state vector.",
+      "maximum_forward_position_residual_m": 0.016666666666666607,
+      "maximum_forward_velocity_residual_m_per_s": 0.0
+    },
+    "raw_state_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+    "sealed_manifest_path": "inputs/common-state/common-state.json"
+  },
+  "config_raw_path": "inputs/config.raw.yaml",
+  "config_raw_sha256": "7eeeeb26162035bd5c38b4ce319befa2afcc6d647eca20e8d0344f5ca7b132b0",
+  "config_resolved_sha256": "97759acd264632c1d458a754c52df905657c4134321952af8878dd2ab2aa0e5e",
+  "evidence_bundle": null,
+  "initial_condition_canonical_sha256": "2a89f792c6bdbd1babe8d68b66bf13cd1f1509776a48d7256b7662d4e816b2cc",
+  "initial_state_semantics": "sealed_common_hf_material_state",
+  "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+  "overlay_canonical_path": "inputs/overlay.canonical.json",
+  "overlay_canonical_sha256": "b09f639133760a256b0f8e56841f3d0f09ef06ec41798f1cb64969dbd3ca85d1",
+  "overlay_raw_path": "inputs/overlay.raw",
+  "overlay_raw_sha256": "5f41193d0e1c7248df61052cd636aa2f7559d765d856d7a97bae5830b639e40e",
+  "preparation_mode": "sealed_common_material_state",
+  "preparation_residual_inf_N": 0.548750746804248
+}

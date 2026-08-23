@@ -1,0 +1,14 @@
+schema_version=YPS-CORRECTIVE-COMMAND-LOG-1.0
+name=event identity plan hash grid and mutation negative gates
+source_commit=2a7a039559dd05f757d5a70fa8af68b073507f0b
+started_at_utc=2026-08-23T10:56:35.781576Z
+ended_at_utc=2026-08-23T10:56:37.111056Z
+cwd=/tmp/yps-corrective-evidence-owaj_y9z/clean-checkout/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1
+command='/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python' -m pytest -q tests/unit/test_scientific_revision.py -k 'event_qualification_rejects_changed_event_order or event_qualification_fails_closed_when_event_is_missing or event_executor_rejects_wrong_grid_and_input_hash or event_executor_fails_if_threshold_plan_changes'
+exit_code=0
+--- stdout ---
+....                                                                     [100%]
+4 passed, 18 deselected in 0.16s
+
+--- stderr ---
+

@@ -1,0 +1,14 @@
+schema_version=YPS-CORRECTIVE-COMMAND-LOG-1.0
+name=numpy_latest forward compatibility
+source_commit=2a7a039559dd05f757d5a70fa8af68b073507f0b
+started_at_utc=2026-08-23T10:55:49.915260Z
+ended_at_utc=2026-08-23T10:56:06.926745Z
+cwd=/tmp/yps-corrective-evidence-owaj_y9z/clean-checkout/04_审查后修订版_2026-08-23/02_最终模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver
+command='/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python' -m pytest -q tests/test_cable.py tests/test_convergence.py
+exit_code=0
+--- stdout ---
+.............................................................   [100%]
+61 passed, 9 subtests passed in 16.87s
+
+--- stderr ---
+

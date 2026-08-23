@@ -1,0 +1,24 @@
+schema_version: YPS-SCIENTIFIC-REVISION-OVERLAY-1.1
+model_id: HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1
+compression_scale: 0.0
+branch_bending_stiffness:
+  upper_A:
+    value: 0.0
+    unit: N*m^2
+    source: M1_zero_EI_controlled_limit
+  upper_B:
+    value: 0.0
+    unit: N*m^2
+    source: M1_zero_EI_controlled_limit
+  lower:
+    value: 0.0
+    unit: N*m^2
+    source: M1_zero_EI_controlled_limit
+bob_mode: point_limit
+point_limit_fraction: 0.001
+contact_guard_mode: disabled
+requested_analysis_level: MODEL_CONSISTENT
+initial_state_semantics: sealed_common_hf_material_state
+notes:
+- M1：精确仅受拉、EI=0、声明的点摆球极限。
+- 与 M0 的差异包含后端状态空间及确定性映射残差。

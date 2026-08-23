@@ -1,0 +1,14 @@
+schema_version=YPS-CORRECTIVE-COMMAND-LOG-1.0
+name=ablation extra drift negative gate
+source_commit=2a7a039559dd05f757d5a70fa8af68b073507f0b
+started_at_utc=2026-08-23T10:56:37.111276Z
+ended_at_utc=2026-08-23T10:56:38.350633Z
+cwd=/tmp/yps-corrective-evidence-owaj_y9z/clean-checkout/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1
+command='/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python' -m pytest -q tests/unit/test_scientific_revision.py -k ablation_transition_rejects_extra_parameter_drift
+exit_code=0
+--- stdout ---
+.                                                                        [100%]
+1 passed, 21 deselected in 0.08s
+
+--- stderr ---
+

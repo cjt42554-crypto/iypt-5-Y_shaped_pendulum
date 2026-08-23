@@ -1,0 +1,7 @@
+{
+  "common_state_raw_sha256": "7419e7f61c3bbdec26dbfb349b0b31e18fe4d80694f6cfa16d70628d9dd33472",
+  "git_commit": "2a7a039559dd05f757d5a70fa8af68b073507f0b",
+  "plan_sha256": "3b5bcaeadbc32f2fdd8863d30ff68f03165e49876c891a12de0a33031fc9a690",
+  "schema_version": "YPS-ABLATION-EXECUTION-2.0",
+  "stage": "M5"
+}

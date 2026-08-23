@@ -1,0 +1,65 @@
+{
+  "actual_branch_EI_N_m2": {
+    "lower": 0.0,
+    "upper_A": 0.0,
+    "upper_B": 0.0
+  },
+  "actual_compression_scale": 0.0,
+  "actual_evidence_level": "MODEL_CONSISTENT",
+  "bob_limit": {
+    "mode": "finite"
+  },
+  "contact_guard_enabled": true,
+  "downgrade_reasons": [
+    "missing_evidence_bundle"
+  ],
+  "evidence_bundle_sha256": null,
+  "model_claim_ceiling": "MODEL_CONSISTENT",
+  "model_identity": {
+    "axial_constitutive": "exact_unilateral_tension_only",
+    "bending_constitutive": "independently_specified_EI",
+    "bob_model": "finite_or_declared_point_limit",
+    "claim_ceiling": "MODEL_CONSISTENT",
+    "compression_scale": 0.0,
+    "display_name_zh": "仅受拉离散杆—有限刚体摆球受控极限模型",
+    "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+    "notes": [
+      "该身份用于消融和受控极限，不继承原 HF 生产资格证书。",
+      "当 EI=0 且采用点摆球极限时，可用于隔离离散化与初态映射误差。"
+    ],
+    "role": "controlled_ablation_limit"
+  },
+  "overlay": {
+    "bob_mode": "finite",
+    "branch_bending_stiffness": {
+      "lower": {
+        "source": "M1_zero_EI_controlled_limit",
+        "unit": "N*m^2",
+        "value": 0.0
+      },
+      "upper_A": {
+        "source": "M1_zero_EI_controlled_limit",
+        "unit": "N*m^2",
+        "value": 0.0
+      },
+      "upper_B": {
+        "source": "M1_zero_EI_controlled_limit",
+        "unit": "N*m^2",
+        "value": 0.0
+      }
+    },
+    "compression_scale": 0.0,
+    "contact_guard_mode": "inherited",
+    "initial_state_semantics": "sealed_common_hf_material_state",
+    "model_claim_ceiling": "MODEL_CONSISTENT",
+    "model_id": "HF-TENSION-ROD-RIGID-BOB-LIMIT-1.1",
+    "notes": [
+      "M2：在完全相同的 HF 离散初态上恢复有限刚体摆球与偏心连接。"
+    ],
+    "point_limit_fraction": 0.001,
+    "requested_analysis_level": "MODEL_CONSISTENT",
+    "schema_version": "YPS-SCIENTIFIC-REVISION-OVERLAY-1.1"
+  },
+  "requested_analysis_level": "MODEL_CONSISTENT",
+  "schema_version": "YPS-SCIENTIFIC-REVISION-OVERLAY-1.1"
+}

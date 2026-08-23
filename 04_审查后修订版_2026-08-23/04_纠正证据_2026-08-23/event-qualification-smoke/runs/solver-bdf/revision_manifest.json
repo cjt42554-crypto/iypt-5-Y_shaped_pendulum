@@ -1,0 +1,66 @@
+{
+  "actual_branch_EI_N_m2": {
+    "lower": 6.75e-06,
+    "upper_A": 6.75e-06,
+    "upper_B": 6.75e-06
+  },
+  "actual_compression_scale": 1.0,
+  "actual_evidence_level": "MODEL_CONSISTENT",
+  "bob_limit": {
+    "mode": "finite"
+  },
+  "contact_guard_enabled": true,
+  "downgrade_reasons": [
+    "missing_evidence_bundle"
+  ],
+  "evidence_bundle_sha256": null,
+  "model_claim_ceiling": "CODE_VERIFIED",
+  "model_identity": {
+    "axial_constitutive": "bilateral_kelvin_voigt_rod",
+    "bending_constitutive": "independently_specified_EI",
+    "bob_model": "finite_rigid_body_with_eccentric_attachment",
+    "claim_ceiling": "CODE_VERIFIED",
+    "compression_scale": 1.0,
+    "display_name_zh": "双边离散柔性杆—有限刚体摆球模型",
+    "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+    "notes": [
+      "该模型可承受压缩并具有弯曲能，不等同于仅受拉绳。",
+      "EI 必须作为独立参数给定；不能仅由拉伸 E 与直径自动认定为实验真值。"
+    ],
+    "role": "mechanism_resolving_rod_model"
+  },
+  "overlay": {
+    "bob_mode": "finite",
+    "branch_bending_stiffness": {
+      "lower": {
+        "source": "provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement",
+        "unit": "N*m^2",
+        "value": 6.75e-06
+      },
+      "upper_A": {
+        "source": "provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement",
+        "unit": "N*m^2",
+        "value": 6.75e-06
+      },
+      "upper_B": {
+        "source": "provisional_geometric_EI_from_current_E_and_d_not_experimental_measurement",
+        "unit": "N*m^2",
+        "value": 6.75e-06
+      }
+    },
+    "compression_scale": 1.0,
+    "contact_guard_mode": "inherited",
+    "initial_state_semantics": "backend_prepared_material_state_explicitly_reported",
+    "model_claim_ceiling": "CODE_VERIFIED",
+    "model_id": "HF-BILATERAL-ROD-RIGID-BOB-1.1",
+    "notes": [
+      "该文件只是把旧代码隐含的 EI 显式化，不能作为实验材料的独立 EI 标定。",
+      "用于预测前必须替换为三支各自测量的 EI，并封存测量记录。"
+    ],
+    "point_limit_fraction": 0.001,
+    "requested_analysis_level": "CODE_VERIFIED",
+    "schema_version": "YPS-SCIENTIFIC-REVISION-OVERLAY-1.1"
+  },
+  "requested_analysis_level": "CODE_VERIFIED",
+  "schema_version": "YPS-SCIENTIFIC-REVISION-OVERLAY-1.1"
+}
