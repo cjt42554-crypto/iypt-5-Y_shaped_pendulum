@@ -66,6 +66,12 @@ def _runtime(python: Path) -> dict[str, str]:
     )
 
 
+def _absolute_preserving_symlink(path: Path) -> Path:
+    """Return an absolute path without dereferencing a virtualenv launcher."""
+
+    return Path(os.path.abspath(path.expanduser()))
+
+
 def _run_checked(
     *,
     name: str,
@@ -142,8 +148,10 @@ def main() -> int:
     args = parser.parse_args()
     repository = args.repository.expanduser().resolve()
     output = args.output.expanduser().resolve()
-    python_latest = args.python_latest.expanduser().resolve()
-    python_126 = args.python_126.expanduser().resolve()
+    # Virtual-environment launchers are normally symlinks to the base interpreter.
+    # ``Path.resolve`` would bypass the environment and silently run system Python.
+    python_latest = _absolute_preserving_symlink(args.python_latest)
+    python_126 = _absolute_preserving_symlink(args.python_126)
     if output.exists():
         raise FileExistsError(output)
     if _git(repository, "status", "--porcelain=v1"):
