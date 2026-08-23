@@ -19,7 +19,10 @@ from typing import Any
 EXPECTED_START = "35ef16a54823188504eea62c41af63b4f84fe93f"
 EXPECTED_ARCHIVE_BLOB = "285b339b0a897dae5cec1de9e580bf551cbf17cb"
 REPOSITORY_ID = "cjt42554-crypto/iypt-5-Y_shaped_pendulum"
-REVISION = "04_审查后修订版_2026-08-23"
+REVISION = (
+    "未提交修改/当前任务/候选实现或候选内容/"
+    "04_审查后修订版_2026-08-23"
+)
 SIM_RELATIVE = Path(
     REVISION
     + "/02_最终模拟程序/02_第一性原理高保真模拟器/"
