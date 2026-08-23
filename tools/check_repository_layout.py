@@ -5,7 +5,6 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
-import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,6 +24,9 @@ REQUIRED_FILES = (
     "00_项目控制/LAYOUT.md",
     "00_项目控制/WORKFLOW.md",
     "00_项目控制/LAYOUT_VERSION.txt",
+    "01_最终理论/README.md",
+    "02_模拟程序/README.md",
+    "03_项目资料/README.md",
     "90_候选工作区/README.md",
     "90_候选工作区/current/README.md",
     "90_候选工作区/archive/README.md",
@@ -43,6 +45,9 @@ ACTIVE_DOCS = (
     "00_项目控制/README.md",
     "00_项目控制/STATUS.md",
     "00_项目控制/WORKFLOW.md",
+    "01_最终理论/README.md",
+    "02_模拟程序/README.md",
+    "03_项目资料/README.md",
     "90_候选工作区/README.md",
     "90_候选工作区/current/README.md",
 )
@@ -72,10 +77,8 @@ def main() -> int:
         errors.append("LAYOUT_VERSION.txt must contain 2")
 
     status_path = ROOT / "00_项目控制/STATUS.md"
-    if status_path.is_file():
-        status = status_path.read_text(encoding="utf-8")
-        if "90_候选工作区/current/" not in status:
-            errors.append("STATUS.md must identify the current candidate path")
+    if status_path.is_file() and "90_候选工作区/current/" not in status_path.read_text(encoding="utf-8"):
+        errors.append("STATUS.md must identify the current candidate path")
 
     for relative in ACTIVE_DOCS:
         path = ROOT / relative
