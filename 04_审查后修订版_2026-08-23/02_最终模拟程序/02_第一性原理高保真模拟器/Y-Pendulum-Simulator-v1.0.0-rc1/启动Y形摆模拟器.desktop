@@ -5,10 +5,9 @@ Name=Y-Pendulum Simulator
 Name[zh_CN]=Y 形摆模拟器
 GenericName=Scientific Simulator
 GenericName[zh_CN]=科研模拟工具
-Comment=Open the offline native Y-pendulum research desktop
-Comment[zh_CN]=打开完全本地、无需浏览器的 Y 形摆科研模拟桌面
-Exec=bash "/home/cjt/Desktop/iypt/5 Y形摆/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/启动Y形摆模拟器.sh"
-Path=/home/cjt/Desktop/iypt/5 Y形摆/02_最终模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1
+Comment=Open the offline FWD cable and discrete flexible-rod Y-pendulum desktop
+Comment[zh_CN]=打开前向柔索与离散柔性杆后端的本地 Y 形摆科研桌面
+Exec=bash -c 'entry="$1"; cd -- "$(dirname -- "$entry")"; exec ./启动Y形摆审查后修订版.sh' bash %k
 Icon=applications-science
 Terminal=false
 StartupNotify=true

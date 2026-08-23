@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -30,6 +31,41 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CASE_PATH = PROJECT_ROOT / "configs" / "unified_shared_forward_case.yaml"
 
 
+def _relocated_revision(tmp_path: Path) -> tuple[Path, Path]:
+    revision = PROJECT_ROOT.parents[2]
+    relocated = tmp_path / "different-absolute-prefix" / revision.name
+    shutil.copytree(
+        revision,
+        relocated,
+        ignore=shutil.ignore_patterns(
+            ".venv",
+            ".pytest_cache",
+            "__pycache__",
+            "*.pyc",
+            "runs",
+        ),
+    )
+    case = (
+        relocated
+        / "02_最终模拟程序/02_第一性原理高保真模拟器/"
+        "Y-Pendulum-Simulator-v1.0.0-rc1/configs/unified_shared_forward_case.yaml"
+    )
+    return relocated, case
+
+
+def test_portable_forward_delivery_relocates_and_tampering_fails(tmp_path: Path) -> None:
+    relocated, case_path = _relocated_revision(tmp_path)
+    case = load_unified_case(case_path)
+    assert case.forward_project_root.is_relative_to(relocated)
+    assert case.forward_chain["scope_root"] == "."
+    assert verify_unified_case_identities(case)["forward_verified_file_count"] >= 27
+
+    run_py = case.forward_project_root / "run.py"
+    run_py.write_bytes(run_py.read_bytes() + b"\n# tampered after relocation\n")
+    with pytest.raises(ValueError, match="artifact identity mismatch"):
+        load_unified_case(case_path)
+
+
 def test_unified_case_audits_every_shared_physical_mapping_and_hash(tmp_path: Path) -> None:
     case = load_unified_case(CASE_PATH)
     assert case.shared_input_audit["passed"]
@@ -48,7 +84,13 @@ def test_unified_case_audits_every_shared_physical_mapping_and_hash(tmp_path: Pa
         "initial.protocol",
     }.issubset(fields)
     identities = verify_unified_case_identities(case)
-    assert identities["forward_verified_file_count"] == 51
+    assert identities["forward_verified_file_count"] == len(
+        case.forward_chain["verified_files"]
+    )
+    assert identities["forward_verified_file_count"] == case.forward_chain[
+        "delivery_root_payload"
+    ]["file_count"]
+    assert identities["forward_verified_file_count"] >= 27
     assert identities["forward_source_tree_sha256"] == case.forward_chain[
         "source_tree_sha256"
     ]

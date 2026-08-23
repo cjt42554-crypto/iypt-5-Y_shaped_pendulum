@@ -199,13 +199,8 @@ def run_request(request_path: Path, backend: str, output: Path) -> int:
             code = _run_and_relay(
                 [
                     sys.executable,
-                    "-c",
-                    (
-                        "import numpy as np; "
-                        "np.trapz = getattr(np, 'trapz', np.trapezoid); "
-                        "from y_pendulum_forward.cli import main; "
-                        "raise SystemExit(main())"
-                    ),
+                    "-m",
+                    "y_pendulum_forward.cli",
                     "run",
                     str(forward_config_path),
                     "--output",

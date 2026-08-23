@@ -82,15 +82,116 @@ def _resolve(base: Path, value: Any, name: str) -> Path:
 def _resolve_beneath(root: Path, value: Any, name: str) -> Path:
     """Resolve one manifest path without permitting an absolute/path traversal escape."""
 
-    if not isinstance(value, str) or not value or Path(value).is_absolute():
+    if (
+        not isinstance(value, str)
+        or not value
+        or Path(value).is_absolute()
+        or ".." in Path(value).parts
+    ):
         raise ValueError(f"{name} must be a non-empty relative path.")
     root = root.resolve()
-    path = (root / value).resolve()
+    lexical = root / value
+    current = root
+    for part in Path(value).parts:
+        current = current / part
+        if current.is_symlink():
+            raise ValueError(f"{name} contains a symbolic-link component: {value}")
+    path = lexical.resolve()
     if not path.is_relative_to(root):
         raise ValueError(f"{name} escapes its frozen scope root: {value}")
     if not path.is_file():
         raise FileNotFoundError(f"{name} does not exist: {path}")
     return path
+
+
+def _portable_forward_delivery_chain(
+    project_root: Path,
+    delivery_root_path: Path,
+    root: dict[str, Any],
+    *,
+    delivery_bytes: int,
+    delivery_sha: str,
+    forward_config_path: Path,
+) -> dict[str, Any]:
+    relative_root = root.get("project_root_relative_to_delivery_root")
+    if not isinstance(relative_root, str) or not relative_root or Path(
+        relative_root
+    ).is_absolute():
+        raise ValueError("Portable forward delivery lacks a relative project root.")
+    declared_project = (delivery_root_path.parent / relative_root).resolve()
+    if declared_project != project_root.resolve():
+        raise ValueError("Portable forward project root does not match the unified case.")
+    entries = root.get("files")
+    if not isinstance(entries, dict) or root.get("file_count") != len(entries):
+        raise ValueError("Portable forward delivery file_count is not closed.")
+    if _canonical_hash(entries) != root.get("tree_sha256"):
+        raise ValueError("Portable forward delivery tree hash is inconsistent.")
+    manifest_by_path: dict[Path, tuple[int, str]] = {}
+    verified_files: list[tuple[str, int, str]] = []
+    for relative in sorted(entries):
+        entry = entries[relative]
+        if not isinstance(entry, dict) or set(entry) != {"bytes", "sha256"}:
+            raise ValueError("Portable forward file identity must contain bytes and sha256.")
+        path = _resolve_beneath(project_root, relative, f"files[{relative!r}]")
+        actual_bytes, actual_sha = _file_identity(path)
+        if entry["bytes"] != actual_bytes or entry["sha256"] != actual_sha:
+            raise ValueError(f"Forward artifact identity mismatch: {relative}")
+        manifest_by_path[path.resolve()] = (actual_bytes, actual_sha)
+        verified_files.append((relative, actual_bytes, actual_sha))
+
+    forward_config_path = forward_config_path.resolve()
+    if forward_config_path not in manifest_by_path:
+        raise ValueError("The selected forward config is not in the portable delivery.")
+    forward_config = _unique_json(forward_config_path)
+    config_canonical_sha = _canonical_hash(forward_config)
+    production_hashes = root.get("production_config_sha256")
+    if not isinstance(production_hashes, dict) or production_hashes.get(
+        _FORWARD_MODEL
+    ) != config_canonical_sha:
+        raise ValueError("Forward config is not the frozen production configuration.")
+
+    executable_paths = [
+        *sorted((project_root / "y_pendulum_forward").glob("*.py")),
+        project_root / "run.py",
+        project_root / "pyproject.toml",
+        project_root / "requirements.txt",
+    ]
+    dispatch_files: list[tuple[str, bytes]] = []
+    for path in executable_paths:
+        resolved = path.resolve()
+        if resolved not in manifest_by_path:
+            raise ValueError(f"Forward executable is not frozen by the manifest: {path}")
+        dispatch_files.append(
+            (resolved.relative_to(project_root.resolve()).as_posix(), path.read_bytes())
+        )
+    dispatch_tuple = tuple(dispatch_files)
+    source_sha = _forward_source_hash(dispatch_tuple)
+    if source_sha != root.get("source_tree_sha256"):
+        raise ValueError("Forward executable source-tree hash disagrees with delivery root.")
+    if root.get("frozen_theory_sha256") != forward_config.get("theory_sha256"):
+        raise ValueError("Forward config theory identity disagrees with delivery root.")
+    return {
+        "delivery_root_sha256": delivery_sha,
+        "delivery_root_bytes": delivery_bytes,
+        "delivery_root_payload": root,
+        "scope_root": ".",
+        "artifact_manifest_path": "delivery_root.json#files",
+        "artifact_manifest_sha256": root["tree_sha256"],
+        "verified_payloads": (
+            ("delivery_root.json#files", len(entries), root["tree_sha256"]),
+        ),
+        "verified_files": tuple(verified_files),
+        "dispatch_files": dispatch_tuple,
+        "source_tree_sha256": source_sha,
+        "config_canonical_sha256": config_canonical_sha,
+        "config_file_sha256": _sha256_file(forward_config_path),
+        "config_relative_path": forward_config_path.relative_to(
+            project_root.resolve()
+        ).as_posix(),
+        "config_bytes": forward_config_path.read_bytes(),
+        "frozen_theory_sha256": root["frozen_theory_sha256"],
+        "numerical_theory_sha256": root["numerical_theory_sha256"],
+    }
 
 
 def _file_identity(path: Path) -> tuple[int, str]:
@@ -155,6 +256,15 @@ def _forward_delivery_chain(
     if delivery_sha != expected_delivery_root_sha256:
         raise ValueError("forward delivery root SHA-256 does not match the unified case.")
     root = _unique_json(delivery_root_path)
+    if root.get("schema_version") == "YPS-FWD-PORTABLE-DELIVERY-ROOT-1.1":
+        return _portable_forward_delivery_chain(
+            project_root,
+            delivery_root_path,
+            root,
+            delivery_bytes=delivery_bytes,
+            delivery_sha=delivery_sha,
+            forward_config_path=forward_config_path,
+        )
     if root.get("schema_version") != "YPS-FWD-DELIVERY-ROOT-1.0":
         raise ValueError("Unsupported frozen forward delivery-root schema.")
     if root.get("stage") != "forward_numerical_computation_stage_2":

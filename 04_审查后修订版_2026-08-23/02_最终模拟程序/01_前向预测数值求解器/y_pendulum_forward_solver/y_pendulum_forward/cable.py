@@ -12,7 +12,7 @@ from typing import Any, Callable
 import warnings
 
 import numpy as np
-from scipy.integrate import cumulative_trapezoid, solve_ivp
+from scipy.integrate import cumulative_trapezoid, solve_ivp, trapezoid
 from scipy.linalg import cho_factor, cho_solve
 from scipy.optimize import minimize
 
@@ -1869,8 +1869,8 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray):
         physical_residual = scalar["E_F"] - scalar["E_F"][0] - physical_integral
         algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - algebraic_integral
         work_scale = max(
-            float(np.trapz(np.abs(physical_power), time)),
-            float(np.trapz(np.abs(algebraic_power), time)),
+            float(trapezoid(np.abs(physical_power), time)),
+            float(trapezoid(np.abs(algebraic_power), time)),
         )
     else:
         physical_residual = np.zeros(sample_count)

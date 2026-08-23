@@ -7,7 +7,7 @@ forward:
   config: configs/cable_example.json
   delivery_root: validation/delivery_root.json
   expected_config_file_sha256: cb09ec1a3a3780565a9d4169fd076a81ccf3309ca9e027804fe0a130b99ba808
-  expected_delivery_root_sha256: dec497d42e0384f403b4c652a40799e389702a94b4299b24a4555f2bd9ea93ef
+  expected_delivery_root_sha256: 7450af859b00c0532fd08f3cfd35f49cdc7baa6e2f524a0fa608e8f5a792eb59
   model_id: FWD-CABLE-1.0
 
 high_fidelity:

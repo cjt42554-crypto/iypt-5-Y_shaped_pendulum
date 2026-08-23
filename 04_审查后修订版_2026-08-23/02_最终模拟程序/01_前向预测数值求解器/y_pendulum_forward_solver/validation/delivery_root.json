@@ -1,0 +1,125 @@
+{
+  "file_count": 27,
+  "files": {
+    "configs/cable_example.json": {
+      "bytes": 11056,
+      "sha256": "cb09ec1a3a3780565a9d4169fd076a81ccf3309ca9e027804fe0a130b99ba808"
+    },
+    "configs/ensemble_torus_example.json": {
+      "bytes": 2852,
+      "sha256": "5b466dc6d2657f0e3a8e9bed7b730509737d05ef8a169080a0281922b6edf503"
+    },
+    "configs/torus_example.json": {
+      "bytes": 2711,
+      "sha256": "8cf387e6188758abc707dbc5e724b489b387e7531d14656a745740ea771ad921"
+    },
+    "pyproject.toml": {
+      "bytes": 465,
+      "sha256": "976171c635c29323259647a863a355f5342914e5c44754b73612716d571626f3"
+    },
+    "requirements.txt": {
+      "bytes": 41,
+      "sha256": "27b0da662b70c4bb62fdcedf5764f1ec633cd917c245066bdf73b12364002f96"
+    },
+    "run.py": {
+      "bytes": 186,
+      "sha256": "778c981144a2c41efcc8074ff80e6b6ddac1b53f37c56eda716fea7697655d4f"
+    },
+    "tests/test_activation.py": {
+      "bytes": 1744,
+      "sha256": "3f7990c40823fd4a67acb69893554a7d24ea49310ef86cd32e4fabe3471d032d"
+    },
+    "tests/test_cable.py": {
+      "bytes": 28209,
+      "sha256": "51830a30163b3b8fc6b565e0dc064e01f424fe756bf2cc37e83c44d060aef49e"
+    },
+    "tests/test_cli.py": {
+      "bytes": 4353,
+      "sha256": "c9664d37ee8d7bd8d775649a73ef691b06676e604e1e96816f0b40bfb905f5ba"
+    },
+    "tests/test_convergence.py": {
+      "bytes": 40403,
+      "sha256": "f66572441aa7777eb2017189f084a03ef69b445d4acf7d1f398bc86030f9ed9d"
+    },
+    "tests/test_ensemble.py": {
+      "bytes": 8021,
+      "sha256": "841fe709d029ad4b6d5819b9026dd8fbe559bf5d32ad3979a3b677bd2563a6ef"
+    },
+    "tests/test_io.py": {
+      "bytes": 4541,
+      "sha256": "fc71952b1029dc63fa120464dff23065850dab3773ae6770539e4f3a83ecf58f"
+    },
+    "tests/test_observations.py": {
+      "bytes": 3106,
+      "sha256": "86c708312f4a9e004bbca6885c99eed29ed0ebaaec213296ca766079ecdb1c09"
+    },
+    "tests/test_torus.py": {
+      "bytes": 15081,
+      "sha256": "c64917f3455f187a459169db69b90f382ad8f962da14695a6db021fddcfc7c60"
+    },
+    "y_pendulum_forward/__init__.py": {
+      "bytes": 631,
+      "sha256": "2fe33bb408523f6f26ed1337a74d08f494c0e5b079837018a2c0e5b10d3d8ded"
+    },
+    "y_pendulum_forward/activation.py": {
+      "bytes": 2223,
+      "sha256": "94861d622aa46995fa173bb52afebe0308f594e19aa0eb9b66eca94346898a9f"
+    },
+    "y_pendulum_forward/cable.py": {
+      "bytes": 93785,
+      "sha256": "057c3e0cef6cbd35dee1ec11a9bb6974808bb76d8f7e04cb32cda58589e6e251"
+    },
+    "y_pendulum_forward/cli.py": {
+      "bytes": 7632,
+      "sha256": "32d498ae40c048c2169ef868b7750a38ef852d5f0ca75c144d45df73753cbc2e"
+    },
+    "y_pendulum_forward/contracts.py": {
+      "bytes": 19063,
+      "sha256": "6d5266d0b9f50cdafc05811c0e3d581215c708e434d5b485792faa00cb9cefe6"
+    },
+    "y_pendulum_forward/convergence.py": {
+      "bytes": 194041,
+      "sha256": "59558c78bf9ae18d1b5b00edb933a8ffd825f1c1f2ee8bdda9b4f6755eac1926"
+    },
+    "y_pendulum_forward/ensemble.py": {
+      "bytes": 19383,
+      "sha256": "c3f9100b27f66f7fd7a97e80c96c7dad5623908b22d9ebc6f55828bf6726d394"
+    },
+    "y_pendulum_forward/initial_fields.py": {
+      "bytes": 2689,
+      "sha256": "84bd4fd57fac2fc45cab35ad05d7ef535d5d05d41b1dfd9f2bcdca77c275e46f"
+    },
+    "y_pendulum_forward/io.py": {
+      "bytes": 6664,
+      "sha256": "afcdf858f659c8baea6227253d67fba9c042f96c1deca88cec35e1eff2df9a6b"
+    },
+    "y_pendulum_forward/observations.py": {
+      "bytes": 12402,
+      "sha256": "72cb2d30017e46593a95e5909a405c1c18f4dd7dda822649254cf1a9eb1097c4"
+    },
+    "y_pendulum_forward/providers.py": {
+      "bytes": 22647,
+      "sha256": "7b732ba0982ac0cb9b27d8dd93536da3a8b68e3ff94080644f37596d58ccbe29"
+    },
+    "y_pendulum_forward/runner.py": {
+      "bytes": 8813,
+      "sha256": "1a1f02abb3b23a50e76b05db2031f4c991083d46a1171d621c3acaad6b74a252"
+    },
+    "y_pendulum_forward/torus.py": {
+      "bytes": 29524,
+      "sha256": "a7cef2c45868bedf5b045a9409b9347a45549f480de24dd83ded523349d10363"
+    }
+  },
+  "frozen_theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "gate_status": "READY_FOR_INDEPENDENT_READ_ONLY_GATE",
+  "identity_policy": "content hashes and paths relative to this delivery root; no workstation absolute path participates in identity",
+  "numerical_theory_sha256": "14b9e5bae0778753acbc46757286b4d5e646b120698ddd2bc33e16158efa78a7",
+  "production_config_sha256": {
+    "FWD-CABLE-1.0": "f76f5587eb298473b983cf05f995fb212f40e9d490ef022f267723e03f53188f"
+  },
+  "project_root_relative_to_delivery_root": "..",
+  "schema_version": "YPS-FWD-PORTABLE-DELIVERY-ROOT-1.1",
+  "source_tree_sha256": "c21f6771806d6da194216f5bd3b45cbfbe360a2efa94a71ee0cfcbc18052439a",
+  "stage": "forward_numerical_computation_stage_2",
+  "tree_sha256": "ec9f8acdeea2285ee79fb9050e7b185ced8e4ced3ede3bbb3184b792f475b111"
+}

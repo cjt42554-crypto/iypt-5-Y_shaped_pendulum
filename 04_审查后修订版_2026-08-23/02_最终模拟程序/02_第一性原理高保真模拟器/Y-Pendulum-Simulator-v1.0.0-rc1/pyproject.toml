@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ypendulum"
 version = "1.0.0rc1"
-description = "First-principles, tension-only finite-mass cable simulator for a fixed-knot Y pendulum"
+description = "Y-pendulum platform with a forward tension-cable model and a discrete flexible-rod/finite-rigid-bob HF backend"
 readme = {text = "项目说明已归档到 03_项目资料/03_使用说明与技术文档/高保真模拟器。", content-type = "text/plain"}
 requires-python = ">=3.11"
 license = "MIT"
