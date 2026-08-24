@@ -1,0 +1,22 @@
+category,metric,target,A_phi_rad,A_theta_rad,geometry,value,unit,scope
+aggregate,target_amplitude_cases,,,,,16,count,4 ratios x 4 amplitude pairs
+aggregate,long_trajectories,,,,,48,count,3 geometries per case
+aggregate,max_abs_phase_error_zero,,,,zero_amplitude,1.1220492701848517,rad,18 slow cycles
+aggregate,median_phase_error_reduction_zero_to_quartic,,,,quartic,22.200624392191055,times,16 cases
+aggregate,max_abs_phase_error_quartic,,,,quartic,0.0628760659992138,rad,18 slow cycles
+aggregate,max_abs_phase_error_numeric,,,,numerically_tuned,0.0003916967648687204,rad,18 slow cycles
+aggregate,max_abs_eta_quartic_minus_numeric,,,,,0.000496701,dimensionless,scan maximum
+aggregate,max_relative_energy_drift_numeric,,,,,1.6487e-12,relative,16 tuned cases
+representative,eta,3:2,0.15,0.10,zero_amplitude,1.250000000,dimensionless,
+representative,resonant_phase_error,3:2,0.15,0.10,zero_amplitude,-0.25330398877,rad,18 slow cycles
+representative,normalized_state_closure_error,3:2,0.15,0.10,zero_amplitude,0.126560233,dimensionless,
+representative,eta,3:2,0.15,0.10,quartic,1.253515625,dimensionless,
+representative,resonant_phase_error,3:2,0.15,0.10,quartic,0.0114549016,rad,18 slow cycles
+representative,normalized_state_closure_error,3:2,0.15,0.10,quartic,0.0057274465,dimensionless,
+representative,eta,3:2,0.15,0.10,numerically_tuned,1.25336510289,dimensionless,
+representative,resonant_phase_error,3:2,0.15,0.10,numerically_tuned,0.0001240183,rad,18 slow cycles
+representative,normalized_state_closure_error,3:2,0.15,0.10,numerically_tuned,0.0000620081,dimensionless,
+validation,max_pure_mode_period_relative_difference,,,,,3.7586e-16,relative,elliptic-integral comparison
+validation,max_step_halving_frequency_ratio_difference,,,,,5.2e-14,absolute,max-step 0.16 to 0.08
+validation,max_step_halving_phase_difference,,,,,1.5e-11,rad,max-step 0.16 to 0.08
+validation,max_step_halving_closure_difference,,,,,5.8e-12,absolute,max-step 0.16 to 0.08
