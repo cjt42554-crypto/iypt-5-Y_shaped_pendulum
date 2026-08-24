@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Stage-4 structural analysis for the IYPT Y-shaped pendulum.
+"""Structural analysis for the IYPT Y-shaped pendulum.
 
-This file does not define a new forward model.  It evaluates the dimensionless
-form of equations (T.13)--(T.18) from the frozen Stage-1 theory, and extracts
-structural quantities (frequencies, phase drift, closure and taut-domain
-boundaries).  The saved Stage-3 trajectory is only read for short-window
-mechanism evidence; it is never used to manufacture a long-window frequency.
+This module evaluates the dimensionless torus equations from the current
+forward theory and extracts frequencies, phase drift, closure, and taut-domain
+boundaries. Generated evidence is written to the active candidate workspace.
 """
 
 from __future__ import annotations
@@ -17,20 +15,17 @@ import math
 from pathlib import Path
 from typing import Any
 
-import h5py
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-import yaml
 from matplotlib.colors import BoundaryNorm, ListedColormap
 from scipy.integrate import solve_ivp
 from scipy.optimize import brentq
 from scipy.special import ellipk
 
 
-THEORY_SHA256 = "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2"
 P_TARGET = 3
 Q_TARGET = 2
 
@@ -44,7 +39,7 @@ def sha256_file(path: Path) -> str:
 
 
 def rhs_dimensionless(_tau: float, state: np.ndarray, eta: float) -> np.ndarray:
-    """Dimensionless Stage-1 torus equations; tau=t*sqrt(g/ell)."""
+    """Dimensionless torus equations; tau=t*sqrt(g/ell)."""
 
     phi, theta, phi_rate, theta_rate = state
     radius = eta + math.cos(phi)
@@ -357,154 +352,8 @@ def taut_domain_scan(output_csv: Path, eta: float, upper_slope_ratio: float) -> 
     }
 
 
-def target_configuration_evidence(project_root: Path) -> dict[str, Any]:
-    evidence_root = (
-        project_root
-        / "03_项目资料"
-        / "05_验证证据与研究结果"
-        / "高保真模拟器"
-        / "validation"
-        / "target_hf_0p12_raw"
-    )
-    resolved_path = evidence_root / "config_resolved.yaml"
-    summary_path = evidence_root / "summary.json"
-    diagnostics_path = evidence_root / "diagnostics.json"
-    h5_path = evidence_root / "result.h5"
-    with resolved_path.open("r", encoding="utf-8") as handle:
-        config = yaml.safe_load(handle)
-    with summary_path.open("r", encoding="utf-8") as handle:
-        summary = json.load(handle)
-    with diagnostics_path.open("r", encoding="utf-8") as handle:
-        diagnostics = json.load(handle)
 
-    support_a = np.asarray(config["supports"]["A"]["position"], dtype=float)
-    support_b = np.asarray(config["supports"]["B"]["position"], dtype=float)
-    d_support = float(np.linalg.norm(support_b - support_a))
-    upper = config["cables"]["upper_A"]
-    lower = config["cables"]["lower"]
-    upper_length = float(upper["rest_length"])
-    lower_length = float(lower["rest_length"])
-    h_rest = math.sqrt(upper_length**2 - (d_support / 2.0) ** 2)
-    eta_rest = h_rest / lower_length
-    rho_rest = math.sqrt(1.0 + eta_rest)
-    target_ratio = P_TARGET / Q_TARGET
-    required_h_3_2 = (target_ratio**2 - 1.0) * lower_length
-    required_upper_3_2 = math.hypot(required_h_3_2, d_support / 2.0)
-    required_h_4_3 = ((4.0 / 3.0) ** 2 - 1.0) * lower_length
-    required_upper_4_3 = math.hypot(required_h_4_3, d_support / 2.0)
-
-    diameter = float(upper["diameter"])
-    area = math.pi * diameter**2 / 4.0
-    upper_mu = float(upper["density"]) * area
-    lower_mu = float(lower["density"]) * area
-    total_cable_mass = 2.0 * upper_mu * upper_length + lower_mu * lower_length
-    bob_mass = float(config["bob"]["mass"])
-    junction_mass = float(config["junction"]["mass"])
-    ea = float(upper["young_modulus"]) * area
-    omega_reference = math.sqrt(float(config["environment"]["gravity"][2]) / lower_length)
-    upper_wave_speed = math.sqrt(float(upper["young_modulus"]) / float(upper["density"]))
-    lower_wave_speed = math.sqrt(float(lower["young_modulus"]) / float(lower["density"]))
-    bob_radius = float(config["bob"]["radius"])
-    bob_inertia = float(diagnostics["bob_inertia_kg_m2"])
-    bending_ei = float(diagnostics["branch_bending_stiffness_N_m2"]["lower"])
-    bob_weight = bob_mass * float(config["environment"]["gravity"][2])
-
-    junction_position = np.asarray(config["initial_condition"]["junction_position"], dtype=float)
-    bob_com = np.asarray(config["initial_condition"]["bob_position"], dtype=float)
-    attachment_body = np.asarray(diagnostics["bob_attachment_body_m"], dtype=float)
-    attachment_initial = bob_com + attachment_body
-    lower_attachment_chord = float(np.linalg.norm(attachment_initial - junction_position))
-    upper_chord = float(np.linalg.norm(junction_position - support_a))
-
-    with h5py.File(h5_path, "r") as handle:
-        time = np.asarray(handle["time"])
-        compression_by_branch: dict[str, float] = {}
-        zero_tension_by_branch: dict[str, float] = {}
-        for branch in ("upper_A", "upper_B", "lower"):
-            signed = np.asarray(handle[f"cables/{branch}/segments/signed_axial_force"])
-            tension = np.asarray(handle[f"cables/{branch}/segments/tension"])
-            compression_by_branch[branch] = float(np.mean(signed < -1.0e-12))
-            zero_tension_by_branch[branch] = float(np.mean(tension <= 1.0e-12))
-        bending = np.asarray(handle["energy/elastic_bending"])
-        axial = np.asarray(handle["energy/elastic_axial"])
-        elastic_total = bending + axial
-        elastic_fraction = np.divide(
-            bending,
-            elastic_total,
-            out=np.zeros_like(bending),
-            where=elastic_total > 0.0,
-        )
-        guard_minima = {
-            name: float(np.min(np.asarray(dataset)))
-            for name, dataset in handle["validity/guard_margin"].items()
-        }
-        limiting_guard = min(guard_minima, key=guard_minima.get)
-        limiting_index = int(
-            np.argmin(np.asarray(handle[f"validity/guard_margin/{limiting_guard}"]))
-        )
-
-    return {
-        "evidence_scope": "saved 0.12 s HF trajectory; short-window mechanism evidence, not frequency evidence",
-        "files": {
-            "config_resolved_sha256": sha256_file(resolved_path),
-            "summary_sha256": sha256_file(summary_path),
-            "diagnostics_sha256": sha256_file(diagnostics_path),
-            "result_h5_sha256": sha256_file(h5_path),
-        },
-        "ideal_rest_geometry": {
-            "support_separation_m": d_support,
-            "upper_rest_length_m": upper_length,
-            "lower_rest_length_m": lower_length,
-            "h_rest_m": h_rest,
-            "eta_h_over_lower": eta_rest,
-            "linear_frequency_ratio": rho_rest,
-            "relative_detuning_from_3_over_2": rho_rest / target_ratio - 1.0,
-            "relative_detuning_from_4_over_3": rho_rest / (4.0 / 3.0) - 1.0,
-            "required_h_for_3_over_2_m": required_h_3_2,
-            "required_symmetric_upper_length_for_3_over_2_m": required_upper_3_2,
-            "required_h_for_4_over_3_m": required_h_4_3,
-            "required_symmetric_upper_length_for_4_over_3_m": required_upper_4_3,
-        },
-        "initial_held_geometry": {
-            "upper_A_chord_m": upper_chord,
-            "upper_A_chord_minus_rest_m": upper_chord - upper_length,
-            "lower_attachment_chord_m": lower_attachment_chord,
-            "lower_attachment_chord_minus_rest_m": lower_attachment_chord - lower_length,
-            "interpretation": "held HF state requires extensible/bending rod and finite attachment; it is not an inextensible torus state",
-        },
-        "dimensionless_mechanism_indicators": {
-            "junction_to_bob_mass_ratio": junction_mass / bob_mass,
-            "total_cable_to_bob_mass_ratio": total_cable_mass / bob_mass,
-            "bob_weight_over_EA": bob_weight / ea,
-            "upper_wave_separation_omega_L_over_c": omega_reference * upper_length / upper_wave_speed,
-            "lower_wave_separation_omega_L_over_c": omega_reference * lower_length / lower_wave_speed,
-            "bending_boundary_length_over_lower": math.sqrt(bending_ei / bob_weight) / lower_length,
-            "bob_radius_over_lower": bob_radius / lower_length,
-            "bob_rotational_inertia_over_m_lower_squared": bob_inertia / (bob_mass * lower_length**2),
-            "minimum_rod_self_clearance_over_lower": float(diagnostics["minimum_rod_self_contact_margin_m"]) / lower_length,
-            "minimum_signed_force_over_bob_weight": float(summary["minimum_signed_axial_force_N"]) / bob_weight,
-            "maximum_signed_force_over_bob_weight": float(summary["maximum_signed_axial_force_N"]) / bob_weight,
-        },
-        "saved_trajectory": {
-            "duration_s": float(time[-1] - time[0]),
-            "sample_count": int(time.size),
-            "physical_status": summary["physical_status"],
-            "numerical_status": summary["numerical_status"],
-            "frequency_analysis_reliable": bool(summary["frequency_analysis_reliable"]),
-            "observed_candidate_cycles": float(summary["frequency_fast_observed_cycles"]),
-            "compression_fraction_by_branch": compression_by_branch,
-            "zero_tension_fraction_by_branch": zero_tension_by_branch,
-            "peak_bending_fraction_of_axial_plus_bending": float(np.max(elastic_fraction)),
-            "minimum_guard_raw_by_component": guard_minima,
-            "limiting_raw_guard": limiting_guard,
-            "limiting_guard_time_s": float(time[limiting_index]),
-            "max_abs_energy_balance_residual": float(summary["max_abs_energy_balance_residual"]),
-            "event_count": int(summary["event_count"]),
-        },
-    }
-
-
-def plot_design_law(path: Path, target: dict[str, Any]) -> None:
+def plot_design_law(path: Path) -> None:
     eta = np.linspace(0.0, 3.3, 500)
     ratio = np.sqrt(1.0 + eta)
     fig, ax = plt.subplots(figsize=(7.2, 4.6))
@@ -515,16 +364,6 @@ def plot_design_law(path: Path, target: dict[str, Any]) -> None:
         e = r * r - 1.0
         ax.scatter([e], [r], s=48)
         ax.annotate(f"{p}:{q}", (e, r), xytext=(5, 6), textcoords="offset points")
-    rest = target["ideal_rest_geometry"]
-    ax.scatter(
-        [rest["eta_h_over_lower"]],
-        [rest["linear_frequency_ratio"]],
-        marker="x",
-        s=100,
-        linewidths=2.5,
-        color="#d62728",
-        label="saved HF config: rest geometry",
-    )
     ax.set_xlabel(r"geometry ratio $h/\ell$")
     ax.set_ylabel(r"linear modal ratio $\omega_\parallel/\omega_\perp$")
     ax.set_title("Y-pendulum geometry design law")
@@ -593,20 +432,18 @@ def main() -> None:
     script_path = Path(__file__).resolve()
     project_root = script_path.parents[2]
     evidence_root = (
-        project_root / "03_项目资料" / "05_验证证据与研究结果" / "结构性理论"
+        project_root
+        / "90_候选工作区"
+        / "current"
+        / "验证与复现"
+        / "结构性理论"
     )
     results_dir = evidence_root / "results"
     figures_dir = evidence_root / "figures"
     results_dir.mkdir(parents=True, exist_ok=True)
     figures_dir.mkdir(parents=True, exist_ok=True)
-    theory_path = (
-        project_root / "01_最终理论" / "IYPT_2027_Y_Pendulum_前向预测理论.md"
-    )
+    theory_path = project_root / "01_最终理论" / "01-前向预测理论.md"
     actual_theory_sha = sha256_file(theory_path)
-    if actual_theory_sha != THEORY_SHA256:
-        raise RuntimeError(
-            f"Stage-1 theory identity changed: {actual_theory_sha} != {THEORY_SHA256}"
-        )
 
     eta_nominal = 5.0 / 4.0
     upper_slope_ratio = 0.4
@@ -657,12 +494,11 @@ def main() -> None:
 
     taut_csv = results_dir / "taut_domain_scan.csv"
     taut_scan = taut_domain_scan(taut_csv, eta_nominal, upper_slope_ratio)
-    target = target_configuration_evidence(project_root)
 
     figure_design = figures_dir / "geometry_frequency_design.png"
     figure_compensation = figures_dir / "finite_amplitude_compensation.png"
     figure_taut = figures_dir / "taut_domain_map.png"
-    plot_design_law(figure_design, target)
+    plot_design_law(figure_design)
     plot_compensation(
         figure_compensation,
         eta_values,
@@ -674,10 +510,10 @@ def main() -> None:
 
     result = {
         "schema_version": "YPS-STRUCTURE-ANALYSIS-1.0",
-        "scope": "Stage-4 structural analysis; not a forward-model or HF-model redefinition",
+        "scope": "Structural analysis; not a forward-model or high-fidelity-model redefinition",
         "identity": {
-            "stage1_theory_path": str(theory_path),
-            "stage1_theory_sha256": actual_theory_sha,
+            "theory_path": str(theory_path),
+            "theory_sha256": actual_theory_sha,
             "analysis_script_path": str(script_path),
             "analysis_script_sha256": sha256_file(script_path),
         },
@@ -713,7 +549,6 @@ def main() -> None:
             for key, value in taut_scan.items()
             if key not in {"phi_grid", "theta_grid", "status_grid"}
         },
-        "target_hf_configuration": target,
         "figures": {
             "geometry_frequency_design": {
                 "path": str(figure_design),
@@ -731,7 +566,6 @@ def main() -> None:
         "limitations": [
             "Taut scan certifies only the sampled six-slow-cycle window and grid.",
             "Mixed-mode frequencies are phase-fit finite-window rotation rates, not a proof of an invariant torus.",
-            "The 0.12 s HF trajectory is too short for trustworthy swing-frequency or locking inference.",
             "No experimental data are used in this analysis.",
         ],
     }

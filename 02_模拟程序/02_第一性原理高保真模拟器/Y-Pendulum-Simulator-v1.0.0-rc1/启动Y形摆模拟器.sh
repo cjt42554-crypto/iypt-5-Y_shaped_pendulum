@@ -2,12 +2,22 @@
 set -euo pipefail
 
 simulator_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-workspace_root="$(cd -- "$simulator_root/../../.." && pwd)"
-runtime_python="$workspace_root/03_项目资料/09_本机环境与缓存/高保真模拟器_venv/bin/python"
 
-if [[ ! -x "$runtime_python" ]]
-then
-  printf '未找到高保真模拟器 Python 环境：%s\n' "$runtime_python" >&2
+if [[ -n "${YPENDULUM_PYTHON:-}" ]]; then
+  runtime_python="$YPENDULUM_PYTHON"
+elif [[ -x "$simulator_root/.venv/bin/python" ]]; then
+  runtime_python="$simulator_root/.venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+  runtime_python="$(command -v python3)"
+else
+  printf '未找到可用的 Python 3。可设置 YPENDULUM_PYTHON，或在模拟器目录创建 .venv。
+' >&2
+  exit 1
+fi
+
+if [[ ! -x "$runtime_python" ]]; then
+  printf '指定的 Python 不可执行：%s
+' "$runtime_python" >&2
   exit 1
 fi
 
