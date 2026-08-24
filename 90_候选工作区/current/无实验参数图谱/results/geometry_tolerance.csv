@@ -1,0 +1,5 @@
+target,p,q,slow_cycles,phase_tolerance_rad,delta_eta_tolerance,delta_h_tolerance_mm_at_ell_0p300m,scope
+4:3,4,3,18,0.10,0.00078595,0.235785,local linear estimate
+3:2,3,2,18,0.10,0.0013263,0.39789,local linear estimate
+5:3,5,3,18,0.10,0.00098244,0.294732,local linear estimate
+2:1,2,1,18,0.10,0.0035368,1.06104,local linear estimate
