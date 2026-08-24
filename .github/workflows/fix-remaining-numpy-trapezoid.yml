@@ -1,0 +1,34 @@
+name: Fix remaining NumPy trapezoid compatibility
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace removed API in independent recomputation
+        run: |
+          set -euo pipefail
+          target="02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/convergence.py"
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/convergence.py")
+          text = path.read_text(encoding="utf-8")
+          count = text.count("np.trapz(")
+          if count != 2:
+              raise SystemExit(f"expected exactly 2 remaining np.trapz calls, found {count}")
+          path.write_text(text.replace("np.trapz(", "np.trapezoid("), encoding="utf-8")
+          PY
+          rm -f .github/workflows/fix-remaining-numpy-trapezoid.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target" .github/workflows/fix-remaining-numpy-trapezoid.yml
+          git commit -m "Support NumPy 2.5 in output-contract recomputation"
+          git push
