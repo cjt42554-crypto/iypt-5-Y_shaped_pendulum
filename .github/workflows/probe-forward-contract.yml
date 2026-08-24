@@ -1,0 +1,56 @@
+name: Probe forward output contract
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Record failed contract checks
+        run: |
+          set -euo pipefail
+          package="02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver"
+          python3 -m venv /tmp/yp-forward
+          /tmp/yp-forward/bin/python -m pip install --upgrade pip >/dev/null
+          /tmp/yp-forward/bin/python -m pip install -e "./$package" >/dev/null
+          output="90_候选工作区/current/forward-contract-probe.json"
+          /tmp/yp-forward/bin/python - <<'PY' > "$output"
+          from copy import deepcopy
+          from pathlib import Path
+          import json
+          from y_pendulum_forward.contracts import load_json
+          from y_pendulum_forward.convergence import _canonical_output_contract, _expected_guard_schema
+          from y_pendulum_forward.runner import run_config
+
+          root = Path("02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver")
+          config = deepcopy(load_json(root / "configs/cable_example.json"))
+          config["physical"]["T"] = 0.004
+          config["numerics"]["elements"] = {"A": 2, "B": 2, "lower": 2}
+          config["numerics"]["quadrature_order"] = 3
+          config["numerics"]["max_step"] = 0.0005
+          config["numerics"]["output_dt"] = 0.001
+          config["observation"] = None
+          result = run_config(config)
+          schema = _expected_guard_schema(config, "FWD-CABLE-1.0")
+          report = _canonical_output_contract(config, result, "FWD-CABLE-1.0", ["COMPLETED"], schema)
+          print(json.dumps({
+              "status": {"contract": result.contract_status, "numerical": result.numerical_status},
+              "report": report,
+          }, ensure_ascii=False, indent=2, default=str))
+          PY
+          rm -f .github/workflows/probe-forward-contract.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- .github/workflows/probe-forward-contract.yml "$output"
+          git commit -m "Record forward output-contract probe"
+          git push
