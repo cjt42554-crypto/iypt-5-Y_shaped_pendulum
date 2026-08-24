@@ -1,0 +1,60 @@
+name: Probe forward runtime
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Record minimal forward runtime diagnostics
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/yp-forward
+          /tmp/yp-forward/bin/python -m pip install --upgrade pip >/dev/null
+          /tmp/yp-forward/bin/python -m pip install -e "./02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver" >/dev/null
+          result="90_候选工作区/current/forward-runtime-probe.txt"
+          /tmp/yp-forward/bin/python - <<'PY' > "$result"
+          from copy import deepcopy
+          from pathlib import Path
+          import json
+          import numpy as np
+          import scipy
+          from y_pendulum_forward.contracts import load_json
+          from y_pendulum_forward.runner import run_config
+
+          root = Path("02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver")
+          config = load_json(root / "configs/cable_example.json")
+          config = deepcopy(config)
+          config["physical"]["T"] = 0.005
+          config["numerics"]["elements"] = {"A": 2, "B": 2, "lower": 2}
+          config["numerics"]["max_step"] = 0.0005
+          config["numerics"]["output_dt"] = 0.001
+          config["observation"] = None
+          result = run_config(config)
+          print(f"numpy={np.__version__}")
+          print(f"scipy={scipy.__version__}")
+          print(f"contract_status={result.contract_status!r}")
+          print(f"numerical_status={result.numerical_status!r}")
+          print(f"returned_interval={result.returned_interval!r}")
+          print("events=" + json.dumps(result.events, ensure_ascii=False, default=str, indent=2))
+          print("diagnostic_keys=" + repr(sorted(result.diagnostics)))
+          print("state_keys=" + repr(sorted(result.state)))
+          print("derived_keys=" + repr(sorted(result.derived)))
+          PY
+
+          rm -f .github/workflows/probe-forward-runtime.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- .github/workflows/probe-forward-runtime.yml "$result"
+          git commit -m "Record forward runtime probe"
+          git push
