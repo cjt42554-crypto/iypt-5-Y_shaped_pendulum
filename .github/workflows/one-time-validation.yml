@@ -16,19 +16,46 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate repository policy
-        run: python3 tools/check_repository_policy.py
-      - name: Validate Markdown math
-        if: ${{ hashFiles('tools/check_markdown_math.py') != '' }}
-        run: python3 tools/check_markdown_math.py
-      - name: Record successful validation by deleting probe branch
+      - name: Validate and publish a temporary diagnostic on failure
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
-          ref="heads/validation/policy-probe"
-          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/${ref}"
-          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/${ref}" >/dev/null 2>&1; then
+          set +e
+          : > /tmp/validation.log
+          python3 tools/check_repository_policy.py >> /tmp/validation.log 2>&1
+          policy_status=$?
+          math_status=0
+          if [[ -f tools/check_markdown_math.py ]]; then
+            python3 tools/check_markdown_math.py >> /tmp/validation.log 2>&1
+            math_status=$?
+          fi
+          set -e
+
+          probe_ref="heads/validation/policy-probe"
+          probe_branch="validation/policy-probe"
+          diagnostic_path="validation-diagnostic.txt"
+
+          if (( policy_status != 0 || math_status != 0 )); then
+            encoded="$(base64 -w 0 /tmp/validation.log)"
+            existing_sha="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}?ref=${probe_branch}" --jq .sha 2>/dev/null || true)"
+            if [[ -n "$existing_sha" ]]; then
+              gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}" \
+                -f message="Update validation diagnostic" \
+                -f content="$encoded" \
+                -f branch="$probe_branch" \
+                -f sha="$existing_sha" >/dev/null
+            else
+              gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}" \
+                -f message="Record validation diagnostic" \
+                -f content="$encoded" \
+                -f branch="$probe_branch" >/dev/null
+            fi
+            cat /tmp/validation.log
+            exit 1
+          fi
+
+          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/${probe_ref}"
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/${probe_ref}" >/dev/null 2>&1; then
             echo "validation probe branch still exists" >&2
             exit 1
           fi
