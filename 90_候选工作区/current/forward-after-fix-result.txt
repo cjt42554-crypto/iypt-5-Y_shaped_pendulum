@@ -1,0 +1,23 @@
+status=1
+source_sha=a75d0874be0d82a5e93b11daff2e6442ef3f0794
+..........................................F....................... [ 62%]
+........................................                     [100%]
+=================================== FAILURES ===================================
+_ ConvergenceTests.test_cable_topology_and_full_field_shapes_cannot_hide_differences _
+
+self = <test_convergence.ConvergenceTests testMethod=test_cable_topology_and_full_field_shapes_cannot_hide_differences>
+
+    def test_cable_topology_and_full_field_shapes_cannot_hide_differences(self):
+        config = self._short_cable()
+        result = run_config(config)
+        schema = _expected_guard_schema(config, "FWD-CABLE-1.0")
+        baseline = _canonical_output_contract(
+            config, result, "FWD-CABLE-1.0", ["COMPLETED"], schema
+        )
+>       self.assertTrue(baseline["passed"])
+E       AssertionError: False is not true
+
+02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests/test_convergence.py:388: AssertionError
+=========================== short test summary info ============================
+FAILED 02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests/test_convergence.py::ConvergenceTests::test_cable_topology_and_full_field_shapes_cannot_hide_differences - AssertionError: False is not true
+1 failed, 105 passed, 18 subtests passed in 34.34s
