@@ -1,0 +1,735 @@
+name: Finalize Y-pendulum active platform
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Replace obsolete delivery-chain coupling
+        run: |
+          python3 - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          from pathlib import Path
+
+          package = Path("02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1")
+          contracts = package / "src/ypendulum/unified/contracts.py"
+          adapters = package / "src/ypendulum/unified/adapters.py"
+          unified_init = package / "src/ypendulum/unified/__init__.py"
+          integration = package / "tests/integration/test_unified_platform.py"
+          desktop = package / "src/ypendulum/ui/desktop_config.py"
+          case_path = package / "configs/unified_shared_forward_case.yaml"
+          forward_config_path = Path(
+              "02_模拟程序/01_前向预测数值求解器/"
+              "y_pendulum_forward_solver/configs/cable_example.json"
+          )
+          theory_path = Path("01_最终理论/01-前向预测理论.md")
+
+          # Keep the forward configuration bound to the current theory file.
+          actual_theory_sha = hashlib.sha256(theory_path.read_bytes()).hexdigest()
+          forward_text = forward_config_path.read_text(encoding="utf-8")
+          forward_payload = json.loads(forward_text)
+          configured_theory_sha = forward_payload.get("theory_sha256")
+          if not isinstance(configured_theory_sha, str) or len(configured_theory_sha) != 64:
+              raise RuntimeError("forward configuration lacks a valid theory_sha256")
+          if configured_theory_sha != actual_theory_sha:
+              if forward_text.count(configured_theory_sha) != 1:
+                  raise RuntimeError("cannot update the forward theory identity unambiguously")
+              forward_config_path.write_text(
+                  forward_text.replace(configured_theory_sha, actual_theory_sha),
+                  encoding="utf-8",
+              )
+
+          # Repair the desktop adapter's formal-program root.
+          desktop_text = desktop.read_text(encoding="utf-8")
+          obsolete_program_root = "02_" + "最终模拟程序"
+          if desktop_text.count(obsolete_program_root) != 1:
+              raise RuntimeError("unexpected desktop forward-root reference count")
+          desktop.write_text(
+              desktop_text.replace(obsolete_program_root, "02_模拟程序"),
+              encoding="utf-8",
+          )
+
+          text = contracts.read_text(encoding="utf-8")
+          text = text.replace(
+              '"""Strict shared-input contract for two physically distinct Y-pendulum backends."""',
+              '"""Shared-input and runtime-identity contract for two Y-pendulum backends."""',
+          )
+          text = text.replace(
+              '    """Freeze every external file consumed by the resolved HF configuration."""',
+              '    """Record every external file consumed by the resolved HF configuration."""',
+          )
+          text = text.replace(
+              "The frozen FWD complete cable state uses DIRECT_STATE while HF ",
+              "The FWD complete cable state uses DIRECT_STATE while HF ",
+          )
+
+          resolve_start = text.index("def _resolve_beneath(")
+          resolve_end = text.index("def _file_identity(", resolve_start)
+          text = text[:resolve_start] + text[resolve_end:]
+
+          chain_start = text.index("def _forward_chain_snapshot_sha256(")
+          chain_end = text.index("def _finite_array(", chain_start)
+          new_chain = '''def _forward_chain_snapshot_sha256(chain: dict[str, Any]) -> str:
+              return _canonical_hash(
+                  {
+                      "dispatch": [
+                          {
+                              "path": path,
+                              "bytes": len(payload),
+                              "sha256": hashlib.sha256(payload).hexdigest(),
+                          }
+                          for path, payload in chain["dispatch_files"]
+                      ],
+                      "source_tree_sha256": chain["source_tree_sha256"],
+                      "source_file_count": chain["source_file_count"],
+                      "config_canonical_sha256": chain["config_canonical_sha256"],
+                      "config_file_sha256": chain["config_file_sha256"],
+                      "config_relative_path": chain["config_relative_path"],
+                      "config_bytes_sha256": hashlib.sha256(
+                          chain["config_bytes"]
+                      ).hexdigest(),
+                      "theory_file_sha256": chain["theory_file_sha256"],
+                      "numerical_theory_file_sha256": chain[
+                          "numerical_theory_file_sha256"
+                      ],
+                  }
+              )
+
+
+          def _forward_runtime_chain(
+              project_root: Path,
+              forward_config_path: Path,
+              theory_path: Path,
+              numerical_theory_path: Path,
+          ) -> dict[str, Any]:
+              """Capture the current forward executable and its scientific inputs."""
+
+              project_root = project_root.resolve()
+              forward_config_path = forward_config_path.resolve()
+              theory_path = theory_path.resolve()
+              numerical_theory_path = numerical_theory_path.resolve()
+              for name, path in (
+                  ("forward project root", project_root),
+                  ("forward config", forward_config_path),
+                  ("forward theory", theory_path),
+                  ("forward numerical theory", numerical_theory_path),
+              ):
+                  if name == "forward project root":
+                      if not path.is_dir():
+                          raise FileNotFoundError(f"{name} does not exist: {path}")
+                  elif not path.is_file():
+                      raise FileNotFoundError(f"{name} does not exist: {path}")
+
+              forward_config = _unique_json(forward_config_path)
+              if forward_config.get("model_id") != _FORWARD_MODEL:
+                  raise ValueError("Forward configuration model identity mismatch.")
+              theory_sha = _sha256_file(theory_path)
+              if forward_config.get("theory_sha256") != theory_sha:
+                  raise ValueError(
+                      "Forward config theory SHA-256 does not match the current theory file."
+                  )
+
+              executable_paths = [
+                  *sorted((project_root / "y_pendulum_forward").glob("*.py")),
+                  project_root / "run.py",
+                  project_root / "pyproject.toml",
+                  project_root / "requirements.txt",
+              ]
+              if not executable_paths or any(not path.is_file() for path in executable_paths):
+                  missing = [str(path) for path in executable_paths if not path.is_file()]
+                  raise FileNotFoundError(f"Forward runtime source is incomplete: {missing}")
+              dispatch = tuple(
+                  (
+                      path.resolve().relative_to(project_root).as_posix(),
+                      path.read_bytes(),
+                  )
+                  for path in executable_paths
+              )
+              return {
+                  "dispatch_files": dispatch,
+                  "source_tree_sha256": _forward_source_hash(dispatch),
+                  "source_file_count": len(dispatch),
+                  "config_canonical_sha256": _canonical_hash(forward_config),
+                  "config_file_sha256": _sha256_file(forward_config_path),
+                  "config_relative_path": forward_config_path.relative_to(
+                      project_root
+                  ).as_posix(),
+                  "config_bytes": forward_config_path.read_bytes(),
+                  "theory_file_sha256": theory_sha,
+                  "numerical_theory_file_sha256": _sha256_file(
+                      numerical_theory_path
+                  ),
+              }
+
+
+          '''
+          text = text[:chain_start] + new_chain + text[chain_end:]
+
+          tail_start = text.index("@dataclass(frozen=True)\nclass ResolvedUnifiedCase:")
+          new_tail = '''@dataclass(frozen=True)
+          class ResolvedUnifiedCase:
+              source_path: Path
+              case_hash_sha256: str
+              payload: dict[str, Any]
+              forward_project_root: Path
+              forward_config_path: Path
+              forward_theory_path: Path
+              forward_numerical_theory_path: Path
+              high_fidelity_config_path: Path
+              high_fidelity_validation_spec_path: Path
+              forward_config: dict[str, Any]
+              high_fidelity_config: SimulationConfig
+              shared_input_audit: dict[str, Any]
+              case_file_sha256: str
+              forward_chain: dict[str, Any]
+              forward_chain_snapshot_sha256: str
+              high_fidelity_config_file_sha256: str
+              high_fidelity_config_bytes: bytes
+              high_fidelity_validation_spec_file_sha256: str
+              high_fidelity_validation_spec_bytes: bytes
+              high_fidelity_resolved_config_sha256: str
+              high_fidelity_auxiliary_files: tuple[tuple[str, int, str], ...]
+
+
+          def verify_unified_case_identities(case: ResolvedUnifiedCase) -> dict[str, Any]:
+              """Re-verify every live input against the in-memory dispatch snapshot."""
+
+              if _sha256_file(case.source_path) != case.case_file_sha256:
+                  raise RuntimeError("Unified case file drifted after it was loaded.")
+              if _canonical_hash(case.payload) != case.case_hash_sha256:
+                  raise RuntimeError("In-memory unified case payload was mutated after loading.")
+              if (
+                  _forward_chain_snapshot_sha256(case.forward_chain)
+                  != case.forward_chain_snapshot_sha256
+              ):
+                  raise RuntimeError("In-memory forward dispatch snapshot was mutated.")
+              if (
+                  _sha256_file(case.high_fidelity_config_path)
+                  != case.high_fidelity_config_file_sha256
+              ):
+                  raise RuntimeError(
+                      "High-fidelity config drifted after the unified case was loaded."
+                  )
+              if (
+                  _sha256_file(case.high_fidelity_validation_spec_path)
+                  != case.high_fidelity_validation_spec_file_sha256
+              ):
+                  raise RuntimeError(
+                      "High-fidelity validation specification drifted after the unified "
+                      "case was loaded."
+                  )
+              if (
+                  _canonical_hash(resolved_config_dict(case.high_fidelity_config))
+                  != case.high_fidelity_resolved_config_sha256
+              ):
+                  raise RuntimeError(
+                      "In-memory high-fidelity resolved config was mutated after loading."
+                  )
+              if _high_fidelity_auxiliary_files(case.high_fidelity_config) != (
+                  case.high_fidelity_auxiliary_files
+              ):
+                  raise RuntimeError(
+                      "High-fidelity auxiliary input identity drifted after loading."
+                  )
+
+              current = _forward_runtime_chain(
+                  case.forward_project_root,
+                  case.forward_config_path,
+                  case.forward_theory_path,
+                  case.forward_numerical_theory_path,
+              )
+              compared = (
+                  "dispatch_files",
+                  "source_tree_sha256",
+                  "source_file_count",
+                  "config_canonical_sha256",
+                  "config_file_sha256",
+                  "config_relative_path",
+                  "config_bytes",
+                  "theory_file_sha256",
+                  "numerical_theory_file_sha256",
+              )
+              mismatches = [
+                  name for name in compared if current[name] != case.forward_chain[name]
+              ]
+              if mismatches:
+                  raise RuntimeError(f"Forward runtime inputs drifted: {mismatches}")
+              return {
+                  "case_file_sha256": case.case_file_sha256,
+                  "high_fidelity_config_file_sha256": (
+                      case.high_fidelity_config_file_sha256
+                  ),
+                  "high_fidelity_validation_spec_file_sha256": (
+                      case.high_fidelity_validation_spec_file_sha256
+                  ),
+                  "high_fidelity_resolved_config_sha256": (
+                      case.high_fidelity_resolved_config_sha256
+                  ),
+                  "high_fidelity_auxiliary_files": [
+                      {"path": path, "bytes": size, "sha256": sha}
+                      for path, size, sha in case.high_fidelity_auxiliary_files
+                  ],
+                  "forward_source_tree_sha256": current["source_tree_sha256"],
+                  "forward_source_file_count": current["source_file_count"],
+                  "forward_config_file_sha256": current["config_file_sha256"],
+                  "forward_config_canonical_sha256": current[
+                      "config_canonical_sha256"
+                  ],
+                  "forward_theory_file_sha256": current["theory_file_sha256"],
+                  "forward_numerical_theory_file_sha256": current[
+                      "numerical_theory_file_sha256"
+                  ],
+              }
+
+
+          def load_unified_case(value: str | Path) -> ResolvedUnifiedCase:
+              source = Path(value).expanduser().resolve()
+              raw = load_unique_yaml(source)
+              required = {
+                  "schema_version",
+                  "problem_id",
+                  "units",
+                  "forward",
+                  "high_fidelity",
+                  "comparison",
+              }
+              if not isinstance(raw, dict) or set(raw) != required:
+                  raise ValueError(
+                      "Unified case must contain exactly the required top-level fields."
+                  )
+              if raw["schema_version"] != _SCHEMA or raw["problem_id"] != _PROBLEM_ID:
+                  raise ValueError("Unified case schema/problem identity mismatch.")
+              if raw["units"] != "SI":
+                  raise ValueError("Unified case currently requires units: SI.")
+              forward_block = raw["forward"]
+              hf_block = raw["high_fidelity"]
+              comparison = raw["comparison"]
+              if not isinstance(forward_block, dict) or set(forward_block) != {
+                  "project_root",
+                  "config",
+                  "theory",
+                  "numerical_theory",
+                  "model_id",
+              }:
+                  raise ValueError("Unified forward block does not match its schema.")
+              if not isinstance(hf_block, dict) or set(hf_block) != {
+                  "config",
+                  "validation_spec",
+                  "model_id",
+              }:
+                  raise ValueError("Unified HF block does not match its schema.")
+              if not isinstance(comparison, dict) or set(comparison) != {
+                  "window_s",
+                  "observer_contract",
+              }:
+                  raise ValueError("Unified comparison block does not match its schema.")
+              if comparison["observer_contract"] != "ORTHOGRAPHIC_XY_METRE-1.0":
+                  raise ValueError("Unsupported unified observer contract.")
+
+              base = source.parent
+              project_root = _resolve(
+                  base, forward_block["project_root"], "forward.project_root"
+              )
+              forward_config_path = _resolve(
+                  project_root, forward_block["config"], "forward.config"
+              )
+              theory_path = _resolve(base, forward_block["theory"], "forward.theory")
+              numerical_theory_path = _resolve(
+                  base,
+                  forward_block["numerical_theory"],
+                  "forward.numerical_theory",
+              )
+              hf_config_path = _resolve(
+                  base, hf_block["config"], "high_fidelity.config"
+              )
+              hf_validation_spec_path = _resolve(
+                  base,
+                  hf_block["validation_spec"],
+                  "high_fidelity.validation_spec",
+              )
+
+              forward_config = _unique_json(forward_config_path)
+              hf_config = load_config(hf_config_path)
+              hf_validation_spec = load_unique_yaml(hf_validation_spec_path)
+              if not isinstance(hf_validation_spec, dict) or hf_validation_spec.get(
+                  "schema_version"
+              ) != "YPS-HF-VALIDATION-1.0":
+                  raise ValueError(
+                      "Unified HF validation specification identity mismatch."
+                  )
+              if (
+                  forward_block["model_id"] != _FORWARD_MODEL
+                  or forward_config.get("model_id") != _FORWARD_MODEL
+              ):
+                  raise ValueError("Unified forward backend must be FWD-CABLE-1.0.")
+              if (
+                  hf_block["model_id"] != _HF_MODEL
+                  or hf_config.high_fidelity.model_id != _HF_MODEL
+              ):
+                  raise ValueError("Unified HF backend model identity mismatch.")
+              horizon = float(to_si(hf_config.solver.t_end, default_unit="s"))
+              if not isinstance(comparison["window_s"], (int, float)) or isinstance(
+                  comparison["window_s"], bool
+              ):
+                  raise ValueError("comparison.window_s must be a finite real number.")
+              if not np.isfinite(float(comparison["window_s"])) or not np.isclose(
+                  float(comparison["window_s"]),
+                  horizon,
+                  rtol=0.0,
+                  atol=1.0e-14,
+              ):
+                  raise ValueError(
+                      "Unified comparison window must equal the HF run horizon."
+                  )
+              audit = _shared_input_audit(forward_config, hf_config)
+              if not audit["passed"]:
+                  failed = [
+                      item["field"]
+                      for item in audit["checks"]
+                      if not item["passed"]
+                  ]
+                  raise ValueError(f"Shared-input audit failed: {failed}")
+              forward_chain = _forward_runtime_chain(
+                  project_root,
+                  forward_config_path,
+                  theory_path,
+                  numerical_theory_path,
+              )
+              return ResolvedUnifiedCase(
+                  source_path=source,
+                  case_hash_sha256=_canonical_hash(raw),
+                  payload=raw,
+                  forward_project_root=project_root,
+                  forward_config_path=forward_config_path,
+                  forward_theory_path=theory_path,
+                  forward_numerical_theory_path=numerical_theory_path,
+                  high_fidelity_config_path=hf_config_path,
+                  high_fidelity_validation_spec_path=hf_validation_spec_path,
+                  forward_config=forward_config,
+                  high_fidelity_config=hf_config,
+                  shared_input_audit=audit,
+                  case_file_sha256=_sha256_file(source),
+                  forward_chain=forward_chain,
+                  forward_chain_snapshot_sha256=_forward_chain_snapshot_sha256(
+                      forward_chain
+                  ),
+                  high_fidelity_config_file_sha256=_sha256_file(hf_config_path),
+                  high_fidelity_config_bytes=hf_config_path.read_bytes(),
+                  high_fidelity_validation_spec_file_sha256=_sha256_file(
+                      hf_validation_spec_path
+                  ),
+                  high_fidelity_validation_spec_bytes=(
+                      hf_validation_spec_path.read_bytes()
+                  ),
+                  high_fidelity_resolved_config_sha256=_canonical_hash(
+                      resolved_config_dict(hf_config)
+                  ),
+                  high_fidelity_auxiliary_files=_high_fidelity_auxiliary_files(
+                      hf_config
+                  ),
+              )
+          '''
+          text = text[:tail_start] + new_tail
+          for obsolete in (
+              "forward_delivery_root_path",
+              "expected_delivery_root_sha256",
+              "_forward_delivery_chain",
+              "artifact_manifest_path",
+              "verified_payloads",
+              "verified_files",
+              "frozen_theory_sha256",
+              "Frozen forward",
+              "frozen forward",
+              "Stage-2 delivery",
+          ):
+              if obsolete in text:
+                  raise RuntimeError(f"obsolete unified-contract token remains: {obsolete}")
+          contracts.write_text(text, encoding="utf-8")
+
+          adapter_text = adapters.read_text(encoding="utf-8")
+          replacements = {
+              '"""Transactional adapters around the frozen FWD tree and independent HF tree."""': '"""Transactional adapters around the FWD and independent HF backends."""',
+              '"""Write only bytes authenticated by the Stage-2 delivery into a private tree."""': '"""Write the captured forward runtime bytes into a private tree."""',
+              "Frozen forward dispatch path escaped its private root.": "Forward dispatch path escaped its private root.",
+              "Frozen forward config path escaped its private root.": "Forward config path escaped its private root.",
+              '["frozen_theory_sha256"]': '["theory_file_sha256"]',
+              "Frozen forward result identity contract failed": "Forward result identity contract failed",
+              "Frozen forward backend failed with exit code ": "Forward backend failed with exit code ",
+              "Executable, input, or frozen forward delivery identity drifted during the run.": "Executable or input identity drifted during the run.",
+          }
+          for old, new in replacements.items():
+              if adapter_text.count(old) != 1:
+                  raise RuntimeError(
+                      f"unexpected adapter replacement count for {old!r}: "
+                      f"{adapter_text.count(old)}"
+                  )
+              adapter_text = adapter_text.replace(old, new)
+          if "frozen forward" in adapter_text.lower() or "Stage-2" in adapter_text:
+              raise RuntimeError("obsolete forward-delivery narrative remains in adapters")
+          adapters.write_text(adapter_text, encoding="utf-8")
+
+          init_text = unified_init.read_text(encoding="utf-8")
+          init_text = init_text.replace(
+              '"""Unified research-platform contracts for the frozen FWD and independent HF backends."""',
+              '"""Unified research-platform contracts for the FWD and HF backends."""',
+          )
+          if "frozen FWD" in init_text:
+              raise RuntimeError("obsolete unified package narrative remains")
+          unified_init.write_text(init_text, encoding="utf-8")
+
+          case_path.write_text(
+              """schema_version: YPS-UNIFIED-CASE-1.0
+          problem_id: IYPT-2027-05-Y-PENDULUM
+          units: SI
+
+          forward:
+            project_root: ../../../01_前向预测数值求解器/y_pendulum_forward_solver
+            config: configs/cable_example.json
+            theory: ../../../../01_最终理论/01-前向预测理论.md
+            numerical_theory: ../../../../01_最终理论/02-前向预测理论的数值计算理论.md
+            model_id: FWD-CABLE-1.0
+
+          high_fidelity:
+            config: examples/high_fidelity_shared_forward_window.yaml
+            validation_spec: high_fidelity_shared_forward_validation.yaml
+            model_id: HF-DISCRETE-ROD-RIGID-BOB-1.0
+
+          comparison:
+            window_s: 0.12
+            observer_contract: ORTHOGRAPHIC_XY_METRE-1.0
+          """,
+              encoding="utf-8",
+          )
+
+          test_text = integration.read_text(encoding="utf-8")
+          tests_start = test_text.index(
+              "def test_unified_case_audits_every_shared_physical_mapping_and_hash("
+          )
+          tests_end = test_text.index("def _synthetic_backend_outputs(", tests_start)
+          new_tests = '''def _absolute_case_payload(case):
+              raw = yaml.safe_load(CASE_PATH.read_text(encoding="utf-8"))
+              raw["forward"]["project_root"] = str(case.forward_project_root)
+              raw["forward"]["config"] = str(case.forward_config_path)
+              raw["forward"]["theory"] = str(case.forward_theory_path)
+              raw["forward"]["numerical_theory"] = str(
+                  case.forward_numerical_theory_path
+              )
+              raw["high_fidelity"]["config"] = str(
+                  case.high_fidelity_config_path
+              )
+              raw["high_fidelity"]["validation_spec"] = str(
+                  case.high_fidelity_validation_spec_path
+              )
+              return raw
+
+
+          def test_unified_case_audits_every_shared_physical_mapping_and_hash(
+              tmp_path: Path,
+          ) -> None:
+              case = load_unified_case(CASE_PATH)
+              assert case.shared_input_audit["passed"]
+              assert case.shared_input_audit["check_count"] >= 52
+              assert all(item["passed"] for item in case.shared_input_audit["checks"])
+              fields = {item["field"] for item in case.shared_input_audit["checks"]}
+              assert {
+                  "support_A.activation",
+                  "support_B.activation",
+                  "air_velocity.activation",
+                  "bob.buoyancy.activation",
+                  "bob.drag.activation",
+                  "branch.A.drag.activation",
+                  "branch.B.drag.activation",
+                  "branch.lower.drag.activation",
+                  "initial.protocol",
+              }.issubset(fields)
+              identities = verify_unified_case_identities(case)
+              assert identities["forward_source_file_count"] == len(
+                  case.forward_chain["dispatch_files"]
+              )
+              assert identities["forward_source_file_count"] >= 5
+              assert identities["forward_source_tree_sha256"] == case.forward_chain[
+                  "source_tree_sha256"
+              ]
+              assert identities["forward_theory_file_sha256"] == case.forward_config[
+                  "theory_sha256"
+              ]
+
+              tampered_config = json.loads(
+                  case.forward_config_path.read_text(encoding="utf-8")
+              )
+              tampered_config["theory_sha256"] = "0" * 64
+              tampered_config_path = tmp_path / "tampered-forward.json"
+              tampered_config_path.write_text(
+                  json.dumps(tampered_config, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+              raw = _absolute_case_payload(case)
+              raw["forward"]["config"] = str(tampered_config_path)
+              tampered_case = tmp_path / "tampered-case.yaml"
+              tampered_case.write_text(
+                  yaml.safe_dump(raw, sort_keys=False), encoding="utf-8"
+              )
+              with pytest.raises(ValueError, match="theory SHA-256"):
+                  load_unified_case(tampered_case)
+
+
+          def test_unified_semantic_switches_are_not_replaced_by_matching_numbers(
+              tmp_path: Path,
+          ) -> None:
+              case = load_unified_case(CASE_PATH)
+              raw_case = _absolute_case_payload(case)
+              hf_raw = yaml.safe_load(
+                  case.high_fidelity_config_path.read_text(encoding="utf-8")
+              )
+              hf_raw["bob"]["drag"]["enabled"] = False
+              hf_path = tmp_path / "hf_drag_disabled.yaml"
+              hf_path.write_text(
+                  yaml.safe_dump(hf_raw, sort_keys=False), encoding="utf-8"
+              )
+              raw_case["high_fidelity"]["config"] = str(hf_path)
+              case_path = tmp_path / "semantic_mismatch.yaml"
+              case_path.write_text(
+                  yaml.safe_dump(raw_case, sort_keys=False), encoding="utf-8"
+              )
+              with pytest.raises(
+                  ValueError, match="Shared-input audit failed.*bob.drag.activation"
+              ):
+                  load_unified_case(case_path)
+
+
+          def test_current_forward_source_drift_is_detected(monkeypatch) -> None:
+              case = load_unified_case(CASE_PATH)
+              monkeypatch.setattr(
+                  contract_module, "_forward_source_hash", lambda _files: "0" * 64
+              )
+              with pytest.raises(RuntimeError, match="Forward runtime inputs drifted"):
+                  verify_unified_case_identities(case)
+
+
+          def test_in_memory_dispatch_snapshot_cannot_be_mutated_after_case_load() -> None:
+              case = load_unified_case(CASE_PATH)
+              original = case.forward_chain["config_bytes"]
+              case.forward_chain["config_bytes"] = original + b" "
+              with pytest.raises(RuntimeError, match="dispatch snapshot was mutated"):
+                  verify_unified_case_identities(case)
+
+
+          '''
+          test_text = test_text[:tests_start] + new_tests + test_text[tests_end:]
+          for obsolete in (
+              "forward_delivery_root_path",
+              "expected_delivery_root_sha256",
+              "forward_verified_file_count",
+              "artifact identity mismatch",
+          ):
+              if obsolete in test_text:
+                  raise RuntimeError(f"obsolete unified test token remains: {obsolete}")
+          integration.write_text(test_text, encoding="utf-8")
+
+          policy = Path("tools/check_repository_policy.py")
+          policy_text = policy.read_text(encoding="utf-8")
+          marker = '    "02-" + "模拟程序",\n'
+          addition = (
+              marker
+              + '    "02_" + "最终模拟程序",\n'
+              + '    "expected_" + "delivery_root_sha256",\n'
+              + '    "forward." + "delivery_root",\n'
+          )
+          if policy_text.count(marker) != 1:
+              raise RuntimeError("unexpected repository-policy alias marker")
+          policy.write_text(policy_text.replace(marker, addition), encoding="utf-8")
+          PY
+
+          rm -f .github/workflows/one-time-validation.yml
+          rm -f .github/workflows/scan-unified-references.yml
+          rm -f .github/workflows/finalize-y-platform.yml
+
+          python3 -m py_compile \
+            tools/check_repository_policy.py \
+            "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py" \
+            "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py" \
+            "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/desktop_config.py" \
+            "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py"
+          bash -n "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/启动Y形摆模拟器.sh"
+          python3 tools/check_repository_policy.py
+          git diff --check
+      - name: Run complete program validation and commit on success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MPLBACKEND: Agg
+        run: |
+          set +e
+          log=/tmp/y-platform-validation.log
+          : > "$log"
+          failed=0
+          run_step() {
+            printf '\n$ %s\n' "$*" >> "$log"
+            "$@" >> "$log" 2>&1
+            status=$?
+            if (( status != 0 )); then
+              printf 'exit=%s\n' "$status" >> "$log"
+              failed=1
+            fi
+          }
+
+          run_step python3 -m pip install --upgrade pip
+          run_step python3 -m pip install -e "./02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver"
+          run_step bash -lc 'cd "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver" && python3 -m pytest -q tests'
+          run_step python3 -m pip install -e "./02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1[dev]"
+          run_step bash -lc 'cd "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1" && python3 -m pytest -q tests'
+          run_step python3 "02_模拟程序/03_结构性理论分析程序/torus_structure_analysis.py"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/results/structural_analysis_results.json"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/figures/geometry_frequency_design.png"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/figures/finite_amplitude_compensation.png"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/figures/taut_domain_map.png"
+          set -e
+
+          probe_ref="heads/validation/full-probe"
+          probe_branch="validation/full-probe"
+          diagnostic_path="validation-diagnostic.txt"
+          if (( failed != 0 )); then
+            encoded="$(base64 -w 0 "$log")"
+            existing_sha="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}?ref=${probe_branch}" --jq .sha 2>/dev/null || true)"
+            if [[ -n "$existing_sha" ]]; then
+              gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}" \
+                -f message="Update Y-platform validation diagnostic" \
+                -f content="$encoded" -f branch="$probe_branch" -f sha="$existing_sha" >/dev/null
+            else
+              gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}" \
+                -f message="Record Y-platform validation diagnostic" \
+                -f content="$encoded" -f branch="$probe_branch" >/dev/null
+            fi
+            cat "$log"
+            exit 1
+          fi
+
+          rm -rf "90_候选工作区/current/验证与复现/结构性理论"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Replace obsolete unified delivery coupling"
+          git push
+
+          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/${probe_ref}"
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/${probe_ref}" >/dev/null 2>&1; then
+            echo "validation probe branch still exists" >&2
+            exit 1
+          fi
