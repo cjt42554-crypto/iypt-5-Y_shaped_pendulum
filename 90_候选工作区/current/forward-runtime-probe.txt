@@ -1,0 +1,15 @@
+numpy=2.5.2
+scipy=1.18.1
+contract_status=[]
+numerical_status='DIAGNOSTIC_FAILURE'
+returned_interval='candidate only; physical derived output unresolved'
+events=[
+  {
+    "kind": "numerical_diagnostic_failure",
+    "message": "AttributeError(\"module 'numpy' has no attribute 'trapz'\")",
+    "discarded_events": []
+  }
+]
+diagnostic_keys=['solver_message', 'solver_warnings']
+state_keys=['candidate_solver_state']
+derived_keys=[]
