@@ -2860,8 +2860,8 @@ def _recompute_cable_output(
             scalar["E_F"] - scalar["E_F"][0] - algebraic_integral
         )
         work_scale = max(
-            float(np.trapz(np.abs(physical_power), time)),
-            float(np.trapz(np.abs(algebraic_power), time)),
+            float(np.trapezoid(np.abs(physical_power), time)),
+            float(np.trapezoid(np.abs(algebraic_power), time)),
         )
     else:
         physical_residual = np.zeros(sample_count)
