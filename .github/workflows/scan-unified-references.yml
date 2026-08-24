@@ -1,0 +1,35 @@
+name: Scan unified-platform references
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish reference scan to diagnostic branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          pattern='delivery_root|forward_chain|verified_file_count|forward_source_tree_sha256|02_最终模拟程序|expected_config_file_sha256|configs/examples'
+          grep -RInE --exclude-dir=.git --exclude='scan-unified-references.yml' "$pattern" . > /tmp/unified-references.txt || true
+          encoded="$(base64 -w 0 /tmp/unified-references.txt)"
+          path="unified-references.txt"
+          branch="validation/full-probe"
+          existing_sha="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${path}?ref=${branch}" --jq .sha 2>/dev/null || true)"
+          if [[ -n "$existing_sha" ]]; then
+            gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${path}" \
+              -f message="Update unified reference scan" \
+              -f content="$encoded" -f branch="$branch" -f sha="$existing_sha" >/dev/null
+          else
+            gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${path}" \
+              -f message="Record unified reference scan" \
+              -f content="$encoded" -f branch="$branch" >/dev/null
+          fi
