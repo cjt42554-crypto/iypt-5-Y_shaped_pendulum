@@ -1,0 +1,37 @@
+name: Patch Y finalizer indentation
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Use cleandoc for generated top-level code
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('.github/workflows/finalize-y-platform.yml')
+          text = path.read_text(encoding='utf-8')
+          if text.count('from textwrap import dedent') != 1:
+              raise RuntimeError('unexpected dedent import count')
+          text = text.replace('from textwrap import dedent', 'from inspect import cleandoc')
+          if text.count('dedent(') != 3:
+              raise RuntimeError('unexpected dedent call count')
+          text = text.replace('dedent(', 'cleandoc(')
+          path.write_text(text, encoding='utf-8')
+          PY
+          rm -f .github/workflows/patch-finalizer-cleandoc.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Fix generated module indentation"
+          git push
