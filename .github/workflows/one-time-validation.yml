@@ -1,4 +1,4 @@
-name: One-time repository validation
+name: One-time full repository validation
 
 on:
   push:
@@ -11,51 +11,74 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate and publish a temporary diagnostic on failure
+          cache: pip
+      - name: Run policy, package, and structural-analysis validation
         env:
           GH_TOKEN: ${{ github.token }}
+          MPLBACKEND: Agg
         run: |
           set +e
-          : > /tmp/validation.log
-          python3 tools/check_repository_policy.py >> /tmp/validation.log 2>&1
-          policy_status=$?
-          math_status=0
+          log=/tmp/full-validation.log
+          : > "$log"
+          failed=0
+
+          run_step() {
+            printf '\n$ %s\n' "$*" >> "$log"
+            "$@" >> "$log" 2>&1
+            status=$?
+            if (( status != 0 )); then
+              printf 'exit=%s\n' "$status" >> "$log"
+              failed=1
+            fi
+          }
+
+          run_step python3 tools/check_repository_policy.py
           if [[ -f tools/check_markdown_math.py ]]; then
-            python3 tools/check_markdown_math.py >> /tmp/validation.log 2>&1
-            math_status=$?
+            run_step python3 tools/check_markdown_math.py
           fi
+          run_step bash -n "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/启动Y形摆模拟器.sh"
+          run_step python3 -m pip install --upgrade pip
+          run_step python3 -m pip install -e "./02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1[dev]"
+          run_step python3 -m pytest -q "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests"
+          run_step python3 "02_模拟程序/03_结构性理论分析程序/torus_structure_analysis.py"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/results/structural_analysis_results.json"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/figures/geometry_frequency_design.png"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/figures/finite_amplitude_compensation.png"
+          run_step test -s "90_候选工作区/current/验证与复现/结构性理论/figures/taut_domain_map.png"
           set -e
 
-          probe_ref="heads/validation/policy-probe"
-          probe_branch="validation/policy-probe"
+          probe_ref="heads/validation/full-probe"
+          probe_branch="validation/full-probe"
           diagnostic_path="validation-diagnostic.txt"
 
-          if (( policy_status != 0 || math_status != 0 )); then
-            encoded="$(base64 -w 0 /tmp/validation.log)"
+          if (( failed != 0 )); then
+            encoded="$(base64 -w 0 "$log")"
             existing_sha="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}?ref=${probe_branch}" --jq .sha 2>/dev/null || true)"
             if [[ -n "$existing_sha" ]]; then
               gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}" \
-                -f message="Update validation diagnostic" \
+                -f message="Update full-validation diagnostic" \
                 -f content="$encoded" \
                 -f branch="$probe_branch" \
                 -f sha="$existing_sha" >/dev/null
             else
               gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${diagnostic_path}" \
-                -f message="Record validation diagnostic" \
+                -f message="Record full-validation diagnostic" \
                 -f content="$encoded" \
                 -f branch="$probe_branch" >/dev/null
             fi
-            cat /tmp/validation.log
+            cat "$log"
             exit 1
           fi
 
+          cat "$log"
           gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/${probe_ref}"
           if gh api "repos/${GITHUB_REPOSITORY}/git/ref/${probe_ref}" >/dev/null 2>&1; then
-            echo "validation probe branch still exists" >&2
+            echo "full-validation probe branch still exists" >&2
             exit 1
           fi
