@@ -1,0 +1,200 @@
+name: Repair active layout references
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repair stale paths and obsolete evidence coupling
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_exact(path: Path, old: str, new: str, expected: int = 1) -> None:
+              text = path.read_text(encoding="utf-8")
+              count = text.count(old)
+              if count != expected:
+                  raise RuntimeError(f"{path}: expected {expected} occurrence(s), found {count}: {old!r}")
+              path.write_text(text.replace(old, new), encoding="utf-8")
+
+          theory = Path("01_最终理论/03-结构性理论.md")
+          for line in (
+              "![几何频率设计律](../03_项目资料/05_验证证据与研究结果/结构性理论/figures/geometry_frequency_design.png)\n",
+              "![有限振幅频移和几何预补偿](../03_项目资料/05_验证证据与研究结果/结构性理论/figures/finite_amplitude_compensation.png)\n",
+              "![六慢周期张紧域](../03_项目资料/05_验证证据与研究结果/结构性理论/figures/taut_domain_map.png)\n",
+          ):
+              replace_exact(theory, line, "")
+
+          pyproject = Path("02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/pyproject.toml")
+          replace_exact(
+              pyproject,
+              'readme = {text = "项目说明已归档到 03_项目资料/03_使用说明与技术文档/高保真模拟器。", content-type = "text/plain"}',
+              'readme = {text = "First-principles, tension-only finite-mass cable simulator for a fixed-knot Y pendulum.", content-type = "text/plain"}',
+          )
+
+          launcher = Path("02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/启动Y形摆模拟器.sh")
+          launcher.write_text("""#!/usr/bin/env bash
+          set -euo pipefail
+
+          simulator_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+          if [[ -n "${YPENDULUM_PYTHON:-}" ]]; then
+            runtime_python="$YPENDULUM_PYTHON"
+          elif [[ -x "$simulator_root/.venv/bin/python" ]]; then
+            runtime_python="$simulator_root/.venv/bin/python"
+          elif command -v python3 >/dev/null 2>&1; then
+            runtime_python="$(command -v python3)"
+          else
+            printf '未找到可用的 Python 3。可设置 YPENDULUM_PYTHON，或在模拟器目录创建 .venv。\n' >&2
+            exit 1
+          fi
+
+          if [[ ! -x "$runtime_python" ]]; then
+            printf '指定的 Python 不可执行：%s\n' "$runtime_python" >&2
+            exit 1
+          fi
+
+          export PYTHONPATH="$simulator_root/src${PYTHONPATH:+:$PYTHONPATH}"
+          cd -- "$simulator_root"
+          exec "$runtime_python" -m ypendulum.cli ui
+          """, encoding="utf-8")
+
+          analysis = Path("02_模拟程序/03_结构性理论分析程序/torus_structure_analysis.py")
+          text = analysis.read_text(encoding="utf-8")
+
+          old_doc = '''"""Stage-4 structural analysis for the IYPT Y-shaped pendulum.
+
+          This file does not define a new forward model.  It evaluates the dimensionless
+          form of equations (T.13)--(T.18) from the frozen Stage-1 theory, and extracts
+          structural quantities (frequencies, phase drift, closure and taut-domain
+          boundaries).  The saved Stage-3 trajectory is only read for short-window
+          mechanism evidence; it is never used to manufacture a long-window frequency.
+          """'''
+          new_doc = '''"""Structural analysis for the IYPT Y-shaped pendulum.
+
+          This module evaluates the dimensionless torus equations from the current
+          forward theory and extracts frequencies, phase drift, closure, and taut-domain
+          boundaries. Generated evidence is written to the active candidate workspace.
+          """'''
+          if text.count(old_doc) != 1:
+              raise RuntimeError("unexpected structural-analysis module docstring")
+          text = text.replace(old_doc, new_doc)
+
+          for obsolete_import in ("import h5py\n", "import yaml\n"):
+              if text.count(obsolete_import) != 1:
+                  raise RuntimeError(f"unexpected import count: {obsolete_import!r}")
+              text = text.replace(obsolete_import, "")
+
+          constant = 'THEORY_SHA256 = "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2"\n'
+          if text.count(constant) != 1:
+              raise RuntimeError("unexpected theory identity constant")
+          text = text.replace(constant, "")
+          text = text.replace(
+              '"""Dimensionless Stage-1 torus equations; tau=t*sqrt(g/ell)."""',
+              '"""Dimensionless torus equations; tau=t*sqrt(g/ell)."""',
+          )
+
+          function_start = text.index("\ndef target_configuration_evidence(")
+          function_end = text.index("\ndef plot_design_law(", function_start)
+          text = text[:function_start] + "\n\n" + text[function_end:].lstrip("\n")
+
+          old_signature = "def plot_design_law(path: Path, target: dict[str, Any]) -> None:"
+          if text.count(old_signature) != 1:
+              raise RuntimeError("unexpected plot_design_law signature")
+          text = text.replace(old_signature, "def plot_design_law(path: Path) -> None:")
+
+          old_scatter = '''    rest = target["ideal_rest_geometry"]
+              ax.scatter(
+                  [rest["eta_h_over_lower"]],
+                  [rest["linear_frequency_ratio"]],
+                  marker="x",
+                  s=100,
+                  linewidths=2.5,
+                  color="#d62728",
+                  label="saved HF config: rest geometry",
+              )
+          '''
+          if text.count(old_scatter) != 1:
+              raise RuntimeError("unexpected saved-HF scatter block")
+          text = text.replace(old_scatter, "")
+
+          old_output = '''    evidence_root = (
+                  project_root / "03_项目资料" / "05_验证证据与研究结果" / "结构性理论"
+              )'''
+          new_output = '''    evidence_root = (
+                  project_root
+                  / "90_候选工作区"
+                  / "current"
+                  / "验证与复现"
+                  / "结构性理论"
+              )'''
+          if text.count(old_output) != 1:
+              raise RuntimeError("unexpected structural-analysis output block")
+          text = text.replace(old_output, new_output)
+
+          old_theory = '''    theory_path = (
+                  project_root / "01_最终理论" / "IYPT_2027_Y_Pendulum_前向预测理论.md"
+              )
+              actual_theory_sha = sha256_file(theory_path)
+              if actual_theory_sha != THEORY_SHA256:
+                  raise RuntimeError(
+                      f"Stage-1 theory identity changed: {actual_theory_sha} != {THEORY_SHA256}"
+                  )'''
+          new_theory = '''    theory_path = project_root / "01_最终理论" / "01-前向预测理论.md"
+              actual_theory_sha = sha256_file(theory_path)'''
+          if text.count(old_theory) != 1:
+              raise RuntimeError("unexpected theory identity block")
+          text = text.replace(old_theory, new_theory)
+
+          replacements = {
+              "    target = target_configuration_evidence(project_root)\n": "",
+              "    plot_design_law(figure_design, target)\n": "    plot_design_law(figure_design)\n",
+              '"scope": "Stage-4 structural analysis; not a forward-model or HF-model redefinition"': '"scope": "Structural analysis; not a forward-model or high-fidelity-model redefinition"',
+              '"stage1_theory_path"': '"theory_path"',
+              '"stage1_theory_sha256"': '"theory_sha256"',
+              '        "target_hf_configuration": target,\n': "",
+              '            "The 0.12 s HF trajectory is too short for trustworthy swing-frequency or locking inference.",\n': "",
+          }
+          for old, new in replacements.items():
+              if text.count(old) != 1:
+                  raise RuntimeError(f"unexpected replacement count for {old!r}: {text.count(old)}")
+              text = text.replace(old, new)
+
+          if "03_项目资料" in text or "Stage-1" in text or "Stage-3" in text or "Stage-4" in text:
+              raise RuntimeError("stale structural-analysis path or stage narrative remains")
+          analysis.write_text(text, encoding="utf-8")
+
+          policy = Path("tools/check_repository_policy.py")
+          policy_text = policy.read_text(encoding="utf-8")
+          marker = '    "archive/pre-" + "03-90-consolidation",\n'
+          addition = marker + '    "01-" + "最终理论",\n    "02-" + "模拟程序",\n'
+          if policy_text.count(marker) != 1:
+              raise RuntimeError("unexpected repository-policy reference tuple")
+          policy.write_text(policy_text.replace(marker, addition), encoding="utf-8")
+          PY
+
+          python3 -m py_compile \
+            "02_模拟程序/03_结构性理论分析程序/torus_structure_analysis.py" \
+            tools/check_repository_policy.py
+          bash -n "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/启动Y形摆模拟器.sh"
+          git diff --check
+      - name: Commit repaired active layout
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Repair active layout references"
+          git push
