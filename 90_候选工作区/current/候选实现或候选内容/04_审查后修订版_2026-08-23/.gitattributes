@@ -1,4 +1,0 @@
-# Scientific binary results are versioned through Git LFS.
-*.h5 filter=lfs diff=lfs merge=lfs -text
-*.npz filter=lfs diff=lfs merge=lfs -text
-

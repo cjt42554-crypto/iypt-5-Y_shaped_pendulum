@@ -1,9 +1,0 @@
-{
-  "identity_uses_original_source_path": false,
-  "original_source_path_for_information_only": "/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/04_纠正证据_2026-08-23/ablation-smoke/overlays/m4-bilateral-measured-ei-finite-bob.yaml",
-  "overlay_canonical": "overlay.canonical.json",
-  "overlay_canonical_sha256": "b09f639133760a256b0f8e56841f3d0f09ef06ec41798f1cb64969dbd3ca85d1",
-  "overlay_raw": "overlay.raw",
-  "overlay_raw_sha256": "5f41193d0e1c7248df61052cd636aa2f7559d765d856d7a97bae5830b639e40e",
-  "schema_version": "YPS-SEALED-OVERLAY-1.0"
-}

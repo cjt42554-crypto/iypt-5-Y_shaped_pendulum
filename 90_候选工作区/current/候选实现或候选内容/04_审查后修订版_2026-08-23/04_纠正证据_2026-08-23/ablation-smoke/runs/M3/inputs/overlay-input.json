@@ -1,9 +1,0 @@
-{
-  "identity_uses_original_source_path": false,
-  "original_source_path_for_information_only": "/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/04_纠正证据_2026-08-23/ablation-smoke/overlays/m3-unilateral-measured-ei-finite-bob.yaml",
-  "overlay_canonical": "overlay.canonical.json",
-  "overlay_canonical_sha256": "b674bd227b6c20be7fb007d8ae021a66c1cf1ea642aa23bd291338966cdb4f45",
-  "overlay_raw": "overlay.raw",
-  "overlay_raw_sha256": "5d2759547a9abfb33b2f6a593bee572e5b0bf789add544a268ebfeaf96cc3dec",
-  "schema_version": "YPS-SEALED-OVERLAY-1.0"
-}

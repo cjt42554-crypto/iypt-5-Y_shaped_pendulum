@@ -1,8 +1,0 @@
-.venv/
-.venv-*/
-src/*.egg-info/
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-runs/
-

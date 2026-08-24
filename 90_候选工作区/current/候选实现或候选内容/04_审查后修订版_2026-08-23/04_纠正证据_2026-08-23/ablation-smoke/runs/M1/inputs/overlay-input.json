@@ -1,9 +1,0 @@
-{
-  "identity_uses_original_source_path": false,
-  "original_source_path_for_information_only": "/home/cjt/Desktop/iypt/5 Y形摆/04_审查后修订版_2026-08-23/04_纠正证据_2026-08-23/ablation-smoke/overlays/m1-unilateral-zero-ei-point-limit.yaml",
-  "overlay_canonical": "overlay.canonical.json",
-  "overlay_canonical_sha256": "02c5cd0306f8d968ab18e772a42c6213196b3b26e5dbae708cc09370f2d5fc07",
-  "overlay_raw": "overlay.raw",
-  "overlay_raw_sha256": "600c0cbc5ad08f8ea33aba778015ebf36c965cf10cdc4c7c738b341a03c17949",
-  "schema_version": "YPS-SEALED-OVERLAY-1.0"
-}

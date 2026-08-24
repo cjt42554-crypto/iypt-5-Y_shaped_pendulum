@@ -1,3 +1,0 @@
-[console_scripts]
-ypendulum = ypendulum.cli:main
-ypendulum-desktop = ypendulum.ui.desktop_app:main

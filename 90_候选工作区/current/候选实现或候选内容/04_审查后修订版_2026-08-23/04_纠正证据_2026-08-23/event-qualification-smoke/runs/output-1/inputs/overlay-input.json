@@ -1,9 +1,0 @@
-{
-  "identity_uses_original_source_path": false,
-  "original_source_path_for_information_only": "/tmp/yps-corrective-evidence-owaj_y9z/plans/event/overlay.yaml",
-  "overlay_canonical": "overlay.canonical.json",
-  "overlay_canonical_sha256": "db5f26744ce15ee010b069cb89e8a402218676a4df9a1563fa3de56859e6f6a1",
-  "overlay_raw": "overlay.raw",
-  "overlay_raw_sha256": "9cedf009c3868f756ba4512bc39ba5b5fc65c41ca38ad405051a008666ea90e6",
-  "schema_version": "YPS-SEALED-OVERLAY-1.0"
-}

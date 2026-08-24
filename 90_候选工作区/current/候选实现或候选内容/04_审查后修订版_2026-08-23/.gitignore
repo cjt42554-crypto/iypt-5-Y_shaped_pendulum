@@ -1,8 +1,0 @@
-# Workstation-specific environments and generated caches
-/03_项目资料/09_本机环境与缓存/
-**/__pycache__/
-*.py[cod]
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-

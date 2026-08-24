@@ -1,9 +1,0 @@
-$ /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/.venv/bin/python -m ypendulum.cli simulate /home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T142915363445Z_85f35c02d4b2-r001__20260822T142915380817Z__fc1a870abf/high_fidelity_config.yaml
-{
-  "status": "out_of_scope_prefix",
-  "run_directory": "/home/cjt/Desktop/iypt/5 Y形摆/第一性原理模拟/Y-Pendulum-Simulator-v1.0.0-rc1/runs/desktop/desktop_case-0001-001-20260822T142915363445Z_85f35c02d4b2-r001__20260822T142915380817Z__fc1a870abf/high_fidelity",
-  "model": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
-  "physical_status": "OUT_OF_SCOPE",
-  "numerical_status": "SUCCESS_EVENT",
-  "independent_certificate": null
-}
