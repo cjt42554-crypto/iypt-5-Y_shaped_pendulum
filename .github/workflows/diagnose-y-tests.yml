@@ -1,0 +1,59 @@
+name: Diagnose Y-pendulum tests
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reproduce failing test suites and record concise diagnostics
+        run: |
+          set +e
+          forward=/tmp/forward-tests.log
+          hf=/tmp/hf-tests.log
+          : > "$forward"
+          : > "$hf"
+
+          python3 -m venv /tmp/yp-forward
+          /tmp/yp-forward/bin/python -m pip install --upgrade pip >/dev/null 2>&1
+          /tmp/yp-forward/bin/python -m pip install -e "./02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver" pytest >/dev/null 2>&1
+          /tmp/yp-forward/bin/python -m pytest -q "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests" >"$forward" 2>&1
+          forward_status=$?
+
+          python3 -m venv /tmp/yp-hf
+          /tmp/yp-hf/bin/python -m pip install --upgrade pip >/dev/null 2>&1
+          /tmp/yp-hf/bin/python -m pip install -e "./02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1[dev]" >/dev/null 2>&1
+          /tmp/yp-hf/bin/python -m pytest -q "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests" >"$hf" 2>&1
+          hf_status=$?
+          set -e
+
+          diagnostic="90_候选工作区/current/y-test-diagnostic.txt"
+          {
+            printf 'source_sha=%s\n' "$GITHUB_SHA"
+            printf 'forward_status=%s\n' "$forward_status"
+            printf 'hf_status=%s\n\n' "$hf_status"
+            printf '===== FORWARD TEST OUTPUT =====\n'
+            tail -n 500 "$forward"
+            printf '\n===== HIGH-FIDELITY TEST OUTPUT =====\n'
+            tail -n 800 "$hf"
+          } > "$diagnostic"
+
+          rm -f .github/workflows/diagnose-y-tests.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- .github/workflows/diagnose-y-tests.yml "$diagnostic"
+          git commit -m "Record Y-pendulum test diagnostics"
+          git push
