@@ -1,0 +1,41 @@
+name: Verify forward solver after NumPy fix
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run complete forward test suite
+        run: |
+          set +e
+          python3 -m venv /tmp/yp-forward
+          /tmp/yp-forward/bin/python -m pip install --upgrade pip >/dev/null 2>&1
+          /tmp/yp-forward/bin/python -m pip install -e "./02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver" pytest >/dev/null 2>&1
+          log=/tmp/forward-after-fix.log
+          /tmp/yp-forward/bin/python -m pytest -q "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests" >"$log" 2>&1
+          status=$?
+          result="90_候选工作区/current/forward-after-fix-result.txt"
+          {
+            printf 'status=%s\n' "$status"
+            printf 'source_sha=%s\n' "$GITHUB_SHA"
+            tail -n 300 "$log"
+          } > "$result"
+          rm -f .github/workflows/verify-forward-after-numpy-fix.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- .github/workflows/verify-forward-after-numpy-fix.yml "$result"
+          git commit -m "Record forward compatibility verification"
+          git push
+          exit "$status"
