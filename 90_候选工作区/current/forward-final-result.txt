@@ -1,0 +1,54 @@
+status=1
+source_sha=c65ed4337f04c6ee40e6b8fdf1f586d1ed576b7f
+............................................................... [ 59%]
+....................................F......                  [100%]
+=================================== FAILURES ===================================
+____ TorusTests.test_tangential_tension_touch_is_not_reported_as_completed _____
+
+self = <test_torus.TorusTests testMethod=test_tangential_tension_touch_is_not_reported_as_completed>
+
+    def test_tangential_tension_touch_is_not_reported_as_completed(self):
+        config = deepcopy(self.config)
+        physical = config["physical"]
+        support_distance = float(
+            np.linalg.norm(
+                np.asarray(physical["B"]) - np.asarray(physical["A"])
+            )
+        )
+        upper = float(physical["s_A"])
+        height = math.sqrt(upper * upper - (support_distance / 2.0) ** 2)
+        alpha = math.atan((support_distance / 2.0) / height)
+        modulus = math.sin(alpha / 2.0)
+        omega = math.sqrt(physical["g"] / physical["lower_length"])
+        tangent_time = float(ellipk(modulus * modulus) / omega)
+        physical["initial_state"] = [0.0, 0.0, 2.0 * modulus * omega, 0.0]
+        physical["T"] = 1.5 * tangent_time
+        config["numerics"].update(
+            output_dt=tangent_time,
+            max_step=tangent_time / 100.0,
+            rtol=1e-11,
+            atol=1e-13,
+        )
+        config["observation"] = None
+        result = run_config(config)
+>       self.assertEqual(result.contract_status, [])
+E       AssertionError: Lists differ: ['OUT_OF_SCOPE'] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       'OUT_OF_SCOPE'
+E       
+E       - ['OUT_OF_SCOPE']
+E       + []
+
+02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests/test_torus.py:352: AssertionError
+=========================== short test summary info ============================
+FAILED 02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests/test_torus.py::TorusTests::test_tangential_tension_touch_is_not_reported_as_completed - AssertionError: Lists differ: ['OUT_OF_SCOPE'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'OUT_OF_SCOPE'
+
+- ['OUT_OF_SCOPE']
++ []
+1 failed, 105 passed, 21 subtests passed in 47.28s
