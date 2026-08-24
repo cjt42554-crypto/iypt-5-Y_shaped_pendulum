@@ -1,0 +1,179 @@
+name: Fix tangential event classification
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Patch tangential-event classification
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/torus.py")
+          text = path.read_text(encoding="utf-8")
+
+          old_event = '''        triggered = sorted(set(triggered))
+        events = [{
+            "kind": "physical_exit",
+'''
+          new_event = '''        triggered = sorted(set(triggered))
+
+        # A zero guard is a certified physical exit only when its material
+        # time derivative points out of the strictly positive domain.  Modern
+        # solve_ivp versions may report a terminal root for a tangential touch;
+        # treating that touch as OUT_OF_SCOPE would counterfeit a crossing.
+        phi, theta, phi_dot, theta_dot = map(float, event_state)
+        rhs_at_event = torus_rhs(params, tau, event_state)
+        phi_ddot = float(rhs_at_event[2])
+        theta_ddot = float(rhs_at_event[3])
+        ell = params.lower_length
+        R = float(guard_values["R"][0])
+        R_dot = -ell * np.sin(phi) * phi_dot
+        T_lower = float(guard_values["T_lower"][0])
+        T_lower_dot = params.mass * (
+            2.0 * ell * phi_dot * phi_ddot
+            + (R_dot * np.cos(phi) - R * np.sin(phi) * phi_dot)
+            * theta_dot**2
+            + 2.0 * R * np.cos(phi) * theta_dot * theta_ddot
+            - params.g * np.sin(phi) * phi_dot * np.cos(theta)
+            - params.g * np.cos(phi) * np.sin(theta) * theta_dot
+        )
+        factor_A = np.sin(phi) + params.a_B / params.h * np.cos(phi)
+        factor_B = params.a_A / params.h * np.cos(phi) - np.sin(phi)
+        factor_A_dot = (
+            np.cos(phi) - params.a_B / params.h * np.sin(phi)
+        ) * phi_dot
+        factor_B_dot = -(
+            params.a_A / params.h * np.sin(phi) + np.cos(phi)
+        ) * phi_dot
+        guard_derivatives = {
+            "R_ZERO": float(R_dot),
+            "T_A_ZERO": float(
+                params.s_A
+                / params.d
+                * (T_lower_dot * factor_A + T_lower * factor_A_dot)
+            ),
+            "T_B_ZERO": float(
+                params.s_B
+                / params.d
+                * (T_lower_dot * factor_B + T_lower * factor_B_dot)
+            ),
+            "T_LOWER_ZERO": float(T_lower_dot),
+        }
+        frequency_scale = max(
+            float(np.sqrt(params.g / max(params.lower_length, np.finfo(float).tiny))),
+            abs(phi_dot),
+            abs(theta_dot),
+            np.finfo(float).tiny,
+        )
+        derivative_tolerances = {
+            "R_ZERO": float(
+                np.sqrt(np.finfo(float).eps) * length_scale * frequency_scale
+            ),
+            "T_A_ZERO": float(
+                np.sqrt(np.finfo(float).eps) * tension_scale * frequency_scale
+            ),
+            "T_B_ZERO": float(
+                np.sqrt(np.finfo(float).eps) * tension_scale * frequency_scale
+            ),
+            "T_LOWER_ZERO": float(
+                np.sqrt(np.finfo(float).eps) * tension_scale * frequency_scale
+            ),
+        }
+        decisive_exit_triggers = sorted(
+            name
+            for name in triggered
+            if guard_derivatives[name] < -derivative_tolerances[name]
+        )
+        if decisive_exit_triggers:
+            event_kind = "physical_exit"
+        else:
+            contract_status = []
+            numerical_status = "EVENT_UNRESOLVED"
+            returned_interval = (
+                f"[0,{tau}) candidate only; zero guard without certified "
+                "outward crossing"
+            )
+            event_kind = "numerical_event_unresolved"
+
+        events = [{
+            "kind": event_kind,
+'''
+          if text.count(old_event) != 1:
+              raise SystemExit("event insertion anchor was not unique")
+          text = text.replace(old_event, new_event)
+
+          old_triggers = '''            "triggers": triggered,
+            "state_left": event_state,
+'''
+          new_triggers = '''            "triggers": triggered,
+            "decisive_exit_triggers": decisive_exit_triggers,
+            "guard_time_derivatives": guard_derivatives,
+            "guard_derivative_tolerances": derivative_tolerances,
+            "state_left": event_state,
+'''
+          if text.count(old_triggers) != 1:
+              raise SystemExit("event metadata anchor was not unique")
+          text = text.replace(old_triggers, new_triggers)
+
+          old_time = '''    time = _output_times(tau, output_dt, include_end=completed or not contract_status)
+'''
+          new_time = '''    include_terminal_sample = completed or (
+        not contract_status and numerical_status != "EVENT_UNRESOLVED"
+    )
+    time = _output_times(
+        tau, output_dt, include_end=include_terminal_sample
+    )
+'''
+          if text.count(old_time) != 1:
+              raise SystemExit("output-time anchor was not unique")
+          text = text.replace(old_time, new_time)
+
+          path.write_text(text, encoding="utf-8")
+          PY
+      - name: Install and run complete forward suite
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python3 -m venv /tmp/yp-forward
+          /tmp/yp-forward/bin/python -m pip install --upgrade pip >/dev/null 2>&1
+          /tmp/yp-forward/bin/python -m pip install -e "./02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver" pytest >/dev/null 2>&1
+          log=/tmp/tangency-fix.log
+          /tmp/yp-forward/bin/python -m pytest -q "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests" >"$log" 2>&1
+          tests=$?
+          python3 tools/check_repository_policy.py >>"$log" 2>&1
+          policy=$?
+          status=$(( tests != 0 || policy != 0 ))
+          result="90_候选工作区/current/tangency-fix-validation.txt"
+          {
+            printf 'status=%s\n' "$status"
+            printf 'tests=%s\n' "$tests"
+            printf 'policy=%s\n' "$policy"
+            printf 'source_sha=%s\n' "$GITHUB_SHA"
+            tail -n 500 "$log"
+          } > "$result"
+          rm -f .github/workflows/fix-tangential-event.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            .github/workflows/fix-tangential-event.yml \
+            "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/torus.py" \
+            "$result"
+          git commit -m "Classify tangential guard contacts as unresolved"
+          git push
+          exit "$status"
