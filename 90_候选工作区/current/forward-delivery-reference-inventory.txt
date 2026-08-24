@@ -1,0 +1,83 @@
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/model.py:8:degrees of freedom do not exist in the frozen forward model and therefore
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:243:                "delivery_root.json",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:340:        root_path = run / "delivery_root.json"
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:346:                "Unified child exited without a sealed delivery root and artifact manifest.",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:354:            raise ValueError("Unsupported unified delivery-root schema.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:357:            raise ValueError("Artifact-manifest hash does not match delivery root.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:385:        expected_files = seen | {"artifact_manifest.json", "delivery_root.json"}
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:413:            "delivery_root_sha256": sha256_file(root_path),
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:450:            "Unified delivery root has no accepted terminal scientific status.",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/problem_plugins.py:489:                "forward_delivery_root": str(case.forward_delivery_root_path),
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/ui/desktop_results.py:252:    The frozen Stage-2 solver represents a ``null`` open-box side internally as
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/experiment.py:32:    root_path = run / "delivery_root.json"
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/experiment.py:44:        raise ValueError("Unified artifact-manifest identity does not match delivery root.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/experiment.py:75:        "delivery_root_sha256": _sha256_file(root_path),
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/experiment.py:212:            (staging / "delivery_root.json").write_text(
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:110:def _forward_chain_snapshot_sha256(chain: dict[str, Any]) -> str:
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:113:            "delivery_root_sha256": chain["delivery_root_sha256"],
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:138:    delivery_root_path: Path,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:139:    expected_delivery_root_sha256: str,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:142:    """Verify the complete frozen Stage-2 chain and capture executable bytes.
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:144:    The Stage-2 delivery root explicitly requires
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:145:    ``delivery_root -> payload_roots -> artifact_manifest -> every file``.
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:146:    Merely hashing ``delivery_root.json`` is not sufficient because it does not
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:150:    if not isinstance(expected_delivery_root_sha256, str) or len(
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:151:        expected_delivery_root_sha256
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:153:        raise ValueError("forward.expected_delivery_root_sha256 must be a SHA-256 string.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:154:    delivery_bytes, delivery_sha = _file_identity(delivery_root_path)
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:155:    if delivery_sha != expected_delivery_root_sha256:
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:156:        raise ValueError("forward delivery root SHA-256 does not match the unified case.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:157:    root = _unique_json(delivery_root_path)
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:159:        raise ValueError("Unsupported frozen forward delivery-root schema.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:161:        raise ValueError("Forward delivery root is not the frozen Stage-2 delivery.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:163:        raise ValueError("Forward delivery root is not ready for independent use.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:166:        raise ValueError("Forward delivery root lacks a finite scope_root identity.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:173:        raise ValueError("Forward delivery root lacks its required payload roots.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:241:        raise ValueError("Forward executable source-tree hash disagrees with delivery root.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:245:        raise ValueError("Forward config theory identity disagrees with delivery root.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:248:        "delivery_root_sha256": delivery_sha,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:249:        "delivery_root_bytes": delivery_bytes,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:250:        "delivery_root_payload": root,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:596:    forward_delivery_root_path: Path
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:603:    forward_chain: dict[str, Any]
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:604:    forward_chain_snapshot_sha256: str
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:621:        _forward_chain_snapshot_sha256(case.forward_chain)
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:622:        != case.forward_chain_snapshot_sha256
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:624:        raise RuntimeError("In-memory frozen forward dispatch snapshot was mutated.")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:647:        case.forward_delivery_root_path,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:648:        forward_block["expected_delivery_root_sha256"],
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:651:    frozen = case.forward_chain
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:653:        "delivery_root_sha256",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:677:        "forward_delivery_root_sha256": current["delivery_root_sha256"],
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:709:        "delivery_root",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:711:        "expected_delivery_root_sha256",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:735:        project_root, forward_block["delivery_root"], "forward.delivery_root"
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:745:        (forward_delivery_path, forward_block["expected_delivery_root_sha256"], "forward delivery root"),
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:780:    forward_chain = _forward_delivery_chain(
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:783:        forward_block["expected_delivery_root_sha256"],
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:792:        forward_delivery_root_path=forward_delivery_path,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:799:        forward_chain=forward_chain,
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/contracts.py:800:        forward_chain_snapshot_sha256=_forward_chain_snapshot_sha256(forward_chain),
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/jobs.py:65:                root_path = Path(self.command[index + 1]) / "delivery_root.json"
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py:63:    for relative, payload in case.forward_chain["dispatch_files"]:
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py:69:    config = (target / case.forward_chain["config_relative_path"]).resolve()
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py:73:    config.write_bytes(case.forward_chain["config_bytes"])
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py:87:    expected = case.forward_chain
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py:400:                "Executable, input, or frozen forward delivery identity drifted during the run."
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/unified/adapters.py:436:        _write_json(staging / "delivery_root.json", root)
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/api.py:1257:    """Compare a frozen forward run with experimental positions or pixels."""
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/cli.py:240:            staging / "delivery_root.json",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/unit/test_ui_problem_plugins.py:55:        run / "delivery_root.json",
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:52:    assert identities["forward_source_tree_sha256"] == case.forward_chain[
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:76:    raw_case["forward"]["delivery_root"] = str(case.forward_delivery_root_path)
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:94:def test_complete_forward_chain_gate_detects_executable_drift_even_if_root_is_unchanged(
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:113:    original = case.forward_chain["config_bytes"]
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:114:    case.forward_chain["config_bytes"] = original + b" "
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:195:    (run / "delivery_root.json").write_text(
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:245:    assert (artifact / "delivery_root.json").is_file()
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_unified_platform.py:308:    assert (target / "delivery_root.json").is_file()
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_hf_validation.py:484:    assert (target / "delivery_root.json").is_file()
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/tests/integration/test_hf_validation.py:992:    root = (target / "delivery_root.json").read_text(encoding="utf-8")
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/configs/examples/high_fidelity_shared_forward_window.yaml:10:# masses, axial EA/Ca values and rigid-body initial state of the frozen Stage-2
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/configs/unified_shared_forward_case.yaml:8:  delivery_root: validation/delivery_root.json
+02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/configs/unified_shared_forward_case.yaml:10:  expected_delivery_root_sha256: dec497d42e0384f403b4c652a40799e389702a94b4299b24a4555f2bd9ea93ef
