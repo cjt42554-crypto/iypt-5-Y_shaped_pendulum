@@ -21,10 +21,10 @@ NUMERICALLY_QUALIFIED = false
 EXPERIMENTALLY_VALIDATED = false
 PREDICTIVE = false
 CURRENT_INDEPENDENT_REVIEW = NOT_RUN
-LAYOUT_V2_CURRENT_COMMIT_REVALIDATION = NOT_RUN
+LAYOUT_CURRENT_COMMIT_REVALIDATION = NOT_RUN
 ```
 
-历史 `CODE_VERIFIED` 只绑定其记录的源码、配置、命令和环境。仓库布局迁移和活动入口适配不自动证明新提交上的实现、数值或物理结论。
+历史 `CODE_VERIFIED` 只绑定其记录的源码、配置、命令和环境。仓库布局整理和活动入口适配不自动证明当前提交上的实现、数值或物理结论。
 
 ## 下一步
 

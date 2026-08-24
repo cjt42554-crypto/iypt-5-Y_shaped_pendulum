@@ -23,7 +23,6 @@ REQUIRED_FILES = (
     "00_项目控制/STATUS.md",
     "00_项目控制/LAYOUT.md",
     "00_项目控制/WORKFLOW.md",
-    "00_项目控制/LAYOUT_VERSION.txt",
     "01_最终理论/README.md",
     "02_模拟程序/README.md",
     "03_项目资料/README.md",
@@ -31,7 +30,7 @@ REQUIRED_FILES = (
     "90_候选工作区/current/README.md",
     "90_候选工作区/archive/README.md",
 )
-LEGACY_TOP_LEVEL = (
+FORBIDDEN_TOP_LEVEL = (
     "每次任务前阅读",
     "未提交修改",
     "02_最终模拟程序",
@@ -68,13 +67,9 @@ def main() -> int:
     for relative in REQUIRED_FILES:
         if not (ROOT / relative).is_file():
             errors.append(f"missing file: {relative}")
-    for relative in LEGACY_TOP_LEVEL:
+    for relative in FORBIDDEN_TOP_LEVEL:
         if (ROOT / relative).exists():
-            errors.append(f"legacy top-level path still exists: {relative}")
-
-    version_path = ROOT / "00_项目控制/LAYOUT_VERSION.txt"
-    if version_path.is_file() and version_path.read_text(encoding="utf-8").strip() != "2":
-        errors.append("LAYOUT_VERSION.txt must contain 2")
+            errors.append(f"forbidden top-level path still exists: {relative}")
 
     status_path = ROOT / "00_项目控制/STATUS.md"
     if status_path.is_file() and "90_候选工作区/current/" not in status_path.read_text(encoding="utf-8"):
@@ -87,7 +82,7 @@ def main() -> int:
         text = path.read_text(encoding="utf-8")
         for token in FORBIDDEN_ACTIVE_TEXT:
             if token in text:
-                errors.append(f"legacy active reference {token!r} in {relative}")
+                errors.append(f"non-current active reference {token!r} in {relative}")
         for raw_target in LINK_RE.findall(text):
             target = raw_target.strip().split(maxsplit=1)[0].strip("<>")
             if not target or target.startswith(("#", "http://", "https://", "mailto:")):
