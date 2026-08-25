@@ -1,0 +1,81 @@
+{
+  "schema_version": "YPS-4TO3-ALPHA-SPECIFIC-HELD-PREPARATION-PROTOCOL-1.0",
+  "status": "PREFROZEN_CANDIDATE__PREPARATION_NOT_RUN",
+  "decision": {
+    "primary": "ALPHA_SPECIFIC_HELD_EQUILIBRIUM",
+    "secondary_sensitivity": "SHARED_ALPHA1_STATE_CONSTITUTIVE_QUENCH",
+    "rejected_as_primary": [
+      "CHANGE_ENDPOINT_PREPARATION",
+      "SHARED_ALPHA1_STATE_CONSTITUTIVE_QUENCH"
+    ]
+  },
+  "reason": {
+    "primary": "It preserves the frozen bob, junction and support endpoints while allowing each constitutive law to establish its own conservative material state before release.",
+    "secondary": "The quench answers a different question about instantaneous constitutive change and must not be mixed with the primary preparation identity.",
+    "endpoint_change": "Changing endpoints would confound the constitutive limit with a changed release geometry."
+  },
+  "target_scales": [
+    1.0,
+    0.01,
+    0.0001,
+    1e-06
+  ],
+  "exact_zero": {
+    "executable": false,
+    "role": "mathematical constitutive endpoint only",
+    "reason": "The registered controlled-limit contract has a positive lower bound and the exact unilateral problem may require non-smooth complementarity semantics."
+  },
+  "fixed_identity": [
+    "support_A_position",
+    "support_B_position",
+    "junction_position",
+    "bob_com_position",
+    "bob_orientation",
+    "bob_attachment_position",
+    "mesh",
+    "all non-compression physical parameters",
+    "solver tolerances",
+    "0.12 s release window"
+  ],
+  "allowed_config_changes": [
+    "run.name",
+    "run.output_directory",
+    "run.claim_level",
+    "high_fidelity.compression_regularization_scale",
+    "high_fidelity.controlled_limit_study"
+  ],
+  "preparation_algorithm": {
+    "identity": "independent deterministic multi-seed conservative energy minimization at each target alpha",
+    "reuse": "the existing held-endpoint gravity continuation, force-root polish, negative-curvature escape, Hessian PSD audit and lowest-energy stable-candidate selection",
+    "cross_alpha_warm_start": false,
+    "interpretation": "Each alpha represents a separately prepared apparatus, not a branch-following continuation experiment.",
+    "conditioning_extension": "For alpha <= 1e-4, the constrained-Hessian decision must be repeated with at least two finite-difference steps or checked by independent negative-curvature directional probes; the unchanged alpha=1 stiffness scale alone is not sufficient evidence in a nearly flat compressive subspace."
+  },
+  "preparation_acceptance": [
+    "formal configuration validates under the isolated candidate overlay",
+    "free-material force residual satisfies the unchanged static tolerance",
+    "minimum constrained Hessian eigenvalue satisfies the unchanged PSD audit",
+    "for alpha <= 1e-4, Hessian sign/stability is insensitive to the prefrozen finite-difference-step cross-check or independent directional probe",
+    "all raw physical guards are strictly positive",
+    "candidate guard contract v2 passes",
+    "preparation audit records alpha and candidate protocol identity"
+  ],
+  "fail_closed_conditions": [
+    "no stable candidate",
+    "multiple source replacements or formal source identity drift",
+    "non-finite energy, force or Hessian result",
+    "raw guard non-positivity",
+    "small-alpha Hessian sign is unresolved or changes under the prefrozen conditioning cross-check",
+    "candidate-v2 threshold failure"
+  ],
+  "dynamic_comparison_after_preparation": [
+    "prepared shape and stored axial/bending/gravitational energy",
+    "signed axial-force field and compressed material zones",
+    "fixture reactions",
+    "release trajectory and event material coordinates",
+    "energy/work accounting",
+    "comparison with the alpha=1-state constitutive-quench sensitivity"
+  ],
+  "formal_change_authorized": false,
+  "claim_boundary": "This protocol and overlay are candidate research artifacts. They do not promote a formal solver change and do not establish numerical qualification or physical validity."
+}

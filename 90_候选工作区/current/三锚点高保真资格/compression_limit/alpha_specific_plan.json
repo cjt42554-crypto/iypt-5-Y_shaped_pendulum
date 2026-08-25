@@ -1,0 +1,40 @@
+{
+  "base_config_sha256": "d22cdabedcaa496ef0a733680ef73749575a69e39cce938ea605a2b31193e04f",
+  "builder_sha256": "60751ec04c5675729ee157f2a39746d14cd790219d4686b508a57688451d10f3",
+  "candidate_config_count": 3,
+  "claim_boundary": "The files are prefrozen candidate inputs. No patched overlay, alpha<1 equilibrium, or dynamic trajectory was executed in this commit.",
+  "configs": [
+    {
+      "path": "compression_limit/alpha_specific_configs/alpha_1e-2.yaml",
+      "sha256": "2fe28cd146dd8959842975a400ba3a54b7239995f3102775d283d0991f0c4713"
+    },
+    {
+      "path": "compression_limit/alpha_specific_configs/alpha_1e-4.yaml",
+      "sha256": "e138fbce1bf000e843258ed4a0b2f9d6ea57110a1add29b11db30a087d7c56d4"
+    },
+    {
+      "path": "compression_limit/alpha_specific_configs/alpha_1e-6.yaml",
+      "sha256": "96d20dc9adf49939ff5f0b6950b5773cad319cbf720091c1ee8681a9acd93f8f"
+    }
+  ],
+  "decision": "ALPHA_SPECIFIC_HELD_EQUILIBRIUM",
+  "dynamic_run_count": 0,
+  "formal_change_authorized": false,
+  "formal_source_git_blobs": {
+    "ypendulum/config/validation.py": "7b66ae8c54a507c974d69be9ded05267dbb21439",
+    "ypendulum/hf/solver.py": "325ad43aa8088a55defeae9851c9ccfa508fe936"
+  },
+  "formal_tree_modified": false,
+  "next_gate": "Execute the exact-source-identity overlay builder, then run and qualify each alpha-specific held equilibrium with a small-alpha Hessian-conditioning cross-check before any release trajectory.",
+  "overlay_validation_count": 0,
+  "prepared_state_count": 0,
+  "protocol_sha256": "8aec0adb80e9db8c2a3d36e429662874e4435b445235f33533ad00ccb0c90e93",
+  "schema_version": "YPS-4TO3-ALPHA-SPECIFIC-PREFREEZE-1.0",
+  "secondary_sensitivity": "SHARED_ALPHA1_STATE_CONSTITUTIVE_QUENCH",
+  "status": "CANDIDATE_IMPLEMENTATION_AND_CONFIGS_FROZEN__OVERLAY_NOT_EXECUTED",
+  "target_scales": [
+    0.01,
+    0.0001,
+    1e-06
+  ]
+}
