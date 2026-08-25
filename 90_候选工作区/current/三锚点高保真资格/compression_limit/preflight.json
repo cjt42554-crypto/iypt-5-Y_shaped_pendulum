@@ -1,0 +1,365 @@
+{
+  "base_config": "configs/4to3.yaml",
+  "base_config_file_sha256": "d22cdabedcaa496ef0a733680ef73749575a69e39cce938ea605a2b31193e04f",
+  "base_initial_condition_type": "held_endpoint_equilibrium_release",
+  "base_resolved_config_sha256": "f46fcc49d7ae9bd49c1c7c121162bab266d6a66686e0ba8a549987df9ec95b71",
+  "claim_boundary": "The fixed-state audit demonstrates only the instantaneous algebraic constitutive limit on one bilateral prepared state.  It is not a prepared-state, trajectory, numerical-qualification, physical, or experimental result.",
+  "config_preflight": [
+    {
+      "config_emitted": false,
+      "differences_from_production_base": [
+        "run.name",
+        "run.output_directory"
+      ],
+      "formal_config_accepted": true,
+      "rejection_code": null,
+      "rejection_details": null,
+      "rejection_message": null,
+      "rejection_type": null,
+      "resolved_config_sha256": "1c38fa91970f4f4934dff2c1ee729e51d71fcbdee9c54c70f5508c0ce7cbcaf8",
+      "scale": 1.0,
+      "slug": "alpha_1"
+    },
+    {
+      "config_emitted": false,
+      "differences_from_production_base": [
+        "high_fidelity.compression_regularization_scale",
+        "high_fidelity.controlled_limit_study",
+        "run.claim_level",
+        "run.name",
+        "run.output_directory"
+      ],
+      "formal_config_accepted": false,
+      "rejection_code": "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD",
+      "rejection_details": {
+        "compression_regularization_scale": 0.01,
+        "required": 1.0
+      },
+      "rejection_message": "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD: held endpoint equilibrium preparation is registered only for the full bilateral rod (compression_regularization_scale=1).",
+      "rejection_type": "ConfigurationError",
+      "scale": 0.01,
+      "slug": "alpha_1e-2"
+    },
+    {
+      "config_emitted": false,
+      "differences_from_production_base": [
+        "high_fidelity.compression_regularization_scale",
+        "high_fidelity.controlled_limit_study",
+        "run.claim_level",
+        "run.name",
+        "run.output_directory"
+      ],
+      "formal_config_accepted": false,
+      "rejection_code": "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD",
+      "rejection_details": {
+        "compression_regularization_scale": 0.0001,
+        "required": 1.0
+      },
+      "rejection_message": "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD: held endpoint equilibrium preparation is registered only for the full bilateral rod (compression_regularization_scale=1).",
+      "rejection_type": "ConfigurationError",
+      "scale": 0.0001,
+      "slug": "alpha_1e-4"
+    },
+    {
+      "config_emitted": false,
+      "differences_from_production_base": [
+        "high_fidelity.compression_regularization_scale",
+        "high_fidelity.controlled_limit_study",
+        "run.claim_level",
+        "run.name",
+        "run.output_directory"
+      ],
+      "formal_config_accepted": false,
+      "rejection_code": "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD",
+      "rejection_details": {
+        "compression_regularization_scale": 1e-06,
+        "required": 1.0
+      },
+      "rejection_message": "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD: held endpoint equilibrium preparation is registered only for the full bilateral rod (compression_regularization_scale=1).",
+      "rejection_type": "ConfigurationError",
+      "scale": 1e-06,
+      "slug": "alpha_1e-6"
+    },
+    {
+      "config_emitted": false,
+      "differences_from_production_base": [
+        "high_fidelity.compression_regularization_scale",
+        "high_fidelity.controlled_limit_study",
+        "run.claim_level",
+        "run.name",
+        "run.output_directory"
+      ],
+      "formal_config_accepted": false,
+      "rejection_code": null,
+      "rejection_details": {},
+      "rejection_message": "A controlled HF limit candidate requires every registered physics scale/fraction in [1.0e-06,1]; smaller/exact-zero values are mathematical endpoints, not representable formal candidates. Invalid values: {\"compression_regularization_scale\": 0.0}",
+      "rejection_type": "ConfigurationError",
+      "scale": 0.0,
+      "slug": "alpha_0_mathematical_endpoint"
+    }
+  ],
+  "decision_required": {
+    "geometric_direct_release_excluded": "It would preserve both requested endpoints, but the 4:3 lower endpoint chord is shorter than its material rest length, so the formal implementation rejects the inferred straight state.",
+    "options": [
+      {
+        "description": "Keep the same held bob and junction endpoints, prepare a separate equilibrium for every alpha, and compare both preparation and release dynamics.",
+        "id": "ALPHA_SPECIFIC_HELD_EQUILIBRIUM",
+        "required_change": "Register and verify a new alpha<1 held-endpoint preparation implementation; the current formal backend does not provide it."
+      },
+      {
+        "description": "Reuse the exact alpha=1 prepared material state for every alpha and change the constitutive response at release.",
+        "id": "SHARED_ALPHA1_STATE_CONSTITUTIVE_QUENCH",
+        "required_change": "Register explicit state injection/restart semantics and accept that the alpha<1 runs do not start in their own equilibrium."
+      },
+      {
+        "description": "Use cartesian_release or static_equilibrium so existing alpha<1 configuration validation can be satisfied.",
+        "id": "CHANGE_ENDPOINT_PREPARATION",
+        "required_change": "Accept a changed release identity: cartesian_release does not hold the junction, and static_equilibrium does not preserve the frozen bob/junction endpoint pair."
+      }
+    ],
+    "question": "Which initial-state preparation identity should define the alpha<1 and unilateral dynamic study?",
+    "why_a_technical_default_is_not_selected": "The available alternatives answer different physical questions: re-equilibrating each constitutive law changes the prepared rod shape and stored energy, while injecting the alpha=1 state creates an instantaneous constitutive quench."
+  },
+  "dynamic_run_count": 0,
+  "fixed_endpoint_chord_audit": {
+    "branches": {
+      "lower": {
+        "chord_minus_rest_length_m": -0.0015797444227351187,
+        "chord_to_rest_length_ratio": 0.994390623852771,
+        "endpoint_chord_m": 0.28004594465064087,
+        "material_rest_length_m": 0.281625689073376,
+        "straight_material_embedding_possible": false
+      },
+      "upper_A": {
+        "chord_minus_rest_length_m": 0.008520863331557549,
+        "chord_to_rest_length_ratio": 1.035090915456828,
+        "endpoint_chord_m": 0.25134334945451714,
+        "material_rest_length_m": 0.2428224861229596,
+        "straight_material_embedding_possible": true
+      },
+      "upper_B": {
+        "chord_minus_rest_length_m": 0.008520863331557549,
+        "chord_to_rest_length_ratio": 1.035090915456828,
+        "endpoint_chord_m": 0.25134334945451714,
+        "material_rest_length_m": 0.2428224861229596,
+        "straight_material_embedding_possible": true
+      }
+    },
+    "branches_with_chord_shorter_than_rest_length": [
+      "lower"
+    ],
+    "formal_geometric_direct_release_consequence": "geometric_direct_release rejects a branch whose endpoint chord is shorter than its material rest length; the frozen lower branch has exactly this geometry.",
+    "geometric_direct_release_can_preserve_all_endpoints": false
+  },
+  "fixed_state_constitutive_audit": {
+    "all_instantaneous_kernel_crosschecks_passed": true,
+    "interpretation": "At fixed geometry and velocity the registered constitutive blend scales the bilateral compressive contribution continuously to zero. This is not an alpha-specific prepared state and cannot substitute for a dynamic compression-limit study.",
+    "preparation": {
+      "bob_held": true,
+      "force_residual_inf_N": 1.7849284314820667e-09,
+      "iterations": 5355,
+      "mode": "held_endpoint_bilateral_stable_equilibrium"
+    },
+    "prepared_state_sha256_little_endian_float64": "4c58a71cb1b1b327aff6526e52423374151aa92d0a05316ad1662a4ff34e172e",
+    "scope": "the single alpha=1 held-endpoint prepared state at t=0, with no re-preparation, time integration, event comparison, or qualification",
+    "snapshots": [
+      {
+        "axial_energy_J": 0.003595429794957017,
+        "bob_socket_radial_raw_margin_m2": 8.2223946090368e-05,
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 0.028076696578184745,
+            "minimum_signed_axial_force_N": -0.004771984529284124,
+            "negative_segment_count": 5,
+            "nonpositive_segment_count": 5,
+            "segment_count": 33
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          }
+        },
+        "compressed_force_linear_scaling_max_residual_N": 0.0,
+        "instantaneous_kernel_crosscheck_passed": true,
+        "production_reference_axial_energy_difference_J": 2.6020852139652106e-18,
+        "production_reference_max_axial_force_difference_N": 2.3652954594943765e-15,
+        "rod_self_clearance_raw_margin_m": 3.071474550009559e-05,
+        "role": "fixed_state_constitutive_snapshot",
+        "scale": 1.0,
+        "slug": "alpha_1"
+      },
+      {
+        "axial_energy_J": 0.0035954157795380416,
+        "bob_socket_radial_raw_margin_m2": 8.2223946090368e-05,
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 0.028076696578184745,
+            "minimum_signed_axial_force_N": -4.7719845292841245e-05,
+            "negative_segment_count": 5,
+            "nonpositive_segment_count": 5,
+            "segment_count": 33
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          }
+        },
+        "compressed_force_linear_scaling_max_residual_N": 0.0,
+        "instantaneous_kernel_crosscheck_passed": true,
+        "production_reference_axial_energy_difference_J": 2.6020852139652106e-18,
+        "production_reference_max_axial_force_difference_N": 2.3652954594943765e-15,
+        "rod_self_clearance_raw_margin_m": 3.071474550009559e-05,
+        "role": "fixed_state_constitutive_snapshot",
+        "scale": 0.01,
+        "slug": "alpha_1e-2"
+      },
+      {
+        "axial_energy_J": 0.0035954156393838517,
+        "bob_socket_radial_raw_margin_m2": 8.2223946090368e-05,
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 0.028076696578184745,
+            "minimum_signed_axial_force_N": -4.771984529284124e-07,
+            "negative_segment_count": 5,
+            "nonpositive_segment_count": 5,
+            "segment_count": 33
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          }
+        },
+        "compressed_force_linear_scaling_max_residual_N": 0.0,
+        "instantaneous_kernel_crosscheck_passed": true,
+        "production_reference_axial_energy_difference_J": 2.168404344971009e-18,
+        "production_reference_max_axial_force_difference_N": 2.3652954594943765e-15,
+        "rod_self_clearance_raw_margin_m": 3.071474550009559e-05,
+        "role": "fixed_state_constitutive_snapshot",
+        "scale": 0.0001,
+        "slug": "alpha_1e-4"
+      },
+      {
+        "axial_energy_J": 0.00359541563798231,
+        "bob_socket_radial_raw_margin_m2": 8.2223946090368e-05,
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 0.028076696578184745,
+            "minimum_signed_axial_force_N": -4.771984529284124e-09,
+            "negative_segment_count": 5,
+            "nonpositive_segment_count": 5,
+            "segment_count": 33
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          }
+        },
+        "compressed_force_linear_scaling_max_residual_N": 0.0,
+        "instantaneous_kernel_crosscheck_passed": true,
+        "production_reference_axial_energy_difference_J": 3.0357660829594124e-18,
+        "production_reference_max_axial_force_difference_N": 2.3652954594943765e-15,
+        "rod_self_clearance_raw_margin_m": 3.071474550009559e-05,
+        "role": "fixed_state_constitutive_snapshot",
+        "scale": 1e-06,
+        "slug": "alpha_1e-6"
+      },
+      {
+        "axial_energy_J": 0.003595415637968153,
+        "bob_socket_radial_raw_margin_m2": 8.2223946090368e-05,
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 0.028076696578184745,
+            "minimum_signed_axial_force_N": 0.0,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 5,
+            "segment_count": 33
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.43238211994107695,
+            "minimum_signed_axial_force_N": 0.41029065577640417,
+            "negative_segment_count": 0,
+            "nonpositive_segment_count": 0,
+            "segment_count": 25
+          }
+        },
+        "compressed_force_linear_scaling_max_residual_N": 0.0,
+        "instantaneous_kernel_crosscheck_passed": true,
+        "production_reference_axial_energy_difference_J": 2.6020852139652106e-18,
+        "production_reference_max_axial_force_difference_N": 2.3652954594943765e-15,
+        "rod_self_clearance_raw_margin_m": 3.071474550009559e-05,
+        "role": "mathematical_fixed_state_endpoint",
+        "scale": 0.0,
+        "slug": "alpha_0_mathematical_endpoint"
+      }
+    ]
+  },
+  "formal_hf_source_sha256": "1c0b8a6fa57efc352f32d3b78b2230577387fce29f95dea51f1c2706fd8fb99d",
+  "formal_independence_spec": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/configs/high_fidelity_independence_validation.yaml",
+  "formal_independence_spec_sha256": "c1e8384c964dd7e010f28f1e2c0f70518c01074b9756e507fc86ceed1faabcf3",
+  "formal_limit_scales": [
+    1.0,
+    0.01,
+    0.0001,
+    1e-06
+  ],
+  "git_head_at_preflight": "a4bb9785944b29dfed6195e158e81e4a5b972c38",
+  "identity_checks": {
+    "formal_source_matches_qualification_freeze": true,
+    "formal_source_stable": true,
+    "instantaneous_production_reference_crosscheck": true,
+    "script_stable": true
+  },
+  "isolated_field": "high_fidelity.compression_regularization_scale",
+  "runnable_candidate_count": 0,
+  "schema_version": "YPS-4TO3-HF-COMPRESSION-LIMIT-PREFLIGHT-1.0",
+  "scope": "4:3 production-mesh compression-limit preflight and frozen-state constitutive audit; no alpha<1 config emission or dynamic run",
+  "script_sha256": "9a7188718c830692d1c1a2fa69338fd8d5f1eafe7f0f04db55144a56b87ad1bb",
+  "status": "BLOCKED_PENDING_PREPARATION_PROTOCOL_DECISION"
+}

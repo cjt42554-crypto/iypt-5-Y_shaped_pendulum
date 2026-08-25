@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import numpy as np
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,6 +11,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import build_qualification_configs as builder
+import build_compression_limit_configs as compression
+import guard_root_cause as guard
 import initial_level_diagnostics as initial
 import run_spatial_diagnostic as spatial
 import summarize_qualification as summarizer
@@ -24,10 +27,110 @@ def test_source_probe_targets_real_formal_package() -> None:
     assert initial.PACKAGE_ROOT == expected
     assert spatial.PACKAGE_ROOT == expected
     assert summarizer.PACKAGE_ROOT == expected
+    assert guard.PACKAGE_ROOT == expected
+    assert compression.PACKAGE_ROOT == expected
     plan = __import__("json").loads(
         (ROOT / "qualification_plan.json").read_text(encoding="utf-8")
     )
     assert source_hash(expected) == plan["formal_hf_source_sha256"]
+
+
+def test_materially_separated_argmin_resolves_active_constraint() -> None:
+    result = guard.materially_separated_argmin(
+        np.array([0.0, 0.0, 0.0]),
+        np.array([1.0, 0.0, 0.0]),
+        np.array([0.0, 0.0, 0.0]),
+        np.array([1.0, 0.0, 0.0]),
+        first_material_start=0.0,
+        first_material_end=1.0,
+        second_material_start=1.0,
+        second_material_end=2.0,
+        minimum_material_separation=1.25,
+    )
+    assert result["distance_m"] == pytest.approx(0.25, abs=1.0e-14)
+    assert result["material_separation_m"] == pytest.approx(1.25, abs=1.0e-14)
+    assert result["material_constraint_slack_m"] == pytest.approx(0.0, abs=1.0e-14)
+
+
+def test_saved_guard_root_cause_is_local_and_fail_closed() -> None:
+    import json
+
+    report = json.loads(
+        (ROOT / "results" / "guard_root_cause.json").read_text(encoding="utf-8")
+    )
+    assert report["status"] == (
+        "ROOT_CAUSE_DIAGNOSTIC_COMPLETE__FORMAL_CHANGE_NOT_AUTHORIZED"
+    )
+    assert all(report["identity_checks"].values())
+    assert report["required_normalized_guard_margin"] == pytest.approx(3.0e-4)
+    for anchor in report["anchors"]:
+        for level in anchor["levels"]:
+            rod = level["rod_self_clearance"]
+            winner = rod["same_branch"]["overall"]
+            assert rod["winning_category"] == "SAME_BRANCH"
+            assert winner["branch"] == "lower"
+            assert winner["raw_guard_margin_m"] > 0.0
+            assert rod["public_raw_guard_margin_m"] > 0.0
+            assert rod["normalized_guard_margin"] < 3.0e-4
+            assert winner["argmin"]["material_constraint_slack_m"] == pytest.approx(
+                0.0, abs=2.0e-14
+            )
+            assert rod["cross_branch"]["overall"]["raw_guard_margin_m"] > (
+                rod["public_raw_guard_margin_m"]
+            )
+
+
+def test_two_to_one_has_additional_positive_radial_guard_failure() -> None:
+    import json
+
+    report = json.loads(
+        (ROOT / "results" / "guard_root_cause.json").read_text(encoding="utf-8")
+    )
+    two_to_one = next(item for item in report["anchors"] if item["slug"] == "2to1")
+    for level in two_to_one["levels"]:
+        failures = {item["guard"] for item in level["failed_guard_components"]}
+        assert failures == {
+            "BOB_SOCKET_RADIAL_MONOTONICITY",
+            "ROD_SELF_CLEARANCE",
+        }
+        radial = level["bob_socket_radial_monotonicity"]
+        assert radial["raw_guard_margin_m2"] > 0.0
+        assert radial["threshold_passed"] is False
+        assert radial["minimum_cell"]["radial_increment_cosine"] > 0.0
+
+
+def test_compression_preflight_preserves_formal_preparation_boundary() -> None:
+    import json
+
+    report = json.loads(
+        (ROOT / "compression_limit" / "preflight.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert report["status"] == "BLOCKED_PENDING_PREPARATION_PROTOCOL_DECISION"
+    assert report["runnable_candidate_count"] == 0
+    assert report["dynamic_run_count"] == 0
+    assert all(report["identity_checks"].values())
+    controlled = [
+        item
+        for item in report["config_preflight"]
+        if 0.0 < item["scale"] < 1.0
+    ]
+    assert [item["scale"] for item in controlled] == [1.0e-2, 1.0e-4, 1.0e-6]
+    assert all(
+        item["rejection_code"] == "HF_HELD_PREPARATION_REQUIRES_BILATERAL_ROD"
+        for item in controlled
+    )
+    chord = report["fixed_endpoint_chord_audit"]
+    assert chord["branches_with_chord_shorter_than_rest_length"] == ["lower"]
+    assert chord["geometric_direct_release_can_preserve_all_endpoints"] is False
+    fixed = report["fixed_state_constitutive_audit"]
+    assert fixed["all_instantaneous_kernel_crosschecks_passed"] is True
+    snapshots = {item["scale"]: item for item in fixed["snapshots"]}
+    assert snapshots[1.0]["branches"]["lower"]["negative_segment_count"] == 5
+    assert snapshots[0.0]["branches"]["lower"]["negative_segment_count"] == 0
+    assert snapshots[0.0]["branches"]["lower"]["nonpositive_segment_count"] == 5
+    assert snapshots[0.0]["role"] == "mathematical_fixed_state_endpoint"
 
 
 def test_empty_source_probe_is_fail_closed() -> None:
