@@ -35,10 +35,9 @@ DESKTOP_RESULT_SCHEMA = "YPS-DESKTOP-RESULT-1.0"
 DESKTOP_PLUGIN_ID = "iypt_2027_y_pendulum_desktop"
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-WORKSPACE_ROOT = PROJECT_ROOT.parents[2]
+PROGRAMS_ROOT = PROJECT_ROOT.parents[1]
 FORWARD_ROOT = (
-    WORKSPACE_ROOT
-    / "02_最终模拟程序"
+    PROGRAMS_ROOT
     / "01_前向预测数值求解器"
     / "y_pendulum_forward_solver"
 )
