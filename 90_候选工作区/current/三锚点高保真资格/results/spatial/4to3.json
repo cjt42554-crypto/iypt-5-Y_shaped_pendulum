@@ -1,0 +1,3786 @@
+{
+  "anchor": "4:3",
+  "apparent_norm_tail_diagnostics": {
+    "max_bob_angular_velocity_rad_s": {
+      "apparent_order_base2": 1.8147444681237574,
+      "coarse_to_middle": 0.24548447662718992,
+      "contraction_ratio": 3.5179731408809642,
+      "estimated_remaining_fine_error_norm": 0.02771280091493607,
+      "middle_to_fine": 0.06978008836239044,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_bob_attachment_position_m": {
+      "apparent_order_base2": 2.1883167588249934,
+      "coarse_to_middle": 4.482966379693032e-05,
+      "contraction_ratio": 4.557734097355174,
+      "estimated_remaining_fine_error_norm": 2.7646681629300683e-06,
+      "middle_to_fine": 9.835954191128593e-06,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_bob_orientation_angle_rad": {
+      "apparent_order_base2": 2.077974070698591,
+      "coarse_to_middle": 0.0017034065665277331,
+      "contraction_ratio": 4.222138986116785,
+      "estimated_remaining_fine_error_norm": 0.00012521072261014861,
+      "middle_to_fine": 0.00040344635080201424,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_bob_position_m": {
+      "apparent_order_base2": 2.1856474854455503,
+      "coarse_to_middle": 4.444920112645079e-05,
+      "contraction_ratio": 4.549309177134896,
+      "estimated_remaining_fine_error_norm": 2.7528000966066052e-06,
+      "middle_to_fine": 9.770538645703652e-06,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_bob_velocity_m_s": {
+      "apparent_order_base2": 1.9027049390598791,
+      "coarse_to_middle": 0.0019413859067863998,
+      "contraction_ratio": 3.7391359822446915,
+      "estimated_remaining_fine_error_norm": 0.000189551410316748,
+      "middle_to_fine": 0.0005192070884838321,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_junction_position_m": {
+      "apparent_order_base2": 1.0651268379511725,
+      "coarse_to_middle": 0.00026662870176037733,
+      "contraction_ratio": 2.0923538257407017,
+      "estimated_remaining_fine_error_norm": 0.00011665636415981525,
+      "middle_to_fine": 0.00012743002568697467,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_junction_velocity_m_s": {
+      "apparent_order_base2": 0.9277757931941413,
+      "coarse_to_middle": 0.09155619963637532,
+      "contraction_ratio": 1.902340890097044,
+      "estimated_remaining_fine_error_norm": 0.05333702353997304,
+      "middle_to_fine": 0.048128177296186264,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_mechanical_energy_J": {
+      "apparent_order_base2": 1.6803330905793181,
+      "coarse_to_middle": 2.3566176706901754e-05,
+      "contraction_ratio": 3.2050194023723493,
+      "estimated_remaining_fine_error_norm": 3.334617704250664e-06,
+      "middle_to_fine": 7.352896737367054e-06,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_rod_position_m": {
+      "apparent_order_base2": 0.7792742887800606,
+      "coarse_to_middle": 0.001975981453417215,
+      "contraction_ratio": 1.716267330867038,
+      "estimated_remaining_fine_error_norm": 0.0016073956358905715,
+      "middle_to_fine": 0.001151324981766665,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_rod_signed_axial_force_N": {
+      "apparent_order_base2": 0.9129170804453851,
+      "coarse_to_middle": 0.03551702627337407,
+      "contraction_ratio": 1.8828487083852834,
+      "estimated_remaining_fine_error_norm": 0.02136657373093123,
+      "middle_to_fine": 0.01886345202097156,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_rod_tension_N": {
+      "apparent_order_base2": 0.9129170804453851,
+      "coarse_to_middle": 0.03551702627337407,
+      "contraction_ratio": 1.8828487083852834,
+      "estimated_remaining_fine_error_norm": 0.02136657373093123,
+      "middle_to_fine": 0.01886345202097156,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_rod_velocity_m_s": {
+      "apparent_order_base2": 0.48172467203025804,
+      "coarse_to_middle": 0.6073744784013695,
+      "contraction_ratio": 1.3964120118498233,
+      "estimated_remaining_fine_error_norm": 1.0972261699615056,
+      "middle_to_fine": 0.43495363348871663,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "max_support_reaction_N": {
+      "apparent_order_base2": 1.7181855152483838,
+      "coarse_to_middle": 0.054823290932339785,
+      "contraction_ratio": 3.2902233353990886,
+      "estimated_remaining_fine_error_norm": 0.007275483969878414,
+      "middle_to_fine": 0.016662483164137543,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_bob_angular_velocity_rad_s": {
+      "apparent_order_base2": 2.0520841278471407,
+      "coarse_to_middle": 0.05457198152265204,
+      "contraction_ratio": 4.14704622365192,
+      "estimated_remaining_fine_error_norm": 0.004181457870124197,
+      "middle_to_fine": 0.013159241199533954,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_bob_attachment_position_m": {
+      "apparent_order_base2": 2.0863741775134503,
+      "coarse_to_middle": 1.365682246106111e-05,
+      "contraction_ratio": 4.246794141879965,
+      "estimated_remaining_fine_error_norm": 9.904526089194205e-07,
+      "middle_to_fine": 3.2157957284493022e-06,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_bob_orientation_angle_rad": {
+      "apparent_order_base2": 2.045961888139111,
+      "coarse_to_middle": 0.0004910210220128978,
+      "contraction_ratio": 4.129485051353064,
+      "estimated_remaining_fine_error_norm": 3.7995424956204663e-05,
+      "middle_to_fine": 0.00011890611442024963,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_bob_position_m": {
+      "apparent_order_base2": 2.103367425953865,
+      "coarse_to_middle": 1.1547721078727093e-05,
+      "contraction_ratio": 4.297112136785979,
+      "estimated_remaining_fine_error_norm": 8.15053056420183e-07,
+      "middle_to_fine": 2.687321324447493e-06,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_bob_velocity_m_s": {
+      "apparent_order_base2": 2.106382635329707,
+      "coarse_to_middle": 0.0005241646395445996,
+      "contraction_ratio": 4.306102423376897,
+      "estimated_remaining_fine_error_norm": 3.681858216033466e-05,
+      "middle_to_fine": 0.0001217260037055838,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_junction_position_m": {
+      "apparent_order_base2": 1.2805169210827678,
+      "coarse_to_middle": 5.719505110274976e-05,
+      "contraction_ratio": 2.429260022548447,
+      "estimated_remaining_fine_error_norm": 1.647301913170444e-05,
+      "middle_to_fine": 2.3544227695620886e-05,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_junction_velocity_m_s": {
+      "apparent_order_base2": 0.9319547500158147,
+      "coarse_to_middle": 0.01563120444777686,
+      "contraction_ratio": 1.907859260343744,
+      "estimated_remaining_fine_error_norm": 0.009024592096158546,
+      "middle_to_fine": 0.008193059505322496,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_mechanical_energy_J": {
+      "apparent_order_base2": 2.0440244326180026,
+      "coarse_to_middle": 1.351013934748189e-05,
+      "contraction_ratio": 4.123943115215166,
+      "estimated_remaining_fine_error_norm": 1.0486825593596734e-06,
+      "middle_to_fine": 3.2760246613578715e-06,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_rod_position_m": {
+      "apparent_order_base2": 1.4754758296484407,
+      "coarse_to_middle": 0.00028062925060525764,
+      "contraction_ratio": 2.780753436495133,
+      "estimated_remaining_fine_error_norm": 5.66717551050962e-05,
+      "middle_to_fine": 0.00010091842265561066,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_rod_signed_axial_force_N": {
+      "apparent_order_base2": 1.0919934734266055,
+      "coarse_to_middle": 0.007951433560320171,
+      "contraction_ratio": 2.1316838286408726,
+      "estimated_remaining_fine_error_norm": 0.0032960784051011475,
+      "middle_to_fine": 0.0037301186289853674,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_rod_tension_N": {
+      "apparent_order_base2": 1.0925503606854954,
+      "coarse_to_middle": 0.007933296917984821,
+      "contraction_ratio": 2.1325068277325805,
+      "estimated_remaining_fine_error_norm": 0.003284902241508655,
+      "middle_to_fine": 0.00372017421694261,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_rod_velocity_m_s": {
+      "apparent_order_base2": 1.0561426840570514,
+      "coarse_to_middle": 0.07689133119945189,
+      "contraction_ratio": 2.079364511518707,
+      "estimated_remaining_fine_error_norm": 0.03425931044293827,
+      "middle_to_fine": 0.0369782838812098,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    },
+    "rms_support_reaction_N": {
+      "apparent_order_base2": 1.4945915877568121,
+      "coarse_to_middle": 0.011365953270202199,
+      "contraction_ratio": 2.817843694569147,
+      "estimated_remaining_fine_error_norm": 0.002218872914702028,
+      "middle_to_fine": 0.004033564137041346,
+      "signed_field_extrapolation": null,
+      "status": "CONTRACTING"
+    }
+  },
+  "artifact_directory": "generated/spatial/4to3",
+  "candidate_artifacts": {
+    "0552680dc3d99acd2cad57873448e1e1543bb0c1585191c41cd16df95fa85fc0": {
+      "candidate_manifest_bytes": 611,
+      "candidate_manifest_sha256": "ffdc664b431384cdfd14264c0efd259c9ab053916dd5e00d705bef3e5126e9eb",
+      "relative_directory": "candidate_0552680dc3d99acd"
+    },
+    "a8a8519c9ad4bde037c9eab84bc21988ec637e5c6f1965edf9b6d8030972b6bf": {
+      "candidate_manifest_bytes": 611,
+      "candidate_manifest_sha256": "78bf56373335091be01eb9025093dec18c1857613220a198afd4fdc6d593867e",
+      "relative_directory": "candidate_a8a8519c9ad4bde0"
+    },
+    "f46fcc49d7ae9bd49c1c7c121162bab266d6a66686e0ba8a549987df9ec95b71": {
+      "candidate_manifest_bytes": 612,
+      "candidate_manifest_sha256": "477265d9ca4a095b176024b3d06f43821f300aae41a1f216fb95bc6c3bc22afe",
+      "relative_directory": "candidate_f46fcc49d7ae9bd4"
+    }
+  },
+  "claim_boundary": "A passing norm trend is not HF qualification because level contracts, continuous accepted-step guards, long-window modal convergence, physical validation and experiment are outside this diagnostic.",
+  "comparisons": {
+    "coarse_to_middle": {
+      "max_bob_angular_velocity_rad_s": 0.24548447662718992,
+      "max_bob_attachment_position_m": 4.482966379693032e-05,
+      "max_bob_orientation_angle_rad": 0.0017034065665277331,
+      "max_bob_position_m": 4.444920112645079e-05,
+      "max_bob_velocity_m_s": 0.0019413859067863998,
+      "max_junction_position_m": 0.00026662870176037733,
+      "max_junction_velocity_m_s": 0.09155619963637532,
+      "max_mechanical_energy_J": 2.3566176706901754e-05,
+      "max_rod_position_m": 0.001975981453417215,
+      "max_rod_signed_axial_force_N": 0.03551702627337407,
+      "max_rod_tension_N": 0.03551702627337407,
+      "max_rod_velocity_m_s": 0.6073744784013695,
+      "max_support_reaction_N": 0.054823290932339785,
+      "rms_bob_angular_velocity_rad_s": 0.05457198152265204,
+      "rms_bob_attachment_position_m": 1.365682246106111e-05,
+      "rms_bob_orientation_angle_rad": 0.0004910210220128978,
+      "rms_bob_position_m": 1.1547721078727093e-05,
+      "rms_bob_velocity_m_s": 0.0005241646395445996,
+      "rms_junction_position_m": 5.719505110274976e-05,
+      "rms_junction_velocity_m_s": 0.01563120444777686,
+      "rms_mechanical_energy_J": 1.351013934748189e-05,
+      "rms_rod_position_m": 0.00028062925060525764,
+      "rms_rod_signed_axial_force_N": 0.007951433560320171,
+      "rms_rod_tension_N": 0.007933296917984821,
+      "rms_rod_velocity_m_s": 0.07689133119945189,
+      "rms_support_reaction_N": 0.011365953270202199
+    },
+    "middle_to_fine": {
+      "max_bob_angular_velocity_rad_s": 0.06978008836239044,
+      "max_bob_attachment_position_m": 9.835954191128593e-06,
+      "max_bob_orientation_angle_rad": 0.00040344635080201424,
+      "max_bob_position_m": 9.770538645703652e-06,
+      "max_bob_velocity_m_s": 0.0005192070884838321,
+      "max_junction_position_m": 0.00012743002568697467,
+      "max_junction_velocity_m_s": 0.048128177296186264,
+      "max_mechanical_energy_J": 7.352896737367054e-06,
+      "max_rod_position_m": 0.001151324981766665,
+      "max_rod_signed_axial_force_N": 0.01886345202097156,
+      "max_rod_tension_N": 0.01886345202097156,
+      "max_rod_velocity_m_s": 0.43495363348871663,
+      "max_support_reaction_N": 0.016662483164137543,
+      "rms_bob_angular_velocity_rad_s": 0.013159241199533954,
+      "rms_bob_attachment_position_m": 3.2157957284493022e-06,
+      "rms_bob_orientation_angle_rad": 0.00011890611442024963,
+      "rms_bob_position_m": 2.687321324447493e-06,
+      "rms_bob_velocity_m_s": 0.0001217260037055838,
+      "rms_junction_position_m": 2.3544227695620886e-05,
+      "rms_junction_velocity_m_s": 0.008193059505322496,
+      "rms_mechanical_energy_J": 3.2760246613578715e-06,
+      "rms_rod_position_m": 0.00010091842265561066,
+      "rms_rod_signed_axial_force_N": 0.0037301186289853674,
+      "rms_rod_tension_N": 0.00372017421694261,
+      "rms_rod_velocity_m_s": 0.0369782838812098,
+      "rms_support_reaction_N": 0.004033564137041346
+    }
+  },
+  "formal_event_stability_gate": {
+    "comparisons": {
+      "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET:lower:-:COMPRESSION->TENSION": {
+        "event_counts": [
+          2,
+          3,
+          5
+        ],
+        "passed": false,
+        "reason": "event multiplicity changed across refinement levels"
+      },
+      "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET:upper_A:-:COMPRESSION->TENSION": {
+        "event_counts": [
+          5,
+          9,
+          18
+        ],
+        "passed": false,
+        "reason": "event multiplicity changed across refinement levels"
+      },
+      "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET:upper_A:-:TENSION->COMPRESSION": {
+        "event_counts": [
+          5,
+          8,
+          18
+        ],
+        "passed": false,
+        "reason": "event multiplicity changed across refinement levels"
+      },
+      "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET:upper_B:-:COMPRESSION->TENSION": {
+        "event_counts": [
+          5,
+          9,
+          18
+        ],
+        "passed": false,
+        "reason": "event multiplicity changed across refinement levels"
+      },
+      "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET:upper_B:-:TENSION->COMPRESSION": {
+        "event_counts": [
+          5,
+          8,
+          18
+        ],
+        "passed": false,
+        "reason": "event multiplicity changed across refinement levels"
+      },
+      "HF_SEGMENT_INITIAL_AXIAL_REGIME:lower:-:COMPRESSION": {
+        "event_counts": [
+          1,
+          1,
+          1
+        ],
+        "instances": [
+          {
+            "maximum_allowed_separation_s": 0.002,
+            "minimum_separation_between_material_brackets": 0.0,
+            "minimum_separation_between_time_brackets_s": 0.0,
+            "ordinal": 0,
+            "passed": true,
+            "records": [
+              {
+                "axial_regime_identity": "COMPRESSION",
+                "branch": "lower",
+                "guard_component": null,
+                "material_coordinate_bracket": [
+                  0.8124999999999999,
+                  1.0
+                ],
+                "material_reference_declared": true,
+                "source_event_indices": [
+                  20,
+                  22
+                ],
+                "time_bracket_s": [
+                  0.0,
+                  0.0
+                ],
+                "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME",
+                "valid": true,
+                "validation_errors": []
+              },
+              {
+                "axial_regime_identity": "COMPRESSION",
+                "branch": "lower",
+                "guard_component": null,
+                "material_coordinate_bracket": [
+                  0.84375,
+                  1.0
+                ],
+                "material_reference_declared": true,
+                "source_event_indices": [
+                  36,
+                  38,
+                  40
+                ],
+                "time_bracket_s": [
+                  0.0,
+                  0.0
+                ],
+                "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME",
+                "valid": true,
+                "validation_errors": []
+              },
+              {
+                "axial_regime_identity": "COMPRESSION",
+                "branch": "lower",
+                "guard_component": null,
+                "material_coordinate_bracket": [
+                  0.859375,
+                  1.0
+                ],
+                "material_reference_declared": true,
+                "source_event_indices": [
+                  72,
+                  74,
+                  76,
+                  78,
+                  80
+                ],
+                "time_bracket_s": [
+                  0.0,
+                  0.0
+                ],
+                "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME",
+                "valid": true,
+                "validation_errors": []
+              }
+            ]
+          }
+        ],
+        "passed": true
+      }
+    },
+    "coverage": "all registered validity, segment, branch, bending and contact events",
+    "identity_basis": "event type + branch + guard + signed axial regime + material-coordinate/time brackets",
+    "passed": false,
+    "summaries": [
+      [
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.8124999999999999,
+            0.9375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            21
+          ],
+          "time_bracket_s": [
+            0.000515625,
+            0.0005234375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.9375,
+            1.0
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            23
+          ],
+          "time_bracket_s": [
+            0.000875,
+            0.0008828125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5833333333333334,
+            0.75
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            9
+          ],
+          "time_bracket_s": [
+            0.021671875,
+            0.0216796875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.41666666666666674,
+            0.5833333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            7
+          ],
+          "time_bracket_s": [
+            0.0234609375,
+            0.02346875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.25000000000000006,
+            0.41666666666666674
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            5
+          ],
+          "time_bracket_s": [
+            0.0243984375,
+            0.02440625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.08333333333333334,
+            0.25000000000000006
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            3
+          ],
+          "time_bracket_s": [
+            0.024804687500000002,
+            0.0248125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.08333333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            1
+          ],
+          "time_bracket_s": [
+            0.0248125,
+            0.0248203125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.08333333333333334,
+            0.25000000000000006
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            2
+          ],
+          "time_bracket_s": [
+            0.016710937500000002,
+            0.01671875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.25000000000000006,
+            0.41666666666666674
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            4
+          ],
+          "time_bracket_s": [
+            0.01678125,
+            0.0167890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.08333333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            0
+          ],
+          "time_bracket_s": [
+            0.016875,
+            0.0168828125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.41666666666666674,
+            0.5833333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            6
+          ],
+          "time_bracket_s": [
+            0.0171171875,
+            0.017125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5833333333333334,
+            0.75
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            8
+          ],
+          "time_bracket_s": [
+            0.0179921875,
+            0.018000000000000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5833333333333334,
+            0.75
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            19
+          ],
+          "time_bracket_s": [
+            0.0215078125,
+            0.021515625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.41666666666666674,
+            0.5833333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            17
+          ],
+          "time_bracket_s": [
+            0.0233515625,
+            0.023359375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.25000000000000006,
+            0.41666666666666674
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            15
+          ],
+          "time_bracket_s": [
+            0.0243046875,
+            0.0243125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.08333333333333334,
+            0.25000000000000006
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            13
+          ],
+          "time_bracket_s": [
+            0.0247265625,
+            0.024734375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.08333333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            11
+          ],
+          "time_bracket_s": [
+            0.024734375,
+            0.024742187500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.08333333333333334,
+            0.25000000000000006
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            12
+          ],
+          "time_bracket_s": [
+            0.016765625,
+            0.016773437500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.25000000000000006,
+            0.41666666666666674
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            14
+          ],
+          "time_bracket_s": [
+            0.016835937500000002,
+            0.01684375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.08333333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            10
+          ],
+          "time_bracket_s": [
+            0.0169375,
+            0.0169453125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.41666666666666674,
+            0.5833333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            16
+          ],
+          "time_bracket_s": [
+            0.0171796875,
+            0.0171875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5833333333333334,
+            0.75
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            18
+          ],
+          "time_bracket_s": [
+            0.01809375,
+            0.0181015625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.8124999999999999,
+            1.0
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            20,
+            22
+          ],
+          "time_bracket_s": [
+            0.0,
+            0.0
+          ],
+          "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME",
+          "valid": true,
+          "validation_errors": []
+        }
+      ],
+      [
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.84375,
+            0.90625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            37
+          ],
+          "time_bracket_s": [
+            0.000609375,
+            0.0006171875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.90625,
+            0.96875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            39
+          ],
+          "time_bracket_s": [
+            0.000859375,
+            0.0008671875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.96875,
+            1.0
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            41
+          ],
+          "time_bracket_s": [
+            0.000890625,
+            0.0008984375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.625,
+            0.7083333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            17
+          ],
+          "time_bracket_s": [
+            0.021656250000000002,
+            0.0216640625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5416666666666667,
+            0.625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            15
+          ],
+          "time_bracket_s": [
+            0.0227421875,
+            0.02275
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4583333333333333,
+            0.5416666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            13
+          ],
+          "time_bracket_s": [
+            0.0235,
+            0.0235078125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.375,
+            0.4583333333333333
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            11
+          ],
+          "time_bracket_s": [
+            0.024046875,
+            0.0240546875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.2916666666666667,
+            0.375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            9
+          ],
+          "time_bracket_s": [
+            0.024421875,
+            0.024429687500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.20833333333333337,
+            0.2916666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            7
+          ],
+          "time_bracket_s": [
+            0.024671875,
+            0.024679687500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.04166666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            1
+          ],
+          "time_bracket_s": [
+            0.0248125,
+            0.0248203125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.12500000000000003,
+            0.20833333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            5
+          ],
+          "time_bracket_s": [
+            0.0248125,
+            0.0248203125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.04166666666666667,
+            0.12500000000000003
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            3
+          ],
+          "time_bracket_s": [
+            0.024859375,
+            0.024867187500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.12500000000000003,
+            0.2916666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            4,
+            6
+          ],
+          "time_bracket_s": [
+            0.0167265625,
+            0.016734375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.04166666666666667,
+            0.12500000000000003
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            2
+          ],
+          "time_bracket_s": [
+            0.01678125,
+            0.0167890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.2916666666666667,
+            0.375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            8
+          ],
+          "time_bracket_s": [
+            0.0167890625,
+            0.016796875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.04166666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            0
+          ],
+          "time_bracket_s": [
+            0.016898437500000002,
+            0.01690625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.375,
+            0.4583333333333333
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            10
+          ],
+          "time_bracket_s": [
+            0.0169140625,
+            0.016921875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4583333333333333,
+            0.5416666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            12
+          ],
+          "time_bracket_s": [
+            0.017125,
+            0.0171328125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5416666666666667,
+            0.625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            14
+          ],
+          "time_bracket_s": [
+            0.017453125,
+            0.0174609375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.625,
+            0.7083333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            16
+          ],
+          "time_bracket_s": [
+            0.018015625,
+            0.0180234375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.625,
+            0.7083333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            35
+          ],
+          "time_bracket_s": [
+            0.0214609375,
+            0.02146875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5416666666666667,
+            0.625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            33
+          ],
+          "time_bracket_s": [
+            0.02259375,
+            0.022601562500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4583333333333333,
+            0.5416666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            31
+          ],
+          "time_bracket_s": [
+            0.023375,
+            0.0233828125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.375,
+            0.4583333333333333
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            29
+          ],
+          "time_bracket_s": [
+            0.0239296875,
+            0.0239375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.2916666666666667,
+            0.375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            27
+          ],
+          "time_bracket_s": [
+            0.0243203125,
+            0.024328125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.20833333333333337,
+            0.2916666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            25
+          ],
+          "time_bracket_s": [
+            0.024578125,
+            0.024585937500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.04166666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            19
+          ],
+          "time_bracket_s": [
+            0.0247265625,
+            0.024734375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.12500000000000003,
+            0.20833333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            23
+          ],
+          "time_bracket_s": [
+            0.0247265625,
+            0.024734375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.04166666666666667,
+            0.12500000000000003
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            21
+          ],
+          "time_bracket_s": [
+            0.024773437500000002,
+            0.02478125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.12500000000000003,
+            0.2916666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            22,
+            24
+          ],
+          "time_bracket_s": [
+            0.0167890625,
+            0.016796875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.04166666666666667,
+            0.12500000000000003
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            20
+          ],
+          "time_bracket_s": [
+            0.0168515625,
+            0.016859375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.2916666666666667,
+            0.375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            26
+          ],
+          "time_bracket_s": [
+            0.0168515625,
+            0.016859375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.04166666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            18
+          ],
+          "time_bracket_s": [
+            0.016960937500000002,
+            0.01696875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.375,
+            0.4583333333333333
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            28
+          ],
+          "time_bracket_s": [
+            0.0169765625,
+            0.016984375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4583333333333333,
+            0.5416666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            30
+          ],
+          "time_bracket_s": [
+            0.0171953125,
+            0.017203125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5416666666666667,
+            0.625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            32
+          ],
+          "time_bracket_s": [
+            0.01753125,
+            0.0175390625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.625,
+            0.7083333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            34
+          ],
+          "time_bracket_s": [
+            0.018140625,
+            0.0181484375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.84375,
+            1.0
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            36,
+            38,
+            40
+          ],
+          "time_bracket_s": [
+            0.0,
+            0.0
+          ],
+          "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME",
+          "valid": true,
+          "validation_errors": []
+        }
+      ],
+      [
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.859375,
+            0.890625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            73
+          ],
+          "time_bracket_s": [
+            0.000625,
+            0.0006328125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.890625,
+            0.921875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            75
+          ],
+          "time_bracket_s": [
+            0.0007890625,
+            0.0007968750000000001
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.921875,
+            0.953125
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            77
+          ],
+          "time_bracket_s": [
+            0.0008671875,
+            0.000875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.953125,
+            0.984375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            79
+          ],
+          "time_bracket_s": [
+            0.0008984375,
+            0.00090625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.984375,
+            1.0
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            81
+          ],
+          "time_bracket_s": [
+            0.00090625,
+            0.0009140625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6875,
+            0.7291666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            35
+          ],
+          "time_bracket_s": [
+            0.020929687500000002,
+            0.0209375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6458333333333334,
+            0.6875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            33
+          ],
+          "time_bracket_s": [
+            0.021718750000000002,
+            0.0217265625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6041666666666667,
+            0.6458333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            31
+          ],
+          "time_bracket_s": [
+            0.0223046875,
+            0.0223125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5625,
+            0.6041666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            29
+          ],
+          "time_bracket_s": [
+            0.022789062500000002,
+            0.022796875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5208333333333334,
+            0.5625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            27
+          ],
+          "time_bracket_s": [
+            0.0231953125,
+            0.023203125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4791666666666667,
+            0.5208333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            25
+          ],
+          "time_bracket_s": [
+            0.0235390625,
+            0.023546875000000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4375,
+            0.4791666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            23
+          ],
+          "time_bracket_s": [
+            0.0238359375,
+            0.02384375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.39583333333333337,
+            0.4375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            21
+          ],
+          "time_bracket_s": [
+            0.024078125,
+            0.0240859375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3541666666666667,
+            0.39583333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            19
+          ],
+          "time_bracket_s": [
+            0.02428125,
+            0.0242890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3125,
+            0.3541666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            17
+          ],
+          "time_bracket_s": [
+            0.024453125,
+            0.024460937500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.27083333333333337,
+            0.3125
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            15
+          ],
+          "time_bracket_s": [
+            0.02459375,
+            0.0246015625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.22916666666666666,
+            0.27083333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            13
+          ],
+          "time_bracket_s": [
+            0.024703125,
+            0.024710937500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.1875,
+            0.22916666666666666
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            11
+          ],
+          "time_bracket_s": [
+            0.0247890625,
+            0.024796875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.020833333333333336
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            1
+          ],
+          "time_bracket_s": [
+            0.02484375,
+            0.0248515625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.14583333333333334,
+            0.1875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            9
+          ],
+          "time_bracket_s": [
+            0.02484375,
+            0.0248515625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.020833333333333336,
+            0.06250000000000001
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            3
+          ],
+          "time_bracket_s": [
+            0.024875,
+            0.0248828125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.10416666666666669,
+            0.14583333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            7
+          ],
+          "time_bracket_s": [
+            0.024875,
+            0.0248828125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.06250000000000001,
+            0.10416666666666669
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            5
+          ],
+          "time_bracket_s": [
+            0.024890625,
+            0.024898437500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.1875,
+            0.22916666666666666
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            10
+          ],
+          "time_bracket_s": [
+            0.016710937500000002,
+            0.01671875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.14583333333333334,
+            0.1875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            8
+          ],
+          "time_bracket_s": [
+            0.01671875,
+            0.0167265625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.22916666666666666,
+            0.27083333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            12
+          ],
+          "time_bracket_s": [
+            0.01671875,
+            0.0167265625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.10416666666666669,
+            0.14583333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            6
+          ],
+          "time_bracket_s": [
+            0.016734375,
+            0.016742187500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.27083333333333337,
+            0.3125
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            14
+          ],
+          "time_bracket_s": [
+            0.016742187500000002,
+            0.01675
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.06250000000000001,
+            0.10416666666666669
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            4
+          ],
+          "time_bracket_s": [
+            0.016773437500000002,
+            0.01678125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3125,
+            0.3541666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            16
+          ],
+          "time_bracket_s": [
+            0.01678125,
+            0.0167890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.020833333333333336,
+            0.06250000000000001
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            2
+          ],
+          "time_bracket_s": [
+            0.0168203125,
+            0.016828125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3541666666666667,
+            0.39583333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            18
+          ],
+          "time_bracket_s": [
+            0.016835937500000002,
+            0.01684375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.020833333333333336
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            0
+          ],
+          "time_bracket_s": [
+            0.0168828125,
+            0.016890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.39583333333333337,
+            0.4375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            20
+          ],
+          "time_bracket_s": [
+            0.01690625,
+            0.0169140625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4375,
+            0.4791666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            22
+          ],
+          "time_bracket_s": [
+            0.017,
+            0.0170078125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4791666666666667,
+            0.5208333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            24
+          ],
+          "time_bracket_s": [
+            0.0171171875,
+            0.017125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5208333333333334,
+            0.5625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            26
+          ],
+          "time_bracket_s": [
+            0.0172578125,
+            0.017265625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5625,
+            0.6041666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            28
+          ],
+          "time_bracket_s": [
+            0.0174453125,
+            0.017453125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6041666666666667,
+            0.6458333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            30
+          ],
+          "time_bracket_s": [
+            0.0176796875,
+            0.017687500000000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6458333333333334,
+            0.6875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            32
+          ],
+          "time_bracket_s": [
+            0.018000000000000002,
+            0.0180078125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_A",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6875,
+            0.7291666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            34
+          ],
+          "time_bracket_s": [
+            0.0185078125,
+            0.018515625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6875,
+            0.7291666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            71
+          ],
+          "time_bracket_s": [
+            0.0206328125,
+            0.020640625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6458333333333334,
+            0.6875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            69
+          ],
+          "time_bracket_s": [
+            0.021515625,
+            0.0215234375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6041666666666667,
+            0.6458333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            67
+          ],
+          "time_bracket_s": [
+            0.0221328125,
+            0.022140625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5625,
+            0.6041666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            65
+          ],
+          "time_bracket_s": [
+            0.022632812500000002,
+            0.022640625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5208333333333334,
+            0.5625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            63
+          ],
+          "time_bracket_s": [
+            0.0230546875,
+            0.0230625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4791666666666667,
+            0.5208333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            61
+          ],
+          "time_bracket_s": [
+            0.02340625,
+            0.0234140625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4375,
+            0.4791666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            59
+          ],
+          "time_bracket_s": [
+            0.0237109375,
+            0.02371875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.39583333333333337,
+            0.4375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            57
+          ],
+          "time_bracket_s": [
+            0.0239609375,
+            0.02396875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3541666666666667,
+            0.39583333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            55
+          ],
+          "time_bracket_s": [
+            0.024171875,
+            0.0241796875
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3125,
+            0.3541666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            53
+          ],
+          "time_bracket_s": [
+            0.0243515625,
+            0.024359375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.27083333333333337,
+            0.3125
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            51
+          ],
+          "time_bracket_s": [
+            0.024492187500000002,
+            0.0245
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.22916666666666666,
+            0.27083333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            49
+          ],
+          "time_bracket_s": [
+            0.0246015625,
+            0.024609375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.1875,
+            0.22916666666666666
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            47
+          ],
+          "time_bracket_s": [
+            0.0246875,
+            0.0246953125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.020833333333333336
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            37
+          ],
+          "time_bracket_s": [
+            0.02475,
+            0.0247578125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.14583333333333334,
+            0.1875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            45
+          ],
+          "time_bracket_s": [
+            0.02475,
+            0.0247578125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.020833333333333336,
+            0.06250000000000001
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            39
+          ],
+          "time_bracket_s": [
+            0.02478125,
+            0.0247890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.10416666666666669,
+            0.14583333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            43
+          ],
+          "time_bracket_s": [
+            0.02478125,
+            0.0247890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION->TENSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.06250000000000001,
+            0.10416666666666669
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            41
+          ],
+          "time_bracket_s": [
+            0.024796875,
+            0.024804687500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.1875,
+            0.22916666666666666
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            46
+          ],
+          "time_bracket_s": [
+            0.016773437500000002,
+            0.01678125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.14583333333333334,
+            0.1875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            44
+          ],
+          "time_bracket_s": [
+            0.01678125,
+            0.0167890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.22916666666666666,
+            0.27083333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            48
+          ],
+          "time_bracket_s": [
+            0.01678125,
+            0.0167890625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.10416666666666669,
+            0.14583333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            42
+          ],
+          "time_bracket_s": [
+            0.016804687500000002,
+            0.0168125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.27083333333333337,
+            0.3125
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            50
+          ],
+          "time_bracket_s": [
+            0.016804687500000002,
+            0.0168125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.06250000000000001,
+            0.10416666666666669
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            40
+          ],
+          "time_bracket_s": [
+            0.016835937500000002,
+            0.01684375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3125,
+            0.3541666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            52
+          ],
+          "time_bracket_s": [
+            0.01684375,
+            0.0168515625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.020833333333333336,
+            0.06250000000000001
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            38
+          ],
+          "time_bracket_s": [
+            0.016890625,
+            0.016898437500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.3541666666666667,
+            0.39583333333333337
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            54
+          ],
+          "time_bracket_s": [
+            0.016898437500000002,
+            0.01690625
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.0,
+            0.020833333333333336
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            36
+          ],
+          "time_bracket_s": [
+            0.016953125,
+            0.016960937500000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.39583333333333337,
+            0.4375
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            56
+          ],
+          "time_bracket_s": [
+            0.0169765625,
+            0.016984375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4375,
+            0.4791666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            58
+          ],
+          "time_bracket_s": [
+            0.0170703125,
+            0.017078125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.4791666666666667,
+            0.5208333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            60
+          ],
+          "time_bracket_s": [
+            0.0171875,
+            0.0171953125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5208333333333334,
+            0.5625
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            62
+          ],
+          "time_bracket_s": [
+            0.0173359375,
+            0.01734375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.5625,
+            0.6041666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            64
+          ],
+          "time_bracket_s": [
+            0.0175234375,
+            0.01753125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6041666666666667,
+            0.6458333333333334
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            66
+          ],
+          "time_bracket_s": [
+            0.0177734375,
+            0.017781250000000002
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6458333333333334,
+            0.6875
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            68
+          ],
+          "time_bracket_s": [
+            0.018125,
+            0.0181328125
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "TENSION->COMPRESSION",
+          "branch": "upper_B",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.6875,
+            0.7291666666666667
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            70
+          ],
+          "time_bracket_s": [
+            0.018726562500000002,
+            0.018734375
+          ],
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET",
+          "valid": true,
+          "validation_errors": []
+        },
+        {
+          "axial_regime_identity": "COMPRESSION",
+          "branch": "lower",
+          "guard_component": null,
+          "material_coordinate_bracket": [
+            0.859375,
+            1.0
+          ],
+          "material_reference_declared": true,
+          "source_event_indices": [
+            72,
+            74,
+            76,
+            78,
+            80
+          ],
+          "time_bracket_s": [
+            0.0,
+            0.0
+          ],
+          "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME",
+          "valid": true,
+          "validation_errors": []
+        }
+      ]
+    ]
+  },
+  "formal_hf_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "formal_space_cauchy_gate": {
+    "metrics": {
+      "max_bob_angular_velocity_rad_s": {
+        "coarse_to_middle": 0.24548447662718992,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.025,
+        "middle_to_fine": 0.06978008836239044,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.1
+      },
+      "max_bob_attachment_position_m": {
+        "coarse_to_middle": 4.482966379693032e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.000125,
+        "middle_to_fine": 9.835954191128593e-06,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.0005
+      },
+      "max_bob_orientation_angle_rad": {
+        "coarse_to_middle": 0.0017034065665277331,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.0025,
+        "middle_to_fine": 0.00040344635080201424,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.01
+      },
+      "max_bob_position_m": {
+        "coarse_to_middle": 4.444920112645079e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.000125,
+        "middle_to_fine": 9.770538645703652e-06,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.0005
+      },
+      "max_bob_velocity_m_s": {
+        "coarse_to_middle": 0.0019413859067863998,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.005,
+        "middle_to_fine": 0.0005192070884838321,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.02
+      },
+      "max_junction_position_m": {
+        "coarse_to_middle": 0.00026662870176037733,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.0005,
+        "middle_to_fine": 0.00012743002568697467,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.002
+      },
+      "max_junction_velocity_m_s": {
+        "coarse_to_middle": 0.09155619963637532,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.025,
+        "middle_to_fine": 0.048128177296186264,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.1
+      },
+      "max_mechanical_energy_J": {
+        "coarse_to_middle": 2.3566176706901754e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 2.5e-05,
+        "middle_to_fine": 7.352896737367054e-06,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.0001
+      },
+      "max_rod_position_m": {
+        "coarse_to_middle": 0.001975981453417215,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.00125,
+        "middle_to_fine": 0.001151324981766665,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.005
+      },
+      "max_rod_signed_axial_force_N": {
+        "coarse_to_middle": 0.03551702627337407,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.02,
+        "middle_to_fine": 0.01886345202097156,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.08
+      },
+      "max_rod_tension_N": {
+        "coarse_to_middle": 0.03551702627337407,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.02,
+        "middle_to_fine": 0.01886345202097156,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.08
+      },
+      "max_rod_velocity_m_s": {
+        "coarse_to_middle": 0.6073744784013695,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": false,
+        "metric_numerical_floor": 0.075,
+        "middle_to_fine": 0.43495363348871663,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.3
+      },
+      "max_support_reaction_N": {
+        "coarse_to_middle": 0.054823290932339785,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.025,
+        "middle_to_fine": 0.016662483164137543,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.1
+      },
+      "rms_bob_angular_velocity_rad_s": {
+        "coarse_to_middle": 0.05457198152265204,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.005,
+        "middle_to_fine": 0.013159241199533954,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.02
+      },
+      "rms_bob_attachment_position_m": {
+        "coarse_to_middle": 1.365682246106111e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 5e-05,
+        "middle_to_fine": 3.2157957284493022e-06,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.0002
+      },
+      "rms_bob_orientation_angle_rad": {
+        "coarse_to_middle": 0.0004910210220128978,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.0005,
+        "middle_to_fine": 0.00011890611442024963,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.002
+      },
+      "rms_bob_position_m": {
+        "coarse_to_middle": 1.1547721078727093e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 5e-05,
+        "middle_to_fine": 2.687321324447493e-06,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.0002
+      },
+      "rms_bob_velocity_m_s": {
+        "coarse_to_middle": 0.0005241646395445996,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.00125,
+        "middle_to_fine": 0.0001217260037055838,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.005
+      },
+      "rms_junction_position_m": {
+        "coarse_to_middle": 5.719505110274976e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.000125,
+        "middle_to_fine": 2.3544227695620886e-05,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.0005
+      },
+      "rms_junction_velocity_m_s": {
+        "coarse_to_middle": 0.01563120444777686,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.005,
+        "middle_to_fine": 0.008193059505322496,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.02
+      },
+      "rms_mechanical_energy_J": {
+        "coarse_to_middle": 1.351013934748189e-05,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 5e-06,
+        "middle_to_fine": 3.2760246613578715e-06,
+        "required_contraction_ratio": 1.25,
+        "threshold": 2e-05
+      },
+      "rms_rod_position_m": {
+        "coarse_to_middle": 0.00028062925060525764,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.00025,
+        "middle_to_fine": 0.00010091842265561066,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.001
+      },
+      "rms_rod_signed_axial_force_N": {
+        "coarse_to_middle": 0.007951433560320171,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.0025,
+        "middle_to_fine": 0.0037301186289853674,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.01
+      },
+      "rms_rod_tension_N": {
+        "coarse_to_middle": 0.007933296917984821,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.0025,
+        "middle_to_fine": 0.00372017421694261,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.01
+      },
+      "rms_rod_velocity_m_s": {
+        "coarse_to_middle": 0.07689133119945189,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.0125,
+        "middle_to_fine": 0.0369782838812098,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.05
+      },
+      "rms_support_reaction_N": {
+        "coarse_to_middle": 0.011365953270202199,
+        "decreasing_or_at_floor": true,
+        "finest_threshold_passed": true,
+        "metric_numerical_floor": 0.005,
+        "middle_to_fine": 0.004033564137041346,
+        "required_contraction_ratio": 1.25,
+        "threshold": 0.02
+      }
+    },
+    "passed": false
+  },
+  "formal_validation_spec_sha256": "af02a2ae141a02aaad9fe35c8a60855eb6e6ccfcefc9de508c77f91a2623490c",
+  "identity_checks": {
+    "anchor_config_file_stable": true,
+    "bundle_internal_identities_stable": true,
+    "formal_source_stable": true,
+    "qualification_plan_file_stable": true,
+    "runtime_stable": true,
+    "script_stable": true,
+    "validation_spec_file_stable": true
+  },
+  "levels": [
+    {
+      "accepted_integration_step_count": 15360,
+      "allow_subminimum_mesh": true,
+      "config_sha256": "0552680dc3d99acd2cad57873448e1e1543bb0c1585191c41cd16df95fa85fc0",
+      "event_count": 24,
+      "identity": {
+        "auxiliary_input_identity_end": {},
+        "auxiliary_input_identity_start": {},
+        "canonical_result_sha256_start": "4defbb21f22c2abc440d9bf813c230137dfe7144bcbfe5b9d997ef68e820b72f",
+        "resolved_config_sha256_end": "0552680dc3d99acd2cad57873448e1e1543bb0c1585191c41cd16df95fa85fc0",
+        "runtime_identity_end": {
+          "dependencies": {
+            "PyYAML": "6.0.3",
+            "h5py": "3.16.0",
+            "numpy": "2.5.2",
+            "pint": "0.25.3",
+            "pydantic": "2.13.4",
+            "scipy": "1.18.1"
+          },
+          "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+          "project_version": "1.0.0rc1",
+          "python_executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+          "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+        },
+        "runtime_identity_start": {
+          "dependencies": {
+            "PyYAML": "6.0.3",
+            "h5py": "3.16.0",
+            "numpy": "2.5.2",
+            "pint": "0.25.3",
+            "pydantic": "2.13.4",
+            "scipy": "1.18.1"
+          },
+          "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+          "project_version": "1.0.0rc1",
+          "python_executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+          "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+        },
+        "source_sha256_end": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_sha256_start": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "level_index": 0,
+      "limiting_sampled_guard": "ROD_SELF_CLEARANCE",
+      "maximum_absolute_energy_balance_residual": 4.2185559231176465e-10,
+      "mesh": {
+        "lower": 8,
+        "upper_A": 6,
+        "upper_B": 6
+      },
+      "minimum_sampled_normalized_guard_margin": 7.948041807803143e-05,
+      "minimum_signed_axial_force_N": -0.03571737557467582,
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 9.935541972483364e-14,
+        "iterations": 4795,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "role": "formal_coarse_trend",
+      "runtime_seconds": 132.47295678799856,
+      "sampled_guard_margins_normalized": {
+        "AERODYNAMIC_CHORD_LENGTH": 0.1872169583042995,
+        "BENDING_TURN_CLEARANCE": 1.985932824679765,
+        "BOB_ROD_CLEARANCE": 0.0686995271509862,
+        "BOB_SOCKET_CUT_CLEARANCE": 0.0686995271509862,
+        "BOB_SOCKET_MATERIAL_EXTENT": 0.9229546621409617,
+        "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0019020395898420826,
+        "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0022884357104297065,
+        "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8394919046655613,
+        "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.027710223455063507,
+        "MINIMUM_SEGMENT_LENGTH": 0.06247702716228291,
+        "ROD_SELF_CLEARANCE": 7.948041807803143e-05
+      },
+      "signed_axial_force": {
+        "lower": {
+          "maximum_N": 1.1665777590124313,
+          "minimum_N": -0.004410784649682517
+        },
+        "upper_A": {
+          "maximum_N": 0.6707817668824088,
+          "minimum_N": -0.03571737557467582
+        },
+        "upper_B": {
+          "maximum_N": 0.6802003792734728,
+          "minimum_N": -0.03453842006210791
+        }
+      },
+      "valid_interval_s": [
+        0.0,
+        0.12
+      ]
+    },
+    {
+      "accepted_integration_step_count": 15361,
+      "allow_subminimum_mesh": true,
+      "config_sha256": "a8a8519c9ad4bde037c9eab84bc21988ec637e5c6f1965edf9b6d8030972b6bf",
+      "event_count": 42,
+      "identity": {
+        "auxiliary_input_identity_end": {},
+        "auxiliary_input_identity_start": {},
+        "canonical_result_sha256_start": "bbb0dfa4cee0053b3cd8ccf8d1b5d5e0c350a5265cebca2fd36ba6795df2a10b",
+        "resolved_config_sha256_end": "a8a8519c9ad4bde037c9eab84bc21988ec637e5c6f1965edf9b6d8030972b6bf",
+        "runtime_identity_end": {
+          "dependencies": {
+            "PyYAML": "6.0.3",
+            "h5py": "3.16.0",
+            "numpy": "2.5.2",
+            "pint": "0.25.3",
+            "pydantic": "2.13.4",
+            "scipy": "1.18.1"
+          },
+          "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+          "project_version": "1.0.0rc1",
+          "python_executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+          "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+        },
+        "runtime_identity_start": {
+          "dependencies": {
+            "PyYAML": "6.0.3",
+            "h5py": "3.16.0",
+            "numpy": "2.5.2",
+            "pint": "0.25.3",
+            "pydantic": "2.13.4",
+            "scipy": "1.18.1"
+          },
+          "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+          "project_version": "1.0.0rc1",
+          "python_executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+          "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+        },
+        "source_sha256_end": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_sha256_start": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "level_index": 1,
+      "limiting_sampled_guard": "ROD_SELF_CLEARANCE",
+      "maximum_absolute_energy_balance_residual": 3.2161024808766246e-10,
+      "mesh": {
+        "lower": 16,
+        "upper_A": 12,
+        "upper_B": 12
+      },
+      "minimum_sampled_normalized_guard_margin": 8.004142645198287e-05,
+      "minimum_signed_axial_force_N": -0.036690998001291275,
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 1.1887994766921536e-09,
+        "iterations": 5252,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "role": "formal_coarse_trend",
+      "runtime_seconds": 230.92694492400187,
+      "sampled_guard_margins_normalized": {
+        "AERODYNAMIC_CHORD_LENGTH": 0.0937146404666794,
+        "BENDING_TURN_CLEARANCE": 1.9953253065836976,
+        "BOB_ROD_CLEARANCE": 0.06877750806653445,
+        "BOB_SOCKET_CUT_CLEARANCE": 0.06877750806653445,
+        "BOB_SOCKET_MATERIAL_EXTENT": 0.9229546621409617,
+        "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0020738337516760185,
+        "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0033246553740267784,
+        "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8394919046655613,
+        "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.04192532726547618,
+        "MINIMUM_SEGMENT_LENGTH": 0.03123777514068438,
+        "ROD_SELF_CLEARANCE": 8.004142645198287e-05
+      },
+      "signed_axial_force": {
+        "lower": {
+          "maximum_N": 1.1572343118566808,
+          "minimum_N": -0.004694345593198128
+        },
+        "upper_A": {
+          "maximum_N": 0.6662473023310217,
+          "minimum_N": -0.036690998001291275
+        },
+        "upper_B": {
+          "maximum_N": 0.6734920945107777,
+          "minimum_N": -0.0353106505346863
+        }
+      },
+      "valid_interval_s": [
+        0.0,
+        0.12
+      ]
+    },
+    {
+      "accepted_integration_step_count": 15367,
+      "allow_subminimum_mesh": false,
+      "config_sha256": "f46fcc49d7ae9bd49c1c7c121162bab266d6a66686e0ba8a549987df9ec95b71",
+      "event_count": 82,
+      "identity": {
+        "auxiliary_input_identity_end": {},
+        "auxiliary_input_identity_start": {},
+        "canonical_result_sha256_start": "43f22c5d5e36f7b433cfef1bed50184ea3c0234670fe55bffd171584ab666335",
+        "resolved_config_sha256_end": "f46fcc49d7ae9bd49c1c7c121162bab266d6a66686e0ba8a549987df9ec95b71",
+        "runtime_identity_end": {
+          "dependencies": {
+            "PyYAML": "6.0.3",
+            "h5py": "3.16.0",
+            "numpy": "2.5.2",
+            "pint": "0.25.3",
+            "pydantic": "2.13.4",
+            "scipy": "1.18.1"
+          },
+          "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+          "project_version": "1.0.0rc1",
+          "python_executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+          "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+        },
+        "runtime_identity_start": {
+          "dependencies": {
+            "PyYAML": "6.0.3",
+            "h5py": "3.16.0",
+            "numpy": "2.5.2",
+            "pint": "0.25.3",
+            "pydantic": "2.13.4",
+            "scipy": "1.18.1"
+          },
+          "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+          "project_version": "1.0.0rc1",
+          "python_executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+          "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+        },
+        "source_sha256_end": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_sha256_start": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "level_index": 2,
+      "limiting_sampled_guard": "ROD_SELF_CLEARANCE",
+      "maximum_absolute_energy_balance_residual": 3.1231462138381287e-10,
+      "mesh": {
+        "lower": 32,
+        "upper_A": 24,
+        "upper_B": 24
+      },
+      "minimum_sampled_normalized_guard_margin": 7.972325081363488e-05,
+      "minimum_signed_axial_force_N": -0.036981032058780866,
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 1.7849284314820667e-09,
+        "iterations": 5355,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "role": "finest_production",
+      "runtime_seconds": 412.34227817799547,
+      "sampled_guard_margins_normalized": {
+        "AERODYNAMIC_CHORD_LENGTH": 0.046858576509400576,
+        "BENDING_TURN_CLEARANCE": 1.9987179316204982,
+        "BOB_ROD_CLEARANCE": 0.0687505410154661,
+        "BOB_SOCKET_CUT_CLEARANCE": 0.0687505410154661,
+        "BOB_SOCKET_MATERIAL_EXTENT": 0.9229546621409617,
+        "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0010367016288538719,
+        "JUNCTION_SOCKET_CUT_CLEARANCE": 0.003805393950820896,
+        "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8394919046655615,
+        "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.047177394481935794,
+        "MINIMUM_SEGMENT_LENGTH": 0.015618786477477496,
+        "ROD_SELF_CLEARANCE": 7.972325081363488e-05
+      },
+      "signed_axial_force": {
+        "lower": {
+          "maximum_N": 1.1524180282884509,
+          "minimum_N": -0.004771984529284124
+        },
+        "upper_A": {
+          "maximum_N": 0.6621899822091398,
+          "minimum_N": -0.036981032058780866
+        },
+        "upper_B": {
+          "maximum_N": 0.6694791537404343,
+          "minimum_N": -0.03554191129978007
+        }
+      },
+      "valid_interval_s": [
+        0.0,
+        0.12
+      ]
+    }
+  ],
+  "passed": false,
+  "qualification": "SPACE_CAUCHY_DIAGNOSTIC_NOT_DEMONSTRATED",
+  "qualification_plan_sha256": "555ccb8f880d9daee2615656065c63443c9cbe214d529b46a7b54493854c17ea",
+  "schema_version": "YPS-THREE-ANCHOR-HF-SPACE-DIAGNOSTIC-1.0",
+  "scope": "0.12 s three-level spatial Cauchy diagnostic using formal comparison, threshold and event-stability kernels; no per-level continuous-guard or independent-accuracy contract",
+  "script_sha256": "8882f6d3c5383ef556b9141f06e1d4481665ffcefce8a722de2103ff19e22397",
+  "slug": "4to3"
+}

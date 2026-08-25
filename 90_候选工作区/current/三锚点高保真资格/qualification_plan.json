@@ -1,0 +1,263 @@
+{
+  "anchors": [
+    {
+      "anchor": "4:3",
+      "config": "configs/4to3.yaml",
+      "config_file_sha256": "d22cdabedcaa496ef0a733680ef73749575a69e39cce938ea605a2b31193e04f",
+      "formal_target": {
+        "actual": {
+          "intended_window_s": 0.12,
+          "production_mesh_beads": {
+            "lower": 32,
+            "upper_A": 24,
+            "upper_B": 24
+          }
+        },
+        "bound_config_fields": [
+          "solver.t_end",
+          "cables.upper_A.elements",
+          "cables.upper_B.elements",
+          "cables.lower.elements"
+        ],
+        "checks": {
+          "intended_window_s_exact": true,
+          "production_mesh_beads_exact": true
+        },
+        "comparison_policy": "exact_after_SI_resolution",
+        "explicitly_unbound_config_fields": [
+          "run.output_directory"
+        ],
+        "failure_reason": null,
+        "passed": true,
+        "schema_version": "YPS-HF-CERTIFICATION-TARGET-1.0",
+        "target": {
+          "intended_window_s": 0.12,
+          "production_mesh_beads": {
+            "lower": 32,
+            "upper_A": 24,
+            "upper_B": 24
+          },
+          "schema_version": "YPS-HF-CERTIFICATION-TARGET-1.0"
+        },
+        "target_sha256": "60a8d8a9bbf75f3051fd5aa085429042d4796b7b8ba63bdf8d683eebeb7719e0"
+      },
+      "resolved_config_sha256": "f46fcc49d7ae9bd49c1c7c121162bab266d6a66686e0ba8a549987df9ec95b71",
+      "resource_estimate": {
+        "accepted_step_budget": 61444,
+        "accepted_step_hard_cap": 61444,
+        "accepted_step_limit": 2000001,
+        "accepted_trace_float_budget": 306605560,
+        "estimate_id": "HF_SINGLE_RUN_RESOURCE_HARD_CAP_V1",
+        "estimated_peak_memory_bytes": 3405419980,
+        "estimated_result_bytes": 888480240,
+        "implicit_workspace_float_budget": 1494006,
+        "nominal_accepted_steps": 15361,
+        "output_sample_limit": 2000001,
+        "output_samples": 15361,
+        "peak_memory_limit_bytes": 8589934592,
+        "presentation_float_budget": 32442432,
+        "result_limit_bytes": 8589934592,
+        "runtime_enforcement_id": "MANUAL_SCIPY_RADAU_BDF_ACCEPTED_STEP_CAP_V1",
+        "serialized_result_float_budget": 88848024,
+        "state_size": 499,
+        "total_elements": 80
+      },
+      "slug": "4to3",
+      "space_mesh_levels": [
+        {
+          "lower": 8,
+          "upper_A": 6,
+          "upper_B": 6
+        },
+        {
+          "lower": 16,
+          "upper_A": 12,
+          "upper_B": 12
+        },
+        {
+          "lower": 32,
+          "upper_A": 24,
+          "upper_B": 24
+        }
+      ]
+    },
+    {
+      "anchor": "3:2",
+      "config": "configs/3to2.yaml",
+      "config_file_sha256": "c441d9dcb76adbec2640ca73ff4e83b8a498fe98ccfb5e5f2dbf78f13524289f",
+      "formal_target": {
+        "actual": {
+          "intended_window_s": 0.12,
+          "production_mesh_beads": {
+            "lower": 32,
+            "upper_A": 24,
+            "upper_B": 24
+          }
+        },
+        "bound_config_fields": [
+          "solver.t_end",
+          "cables.upper_A.elements",
+          "cables.upper_B.elements",
+          "cables.lower.elements"
+        ],
+        "checks": {
+          "intended_window_s_exact": true,
+          "production_mesh_beads_exact": true
+        },
+        "comparison_policy": "exact_after_SI_resolution",
+        "explicitly_unbound_config_fields": [
+          "run.output_directory"
+        ],
+        "failure_reason": null,
+        "passed": true,
+        "schema_version": "YPS-HF-CERTIFICATION-TARGET-1.0",
+        "target": {
+          "intended_window_s": 0.12,
+          "production_mesh_beads": {
+            "lower": 32,
+            "upper_A": 24,
+            "upper_B": 24
+          },
+          "schema_version": "YPS-HF-CERTIFICATION-TARGET-1.0"
+        },
+        "target_sha256": "60a8d8a9bbf75f3051fd5aa085429042d4796b7b8ba63bdf8d683eebeb7719e0"
+      },
+      "resolved_config_sha256": "d746fcc345a5434d27bb5b79cbefa909894651d914f380dad335d9e8e9c39cf8",
+      "resource_estimate": {
+        "accepted_step_budget": 61444,
+        "accepted_step_hard_cap": 61444,
+        "accepted_step_limit": 2000001,
+        "accepted_trace_float_budget": 306605560,
+        "estimate_id": "HF_SINGLE_RUN_RESOURCE_HARD_CAP_V1",
+        "estimated_peak_memory_bytes": 3405419980,
+        "estimated_result_bytes": 888480240,
+        "implicit_workspace_float_budget": 1494006,
+        "nominal_accepted_steps": 15361,
+        "output_sample_limit": 2000001,
+        "output_samples": 15361,
+        "peak_memory_limit_bytes": 8589934592,
+        "presentation_float_budget": 32442432,
+        "result_limit_bytes": 8589934592,
+        "runtime_enforcement_id": "MANUAL_SCIPY_RADAU_BDF_ACCEPTED_STEP_CAP_V1",
+        "serialized_result_float_budget": 88848024,
+        "state_size": 499,
+        "total_elements": 80
+      },
+      "slug": "3to2",
+      "space_mesh_levels": [
+        {
+          "lower": 8,
+          "upper_A": 6,
+          "upper_B": 6
+        },
+        {
+          "lower": 16,
+          "upper_A": 12,
+          "upper_B": 12
+        },
+        {
+          "lower": 32,
+          "upper_A": 24,
+          "upper_B": 24
+        }
+      ]
+    },
+    {
+      "anchor": "2:1",
+      "config": "configs/2to1.yaml",
+      "config_file_sha256": "e37e9d64a5b1f5f972305ff3a80fcd9f40d53769fd3d0e0a25c265452529b37e",
+      "formal_target": {
+        "actual": {
+          "intended_window_s": 0.12,
+          "production_mesh_beads": {
+            "lower": 32,
+            "upper_A": 24,
+            "upper_B": 24
+          }
+        },
+        "bound_config_fields": [
+          "solver.t_end",
+          "cables.upper_A.elements",
+          "cables.upper_B.elements",
+          "cables.lower.elements"
+        ],
+        "checks": {
+          "intended_window_s_exact": true,
+          "production_mesh_beads_exact": true
+        },
+        "comparison_policy": "exact_after_SI_resolution",
+        "explicitly_unbound_config_fields": [
+          "run.output_directory"
+        ],
+        "failure_reason": null,
+        "passed": true,
+        "schema_version": "YPS-HF-CERTIFICATION-TARGET-1.0",
+        "target": {
+          "intended_window_s": 0.12,
+          "production_mesh_beads": {
+            "lower": 32,
+            "upper_A": 24,
+            "upper_B": 24
+          },
+          "schema_version": "YPS-HF-CERTIFICATION-TARGET-1.0"
+        },
+        "target_sha256": "60a8d8a9bbf75f3051fd5aa085429042d4796b7b8ba63bdf8d683eebeb7719e0"
+      },
+      "resolved_config_sha256": "8430ff4dec351a82881851f9a9550610ea09b87694d6184ee30e734630df747c",
+      "resource_estimate": {
+        "accepted_step_budget": 61444,
+        "accepted_step_hard_cap": 61444,
+        "accepted_step_limit": 2000001,
+        "accepted_trace_float_budget": 306605560,
+        "estimate_id": "HF_SINGLE_RUN_RESOURCE_HARD_CAP_V1",
+        "estimated_peak_memory_bytes": 3405419980,
+        "estimated_result_bytes": 888480240,
+        "implicit_workspace_float_budget": 1494006,
+        "nominal_accepted_steps": 15361,
+        "output_sample_limit": 2000001,
+        "output_samples": 15361,
+        "peak_memory_limit_bytes": 8589934592,
+        "presentation_float_budget": 32442432,
+        "result_limit_bytes": 8589934592,
+        "runtime_enforcement_id": "MANUAL_SCIPY_RADAU_BDF_ACCEPTED_STEP_CAP_V1",
+        "serialized_result_float_budget": 88848024,
+        "state_size": 499,
+        "total_elements": 80
+      },
+      "slug": "2to1",
+      "space_mesh_levels": [
+        {
+          "lower": 8,
+          "upper_A": 6,
+          "upper_B": 6
+        },
+        {
+          "lower": 16,
+          "upper_A": 12,
+          "upper_B": 12
+        },
+        {
+          "lower": 32,
+          "upper_A": 24,
+          "upper_B": 24
+        }
+      ]
+    }
+  ],
+  "finest_mesh": {
+    "lower": 32,
+    "upper_A": 24,
+    "upper_B": 24
+  },
+  "finest_output_dt_s": 7.8125e-06,
+  "formal_hf_source_sha256": "1c0b8a6fa57efc352f32d3b78b2230577387fce29f95dea51f1c2706fd8fb99d",
+  "formal_validation_spec": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/configs/high_fidelity_shared_forward_validation.yaml",
+  "formal_validation_spec_canonical_sha256": "94dfdd1011cbce86da44de55786612d5fd5455147caa3fb40758769f8c162d68",
+  "formal_validation_spec_sha256": "af02a2ae141a02aaad9fe35c8a60855eb6e6ccfcefc9de508c77f91a2623490c",
+  "generator_sha256": "1f726f218f98e451c060ef6c4956e2574c8c8f74cfe7da291ad2e1189597b434",
+  "git_head_at_freeze": "abf0ea77fb1e0ca6b3ec9568146f9a513e2316bc",
+  "model_ladder_sha256": "dd4304e3f2b27d7c69e0ca7e31abe9d77f665d1e4bb5f8429a0d5497f4bd558c",
+  "schema_version": "YPS-THREE-ANCHOR-HF-QUALIFICATION-PLAN-1.0",
+  "scope": "0.12 s initial-window production HF numerical qualification; not long-window modal convergence or apparatus validation",
+  "target_window_s": 0.12
+}
