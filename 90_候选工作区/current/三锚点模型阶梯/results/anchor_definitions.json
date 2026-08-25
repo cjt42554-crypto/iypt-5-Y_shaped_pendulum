@@ -1,0 +1,74 @@
+[
+  {
+    "anchor": "4:3",
+    "eta_numeric": 0.7778881379251582,
+    "eta_quartic": 0.7778916666666665,
+    "eta_zero": 0.7777777777777777,
+    "h_m": 0.23336644137754745,
+    "half_support_span_m": 0.09334657655101898,
+    "ideal_initial_tension_N": {
+      "A": 0.47377126621957316,
+      "B": 0.36841070474429694,
+      "lower": 0.7829247816311266,
+      "upper_mean_used_for_symmetric_prestretch": 0.421090985481935
+    },
+    "lower_loaded_length_m": 0.3,
+    "lower_rest_length_m": 0.281625689073376,
+    "mapping": "same support/gravity frame and bob-COM endpoint state; symmetric upper rest lengths use the mean ideal initial upper tension; HF retains its independent rigid-bob surface attachment",
+    "nominal_fast_frequency_hz": 0.9099548457506613,
+    "nominal_fast_period_s": 1.0989556291390004,
+    "nominal_slow_frequency_hz": 0.6824449523751684,
+    "nominal_slow_period_s": 1.4653196518189768,
+    "support_span_m": 0.18669315310203796,
+    "upper_loaded_length_m": 0.25134334945451714,
+    "upper_rest_length_m": 0.2428224861229596
+  },
+  {
+    "anchor": "3:2",
+    "eta_numeric": 1.2533651033486282,
+    "eta_quartic": 1.253515625,
+    "eta_zero": 1.25,
+    "h_m": 0.37600953100458845,
+    "half_support_span_m": 0.1504038124018354,
+    "ideal_initial_tension_N": {
+      "A": 0.5662708968574035,
+      "B": 0.25569928875683895,
+      "lower": 0.7718471696588396,
+      "upper_mean_used_for_symmetric_prestretch": 0.41098509280712126
+    },
+    "lower_loaded_length_m": 0.3,
+    "lower_rest_length_m": 0.2818699560195382,
+    "mapping": "same support/gravity frame and bob-COM endpoint state; symmetric upper rest lengths use the mean ideal initial upper tension; HF retains its independent rigid-bob surface attachment",
+    "nominal_fast_frequency_hz": 0.9099548457506613,
+    "nominal_fast_period_s": 1.0989556291390004,
+    "nominal_slow_frequency_hz": 0.6061834287787125,
+    "nominal_slow_period_s": 1.6496656829018177,
+    "support_span_m": 0.3008076248036708,
+    "upper_loaded_length_m": 0.40497465870261196,
+    "upper_rest_length_m": 0.39156407554206285
+  },
+  {
+    "anchor": "2:1",
+    "eta_numeric": 3.0080617581306006,
+    "eta_quartic": 3.0084,
+    "eta_zero": 3.0,
+    "h_m": 0.9024185274391802,
+    "half_support_span_m": 0.3609674109756721,
+    "ideal_initial_tension_N": {
+      "A": 0.6070644449704947,
+      "B": 0.19871532865898828,
+      "lower": 0.76336419863403,
+      "upper_mean_used_for_symmetric_prestretch": 0.40288988681474147
+    },
+    "lower_loaded_length_m": 0.3,
+    "lower_rest_length_m": 0.28205729649125594,
+    "mapping": "same support/gravity frame and bob-COM endpoint state; symmetric upper rest lengths use the mean ideal initial upper tension; HF retains its independent rigid-bob surface attachment",
+    "nominal_fast_frequency_hz": 0.9099548457506613,
+    "nominal_fast_period_s": 1.0989556291390004,
+    "nominal_slow_frequency_hz": 0.4545196250148907,
+    "nominal_slow_period_s": 2.200125022032302,
+    "support_span_m": 0.7219348219513442,
+    "upper_loaded_length_m": 0.9719344990543232,
+    "upper_rest_length_m": 0.9403626167036121
+  }
+]

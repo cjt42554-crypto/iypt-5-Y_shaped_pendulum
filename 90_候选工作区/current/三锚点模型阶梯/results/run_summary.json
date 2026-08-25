@@ -1,0 +1,4283 @@
+{
+  "claim_boundary": "candidate model-form comparison; raw single-run HF status remains guard-uncertified; two-level sensitivities are not convergence proofs; no experiment or calibration is used",
+  "closure_slow_cycles_by_anchor": {
+    "2:1": 3,
+    "3:2": 6,
+    "4:3": 9
+  },
+  "common_period_count": 3,
+  "formal_identity_end": {
+    "analysis_source_sha256": "dd4304e3f2b27d7c69e0ca7e31abe9d77f665d1e4bb5f8429a0d5497f4bd558c",
+    "atlas_source_sha256": "1c5a0f54cda960cbdff669e8d555b06e98219d33985352dd94046a3a569606b7",
+    "forward_source_tree_sha256": "cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c",
+    "git_head": "a1c88f031d588ae2898579d99be26df4b7daedba",
+    "hf_source_tree_sha256": "1c0b8a6fa57efc352f32d3b78b2230577387fce29f95dea51f1c2706fd8fb99d"
+  },
+  "formal_identity_stable_during_run": true,
+  "formal_identity_start": {
+    "analysis_source_sha256": "dd4304e3f2b27d7c69e0ca7e31abe9d77f665d1e4bb5f8429a0d5497f4bd558c",
+    "atlas_source_sha256": "1c5a0f54cda960cbdff669e8d555b06e98219d33985352dd94046a3a569606b7",
+    "forward_source_tree_sha256": "cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c",
+    "git_head": "a1c88f031d588ae2898579d99be26df4b7daedba",
+    "hf_source_tree_sha256": "1c0b8a6fa57efc352f32d3b78b2230577387fce29f95dea51f1c2706fd8fb99d"
+  },
+  "profile": "full",
+  "refinement_scope": "all",
+  "runs": {
+    "2:1/cable/base": {
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 2.3417145068544707e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8224301519577624,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8282360251434822,
+          "LAMBDA_MIN:A:element:1": 0.8263209530941458,
+          "LAMBDA_MIN:B:element:0": 0.8234003820092075,
+          "LAMBDA_MIN:B:element:1": 0.8224301519577624,
+          "LAMBDA_MIN:lower:element:0": 0.8506410433104732,
+          "LAMBDA_MIN:lower:element:1": 0.8497630892920824,
+          "LAMBDA_MIN:lower:element:2": 0.8490588922695985
+        }
+      },
+      "mesh": {
+        "A": 2,
+        "B": 2,
+        "lower": 3
+      },
+      "modal": {
+        "closure_time_s": 6.4720091234180215,
+        "fast": {
+          "amplitude_m": 0.052941354673154827,
+          "fit_r2": 0.9970977663530668,
+          "frequency_hz": 0.7075929288311559,
+          "observed_cycles": 5.834479673213401,
+          "phase_at_t0_rad": -25.12566830912022,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.5265159636871066,
+        "frequency_ratio_error": -0.4734840363128934,
+        "normalized_four_state_closure_error": 1.806701109150113,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -8.924963820435773,
+        "resonant_phase_initial_rad": 0.04242398169778358,
+        "slow": {
+          "amplitude_m": 0.1304248036625452,
+          "fit_r2": 0.9975763435029659,
+          "frequency_hz": 0.4635345752441753,
+          "observed_cycles": 3.822088869035442,
+          "phase_at_t0_rad": -15.725638798998794,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -1.0556828777918308,
+        "selected_gradient_inf": 7.058785828836789e-07,
+        "selected_iterations": 17,
+        "static_energy_scale": 2.2310843643456155,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,9.350531343637284]",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.7344713034370866,
+            "maximum_tensile_force_N": 0.7344713034370866,
+            "minimum_signed_axial_force_N": 0.3158520056538472,
+            "minimum_tensile_force_N": 0.3158520056538472
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.7425216217230811,
+            "maximum_tensile_force_N": 0.7425216217230811,
+            "minimum_signed_axial_force_N": 0.2687546053065508,
+            "minimum_tensile_force_N": 0.2687546053065508
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 1.0112153613796413,
+            "maximum_tensile_force_N": 1.0112153613796413,
+            "minimum_signed_axial_force_N": 0.588558475019677,
+            "minimum_tensile_force_N": 0.588558475019677
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.0112153613796414e-10
+      },
+      "wall_seconds": 41.19315779799945
+    },
+    "2:1/cable/space_fine": {
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 3.767017866824239e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8219819397101289,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8277831750938605,
+          "LAMBDA_MIN:A:element:1": 0.8262030598647945,
+          "LAMBDA_MIN:A:element:2": 0.8248808637485556,
+          "LAMBDA_MIN:A:element:3": 0.8238539834677487,
+          "LAMBDA_MIN:B:element:0": 0.825586240739322,
+          "LAMBDA_MIN:B:element:1": 0.8241881029250184,
+          "LAMBDA_MIN:B:element:2": 0.8228212025526738,
+          "LAMBDA_MIN:B:element:3": 0.8219819397101289,
+          "LAMBDA_MIN:lower:element:0": 0.8516400390104366,
+          "LAMBDA_MIN:lower:element:1": 0.851182007533096,
+          "LAMBDA_MIN:lower:element:2": 0.8507660189060278,
+          "LAMBDA_MIN:lower:element:3": 0.8502359287109764,
+          "LAMBDA_MIN:lower:element:4": 0.8497276762070116,
+          "LAMBDA_MIN:lower:element:5": 0.8492989487059412
+        }
+      },
+      "mesh": {
+        "A": 4,
+        "B": 4,
+        "lower": 6
+      },
+      "modal": {
+        "closure_time_s": 6.472353281116591,
+        "fast": {
+          "amplitude_m": 0.053274957872951396,
+          "fit_r2": 0.9972073987586721,
+          "frequency_hz": 0.7081527625823967,
+          "observed_cycles": 5.839095799956484,
+          "phase_at_t0_rad": -25.135602722952697,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.5278049521439845,
+        "frequency_ratio_error": -0.4721950478560155,
+        "normalized_four_state_closure_error": 1.7980953577492675,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -8.900666960435634,
+        "resonant_phase_initial_rad": 0.0327685128551811,
+        "slow": {
+          "amplitude_m": 0.13039003560572712,
+          "fit_r2": 0.9975896627530049,
+          "frequency_hz": 0.46350992748690767,
+          "observed_cycles": 3.8218856351803416,
+          "phase_at_t0_rad": -15.725778271493732,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -1.0557401713761343,
+        "selected_gradient_inf": 8.768627087589465e-07,
+        "selected_iterations": 145,
+        "static_energy_scale": 2.2310843643456155,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,9.350531343637284]",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.7428971089012929,
+            "maximum_tensile_force_N": 0.7428971089012929,
+            "minimum_signed_axial_force_N": 0.2861525308696801,
+            "minimum_tensile_force_N": 0.2861525308696801
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.7703305035959074,
+            "maximum_tensile_force_N": 0.7703305035959074,
+            "minimum_signed_axial_force_N": 0.2636241376808617,
+            "minimum_tensile_force_N": 0.2636241376808617
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.9867520837820544,
+            "maximum_tensile_force_N": 0.9867520837820544,
+            "minimum_signed_axial_force_N": 0.5919379601583199,
+            "minimum_tensile_force_N": 0.5919379601583199
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 161.21995362400048
+    },
+    "2:1/cable/time_fine": {
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 2.341401272029579e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.822430149812956,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8282360297352345,
+          "LAMBDA_MIN:A:element:1": 0.8263209652297716,
+          "LAMBDA_MIN:B:element:0": 0.8234003824106297,
+          "LAMBDA_MIN:B:element:1": 0.822430149812956,
+          "LAMBDA_MIN:lower:element:0": 0.8506410392819685,
+          "LAMBDA_MIN:lower:element:1": 0.8497630893603767,
+          "LAMBDA_MIN:lower:element:2": 0.8490588967897728
+        }
+      },
+      "mesh": {
+        "A": 2,
+        "B": 2,
+        "lower": 3
+      },
+      "modal": {
+        "closure_time_s": 6.4720091206278125,
+        "fast": {
+          "amplitude_m": 0.05294135423752122,
+          "fit_r2": 0.9970977658772079,
+          "frequency_hz": 0.7075929295705096,
+          "observed_cycles": 5.834479679309766,
+          "phase_at_t0_rad": -25.12566831344758,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.5265159646240305,
+        "frequency_ratio_error": -0.4734840353759695,
+        "normalized_four_state_closure_error": 1.8067012846073742,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -8.924963802775173,
+        "resonant_phase_initial_rad": 0.042423980572259025,
+        "slow": {
+          "amplitude_m": 0.13042480321171207,
+          "fit_r2": 0.9975763433044834,
+          "frequency_hz": 0.46353457544401405,
+          "observed_cycles": 3.8220888706832192,
+          "phase_at_t0_rad": -15.725638800599713,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -1.0556828777918308,
+        "selected_gradient_inf": 7.058785828836789e-07,
+        "selected_iterations": 17,
+        "static_energy_scale": 2.2310843643456155,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,9.350531343637284]",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.7344713740414691,
+            "maximum_tensile_force_N": 0.7344713740414691,
+            "minimum_signed_axial_force_N": 0.31585222594192397,
+            "minimum_tensile_force_N": 0.31585222594192397
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.7425216287193082,
+            "maximum_tensile_force_N": 0.7425216287193082,
+            "minimum_signed_axial_force_N": 0.2687545776753988,
+            "minimum_tensile_force_N": 0.2687545776753988
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 1.011215381930747,
+            "maximum_tensile_force_N": 1.011215381930747,
+            "minimum_signed_axial_force_N": 0.5885585337836501,
+            "minimum_tensile_force_N": 0.5885585337836501
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.011215381930747e-10
+      },
+      "wall_seconds": 50.33719078099966
+    },
+    "2:1/high_fidelity/base": {
+      "accepted_integration_steps": 8722,
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 1.8367202826655904e-05,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 1.582211925015709e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.2983738008493175,
+          "BENDING_TURN_CLEARANCE": 1.9685296829290384,
+          "BOB_ROD_CLEARANCE": 0.020519816892542272,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.020519816892542272,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.27687122552732707,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0004571784381150022,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0014837033289803023,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.2931393609175543,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.066307295234428,
+          "MINIMUM_SEGMENT_LENGTH": 0.1501702068995642,
+          "ROD_SELF_CLEARANCE": 1.582211925015709e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 6.493914825719566,
+        "fast": {
+          "amplitude_m": 0.05433586337576624,
+          "fit_r2": 0.9953483096708129,
+          "frequency_hz": 0.6904430540614234,
+          "observed_cycles": 5.693069843260118,
+          "phase_at_t0_rad": -25.151542102451828,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.4945594616948574,
+        "frequency_ratio_error": -0.5054405383051426,
+        "normalized_four_state_closure_error": 1.867390927054882,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -9.527329691795439,
+        "resonant_phase_initial_rad": 0.014949520742667952,
+        "slow": {
+          "amplitude_m": 0.13212135617232798,
+          "fit_r2": 0.9973196487770178,
+          "frequency_hz": 0.46197094980647235,
+          "observed_cycles": 3.809195946479154,
+          "phase_at_t0_rad": -15.724838465187041,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 2.225548217937856e-11,
+        "iterations": 215,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.3104494367980613,
+            "maximum_tensile_force_N": 1.3104494367980613,
+            "minimum_signed_axial_force_N": 0.01580959346521883,
+            "minimum_tensile_force_N": 0.01580959346521883
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.9845333739262087,
+            "maximum_tensile_force_N": 0.9845333739262087,
+            "minimum_signed_axial_force_N": 0.16436253689097108,
+            "minimum_tensile_force_N": 0.16436253689097108
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.9096109005900667,
+            "maximum_tensile_force_N": 0.9096109005900667,
+            "minimum_signed_axial_force_N": 0.12969176967762142,
+            "minimum_tensile_force_N": 0.12969176967762142
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.3104494367980612e-10
+      },
+      "valid_interval": [
+        0.0,
+        9.350531343637284
+      ],
+      "wall_seconds": 25.388129895998645
+    },
+    "2:1/high_fidelity/space_fine": {
+      "accepted_integration_steps": 13561,
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 2.4474306938922073e-05,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 1.287382603396027e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.2238238172824704,
+          "BENDING_TURN_CLEARANCE": 1.9688047683025154,
+          "BOB_ROD_CLEARANCE": 0.02014130162974736,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.02014130162974736,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.27687122552732707,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.00044089535647074123,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0014829454570064937,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.2931393609175543,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.06613487359520104,
+          "MINIMUM_SEGMENT_LENGTH": 0.07506453445850102,
+          "ROD_SELF_CLEARANCE": 1.287382603396027e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 6.511980279164552,
+        "fast": {
+          "amplitude_m": 0.05283009729496022,
+          "fit_r2": 0.9961365074058359,
+          "frequency_hz": 0.6902553854687303,
+          "observed_cycles": 5.691522415996851,
+          "phase_at_t0_rad": -25.16588432280765,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.498309819253166,
+        "frequency_ratio_error": -0.5016901807468339,
+        "normalized_four_state_closure_error": 1.878483407655451,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -9.456637117274333,
+        "resonant_phase_initial_rad": 0.009196460328144451,
+        "slow": {
+          "amplitude_m": 0.1316228266466516,
+          "fit_r2": 0.9970625238696371,
+          "frequency_hz": 0.46068935583215276,
+          "observed_cycles": 3.7986285231940853,
+          "phase_at_t0_rad": -15.72913304515769,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 2.931543896522726e-13,
+        "iterations": 704,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.3494289812383526,
+            "maximum_tensile_force_N": 1.3494289812383526,
+            "minimum_signed_axial_force_N": 0.012517954173295095,
+            "minimum_tensile_force_N": 0.012517954173295095
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.9301338486668292,
+            "maximum_tensile_force_N": 0.9301338486668292,
+            "minimum_signed_axial_force_N": 0.13327743940887246,
+            "minimum_tensile_force_N": 0.13327743940887246
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.9627873869915181,
+            "maximum_tensile_force_N": 0.9627873869915181,
+            "minimum_signed_axial_force_N": 0.09907302300556749,
+            "minimum_tensile_force_N": 0.09907302300556749
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.3494289812383528e-10
+      },
+      "valid_interval": [
+        0.0,
+        9.350531343637284
+      ],
+      "wall_seconds": 50.89930432999972
+    },
+    "2:1/high_fidelity/time_fine": {
+      "accepted_integration_steps": 10643,
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 1.8367950864595922e-05,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 1.582211925015709e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.2983738008493175,
+          "BENDING_TURN_CLEARANCE": 1.9685296828376577,
+          "BOB_ROD_CLEARANCE": 0.020519816892542272,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.020519816892542272,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.27687122552732707,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0004571784381150022,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0014837034136335873,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.2931393609175543,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.06630729968837881,
+          "MINIMUM_SEGMENT_LENGTH": 0.1501702068995642,
+          "ROD_SELF_CLEARANCE": 1.582211925015709e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 6.493914799242203,
+        "fast": {
+          "amplitude_m": 0.05433586334331983,
+          "fit_r2": 0.9953483090533007,
+          "frequency_hz": 0.6904430600789995,
+          "observed_cycles": 5.69306989287823,
+          "phase_at_t0_rad": -25.15154215445661,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.4945594686270294,
+        "frequency_ratio_error": -0.5054405313729706,
+        "normalized_four_state_closure_error": 1.8673908678425144,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -9.527329561127075,
+        "resonant_phase_initial_rad": 0.014949524440378536,
+        "slow": {
+          "amplitude_m": 0.13212135195218103,
+          "fit_r2": 0.9973196463562544,
+          "frequency_hz": 0.4619709516900468,
+          "observed_cycles": 3.8091959620102265,
+          "phase_at_t0_rad": -15.724838493038288,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 2.225548217937856e-11,
+        "iterations": 215,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.310449261444799,
+            "maximum_tensile_force_N": 1.310449261444799,
+            "minimum_signed_axial_force_N": 0.01580959346521883,
+            "minimum_tensile_force_N": 0.01580959346521883
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.9845333339647383,
+            "maximum_tensile_force_N": 0.9845333339647383,
+            "minimum_signed_axial_force_N": 0.16436249655570415,
+            "minimum_tensile_force_N": 0.16436249655570415
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.9096108155935128,
+            "maximum_tensile_force_N": 0.9096108155935128,
+            "minimum_signed_axial_force_N": 0.12969186140776656,
+            "minimum_tensile_force_N": 0.12969186140776656
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.310449261444799e-10
+      },
+      "valid_interval": [
+        0.0,
+        9.350531343637284
+      ],
+      "wall_seconds": 29.047038278999025
+    },
+    "2:1/torus/base": {
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_relative_conservative_drift": 1.4446226170143651e-15
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.2532915530010098,
+        "normalized_minima": {
+          "R": 3.988128335971842,
+          "T_A": 0.26094209221986764,
+          "T_B": 0.2532915530010098,
+          "T_lower": 0.97301856219253
+        }
+      },
+      "modal": {
+        "closure_time_s": 6.598414198155142,
+        "fast": {
+          "amplitude_m": 0.059500476021586854,
+          "fit_r2": 0.9999931080128103,
+          "frequency_hz": 0.909323179133152,
+          "observed_cycles": 7.497852775038305,
+          "phase_at_t0_rad": -31.41605596351873,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 2.000030325301254,
+        "frequency_ratio_error": 3.0325301254130466e-05,
+        "normalized_four_state_closure_error": 0.000525494402378699,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": 0.0005716184618272417,
+        "resonant_phase_initial_rad": -0.000298119253890871,
+        "slow": {
+          "amplitude_m": 0.14376710640711596,
+          "fit_r2": 0.9999903888974025,
+          "frequency_hz": 0.4546546957962677,
+          "observed_cycles": 3.74886954472,
+          "phase_at_t0_rad": -12.566286268542626,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "returned_interval": "[0,9.350531343637284]",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "T_A": {
+            "maximum_signed_axial_force_N": 0.6070644449704946,
+            "maximum_tensile_force_N": 0.6070644449704946,
+            "minimum_signed_axial_force_N": 0.20471742149343722,
+            "minimum_tensile_force_N": 0.20471742149343722
+          },
+          "T_B": {
+            "maximum_signed_axial_force_N": 0.6191643703652846,
+            "maximum_tensile_force_N": 0.6191643703652846,
+            "minimum_signed_axial_force_N": 0.19871532865898822,
+            "minimum_tensile_force_N": 0.19871532865898822
+          },
+          "T_lower": {
+            "maximum_signed_axial_force_N": 0.8189014545955685,
+            "maximum_tensile_force_N": 0.8189014545955685,
+            "minimum_signed_axial_force_N": 0.7633641986340299,
+            "minimum_tensile_force_N": 0.7633641986340299
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 0.18805781599985494
+    },
+    "2:1/torus/time_fine": {
+      "duration_s": 9.350531343637284,
+      "energy": {
+        "maximum_relative_conservative_drift": 1.4298815699019738e-15
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.2532915530010098,
+        "normalized_minima": {
+          "R": 3.988128335971842,
+          "T_A": 0.26094209221986764,
+          "T_B": 0.2532915530010098,
+          "T_lower": 0.97301856219253
+        }
+      },
+      "modal": {
+        "closure_time_s": 6.598414198155146,
+        "fast": {
+          "amplitude_m": 0.05950047602158686,
+          "fit_r2": 0.9999931080128103,
+          "frequency_hz": 0.909323179133152,
+          "observed_cycles": 7.497852775038305,
+          "phase_at_t0_rad": -31.41605596351873,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 2.000030325301255,
+        "frequency_ratio_error": 3.0325301255018644e-05,
+        "normalized_four_state_closure_error": 0.0005254944023991577,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": 0.0005716184618439834,
+        "resonant_phase_initial_rad": -0.00029811925390508187,
+        "slow": {
+          "amplitude_m": 0.14376710640711604,
+          "fit_r2": 0.9999903888974025,
+          "frequency_hz": 0.4546546957962675,
+          "observed_cycles": 3.748869544719998,
+          "phase_at_t0_rad": -12.566286268542619,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "returned_interval": "[0,9.350531343637284]",
+      "sample_count": 1872,
+      "tension": {
+        "branches": {
+          "T_A": {
+            "maximum_signed_axial_force_N": 0.6070644449704946,
+            "maximum_tensile_force_N": 0.6070644449704946,
+            "minimum_signed_axial_force_N": 0.2047174214934372,
+            "minimum_tensile_force_N": 0.2047174214934372
+          },
+          "T_B": {
+            "maximum_signed_axial_force_N": 0.6191643703652846,
+            "maximum_tensile_force_N": 0.6191643703652846,
+            "minimum_signed_axial_force_N": 0.19871532865898822,
+            "minimum_tensile_force_N": 0.19871532865898822
+          },
+          "T_lower": {
+            "maximum_signed_axial_force_N": 0.8189014545955684,
+            "maximum_tensile_force_N": 0.8189014545955684,
+            "minimum_signed_axial_force_N": 0.7633641986340299,
+            "minimum_tensile_force_N": 0.7633641986340299
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 0.46401766300004965
+    },
+    "3:2/cable/base": {
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 4.309228233876518e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8225495674388419,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8250528458988278,
+          "LAMBDA_MIN:A:element:1": 0.8239349411666157,
+          "LAMBDA_MIN:B:element:0": 0.82304135435069,
+          "LAMBDA_MIN:B:element:1": 0.8225495674388419,
+          "LAMBDA_MIN:lower:element:0": 0.858848779483488,
+          "LAMBDA_MIN:lower:element:1": 0.857370882288109,
+          "LAMBDA_MIN:lower:element:2": 0.8562227407596861
+        }
+      },
+      "mesh": {
+        "A": 2,
+        "B": 2,
+        "lower": 3
+      },
+      "modal": {
+        "closure_time_s": 9.773612025031964,
+        "fast": {
+          "amplitude_m": 0.0400283498792102,
+          "fit_r2": 0.996737008222254,
+          "frequency_hz": 0.8105508645661486,
+          "observed_cycles": 9.025545641761441,
+          "phase_at_t0_rad": -31.426347281774454,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.3203349461372942,
+        "frequency_ratio_error": -0.17966505386270581,
+        "normalized_four_state_closure_error": 0.5035301394304253,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -13.546425919725385,
+        "resonant_phase_initial_rad": -3.1327164114923325,
+        "slow": {
+          "amplitude_m": 0.06117371614743825,
+          "fit_r2": 0.9971919505360836,
+          "frequency_hz": 0.613897910479046,
+          "observed_cycles": 6.8358000128422916,
+          "phase_at_t0_rad": -22.001054486412055,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -0.5550125431063958,
+        "selected_gradient_inf": 1.8228073202231077e-07,
+        "selected_iterations": 12,
+        "static_energy_scale": 0.9839741021391426,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,11.960076201038179]",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.6620453358058753,
+            "maximum_tensile_force_N": 0.6620453358058753,
+            "minimum_signed_axial_force_N": 0.28725483623801457,
+            "minimum_tensile_force_N": 0.28725483623801457
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.677760517111781,
+            "maximum_tensile_force_N": 0.677760517111781,
+            "minimum_signed_axial_force_N": 0.27055155716089746,
+            "minimum_tensile_force_N": 0.27055155716089746
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.9153356215747646,
+            "maximum_tensile_force_N": 0.9153356215747646,
+            "minimum_signed_axial_force_N": 0.6736255182929641,
+            "minimum_tensile_force_N": 0.6736255182929641
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 56.2016393039994
+    },
+    "3:2/cable/space_fine": {
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 7.825273163880427e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8227759186267865,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8257446758554157,
+          "LAMBDA_MIN:A:element:1": 0.8251216279504316,
+          "LAMBDA_MIN:A:element:2": 0.8246322509035295,
+          "LAMBDA_MIN:A:element:3": 0.8242809486109421,
+          "LAMBDA_MIN:B:element:0": 0.8235598045144923,
+          "LAMBDA_MIN:B:element:1": 0.8230473639672811,
+          "LAMBDA_MIN:B:element:2": 0.8227899147392119,
+          "LAMBDA_MIN:B:element:3": 0.8227759186267865,
+          "LAMBDA_MIN:lower:element:0": 0.8592368806578103,
+          "LAMBDA_MIN:lower:element:1": 0.8584241237873629,
+          "LAMBDA_MIN:lower:element:2": 0.8577413102765199,
+          "LAMBDA_MIN:lower:element:3": 0.8571704591886598,
+          "LAMBDA_MIN:lower:element:4": 0.8566069426473963,
+          "LAMBDA_MIN:lower:element:5": 0.8560782335134312
+        }
+      },
+      "mesh": {
+        "A": 4,
+        "B": 4,
+        "lower": 6
+      },
+      "modal": {
+        "closure_time_s": 9.773721367708529,
+        "fast": {
+          "amplitude_m": 0.039955142303501674,
+          "fit_r2": 0.9966804370666852,
+          "frequency_hz": 0.8104510842847918,
+          "observed_cycles": 9.024434580725174,
+          "phase_at_t0_rad": -31.426674441395527,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.3201871799928027,
+        "frequency_ratio_error": -0.17981282000719734,
+        "normalized_four_state_closure_error": 0.5071855670941935,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -13.557567224540998,
+        "resonant_phase_initial_rad": -3.1335239252845857,
+        "slow": {
+          "amplitude_m": 0.06117017886125694,
+          "fit_r2": 0.9971929416939418,
+          "frequency_hz": 0.6138910425483833,
+          "observed_cycles": 6.8357235379110195,
+          "phase_at_t0_rad": -22.001003421562018,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -0.5550166471163669,
+        "selected_gradient_inf": 5.784405355258038e-07,
+        "selected_iterations": 103,
+        "static_energy_scale": 0.9839741021391425,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,11.960076201038179]",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.653546516876673,
+            "maximum_tensile_force_N": 0.653546516876673,
+            "minimum_signed_axial_force_N": 0.2912077833177012,
+            "minimum_tensile_force_N": 0.2912077833177012
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.6694419429986508,
+            "maximum_tensile_force_N": 0.6694419429986508,
+            "minimum_signed_axial_force_N": 0.273017757968069,
+            "minimum_tensile_force_N": 0.273017757968069
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.9162368611504318,
+            "maximum_tensile_force_N": 0.9162368611504318,
+            "minimum_signed_axial_force_N": 0.6733120429103943,
+            "minimum_tensile_force_N": 0.6733120429103943
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 231.84825850499874
+    },
+    "3:2/cable/time_fine": {
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 4.3090157543548253e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8225495669071723,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8250528335598564,
+          "LAMBDA_MIN:A:element:1": 0.8239349388051733,
+          "LAMBDA_MIN:B:element:0": 0.8230413544086095,
+          "LAMBDA_MIN:B:element:1": 0.8225495669071723,
+          "LAMBDA_MIN:lower:element:0": 0.8588487791571111,
+          "LAMBDA_MIN:lower:element:1": 0.8573708819452504,
+          "LAMBDA_MIN:lower:element:2": 0.8562227366411901
+        }
+      },
+      "mesh": {
+        "A": 2,
+        "B": 2,
+        "lower": 3
+      },
+      "modal": {
+        "closure_time_s": 9.773612019920217,
+        "fast": {
+          "amplitude_m": 0.04002834958120923,
+          "fit_r2": 0.9967370076749014,
+          "frequency_hz": 0.8105508651714637,
+          "observed_cycles": 9.025545648501671,
+          "phase_at_t0_rad": -31.42634728543441,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.320334946432758,
+        "frequency_ratio_error": -0.17966505356724194,
+        "normalized_four_state_closure_error": 0.5035292476482054,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -13.546425897447934,
+        "resonant_phase_initial_rad": -3.132716413189961,
+        "slow": {
+          "amplitude_m": 0.061173715899646194,
+          "fit_r2": 0.9971919502822041,
+          "frequency_hz": 0.6138979108001239,
+          "observed_cycles": 6.835800016417519,
+          "phase_at_t0_rad": -22.001054488286147,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -0.5550125431063958,
+        "selected_gradient_inf": 1.8228073202231077e-07,
+        "selected_iterations": 12,
+        "static_energy_scale": 0.9839741021391426,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,11.960076201038179]",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.6620453189284791,
+            "maximum_tensile_force_N": 0.6620453189284791,
+            "minimum_signed_axial_force_N": 0.2872548054828372,
+            "minimum_tensile_force_N": 0.2872548054828372
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.6777604937878302,
+            "maximum_tensile_force_N": 0.6777604937878302,
+            "minimum_signed_axial_force_N": 0.2705515532022734,
+            "minimum_tensile_force_N": 0.2705515532022734
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.9153356554174664,
+            "maximum_tensile_force_N": 0.9153356554174664,
+            "minimum_signed_axial_force_N": 0.6736254936260255,
+            "minimum_tensile_force_N": 0.6736254936260255
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 67.5785939489997
+    },
+    "3:2/high_fidelity/base": {
+      "accepted_integration_steps": 11298,
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 4.743736724933613e-05,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 3.6644807791327064e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.7159703615445508,
+          "BENDING_TURN_CLEARANCE": 1.9701273906985677,
+          "BOB_ROD_CLEARANCE": 0.04979260891520995,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.04979260891520995,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.6644430015570902,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0026923690317559724,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0037122622067456645,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.7035118215024975,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.06959848712301145,
+          "MINIMUM_SEGMENT_LENGTH": 0.36019708284398105,
+          "ROD_SELF_CLEARANCE": 3.6644807791327064e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 9.898522700074645,
+        "fast": {
+          "amplitude_m": 0.04224599118966115,
+          "fit_r2": 0.9962874259090467,
+          "frequency_hz": 0.7877161917062446,
+          "observed_cycles": 8.771279819440633,
+          "phase_at_t0_rad": -31.44800646327112,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.299537767470102,
+        "frequency_ratio_error": -0.20046223252989792,
+        "normalized_four_state_closure_error": 1.1354829024498576,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -15.114496248915268,
+        "resonant_phase_initial_rad": 3.1027339360984314,
+        "slow": {
+          "amplitude_m": 0.06248280044124107,
+          "fit_r2": 0.9966595174406971,
+          "frequency_hz": 0.606151057263803,
+          "observed_cycles": 6.749538211972304,
+          "phase_at_t0_rad": -21.999582287546893,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 3.5498132211486677e-12,
+        "iterations": 161,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.348881064224869,
+            "maximum_tensile_force_N": 1.348881064224869,
+            "minimum_signed_axial_force_N": 0.008962409377162264,
+            "minimum_tensile_force_N": 0.008962409377162264
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.9337025789820025,
+            "maximum_tensile_force_N": 0.9337025789820025,
+            "minimum_signed_axial_force_N": 0.032611217517060004,
+            "minimum_tensile_force_N": 0.032611217517060004
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.9186448465677468,
+            "maximum_tensile_force_N": 0.9186448465677468,
+            "minimum_signed_axial_force_N": 0.0021921634094258435,
+            "minimum_tensile_force_N": 0.0021921634094258435
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.348881064224869e-10
+      },
+      "valid_interval": [
+        0.0,
+        11.960076201038179
+      ],
+      "wall_seconds": 32.460392861999935
+    },
+    "3:2/high_fidelity/space_fine": {
+      "accepted_integration_steps": 18324,
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 0.00017306699506036826,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.0015786499891387114,
+          "signed_axial_force_before_N": 0.03140463702370335,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.03,
+          "bracket_start_s": 0.025,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.05174688849270599,
+          "signed_axial_force_before_N": -0.0015786499891387114,
+          "time": 0.03,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        }
+      ],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 2.4973777709730535e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.5368038945131198,
+          "BENDING_TURN_CLEARANCE": 1.965242239216941,
+          "BOB_ROD_CLEARANCE": 0.04898650018661639,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.04898650018661639,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.6644430015570902,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0026080903997038117,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.002876073777736105,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.7035118215024975,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.051729143520287096,
+          "MINIMUM_SEGMENT_LENGTH": 0.18008659125945242,
+          "ROD_SELF_CLEARANCE": 2.4973777709730535e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 9.908605470341856,
+        "fast": {
+          "amplitude_m": 0.04181284825256463,
+          "fit_r2": 0.9958962009719722,
+          "frequency_hz": 0.7886281098470742,
+          "observed_cycles": 8.78143409742788,
+          "phase_at_t0_rad": -31.46785961058085,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.3023674672160128,
+        "frequency_ratio_error": -0.19763253278398718,
+        "normalized_four_state_closure_error": 1.0670725645517714,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -14.901141914508434,
+        "resonant_phase_initial_rad": 3.060269044080677,
+        "slow": {
+          "amplitude_m": 0.06253863725189546,
+          "fit_r2": 0.9966003120469322,
+          "frequency_hz": 0.6055342518136404,
+          "observed_cycles": 6.742670036283528,
+          "phase_at_t0_rad": -21.99866275508079,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 1.7620320168221237e-09,
+        "iterations": 796,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.3966080791984263,
+            "maximum_tensile_force_N": 1.3966080791984263,
+            "minimum_signed_axial_force_N": 0.008165573125363465,
+            "minimum_tensile_force_N": 0.008165573125363465
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.970995227628068,
+            "maximum_tensile_force_N": 0.970995227628068,
+            "minimum_signed_axial_force_N": 0.03503798458261399,
+            "minimum_tensile_force_N": 0.03503798458261399
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.8817174309560468,
+            "maximum_tensile_force_N": 0.8817174309560468,
+            "minimum_signed_axial_force_N": -0.0015786499891387114,
+            "minimum_tensile_force_N": 0.0
+          }
+        },
+        "first_non_tensile_branches": [
+          "upper_B"
+        ],
+        "first_non_tensile_sample_time_s": 0.025,
+        "zero_tolerance_N": 1.3966080791984264e-10
+      },
+      "valid_interval": [
+        0.0,
+        11.960076201038179
+      ],
+      "wall_seconds": 70.04602690899992
+    },
+    "3:2/high_fidelity/time_fine": {
+      "accepted_integration_steps": 13861,
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 4.7423516543867524e-05,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 3.6644807791327064e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.7159703615445508,
+          "BENDING_TURN_CLEARANCE": 1.9701273906985677,
+          "BOB_ROD_CLEARANCE": 0.04979260891520995,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.04979260891520995,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.6644430015570902,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.0026923690317559724,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.0037122599000321585,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.7035118215024975,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.06959843587445491,
+          "MINIMUM_SEGMENT_LENGTH": 0.36019708284398105,
+          "ROD_SELF_CLEARANCE": 3.6644807791327064e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 9.898522627261809,
+        "fast": {
+          "amplitude_m": 0.04224599150022947,
+          "fit_r2": 0.9962874279916647,
+          "frequency_hz": 0.7877161827480074,
+          "observed_cycles": 8.771279719689979,
+          "phase_at_t0_rad": -31.448006282838374,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.2995377431319082,
+        "frequency_ratio_error": -0.20046225686809183,
+        "normalized_four_state_closure_error": 1.1354837272073406,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -15.114498083971856,
+        "resonant_phase_initial_rad": 3.102734478429305,
+        "slow": {
+          "amplitude_m": 0.06248279845830472,
+          "fit_r2": 0.996659514217499,
+          "frequency_hz": 0.6061510617226076,
+          "observed_cycles": 6.749538261621432,
+          "phase_at_t0_rad": -21.99958234803535,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 3.5498132211486677e-12,
+        "iterations": 161,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.3488813151676564,
+            "maximum_tensile_force_N": 1.3488813151676564,
+            "minimum_signed_axial_force_N": 0.008962409377162264,
+            "minimum_tensile_force_N": 0.008962409377162264
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.933702400030238,
+            "maximum_tensile_force_N": 0.933702400030238,
+            "minimum_signed_axial_force_N": 0.03261112183121773,
+            "minimum_tensile_force_N": 0.03261112183121773
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.9186457306151302,
+            "maximum_tensile_force_N": 0.9186457306151302,
+            "minimum_signed_axial_force_N": 0.0021920739631603172,
+            "minimum_tensile_force_N": 0.0021920739631603172
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1.3488813151676565e-10
+      },
+      "valid_interval": [
+        0.0,
+        11.960076201038179
+      ],
+      "wall_seconds": 38.86052395600018
+    },
+    "3:2/torus/base": {
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_relative_conservative_drift": 5.38048219602289e-16
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.3259258879903419,
+        "normalized_minima": {
+          "R": 2.2421361812846703,
+          "T_A": 0.32592745528464323,
+          "T_B": 0.3259258879903419,
+          "T_lower": 0.9838313410528053
+        }
+      },
+      "modal": {
+        "closure_time_s": 9.892082788384586,
+        "fast": {
+          "amplitude_m": 0.044733433578995535,
+          "fit_r2": 0.9999799372117222,
+          "frequency_hz": 0.9098190815339303,
+          "observed_cycles": 10.130904802038883,
+          "phase_at_t0_rad": -37.698753641447226,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.5000009461642774,
+        "frequency_ratio_error": 9.461642773711532e-07,
+        "normalized_four_state_closure_error": 0.0007025980463806577,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": 7.133910582907944e-05,
+        "resonant_phase_initial_rad": -0.00013972479463575382,
+        "slow": {
+          "amplitude_m": 0.06744753149831559,
+          "fit_r2": 0.9999883049480629,
+          "frequency_hz": 0.6065456717613887,
+          "observed_cycles": 6.753932274472955,
+          "phase_at_t0_rad": -25.132455852699938,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "returned_interval": "[0,11.960076201038179]",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "T_A": {
+            "maximum_signed_axial_force_N": 0.5721618140949248,
+            "maximum_tensile_force_N": 0.5721618140949248,
+            "minimum_signed_axial_force_N": 0.25570051834937174,
+            "minimum_tensile_force_N": 0.25570051834937174
+          },
+          "T_B": {
+            "maximum_signed_axial_force_N": 0.5721615347128606,
+            "maximum_tensile_force_N": 0.5721615347128606,
+            "minimum_signed_axial_force_N": 0.2556992887568389,
+            "minimum_tensile_force_N": 0.2556992887568389
+          },
+          "T_lower": {
+            "maximum_signed_axial_force_N": 0.8074032669545899,
+            "maximum_tensile_force_N": 0.8074032669545899,
+            "minimum_signed_axial_force_N": 0.7718471696588395,
+            "minimum_tensile_force_N": 0.7718471696588395
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 0.2328156420007872
+    },
+    "3:2/torus/time_fine": {
+      "duration_s": 11.960076201038179,
+      "energy": {
+        "maximum_relative_conservative_drift": 5.822713609394636e-16
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.3259258879903419,
+        "normalized_minima": {
+          "R": 2.2421361812846703,
+          "T_A": 0.32592745528464323,
+          "T_B": 0.3259258879903419,
+          "T_lower": 0.9838313410528053
+        }
+      },
+      "modal": {
+        "closure_time_s": 9.892082788384586,
+        "fast": {
+          "amplitude_m": 0.044733433578995584,
+          "fit_r2": 0.9999799372117222,
+          "frequency_hz": 0.90981908153393,
+          "observed_cycles": 10.130904802038879,
+          "phase_at_t0_rad": -37.69875364144721,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.5000009461642767,
+        "frequency_ratio_error": 9.461642767050193e-07,
+        "normalized_four_state_closure_error": 0.0007025980463796641,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": 7.133910577885413e-05,
+        "resonant_phase_initial_rad": -0.00013972479462154297,
+        "slow": {
+          "amplitude_m": 0.06744753149831564,
+          "fit_r2": 0.9999883049480629,
+          "frequency_hz": 0.6065456717613887,
+          "observed_cycles": 6.753932274472955,
+          "phase_at_t0_rad": -25.132455852699934,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "returned_interval": "[0,11.960076201038179]",
+      "sample_count": 2394,
+      "tension": {
+        "branches": {
+          "T_A": {
+            "maximum_signed_axial_force_N": 0.572161814094925,
+            "maximum_tensile_force_N": 0.572161814094925,
+            "minimum_signed_axial_force_N": 0.25570051834937174,
+            "minimum_tensile_force_N": 0.25570051834937174
+          },
+          "T_B": {
+            "maximum_signed_axial_force_N": 0.5721615347128607,
+            "maximum_tensile_force_N": 0.5721615347128607,
+            "minimum_signed_axial_force_N": 0.2556992887568389,
+            "minimum_tensile_force_N": 0.2556992887568389
+          },
+          "T_lower": {
+            "maximum_signed_axial_force_N": 0.8074032669545899,
+            "maximum_tensile_force_N": 0.8074032669545899,
+            "minimum_signed_axial_force_N": 0.7718471696588395,
+            "minimum_tensile_force_N": 0.7718471696588395
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 0.476746402999197
+    },
+    "4:3/cable/base": {
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 7.835014136901476e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8315935039028066,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.833411273948319,
+          "LAMBDA_MIN:A:element:1": 0.832589663963506,
+          "LAMBDA_MIN:B:element:0": 0.8321250690184436,
+          "LAMBDA_MIN:B:element:1": 0.8315935039028066,
+          "LAMBDA_MIN:lower:element:0": 0.8633883619853411,
+          "LAMBDA_MIN:lower:element:1": 0.861810185366102,
+          "LAMBDA_MIN:lower:element:2": 0.8605488240932233
+        }
+      },
+      "mesh": {
+        "A": 2,
+        "B": 2,
+        "lower": 3
+      },
+      "modal": {
+        "closure_time_s": 13.04889658009894,
+        "fast": {
+          "amplitude_m": 0.013519003950699906,
+          "fit_r2": 0.9969984762117171,
+          "frequency_hz": 0.8458896308776797,
+          "observed_cycles": 12.08313279010329,
+          "phase_at_t0_rad": -43.986085768101354,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.2264362568334344,
+        "frequency_ratio_error": -0.10689707649989888,
+        "normalized_four_state_closure_error": 0.30364827002019235,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -18.134661792004657,
+        "resonant_phase_initial_rad": 0.013999804227530641,
+        "slow": {
+          "amplitude_m": 0.019455232613750185,
+          "fit_r2": 0.9974517065729328,
+          "frequency_hz": 0.6897134899303309,
+          "observed_cycles": 9.852230576826736,
+          "phase_at_t0_rad": -34.56386060392779,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -0.43194223735056503,
+        "selected_gradient_inf": 9.483501509765374e-07,
+        "selected_iterations": 34,
+        "static_energy_scale": 0.686491721257254,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,15.019526431144513]",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.548153735812045,
+            "maximum_tensile_force_N": 0.548153735812045,
+            "minimum_signed_axial_force_N": 0.39088869309256224,
+            "minimum_tensile_force_N": 0.39088869309256224
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.5410874562621127,
+            "maximum_tensile_force_N": 0.5410874562621127,
+            "minimum_signed_axial_force_N": 0.3791802677756026,
+            "minimum_tensile_force_N": 0.3791802677756026
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.855576865028252,
+            "maximum_tensile_force_N": 0.855576865028252,
+            "minimum_signed_axial_force_N": 0.7266077268248023,
+            "minimum_tensile_force_N": 0.7266077268248023
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 59.155161439999574
+    },
+    "4:3/cable/space_fine": {
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 8.110325797134092e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.831545861584674,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8341045106052698,
+          "LAMBDA_MIN:A:element:1": 0.8336519483565827,
+          "LAMBDA_MIN:A:element:2": 0.8332120912233667,
+          "LAMBDA_MIN:A:element:3": 0.8327869367123113,
+          "LAMBDA_MIN:B:element:0": 0.8323413502032306,
+          "LAMBDA_MIN:B:element:1": 0.8319792032626121,
+          "LAMBDA_MIN:B:element:2": 0.8317199781150117,
+          "LAMBDA_MIN:B:element:3": 0.831545861584674,
+          "LAMBDA_MIN:lower:element:0": 0.8638572228744821,
+          "LAMBDA_MIN:lower:element:1": 0.8630035154927849,
+          "LAMBDA_MIN:lower:element:2": 0.8621979518117369,
+          "LAMBDA_MIN:lower:element:3": 0.8614668735693471,
+          "LAMBDA_MIN:lower:element:4": 0.8608293074930582,
+          "LAMBDA_MIN:lower:element:5": 0.8602965029549847
+        }
+      },
+      "mesh": {
+        "A": 4,
+        "B": 4,
+        "lower": 6
+      },
+      "modal": {
+        "closure_time_s": 13.048962413508619,
+        "fast": {
+          "amplitude_m": 0.013518811280348828,
+          "fit_r2": 0.9969981006977109,
+          "frequency_hz": 0.8458823658377448,
+          "observed_cycles": 12.083029012448318,
+          "phase_at_t0_rad": -43.98636246360883,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.2264319108962753,
+        "frequency_ratio_error": -0.10690142243705791,
+        "normalized_four_state_closure_error": 0.3037674070555602,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -18.135399062874278,
+        "resonant_phase_initial_rad": 0.013147866789871652,
+        "slow": {
+          "amplitude_m": 0.019455035464608108,
+          "fit_r2": 0.9974515951077577,
+          "frequency_hz": 0.6897100102520772,
+          "observed_cycles": 9.85218087127075,
+          "phase_at_t0_rad": -34.563855141198985,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 4,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -0.43194322366946225,
+        "selected_gradient_inf": 6.967968757360873e-07,
+        "selected_iterations": 40,
+        "static_energy_scale": 0.686491721257254,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,15.019526431144513]",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.5481424775238453,
+            "maximum_tensile_force_N": 0.5481424775238453,
+            "minimum_signed_axial_force_N": 0.39342616379235484,
+            "minimum_tensile_force_N": 0.39342616379235484
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.5436660423119368,
+            "maximum_tensile_force_N": 0.5436660423119368,
+            "minimum_signed_axial_force_N": 0.37880145738306387,
+            "minimum_tensile_force_N": 0.37880145738306387
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.8578003662928114,
+            "maximum_tensile_force_N": 0.8578003662928114,
+            "minimum_signed_axial_force_N": 0.723584918509627,
+            "minimum_tensile_force_N": 0.723584918509627
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 224.0362809170001
+    },
+    "4:3/cable/time_fine": {
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_relative_power_balance_residual_physical_traction": 7.835005896546495e-07,
+        "minimum_axial_dissipation_W": 0.0,
+        "minimum_bob_drag_dissipation_W": 0.0,
+        "minimum_string_drag_dissipation_W": 0.0
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.8315935030050627,
+        "normalized_minima": {
+          "LAMBDA_MIN:A:element:0": 0.8334112694989466,
+          "LAMBDA_MIN:A:element:1": 0.8325896602543317,
+          "LAMBDA_MIN:B:element:0": 0.8321250692922186,
+          "LAMBDA_MIN:B:element:1": 0.8315935030050627,
+          "LAMBDA_MIN:lower:element:0": 0.8633883619365215,
+          "LAMBDA_MIN:lower:element:1": 0.8618101854980553,
+          "LAMBDA_MIN:lower:element:2": 0.8605488240674932
+        }
+      },
+      "mesh": {
+        "A": 2,
+        "B": 2,
+        "lower": 3
+      },
+      "modal": {
+        "closure_time_s": 13.048896578318738,
+        "fast": {
+          "amplitude_m": 0.013519003863648415,
+          "fit_r2": 0.9969984758087282,
+          "frequency_hz": 0.8458896311228508,
+          "observed_cycles": 12.083132793605444,
+          "phase_at_t0_rad": -43.98608576717481,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.2264362570215852,
+        "frequency_ratio_error": -0.10689707631174805,
+        "normalized_four_state_closure_error": 0.3036479339553614,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -18.13466176008562,
+        "resonant_phase_initial_rad": 0.013999808199635064,
+        "slow": {
+          "amplitude_m": 0.019455232559206025,
+          "fit_r2": 0.9974517064047714,
+          "frequency_hz": 0.6897134900244254,
+          "observed_cycles": 9.852230578170833,
+          "phase_at_t0_rad": -34.56386060422591,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "preparation": {
+        "accepted_candidate_count": 5,
+        "candidate_count": 5,
+        "mode": "STATIC_HOLD_RELEASE",
+        "required_gradient_inf": 1e-06,
+        "selected_energy": -0.43194223735056503,
+        "selected_gradient_inf": 9.483501509765374e-07,
+        "selected_iterations": 34,
+        "static_energy_scale": 0.686491721257254,
+        "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+      },
+      "returned_interval": "[0,15.019526431144513]",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "A": {
+            "maximum_signed_axial_force_N": 0.5481537379159894,
+            "maximum_tensile_force_N": 0.5481537379159894,
+            "minimum_signed_axial_force_N": 0.39088864715444754,
+            "minimum_tensile_force_N": 0.39088864715444754
+          },
+          "B": {
+            "maximum_signed_axial_force_N": 0.5410874861715027,
+            "maximum_tensile_force_N": 0.5410874861715027,
+            "minimum_signed_axial_force_N": 0.37918027220134004,
+            "minimum_tensile_force_N": 0.37918027220134004
+          },
+          "lower": {
+            "maximum_signed_axial_force_N": 0.8555768856669586,
+            "maximum_tensile_force_N": 0.8555768856669586,
+            "minimum_signed_axial_force_N": 0.7266077271610712,
+            "minimum_tensile_force_N": 0.7266077271610712
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 76.01044841399926
+    },
+    "4:3/high_fidelity/base": {
+      "accepted_integration_steps": 14228,
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 0.00015621532851199898,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.015,
+          "bracket_start_s": 0.01,
+          "branch": "upper_A",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.01764081751148762,
+          "signed_axial_force_before_N": 0.191133694109669,
+          "time": 0.015,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_A",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.04652287388229718,
+          "signed_axial_force_before_N": -0.04550657669402603,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.015,
+          "bracket_start_s": 0.01,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.009413063325085756,
+          "signed_axial_force_before_N": 0.19315053390627698,
+          "time": 0.015,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.07282229821518744,
+          "signed_axial_force_before_N": -0.027672683900308515,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime": "COMPRESSION",
+          "branch": "lower",
+          "material_segment": 1,
+          "signed_axial_force_N": -0.007223574508319141,
+          "tensile_force_N": 0.0,
+          "time": 0.0,
+          "time_resolution": "sample_exact_at_initial_state",
+          "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.005,
+          "bracket_start_s": 0.0,
+          "branch": "lower",
+          "material_segment": 1,
+          "signed_axial_force_after_N": 0.034412585513950524,
+          "signed_axial_force_before_N": -0.007223574508319141,
+          "time": 0.005,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        }
+      ],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 4.838069684055208e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.8634537684223897,
+          "BENDING_TURN_CLEARANCE": 1.9745259879173274,
+          "BOB_ROD_CLEARANCE": 0.07035221238244427,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.07035221238244427,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.9229546621409617,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.005377463075472213,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.005100461374510046,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8394919046655615,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.06870021038870777,
+          "MINIMUM_SEGMENT_LENGTH": 0.4292813987552182,
+          "ROD_SELF_CLEARANCE": 4.838069684055208e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 13.276338710403644,
+        "fast": {
+          "amplitude_m": 0.01405981402590943,
+          "fit_r2": 0.9966695684120684,
+          "frequency_hz": 0.8225367626463127,
+          "observed_cycles": 11.749548126609294,
+          "phase_at_t0_rad": -37.7546598113665,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.2133640736279263,
+        "frequency_ratio_error": -0.11996925970540695,
+        "normalized_four_state_closure_error": 0.533297224382318,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -20.352305427144085,
+        "resonant_phase_initial_rad": -0.16727103559841894,
+        "slow": {
+          "amplitude_m": 0.019765390202254707,
+          "fit_r2": 0.9967107790494842,
+          "frequency_hz": 0.6778977394533775,
+          "observed_cycles": 9.683448176834888,
+          "phase_at_t0_rad": -34.557362406804856,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 9.018979660324611e-09,
+        "iterations": 236,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.3884634862845036,
+            "maximum_tensile_force_N": 1.3884634862845036,
+            "minimum_signed_axial_force_N": -0.007223574508319141,
+            "minimum_tensile_force_N": 0.0
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.8621459608658267,
+            "maximum_tensile_force_N": 0.8621459608658267,
+            "minimum_signed_axial_force_N": -0.04550657669402603,
+            "minimum_tensile_force_N": 0.0
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.826881259682973,
+            "maximum_tensile_force_N": 0.826881259682973,
+            "minimum_signed_axial_force_N": -0.027672683900308515,
+            "minimum_tensile_force_N": 0.0
+          }
+        },
+        "first_non_tensile_branches": [
+          "lower"
+        ],
+        "first_non_tensile_sample_time_s": 0.0,
+        "zero_tolerance_N": 1.3884634862845037e-10
+      },
+      "valid_interval": [
+        0.0,
+        15.019526431144513
+      ],
+      "wall_seconds": 37.564328443000704
+    },
+    "4:3/high_fidelity/space_fine": {
+      "accepted_integration_steps": 25891,
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 0.0003668638797839763,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.02,
+          "bracket_start_s": 0.015,
+          "branch": "upper_A",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.018271217352788614,
+          "signed_axial_force_before_N": 0.01749170114273621,
+          "time": 0.02,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_A",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.011088109308001219,
+          "signed_axial_force_before_N": -0.018271217352788614,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.02,
+          "bracket_start_s": 0.015,
+          "branch": "upper_A",
+          "material_segment": 1,
+          "signed_axial_force_after_N": -0.02050206491954265,
+          "signed_axial_force_before_N": 0.04702325939849797,
+          "time": 0.02,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_A",
+          "material_segment": 1,
+          "signed_axial_force_after_N": 0.0327947637350948,
+          "signed_axial_force_before_N": -0.02050206491954265,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.02,
+          "bracket_start_s": 0.015,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.017440569243404078,
+          "signed_axial_force_before_N": 0.017991308480530422,
+          "time": 0.02,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.012065339553790914,
+          "signed_axial_force_before_N": -0.017440569243404078,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.02,
+          "bracket_start_s": 0.015,
+          "branch": "upper_B",
+          "material_segment": 1,
+          "signed_axial_force_after_N": -0.01970849884304479,
+          "signed_axial_force_before_N": 0.04752365524893574,
+          "time": 0.02,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_B",
+          "material_segment": 1,
+          "signed_axial_force_after_N": 0.03367524153999933,
+          "signed_axial_force_before_N": -0.01970849884304479,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime": "COMPRESSION",
+          "branch": "lower",
+          "material_segment": 2,
+          "signed_axial_force_N": -0.0011449196215175305,
+          "tensile_force_N": 0.0,
+          "time": 0.0,
+          "time_resolution": "sample_exact_at_initial_state",
+          "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.005,
+          "bracket_start_s": 0.0,
+          "branch": "lower",
+          "material_segment": 2,
+          "signed_axial_force_after_N": 0.03609620342226045,
+          "signed_axial_force_before_N": -0.0011449196215175305,
+          "time": 0.005,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        }
+      ],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 1.5994102012273394e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.6457840332600765,
+          "BENDING_TURN_CLEARANCE": 1.9585722782450734,
+          "BOB_ROD_CLEARANCE": 0.06963107561118662,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.06963107561118662,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.9229546621409617,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.005268423449699609,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.004159103858898894,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8394919046655615,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.054127809186562556,
+          "MINIMUM_SEGMENT_LENGTH": 0.21529661354755705,
+          "ROD_SELF_CLEARANCE": 1.5994102012273394e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 13.285395766964138,
+        "fast": {
+          "amplitude_m": 0.014059169921256762,
+          "fit_r2": 0.9960909364564224,
+          "frequency_hz": 0.8212181871829712,
+          "observed_cycles": 11.730712900551735,
+          "phase_at_t0_rad": -37.771915685700705,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.2122454030838454,
+        "frequency_ratio_error": -0.12108793024948783,
+        "normalized_four_state_closure_error": 0.6305057311411958,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -20.542083413949975,
+        "resonant_phase_initial_rad": -0.22628779616296513,
+        "slow": {
+          "amplitude_m": 0.019823959677434985,
+          "fit_r2": 0.9967198634352877,
+          "frequency_hz": 0.6774355960384462,
+          "observed_cycles": 9.67684667700932,
+          "phase_at_t0_rad": -34.555550122414374,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 1.3152870459443022e-10,
+        "iterations": 819,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.375508097813884,
+            "maximum_tensile_force_N": 1.375508097813884,
+            "minimum_signed_axial_force_N": -0.0011449196215175305,
+            "minimum_tensile_force_N": 0.0
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.8664330077656022,
+            "maximum_tensile_force_N": 0.8664330077656022,
+            "minimum_signed_axial_force_N": -0.02050206491954265,
+            "minimum_tensile_force_N": 0.0
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.8704420179625617,
+            "maximum_tensile_force_N": 0.8704420179625617,
+            "minimum_signed_axial_force_N": -0.01970849884304479,
+            "minimum_tensile_force_N": 0.0
+          }
+        },
+        "first_non_tensile_branches": [
+          "lower"
+        ],
+        "first_non_tensile_sample_time_s": 0.0,
+        "zero_tolerance_N": 1.375508097813884e-10
+      },
+      "valid_interval": [
+        0.0,
+        15.019526431144513
+      ],
+      "wall_seconds": 101.6288128920005
+    },
+    "4:3/high_fidelity/time_fine": {
+      "accepted_integration_steps": 17553,
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_absolute_normalized_balance_residual": 0.00015620221171951768,
+        "minimum_aerodynamic_dissipation_rate_W": 0.0,
+        "minimum_axial_dissipation_rate_W": 0.0
+      },
+      "events": [
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.015,
+          "bracket_start_s": 0.01,
+          "branch": "upper_A",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.01764100540857271,
+          "signed_axial_force_before_N": 0.1911338013681163,
+          "time": 0.015,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_A",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.0465230950639692,
+          "signed_axial_force_before_N": -0.045506805350077534,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "COMPRESSION",
+          "axial_regime_before": "TENSION",
+          "bracket_end_s": 0.015,
+          "bracket_start_s": 0.01,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": -0.009413256625054277,
+          "signed_axial_force_before_N": 0.19315064066120408,
+          "time": 0.015,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.025,
+          "bracket_start_s": 0.02,
+          "branch": "upper_B",
+          "material_segment": 0,
+          "signed_axial_force_after_N": 0.07282252259737057,
+          "signed_axial_force_before_N": -0.02767291580090872,
+          "time": 0.025,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        },
+        {
+          "axial_regime": "COMPRESSION",
+          "branch": "lower",
+          "material_segment": 1,
+          "signed_axial_force_N": -0.007223574508319141,
+          "tensile_force_N": 0.0,
+          "time": 0.0,
+          "time_resolution": "sample_exact_at_initial_state",
+          "type": "HF_SEGMENT_INITIAL_AXIAL_REGIME"
+        },
+        {
+          "axial_regime_after": "TENSION",
+          "axial_regime_before": "COMPRESSION",
+          "bracket_end_s": 0.005,
+          "bracket_start_s": 0.0,
+          "branch": "lower",
+          "material_segment": 1,
+          "signed_axial_force_after_N": 0.034412589206090284,
+          "signed_axial_force_before_N": -0.007223574508319141,
+          "time": 0.005,
+          "time_resolution": "bounded_by_output_samples_not_a_solver_root",
+          "type": "HF_SEGMENT_AXIAL_REGIME_CHANGE_SAMPLED_BRACKET"
+        }
+      ],
+      "guards": {
+        "first_registered_guard_event": null,
+        "minimum_normalized_margin": 4.838069684055208e-05,
+        "normalized_minima": {
+          "AERODYNAMIC_CHORD_LENGTH": 0.8634537786124497,
+          "BENDING_TURN_CLEARANCE": 1.9745259879173274,
+          "BOB_ROD_CLEARANCE": 0.07035221238244427,
+          "BOB_SOCKET_CUT_CLEARANCE": 0.07035221238244427,
+          "BOB_SOCKET_MATERIAL_EXTENT": 0.9229546621409617,
+          "BOB_SOCKET_RADIAL_MONOTONICITY": 0.005377463075472213,
+          "JUNCTION_SOCKET_CUT_CLEARANCE": 0.005100456199621658,
+          "JUNCTION_SOCKET_MATERIAL_EXTENT": 0.8394919046655615,
+          "JUNCTION_SOCKET_PROJECTIVE_OPENING": 0.06870012784022783,
+          "MINIMUM_SEGMENT_LENGTH": 0.42928138850677505,
+          "ROD_SELF_CLEARANCE": 4.838069684055208e-05
+        }
+      },
+      "modal": {
+        "closure_time_s": 13.276338593203429,
+        "fast": {
+          "amplitude_m": 0.014059818266083072,
+          "fit_r2": 0.996669598625619,
+          "frequency_hz": 0.822536778790503,
+          "observed_cycles": 11.749548357221409,
+          "phase_at_t0_rad": -37.75465987377746,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.213364086731732,
+        "frequency_ratio_error": -0.11996924660160135,
+        "normalized_four_state_closure_error": 0.5332956352755933,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -20.35230320413584,
+        "resonant_phase_initial_rad": -0.16727088134243315,
+        "slow": {
+          "amplitude_m": 0.019765389257065186,
+          "fit_r2": 0.9967107754683106,
+          "frequency_hz": 0.6778977454376902,
+          "observed_cycles": 9.683448262317961,
+          "phase_at_t0_rad": -34.55736249217708,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN_GUARDS_UNCERTIFIED",
+      "physical_status": "UNDETERMINED",
+      "preparation": {
+        "force_residual_inf_N": 9.018979660324611e-09,
+        "iterations": 236,
+        "mode": "held_endpoint_bilateral_stable_equilibrium"
+      },
+      "raw_guard_certification_status": "ACCEPTED_STEP_CONTINUOUS_CERTIFICATE_REQUIRED",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "lower": {
+            "maximum_signed_axial_force_N": 1.3884633770297823,
+            "maximum_tensile_force_N": 1.3884633770297823,
+            "minimum_signed_axial_force_N": -0.007223574508319141,
+            "minimum_tensile_force_N": 0.0
+          },
+          "upper_A": {
+            "maximum_signed_axial_force_N": 0.8621464686357276,
+            "maximum_tensile_force_N": 0.8621464686357276,
+            "minimum_signed_axial_force_N": -0.045506805350077534,
+            "minimum_tensile_force_N": 0.0
+          },
+          "upper_B": {
+            "maximum_signed_axial_force_N": 0.8268818141513807,
+            "maximum_tensile_force_N": 0.8268818141513807,
+            "minimum_signed_axial_force_N": -0.02767291580090872,
+            "minimum_tensile_force_N": 0.0
+          }
+        },
+        "first_non_tensile_branches": [
+          "lower"
+        ],
+        "first_non_tensile_sample_time_s": 0.0,
+        "zero_tolerance_N": 1.3884633770297824e-10
+      },
+      "valid_interval": [
+        0.0,
+        15.019526431144513
+      ],
+      "wall_seconds": 50.487078579999434
+    },
+    "4:3/torus/base": {
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_relative_conservative_drift": 5.716762333274321e-16
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.46959296082798047,
+        "normalized_minima": {
+          "R": 1.7766383983201244,
+          "T_A": 0.47020037493471434,
+          "T_B": 0.46959296082798047,
+          "T_lower": 0.9979513667143299
+        }
+      },
+      "modal": {
+        "closure_time_s": 13.186879495402685,
+        "fast": {
+          "amplitude_m": 0.014984736126109288,
+          "fit_r2": 0.9999993372603372,
+          "frequency_hz": 0.909995094014369,
+          "observed_cycles": 12.99884897266009,
+          "phase_at_t0_rad": -43.98229407593412,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.3333328495750134,
+        "frequency_ratio_error": -4.837583198469275e-07,
+        "normalized_four_state_closure_error": 0.00011535725082694258,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -8.206766553473497e-05,
+        "resonant_phase_initial_rad": -1.9147706422410896e-06,
+        "slow": {
+          "amplitude_m": 0.021330847629139275,
+          "fit_r2": 0.9999996217981294,
+          "frequency_hz": 0.6824965681333216,
+          "observed_cycles": 9.749140266665854,
+          "phase_at_t0_rad": -31.41592375146303,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "returned_interval": "[0,15.019526431144513]",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "T_A": {
+            "maximum_signed_axial_force_N": 0.47484160906729245,
+            "maximum_tensile_force_N": 0.47484160906729245,
+            "minimum_signed_axial_force_N": 0.3688872405482813,
+            "minimum_tensile_force_N": 0.3688872405482813
+          },
+          "T_B": {
+            "maximum_signed_axial_force_N": 0.47431393813449985,
+            "maximum_tensile_force_N": 0.47431393813449985,
+            "minimum_signed_axial_force_N": 0.36841070474429716,
+            "minimum_tensile_force_N": 0.36841070474429716
+          },
+          "T_lower": {
+            "maximum_signed_axial_force_N": 0.7875385074982438,
+            "maximum_tensile_force_N": 0.7875385074982438,
+            "minimum_signed_axial_force_N": 0.7829247816311267,
+            "minimum_tensile_force_N": 0.7829247816311267
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 0.287740567999208
+    },
+    "4:3/torus/time_fine": {
+      "duration_s": 15.019526431144513,
+      "energy": {
+        "maximum_relative_conservative_drift": 5.735188642164811e-16
+      },
+      "guards": {
+        "first_physical_exit": null,
+        "minimum_normalized_margin": 0.46959296082798047,
+        "normalized_minima": {
+          "R": 1.7766383983201244,
+          "T_A": 0.4702003749347143,
+          "T_B": 0.46959296082798047,
+          "T_lower": 0.9979513667143299
+        }
+      },
+      "modal": {
+        "closure_time_s": 13.18687949540269,
+        "fast": {
+          "amplitude_m": 0.014984736126109323,
+          "fit_r2": 0.9999993372603372,
+          "frequency_hz": 0.9099950940143688,
+          "observed_cycles": 12.998848972660088,
+          "phase_at_t0_rad": -43.98229407593412,
+          "reason": "ok",
+          "reliable": true
+        },
+        "frequency_ratio": 1.3333328495750139,
+        "frequency_ratio_error": -4.837583194028383e-07,
+        "normalized_four_state_closure_error": 0.00011535725081084903,
+        "reason": "ok",
+        "reliable": true,
+        "resonant_phase_drift_rad": -8.2067665459397e-05,
+        "resonant_phase_initial_rad": -1.914770713295363e-06,
+        "slow": {
+          "amplitude_m": 0.021330847629139258,
+          "fit_r2": 0.9999996217981294,
+          "frequency_hz": 0.6824965681333213,
+          "observed_cycles": 9.749140266665849,
+          "phase_at_t0_rad": -31.415923751463012,
+          "reason": "ok",
+          "reliable": true
+        }
+      },
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "physical_status": [
+        "COMPLETED"
+      ],
+      "returned_interval": "[0,15.019526431144513]",
+      "sample_count": 3005,
+      "tension": {
+        "branches": {
+          "T_A": {
+            "maximum_signed_axial_force_N": 0.4748416090672925,
+            "maximum_tensile_force_N": 0.4748416090672925,
+            "minimum_signed_axial_force_N": 0.36888724054828126,
+            "minimum_tensile_force_N": 0.36888724054828126
+          },
+          "T_B": {
+            "maximum_signed_axial_force_N": 0.47431393813449985,
+            "maximum_tensile_force_N": 0.47431393813449985,
+            "minimum_signed_axial_force_N": 0.36841070474429716,
+            "minimum_tensile_force_N": 0.36841070474429716
+          },
+          "T_lower": {
+            "maximum_signed_axial_force_N": 0.7875385074982438,
+            "maximum_tensile_force_N": 0.7875385074982438,
+            "minimum_signed_axial_force_N": 0.7829247816311267,
+            "minimum_tensile_force_N": 0.7829247816311267
+          }
+        },
+        "first_non_tensile_branches": [],
+        "first_non_tensile_sample_time_s": null,
+        "zero_tolerance_N": 1e-10
+      },
+      "wall_seconds": 0.5752164579989767
+    }
+  },
+  "runtime": {
+    "dependencies": {
+      "PyYAML": "6.0.3",
+      "h5py": "3.16.0",
+      "matplotlib": "3.11.1",
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "pint": "0.25.3",
+      "pydantic": "2.13.4",
+      "scipy": "1.18.1"
+    },
+    "executable": "/tmp/y-pendulum-clean-runtime.iBxWLs/bin/python",
+    "hf_postprocess_workers": 1,
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  },
+  "schema_version": "YPS-THREE-ANCHOR-LADDER-1.0",
+  "shared_input_audits": {
+    "2:1": {
+      "check_count": 53,
+      "checks": [
+        {
+          "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+          "field": "support_A.activation",
+          "forward_value": "constant",
+          "high_fidelity_value": {
+            "motion_is_none": true,
+            "type": "fixed"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+          "field": "support_B.activation",
+          "forward_value": "constant",
+          "high_fidelity_value": {
+            "motion_is_none": true,
+            "type": "fixed"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD zero provider <=> HF finite zero air velocity",
+          "field": "air_velocity.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "constant zero vector",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "junction_force.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "bob_force.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.A.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.B.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.lower.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "gravity_vector",
+          "forward_value": [
+            0.0,
+            0.0,
+            9.80665
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            9.80665
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.81665e-10,
+          "unit": "m/s^2"
+        },
+        {
+          "field": "support_A_position",
+          "forward_value": [
+            -0.3609674109756721,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            -0.3609674109756721,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 3.709674109756721e-11,
+          "unit": "m"
+        },
+        {
+          "field": "support_B_position",
+          "forward_value": [
+            0.3609674109756721,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.3609674109756721,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 3.709674109756721e-11,
+          "unit": "m"
+        },
+        {
+          "field": "junction_mass",
+          "forward_value": 0.003,
+          "high_fidelity_value": 0.003,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.3000000000000001e-12,
+          "unit": "kg"
+        },
+        {
+          "field": "bob_mass",
+          "forward_value": 0.08,
+          "high_fidelity_value": 0.08,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9e-12,
+          "unit": "kg"
+        },
+        {
+          "field": "air_density",
+          "forward_value": 1.2,
+          "high_fidelity_value": 1.2,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.21e-10,
+          "unit": "kg/m^3"
+        },
+        {
+          "field": "air_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "expected_relation": "HF buoyancy must be enabled for the FWD displaced-volume buoyancy term",
+          "field": "bob.buoyancy.activation",
+          "forward_value": {
+            "bob_volume": 3.35e-05,
+            "rho_air": 1.2
+          },
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "HF drag switch/model must activate exactly the FWD linear/quadratic terms",
+          "field": "bob.drag.activation",
+          "forward_value": {
+            "linear_nonzero": true,
+            "quadratic_nonzero": true
+          },
+          "high_fidelity_value": {
+            "enabled": true,
+            "model": "quadratic_plus_linear"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "bob_volume",
+          "forward_value": 3.35e-05,
+          "high_fidelity_value": 3.350000000000002e-05,
+          "maximum_absolute_error": 2.0328790734103208e-20,
+          "passed": true,
+          "tolerance": 1.00335e-12,
+          "unit": "m^3"
+        },
+        {
+          "field": "bob_linear_drag",
+          "forward_value": 0.0015,
+          "high_fidelity_value": 0.0015,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.15e-12,
+          "unit": "N*s/m"
+        },
+        {
+          "field": "bob_quadratic_drag_coefficient",
+          "forward_value": 0.004,
+          "high_fidelity_value": 0.004,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.4e-12,
+          "unit": "kg/m"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.A.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.A.rest_length",
+          "forward_value": 0.9403626167036121,
+          "high_fidelity_value": 0.9403626167036121,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.503626167036121e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.A.linear_density",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.A.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.A.Ca",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.A.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.A.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.A.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.A.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.B.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.B.rest_length",
+          "forward_value": 0.9403626167036121,
+          "high_fidelity_value": 0.9403626167036121,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.503626167036121e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.B.linear_density",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.B.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.B.Ca",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.B.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.B.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.B.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.B.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.lower.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.lower.rest_length",
+          "forward_value": 0.28205729649125594,
+          "high_fidelity_value": 0.28205729649125594,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.9205729649125596e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.lower.linear_density",
+          "forward_value": 0.012,
+          "high_fidelity_value": 0.012,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.2000000000000003e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.lower.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.lower.Ca",
+          "forward_value": 0.012,
+          "high_fidelity_value": 0.012,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.2000000000000003e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.lower.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.lower.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.lower.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.lower.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "The frozen FWD complete cable state uses DIRECT_STATE while HF preserves the same J/bob state and independently equilibrates its additional rod material coordinates with the bilateral finite-rod law",
+          "field": "initial.protocol",
+          "forward_value": "DIRECT_STATE",
+          "high_fidelity_value": {
+            "compression_regularization_scale": 1.0,
+            "controlled_limit_study": false,
+            "type": "held_endpoint_equilibrium_release"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "initial.junction_position",
+          "forward_value": [
+            -5.551115123125783e-17,
+            -0.1080305138181605,
+            0.8959289071961473
+          ],
+          "high_fidelity_value": [
+            -5.551115123125783e-17,
+            -0.1080305138181605,
+            0.8959289071961473
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.059289071961473e-11,
+          "unit": "m"
+        },
+        {
+          "field": "initial.junction_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "field": "initial.bob_com_position",
+          "forward_value": [
+            0.05960079923851831,
+            -0.14322829381520227,
+            1.1878344758539063
+          ],
+          "high_fidelity_value": [
+            0.05960079923851831,
+            -0.14322829381520227,
+            1.1878344758539063
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1978344758539063e-10,
+          "unit": "m"
+        },
+        {
+          "field": "initial.bob_com_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "field": "comparison_horizon",
+          "forward_value": 9.350531343637284,
+          "high_fidelity_value": 9.350531343637284,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.360531343637286e-10,
+          "unit": "s"
+        }
+      ],
+      "forward_only_fields": [
+        "activation regularisation delta",
+        "material-domain and lambda guards",
+        "FWD-specific P1 quadrature and convergence thresholds"
+      ],
+      "hf_only_fields": [
+        "cable diameter and three-point bending stiffness",
+        "finite bob radius, inertia, quaternion and eccentric attachment",
+        "bob/rod and rod/rod clearance guards",
+        "HF-specific numerical tolerances and accepted-step certificate"
+      ],
+      "passed": true,
+      "schema_version": "YPS-SHARED-INPUT-AUDIT-1.0"
+    },
+    "3:2": {
+      "check_count": 53,
+      "checks": [
+        {
+          "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+          "field": "support_A.activation",
+          "forward_value": "constant",
+          "high_fidelity_value": {
+            "motion_is_none": true,
+            "type": "fixed"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+          "field": "support_B.activation",
+          "forward_value": "constant",
+          "high_fidelity_value": {
+            "motion_is_none": true,
+            "type": "fixed"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD zero provider <=> HF finite zero air velocity",
+          "field": "air_velocity.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "constant zero vector",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "junction_force.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "bob_force.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.A.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.B.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.lower.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "gravity_vector",
+          "forward_value": [
+            0.0,
+            0.0,
+            9.80665
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            9.80665
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.81665e-10,
+          "unit": "m/s^2"
+        },
+        {
+          "field": "support_A_position",
+          "forward_value": [
+            -0.1504038124018354,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            -0.1504038124018354,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.604038124018354e-11,
+          "unit": "m"
+        },
+        {
+          "field": "support_B_position",
+          "forward_value": [
+            0.1504038124018354,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.1504038124018354,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.604038124018354e-11,
+          "unit": "m"
+        },
+        {
+          "field": "junction_mass",
+          "forward_value": 0.003,
+          "high_fidelity_value": 0.003,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.3000000000000001e-12,
+          "unit": "kg"
+        },
+        {
+          "field": "bob_mass",
+          "forward_value": 0.08,
+          "high_fidelity_value": 0.08,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9e-12,
+          "unit": "kg"
+        },
+        {
+          "field": "air_density",
+          "forward_value": 1.2,
+          "high_fidelity_value": 1.2,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.21e-10,
+          "unit": "kg/m^3"
+        },
+        {
+          "field": "air_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "expected_relation": "HF buoyancy must be enabled for the FWD displaced-volume buoyancy term",
+          "field": "bob.buoyancy.activation",
+          "forward_value": {
+            "bob_volume": 3.35e-05,
+            "rho_air": 1.2
+          },
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "HF drag switch/model must activate exactly the FWD linear/quadratic terms",
+          "field": "bob.drag.activation",
+          "forward_value": {
+            "linear_nonzero": true,
+            "quadratic_nonzero": true
+          },
+          "high_fidelity_value": {
+            "enabled": true,
+            "model": "quadratic_plus_linear"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "bob_volume",
+          "forward_value": 3.35e-05,
+          "high_fidelity_value": 3.350000000000002e-05,
+          "maximum_absolute_error": 2.0328790734103208e-20,
+          "passed": true,
+          "tolerance": 1.00335e-12,
+          "unit": "m^3"
+        },
+        {
+          "field": "bob_linear_drag",
+          "forward_value": 0.0015,
+          "high_fidelity_value": 0.0015,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.15e-12,
+          "unit": "N*s/m"
+        },
+        {
+          "field": "bob_quadratic_drag_coefficient",
+          "forward_value": 0.004,
+          "high_fidelity_value": 0.004,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.4e-12,
+          "unit": "kg/m"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.A.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.A.rest_length",
+          "forward_value": 0.39156407554206285,
+          "high_fidelity_value": 0.39156407554206285,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 4.015640755420629e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.A.linear_density",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.A.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.A.Ca",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.A.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.A.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.A.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.A.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.B.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.B.rest_length",
+          "forward_value": 0.39156407554206285,
+          "high_fidelity_value": 0.39156407554206285,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 4.015640755420629e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.B.linear_density",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.B.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.B.Ca",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.B.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.B.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.B.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.B.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.lower.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.lower.rest_length",
+          "forward_value": 0.2818699560195382,
+          "high_fidelity_value": 0.2818699560195382,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.918699560195382e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.lower.linear_density",
+          "forward_value": 0.012,
+          "high_fidelity_value": 0.012,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.2000000000000003e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.lower.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.lower.Ca",
+          "forward_value": 0.012,
+          "high_fidelity_value": 0.012,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.2000000000000003e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.lower.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.lower.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.lower.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.lower.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "The frozen FWD complete cable state uses DIRECT_STATE while HF preserves the same J/bob state and independently equilibrates its additional rod material coordinates with the bilateral finite-rod law",
+          "field": "initial.protocol",
+          "forward_value": "DIRECT_STATE",
+          "high_fidelity_value": {
+            "compression_regularization_scale": 1.0,
+            "controlled_limit_study": false,
+            "type": "held_endpoint_equilibrium_release"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "initial.junction_position",
+          "forward_value": [
+            0.0,
+            -0.03753831617195953,
+            0.37413104953380244
+          ],
+          "high_fidelity_value": [
+            0.0,
+            -0.03753831617195953,
+            0.37413104953380244
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 3.841310495338025e-11,
+          "unit": "m"
+        },
+        {
+          "field": "initial.junction_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "field": "initial.bob_com_position",
+          "forward_value": [
+            0.044831439742079766,
+            -0.06715203466953623,
+            0.669280451849644
+          ],
+          "high_fidelity_value": [
+            0.044831439742079766,
+            -0.06715203466953623,
+            0.669280451849644
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 6.79280451849644e-11,
+          "unit": "m"
+        },
+        {
+          "field": "initial.bob_com_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "field": "comparison_horizon",
+          "forward_value": 11.960076201038179,
+          "high_fidelity_value": 11.960076201038179,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1970076201038181e-09,
+          "unit": "s"
+        }
+      ],
+      "forward_only_fields": [
+        "activation regularisation delta",
+        "material-domain and lambda guards",
+        "FWD-specific P1 quadrature and convergence thresholds"
+      ],
+      "hf_only_fields": [
+        "cable diameter and three-point bending stiffness",
+        "finite bob radius, inertia, quaternion and eccentric attachment",
+        "bob/rod and rod/rod clearance guards",
+        "HF-specific numerical tolerances and accepted-step certificate"
+      ],
+      "passed": true,
+      "schema_version": "YPS-SHARED-INPUT-AUDIT-1.0"
+    },
+    "4:3": {
+      "check_count": 53,
+      "checks": [
+        {
+          "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+          "field": "support_A.activation",
+          "forward_value": "constant",
+          "high_fidelity_value": {
+            "motion_is_none": true,
+            "type": "fixed"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD constant provider <=> HF fixed support without a motion provider",
+          "field": "support_B.activation",
+          "forward_value": "constant",
+          "high_fidelity_value": {
+            "motion_is_none": true,
+            "type": "fixed"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD zero provider <=> HF finite zero air velocity",
+          "field": "air_velocity.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "constant zero vector",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "junction_force.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "bob_force.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.A.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.B.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "FWD provider must be identically zero when HF has no mapped provider",
+          "field": "distributed_force.lower.activation",
+          "forward_value": "zero",
+          "high_fidelity_value": "no corresponding HF external-force provider",
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "gravity_vector",
+          "forward_value": [
+            0.0,
+            0.0,
+            9.80665
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            9.80665
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9.81665e-10,
+          "unit": "m/s^2"
+        },
+        {
+          "field": "support_A_position",
+          "forward_value": [
+            -0.09334657655101898,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            -0.09334657655101898,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.0334657655101898e-11,
+          "unit": "m"
+        },
+        {
+          "field": "support_B_position",
+          "forward_value": [
+            0.09334657655101898,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.09334657655101898,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.0334657655101898e-11,
+          "unit": "m"
+        },
+        {
+          "field": "junction_mass",
+          "forward_value": 0.003,
+          "high_fidelity_value": 0.003,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.3000000000000001e-12,
+          "unit": "kg"
+        },
+        {
+          "field": "bob_mass",
+          "forward_value": 0.08,
+          "high_fidelity_value": 0.08,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 9e-12,
+          "unit": "kg"
+        },
+        {
+          "field": "air_density",
+          "forward_value": 1.2,
+          "high_fidelity_value": 1.2,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.21e-10,
+          "unit": "kg/m^3"
+        },
+        {
+          "field": "air_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "expected_relation": "HF buoyancy must be enabled for the FWD displaced-volume buoyancy term",
+          "field": "bob.buoyancy.activation",
+          "forward_value": {
+            "bob_volume": 3.35e-05,
+            "rho_air": 1.2
+          },
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "expected_relation": "HF drag switch/model must activate exactly the FWD linear/quadratic terms",
+          "field": "bob.drag.activation",
+          "forward_value": {
+            "linear_nonzero": true,
+            "quadratic_nonzero": true
+          },
+          "high_fidelity_value": {
+            "enabled": true,
+            "model": "quadratic_plus_linear"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "bob_volume",
+          "forward_value": 3.35e-05,
+          "high_fidelity_value": 3.350000000000002e-05,
+          "maximum_absolute_error": 2.0328790734103208e-20,
+          "passed": true,
+          "tolerance": 1.00335e-12,
+          "unit": "m^3"
+        },
+        {
+          "field": "bob_linear_drag",
+          "forward_value": 0.0015,
+          "high_fidelity_value": 0.0015,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.15e-12,
+          "unit": "N*s/m"
+        },
+        {
+          "field": "bob_quadratic_drag_coefficient",
+          "forward_value": 0.004,
+          "high_fidelity_value": 0.004,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.4e-12,
+          "unit": "kg/m"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.A.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.A.rest_length",
+          "forward_value": 0.2428224861229596,
+          "high_fidelity_value": 0.2428224861229596,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.528224861229596e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.A.linear_density",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.A.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.A.Ca",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.A.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.A.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.A.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.A.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.B.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.B.rest_length",
+          "forward_value": 0.2428224861229596,
+          "high_fidelity_value": 0.2428224861229596,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.528224861229596e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.B.linear_density",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.B.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.B.Ca",
+          "forward_value": 0.01,
+          "high_fidelity_value": 0.01,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.B.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.B.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.B.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.B.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "HF branch drag switch must activate all mapped FWD drag coefficients",
+          "field": "branch.lower.drag.activation",
+          "forward_value": true,
+          "high_fidelity_value": true,
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "branch.lower.rest_length",
+          "forward_value": 0.281625689073376,
+          "high_fidelity_value": 0.281625689073376,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.91625689073376e-11,
+          "unit": "m"
+        },
+        {
+          "field": "branch.lower.linear_density",
+          "forward_value": 0.012,
+          "high_fidelity_value": 0.012,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.2000000000000003e-12,
+          "unit": "kg/m"
+        },
+        {
+          "field": "branch.lower.EA",
+          "forward_value": 12.0,
+          "high_fidelity_value": 12.0,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.201e-09,
+          "unit": "N"
+        },
+        {
+          "field": "branch.lower.Ca",
+          "forward_value": 0.012,
+          "high_fidelity_value": 0.012,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.2000000000000003e-12,
+          "unit": "N*s"
+        },
+        {
+          "field": "branch.lower.linear_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.lower.linear_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "N*s/m^2"
+        },
+        {
+          "field": "branch.lower.quadratic_drag_parallel",
+          "forward_value": 0.0001,
+          "high_fidelity_value": 0.0001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.01e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "field": "branch.lower.quadratic_drag_perpendicular",
+          "forward_value": 0.001,
+          "high_fidelity_value": 0.001,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.1e-12,
+          "unit": "kg/m^2"
+        },
+        {
+          "expected_relation": "The frozen FWD complete cable state uses DIRECT_STATE while HF preserves the same J/bob state and independently equilibrates its additional rod material coordinates with the bilateral finite-rod law",
+          "field": "initial.protocol",
+          "forward_value": "DIRECT_STATE",
+          "high_fidelity_value": {
+            "compression_regularization_scale": 1.0,
+            "controlled_limit_study": false,
+            "type": "held_endpoint_equilibrium_release"
+          },
+          "passed": true,
+          "unit": "semantic"
+        },
+        {
+          "field": "initial.junction_position",
+          "forward_value": [
+            0.0,
+            -0.009332168612192314,
+            0.23317977311553822
+          ],
+          "high_fidelity_value": [
+            0.0,
+            -0.009332168612192314,
+            0.23317977311553822
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 2.431797731155382e-11,
+          "unit": "m"
+        },
+        {
+          "field": "initial.junction_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "field": "initial.bob_com_position",
+          "forward_value": [
+            0.014993750781203501,
+            -0.02131397599176897,
+            0.5325651831298371
+          ],
+          "high_fidelity_value": [
+            0.014993750781203501,
+            -0.02131397599176897,
+            0.5325651831298371
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 5.4256518312983716e-11,
+          "unit": "m"
+        },
+        {
+          "field": "initial.bob_com_velocity",
+          "forward_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "high_fidelity_value": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1e-12,
+          "unit": "m/s"
+        },
+        {
+          "field": "comparison_horizon",
+          "forward_value": 15.019526431144513,
+          "high_fidelity_value": 15.019526431144513,
+          "maximum_absolute_error": 0.0,
+          "passed": true,
+          "tolerance": 1.5029526431144515e-09,
+          "unit": "s"
+        }
+      ],
+      "forward_only_fields": [
+        "activation regularisation delta",
+        "material-domain and lambda guards",
+        "FWD-specific P1 quadrature and convergence thresholds"
+      ],
+      "hf_only_fields": [
+        "cable diameter and three-point bending stiffness",
+        "finite bob radius, inertia, quaternion and eccentric attachment",
+        "bob/rod and rod/rod clearance guards",
+        "HF-specific numerical tolerances and accepted-step certificate"
+      ],
+      "passed": true,
+      "schema_version": "YPS-SHARED-INPUT-AUDIT-1.0"
+    }
+  },
+  "status": "COMPLETE_RETURN_SET"
+}
