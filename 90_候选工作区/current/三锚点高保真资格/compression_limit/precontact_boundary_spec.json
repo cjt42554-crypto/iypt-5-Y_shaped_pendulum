@@ -1,0 +1,56 @@
+{
+  "schema_version": "YPS-PRECONTACT-ALPHA-BOUNDARY-SPEC-1.0",
+  "status": "FROZEN_PROTOCOL_BEFORE_INTERMEDIATE_ALPHA_PREPARATIONS",
+  "research_identity": "ALPHA_SPECIFIC_HELD_EQUILIBRIUM_PRECONTACT_BOUNDARY_MAP",
+  "base_configuration": "compression_limit/alpha_specific_configs/alpha_1e-2.yaml",
+  "alpha_bracket": {
+    "lower": 0.01,
+    "upper": 1.0,
+    "lower_expected_primary_pass": false,
+    "upper_expected_primary_pass": true
+  },
+  "sampling": {
+    "midpoint_rule": "geometric_mean",
+    "bisection_iterations": 8,
+    "fresh_process_per_alpha": true,
+    "cross_alpha_warm_start": false,
+    "reuse_cached_alpha_evaluation": true,
+    "deterministic_seed_set": "existing held-endpoint gravity, mirror and out-of-plane seeds",
+    "maximum_unique_alpha_evaluations": 10
+  },
+  "equilibrium_selection": {
+    "force_residual_comparison": "less_than_or_equal_to_configured_force_tolerance",
+    "stability_comparison": "minimum_hessian_eigenvalue_greater_than_or_equal_to_negative_frozen_hessian_tolerance",
+    "diagnostic_unconstrained_branch_selection_order": [
+      "lowest_energy",
+      "lowest_force_residual",
+      "seed_order"
+    ],
+    "qualified_preparation_selection": "apply the complete frozen candidate guard to every force-balanced PSD-stable candidate, then choose the passing candidate by the same deterministic order",
+    "guards_do_not_change_the_energy_objective_or_force_residual": true
+  },
+  "primary_predicate": {
+    "name": "COMPLETE_CANDIDATE_PREPARATION_QUALIFICATION",
+    "definition": "a selected force-balanced PSD-stable equilibrium exists and passes the frozen complete 11-component candidate guard v2",
+    "monotone_direction_under_test": "false_to_true_as_alpha_increases",
+    "strict_guard_comparison": true
+  },
+  "secondary_observations": [
+    "formal raw ROD_SELF_CLEARANCE sign",
+    "complete candidate guard minimum and winner",
+    "force residual and Hessian evidence",
+    "winning contact category, branch and segment pair",
+    "selected state SHA-256",
+    "energy and selected seed"
+  ],
+  "stop_conditions": [
+    "either endpoint contradicts its predeclared primary classification",
+    "no force-balanced PSD-stable equilibrium can be selected at a sampled alpha",
+    "the sampled primary predicate violates the declared monotone direction",
+    "formal source, overlay source, frozen specification or run-plan identity changes",
+    "any dynamic integration is requested"
+  ],
+  "dynamic_run_count": 0,
+  "formal_change_authorized": false,
+  "claim_boundary": "This map may bracket where the existing contact-free held-equilibrium preparation loses candidate qualification. It does not add contact forces, continue beyond contact, prove a unique continuum bifurcation, certify dynamics, or select a post-contact physical model."
+}

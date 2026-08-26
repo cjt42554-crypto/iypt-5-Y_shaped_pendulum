@@ -1,0 +1,42 @@
+{
+  "alpha_bracket": {
+    "lower": 0.01,
+    "lower_expected_primary_pass": false,
+    "upper": 1.0,
+    "upper_expected_primary_pass": true
+  },
+  "bindings": {
+    "base_config_sha256": "2fe28cd146dd8959842975a400ba3a54b7239995f3102775d283d0991f0c4713",
+    "builder_sha256": "60751ec04c5675729ee157f2a39746d14cd790219d4686b508a57688451d10f3",
+    "freeze_script_sha256": "90247d7f971cfea486cb41b30e7c4de2765e01ce5176838cc8fa227b28f452e7",
+    "guard_implementation_sha256": "148c81bf2e961d7c36cfecf778dc693377aa6d2a44a4865f5fe9262f4fbfbf23",
+    "guard_spec_sha256": "5b5547df584be42343b66526666f273b0585685b8953bd5aff62b1be5f18af5e",
+    "map_spec_sha256": "0ae92b36783f5ce0a4543003764c292dcb5f4031a40d760ae9472e51e583c482",
+    "run_script_sha256": "ee0187f80a30243613f81650093bdcf9f56db9ec617727283bb3f2accc30c46d",
+    "test_sha256": "7b18ae73b6da78fa41c3b5dc438ab50b9627fe4c26d865a26d7b1eca3d28ef56"
+  },
+  "claim_boundary": "This map may bracket where the existing contact-free held-equilibrium preparation loses candidate qualification. It does not add contact forces, continue beyond contact, prove a unique continuum bifurcation, certify dynamics, or select a post-contact physical model.",
+  "declared_test_command": ".venv/bin/python -m pytest -q tests/test_precontact_boundary_map.py",
+  "dynamic_run_count_at_freeze": 0,
+  "expected_formal_git_blobs": {
+    "ypendulum/config/validation.py": "7b66ae8c54a507c974d69be9ded05267dbb21439",
+    "ypendulum/hf/solver.py": "325ad43aa8088a55defeae9851c9ccfa508fe936"
+  },
+  "formal_change_authorized": false,
+  "formal_python_tree_sha256": "a63c07144c78bbf08d7460325da86c98b4054a216a6a30f780fffca717e34bd6",
+  "git_head_at_freeze": "9c82f667e72bf238a0d16b40ddb607c47dec7232",
+  "new_boundary_alpha_sample_count_at_freeze": 0,
+  "next_gate": "Run only the frozen independent alpha preparations and geometric-mean bisection. Stop without dynamics or a post-contact model.",
+  "research_identity": "ALPHA_SPECIFIC_HELD_EQUILIBRIUM_PRECONTACT_BOUNDARY_MAP",
+  "sampling": {
+    "bisection_iterations": 8,
+    "cross_alpha_warm_start": false,
+    "deterministic_seed_set": "existing held-endpoint gravity, mirror and out-of-plane seeds",
+    "fresh_process_per_alpha": true,
+    "maximum_unique_alpha_evaluations": 10,
+    "midpoint_rule": "geometric_mean",
+    "reuse_cached_alpha_evaluation": true
+  },
+  "schema_version": "YPS-PRECONTACT-ALPHA-BOUNDARY-PREFREEZE-1.0",
+  "status": "PRECONTACT_BOUNDARY_INPUTS_FROZEN_BEFORE_INTERMEDIATE_ALPHA_RESULTS"
+}
