@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from .rotation import body_to_world_angular_velocity, rotation_metrics
+from .rotation import body_to_world_angular_velocity, validate_rotation
 
 
 def _vector3(value: np.ndarray, name: str) -> np.ndarray:
@@ -17,11 +17,7 @@ def _vector3(value: np.ndarray, name: str) -> np.ndarray:
 
 
 def _rotation(rotation: np.ndarray) -> np.ndarray:
-    matrix = np.asarray(rotation, dtype=float)
-    metrics = rotation_metrics(matrix)
-    if metrics.orthogonality_error > 5.0e-12 or metrics.determinant_error > 5.0e-12:
-        raise ValueError("rotation must lie in SO(3) to roundoff tolerance.")
-    return matrix
+    return validate_rotation(rotation)
 
 
 @dataclass(frozen=True)

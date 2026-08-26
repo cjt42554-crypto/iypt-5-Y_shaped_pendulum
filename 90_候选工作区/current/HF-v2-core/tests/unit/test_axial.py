@@ -1,15 +1,24 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import numpy as np
 import pytest
 
 from ypendulum_hfv2.audit.energy_gradient import force_gradient_samples
+from ypendulum_hfv2.audit.evidence import strict_decrease_interval
 from ypendulum_hfv2.audit.invariance import internal_balance, objectivity_audit
 from ypendulum_hfv2.audit.passivity import audit_axial_passivity
 from ypendulum_hfv2.constitutive.axial import AxialMaterial, axial_segment_response
 from ypendulum_hfv2.rigid.rotation import exp_so3
 
-RELATIVE_STEPS = (1.0e-3, 3.0e-4, 1.0e-4, 3.0e-5, 1.0e-5, 3.0e-6, 1.0e-6)
+CANDIDATE_ROOT = Path(__file__).resolve().parents[2]
+ACCEPTANCE = json.loads(
+    (CANDIDATE_ROOT / "contracts" / "g1r_acceptance_manifest.json").read_text(encoding="utf-8")
+)
+FINITE_DIFFERENCE = ACCEPTANCE["finite_difference"]
+RELATIVE_STEPS = tuple(FINITE_DIFFERENCE["relative_step_sequence"])
 
 
 def _static_response(coordinates: np.ndarray, material: AxialMaterial):
@@ -30,9 +39,11 @@ def test_axial_static_force_is_negative_energy_gradient_with_step_convergence() 
         RELATIVE_STEPS,
         coordinate_scale=material.rest_length,
     )
-    assert samples[2].relative_error < samples[0].relative_error
-    assert samples[4].relative_error < samples[2].relative_error
-    assert samples[-1].relative_error <= 5.0e-7
+    errors = [sample.relative_error for sample in samples]
+    assert strict_decrease_interval(
+        errors, FINITE_DIFFERENCE["minimum_strict_decrease_steps"]
+    ) is not None
+    assert samples[-1].relative_error <= FINITE_DIFFERENCE["final_relative_error_max"]
 
 
 @pytest.mark.parametrize(

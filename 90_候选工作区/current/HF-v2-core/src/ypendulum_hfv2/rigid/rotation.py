@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 import numpy as np
 
+SO3_ROUNDOFF_TOLERANCE = 2.0e-12
+
 
 def _vector3(value: np.ndarray, name: str) -> np.ndarray:
     array = np.asarray(value, dtype=float)
@@ -34,10 +36,15 @@ def rotation_metrics(rotation: np.ndarray) -> RotationMetrics:
     )
 
 
-def _validated_rotation(rotation: np.ndarray, name: str = "rotation") -> np.ndarray:
+def validate_rotation(rotation: np.ndarray, name: str = "rotation") -> np.ndarray:
+    """Validate one rotation against the shared roundoff-scale SO(3) contract."""
+
     matrix = np.asarray(rotation, dtype=float)
     metrics = rotation_metrics(matrix)
-    if metrics.orthogonality_error > 5.0e-12 or metrics.determinant_error > 5.0e-12:
+    if (
+        metrics.orthogonality_error > SO3_ROUNDOFF_TOLERANCE
+        or metrics.determinant_error > SO3_ROUNDOFF_TOLERANCE
+    ):
         raise ValueError(f"{name} must lie in SO(3) to roundoff tolerance.")
     return matrix
 
@@ -65,7 +72,10 @@ def exp_so3(rotation_vector: np.ndarray) -> np.ndarray:
         cosine_coefficient = float((1.0 - np.cos(theta)) / theta_squared)
     result = np.eye(3) + sine_coefficient * generator + cosine_coefficient * (generator @ generator)
     metrics = rotation_metrics(result)
-    if metrics.orthogonality_error > 5.0e-12 or metrics.determinant_error > 5.0e-12:
+    if (
+        metrics.orthogonality_error > SO3_ROUNDOFF_TOLERANCE
+        or metrics.determinant_error > SO3_ROUNDOFF_TOLERANCE
+    ):
         raise FloatingPointError("SO(3) exponential lost its group property.")
     return result
 
@@ -73,11 +83,14 @@ def exp_so3(rotation_vector: np.ndarray) -> np.ndarray:
 def compose_rotation(left: np.ndarray, right: np.ndarray) -> np.ndarray:
     """Group multiplication of two validated rotations."""
 
-    first = _validated_rotation(left, "left")
-    second = _validated_rotation(right, "right")
+    first = validate_rotation(left, "left")
+    second = validate_rotation(right, "right")
     product = first @ second
     metrics = rotation_metrics(product)
-    if metrics.orthogonality_error > 1.0e-11 or metrics.determinant_error > 1.0e-11:
+    if (
+        metrics.orthogonality_error > SO3_ROUNDOFF_TOLERANCE
+        or metrics.determinant_error > SO3_ROUNDOFF_TOLERANCE
+    ):
         raise FloatingPointError("SO(3) multiplication left the roundoff-scale group tube.")
     return product
 
@@ -89,7 +102,7 @@ def advance_rotation_body(
 
     if not np.isfinite(time_step):
         raise ValueError("time_step must be finite.")
-    matrix = _validated_rotation(rotation)
+    matrix = validate_rotation(rotation)
     increment = exp_so3(float(time_step) * _vector3(angular_velocity_body, "angular_velocity_body"))
     return compose_rotation(matrix, increment)
 
@@ -101,7 +114,7 @@ def advance_rotation_world(
 
     if not np.isfinite(time_step):
         raise ValueError("time_step must be finite.")
-    matrix = _validated_rotation(rotation)
+    matrix = validate_rotation(rotation)
     increment = exp_so3(
         float(time_step) * _vector3(angular_velocity_world, "angular_velocity_world")
     )
@@ -111,12 +124,12 @@ def advance_rotation_world(
 def body_to_world_angular_velocity(
     rotation: np.ndarray, angular_velocity_body: np.ndarray
 ) -> np.ndarray:
-    return _validated_rotation(rotation) @ _vector3(angular_velocity_body, "angular_velocity_body")
+    return validate_rotation(rotation) @ _vector3(angular_velocity_body, "angular_velocity_body")
 
 
 def world_to_body_angular_velocity(
     rotation: np.ndarray, angular_velocity_world: np.ndarray
 ) -> np.ndarray:
-    return _validated_rotation(rotation).T @ _vector3(
+    return validate_rotation(rotation).T @ _vector3(
         angular_velocity_world, "angular_velocity_world"
     )

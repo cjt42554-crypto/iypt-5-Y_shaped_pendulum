@@ -1,0 +1,27 @@
+{
+  "schema": "YPS-HFV2-G1R-MODULE-CLASSIFICATION-1.0",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "auto_discovery_glob": "src/ypendulum_hfv2/**/*.py",
+  "classifications": ["public_contract", "audit", "physical_core", "state_contract", "topology_contract"],
+  "architecture_scan_classifications": ["public_contract", "physical_core", "state_contract", "topology_contract"],
+  "architecture_scan_meaning": "all_modules_in_dependency_clean_production_classifications",
+  "modules": [
+    {"path": "__init__.py", "classification": "public_contract"},
+    {"path": "audit/__init__.py", "classification": "audit"},
+    {"path": "audit/architecture.py", "classification": "audit"},
+    {"path": "audit/energy_gradient.py", "classification": "audit"},
+    {"path": "audit/evidence.py", "classification": "audit"},
+    {"path": "audit/invariance.py", "classification": "audit"},
+    {"path": "audit/passivity.py", "classification": "audit"},
+    {"path": "constitutive/__init__.py", "classification": "physical_core"},
+    {"path": "constitutive/axial.py", "classification": "physical_core"},
+    {"path": "constitutive/bending.py", "classification": "physical_core"},
+    {"path": "loads.py", "classification": "physical_core"},
+    {"path": "mass.py", "classification": "physical_core"},
+    {"path": "rigid/__init__.py", "classification": "physical_core"},
+    {"path": "rigid/attachment.py", "classification": "physical_core"},
+    {"path": "rigid/rotation.py", "classification": "physical_core"},
+    {"path": "state.py", "classification": "state_contract"},
+    {"path": "topology.py", "classification": "topology_contract"}
+  ]
+}

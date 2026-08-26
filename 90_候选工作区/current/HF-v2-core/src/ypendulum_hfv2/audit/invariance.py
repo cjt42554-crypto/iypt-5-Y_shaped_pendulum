@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from ypendulum_hfv2.rigid.rotation import rotation_metrics
+from ypendulum_hfv2.rigid.rotation import validate_rotation
 
 
 def _points(value: np.ndarray, name: str) -> np.ndarray:
@@ -68,11 +68,8 @@ def objectivity_audit(
     force_scale: float,
 ) -> ObjectivityAudit:
     positions = _points(points, "points")
-    matrix = np.asarray(rotation, dtype=float)
-    metrics = rotation_metrics(matrix)
+    matrix = validate_rotation(rotation)
     offset = np.asarray(translation, dtype=float)
-    if metrics.orthogonality_error > 5.0e-12 or metrics.determinant_error > 5.0e-12:
-        raise ValueError("rotation must lie in SO(3).")
     if offset.shape != (3,) or not np.all(np.isfinite(offset)):
         raise ValueError("translation must be a finite three-vector.")
     if energy_scale <= 0.0 or force_scale <= 0.0:

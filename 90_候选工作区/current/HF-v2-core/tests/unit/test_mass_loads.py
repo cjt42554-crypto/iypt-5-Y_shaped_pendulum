@@ -5,10 +5,12 @@ import pytest
 
 from ypendulum_hfv2.loads import IsotropicDragLaw, point_external_load
 from ypendulum_hfv2.mass import MassProperties
+from ypendulum_hfv2.state import HFV2State
 
 
 def test_mass_properties_compute_positive_kinetic_energy_and_momentum() -> None:
     properties = MassProperties(
+        free_node_ids=("first", "second"),
         free_node_mass=np.array([0.1, 0.2]),
         bob_mass=0.5,
         bob_inertia_body=np.diag([0.01, 0.02, 0.03]),
@@ -30,7 +32,33 @@ def test_mass_properties_compute_positive_kinetic_energy_and_momentum() -> None:
 
 def test_mass_properties_reject_nonphysical_inertia() -> None:
     with pytest.raises(ValueError, match="positive definite"):
-        MassProperties(np.ones(2), 1.0, np.diag([1.0, 1.0, 0.0]))
+        MassProperties(("a", "b"), np.ones(2), 1.0, np.diag([1.0, 1.0, 0.0]))
+    with pytest.raises(ValueError, match="triangle inequalities"):
+        MassProperties(("a", "b"), np.ones(2), 1.0, np.diag([1.0, 1.0, 3.0]))
+
+
+def test_mass_layout_permutation_and_nonfinite_momentum_fail_closed() -> None:
+    properties = MassProperties(
+        free_node_ids=("first", "second"),
+        free_node_mass=np.array([0.1, 0.2]),
+        bob_mass=0.5,
+        bob_inertia_body=np.diag([0.02, 0.025, 0.03]),
+    )
+    permuted_state = HFV2State(
+        free_node_ids=("second", "first"),
+        free_node_positions=np.zeros((2, 3)),
+        free_node_velocities=np.zeros((2, 3)),
+        bob_position=np.zeros(3),
+        bob_velocity=np.zeros(3),
+        bob_rotation=np.eye(3),
+        bob_angular_velocity_body=np.zeros(3),
+    )
+    with pytest.raises(ValueError, match="layouts"):
+        properties.validate_state(permuted_state)
+    with pytest.raises(ValueError, match="finite"):
+        properties.total_linear_momentum(
+            np.array([[np.nan, 0.0, 0.0], [0.0, 0.0, 0.0]]), np.zeros(3)
+        )
 
 
 def test_gravity_buoyancy_and_drag_power_identity() -> None:

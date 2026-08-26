@@ -1,21 +1,11 @@
-"""Static dependency and no-silent-fallback audit for physical-core modules."""
+"""Manifest-complete dependency audit for the HF-v2 candidate package."""
 
 from __future__ import annotations
 
 import ast
+import json
 from dataclasses import dataclass
 from pathlib import Path
-
-PHYSICAL_CORE_FILES = (
-    "topology.py",
-    "state.py",
-    "mass.py",
-    "loads.py",
-    "constitutive/axial.py",
-    "constitutive/bending.py",
-    "rigid/rotation.py",
-    "rigid/attachment.py",
-)
 
 FORBIDDEN_IMPORT_PREFIXES = (
     "h5py",
@@ -36,7 +26,11 @@ FORBIDDEN_SOLVER_IMPORT_PREFIXES = (
 
 @dataclass(frozen=True)
 class ArchitectureAudit:
+    discovered_files: tuple[str, ...]
+    classified_files: tuple[str, ...]
     files: tuple[str, ...]
+    unclassified_files: tuple[str, ...]
+    missing_manifest_files: tuple[str, ...]
     imports: tuple[str, ...]
     forbidden_imports: tuple[str, ...]
     try_statement_count: int
@@ -46,7 +40,9 @@ class ArchitectureAudit:
     @property
     def passed(self) -> bool:
         return (
-            not self.forbidden_imports
+            not self.unclassified_files
+            and not self.missing_manifest_files
+            and not self.forbidden_imports
             and self.try_statement_count == 0
             and self.random_call_count == 0
             and not self.solver_imports
@@ -74,12 +70,73 @@ def _call_name(node: ast.Call) -> str:
     return ".".join(reversed(parts))
 
 
-def audit_physical_core(source_root: str | Path) -> ArchitectureAudit:
+def _manifest_entries(
+    path: Path,
+) -> tuple[tuple[dict[str, object], ...], frozenset[str]]:
+    document = json.loads(path.read_text(encoding="utf-8"))
+    modules = document.get("modules")
+    if not isinstance(modules, list):
+        raise ValueError("Module manifest must contain a modules list.")
+    if any(not isinstance(entry, dict) for entry in modules):
+        raise ValueError("Every module-manifest entry must be an object.")
+    entries: tuple[dict[str, object], ...] = tuple(modules)
+    paths = [entry.get("path") for entry in entries]
+    if any(not isinstance(relative, str) or not relative for relative in paths):
+        raise ValueError("Every module-manifest entry must have a non-empty path.")
+    if len(paths) != len(set(paths)):
+        raise ValueError("Module-manifest paths must be unique.")
+    classifications = document.get("classifications")
+    scan_classifications = document.get("architecture_scan_classifications")
+    if (
+        not isinstance(classifications, list)
+        or not classifications
+        or any(not isinstance(value, str) or not value for value in classifications)
+        or len(classifications) != len(set(classifications))
+    ):
+        raise ValueError("Module manifest must declare unique classification names.")
+    if (
+        not isinstance(scan_classifications, list)
+        or any(value not in classifications for value in scan_classifications)
+    ):
+        raise ValueError("Architecture-scan classifications must be declared classifications.")
+    if any(entry.get("classification") not in classifications for entry in entries):
+        raise ValueError("Every module must use one declared classification.")
+    return entries, frozenset(scan_classifications)
+
+
+def audit_physical_core(
+    source_root: str | Path, module_manifest: str | Path
+) -> ArchitectureAudit:
+    """Audit every discovered package module against an explicit classification.
+
+    The manifest determines which classifications belong to the dependency-clean
+    production core.  Auto-discovery is independent of that list, so a newly
+    added but unclassified Python module fails the audit instead of bypassing it.
+    """
+
     root = Path(source_root)
+    entries, scan_classifications = _manifest_entries(Path(module_manifest))
+    discovered = tuple(
+        sorted(path.relative_to(root).as_posix() for path in root.rglob("*.py"))
+    )
+    classified = tuple(sorted(str(entry["path"]) for entry in entries))
+    discovered_set = set(discovered)
+    classified_set = set(classified)
+    unclassified = tuple(sorted(discovered_set - classified_set))
+    missing = tuple(sorted(classified_set - discovered_set))
+    scanned = tuple(
+        sorted(
+            str(entry["path"])
+            for entry in entries
+            if entry["classification"] in scan_classifications
+            and str(entry["path"]) in discovered_set
+        )
+    )
+
     imports: list[str] = []
     try_count = 0
     random_count = 0
-    for relative in PHYSICAL_CORE_FILES:
+    for relative in scanned:
         path = root / relative
         tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         imports.extend(_module_names(tree))
@@ -94,7 +151,8 @@ def audit_physical_core(source_root: str | Path) -> ArchitectureAudit:
         name
         for name in unique_imports
         if any(
-            name == prefix or name.startswith(f"{prefix}.") for prefix in FORBIDDEN_IMPORT_PREFIXES
+            name == prefix or name.startswith(f"{prefix}.")
+            for prefix in FORBIDDEN_IMPORT_PREFIXES
         )
     )
     solver_imports = tuple(
@@ -106,7 +164,11 @@ def audit_physical_core(source_root: str | Path) -> ArchitectureAudit:
         )
     )
     return ArchitectureAudit(
-        files=PHYSICAL_CORE_FILES,
+        discovered_files=discovered,
+        classified_files=classified,
+        files=scanned,
+        unclassified_files=unclassified,
+        missing_manifest_files=missing,
         imports=unique_imports,
         forbidden_imports=forbidden,
         try_statement_count=try_count,

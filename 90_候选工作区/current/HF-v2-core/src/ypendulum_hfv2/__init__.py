@@ -20,7 +20,7 @@ from .rigid import (
 from .state import HFV2State
 from .topology import HFV2Topology, MaterialNode, MaterialSegment
 
-MODEL_ID = "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE"
+MODEL_ID = "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE"
 
 __all__ = [
     "MODEL_ID",

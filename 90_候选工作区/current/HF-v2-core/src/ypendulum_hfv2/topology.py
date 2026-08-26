@@ -31,7 +31,12 @@ class MaterialNode:
 
 @dataclass(frozen=True)
 class MaterialSegment:
-    """One oriented material segment on a named branch."""
+    """One oriented material segment on a named reference-arc branch.
+
+    Material coordinates are SI reference arc lengths.  ``rest_length`` is
+    consequently derived from the coordinate interval and cannot diverge from
+    it as a second source of truth.
+    """
 
     segment_id: str
     branch_id: str
@@ -39,7 +44,6 @@ class MaterialSegment:
     end_node: str
     material_start: float
     material_end: float
-    rest_length: float
 
     def __post_init__(self) -> None:
         identifiers = (self.segment_id, self.branch_id, self.start_node, self.end_node)
@@ -47,15 +51,17 @@ class MaterialSegment:
             raise ValueError("Segment and node identifiers must be non-empty and stripped.")
         if self.start_node == self.end_node:
             raise ValueError("A material segment cannot connect a node to itself.")
-        scalars = np.asarray(
-            [self.material_start, self.material_end, self.rest_length], dtype=float
-        )
+        scalars = np.asarray([self.material_start, self.material_end], dtype=float)
         if not np.all(np.isfinite(scalars)):
-            raise ValueError("Material coordinates and rest length must be finite.")
+            raise ValueError("Material coordinates must be finite.")
         if self.material_end <= self.material_start:
             raise ValueError("material_end must be strictly greater than material_start.")
-        if self.rest_length <= 0.0:
-            raise ValueError("rest_length must be strictly positive.")
+
+    @property
+    def rest_length(self) -> float:
+        """Reference length derived from the SI material-arc coordinates."""
+
+        return float(self.material_end - self.material_start)
 
 
 @dataclass(frozen=True)
@@ -170,6 +176,12 @@ class HFV2Topology:
         if not selected:
             raise KeyError(branch_id)
         return tuple(sorted(selected, key=lambda segment: segment.material_start))
+
+    def branch_rest_length(self, branch_id: str) -> float:
+        """Return the reference-arc span of one connected branch."""
+
+        branch = self.branch_segments(branch_id)
+        return float(branch[-1].material_end - branch[0].material_start)
 
     def incidence_matrix(self) -> np.ndarray:
         """Return the oriented segment-by-node incidence matrix."""

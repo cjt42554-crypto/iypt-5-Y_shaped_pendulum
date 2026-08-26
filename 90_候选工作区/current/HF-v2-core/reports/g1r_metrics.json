@@ -1,0 +1,371 @@
+{
+  "allowed_claim": "G1R_LOCAL_MODEL_CONTRACT_VERIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO",
+  "architecture": {
+    "auto_discovered_files": [
+      "__init__.py",
+      "audit/__init__.py",
+      "audit/architecture.py",
+      "audit/energy_gradient.py",
+      "audit/evidence.py",
+      "audit/invariance.py",
+      "audit/passivity.py",
+      "constitutive/__init__.py",
+      "constitutive/axial.py",
+      "constitutive/bending.py",
+      "loads.py",
+      "mass.py",
+      "rigid/__init__.py",
+      "rigid/attachment.py",
+      "rigid/rotation.py",
+      "state.py",
+      "topology.py"
+    ],
+    "claim_scope": "The classified dependency-clean production files contain no forbidden imports, SciPy solver imports, try statements, or random calls; this is not a proof that arbitrary fallback behavior is impossible.",
+    "classified_files": [
+      "__init__.py",
+      "audit/__init__.py",
+      "audit/architecture.py",
+      "audit/energy_gradient.py",
+      "audit/evidence.py",
+      "audit/invariance.py",
+      "audit/passivity.py",
+      "constitutive/__init__.py",
+      "constitutive/axial.py",
+      "constitutive/bending.py",
+      "loads.py",
+      "mass.py",
+      "rigid/__init__.py",
+      "rigid/attachment.py",
+      "rigid/rotation.py",
+      "state.py",
+      "topology.py"
+    ],
+    "forbidden_imports": [],
+    "manifest_forbidden_prefixes_match_auditor": true,
+    "missing_manifest_files": [],
+    "scanned_core_random_call_count": 0,
+    "scanned_core_try_statement_count": 0,
+    "scanned_dependency_clean_core_files": [
+      "__init__.py",
+      "constitutive/__init__.py",
+      "constitutive/axial.py",
+      "constitutive/bending.py",
+      "loads.py",
+      "mass.py",
+      "rigid/__init__.py",
+      "rigid/attachment.py",
+      "rigid/rotation.py",
+      "state.py",
+      "topology.py"
+    ],
+    "solver_imports": [],
+    "status": "PASS",
+    "unclassified_files": []
+  },
+  "axial_gradient": {
+    "absolute_steps": [
+      0.0011,
+      0.00033,
+      0.00011000000000000002,
+      3.3e-05,
+      1.1000000000000001e-05,
+      3.3e-06,
+      1.1e-06
+    ],
+    "final_relative_error": 1.1965674341827317e-10,
+    "final_relative_error_max": 5e-07,
+    "minimum_strict_decrease_steps": 3,
+    "relative_errors": [
+      1.2958234146066985e-06,
+      1.1662421438487093e-07,
+      1.2957942472184964e-08,
+      1.166360901318483e-09,
+      1.3270467060686833e-10,
+      3.2258178033211116e-11,
+      1.1965674341827317e-10
+    ],
+    "relative_steps": [
+      0.001,
+      0.0003,
+      0.0001,
+      3e-05,
+      1e-05,
+      3e-06,
+      1e-06
+    ],
+    "status": "PASS",
+    "strict_decrease_interval_indices": [
+      0,
+      3
+    ]
+  },
+  "bending_equation": {
+    "circular_arc_errors_J": [
+      0.0015780478128279603,
+      0.0007915043162528175,
+      0.0003963971503607791,
+      0.0001983629487590649
+    ],
+    "circular_arc_errors_strictly_decrease": true,
+    "circular_arc_segment_counts": [
+      20,
+      40,
+      80,
+      160
+    ],
+    "exact_antiparallel_failed_from_equation_denominator": true,
+    "minimum_successive_energy_ratio": 3.9,
+    "status": "PASS",
+    "straight_energy_force_and_centered_gradient_exact_zero": true,
+    "successive_energy_ratios": [
+      4.020108883223502,
+      4.005006779394182,
+      4.00125042331152
+    ],
+    "turn_to_pi_energies_J": [
+      23.840160254324328,
+      95.84004001588109,
+      383.84001000101347,
+      1535.840002500453
+    ],
+    "turn_to_pi_offsets_rad": [
+      0.2,
+      0.1,
+      0.05,
+      0.025
+    ],
+    "zero_stiffness_antiparallel_and_collapsed_exact_zero": true
+  },
+  "bending_gradient": {
+    "near_antiparallel_but_legal": {
+      "absolute_steps": [
+        0.001,
+        0.0003,
+        0.0001,
+        3e-05,
+        1e-05,
+        3e-06,
+        1e-06
+      ],
+      "final_relative_error": 1.9547916491047215e-08,
+      "final_relative_error_max": 5e-07,
+      "minimum_strict_decrease_steps": 3,
+      "relative_errors": [
+        0.012191352097108067,
+        0.0011015182510587147,
+        0.0001224323596703556,
+        1.1019215747793162e-05,
+        1.2244515318056022e-06,
+        1.0935525340127087e-07,
+        1.9547916491047215e-08
+      ],
+      "relative_steps": [
+        0.001,
+        0.0003,
+        0.0001,
+        3e-05,
+        1e-05,
+        3e-06,
+        1e-06
+      ],
+      "status": "PASS",
+      "strict_decrease_interval_indices": [
+        0,
+        3
+      ]
+    },
+    "planar": {
+      "absolute_steps": [
+        0.00045000000000000004,
+        0.000135,
+        4.5e-05,
+        1.3500000000000001e-05,
+        4.5e-06,
+        1.35e-06,
+        4.5e-07
+      ],
+      "final_relative_error": 2.922793793811762e-11,
+      "final_relative_error_max": 5e-07,
+      "minimum_strict_decrease_steps": 3,
+      "relative_errors": [
+        1.2349378634433337e-06,
+        1.111444125055862e-07,
+        1.2349433378788893e-08,
+        1.1118115998586235e-09,
+        1.2319819424607398e-10,
+        9.03278625853037e-12,
+        2.922793793811762e-11
+      ],
+      "relative_steps": [
+        0.001,
+        0.0003,
+        0.0001,
+        3e-05,
+        1e-05,
+        3e-06,
+        1e-06
+      ],
+      "status": "PASS",
+      "strict_decrease_interval_indices": [
+        0,
+        3
+      ]
+    },
+    "three_dimensional": {
+      "absolute_steps": [
+        0.00045000000000000004,
+        0.000135,
+        4.5e-05,
+        1.3500000000000001e-05,
+        4.5e-06,
+        1.35e-06,
+        4.5e-07
+      ],
+      "final_relative_error": 8.023480931517628e-11,
+      "final_relative_error_max": 5e-07,
+      "minimum_strict_decrease_steps": 3,
+      "relative_errors": [
+        1.1200699895634158e-06,
+        1.0080621650495935e-07,
+        1.1200701229338056e-08,
+        1.0088367450665286e-09,
+        1.1218834046581244e-10,
+        2.2164059104492432e-11,
+        8.023480931517628e-11
+      ],
+      "relative_steps": [
+        0.001,
+        0.0003,
+        0.0001,
+        3e-05,
+        1e-05,
+        3e-06,
+        1e-06
+      ],
+      "status": "PASS",
+      "strict_decrease_interval_indices": [
+        0,
+        3
+      ]
+    }
+  },
+  "dynamic_contact": "CLOSED_PENDING_PRO_REVIEW",
+  "environment": {
+    "numpy": "1.26.4",
+    "python": "3.12.3"
+  },
+  "evidence_binding": {
+    "acceptance_manifest": "contracts/g1r_acceptance_manifest.json",
+    "acceptance_manifest_sha256": "3c07424dcd269296ddcf2e78cdfb08c4626d7a458275af33d49d9ce7c3fb5b84",
+    "command": "python tools/generate_g1r_evidence.py --check",
+    "evidence_generator": "tools/generate_g1r_evidence.py",
+    "evidence_generator_sha256": "3fc40a54d115c57a9e806df6bd8d9e6c5b84766f7766a289794a68a2ac8aa57b",
+    "historical_g1_artifact_sha256": {
+      "contracts/acceptance_manifest.json": "12f8c868dbb5f83ecc51f642f80b087ec6ad8e3b57eaddae6105af202085120e",
+      "contracts/baseline_sources.json": "0bbbed505a1cc0ea9a50653739ac2078cbba3eaf453d2605bad075cb4475f70c",
+      "contracts/model_identity.json": "dd96a3b2d9a2744233d47363a9ff63ea4fa1f3baeff9b5462cfe6b2905603603",
+      "reports/G1_REPORT.md": "71b9b95a98c6045f61712e968ccf9acde5c6ed987481204530564bc9d56664ce",
+      "reports/g1_metrics.json": "75f58854993631df2e24a78166603df822cf98f44aca4b727973e06f8cc6131d"
+    },
+    "model_identity": "contracts/model_identity_0_2.json",
+    "model_identity_sha256": "ecd4aaee34838dd36152d8856f1ea7e7ec9273187d1b7b23d8577420abfd2dbc",
+    "module_manifest": "contracts/g1r_module_manifest.json",
+    "module_manifest_sha256": "88e9d1917a8abeb32c17d739bec3b2fc910259f3a8cfc2614e3e83db6e84d7af",
+    "source_sha256": {
+      "src/ypendulum_hfv2/__init__.py": "b14eb783b05df081415781cd3b5b619fcab4f3b543df09695d58c82383157c80",
+      "src/ypendulum_hfv2/audit/__init__.py": "c509df5e594eb9053ef96bbe8b5b6c420ac94dddbb07fe0d24bc9409b23b88d9",
+      "src/ypendulum_hfv2/audit/architecture.py": "5a085514d1fe32ac3d6d2db66b046344b81c48a506e81f867b68b46d28030bbb",
+      "src/ypendulum_hfv2/audit/energy_gradient.py": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
+      "src/ypendulum_hfv2/audit/evidence.py": "43f0f02739b50992155e87de7c317ffa5761bf534f016bb74abd618735a2c56e",
+      "src/ypendulum_hfv2/audit/invariance.py": "a0ed1428ed20195db059ae4cfbe53ce13eb81686cf988ee5d1358c2777ef4ad4",
+      "src/ypendulum_hfv2/audit/passivity.py": "cc351a071cef233bc22dbc8577f76b0c8f6791b535b883a2cc62141b6657f086",
+      "src/ypendulum_hfv2/constitutive/__init__.py": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
+      "src/ypendulum_hfv2/constitutive/axial.py": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
+      "src/ypendulum_hfv2/constitutive/bending.py": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
+      "src/ypendulum_hfv2/loads.py": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
+      "src/ypendulum_hfv2/mass.py": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
+      "src/ypendulum_hfv2/rigid/__init__.py": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
+      "src/ypendulum_hfv2/rigid/attachment.py": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
+      "src/ypendulum_hfv2/rigid/rotation.py": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
+      "src/ypendulum_hfv2/state.py": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
+      "src/ypendulum_hfv2/topology.py": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07"
+    }
+  },
+  "evidence_level": "local_formula_contract_and_static_source_checks",
+  "formal_numerical_qualification": "HF_NUMERICAL_QUALIFICATION_NO_GO",
+  "internal_balance": {
+    "scaled_force_resultant": 4.772887785124391e-17,
+    "scaled_force_resultant_max": 5e-13,
+    "scaled_moment_resultant": 6.555099390735934e-17,
+    "scaled_moment_resultant_max": 2e-12,
+    "status": "PASS"
+  },
+  "layout_and_mass": {
+    "bound_free_node_ids": [
+      "free_a",
+      "free_b"
+    ],
+    "mass_permutation_rejected": true,
+    "nonfinite_momentum_input_rejected": true,
+    "permuted_free_node_ids": [
+      "free_b",
+      "free_a"
+    ],
+    "state_permutation_rejected": true,
+    "status": "PASS",
+    "unrealizable_positive_definite_inertia_rejected": true
+  },
+  "material_reference": {
+    "coarse_equivalent_axial_stiffness_N_per_m": 120.0,
+    "coarse_mass_allocation_kg": 0.23,
+    "inconsistent_rest_length_constructor_rejected": true,
+    "independent_rest_length_field_absent": true,
+    "refined_branch_material_span_m": 1.0,
+    "refined_branch_rest_length_m": 1.0,
+    "refined_equivalent_axial_stiffness_N_per_m": 120.0,
+    "refined_mass_allocation_kg": 0.23000000000000004,
+    "status": "PASS"
+  },
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "objectivity": {
+    "relative_energy_change": 4.3784739067223086e-16,
+    "relative_energy_change_max": 2e-13,
+    "relative_force_covariance_error": 2.4800398101103044e-15,
+    "relative_force_covariance_error_max": 2e-12,
+    "status": "PASS"
+  },
+  "rotation_group": {
+    "normalization_or_projection_allowed": false,
+    "sequences": [
+      {
+        "case_id": "legacy_multiaxis",
+        "determinant_error": 1.6830981053317373e-13,
+        "orthogonality_error": 5.718184449650179e-13,
+        "status": "PASS",
+        "time_step_s": 0.0001,
+        "update_count": 10000
+      },
+      {
+        "case_id": "different_step_and_axis",
+        "determinant_error": 4.241051954068098e-14,
+        "orthogonality_error": 6.323189836113874e-14,
+        "status": "PASS",
+        "time_step_s": 0.0005,
+        "update_count": 12000
+      },
+      {
+        "case_id": "longer_multiaxis",
+        "determinant_error": 3.448352714485736e-13,
+        "orthogonality_error": 1.0260456376236158e-12,
+        "status": "PASS",
+        "time_step_s": 0.0001,
+        "update_count": 20000
+      }
+    ],
+    "shared_roundoff_tolerance": 2e-12,
+    "source_contract_matches_manifest": true,
+    "status": "PASS"
+  },
+  "schema": "YPS-HFV2-G1R-METRICS-1.0",
+  "status": "PASS_G1R_LOCAL_MODEL_CONTRACT_ONLY"
+}

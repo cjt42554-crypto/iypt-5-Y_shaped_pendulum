@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import numpy as np
 import pytest
 
@@ -8,6 +11,7 @@ from ypendulum_hfv2.rigid.attachment import (
     attachment_kinematics,
 )
 from ypendulum_hfv2.rigid.rotation import (
+    SO3_ROUNDOFF_TOLERANCE,
     advance_rotation_body,
     advance_rotation_world,
     body_to_world_angular_velocity,
@@ -15,6 +19,12 @@ from ypendulum_hfv2.rigid.rotation import (
     rotation_metrics,
     world_to_body_angular_velocity,
 )
+
+CANDIDATE_ROOT = Path(__file__).resolve().parents[2]
+ACCEPTANCE = json.loads(
+    (CANDIDATE_ROOT / "contracts" / "g1r_acceptance_manifest.json").read_text(encoding="utf-8")
+)
+ROTATION_CONTRACT = ACCEPTANCE["rotation"]
 
 
 def test_exponential_map_matches_axis_rotation() -> None:
@@ -42,14 +52,16 @@ def test_small_angle_exponential_has_correct_first_derivative() -> None:
     np.testing.assert_allclose(recovered, vector, rtol=0.0, atol=1.0e-25)
 
 
-def test_ten_thousand_group_updates_remain_in_so3_without_projection() -> None:
+@pytest.mark.parametrize("case", ROTATION_CONTRACT["sequences"], ids=lambda case: case["case_id"])
+def test_manifest_rotation_sequences_remain_in_so3_without_projection(case: dict) -> None:
     rotation = np.eye(3)
-    angular_velocity_body = np.array([0.37, -0.22, 0.41])
-    for _ in range(10000):
-        rotation = advance_rotation_body(rotation, angular_velocity_body, 1.0e-4)
+    angular_velocity_body = np.asarray(case["angular_velocity_body_rad_per_s"], dtype=float)
+    for _ in range(case["update_count"]):
+        rotation = advance_rotation_body(rotation, angular_velocity_body, case["time_step_s"])
     metrics = rotation_metrics(rotation)
-    assert metrics.orthogonality_error <= 2.0e-12
-    assert metrics.determinant_error <= 2.0e-12
+    assert SO3_ROUNDOFF_TOLERANCE == ROTATION_CONTRACT["shared_roundoff_tolerance"]
+    assert metrics.orthogonality_error <= ROTATION_CONTRACT["shared_roundoff_tolerance"]
+    assert metrics.determinant_error <= ROTATION_CONTRACT["shared_roundoff_tolerance"]
 
 
 def test_body_and_world_angular_velocity_updates_are_equivalent() -> None:

@@ -60,17 +60,18 @@ def force_gradient_samples(
         absolute_step = float(relative_step) * coordinate_scale
         gradient = central_difference_gradient(energy, values, absolute_step)
         absolute_error = float(np.linalg.norm(force + gradient))
-        denominator = max(
-            float(np.linalg.norm(force)),
-            float(np.linalg.norm(gradient)),
-            np.finfo(float).tiny,
+        denominator = max(float(np.linalg.norm(force)), float(np.linalg.norm(gradient)))
+        relative_error = (
+            absolute_error / denominator
+            if denominator > 0.0
+            else (0.0 if absolute_error == 0.0 else float("inf"))
         )
         samples.append(
             GradientSample(
                 relative_step=float(relative_step),
                 absolute_step=absolute_step,
                 absolute_error=absolute_error,
-                relative_error=absolute_error / denominator,
+                relative_error=relative_error,
             )
         )
     return tuple(samples)

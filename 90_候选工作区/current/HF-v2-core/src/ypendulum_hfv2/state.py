@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from .rigid.rotation import validate_rotation
 from .topology import HFV2Topology
 
 
@@ -27,6 +28,7 @@ class HFV2State:
     ``bob_angular_velocity_body`` is expressed in body coordinates.
     """
 
+    free_node_ids: tuple[str, ...]
     free_node_positions: np.ndarray
     free_node_velocities: np.ndarray
     bob_position: np.ndarray
@@ -35,6 +37,11 @@ class HFV2State:
     bob_angular_velocity_body: np.ndarray
 
     def __post_init__(self) -> None:
+        free_node_ids = tuple(self.free_node_ids)
+        if any(not node_id or node_id.strip() != node_id for node_id in free_node_ids):
+            raise ValueError("free_node_ids must contain non-empty, stripped strings.")
+        if len(free_node_ids) != len(set(free_node_ids)):
+            raise ValueError("free_node_ids must be unique.")
         positions = np.array(self.free_node_positions, dtype=float, copy=True)
         velocities = np.array(self.free_node_velocities, dtype=float, copy=True)
         if positions.ndim != 2 or positions.shape[1:] != (3,):
@@ -43,13 +50,13 @@ class HFV2State:
             raise ValueError("free_node_velocities must match free_node_positions.")
         if not np.all(np.isfinite(positions)) or not np.all(np.isfinite(velocities)):
             raise ValueError("Free material-node state must be finite.")
+        if positions.shape[0] != len(free_node_ids):
+            raise ValueError("free_node_ids must exactly label the free-node state rows.")
         positions.setflags(write=False)
         velocities.setflags(write=False)
-        rotation = _frozen_array(self.bob_rotation, (3, 3), "bob_rotation")
-        orthogonality = float(np.linalg.norm(rotation.T @ rotation - np.eye(3), ord="fro"))
-        determinant = float(np.linalg.det(rotation))
-        if orthogonality > 5.0e-12 or abs(determinant - 1.0) > 5.0e-12:
-            raise ValueError("bob_rotation must lie in SO(3) to roundoff tolerance.")
+        rotation = np.array(validate_rotation(self.bob_rotation, "bob_rotation"), copy=True)
+        rotation.setflags(write=False)
+        object.__setattr__(self, "free_node_ids", free_node_ids)
         object.__setattr__(self, "free_node_positions", positions)
         object.__setattr__(self, "free_node_velocities", velocities)
         object.__setattr__(
@@ -70,9 +77,9 @@ class HFV2State:
         )
 
     def validate_topology(self, topology: HFV2Topology) -> None:
-        if self.free_node_positions.shape[0] != topology.free_node_count:
+        if self.free_node_ids != topology.free_node_ids:
             raise ValueError(
-                "State free-node count does not match the explicit topology registration."
+                "State free-node layout does not exactly match the topology registration."
             )
 
     @property

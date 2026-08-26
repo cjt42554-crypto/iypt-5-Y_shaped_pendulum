@@ -15,13 +15,13 @@ class BendingGeometryError(FloatingPointError):
 class BendingResponse:
     energy: float
     forces: np.ndarray
-    minimum_segment_length: float
-    minimum_turn_clearance: float
+    minimum_segment_length: float | None
+    minimum_turn_clearance: float | None
 
 
-def _validated_geometry(
+def _validated_inputs(
     points: np.ndarray, segment_rest_length: np.ndarray, bending_stiffness: float
-) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, float]:
     coordinates = np.asarray(points, dtype=float)
     rest = np.asarray(segment_rest_length, dtype=float)
     if coordinates.ndim != 2 or coordinates.shape[1] != 3:
@@ -36,18 +36,25 @@ def _validated_geometry(
         raise ValueError("Bending rest lengths must be strictly positive.")
     if not np.isfinite(bending_stiffness) or bending_stiffness < 0.0:
         raise ValueError("Bending stiffness must be finite and non-negative.")
+    return coordinates, rest, float(bending_stiffness)
+
+
+def _validated_geometry(
+    coordinates: np.ndarray, rest: np.ndarray
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     segment = coordinates[1:] - coordinates[:-1]
     length = np.linalg.norm(segment, axis=1)
-    geometry_scale = max(float(np.max(rest)), float(np.max(length)))
-    if np.any(length <= 64.0 * np.finfo(float).eps * geometry_scale):
+    if not np.all(np.isfinite(length)):
+        raise BendingGeometryError("Non-finite segment length in discrete bending interaction.")
+    if np.any(length == 0.0):
         raise BendingGeometryError("Collapsed segment in discrete bending interaction.")
     tangent = segment / length[:, None]
     turn_clearance = 1.0 + np.einsum("ij,ij->i", tangent[:-1], tangent[1:])
-    if np.any(turn_clearance <= 256.0 * np.finfo(float).eps):
+    if np.any(turn_clearance <= 0.0):
         raise BendingGeometryError(
-            "Anti-parallel adjacent tangents make the bending geometry singular."
+            "Anti-parallel adjacent tangents make the curvature denominator singular."
         )
-    return coordinates, rest, length, tangent
+    return length, tangent, turn_clearance
 
 
 def bending_energy_forces(
@@ -57,39 +64,57 @@ def bending_energy_forces(
 ) -> BendingResponse:
     """Return energy and the exact analytic negative coordinate gradient.
 
-    For adjacent unit tangents, the local energy is
-    ``0.5 * EI / dual_length * ||t_right - t_left||**2``.  Exact
-    anti-parallel turns and collapsed segments fail closed; no repair direction
-    or special-case force is inserted.
+    For adjacent unit tangents, the local curvature binormal is
+    ``2 * cross(t_left, t_right) / (1 + dot(t_left, t_right))`` and the
+    energy is its squared norm times ``EI / (2 * dual_length)``.  The returned
+    force is the closed-form negative coordinate gradient of that equation.
+
+    Positive stiffness therefore makes an exact anti-parallel turn an equation
+    singularity.  Zero stiffness is the mathematical zero-energy branch and
+    returns before any segment tangent or curvature denominator is evaluated.
     """
 
-    coordinates, rest, length, tangent = _validated_geometry(
+    coordinates, rest, stiffness = _validated_inputs(
         points, segment_rest_length, bending_stiffness
     )
     forces = np.zeros_like(coordinates)
+    if stiffness == 0.0:
+        return BendingResponse(
+            energy=0.0,
+            forces=forces,
+            minimum_segment_length=None,
+            minimum_turn_clearance=None,
+        )
+
+    length, tangent, turn_clearance = _validated_geometry(coordinates, rest)
     energy = 0.0
-    identity = np.eye(3)
     for center in range(1, coordinates.shape[0] - 1):
         left_tangent = tangent[center - 1]
         right_tangent = tangent[center]
-        tangent_difference = right_tangent - left_tangent
+        tangent_dot = float(np.dot(left_tangent, right_tangent))
+        denominator = float(turn_clearance[center - 1])
+        curvature_binormal = 2.0 * np.cross(left_tangent, right_tangent) / denominator
         dual_length = 0.5 * (rest[center - 1] + rest[center])
-        coefficient = bending_stiffness / dual_length
-        energy += 0.5 * coefficient * float(np.dot(tangent_difference, tangent_difference))
-        left_segment_gradient = (
-            -coefficient
-            * ((identity - np.outer(left_tangent, left_tangent)) @ tangent_difference)
-            / length[center - 1]
+        energy += (
+            0.5
+            * stiffness
+            / dual_length
+            * float(np.dot(curvature_binormal, curvature_binormal))
         )
-        right_segment_gradient = (
-            coefficient
-            * ((identity - np.outer(right_tangent, right_tangent)) @ tangent_difference)
-            / length[center]
-        )
+        energy_derivative_dot = -4.0 * stiffness / (dual_length * denominator**2)
+        left_segment_gradient = energy_derivative_dot * (
+            right_tangent - tangent_dot * left_tangent
+        ) / length[center - 1]
+        right_segment_gradient = energy_derivative_dot * (
+            left_tangent - tangent_dot * right_tangent
+        ) / length[center]
         forces[center - 1] += left_segment_gradient
         forces[center] += -left_segment_gradient + right_segment_gradient
         forces[center + 1] -= right_segment_gradient
-    turn_clearance = 1.0 + np.einsum("ij,ij->i", tangent[:-1], tangent[1:])
+    if not np.isfinite(energy) or not np.all(np.isfinite(forces)):
+        raise FloatingPointError(
+            "Discrete-curvature bending energy or analytic force is non-finite."
+        )
     return BendingResponse(
         energy=float(energy),
         forces=forces,
