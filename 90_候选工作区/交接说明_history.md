@@ -108,3 +108,11 @@ RC1 保留为参考后端，不作为新架构模板。HF-v2 主模型采用张�
 候选完整测试为 `57 passed, 0 failed, 0 skipped`；Ruff、`compileall`、G1R 证据逐字节复算、10 个 JSON 解析、Pandoc 解析、MathML HTML/Chrome 实际渲染和候选包隔离安装/仓库外导入均通过。正式理论、正式程序和顶层 `AGENTS.md` 未修改。
 
 结论上限为 `G1R_LOCAL_MODEL_CONTRACT_VERIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO`。没有实现或运行 P2、接触、三锚点、物理或实验验证；下一步是 Pro 对上述候选提交执行独立复审。
+
+# 2026-08-27 01:10 +0900：Pro G1R 复审通过与 P2 准入
+
+独立复审 `55cb5db754adde63af77363b3d2d59aa4c9a31d9` 后，批准状态 `G1R_PRO_REVIEW_PASS__LOCAL_MODEL_CONTRACT_ONLY`。新离散曲率能及其解析负梯度符号正确，折返能垒由方程自身发散；零刚度提前返回属于精确数学分支。材料参考弧长唯一真值、状态/质量 `free_node_ids` 绑定、惯量可实现性和可复算证据链满足 G1R 门。
+
+P2 改为 `ELIGIBLE_ON_NEW_USER_INSTRUCTION`，本次复审没有自动开始 P2。P2 必须在组装层强制绑定拓扑、状态、质量、材料段顺序和广义布局，所有静长只从材料坐标派生；质量集总和端点贡献需在目标结果前冻结。首个 Y 形锚点必须严格处于张紧、非塌缩、非折返和正净空的光滑内部域；架构审计还需规范化相对导入并执行分类依赖矩阵。
+
+正式理论和正式程序未修改，正式资格仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`，动态硬接触仍为 `CLOSED_PENDING_PRO_REVIEW`。下一次只有用户明确要求继续时才执行 P2，并在 G2 停止交回 Pro。

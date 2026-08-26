@@ -1,30 +1,37 @@
 {
-  "schema": "YPS-HFV2-REFACTOR-PLAN-1.1",
-  "date": "2026-08-26",
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.2",
+  "date": "2026-08-27",
   "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
   "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
   "historical_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
-  "target_candidate_after_g1r": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "current_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
   "formal_modifications_allowed": false,
   "branch_policy": "main_only",
   "rc1_policy": "freeze_as_reference_do_not_delete",
-  "pro_review_bound_commit": "4d8777095e90f431d686ae338b754abb430a6a98",
-  "pro_review_decision": "G1_IMPLEMENTATION_TESTS_PASS__P2_HOLD_PENDING_G1R",
+  "g1r_implementation_commit": "55cb5db754adde63af77363b3d2d59aa4c9a31d9",
+  "g1r_handoff_commit": "cbb2f13a768517780d6769432056ab12d8b1f54e",
+  "pro_review_decision": "G1R_PRO_REVIEW_PASS__LOCAL_MODEL_CONTRACT_ONLY",
   "next_codex_scope": [
-    "G1R"
+    "P2"
   ],
-  "mandatory_stop_gate": "G1R_PRO_REVIEW",
-  "p2_gate": "HOLD_PENDING_G1R_PRO_APPROVAL_AND_NEW_USER_INSTRUCTION",
+  "next_scope_requires_new_user_instruction": true,
+  "mandatory_stop_gate": "G2_PRO_REVIEW",
+  "p2_gate": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
   "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
-  "g1r_required_changes": [
-    "replace_tangent_difference_bending_with_curvature_binormal_energy_and_analytic_force",
-    "remove_duplicate_material_coordinate_and_rest_length_truth",
-    "bind_state_and_mass_arrays_to_exact_free_node_layout",
-    "manifest_driven_reproducible_evidence_generation",
-    "complete_source_module_classification_and_architecture_audit",
-    "physical_inertia_realizability_and_finite_momentum_checks",
-    "consistent_so3_roundoff_contract"
+  "p2_required_controls": [
+    "assembled_rest_lengths_derived_only_from_topology_material_coordinates",
+    "topology_state_mass_material_and_generalized_layout_bound_at_construction",
+    "mass_lumping_and_endpoint_contributions_frozen_before_target_results",
+    "single_primary_static_solver_no_fallback_waterfall",
+    "first_y_anchor_strictly_inside_taut_noncollapsed_nonfolded_positive_clearance_domain",
+    "relative_import_normalization_and_classification_dependency_matrix",
+    "deterministic_multiseed_protocol_frozen_before_target_results",
+    "analytic_small_systems_before_y_anchor",
+    "positive_clearance_is_postsolve_domain_audit_only",
+    "independent_generalized_force_and_second_order_audits",
+    "three_level_static_mesh_trend",
+    "stop_at_G2"
   ],
   "primary_design_rules": [
     "equations_before_guards",
@@ -49,12 +56,13 @@
     {
       "id": "G1R",
       "name": "pro_review_corrections_0_2",
-      "review": "STOP_AND_PRO_REQUIRED"
+      "status": "PRO_REVIEW_PASS"
     },
     {
       "id": "P2",
       "name": "no_contact_statics",
-      "review": "HOLD_PENDING_G1R_PRO_APPROVAL"
+      "status": "PENDING_NEW_USER_INSTRUCTION",
+      "review": "STOP_AND_PRO_REQUIRED_AT_G2"
     },
     {
       "id": "P3",
@@ -88,13 +96,17 @@
     }
   ],
   "prohibited_automatic_actions": [
-    "start_p2_before_g1r_pro_approval",
+    "start_P2_without_new_user_instruction",
+    "start_P3_after_G2_without_review",
+    "accept_independent_rest_length_inputs_in_static_assembly",
+    "bypass_layout_binding_with_unidentified_arrays",
     "switch_optimizer_after_failure",
     "relax_tolerance_after_failure",
-    "disable_guard_after_failure",
+    "add_random_seeds_after_target_results",
+    "add_contact_force_or_penalty_in_P2",
     "clip_state_or_curvature_denominator_to_manufacture_validity",
     "assume_contact_restitution_or_friction",
     "modify_formal_program_without_new_authorization",
-    "rewrite_historical_0_1_g1_evidence_as_0_2"
+    "rewrite_historical_0_1_G1_evidence_as_0_2"
   ]
 }
