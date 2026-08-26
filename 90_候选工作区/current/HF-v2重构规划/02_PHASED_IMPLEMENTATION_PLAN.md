@@ -41,9 +41,13 @@ HF-v2 与 RC1 并行开发。每一阶段只解决一个层次的问题，并在
 
 ## P2：无接触静态制备
 
-状态：`ELIGIBLE_ON_NEW_USER_INSTRUCTION`
+状态：`G2_CANDIDATE_COMPLETE_PENDING_PRO_REVIEW`
 
-本次 G1R 复审没有自动开始 P2。只有用户再次明确要求继续时才可执行，并必须在 G2 停止。
+预冻结提交：`2c91306`。
+
+实现与证据提交：`3d507bb0c82e8a0a8e7560b4f80a8ddefb2ea2f1`。
+
+候选结果：`PASS_G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONAL_ONLY`。
 
 ### 目标
 
@@ -74,6 +78,8 @@ HF-v2 与 RC1 并行开发。每一阶段只解决一个层次的问题，并在
 - 证据可由单一命令复算。
 
 P2 中净空只作解后模型域审计，不能产生接触反力或罚势。完成后必须停止并交回 Pro。
+
+已按本条停止。当前只允许 Pro 独立复审，不得自动进入 P3。即使复审通过，也需要用户新的明确继续指令。
 
 ## P3：静态硬接触
 

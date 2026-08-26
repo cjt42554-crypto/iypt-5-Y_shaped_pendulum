@@ -10,13 +10,17 @@
   "rc1_policy": "freeze_as_reference_do_not_delete",
   "g1r_implementation_commit": "55cb5db754adde63af77363b3d2d59aa4c9a31d9",
   "g1r_handoff_commit": "cbb2f13a768517780d6769432056ab12d8b1f54e",
+  "g2_prefreeze_commit": "2c91306",
+  "g2_implementation_commit": "3d507bb0c82e8a0a8e7560b4f80a8ddefb2ea2f1",
+  "g2_candidate_status": "PASS_G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONAL_ONLY",
+  "g2_allowed_claim": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO",
   "pro_review_decision": "G1R_PRO_REVIEW_PASS__LOCAL_MODEL_CONTRACT_ONLY",
   "next_codex_scope": [
-    "P2"
+    "G2_PRO_REVIEW_ONLY"
   ],
   "next_scope_requires_new_user_instruction": true,
   "mandatory_stop_gate": "G2_PRO_REVIEW",
-  "p2_gate": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
+  "p2_gate": "G2_CANDIDATE_COMPLETE_PENDING_PRO_REVIEW",
   "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
   "p2_required_controls": [
@@ -61,7 +65,7 @@
     {
       "id": "P2",
       "name": "no_contact_statics",
-      "status": "PENDING_NEW_USER_INSTRUCTION",
+      "status": "CANDIDATE_COMPLETE_G2_PASS_PENDING_PRO_REVIEW",
       "review": "STOP_AND_PRO_REQUIRED_AT_G2"
     },
     {
