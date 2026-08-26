@@ -1,0 +1,51 @@
+{
+  "schema": "YPS-HFV2-RC1-BASELINE-1.0",
+  "captured_from_branch": "main",
+  "captured_from_commit": "de37ff2293ab3d92beb8876dbea312224fa27e90",
+  "git_object_format": "sha1",
+  "formal_backend_model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "candidate_backend_model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
+  "formal_source_policy": "frozen_read_only_reference",
+  "sources": [
+    {
+      "role": "package_contract",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/pyproject.toml",
+      "git_blob_sha": "bcf3f93291226e5c72f9cada2e3c7c49df2906d2"
+    },
+    {
+      "role": "public_orchestration_api",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/api.py",
+      "git_blob_sha": "25a0ceb7463732aa1ff73fe02bfa050ed419e6d8"
+    },
+    {
+      "role": "configuration_models",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/config/models.py",
+      "git_blob_sha": "2a6c218f48e6bb0b1f81f7685cdea84af8652ce1"
+    },
+    {
+      "role": "hf_public_exports",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/__init__.py",
+      "git_blob_sha": "7d37c742c1b60e73b186f16c4be25ecaea30e101"
+    },
+    {
+      "role": "hf_local_physics_and_geometry",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/model.py",
+      "git_blob_sha": "e1f18805cf4100055f74f36738f4137f9d7d44c6"
+    },
+    {
+      "role": "hf_preparation_integration_and_presentation",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/solver.py",
+      "git_blob_sha": "325ad43aa8088a55defeae9851c9ccfa508fe936"
+    },
+    {
+      "role": "hf_result_contract",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/state.py",
+      "git_blob_sha": "ef03165229b66c00cf206e1c6bc82f1f10a572b0"
+    },
+    {
+      "role": "hf_validation_and_certification",
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/validation.py",
+      "git_blob_sha": "c3788a8bc770edb12579d44ed2345819aed61aab"
+    }
+  ]
+}

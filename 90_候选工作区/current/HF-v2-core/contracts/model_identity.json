@@ -1,0 +1,37 @@
+{
+  "schema": "YPS-HFV2-MODEL-IDENTITY-0.1",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
+  "status": "P0_P1_CANDIDATE_NOT_NUMERICALLY_QUALIFIED",
+  "formal_backend_replaced": false,
+  "equation_set": {
+    "material_topology": "explicit_registered_nodes_and_segments",
+    "axial_material": "passive_unilateral_kelvin_voigt_tension_only",
+    "compression_regularization": "absent",
+    "bending": "three_point_tangent_difference_energy",
+    "rigid_body": "finite_inertia_eccentric_attachment",
+    "rotation": "SO3_exponential_group_update",
+    "static_contact": "not_implemented_in_P0_P1",
+    "dynamic_contact": "CLOSED_PENDING_PRO_REVIEW",
+    "friction": "not_in_model",
+    "restitution": "not_in_model"
+  },
+  "coordinates": {
+    "world_frame": "right_handed",
+    "rotation_map": "body_to_world",
+    "stored_angular_velocity": "body_frame",
+    "body_rotation_update": "R_next_equals_R_times_Exp_dt_omega_body",
+    "attachment_velocity": "uses_world_omega_equals_R_times_omega_body"
+  },
+  "units": "SI_floating_point_values",
+  "randomness": {
+    "used_by_core": false,
+    "policy": "deterministic_pure_functions"
+  },
+  "external_load_interfaces": {
+    "gravity": "implemented",
+    "buoyancy": "implemented",
+    "isotropic_air_drag": "explicit_activation_required",
+    "prescribed_support_motion": "not_implemented_in_P0_P1"
+  },
+  "qualification_ceiling": "LOCAL_IMPLEMENTATION_TESTS_ONLY"
+}
