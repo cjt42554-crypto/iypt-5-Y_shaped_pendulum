@@ -98,3 +98,13 @@ RC1 保留为参考后端，不作为新架构模板。HF-v2 主模型采用张�
 独立审查 `4d8777095e90f431d686ae338b754abb430a6a98` 后，认可 Codex 对 P0/P1 的范围控制和局部实现测试，状态记为 `G1_IMPLEMENTATION_TESTS_PASS`；但不批准直接进入 P2。
 
 阻断项包括：RC1 切向差弯曲能在反平行处能量有限且力退化为零、材料坐标与静长双重真值、状态/质量只按数组位置绑定拓扑，以及 G1 指标缺少清单驱动的确定性生成入口。规划新增 G1R：升级模型身份到 `0.2-CANDIDATE`，采用具有真实折返能垒的离散曲率能，修正材料与布局合同并自动化证据链。正式程序未修改，正式资格仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`；P2 保持 `HOLD_PENDING_G1R`。
+
+# 2026-08-26 23:39 +0800：HF-v2 G1R 局部模型合同修订
+
+在候选提交 `55cb5db754adde63af77363b3d2d59aa4c9a31d9` 完成 Pro G1 审查指定的 G1R。模型身份升级为 `HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE`；弯曲项改为离散曲率 binormal 二次能及其闭式解析负梯度，精确反平行成为方程分母域边界，零刚度分支在计算分母前返回精确零。
+
+同时消除材料坐标与静长双重真值，将状态和质量绑定到精确 `free_node_ids` 顺序，增加主惯量三角不等式、动量有限性和统一 `SO(3)` 舍入合同。新增清单驱动的单命令证据生成器与 `17/17` 模块自动分类审计；历史 `0.1` G1 五个工件保持字节不变。
+
+候选完整测试为 `57 passed, 0 failed, 0 skipped`；Ruff、`compileall`、G1R 证据逐字节复算、10 个 JSON 解析、Pandoc 解析、MathML HTML/Chrome 实际渲染和候选包隔离安装/仓库外导入均通过。正式理论、正式程序和顶层 `AGENTS.md` 未修改。
+
+结论上限为 `G1R_LOCAL_MODEL_CONTRACT_VERIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO`。没有实现或运行 P2、接触、三锚点、物理或实验验证；下一步是 Pro 对上述候选提交执行独立复审。

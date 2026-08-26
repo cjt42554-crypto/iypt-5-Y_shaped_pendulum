@@ -1,69 +1,74 @@
 # 交接说明（current）
 
-更新时间：2026-08-26（Pro G1 独立审查）
+更新时间：2026-08-26 23:39 +0800（HF-v2 G1R 完成，等待 Pro 复审）
 
-## 1. Pro 独立审查结论
+## 1. 当前结论
 
-已独立审查 Codex 提交：
+G1R 候选实现提交为：
 
-- P0：`3c70a8018b97d03196ef7fb937832c01ff0dbd7e`
-- P1/G1：`4d8777095e90f431d686ae338b754abb430a6a98`
+`55cb5db754adde63af77363b3d2d59aa4c9a31d9`
 
-Codex 的范围控制和工程执行合格：只修改候选 `HF-v2-core`，在 G1 停止，正式理论、正式模拟程序、顶层 `AGENTS.md`、UI、公共 API 和 HDF5 均未修改。单边轴向材料、刚体姿态、偏心连接点、质量和外载没有发现明显符号错误；报告中的轴向、弯曲和 `SO(3)` 关键数值可由当前公式独立复算。
+候选模型身份为：
 
-认可：
+`HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE`
 
-`G1_IMPLEMENTATION_TESTS_PASS`
+本地证据允许的结论上限仅为：
 
-但不批准直接进入 P2。当前状态改为：
+`G1R_LOCAL_MODEL_CONTRACT_VERIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO`
 
-`G1_IMPLEMENTATION_TESTS_PASS__P2_HOLD_PENDING_G1R`
+P2 仍未开放。只有 Pro 对上述候选提交复审通过，且用户再次明确要求继续，才允许进入 P2。
 
-正式资格仍为：
+正式数值资格仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`，动态硬接触仍为 `CLOSED_PENDING_PRO_REVIEW`。
 
-`HF_NUMERICAL_QUALIFICATION_NO_GO`
+## 2. G1R 完成内容
 
-动态硬接触仍为：
+主要修订位于 `90_候选工作区/current/HF-v2-core/`：
 
-`CLOSED_PENDING_PRO_REVIEW`
+1. 弯曲能改为离散曲率 binormal 二次能，生产力为闭式解析负梯度；无分母裁剪、有限差分力或备用换式。
+2. 非零刚度下精确反平行由方程分母退化而失败关闭；零刚度在计算切向/分母前返回精确零能和零力。
+3. `MaterialSegment.rest_length` 只读派生为 `material_end - material_start`，消除材料坐标与静长的双重真值。
+4. `HFV2State` 和 `MassProperties` 都绑定逐项精确的不可变 `free_node_ids`，同数量顺序错配会失败关闭。
+5. 增加主惯量三角不等式、线动量有限性和共享 `SO(3)` 舍入容差合同。
+6. 增加清单驱动的确定性 G1R 证据生成器、全包模块自动发现/分类和失败关闭架构审计。
+7. 历史 `0.1` G1 报告、指标和合同保持字节不变，并由 SHA-256 特征测试绑定。
 
-完整审查见：
+完整报告与机器可读证据位于：
 
-`90_候选工作区/current/HF-v2重构规划/05_PRO_G1_REVIEW_AND_G1R.md`
+- `90_候选工作区/current/HF-v2-core/reports/G1R_REPORT.md`；
+- `90_候选工作区/current/HF-v2-core/reports/g1r_metrics.json`；
+- `90_候选工作区/current/HF-v2-core/contracts/g1r_acceptance_manifest.json`；
+- `90_候选工作区/current/HF-v2-core/contracts/g1r_module_manifest.json`。
 
-## 2. 阻断 P2 的问题
+## 3. 已执行验证
 
-1. **弯曲方程仍继承 RC1 缺陷。** 当前切向差能在精确反平行时能量有限且解析力为零，却由额外 guard 强制拒绝；接近反平行时恢复力趋零。这仍是“方程允许、外围守卫禁止”，不符合本次重构目标。
-2. **材料坐标和静长存在双重真值。** `material_start/end` 与 `rest_length` 可不一致，会使未来轴向/弯曲和接触材料域使用两套几何。
-3. **状态与质量没有绑定节点身份。** 当前只检查自由节点数量，顺序置换可能静默映射到错误节点。
-4. **G1 证据尚未完全自动化。** `g1_metrics.json` 没有确定性生成入口；部分测试未直接读取冻结清单；架构审计只扫描手工列出的文件，报告中的“无 fallback”措辞强于实际证明。
+在 Python `3.12.3`、NumPy `1.26.4`、pytest `8.4.2`、Ruff `0.16.4` 的一次性隔离环境中：
 
-上述问题不说明 Codex P0/P1 是失败的；第一项主要来自原规划允许沿用 RC1 公式。它们必须在静态求解器出现前修正。
+- 全部候选测试：`57 passed, 0 failed, 0 skipped`；
+- Ruff：通过；
+- `compileall`：通过；
+- `python tools/generate_g1r_evidence.py --check`：通过；
+- 10 个候选 JSON 文件解析：通过；
+- README 与 G1R 报告的 Pandoc Markdown 解析、MathML HTML 渲染、Chrome 实际渲染目视检查：通过；
+- 候选包从仓库拷贝隔离构建安装并在仓库外导入：通过；
+- 正式理论、正式程序和顶层 `AGENTS.md` 差异：无。
 
-## 3. 下一次唯一任务：G1R
+关键数值：
 
-下一次 Codex 只执行 G1R：
+- 弯曲力—能量最终差分相对误差：平面 `2.9228e-11`、三维 `8.0235e-11`、近反平行 `1.9548e-8`，均低于 `5e-7`；
+- 转角趋近 $\pi$ 的四级能量递增比均大于 `3.9`；
+- 圆弧四层误差严格逐层下降；
+- 三个多轴 `SO(3)` 更新案例的最大正交误差 `1.0261e-12`，低于共享门槛 `2e-12`；
+- `17/17` 包内 Python 模块已分类，未分类与清单缺失均为 `0`。
 
-1. 将候选模型身份升级为 `HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE`，保留 `0.1` G1 工件为历史证据；
-2. 用离散曲率二次能替换切向差弯曲能，并实现解析负梯度；
-3. 将参考静长定义为材料弧长坐标差，消除重复构造参数；
-4. 将状态和节点质量绑定精确 `free_node_ids` 布局，并拒绝顺序错配；
-5. 建立清单驱动、单一命令可复算的 G1R 指标和完整模块分类审计；
-6. 一并修正刚体惯量可实现性、动量有限检查和 `SO(3)` 容差一致性；
-7. 运行全部候选测试、Ruff、compileall、JSON 和 Pandoc 检查；
-8. 更新 G1R 报告与交接，提交到 `main` 后停止并交回 Pro。
+## 4. 下一次唯一任务
 
-## 4. G1R 禁止范围
+请 Pro 对候选提交 `55cb5db754adde63af77363b3d2d59aa4c9a31d9` 执行独立只读复审，至少检查：
 
-不得：
+1. 新离散曲率能的解析负梯度符号、方程域与近反平行证据；
+2. 零刚度分支是数学分支而不是 fallback；
+3. 参考弧长唯一真值与细分不变性；
+4. 状态/质量布局绑定是否足以阻止后续组装错配；
+5. 证据生成器、阈值清单、源码哈希和模块自动发现是否形成完整证据链；
+6. 是否允许 P2 在新的用户继续指令下开始。
 
-- 实现 P2 静态求解器、KKT 或多种子制备；
-- 运行无接触静态、三锚点或目标压缩尺度；
-- 接入静态/动态接触；
-- 修改正式目录、UI、公共 API 或 HDF5；
-- 放宽门槛、裁剪曲率分母、自动换算法或增加结果驱动特殊分支；
-- 覆盖或改名历史 `0.1` G1 报告。
-
-## 5. 后续门
-
-G1R 完成后必须再次由 Pro 审查。只有 Pro 批准且用户再次明确要求继续，才允许进入 P2。
+在 Pro 明确裁决前，不实现、不运行 P2 静态制备/KKT/多种子，不接入任何静态或动态接触，不运行三锚点，不修改正式理论、正式程序、UI、公共 API 或 HDF5。
