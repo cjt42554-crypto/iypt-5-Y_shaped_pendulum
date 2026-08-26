@@ -7,7 +7,6 @@ from pathlib import Path
 
 import ypendulum_hfv2
 
-
 CANDIDATE_ROOT = Path(__file__).resolve().parents[2]
 REPOSITORY_ROOT = CANDIDATE_ROOT.parents[2]
 

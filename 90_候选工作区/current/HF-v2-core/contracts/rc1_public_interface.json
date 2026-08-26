@@ -4,12 +4,12 @@
   "model_id": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
   "top_level_api_functions": [
     "diagnose_config(config, *, solve_equilibrium=True, write_output=None)",
-    "simulate(config, *, output_directory=None, write_output=True, hf_checkpoint_path=None, hf_resume_checkpoint=False)",
+    "simulate(config, *, equilibrium=None, hf_validation_spec=None, hf_checkpoint_path=None, hf_resume_checkpoint=False, write_output=True)",
     "analyze_run(run)",
-    "analyze_linear_modes(config, *, equilibrium=None)",
-    "run_convergence_study(config, levels, *, output_directory=None)",
+    "analyze_linear_modes(config, *, count=2)",
+    "run_convergence_study(config, *, write_output=True)",
     "compare_runs(run_a, run_b)",
-    "compare_experiment(run, experiment, *, output_directory=None)"
+    "compare_experiment(run_directory, experiment_csv, *, estimate_time_shift=False, maximum_time_shift_s=0.0, estimate_translation=False, estimate_planar_rotation=False, output_directory=None)"
   ],
   "hf_exports": [
     "HighFidelityModel",

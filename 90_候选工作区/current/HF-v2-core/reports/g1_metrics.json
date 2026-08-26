@@ -1,0 +1,91 @@
+{
+  "schema": "YPS-HFV2-G1-METRICS-1.0",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
+  "acceptance_manifest": "contracts/acceptance_manifest.json",
+  "status": "PASS_G1_LOCAL_IMPLEMENTATION_ONLY",
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "pytest": "8.4.2",
+    "ruff": "0.16.4"
+  },
+  "test_summary": {
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0,
+    "duration_s": 1.01
+  },
+  "axial_gradient_relative_error": {
+    "relative_steps": [0.001, 0.0003, 0.0001, 0.00003, 0.00001, 0.000003, 0.000001],
+    "errors": [
+      1.2958234146066985e-6,
+      1.1662421438487093e-7,
+      1.2957942472184964e-8,
+      1.166360901318483e-9,
+      1.3270467060686833e-10,
+      3.2258178033211116e-11,
+      1.1965674341827317e-10
+    ],
+    "final_error": 1.1965674341827317e-10,
+    "threshold": 5e-7,
+    "status": "PASS"
+  },
+  "bending_gradient_relative_error": {
+    "planar": {
+      "best_error": 2.6267996725144595e-11,
+      "final_error": 2.74740393260559e-11
+    },
+    "three_dimensional": {
+      "best_error": 2.4750227964677957e-11,
+      "final_error": 7.153021129209223e-11
+    },
+    "near_antiparallel_but_legal": {
+      "best_error": 9.383080596142984e-10,
+      "final_error": 2.369338397366337e-8
+    },
+    "final_error_threshold": 5e-7,
+    "straight_rod_zero_energy_force": true,
+    "exact_antiparallel_fails_closed": true,
+    "smooth_arc_refinement_errors_strictly_decrease": true,
+    "status": "PASS"
+  },
+  "internal_balance": {
+    "bending_scaled_force_resultant": 6.036866804107579e-17,
+    "bending_scaled_moment_resultant": 6.333504515948264e-17,
+    "attachment_force_residual_norm": 0.0,
+    "attachment_moment_residual_norm": 2.5711387621264605e-16,
+    "status": "PASS"
+  },
+  "objectivity": {
+    "bending_relative_energy_change": 1.3618963608569646e-16,
+    "bending_relative_force_covariance_error": 1.2263577829785675e-15,
+    "axial_and_attachment_cases_passed": true,
+    "status": "PASS"
+  },
+  "unilateral_axial_passivity": {
+    "compression_tension": 0.0,
+    "active_viscous_dissipation_rate": 0.4000000000000001,
+    "release_projection_dissipation_rate": 20.000000000000018,
+    "active_power_balance_residual": 1.6653345369377348e-16,
+    "release_power_balance_residual": 0.0,
+    "status": "PASS"
+  },
+  "rotation_group": {
+    "update_count": 10000,
+    "orthogonality_error": 5.718184449650179e-13,
+    "determinant_error": 1.6830981053317373e-13,
+    "threshold": 2e-12,
+    "normalization_or_projection_used": false,
+    "status": "PASS"
+  },
+  "architecture": {
+    "forbidden_imports": [],
+    "solver_imports": [],
+    "try_statement_count": 0,
+    "random_call_count": 0,
+    "silent_fallback_found": false,
+    "status": "PASS"
+  },
+  "qualification_ceiling": "G1_LOCAL_IMPLEMENTATION_VERIFIED",
+  "formal_numerical_qualification": "HF_NUMERICAL_QUALIFICATION_NO_GO"
+}
