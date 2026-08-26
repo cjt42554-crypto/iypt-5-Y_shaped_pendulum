@@ -1,0 +1,34 @@
+{
+  "base_overlay_solver_sha256": "340bdc64bb9fc5184d97bfb7f712fd9f31580a4c09c4bc1e8df0487a05af535a",
+  "builder_sha256": "60751ec04c5675729ee157f2a39746d14cd790219d4686b508a57688451d10f3",
+  "diagnostic_overlay_solver_sha256": "4a5fd036be122a50c08984de0c3015c84116fb01145ae7be7f0795ecc0be7ad0",
+  "diagnostic_script_sha256": "937493d3efa6eb49bb62a83abd72e4ddf663dd38eef9204f0efa6548e3b17123",
+  "dynamic_run_count": 0,
+  "exact_single_insertion": true,
+  "formal_change_authorized": false,
+  "insertion_semantics": "Add the already computed public raw guard dictionary to each rejected candidate record; do not alter objective, optimizer, residual, Hessian, guard decision, selection or exception behavior.",
+  "planned_diagnostic_preparation_count": 3,
+  "primary_results_sha256": "e6dd348084965449a98ff0fbd9946adbade2c03f6be3bbe0b506f9cce3bdf65f",
+  "schema_version": "YPS-FAILED-PREPARATION-GUARD-DIAGNOSTIC-PLAN-1.0",
+  "status": "FROZEN_OBSERVATIONAL_AUDIT_BEFORE_DIAGNOSTIC_RERUN",
+  "targets": [
+    {
+      "config": "/home/cjt/Desktop/iypt/5 Y形摆/90_候选工作区/current/三锚点高保真资格/generated/failed_preparation_guard_diagnostic/configs/alpha_1e-2.yaml",
+      "config_sha256": "2fe28cd146dd8959842975a400ba3a54b7239995f3102775d283d0991f0c4713",
+      "scale": 0.01,
+      "slug": "alpha_1e-2"
+    },
+    {
+      "config": "/home/cjt/Desktop/iypt/5 Y形摆/90_候选工作区/current/三锚点高保真资格/generated/failed_preparation_guard_diagnostic/configs/alpha_1e-4.yaml",
+      "config_sha256": "e138fbce1bf000e843258ed4a0b2f9d6ea57110a1add29b11db30a087d7c56d4",
+      "scale": 0.0001,
+      "slug": "alpha_1e-4"
+    },
+    {
+      "config": "/home/cjt/Desktop/iypt/5 Y形摆/90_候选工作区/current/三锚点高保真资格/generated/failed_preparation_guard_diagnostic/configs/alpha_1e-6.yaml",
+      "config_sha256": "96d20dc9adf49939ff5f0b6950b5773cad319cbf720091c1ee8681a9acd93f8f",
+      "scale": 1e-06,
+      "slug": "alpha_1e-6"
+    }
+  ]
+}

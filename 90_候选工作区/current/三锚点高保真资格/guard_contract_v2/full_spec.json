@@ -1,0 +1,119 @@
+{
+  "schema_version": "YPS-HF-GUARD-QUALIFICATION-CONTRACT-2.1-FULL-CANDIDATE",
+  "status": "PREFROZEN_FULL_COMPONENT_CANDIDATE__FORMAL_CHANGE_NOT_AUTHORIZED",
+  "minimum_normalized_margin": 0.0003,
+  "comparison": "strictly_greater_than",
+  "formal_change_authorized": false,
+  "physical_guard_domains_changed": false,
+  "raw_zero_crossing_semantics_changed": false,
+  "raw_gate": "Every formal public raw guard minimum must remain strictly positive. The local normalization is an additional qualification margin and never replaces the raw sign gate.",
+  "design_principle": "Normalize distance from the unchanged raw zero by the local geometric quantity that defines that failure mode. Cell-size quantities use their matching rest-material span; contact quantities use the required local center separation; native dimensionless angular or projective quantities retain scale one.",
+  "components": {
+    "MINIMUM_SEGMENT_LENGTH": {
+      "candidate_id": "MINIMUM_SEGMENT_LOCAL_REST_RATIO_V2",
+      "raw_domain": "every existing discrete-rod segment",
+      "raw_margin": "current_segment_length_m - formal_length_guard_m",
+      "local_scale": "that segment's rest_material_length_m",
+      "aggregation": "minimum normalized margin over all unchanged segments",
+      "mesh_objectivity_reason": "Both the physical segment length and its matching rest-material span shrink under material refinement while their local stretch ratio remains finite."
+    },
+    "BENDING_TURN_CLEARANCE": {
+      "candidate_id": "BENDING_TURN_NATIVE_DIMENSIONLESS_V2",
+      "raw_domain": "every existing internal branch vertex",
+      "raw_margin": "1 + left_unit_tangent dot right_unit_tangent - formal_turn_floor",
+      "local_scale": "1",
+      "aggregation": "minimum native dimensionless margin over all unchanged internal vertices",
+      "mesh_objectivity_reason": "The guard is already an order-one local angular measure and contains no material-cell length factor."
+    },
+    "AERODYNAMIC_CHORD_LENGTH": {
+      "candidate_id": "AERODYNAMIC_CHORD_LOCAL_REST_SPAN_RATIO_V2",
+      "raw_domain": "every existing aerodynamic material bead",
+      "raw_margin": "two-neighbour_chord_length_m - formal_aerodynamic_chord_guard_m",
+      "local_scale": "sum of the two adjacent segment rest_material_length_m values",
+      "aggregation": "minimum normalized margin over all unchanged aerodynamic beads",
+      "mesh_objectivity_reason": "The two-neighbour chord and its corresponding two-segment rest span refine together."
+    },
+    "BOB_ROD_CLEARANCE": {
+      "candidate_id": "BOB_ROD_REQUIRED_CENTER_DISTANCE_RATIO_V2",
+      "raw_domain": "the unchanged bob-to-rod segment domain, including the fixed lower bob-socket exclusion",
+      "raw_margin": "point_segment_center_distance_m - bob_contact_radius_m - half_branch_diameter_m - minimum_clearance_m",
+      "local_scale": "bob_contact_radius_m + half_branch_diameter_m + minimum_clearance_m for that branch",
+      "aggregation": "minimum normalized margin over every unchanged checked segment",
+      "mesh_objectivity_reason": "The required local center distance defines contact and is independent of segment subdivision."
+    },
+    "ROD_SELF_CLEARANCE": {
+      "candidate_id": "ROD_SELF_CLEARANCE_LOCAL_RELATIVE_V2",
+      "raw_domain": "the unchanged registered same-branch material-separation and cross-branch socket-complement domains",
+      "raw_margin": "formal surface_clearance_m - minimum_clearance_m",
+      "local_scale": "branch_diameter_m + minimum_clearance_m for same-branch candidates; required_center_separation_m for cross-branch candidates",
+      "aggregation": "minimum normalized margin over every unchanged registered category",
+      "mesh_objectivity_reason": "The denominator is the local separation that defines the contact zero, not the apparatus characteristic length."
+    },
+    "BOB_SOCKET_MATERIAL_EXTENT": {
+      "candidate_id": "BOB_SOCKET_MATERIAL_EXTENT_RATIO_V2",
+      "raw_domain": "the unchanged fixed lower rest-material bob socket",
+      "raw_margin": "lower_total_rest_material_length_m - bob_socket_rest_material_length_m",
+      "local_scale": "bob_socket_rest_material_length_m",
+      "aggregation": "the unchanged lower-socket extent candidate",
+      "mesh_objectivity_reason": "Both quantities are fixed rest-material lengths and do not depend on how the socket is split across cells."
+    },
+    "BOB_SOCKET_RADIAL_MONOTONICITY": {
+      "candidate_id": "BOB_SOCKET_RADIAL_MONOTONICITY_COSINE_V2",
+      "raw_domain": "every unchanged fixed-material bob-socket cell",
+      "raw_margin": "radial_vector_m dot material_increment_m",
+      "local_scale": "norm(radial_vector_m) times norm(material_increment_m)",
+      "aggregation": "minimum local direction cosine over every unchanged socket cell, with every raw dot product still required positive",
+      "mesh_objectivity_reason": "The local direction cosine removes the material-cell span while retaining the exact radial-increase sign."
+    },
+    "BOB_SOCKET_CUT_CLEARANCE": {
+      "candidate_id": "BOB_SOCKET_CUT_REQUIRED_RADIUS_RATIO_V2",
+      "raw_domain": "the unchanged fixed-material bob-socket cut point",
+      "raw_margin": "bob_center_to_cut_distance_m - required_bob_socket_center_distance_m",
+      "local_scale": "required_bob_socket_center_distance_m",
+      "aggregation": "the unchanged bob-socket cut candidate",
+      "mesh_objectivity_reason": "The cut is a fixed affine rest-material point and the required local radius defines its zero."
+    },
+    "JUNCTION_SOCKET_MATERIAL_EXTENT": {
+      "candidate_id": "JUNCTION_SOCKET_MATERIAL_EXTENT_RATIO_V2",
+      "raw_domain": "both incident fixed rest-material sockets for every unchanged branch pair",
+      "raw_margin": "branch_total_rest_material_length_m - pair_socket_rest_material_length_m",
+      "local_scale": "that pair_socket_rest_material_length_m",
+      "aggregation": "minimum normalized extent over both branches of every unchanged pair",
+      "mesh_objectivity_reason": "The fixed rest-material total and socket lengths do not depend on cell subdivision."
+    },
+    "JUNCTION_SOCKET_PROJECTIVE_OPENING": {
+      "candidate_id": "JUNCTION_SOCKET_PROJECTIVE_NATIVE_DIMENSIONLESS_V2",
+      "raw_domain": "the unchanged Cartesian product of both fixed-material junction sockets",
+      "raw_margin": "minimum_projective_opening_squared - registered_projective_opening_squared",
+      "local_scale": "1",
+      "aggregation": "minimum native dimensionless projective margin over every unchanged branch pair",
+      "mesh_objectivity_reason": "The formal measure is already normalized by material distance squared and contains no unbalanced cell-span factor."
+    },
+    "JUNCTION_SOCKET_CUT_CLEARANCE": {
+      "candidate_id": "JUNCTION_SOCKET_CUT_REQUIRED_SEPARATION_RATIO_V2",
+      "raw_domain": "the two unchanged fixed-material socket cuts for every branch pair",
+      "raw_margin": "cut_point_center_distance_m - required_pair_center_separation_m",
+      "local_scale": "required_pair_center_separation_m",
+      "aggregation": "minimum normalized cut clearance over every unchanged branch pair",
+      "mesh_objectivity_reason": "The affine rest-material cuts are mesh independent and the pair's required local separation defines the contact zero."
+    }
+  },
+  "source_binding": {
+    "formal_model_py_sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6",
+    "formal_reference_py_sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa",
+    "formal_solver_py_sha256": "03fa4c0774040509c354baca7ac80a10e55145d5a3b53e74e64ea3ab31bc4579",
+    "formal_config_validation_py_sha256": "52732122705ab09ddce8a9754c36a12d3be325ee73d927aaa1cc0d08899e0821"
+  },
+  "prefreeze_requirements": [
+    "implementation resolves exactly all 11 formal public guard components",
+    "resolved raw minima reproduce the formal public raw margins within a frozen roundoff tolerance",
+    "similarity tests preserve every length-based normalized margin",
+    "material refinement tests preserve the segment, aerodynamic-chord and radial-monotonicity normalization identities",
+    "raw zero and negative counterexamples fail closed",
+    "the exact numeric threshold 0.0003 and strict comparison are unchanged"
+  ],
+  "dynamic_requirement": "Any future trajectory qualification must apply the same local component definitions to accepted steps or to separately verified continuous lower bounds. A prepared-state result is not a trajectory certificate.",
+  "retroactivity": "none; all historical v1 status, dynamic qualification, source-probe findings and space-Cauchy findings remain unchanged",
+  "promotion_requirement": "Formal source or validation-spec modification requires explicit model-owner authorization and fresh full numerical qualification from frozen inputs.",
+  "claim_boundary": "This is a complete candidate normalization contract, not a formal solver change and not evidence of numerical convergence, physical validity or experiment."
+}

@@ -1,0 +1,41 @@
+{
+  "anchor_order": [
+    "4:3",
+    "3:2",
+    "2:1"
+  ],
+  "claim_boundary": "The audit re-prepares the already frozen alpha=1 states and checks only prepared-state guard normalization. It cannot alter historical trajectory or spatial-Cauchy status.",
+  "completed_preparation_count_at_freeze": 0,
+  "compression_regularization_scale": 1.0,
+  "contract_identity": {
+    "formal_source_sha256": "1c0b8a6fa57efc352f32d3b78b2230577387fce29f95dea51f1c2706fd8fb99d",
+    "full_implementation_sha256": "148c81bf2e961d7c36cfecf778dc693377aa6d2a44a4865f5fe9262f4fbfbf23",
+    "full_spec_sha256": "5b5547df584be42343b66526666f273b0585685b8953bd5aff62b1be5f18af5e",
+    "full_test_sha256": "10feaaa9ddc9b876c236aaff34eec96221ccdd0a5a851bc1e0513e7f65728f0c",
+    "prefreeze_sha256": "ce791a4fc1bd1b5443f6cfe64723537b3e4f8b7df1a2e72fda1ab35f529b399d",
+    "qualification_plan_sha256": "555ccb8f880d9daee2615656065c63443c9cbe214d529b46a7b54493854c17ea",
+    "runner_sha256": "ba325b6bc0d2fcc4132c1453ea4fd4e0869bd64a66a181d8e1dfbe3a1e38f9de"
+  },
+  "dynamic_run_count": 0,
+  "formal_change_authorized": false,
+  "level_meshes": [
+    {
+      "lower": 8,
+      "upper_A": 6,
+      "upper_B": 6
+    },
+    {
+      "lower": 16,
+      "upper_A": 12,
+      "upper_B": 12
+    },
+    {
+      "lower": 32,
+      "upper_A": 24,
+      "upper_B": 24
+    }
+  ],
+  "planned_preparation_count": 9,
+  "schema_version": "YPS-HF-GUARD-FULL-MESH-AUDIT-PLAN-1.0",
+  "status": "FROZEN_BEFORE_ALPHA1_MESH_REEVALUATION"
+}
