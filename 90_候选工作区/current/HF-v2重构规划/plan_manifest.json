@@ -1,5 +1,5 @@
 {
-  "schema": "YPS-HFV2-REFACTOR-PLAN-1.2",
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.3",
   "date": "2026-08-27",
   "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
   "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
@@ -10,32 +10,37 @@
   "rc1_policy": "freeze_as_reference_do_not_delete",
   "g1r_implementation_commit": "55cb5db754adde63af77363b3d2d59aa4c9a31d9",
   "g1r_handoff_commit": "cbb2f13a768517780d6769432056ab12d8b1f54e",
-  "g2_prefreeze_commit": "2c91306",
+  "g2_prefreeze_commit": "2c91306f5da15c0025cf7b4efa3fc861d3075129",
   "g2_implementation_commit": "3d507bb0c82e8a0a8e7560b4f80a8ddefb2ea2f1",
+  "g2_handoff_commit": "564ba7c8020b52a541032098b55872cd54289cef",
   "g2_candidate_status": "PASS_G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONAL_ONLY",
-  "g2_allowed_claim": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO",
-  "pro_review_decision": "G1R_PRO_REVIEW_PASS__LOCAL_MODEL_CONTRACT_ONLY",
+  "g2_pro_review_decision": "G2_SUBSTANTIVE_STATIC_EVIDENCE_PASS__APPROVAL_HOLD_PENDING_G2R",
+  "g2_approval_status": "HOLD_PENDING_G2R",
   "next_codex_scope": [
-    "G2_PRO_REVIEW_ONLY"
+    "G2R"
   ],
   "next_scope_requires_new_user_instruction": true,
-  "mandatory_stop_gate": "G2_PRO_REVIEW",
-  "p2_gate": "G2_CANDIDATE_COMPLETE_PENDING_PRO_REVIEW",
+  "mandatory_stop_gate": "G2R_PRO_REVIEW",
+  "p3_gate": "CLOSED_PENDING_G2R_PRO_APPROVAL_AND_NEW_USER_INSTRUCTION",
   "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
-  "p2_required_controls": [
-    "assembled_rest_lengths_derived_only_from_topology_material_coordinates",
-    "topology_state_mass_material_and_generalized_layout_bound_at_construction",
-    "mass_lumping_and_endpoint_contributions_frozen_before_target_results",
-    "single_primary_static_solver_no_fallback_waterfall",
-    "first_y_anchor_strictly_inside_taut_noncollapsed_nonfolded_positive_clearance_domain",
-    "relative_import_normalization_and_classification_dependency_matrix",
-    "deterministic_multiseed_protocol_frozen_before_target_results",
-    "analytic_small_systems_before_y_anchor",
-    "positive_clearance_is_postsolve_domain_audit_only",
-    "independent_generalized_force_and_second_order_audits",
-    "three_level_static_mesh_trend",
-    "stop_at_G2"
+  "g2r_blockers": [
+    "static_coordinate_token_does_not_bind_complete_coordinate_or_assembly_identity",
+    "prefrozen_module_dependency_manifest_changed_after_prefreeze_commit",
+    "post_target_trial_closure_audit_definition_correction_not_versioned_as_protocol_deviation",
+    "bfgs_c1_c2_validated_but_not_explicitly_passed_to_scipy",
+    "mesh_shape_trend_omits_full_material_centerlines"
+  ],
+  "g2r_required_changes": [
+    "complete_coordinate_layout_and_assembly_identity_contract",
+    "real_cross_assembly_token_collision_tests",
+    "explicit_bfgs_c1_c2_options",
+    "versioned_protocol_deviation_record_preserving_current_g2_artifacts",
+    "full_branch_material_coordinate_centerline_mesh_trend",
+    "dimensionless_strain_and_stretch_domain_diagnostics",
+    "unchanged_physics_parameters_seeds_meshes_solver_method_and_existing_thresholds",
+    "before_after_static_observable_equivalence",
+    "stop_after_g2r_and_return_for_pro_review"
   ],
   "primary_design_rules": [
     "equations_before_guards",
@@ -65,12 +70,18 @@
     {
       "id": "P2",
       "name": "no_contact_statics",
-      "status": "CANDIDATE_COMPLETE_G2_PASS_PENDING_PRO_REVIEW",
-      "review": "STOP_AND_PRO_REQUIRED_AT_G2"
+      "status": "SUBSTANTIVE_EVIDENCE_PASS_G2_APPROVAL_HOLD"
+    },
+    {
+      "id": "G2R",
+      "name": "g2_review_corrections",
+      "status": "PENDING_CODEX_EXECUTION",
+      "review": "STOP_AND_PRO_REQUIRED"
     },
     {
       "id": "P3",
       "name": "hard_contact_statics",
+      "status": "CLOSED_PENDING_G2R",
       "review": "PRO_REQUIRED"
     },
     {
@@ -100,17 +111,14 @@
     }
   ],
   "prohibited_automatic_actions": [
-    "start_P2_without_new_user_instruction",
-    "start_P3_after_G2_without_review",
-    "accept_independent_rest_length_inputs_in_static_assembly",
-    "bypass_layout_binding_with_unidentified_arrays",
-    "switch_optimizer_after_failure",
-    "relax_tolerance_after_failure",
-    "add_random_seeds_after_target_results",
-    "add_contact_force_or_penalty_in_P2",
+    "start_P3_before_G2R_pro_approval_and_new_user_instruction",
+    "change_y_anchor_seeds_meshes_bfgs_method_or_existing_pass_thresholds_in_G2R",
+    "add_restart_or_alternate_optimizer_for_bfgs_status_2",
+    "overwrite_historical_G1_G1R_or_current_G2_evidence",
+    "add_contact_force_or_penalty_in_G2R",
+    "start_dynamics_or_active_set_work",
     "clip_state_or_curvature_denominator_to_manufacture_validity",
     "assume_contact_restitution_or_friction",
-    "modify_formal_program_without_new_authorization",
-    "rewrite_historical_0_1_G1_evidence_as_0_2"
+    "modify_formal_program_without_new_authorization"
   ]
 }

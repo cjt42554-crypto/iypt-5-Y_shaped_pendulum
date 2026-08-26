@@ -128,3 +128,11 @@ P2 改为 `ELIGIBLE_ON_NEW_USER_INSTRUCTION`，本次复审没有自动开始 P2
 第一次未提交试算因混淆原始平衡残差与作用—反作用闭合恒等式而 `NO-GO`；只修正审计定义，未改冻结阈值、物理/几何参数、种子或求解器。完整测试为 `67 passed, 1 warning`；G2 JSON 单命令逐字节复算、Ruff、compileall、JSON、Pandoc 和 HTML/MathML 实际渲染通过。正式理论和正式程序未修改。
 
 候选状态为 `PASS_G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONAL_ONLY`，结论上限为 `G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO`。按 G2 停止门，下一步只允许 Pro 独立复审；P3 仍需复审通过和用户新的明确继续指令。
+
+# 2026-08-27：Pro G2 独立复审与 G2R 修正门
+
+独立复审 P2 预冻结、实现和交接提交后，认可状态 `G2_SUBSTANTIVE_STATIC_EVIDENCE_PASS`：总势能和解析广义力、参考质量集总、偏心连接、支点反力、解析竖直系统以及三层 Y 形平衡结果总体可信；BFGS 状态 2 没有被偷换为成功，也没有触发换算法或放宽容差。
+
+但不批准当前 G2 条件性资格。阻断问题包括：`layout_token` 未绑定节点种类/附件节点、参考姿态、支点位置、环境和旋转图域，真实不同组装可能发生静默 token 碰撞；预冻结后的模块依赖清单被修改，且第一次目标试算后修正了闭合审计定义，协议偏离没有完整版本化；冻结的 BFGS `c1`、`c2` 没有显式进入 SciPy 调用；三网格形状趋势没有覆盖完整材料中心线。
+
+当前状态为 `G2_PRO_APPROVAL_HOLD_PENDING_G2R`，P3 和所有接触/动力学阶段继续关闭。下一次 Codex 只执行 G2R：修正身份合同和真实碰撞测试，显式传入线搜索参数，版本化披露协议偏离，补齐完整支路中心线趋势和无量纲域诊断，并在不改变物理方程、Y 锚点、种子、网格、BFGS 方法和现有数值门的条件下重算证据。正式理论和正式程序未修改，正式资格仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。
