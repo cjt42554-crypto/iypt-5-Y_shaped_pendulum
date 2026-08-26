@@ -1,84 +1,101 @@
 # 交接说明（current）
 
-更新时间：2026-08-26T20:20:56+09:00
+更新时间：2026-08-26T21:36:21+09:00
 
 ## 1. 本轮完成
 
-在 `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/` 完成接触路线裁决和候选静态 KKT 数学原语，未修改正式理论或正式程序。
+在 `90_候选工作区/current/HF-v2重构规划/` 完成由 Pro 冻结的高保真模拟器核心重构规划，供下一次 Codex 分阶段执行。本轮只写规划与交接，没有修改、移动或删除正式理论、正式模拟程序或顶层 `AGENTS.md`。
 
-裁决结果：
+正式高保真后端 `HF-DISCRETE-ROD-RIGID-BOB-1.0`（RC1）保持冻结并作为参考实现。新后端先在候选区以独立模型身份开发，不在原 `model_id` 下静默替换方程。
 
-- 不在无接触边界处立即终止，因为无摩擦刚性静态接触可以在不引入接触刚度、阻尼和摩擦标定参数的前提下检验目标 `alpha` 是否存在受约束平衡态；
-- 暂不采用柔顺接触，因为当前仓库没有可辨识的接触刚度、阻尼、摩擦或表面形变校准；
-- 只开放静态 KKT 可行性层，动态互补/冲量层继续关闭。
+此前交接中的“继续建立正式接触登记适配器并立即运行 `alpha=1e-2` 静态接触制备”不再是下一项默认任务。该路线保留为 P3 的输入证据，但在 HF-v2 的纯物理核和无接触基础尚未通过前暂停。
 
-源码核对确认：正式 `_rod_self_contact_margin` 只返回所有登记接触域的全局最小净空；正式定端制备和 `rhs` 均以 `compute_contact=False` 计算，动力学只在净空守卫零穿越时终止。因此不能只给静态态增加不穿透约束后，再把它释放进当前无接触 ODE。
+## 2. 核心裁决
 
-候选实现包括：
+本次重构只针对 HF 的物理—数值内核，不重写桌面 UI、配置、HDF5、分析和实验比较层。
 
-- 普通段对和固定材料分离域的最近点见证；
-- 非唯一平行接触、零距离见证和塌缩段失败关闭；
-- 端点间隙雅可比与全局节点装配；
-- 非负法向乘子重构和有量纲 KKT 审计；
-- 通用 SLSQP 静态受约束能量原型；
-- 活跃约束零空间 Hessian 半正定充分检查；
-- 预冻结合同、源码哈希、定向测试和验证报告。
+冻结原则：
 
-预冻结前观察到的接触运行数为 `0`，动态接触运行数为 `0`。
+- 方程优先于守卫；张力单边性、姿态合法性和后续非穿透应由模型或时间推进算法直接维持；
+- RC1 是回归参考，不是新架构模板；禁止整体复制其 `solver.py`、`validation.py` 单体结构；
+- HF-v2 主模型直接采用只传递拉力的轴向材料，不把 `compression_regularization_scale` 作为主物理；
+- 刚体姿态采用 `SO(3)` 群更新，不依赖每步强制归一化维持合法性；
+- 静态和动力学必须共享同一套材料、刚体和接触几何；
+- 验证、哈希、检查点、报告、并行后处理和 UI 必须位于物理核心之外；
+- 主算法失败时失败关闭，不得自动换求解器、放宽容差、关闭守卫或裁剪状态；
+- 动态硬接触保持关闭，恢复系数、摩擦和冲量律必须由 Pro 另行裁决。
 
-## 2. 新增路径
+候选模型身份暂定为：
 
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/__init__.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/geometry_kkt.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/types.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/parameter_domain.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/witness.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/witness_candidates.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/assembly.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/kkt.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/kkt_audit.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/multipliers.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/hessian.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/static_solver.py`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/contract.json`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/prefreeze.json`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/validation_report.json`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/README.md`
-- `90_候选工作区/current/三锚点高保真资格/hard_contact_candidate/decision.md`
-- `90_候选工作区/current/三锚点高保真资格/tests/test_contact_geometry_candidate.py`
-- `90_候选工作区/current/三锚点高保真资格/tests/test_contact_degeneracy_candidate.py`
-- `90_候选工作区/current/三锚点高保真资格/tests/test_contact_kkt_candidate.py`
-- `90_候选工作区/current/三锚点高保真资格/tests/test_contact_prefreeze_candidate.py`
+`HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE`
 
-## 3. 已执行验证
-
-隔离候选验证：
-
-- `python -m py_compile ...`：通过；
-- `python -m pytest -q tests/test_contact_*_candidate.py`：`12 passed`；
-- `contract.json`、`prefreeze.json`、`validation_report.json`：JSON 解析通过；
-- `README.md`、`decision.md`：Pandoc 解析通过；
-- 预冻结清单自校验：通过。
-
-未执行：完整既有候选测试套件、正式 `HighFidelityModel` 适配、任何目标 `alpha` 接触制备、任何动态接触积分。
-
-## 4. 当前结论
-
-正式高保真状态保持：
+当前正式资格结论不变：
 
 `HF_NUMERICAL_QUALIFICATION_NO_GO`
 
-无接触路线仍不能到达 `alpha=1e-2`、`1e-4`、`1e-6`。本轮只证明候选静态接触路线已经有可测试的逐约束几何和 KKT 基础，不证明任何目标尺度存在合法接触平衡，更不证明压缩极限或动态轨迹已经实现。
+## 3. 新增规划文件
 
-## 5. 下一项唯一主任务
+- `90_候选工作区/current/HF-v2重构规划/00_CODEX_EXECUTION_ENTRY.md`
+- `90_候选工作区/current/HF-v2重构规划/01_ARCHITECTURE_AND_PHYSICS_CONTRACT.md`
+- `90_候选工作区/current/HF-v2重构规划/02_PHASED_IMPLEMENTATION_PLAN.md`
+- `90_候选工作区/current/HF-v2重构规划/03_ACCEPTANCE_MATRIX.md`
+- `90_候选工作区/current/HF-v2重构规划/04_MIGRATION_AND_ROLLBACK.md`
+- `90_候选工作区/current/HF-v2重构规划/plan_manifest.json`
 
-建立正式登记到逐接触约束的只读适配器，并在看到任何新结果前冻结运行协议：
+规划分为 P0–P8：基线与骨架、纯物理核、无接触静态、静态硬接触、平滑动力学、张力活动集、动态硬接触、外围适配、三锚点与正式提升。
 
-1. 精确展开 `same_branch_contact_registration.full_pairs`；
-2. 精确展开 `partial_pairs` 的固定材料分离参数域；
-3. 精确展开结点套筒裁剪后的跨支活动段，不改变杆径、`minimum_clearance` 或套筒身份；
-4. 对每项间隙复算最近点、雅可比和接触对身份；
-5. 冻结 KKT、二阶稳定性、多种子和退化见证门；
-6. 首先且只运行 `alpha=1e-2` 静态接触制备。
+## 4. 下一次 Codex 的严格范围
 
-若 `alpha=1e-2` 失败，先裁决几何不可行、约束奇异或求解器问题，不进入动态层；若通过，再分别冻结 `1e-4`、`1e-6` 静态协议。动态互补、冲量、摩擦和恢复系数需要另行裁决。
+Codex 开始时按规划入口指定顺序读取文件。下一次执行只允许完成：
+
+- P0：冻结 RC1 源码和公共接口基线，建立依赖图和候选包骨架；
+- P1：实现独立纯物理核，包括显式拓扑、单边轴向材料、弯曲能与力、刚体连接点、`SO(3)` 运算和局部审计。
+
+完成 G1 后必须停止、更新交接并提交到 `main`，不得自动继续 P2。
+
+P0/P1 期间明确禁止：
+
+- 修改 `01_最终理论/**`、`02_模拟程序/**` 或顶层 `AGENTS.md`；
+- 创建新分支；
+- 修改 UI、公共 API、HDF5 或历史结果；
+- 运行 `alpha=1e-2/1e-4/1e-6` 接触制备；
+- 实现动态接触、碰撞、摩擦或恢复系数；
+- 为通过旧测试复制 RC1 特殊分支；
+- 失败后自动切换算法或放宽门槛。
+
+候选实现目标路径为：
+
+`90_候选工作区/current/HF-v2-core/`
+
+## 5. G1 验收门
+
+第一轮 Codex 至少必须交付：
+
+- RC1 源码身份、依赖图和公共接口基线；
+- 可导入的候选包；
+- 轴向与弯曲力—能量梯度有限差分交叉检查；
+- 刚体平移和共同旋转客观性；
+- 内力合力、合矩及局部作用—反作用闭合；
+- 压缩状态轴力严格为零；
+- 黏性和单边卸载耗散非负；
+- 姿态群运算保持 `SO(3)`；
+- 核心无 UI、I/O、分析、正式验证和检查点反向依赖；
+- 无静默 fallback 的审计结果；
+- 明确列出通过、失败和未执行项目。
+
+任何一项未完成都不能把“已实现”写成“已验证”。
+
+## 6. 后续裁决门
+
+- P2 只有在 G1 通过且收到新的用户继续指令后才能开始；
+- P3 静态硬接触完成后必须交回 Pro 裁决；
+- P5 张紧—松弛活动集完成后必须交回 Pro 裁决；
+- P6 动态硬接触当前为 `CLOSED_PENDING_PRO_REVIEW`；
+- 正式提升必须同时获得用户明确授权和 Pro 独立审查通过；
+- RC1 在本重构周期内不得删除。
+
+## 7. 本轮验证与结论边界
+
+已对五份 Markdown 执行 Pandoc 解析，对 `plan_manifest.json` 执行 JSON 解析，均通过。
+
+本轮没有实现 HF-v2 代码，没有运行模拟、静态求解、三锚点、接触或实验比较。因此本轮成果是架构与执行合同，不是数值结果或物理资格证明。

@@ -1,0 +1,43 @@
+{
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.0",
+  "date": "2026-08-26",
+  "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
+  "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "candidate_backend": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
+  "formal_modifications_allowed": false,
+  "branch_policy": "main_only",
+  "rc1_policy": "freeze_as_reference_do_not_delete",
+  "next_codex_scope": ["P0", "P1"],
+  "mandatory_stop_gate": "G1",
+  "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
+  "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
+  "primary_design_rules": [
+    "equations_before_guards",
+    "one_model_identity_one_equation_set",
+    "static_and_dynamic_share_physics",
+    "validation_outside_core",
+    "no_silent_fallback",
+    "no_result_driven_threshold_relaxation",
+    "no_rc1_monolith_copy"
+  ],
+  "phases": [
+    {"id": "P0", "name": "baseline_and_skeleton", "review": "CODEX_SELF_CHECK"},
+    {"id": "P1", "name": "pure_physics_kernel", "review": "STOP_AT_G1"},
+    {"id": "P2", "name": "no_contact_statics", "review": "NEW_USER_INSTRUCTION"},
+    {"id": "P3", "name": "hard_contact_statics", "review": "PRO_REQUIRED"},
+    {"id": "P4", "name": "smooth_dynamics", "review": "PRO_RECOMMENDED"},
+    {"id": "P5", "name": "unilateral_tension_active_set", "review": "PRO_REQUIRED"},
+    {"id": "P6", "name": "dynamic_contact", "review": "CLOSED_PRO_REQUIRED"},
+    {"id": "P7", "name": "api_io_ui_adapters", "review": "AFTER_CORE_QUALIFICATION"},
+    {"id": "P8", "name": "three_anchor_and_promotion", "review": "USER_AND_PRO_REQUIRED"}
+  ],
+  "prohibited_automatic_actions": [
+    "switch_optimizer_after_failure",
+    "relax_tolerance_after_failure",
+    "disable_guard_after_failure",
+    "clip_state_to_manufacture_validity",
+    "assume_contact_restitution_or_friction",
+    "modify_formal_program_without_new_authorization",
+    "continue_beyond_G1_in_next_codex_turn"
+  ]
+}
