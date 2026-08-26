@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ypendulum-hfv2-core"
-version = "0.2.0"
-description = "Candidate pure-physics kernel for the HF-v2 Y-pendulum model"
+version = "0.3.0"
+description = "Candidate HF-v2 kernel with gated no-contact static preparation"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26"]
+dependencies = ["numpy>=1.26", "scipy>=1.11"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]

@@ -21,7 +21,7 @@
   ],
   "allowed_internal_dependencies": {
     "public_contract": ["public_contract", "physical_core", "state_contract", "topology_contract"],
-    "physical_core": ["physical_core"],
+    "physical_core": ["physical_core", "state_contract", "topology_contract"],
     "state_contract": ["physical_core", "state_contract", "topology_contract"],
     "topology_contract": ["topology_contract"],
     "static_assembly": ["physical_core", "state_contract", "topology_contract", "static_assembly"],

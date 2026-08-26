@@ -1,0 +1,3032 @@
+{
+  "allowed_claim": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO",
+  "analytic_vertical_system": {
+    "case_id": "VERTICAL_TAUT_BUOYANT_CABLE",
+    "computed_bob_position_m": [
+      0.0,
+      0.0,
+      -0.6089137319129998
+    ],
+    "computed_support_reaction_N": [
+      -0.0,
+      -0.0,
+      1.2002660567999763
+    ],
+    "computed_tension_N": 1.1884975883999764,
+    "expected_bob_position_m": [
+      0.0,
+      0.0,
+      -0.608913731913
+    ],
+    "expected_normalized_physical_hessian_eigenvalues": [
+      1.6261665076414018,
+      1.6261665076414018,
+      111.08648168291127
+    ],
+    "expected_support_reaction_N": [
+      -0.0,
+      -0.0,
+      1.2002660568
+    ],
+    "expected_tension_N": 1.1884975884,
+    "generalized_force_residual_N": 2.353672812205332e-14,
+    "generalized_force_residual_max_N": 2e-07,
+    "global_force_closure_residual_N": [
+      0.0,
+      0.0,
+      -2.220446049250313e-16
+    ],
+    "global_moment_closure_residual_N_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "layout_mass_and_rest_binding": {
+      "coordinate_slices": {
+        "bob_position": [
+          0,
+          3
+        ],
+        "bob_rotation_body": [
+          3,
+          6
+        ]
+      },
+      "free_node_ids": [],
+      "generalized_size": 6,
+      "layout_token": "bc6f52a0a85f8d0f84c7075a43babca45a03d5aa2fba0a97ba3767d82bd2c245",
+      "material_mass_absolute_error_kg": 0.0,
+      "material_mass_expected_kg": 0.0024,
+      "material_mass_total_kg": 0.0024,
+      "material_volume_absolute_error_m3": 0.0,
+      "material_volume_expected_m3": 6e-07,
+      "material_volume_total_m3": 6e-07,
+      "node_ids": [
+        "support",
+        "attachment"
+      ],
+      "node_lumped_displaced_volume_m3": [
+        3e-07,
+        3e-07
+      ],
+      "node_lumped_mass_kg": [
+        0.0012,
+        0.0012
+      ],
+      "rest_binding_max_absolute_error_m": 0.0,
+      "segment_ids": [
+        "vertical_s000"
+      ],
+      "segment_rest_lengths_m": [
+        0.6
+      ],
+      "status": "PASS"
+    },
+    "optimizer": {
+      "function_evaluations": 4,
+      "gradient_evaluations": 4,
+      "iterations": 1,
+      "message": "Optimization terminated successfully.",
+      "status": 0,
+      "success_record_only": true
+    },
+    "physical_hessian_relative_error": 7.515120794641069e-10,
+    "physical_hessian_relative_error_max": 0.0002,
+    "position_absolute_error_m": 2.220446049250313e-16,
+    "position_absolute_error_max_m": 2e-07,
+    "raw_equilibrium_force_residual_N": [
+      0.0,
+      0.0,
+      -2.375877272697835e-14
+    ],
+    "raw_equilibrium_moment_residual_N_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "reaction_absolute_error_N": 2.375877272697835e-14,
+    "reaction_absolute_error_max_N": 2e-07,
+    "second_order": {
+      "directional_curvatures": [
+        71.05590650450675,
+        3.5472836885442836,
+        5.044855308915767,
+        5.173941463135733,
+        96.385754573348,
+        11.887687318761392,
+        109.8818634395225,
+        5.100735247354142,
+        22.20799309952175,
+        2.365986581357441,
+        68.2256179619724,
+        10.001617530249442
+      ],
+      "gauge_curvatures": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gauge_eigenvalue_absolute_max": 2e-05,
+      "maximum_absolute_gauge_curvature": 0.0,
+      "minimum_nongauge_normalized_eigenvalue": 1.6261665666852783,
+      "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+      "minimum_normalized_directional_curvature": 2.365986581357441,
+      "minimum_normalized_directional_curvature_required": 1e-05,
+      "nongauge_eigenvalues": [
+        1.6261665666852783,
+        1.6261665666852783,
+        111.08648168301927
+      ],
+      "normalization_energy_J": 1.2002660568,
+      "status": "PASS",
+      "unsymmetrized_relative_asymmetry": 0.0,
+      "unsymmetrized_relative_asymmetry_max": 2e-05
+    },
+    "status": "PASS",
+    "tension_absolute_error_N": 2.353672812205332e-14
+  },
+  "architecture": {
+    "canonical_imports": {
+      "__init__.py": [
+        "ypendulum_hfv2.constitutive",
+        "ypendulum_hfv2.loads",
+        "ypendulum_hfv2.mass",
+        "ypendulum_hfv2.rigid",
+        "ypendulum_hfv2.state",
+        "ypendulum_hfv2.topology"
+      ],
+      "audit/__init__.py": [
+        "ypendulum_hfv2.audit.architecture",
+        "ypendulum_hfv2.audit.energy_gradient",
+        "ypendulum_hfv2.audit.evidence",
+        "ypendulum_hfv2.audit.invariance",
+        "ypendulum_hfv2.audit.passivity"
+      ],
+      "audit/architecture.py": [
+        "__future__",
+        "ast",
+        "dataclasses",
+        "json",
+        "pathlib"
+      ],
+      "audit/clearance.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "ypendulum_hfv2.statics.assembly",
+        "ypendulum_hfv2.topology"
+      ],
+      "audit/dependency.py": [
+        "__future__",
+        "ast",
+        "dataclasses",
+        "importlib.util",
+        "json",
+        "pathlib",
+        "sys",
+        "typing"
+      ],
+      "audit/energy_gradient.py": [
+        "__future__",
+        "collections.abc",
+        "dataclasses",
+        "numpy"
+      ],
+      "audit/evidence.py": [
+        "__future__",
+        "hashlib",
+        "inspect",
+        "json",
+        "numpy",
+        "pathlib",
+        "platform",
+        "typing",
+        "ypendulum_hfv2",
+        "ypendulum_hfv2.audit.architecture",
+        "ypendulum_hfv2.audit.energy_gradient",
+        "ypendulum_hfv2.audit.invariance",
+        "ypendulum_hfv2.constitutive.axial",
+        "ypendulum_hfv2.constitutive.bending",
+        "ypendulum_hfv2.mass",
+        "ypendulum_hfv2.rigid.rotation",
+        "ypendulum_hfv2.state",
+        "ypendulum_hfv2.topology"
+      ],
+      "audit/g2_cases.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "typing",
+        "ypendulum_hfv2.rigid.rotation",
+        "ypendulum_hfv2.state",
+        "ypendulum_hfv2.statics.assembly",
+        "ypendulum_hfv2.statics.contracts",
+        "ypendulum_hfv2.topology"
+      ],
+      "audit/g2_evidence.py": [
+        "__future__",
+        "hashlib",
+        "itertools",
+        "json",
+        "numpy",
+        "pathlib",
+        "platform",
+        "scipy",
+        "sys",
+        "typing",
+        "ypendulum_hfv2",
+        "ypendulum_hfv2.audit.clearance",
+        "ypendulum_hfv2.audit.dependency",
+        "ypendulum_hfv2.audit.g2_cases",
+        "ypendulum_hfv2.audit.statics",
+        "ypendulum_hfv2.statics.assembly",
+        "ypendulum_hfv2.statics.solver"
+      ],
+      "audit/invariance.py": [
+        "__future__",
+        "collections.abc",
+        "dataclasses",
+        "numpy",
+        "ypendulum_hfv2.rigid.rotation"
+      ],
+      "audit/passivity.py": [
+        "__future__",
+        "dataclasses",
+        "ypendulum_hfv2.constitutive.axial"
+      ],
+      "audit/statics.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "ypendulum_hfv2.rigid.rotation",
+        "ypendulum_hfv2.statics.assembly",
+        "ypendulum_hfv2.statics.contracts"
+      ],
+      "constitutive/__init__.py": [
+        "ypendulum_hfv2.constitutive.axial",
+        "ypendulum_hfv2.constitutive.bending"
+      ],
+      "constitutive/axial.py": [
+        "__future__",
+        "dataclasses",
+        "numpy"
+      ],
+      "constitutive/bending.py": [
+        "__future__",
+        "dataclasses",
+        "numpy"
+      ],
+      "loads.py": [
+        "__future__",
+        "dataclasses",
+        "numpy"
+      ],
+      "mass.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "typing",
+        "ypendulum_hfv2.state",
+        "ypendulum_hfv2.topology"
+      ],
+      "rigid/__init__.py": [
+        "ypendulum_hfv2.rigid.attachment",
+        "ypendulum_hfv2.rigid.rotation"
+      ],
+      "rigid/attachment.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "ypendulum_hfv2.rigid.rotation"
+      ],
+      "rigid/rotation.py": [
+        "__future__",
+        "dataclasses",
+        "numpy"
+      ],
+      "state.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "ypendulum_hfv2.rigid.rotation",
+        "ypendulum_hfv2.topology"
+      ],
+      "statics/__init__.py": [],
+      "statics/assembly.py": [
+        "__future__",
+        "collections.abc",
+        "dataclasses",
+        "hashlib",
+        "json",
+        "numpy",
+        "types",
+        "ypendulum_hfv2.constitutive.axial",
+        "ypendulum_hfv2.constitutive.bending",
+        "ypendulum_hfv2.loads",
+        "ypendulum_hfv2.mass",
+        "ypendulum_hfv2.rigid.rotation",
+        "ypendulum_hfv2.state",
+        "ypendulum_hfv2.statics.contracts",
+        "ypendulum_hfv2.topology"
+      ],
+      "statics/contracts.py": [
+        "__future__",
+        "dataclasses",
+        "numpy"
+      ],
+      "statics/solver.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "scipy.optimize",
+        "ypendulum_hfv2.statics.assembly",
+        "ypendulum_hfv2.statics.contracts"
+      ],
+      "topology.py": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "typing"
+      ]
+    },
+    "classified_files": [
+      "__init__.py",
+      "audit/__init__.py",
+      "audit/architecture.py",
+      "audit/clearance.py",
+      "audit/dependency.py",
+      "audit/energy_gradient.py",
+      "audit/evidence.py",
+      "audit/g2_cases.py",
+      "audit/g2_evidence.py",
+      "audit/invariance.py",
+      "audit/passivity.py",
+      "audit/statics.py",
+      "constitutive/__init__.py",
+      "constitutive/axial.py",
+      "constitutive/bending.py",
+      "loads.py",
+      "mass.py",
+      "rigid/__init__.py",
+      "rigid/attachment.py",
+      "rigid/rotation.py",
+      "state.py",
+      "statics/__init__.py",
+      "statics/assembly.py",
+      "statics/contracts.py",
+      "statics/solver.py",
+      "topology.py"
+    ],
+    "dependency_violations": [],
+    "discovered_files": [
+      "__init__.py",
+      "audit/__init__.py",
+      "audit/architecture.py",
+      "audit/clearance.py",
+      "audit/dependency.py",
+      "audit/energy_gradient.py",
+      "audit/evidence.py",
+      "audit/g2_cases.py",
+      "audit/g2_evidence.py",
+      "audit/invariance.py",
+      "audit/passivity.py",
+      "audit/statics.py",
+      "constitutive/__init__.py",
+      "constitutive/axial.py",
+      "constitutive/bending.py",
+      "loads.py",
+      "mass.py",
+      "rigid/__init__.py",
+      "rigid/attachment.py",
+      "rigid/rotation.py",
+      "state.py",
+      "statics/__init__.py",
+      "statics/assembly.py",
+      "statics/contracts.py",
+      "statics/solver.py",
+      "topology.py"
+    ],
+    "line_count_status": "PASS",
+    "missing_manifest_files": [],
+    "path_classification_violations": [],
+    "production_random_call_count": 0,
+    "production_try_statement_count": 0,
+    "source_line_counts": {
+      "__init__.py": 46,
+      "audit/__init__.py": 24,
+      "audit/architecture.py": 177,
+      "audit/clearance.py": 321,
+      "audit/dependency.py": 213,
+      "audit/energy_gradient.py": 77,
+      "audit/evidence.py": 611,
+      "audit/g2_cases.py": 375,
+      "audit/g2_evidence.py": 724,
+      "audit/invariance.py": 86,
+      "audit/passivity.py": 37,
+      "audit/statics.py": 285,
+      "constitutive/__init__.py": 19,
+      "constitutive/axial.py": 134,
+      "constitutive/bending.py": 129,
+      "loads.py": 104,
+      "mass.py": 108,
+      "rigid/__init__.py": 39,
+      "rigid/attachment.py": 93,
+      "rigid/rotation.py": 135,
+      "state.py": 87,
+      "statics/__init__.py": 1,
+      "statics/assembly.py": 536,
+      "statics/contracts.py": 162,
+      "statics/solver.py": 116,
+      "topology.py": 193
+    },
+    "source_lines_per_module_max_exclusive": 800,
+    "status": "PASS",
+    "unclassified_files": []
+  },
+  "assembly_energy_force": {
+    "case_id": "Y_POSITIVE_CLEARANCE_INTERIOR_1",
+    "final_relative_error": 4.25997003976729e-10,
+    "final_relative_error_max": 2e-06,
+    "minimum_strict_decrease_steps": 3,
+    "probe_rotation_vector_rad": [
+      0.04,
+      -0.02,
+      0.0
+    ],
+    "probe_seed_id": "seed_01_skew",
+    "relative_errors": [
+      3.5905526307375284e-06,
+      3.231498012344009e-07,
+      3.5906146552937276e-08,
+      3.250537443212017e-09,
+      3.329566870296234e-10,
+      4.25997003976729e-10
+    ],
+    "relative_steps": [
+      0.0001,
+      3e-05,
+      1e-05,
+      3e-06,
+      1e-06,
+      3e-07
+    ],
+    "status": "PASS",
+    "strict_decrease_interval_indices": [
+      0,
+      3
+    ]
+  },
+  "claim_ceiling": "no_dynamic_no_contact_no_physical_no_experimental_validation",
+  "evidence_binding": {
+    "acceptance_manifest": "contracts/g2_acceptance_manifest.json",
+    "acceptance_manifest_sha256": "a224356c1fa138547bb052023e3e5b457c8736e45339f60affad26280a9c304d",
+    "evidence_generator": "tools/generate_g2_evidence.py",
+    "evidence_generator_sha256": "31e8bd68c9a969f732e96b673f536856758c2ad87634aa4bde94f36052f8abd8",
+    "frozen_protocol": "contracts/G2_FROZEN_PROTOCOL.md",
+    "frozen_protocol_sha256": "dd3ee09fb238af2c834a6846ce8d47a2c9de37a2e5d886871ac33aa5abf395f7",
+    "historical_g1r_metrics_sha256": "8533bf9b5d35ce92a53356179311eff4606291b6c803f3586241b7f813e90ea1",
+    "historical_g1r_report_sha256": "74c878ade80e2eb2c1404d46acc4a75bfafbc2bb6411bd39f55c66d52adebf4b",
+    "model_identity": "contracts/model_identity_0_2.json",
+    "model_identity_sha256": "ecd4aaee34838dd36152d8856f1ea7e7ec9273187d1b7b23d8577420abfd2dbc",
+    "module_manifest": "contracts/g2_module_manifest.json",
+    "module_manifest_sha256": "b29793ecd4d2653a16dd5215bb7724250b8ad08c84f6e133a63d46f96834064b",
+    "pyproject": "pyproject.toml",
+    "pyproject_sha256": "2695de5d1f774b5a3ff02e9afc5806e07e88451644a86528787c113b12bf6795",
+    "readme": "README.md",
+    "readme_sha256": "7037da2aa770b03e6c4249d89ae5653a24d099e5ccfb6b3ede425e75257f321b",
+    "source_sha256": {
+      "src/ypendulum_hfv2/__init__.py": "b14eb783b05df081415781cd3b5b619fcab4f3b543df09695d58c82383157c80",
+      "src/ypendulum_hfv2/audit/__init__.py": "c509df5e594eb9053ef96bbe8b5b6c420ac94dddbb07fe0d24bc9409b23b88d9",
+      "src/ypendulum_hfv2/audit/architecture.py": "5a085514d1fe32ac3d6d2db66b046344b81c48a506e81f867b68b46d28030bbb",
+      "src/ypendulum_hfv2/audit/clearance.py": "e467ecb9d6c1a9c2e8b4bdaa711b46ee01a878ea39c241f04d15e18275bc8661",
+      "src/ypendulum_hfv2/audit/dependency.py": "5c823b39d756044422d380f4366111a0af376dc3e258a52cfcfcd0c721e90438",
+      "src/ypendulum_hfv2/audit/energy_gradient.py": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
+      "src/ypendulum_hfv2/audit/evidence.py": "43f0f02739b50992155e87de7c317ffa5761bf534f016bb74abd618735a2c56e",
+      "src/ypendulum_hfv2/audit/g2_cases.py": "195f867560bdd22959a46ed23f1b720922cb918b3b13ca89b091479aac259553",
+      "src/ypendulum_hfv2/audit/g2_evidence.py": "4dd1c7e3912a17f7fea501546b2cd3e746e33a70bed72bbfcd8699745222ec58",
+      "src/ypendulum_hfv2/audit/invariance.py": "a0ed1428ed20195db059ae4cfbe53ce13eb81686cf988ee5d1358c2777ef4ad4",
+      "src/ypendulum_hfv2/audit/passivity.py": "cc351a071cef233bc22dbc8577f76b0c8f6791b535b883a2cc62141b6657f086",
+      "src/ypendulum_hfv2/audit/statics.py": "eaf79ae69a96d1fa908bb3d2410c81679bf5b80442e7dd2b78d26ae0adece9e1",
+      "src/ypendulum_hfv2/constitutive/__init__.py": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
+      "src/ypendulum_hfv2/constitutive/axial.py": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
+      "src/ypendulum_hfv2/constitutive/bending.py": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
+      "src/ypendulum_hfv2/loads.py": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
+      "src/ypendulum_hfv2/mass.py": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
+      "src/ypendulum_hfv2/rigid/__init__.py": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
+      "src/ypendulum_hfv2/rigid/attachment.py": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
+      "src/ypendulum_hfv2/rigid/rotation.py": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
+      "src/ypendulum_hfv2/state.py": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
+      "src/ypendulum_hfv2/statics/__init__.py": "0efee8bc1ce0762ff214e3656cb9d860590fcfc92d2704facb89b41f15b1d411",
+      "src/ypendulum_hfv2/statics/assembly.py": "627805ca48310546c8dd518b0b164b566ebc6febc7b9b2f84502774f551f045a",
+      "src/ypendulum_hfv2/statics/contracts.py": "f7be9a3953d645bb032c8dadc736ecefde42e2093172899ea3dd691fc49185f6",
+      "src/ypendulum_hfv2/statics/solver.py": "ae82019b644449e1a5169461e2c6a30d9fe80af0bb6f76a049d42573091a815b",
+      "src/ypendulum_hfv2/topology.py": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07"
+    },
+    "test_sha256": {
+      "tests/characterization/test_p0_contracts.py": "9eccdcf3a3ad5fb7bbefea8dd5e4ba7e7e2b1d58da8ba3846294d348c9b04d43",
+      "tests/characterization/test_rc1_characterization.py": "e14ad44f5160f5a369d289947ea456ef5415bc96a0b13d7cfa108cb94a9f5037",
+      "tests/unit/test_architecture.py": "1373f8f4d523fc9712bba0680e213e3a28d861703cd9d2ec817837effd42b9ae",
+      "tests/unit/test_axial.py": "c9f9dc361c3049d31491c50ba3f9187d621fda40b304a6880b4b8a2766e92363",
+      "tests/unit/test_bending.py": "7216187663851e902a4ac048b4fea8f596310bfe08ed4c2f08a26c32f55f4f45",
+      "tests/unit/test_g1r_evidence.py": "3fc1bac8dfd6c6f921eb7786a989cef31ab8a2f3d3118e20168a91de7430241b",
+      "tests/unit/test_g2_evidence.py": "1d89258c40887610f49017387aef14578fb1dad338cb2b6792fb59f57f83cbdb",
+      "tests/unit/test_mass_loads.py": "3e5079019ab33bc75b8ac7d66dc067a73ae18b619f396c45c25f8cf35c94067e",
+      "tests/unit/test_rigid.py": "ccd16108d01899bad14017cf2e727a63c24516ca5735c43750f056c332f2dc60",
+      "tests/unit/test_static_assembly.py": "b77b812d15ce440c39860b9a4b08c3064cf0b52e471eb2e2472407d5e0f3eea6",
+      "tests/unit/test_topology_state.py": "62e7e8436e905af443d1a782ef84db2f82e1d16f9fc89c4930dffd30011c05da"
+    }
+  },
+  "gate_summary": {
+    "all_y_meshes": true,
+    "analytic_vertical_system": true,
+    "architecture": true,
+    "assembly_energy_force": true,
+    "historical_g1r_immutability": true,
+    "three_mesh_trend": true
+  },
+  "historical_g1r": {
+    "metrics_sha256_matches": true,
+    "report_sha256_matches": true,
+    "status": "PASS",
+    "treatment": "immutable_historical_artifact_not_recomputed_against_p2_source"
+  },
+  "mesh_trend": {
+    "levels": [
+      2,
+      4,
+      8
+    ],
+    "status": "PASS",
+    "successive_difference_ratio_max": 0.95,
+    "successive_difference_ratios": {
+      "potential": 0.24949241604884562,
+      "reactions": 0.25349250838720494,
+      "shape": 0.24898358624111916
+    },
+    "successive_differences": {
+      "potential_J": [
+        5.089514138800766e-06,
+        1.2697951790041628e-06
+      ],
+      "reactions_N": [
+        2.1371516461147706e-06,
+        5.417519315774774e-07
+      ],
+      "shape_m": [
+        5.900547031753996e-06,
+        1.4691393607505007e-06
+      ]
+    }
+  },
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "not_executed": [
+    "static_contact",
+    "dynamic_integrator",
+    "dynamic_contact",
+    "active_set",
+    "formal_program_adapter",
+    "ui",
+    "hdf5",
+    "physical_apparatus_validation",
+    "experimental_validation"
+  ],
+  "optimizer_success_used_as_gate": false,
+  "phase": "P2_NO_CONTACT_STATICS",
+  "runtime": {
+    "byteorder": "little",
+    "numpy": "1.26.4",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_implementation": "CPython",
+    "scipy": "1.11.4"
+  },
+  "schema": "YPS-HFV2-G2-EVIDENCE-1.0",
+  "status": "PASS_G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONAL_ONLY",
+  "stop_gate": "G2_PRO_REVIEW_REQUIRED",
+  "y_anchor_meshes": [
+    {
+      "all_candidates_independently_pass": true,
+      "candidates": [
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.9999410745835215,
+            "lower": 2.0,
+            "right": 1.9999410745835215
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13092332608140522,
+            "bob_rod_net_clearance_m": 0.07992332608140522,
+            "evaluated_bob_segment_domains": 6,
+            "evaluated_rod_pair_domains": 21,
+            "minimum_net_clearance_m": 0.07880071772232289,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.08080071772232289,
+            "rod_rod_net_clearance_m": 0.07880071772232289,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.015781333782943698,
+            "bob_center_gravity_buoyancy": -1.2837567341321445,
+            "discrete_bending": 2.1045411654324256e-08,
+            "material_node_gravity_buoyancy": -0.030559104019817207,
+            "unilateral_axial": 0.011153964829183044
+          },
+          "global_force_closure_residual_N": [
+            0.0,
+            0.0,
+            -8.673617379884035e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            0.0,
+            0.0,
+            -0.3426747175079631,
+            0.0,
+            0.0,
+            -0.888942911712144,
+            0.0,
+            0.0,
+            -0.9389429117121441
+          ],
+          "minimum_curvature_denominator": 1.9999410745835215,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.002802512028130144,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.2731162255247427,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.2010765834843475,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 16,
+            "gradient_evaluations": 16,
+            "iterations": 11,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            0.0,
+            0.0,
+            -9.389155453121134e-09
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scaled_generalized_force_residual": 1.2023846194477924e-08,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 5.804333734085187e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 0.0,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              314.73702379746527,
+              332.7374250595197,
+              181.0330650842549,
+              168.88268704257624,
+              81.1869303066612,
+              109.32572916925065,
+              344.53114731736287,
+              177.6748633243927,
+              79.05425427124298,
+              257.36586396484694,
+              272.3564353057693,
+              244.2202278692361
+            ],
+            "gauge_curvatures": [
+              0.0
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 0.0,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562799758289859,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 79.05425427124298,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562799758289859,
+              0.04563005922425319,
+              0.569574474638079,
+              1.2915016296063755,
+              3.135824500298055,
+              5.632864636194474,
+              5.690017732177391,
+              5.7135620411166625,
+              7.959810047727461,
+              8.87978788156281,
+              13.405169471673327,
+              28.162222413416945,
+              133.3362457310224,
+              295.84567012314153,
+              663.1756186943526,
+              811.9544221063567,
+              987.2788864095432
+            ],
+            "normalization_energy_J": 1.494334712173657,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 1.5297440316639519e-09,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_00_base",
+          "segment_current_lengths_m": [
+            0.28282580071986496,
+            0.28280251202813017,
+            0.28282580071986496,
+            0.28280251202813017,
+            0.27315196867943825,
+            0.2731162255247427
+          ],
+          "segment_extensions_m": [
+            0.002825800719864935,
+            0.002802512028130144,
+            0.002825800719864935,
+            0.002802512028130144,
+            0.003151968679438233,
+            0.0031162255247426662
+          ],
+          "segment_tensions_N": [
+            1.2110574513706864,
+            1.2010765834843475,
+            1.2110574513706864,
+            1.2010765834843475,
+            1.4008749686392146,
+            1.3849891221078514
+          ],
+          "total_potential_J": -1.3189431860603107,
+          "two_support_reactions_N": [
+            -0.959501036903982,
+            -0.0,
+            0.7471673513922508,
+            0.959501036903982,
+            -0.0,
+            0.7471673513922508
+          ]
+        },
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.999941074586043,
+            "lower": 2.0,
+            "right": 1.9999410745369912
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13092332610913116,
+            "bob_rod_net_clearance_m": 0.07992332610913115,
+            "evaluated_bob_segment_domains": 6,
+            "evaluated_rod_pair_domains": 21,
+            "minimum_net_clearance_m": 0.078800717720194,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.080800717720194,
+            "rod_rod_net_clearance_m": 0.078800717720194,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.01578133378618275,
+            "bob_center_gravity_buoyancy": -1.283756734381599,
+            "discrete_bending": 2.1045419513455043e-08,
+            "material_node_gravity_buoyancy": -0.030559104033352505,
+            "unilateral_axial": 0.011153965095404022
+          },
+          "global_force_closure_residual_N": [
+            4.732088526179058e-18,
+            0.0,
+            -1.0408340855860843e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            1.5235012522001664e-20,
+            -1.3079014231857725e-17,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            3.374235838260382e-11,
+            -1.5114615872742706e-09,
+            -0.34267471758566664,
+            5.834813765658041e-10,
+            -3.4646447635720958e-09,
+            -0.8889429118945957,
+            8.167179614866208e-10,
+            -3.567836469621892e-09,
+            -0.9389429118945958
+          ],
+          "minimum_curvature_denominator": 1.9999410745369912,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.002802512020678938,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.2731162256183176,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.2010765802909733,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 40,
+            "gradient_evaluations": 40,
+            "iterations": 29,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            7.637018462069989e-09,
+            8.0892987267675e-09,
+            3.4773147694622253e-09
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            5.071725233516906e-09,
+            -3.1036887504498623e-09,
+            1.3642199093200196e-09
+          ],
+          "scaled_generalized_force_residual": 3.1400629291347704e-08,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 7.651268963307503e-18,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 8.752405333633179e-18,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              314.73702268303316,
+              332.7374258024744,
+              181.03306471277756,
+              168.8826866710989,
+              81.18693104961591,
+              109.32572916925065,
+              344.5311469458855,
+              177.67486443882478,
+              79.05425464272034,
+              257.36586396484694,
+              272.35643456281457,
+              244.22022749775874
+            ],
+            "gauge_curvatures": [
+              1.5594584483395125e-19
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 1.5594584483395125e-19,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562799897073783,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 79.05425464272034,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562799897073783,
+              0.04563006061218878,
+              0.5695744796764047,
+              1.2915016433028081,
+              3.1358245366542805,
+              5.632864676614743,
+              5.690017797550975,
+              5.713562091504986,
+              7.959810212958749,
+              8.87978808131215,
+              13.405169600878859,
+              28.162222363861062,
+              133.33624587953634,
+              295.84567014043654,
+              663.1756185371588,
+              811.9544224944364,
+              987.2788861281784
+            ],
+            "normalization_energy_J": 1.494334712173657,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 1.5297458754127583e-09,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_01_skew",
+          "segment_current_lengths_m": [
+            0.282825800726559,
+            0.28280251209500146,
+            0.28282580075412717,
+            0.28280251202067896,
+            0.2731519686906115,
+            0.2731162256183176
+          ],
+          "segment_extensions_m": [
+            0.002825800726558969,
+            0.0028025120950014304,
+            0.002825800754127139,
+            0.002802512020678938,
+            0.003151968690611462,
+            0.003116225618317592
+          ],
+          "segment_tensions_N": [
+            1.2110574542395582,
+            1.2010766121434702,
+            1.2110574660544882,
+            1.2010765802909733,
+            1.400874973605094,
+            1.3849891636967073
+          ],
+          "total_potential_J": -1.3189431860603107,
+          "two_support_reactions_N": [
+            -0.9595010392083803,
+            2.528849464139284e-09,
+            0.7471673531018791,
+            0.9595010468453987,
+            5.5604492626282164e-09,
+            0.7471673625490927
+          ]
+        },
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.9999410745555435,
+            "lower": 2.0,
+            "right": 1.9999410745544348
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13092332608049917,
+            "bob_rod_net_clearance_m": 0.07992332608049917,
+            "evaluated_bob_segment_domains": 6,
+            "evaluated_rod_pair_domains": 21,
+            "minimum_net_clearance_m": 0.0788007177281121,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.0808007177281121,
+            "rod_rod_net_clearance_m": 0.0788007177281121,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.015781333783510074,
+            "bob_center_gravity_buoyancy": -1.2837567341757636,
+            "discrete_bending": 2.1045421844962626e-08,
+            "material_node_gravity_buoyancy": -0.030559104033012655,
+            "unilateral_axial": 0.011153964886553968
+          },
+          "global_force_closure_residual_N": [
+            -1.1000004950046547e-17,
+            0.0,
+            1.1449174941446927e-16
+          ],
+          "global_moment_closure_residual_N_m": [
+            1.8426482120384383e-21,
+            4.351378214981705e-17,
+            -4.2005265481208437e-26
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            -4.144823906464501e-12,
+            2.1815627577889855e-10,
+            -0.34267471755769074,
+            -4.0785752446385794e-11,
+            4.182916050277718e-10,
+            -0.8889429117440473,
+            -1.815530203026301e-10,
+            5.620596134170022e-10,
+            -0.9389429117440473
+          ],
+          "minimum_curvature_denominator": 1.9999410745544348,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0028025120483923804,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.27311622552168446,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.201076592168163,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 39,
+            "gradient_evaluations": 39,
+            "iterations": 31,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            3.8990002337868646e-09,
+            -1.0662330209767632e-09,
+            -7.218941000530776e-10
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            -7.950867464551002e-10,
+            -1.6296955451799988e-09,
+            1.8943237843882645e-11
+          ],
+          "scaled_generalized_force_residual": 2.660036884321878e-09,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 7.697001044636467e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 2.911916710114874e-17,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              314.7370234259879,
+              332.737425430997,
+              181.0330632268681,
+              168.88268555666681,
+              81.18692993518383,
+              109.32572842629592,
+              344.5311462029308,
+              177.67486295291536,
+              79.05425352828826,
+              257.36586359336957,
+              272.35643493429194,
+              244.22022638332666
+            ],
+            "gauge_curvatures": [
+              1.159568697176535e-19
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 1.159568697176535e-19,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562799753704927,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 79.05425352828826,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562799753704927,
+              0.04563005917838074,
+              0.5695744760206422,
+              1.2915016249613962,
+              3.1358245016728907,
+              5.632864658108018,
+              5.690017786697911,
+              5.713562075415448,
+              7.959810061014595,
+              8.879787864696896,
+              13.405169497081511,
+              28.162222340181778,
+              133.33624590255002,
+              295.84567013878075,
+              663.1756184764682,
+              811.9544226253838,
+              987.2788860141385
+            ],
+            "normalization_energy_J": 1.494334712173657,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 1.5301682804928389e-09,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_02_counter_skew",
+          "segment_current_lengths_m": [
+            0.28282580072556657,
+            0.2828025120532147,
+            0.2828258007371409,
+            0.2828025120483924,
+            0.27315196866467206,
+            0.27311622552168446
+          ],
+          "segment_extensions_m": [
+            0.0028258007255665407,
+            0.0028025120532146897,
+            0.0028258007371408933,
+            0.0028025120483923804,
+            0.0031519686646720446,
+            0.003116225521684446
+          ],
+          "segment_tensions_N": [
+            1.2110574538142318,
+            1.201076594234867,
+            1.2110574587746685,
+            1.201076592168163,
+            1.4008749620764642,
+            1.3849891207486424
+          ],
+          "total_potential_J": -1.3189431860603105,
+          "two_support_reactions_N": [
+            -0.9595010378317168,
+            -5.5416455253714e-10,
+            0.7471673541923951,
+            0.959501041730717,
+            -5.12068468439623e-10,
+            0.7471673572593678
+          ]
+        }
+      ],
+      "gauge_invariant_multiseed_shape_spread_m": 6.046372186827149e-09,
+      "gauge_invariant_multiseed_shape_spread_max_m": 2e-05,
+      "generalized_size": 18,
+      "layout_mass_and_rest_binding": {
+        "coordinate_slices": {
+          "bob_position": [
+            12,
+            15
+          ],
+          "bob_rotation_body": [
+            15,
+            18
+          ],
+          "junction": [
+            6,
+            9
+          ],
+          "left_n001": [
+            0,
+            3
+          ],
+          "lower_n001": [
+            9,
+            12
+          ],
+          "right_n001": [
+            3,
+            6
+          ]
+        },
+        "free_node_ids": [
+          "left_n001",
+          "right_n001",
+          "junction",
+          "lower_n001"
+        ],
+        "generalized_size": 18,
+        "layout_token": "259a0c2a500c6dcf48271dd7e23a826f21964a831fd687a45c258b77946e62d0",
+        "material_mass_absolute_error_kg": 3.469446951953614e-18,
+        "material_mass_expected_kg": 0.012960000000000003,
+        "material_mass_total_kg": 0.01296,
+        "material_volume_absolute_error_m3": 4.235164736271502e-22,
+        "material_volume_expected_m3": 3.3200000000000004e-06,
+        "material_volume_total_m3": 3.32e-06,
+        "node_ids": [
+          "support_left",
+          "support_right",
+          "left_n001",
+          "right_n001",
+          "junction",
+          "lower_n001",
+          "attachment"
+        ],
+        "node_lumped_displaced_volume_m3": [
+          2.8e-07,
+          2.8e-07,
+          5.6e-07,
+          5.6e-07,
+          8.300000000000001e-07,
+          5.4e-07,
+          2.7e-07
+        ],
+        "node_lumped_mass_kg": [
+          0.0008400000000000001,
+          0.0008400000000000001,
+          0.0016800000000000003,
+          0.0016800000000000003,
+          0.00449,
+          0.0016200000000000001,
+          0.00181
+        ],
+        "rest_binding_max_absolute_error_m": 0.0,
+        "segment_ids": [
+          "left_s000",
+          "left_s001",
+          "right_s000",
+          "right_s001",
+          "lower_s000",
+          "lower_s001"
+        ],
+        "segment_rest_lengths_m": [
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.27,
+          0.27
+        ],
+        "status": "PASS"
+      },
+      "mesh_segments_per_branch": 2,
+      "multiseed_energy_spread_J": 2.220446049250313e-16,
+      "multiseed_energy_spread_max_J": 2e-08,
+      "selected_seed_id": "seed_00_base",
+      "selection_rule": "lowest_total_potential_then_seed_id_among_candidates_passing_all_independent_gates",
+      "status": "PASS"
+    },
+    {
+      "all_candidates_independently_pass": true,
+      "candidates": [
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.9999850552584486,
+            "lower": 2.0,
+            "right": 1.9999850552607772
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.130920678437336,
+            "bob_rod_net_clearance_m": 0.07992067843733601,
+            "evaluated_bob_segment_domains": 12,
+            "evaluated_rod_pair_domains": 78,
+            "minimum_net_clearance_m": 0.07879906837221638,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.08079906837221638,
+            "rod_rod_net_clearance_m": 0.07879906837221638,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.012250884924213452,
+            "bob_center_gravity_buoyancy": -1.2837520763781198,
+            "discrete_bending": 3.154778125411881e-08,
+            "material_node_gravity_buoyancy": -0.03409941177372014,
+            "unilateral_axial": 0.011154065953822618
+          },
+          "global_force_closure_residual_N": [
+            2.4058569416005583e-17,
+            0.0,
+            -5.898059818321144e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            0.0,
+            -4.2723233282389723e-17,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            -2.3459023200960687e-12,
+            0.0,
+            -0.3426713108467842,
+            3.3595952092063595e-11,
+            0.0,
+            -0.8889395050191081,
+            6.002533256927543e-11,
+            0.0,
+            -0.9389395050191082
+          ],
+          "minimum_curvature_denominator": 1.9999850552584486,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0013983696513786836,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.13655364486300448,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.1986025583245858,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 47,
+            "gradient_evaluations": 47,
+            "iterations": 32,
+            "message": "Optimization terminated successfully.",
+            "status": 0,
+            "success_record_only": true
+          },
+          "raw_equilibrium_force_residual_N": [
+            1.0203045075485306e-09,
+            0.0,
+            -2.816274990991019e-10
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            0.0,
+            -2.8425595210990195e-12,
+            0.0
+          ],
+          "scaled_generalized_force_residual": 4.977242493827197e-10,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 4.262680242958261e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 2.859013642281291e-17,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              644.3288346742112,
+              627.8767480725726,
+              259.782286665808,
+              317.37802536466273,
+              382.28564356082495,
+              196.36513964753988,
+              410.7292314239568,
+              623.6690515167143,
+              214.51081938957685,
+              175.2977406991477,
+              391.8986050109487,
+              342.9740539039996
+            ],
+            "gauge_curvatures": [
+              2.2528561462034374e-21
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 2.2528561462034374e-21,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562768789765299,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 175.2977406991477,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562768789765299,
+              0.04563000187133425,
+              0.31385971105603205,
+              0.8138026026870379,
+              1.7337068892613816,
+              3.2743027031206267,
+              3.309844901096066,
+              3.3475167710897735,
+              5.503880977896558,
+              6.746134698837067,
+              9.130454682233378,
+              10.942552175628348,
+              11.395660276576109,
+              11.46283031320974,
+              14.571046639885447,
+              15.941089368886395,
+              16.580401695188193,
+              18.47303302996266,
+              19.582717388777194,
+              19.626355866904742,
+              19.95801826371941,
+              23.034952938797638,
+              24.174731314066047,
+              27.905415851210318,
+              80.65125177598298,
+              184.46613730662125,
+              442.1793227150122,
+              626.0560555315665,
+              846.5908989124697,
+              1248.569874562153,
+              1420.0952525977607,
+              1656.7760777244112,
+              2008.3980440659825,
+              2061.3541480658714,
+              2216.289703714926
+            ],
+            "normalization_energy_J": 1.4943347121736572,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 6.806565649785378e-09,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_00_base",
+          "segment_current_lengths_m": [
+            0.1414158358575791,
+            0.14140997233164343,
+            0.14140415009127003,
+            0.1413983696513787,
+            0.14141583585865503,
+            0.14140997233243066,
+            0.14140415009157065,
+            0.14139836965173905,
+            0.13658045222343596,
+            0.13657151643590087,
+            0.1365625806499826,
+            0.13655364486300448
+          ],
+          "segment_extensions_m": [
+            0.0014158358575790952,
+            0.0014099723316434165,
+            0.0014041500912700122,
+            0.0013983696513786836,
+            0.0014158358586550124,
+            0.001409972332430648,
+            0.0014041500915706329,
+            0.0013983696517390343,
+            0.0015804522234359464,
+            0.001571516435900866,
+            0.0015625806499826034,
+            0.0015536448630044664
+          ],
+          "segment_tensions_N": [
+            1.213573592210653,
+            1.2085477128372142,
+            1.2035572210885819,
+            1.1986025583245858,
+            1.2135735931328677,
+            1.208547713511984,
+            1.2035572213462566,
+            1.1986025586334579,
+            1.4048464208319522,
+            1.3969034985785473,
+            1.388960577762314,
+            1.38101765600397
+          ],
+          "total_potential_J": -1.3189482755744495,
+          "two_support_reactions_N": [
+            -0.9594995252063585,
+            -0.0,
+            0.7471673558516778,
+            0.959499526226663,
+            -0.0,
+            0.7471673560403517
+          ]
+        },
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.9999850552558738,
+            "lower": 2.0,
+            "right": 1.9999850552758918
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13092067841427646,
+            "bob_rod_net_clearance_m": 0.07992067841427646,
+            "evaluated_bob_segment_domains": 12,
+            "evaluated_rod_pair_domains": 78,
+            "minimum_net_clearance_m": 0.0787990683661443,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.0807990683661443,
+            "rod_rod_net_clearance_m": 0.0787990683661443,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.012250884923369171,
+            "bob_center_gravity_buoyancy": -1.28375207629436,
+            "discrete_bending": 3.154777958028236e-08,
+            "material_node_gravity_buoyancy": -0.03409941177174444,
+            "unilateral_axial": 0.011154065867244569
+          },
+          "global_force_closure_residual_N": [
+            -3.321841369291079e-17,
+            8.271806125530277e-25,
+            -1.0061396160665481e-16
+          ],
+          "global_moment_closure_residual_N_m": [
+            -1.2247184450671843e-21,
+            5.1851928367269234e-17,
+            1.550963648536927e-25
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            1.6027230289304181e-12,
+            -9.682186763293147e-11,
+            -0.342671310828695,
+            -4.972044767661936e-10,
+            1.1896586415080097e-10,
+            -0.888939504957846,
+            -4.2793995197724317e-10,
+            -5.6833676256607784e-11,
+            -0.9389395049578461
+          ],
+          "minimum_curvature_denominator": 1.9999850552558738,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0013983696407525448,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.1365536448240915,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.198602549216467,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 59,
+            "gradient_evaluations": 59,
+            "iterations": 48,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            4.214954940628957e-09,
+            -1.250615268619942e-09,
+            -3.6766680810984553e-09
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            7.616492788257194e-11,
+            -3.1292425317630546e-09,
+            -3.189303843236623e-10
+          ],
+          "scaled_generalized_force_residual": 2.3140067497081658e-08,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 7.090500043745854e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 3.4699005490081356e-17,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              644.3288354171659,
+              627.8767473296178,
+              259.7822859228533,
+              317.3780257361401,
+              382.2856431893476,
+              196.36514001901725,
+              410.7292306810021,
+              623.6690515167143,
+              214.5108186466221,
+              175.297739956193,
+              391.8986050109487,
+              342.97405353252225
+            ],
+            "gauge_curvatures": [
+              7.490126109143206e-20
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 7.490126109143206e-20,
+            "minimum_nongauge_normalized_eigenvalue": 0.045627686743506535,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 175.297739956193,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.045627686743506535,
+              0.04563000071690272,
+              0.3138597105798407,
+              0.813802601994172,
+              1.7337068844056405,
+              3.2743026962927666,
+              3.3098448934784686,
+              3.347516763817527,
+              5.503880943620224,
+              6.74613464036388,
+              9.130454645325473,
+              10.942552138817403,
+              11.395660260106352,
+              11.462830290962895,
+              14.571046508841858,
+              15.941089197144377,
+              16.58040169025681,
+              18.473032960687647,
+              19.5827173586976,
+              19.626355832292603,
+              19.958018257878514,
+              23.034952761259174,
+              24.174731137085264,
+              27.905415844596185,
+              80.65125176314228,
+              184.46613727487676,
+              442.1793227964473,
+              626.0560553908725,
+              846.5908989317267,
+              1248.5698746624882,
+              1420.0952523672502,
+              1656.7760778521063,
+              2008.3980441343579,
+              2061.3541479380797,
+              2216.2897038528326
+            ],
+            "normalization_energy_J": 1.4943347121736572,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 6.806653003810921e-09,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_01_skew",
+          "segment_current_lengths_m": [
+            0.14141583585082082,
+            0.14140997232605554,
+            0.14140415008928336,
+            0.1413983696562386,
+            0.14141583585872267,
+            0.1414099723278765,
+            0.14140415009413682,
+            0.14139836964075256,
+            0.13658045223108578,
+            0.13657151643331367,
+            0.13656258064066007,
+            0.1365536448240915
+          ],
+          "segment_extensions_m": [
+            0.0014158358508208069,
+            0.0014099723260555252,
+            0.0014041500892833514,
+            0.001398369656238574,
+            0.0014158358587226527,
+            0.0014099723278764853,
+            0.0014041500941368024,
+            0.0013983696407525448,
+            0.0015804522310857716,
+            0.0015715164333136578,
+            0.0015625806406600606,
+            0.0015536448240914824
+          ],
+          "segment_tensions_N": [
+            1.2135735864178345,
+            1.208547708047593,
+            1.2035572193857298,
+            1.1986025624902061,
+            1.2135735931908451,
+            1.2085477096084158,
+            1.2035572235458305,
+            1.198602549216467,
+            1.404846427631797,
+            1.3969034962788067,
+            1.3889605694756093,
+            1.3810176214146508
+          ],
+          "total_potential_J": -1.3189482755744495,
+          "two_support_reactions_N": [
+            -0.9594995212969054,
+            -2.7094054061701286e-10,
+            0.7471673514389215,
+            0.9594995255118604,
+            -9.796747280029291e-10,
+            0.7471673570580674
+          ]
+        },
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.999985055261122,
+            "lower": 2.0,
+            "right": 1.9999850552586156
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13092067842020583,
+            "bob_rod_net_clearance_m": 0.07992067842020582,
+            "evaluated_bob_segment_domains": 12,
+            "evaluated_rod_pair_domains": 78,
+            "minimum_net_clearance_m": 0.07879906835477135,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.08079906835477135,
+            "rod_rod_net_clearance_m": 0.07879906835477135,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.012250884923356756,
+            "bob_center_gravity_buoyancy": -1.2837520762931283,
+            "discrete_bending": 3.154777651081419e-08,
+            "material_node_gravity_buoyancy": -0.03409941176624905,
+            "unilateral_axial": 0.011154065860508017
+          },
+          "global_force_closure_residual_N": [
+            -2.2464714177961097e-17,
+            0.0,
+            1.0408340855860843e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            2.29087670646561e-21,
+            -6.390186953292628e-18,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            4.2084413865320986e-11,
+            4.782847168160622e-10,
+            -0.34267131079846963,
+            2.6911649557555256e-09,
+            1.2401615507789186e-09,
+            -0.8889395049569451,
+            2.446626249489475e-09,
+            1.3345230397894721e-09,
+            -0.9389395049569451
+          ],
+          "minimum_curvature_denominator": 1.9999850552586156,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0013983696208498542,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.13655364483409727,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.1986025321570177,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 61,
+            "gradient_evaluations": 61,
+            "iterations": 49,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            -4.651372620401162e-10,
+            -2.529911417349984e-09,
+            -1.5279986165239734e-08
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            -1.889254534360556e-09,
+            3.861340747146613e-09,
+            -1.0479637618733227e-09
+          ],
+          "scaled_generalized_force_residual": 4.5028823899030816e-08,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 1.656842664381212e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 4.276275798101587e-18,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              644.3288361601207,
+              627.8767469581405,
+              259.7822859228533,
+              317.37802536466273,
+              382.2856431893476,
+              196.36514039049462,
+              410.7292321669115,
+              623.669051145237,
+              214.5108197610542,
+              175.2977406991477,
+              391.89860426799396,
+              342.9740539039996
+            ],
+            "gauge_curvatures": [
+              3.052910023748299e-19
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 3.052910023748299e-19,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562768703994648,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 175.2977406991477,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562768703994648,
+              0.04563000101376223,
+              0.31385971080050246,
+              0.8138026094095213,
+              1.7337068844001502,
+              3.2743026828561095,
+              3.309844870679726,
+              3.347516746523342,
+              5.503880935061584,
+              6.7461346963224225,
+              9.130454672196798,
+              10.94255212972912,
+              11.395660215191615,
+              11.46283025092971,
+              14.571046491338036,
+              15.941089273226439,
+              16.580401707588706,
+              18.47303299612834,
+              19.58271731512347,
+              19.626355796620324,
+              19.958018179394315,
+              23.03495264066181,
+              24.17473100881153,
+              27.905416032175722,
+              80.65125185414959,
+              184.4661372634635,
+              442.17932280395496,
+              626.056055444782,
+              846.5908989241796,
+              1248.5698746717696,
+              1420.095252382454,
+              1656.7760778619293,
+              2008.3980441448864,
+              2061.354147939736,
+              2216.2897038665124
+            ],
+            "normalization_energy_J": 1.4943347121736572,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 6.806804979979345e-09,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_02_counter_skew",
+          "segment_current_lengths_m": [
+            0.1414158358456273,
+            0.1414099723325655,
+            0.14140415009606527,
+            0.1413983696621699,
+            0.14141583584449724,
+            0.14140997231926222,
+            0.14140415008299448,
+            0.14139836962084987,
+            0.13658045228269727,
+            0.13657151642024312,
+            0.13656258062143778,
+            0.13655364483409727
+          ],
+          "segment_extensions_m": [
+            0.0014158358456272946,
+            0.0014099723325654845,
+            0.0014041500960652598,
+            0.001398369662169885,
+            0.0014158358444972263,
+            0.0014099723192622093,
+            0.0014041500829944653,
+            0.0013983696208498542,
+            0.0015804522826972645,
+            0.0015715164202431131,
+            0.0015625806214377702,
+            0.0015536448340972564
+          ],
+          "segment_tensions_N": [
+            1.2135735819662525,
+            1.2085477136275582,
+            1.203557225198794,
+            1.198602567574187,
+            1.2135735809976225,
+            1.2085477022247508,
+            1.203557213995256,
+            1.1986025321570177,
+            1.4048464735086794,
+            1.3969034846605448,
+            1.3889605523891289,
+            1.3810176303086723
+          ],
+          "total_potential_J": -1.3189482755744495,
+          "two_support_reactions_N": [
+            -0.9594995176036689,
+            -1.0055152881574442e-10,
+            0.7471673489375197,
+            0.9594995171385317,
+            -2.4293598885342394e-09,
+            0.7471673479561511
+          ]
+        }
+      ],
+      "gauge_invariant_multiseed_shape_spread_m": 4.68562539171572e-09,
+      "gauge_invariant_multiseed_shape_spread_max_m": 2e-05,
+      "generalized_size": 36,
+      "layout_mass_and_rest_binding": {
+        "coordinate_slices": {
+          "bob_position": [
+            30,
+            33
+          ],
+          "bob_rotation_body": [
+            33,
+            36
+          ],
+          "junction": [
+            18,
+            21
+          ],
+          "left_n001": [
+            0,
+            3
+          ],
+          "left_n002": [
+            3,
+            6
+          ],
+          "left_n003": [
+            6,
+            9
+          ],
+          "lower_n001": [
+            21,
+            24
+          ],
+          "lower_n002": [
+            24,
+            27
+          ],
+          "lower_n003": [
+            27,
+            30
+          ],
+          "right_n001": [
+            9,
+            12
+          ],
+          "right_n002": [
+            12,
+            15
+          ],
+          "right_n003": [
+            15,
+            18
+          ]
+        },
+        "free_node_ids": [
+          "left_n001",
+          "left_n002",
+          "left_n003",
+          "right_n001",
+          "right_n002",
+          "right_n003",
+          "junction",
+          "lower_n001",
+          "lower_n002",
+          "lower_n003"
+        ],
+        "generalized_size": 36,
+        "layout_token": "cdefe0031d3380d1854f931004370a9997214af462cf95678cefddde4f47b999",
+        "material_mass_absolute_error_kg": 1.734723475976807e-18,
+        "material_mass_expected_kg": 0.012960000000000003,
+        "material_mass_total_kg": 0.012960000000000001,
+        "material_volume_absolute_error_m3": 4.235164736271502e-22,
+        "material_volume_expected_m3": 3.3200000000000004e-06,
+        "material_volume_total_m3": 3.32e-06,
+        "node_ids": [
+          "support_left",
+          "support_right",
+          "left_n001",
+          "left_n002",
+          "left_n003",
+          "right_n001",
+          "right_n002",
+          "right_n003",
+          "junction",
+          "lower_n001",
+          "lower_n002",
+          "lower_n003",
+          "attachment"
+        ],
+        "node_lumped_displaced_volume_m3": [
+          1.4e-07,
+          1.4e-07,
+          2.8e-07,
+          2.8e-07,
+          2.8e-07,
+          2.8e-07,
+          2.8e-07,
+          2.8e-07,
+          4.1500000000000005e-07,
+          2.7e-07,
+          2.7e-07,
+          2.7e-07,
+          1.35e-07
+        ],
+        "node_lumped_mass_kg": [
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.0008400000000000001,
+          0.0008400000000000001,
+          0.0008400000000000001,
+          0.0008400000000000001,
+          0.0008400000000000001,
+          0.0008400000000000001,
+          0.0032450000000000005,
+          0.0008100000000000001,
+          0.0008100000000000001,
+          0.0008100000000000001,
+          0.001405
+        ],
+        "rest_binding_max_absolute_error_m": 0.0,
+        "segment_ids": [
+          "left_s000",
+          "left_s001",
+          "left_s002",
+          "left_s003",
+          "right_s000",
+          "right_s001",
+          "right_s002",
+          "right_s003",
+          "lower_s000",
+          "lower_s001",
+          "lower_s002",
+          "lower_s003"
+        ],
+        "segment_rest_lengths_m": [
+          0.14,
+          0.14,
+          0.14,
+          0.14,
+          0.14,
+          0.14,
+          0.14,
+          0.14,
+          0.135,
+          0.135,
+          0.135,
+          0.135
+        ],
+        "status": "PASS"
+      },
+      "mesh_segments_per_branch": 4,
+      "multiseed_energy_spread_J": 0.0,
+      "multiseed_energy_spread_max_J": 2e-08,
+      "selected_seed_id": "seed_00_base",
+      "selection_rule": "lowest_total_potential_then_seed_id_among_candidates_passing_all_independent_gates",
+      "status": "PASS"
+    },
+    {
+      "all_candidates_independently_pass": true,
+      "candidates": [
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.999996248474915,
+            "lower": 2.0,
+            "right": 1.999996248478106
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.1309197683109925,
+            "bob_rod_net_clearance_m": 0.0799197683109925,
+            "evaluated_bob_segment_domains": 23,
+            "evaluated_rod_pair_domains": 276,
+            "minimum_net_clearance_m": 0.07879841896982107,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.08079841896982107,
+            "rod_rod_net_clearance_m": 0.07879841896982107,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.010485680728996706,
+            "bob_center_gravity_buoyancy": -1.2837509166779206,
+            "discrete_bending": 3.673508292883198e-08,
+            "material_node_gravity_buoyancy": -0.03586707587643704,
+            "unilateral_axial": 0.011154091178643013
+          },
+          "global_force_closure_residual_N": [
+            -5.821558432959484e-17,
+            0.0,
+            -3.2959746043559335e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            0.0,
+            -6.498826549179385e-17,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            -6.116191395332846e-12,
+            0.0,
+            -0.3426704626380674,
+            6.767527028420224e-11,
+            0.0,
+            -0.8889386568114588,
+            5.331680782632407e-11,
+            0.0,
+            -0.9389386568114588
+          ],
+          "minimum_curvature_denominator": 1.999996248474915,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0006984653869861884,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.0682757054582297,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.197369234833466,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 115,
+            "gradient_evaluations": 103,
+            "iterations": 56,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            7.883346198056529e-10,
+            0.0,
+            -2.272806720604592e-09
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            0.0,
+            -2.0520463106521447e-10,
+            0.0
+          ],
+          "scaled_generalized_force_residual": 9.238773002941761e-10,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 4.476803177927731e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 4.3489765018750063e-17,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              1327.2084458847291,
+              1365.497212010199,
+              497.85917947860906,
+              622.5334303712136,
+              726.2189229578903,
+              457.88772901686457,
+              944.5490024884743,
+              1698.1603304536018,
+              434.2842734555287,
+              426.43790193275265,
+              819.500298703243,
+              466.1884931310562
+            ],
+            "gauge_curvatures": [
+              2.6256030166852798e-21
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 2.6256030166852798e-21,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562688864341427,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 426.43790193275265,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562688864341427,
+              0.045629873809353384,
+              0.1637691974410921,
+              0.4589136420378702,
+              0.9104953507805751,
+              1.6981783053652586,
+              1.716182078234353,
+              1.740073081924679,
+              3.0550373078854243,
+              4.028391123734813,
+              5.186513261378292,
+              6.133412520048474,
+              6.651469547390482,
+              6.7196122555503015,
+              9.084987211821321,
+              9.209709986268015,
+              10.713951309094663,
+              12.405287186225678,
+              14.081907955595574,
+              14.239158633841067,
+              14.575133455650121,
+              17.813449907443346,
+              19.665690273918557,
+              21.555239581610934,
+              23.018134085689898,
+              23.212521819448387,
+              23.3362429004989,
+              27.69877586143952,
+              29.675035812583353,
+              31.301259492873598,
+              32.071186101997164,
+              32.297790821091425,
+              32.32999590391929,
+              37.420873289563566,
+              39.12067398329753,
+              40.08739154071572,
+              40.08787852985576,
+              40.13772898455717,
+              40.1799013872515,
+              44.81553874142297,
+              45.09288629035109,
+              45.338545343811845,
+              45.34113896919278,
+              46.62064208496595,
+              47.40895852129685,
+              50.07293415772839,
+              53.208888996968554,
+              54.489653826561174,
+              57.07952120666016,
+              101.98577548177377,
+              247.52659332004035,
+              365.5501125300691,
+              510.2271800618173,
+              783.852025327672,
+              958.0470594543059,
+              1174.816167693662,
+              1542.2897192498597,
+              1735.7293654491057,
+              2000.2782672155925,
+              2413.7859387831422,
+              2585.348503084265,
+              2869.570760256034,
+              3271.5202755098844,
+              3386.675196115749,
+              3661.3735599317547,
+              3987.8619009739605,
+              4032.7789526683473,
+              4270.289458532849,
+              4446.93886454683,
+              4448.825524157698,
+              4638.129247318142
+            ],
+            "normalization_energy_J": 1.494334712173657,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 2.8173925559559505e-08,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_00_base",
+          "segment_current_lengths_m": [
+            0.0707086538880369,
+            0.07070718289006327,
+            0.07070571700309516,
+            0.07070425626232954,
+            0.07070280069724272,
+            0.07070135034154269,
+            0.07069990522716048,
+            0.0706984653869862,
+            0.07070865388862002,
+            0.07070718289014533,
+            0.07070571700449484,
+            0.07070425626311354,
+            0.07070280069910044,
+            0.07070135034315435,
+            0.07069990522870592,
+            0.07069846538798358,
+            0.0682913430854879,
+            0.06828910913844088,
+            0.06828687519161386,
+            0.06828464124491462,
+            0.06828240729835644,
+            0.06828017335142911,
+            0.06827793940491889,
+            0.0682757054582297
+          ],
+          "segment_extensions_m": [
+            0.0007086538880368976,
+            0.0007071828900632599,
+            0.0007057170030951576,
+            0.0007042562623295334,
+            0.0007028006972427114,
+            0.0007013503415426864,
+            0.0006999052271604717,
+            0.0006984653869861884,
+            0.0007086538886200144,
+            0.0007071828901453192,
+            0.0007057170044948297,
+            0.0007042562631135313,
+            0.0007028006991004337,
+            0.0007013503431543416,
+            0.000699905228705916,
+            0.0006984653879835712,
+            0.0007913430854878944,
+            0.0007891091384408799,
+            0.0007868751916138561,
+            0.000784641244914619,
+            0.0007824072983564356,
+            0.0007801733514291032,
+            0.0007779394049188815,
+            0.0007757054582296918
+          ],
+          "segment_tensions_N": [
+            1.2148352366346815,
+            1.212313525822731,
+            1.2098005767345559,
+            1.2072964497077716,
+            1.2048011952732196,
+            1.2023148712160339,
+            1.1998375322750943,
+            1.197369234833466,
+            1.2148352376343103,
+            1.2123135259634044,
+            1.2098005791339936,
+            1.2072964510517679,
+            1.2048011984578864,
+            1.2023148739788714,
+            1.1998375349244275,
+            1.1973692365432649,
+            1.4068321519784788,
+            1.4028606905615641,
+            1.398889229535744,
+            1.3949177687371002,
+            1.3909463081892188,
+            1.3869748469850722,
+            1.3830033865224558,
+            1.3790319257416743
+          ],
+          "total_potential_J": -1.3189495453696285,
+          "two_support_reactions_N": [
+            -0.9594991422472494,
+            -0.0,
+            0.7471673546431022,
+            0.959499143035584,
+            -0.0,
+            0.747167355257748
+          ]
+        },
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.9999962484762794,
+            "lower": 2.0,
+            "right": 1.99999624847625
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13091976831418373,
+            "bob_rod_net_clearance_m": 0.07991976831418372,
+            "evaluated_bob_segment_domains": 23,
+            "evaluated_rod_pair_domains": 276,
+            "minimum_net_clearance_m": 0.07879841896862683,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.08079841896862683,
+            "rod_rod_net_clearance_m": 0.07879841896862683,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.010485680729175528,
+            "bob_center_gravity_buoyancy": -1.2837509166986478,
+            "discrete_bending": 3.6735086682222873e-08,
+            "material_node_gravity_buoyancy": -0.03586707588024682,
+            "unilateral_axial": 0.011154091203355141
+          },
+          "global_force_closure_residual_N": [
+            3.016190192018855e-17,
+            0.0,
+            -3.5561831257524545e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            -4.261531118296629e-22,
+            -4.9851063871901707e-17,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            -6.512954802758956e-12,
+            -4.8079259091619115e-11,
+            -0.3426704626478905,
+            -5.926591784347966e-10,
+            -1.9679722180125724e-11,
+            -0.8889386568266188,
+            -3.483882488290693e-10,
+            -1.4642543894869256e-10,
+            -0.9389386568266188
+          ],
+          "minimum_curvature_denominator": 1.99999624847625,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0006984653857046857,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.06827570546098383,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.197369232636604,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 95,
+            "gradient_evaluations": 95,
+            "iterations": 85,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            3.767628320439087e-09,
+            6.049956743042091e-10,
+            8.694148734278428e-10
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            2.0493553525655434e-10,
+            -1.3537813092767692e-09,
+            1.7560038784349338e-10
+          ],
+          "scaled_generalized_force_residual": 3.3688896835483974e-09,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 3.1204717407501894e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 3.3360038730017796e-17,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              1327.208444770297,
+              1365.497210895767,
+              497.859178364177,
+              622.5334296282589,
+              726.2189225864129,
+              457.88772864538726,
+              944.5490013740423,
+              1698.1603300821243,
+              434.28427308405134,
+              426.4379011897979,
+              819.5002990747204,
+              466.1884927595789
+            ],
+            "gauge_curvatures": [
+              2.4369634915988113e-19
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 2.4369634915988113e-19,
+            "minimum_nongauge_normalized_eigenvalue": 0.04562688880657673,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 426.4379011897979,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.04562688880657673,
+              0.04562987397251323,
+              0.16376919757515973,
+              0.45891364173653315,
+              0.9104953514906761,
+              1.6981783060062479,
+              1.7161820826269987,
+              1.7400730839181502,
+              3.0550373121067826,
+              4.028391125277205,
+              5.186513264721279,
+              6.133412525201131,
+              6.6514695535119,
+              6.7196122623232135,
+              9.084987204175414,
+              9.209709999246629,
+              10.713951320569402,
+              12.405287198027771,
+              14.081907973341531,
+              14.239158649887216,
+              14.575133472827272,
+              17.813449933961824,
+              19.66569029915935,
+              21.55523960525366,
+              23.0181341134905,
+              23.21252184826432,
+              23.33624292853629,
+              27.69877589440912,
+              29.675035840494942,
+              31.301259527310343,
+              32.07118614469106,
+              32.29779086472079,
+              32.32999594728928,
+              37.42087334750002,
+              39.12067404698407,
+              40.087391599622094,
+              40.087878588629835,
+              40.137729039299266,
+              40.179901441288195,
+              44.8155388035449,
+              45.09288632347329,
+              45.33854540538537,
+              45.34113903058838,
+              46.620642145033415,
+              47.408958590413526,
+              50.07293416931965,
+              53.20888908128089,
+              54.489653908134905,
+              57.07952112198578,
+              101.98577550806223,
+              247.52659326740778,
+              365.5501125645251,
+              510.22718009736485,
+              783.8520252334125,
+              958.0470595714039,
+              1174.8161677089756,
+              1542.289719126446,
+              1735.729365654407,
+              2000.2782671833213,
+              2413.7859386463933,
+              2585.3485033480756,
+              2869.570760163093,
+              3271.5202753751105,
+              3386.675196375573,
+              3661.3735597885166,
+              3987.861900845929,
+              4032.77895284519,
+              4270.289458389989,
+              4446.938864604431,
+              4448.825524054754,
+              4638.129247247071
+            ],
+            "normalization_energy_J": 1.494334712173657,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 2.817398660040297e-08,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_01_skew",
+          "segment_current_lengths_m": [
+            0.07070865388822498,
+            0.07070718289240839,
+            0.07070571700476726,
+            0.07070425626291227,
+            0.07070280069827319,
+            0.07070135034328616,
+            0.07069990522777593,
+            0.07069846538570469,
+            0.07070865389064354,
+            0.07070718289136738,
+            0.0707057170054302,
+            0.07070425626425839,
+            0.07070280069981176,
+            0.07070135034301635,
+            0.07069990522953075,
+            0.07069846538877506,
+            0.0682913430811074,
+            0.06828910913668118,
+            0.06828687519268828,
+            0.06828464124636513,
+            0.06828240730093849,
+            0.06828017335268477,
+            0.06827793940727922,
+            0.06827570546098383
+          ],
+          "segment_extensions_m": [
+            0.0007086538882249693,
+            0.0007071828924083839,
+            0.0007057170047672506,
+            0.0007042562629122617,
+            0.0007028006982731788,
+            0.0007013503432861529,
+            0.0006999052277759238,
+            0.0006984653857046857,
+            0.0007086538906435347,
+            0.0007071828913673694,
+            0.0007057170054301926,
+            0.0007042562642583794,
+            0.0007028006998117536,
+            0.0007013503430163409,
+            0.0006999052295307423,
+            0.0006984653887750492,
+            0.0007913430811073985,
+            0.0007891091366811764,
+            0.0007868751926882744,
+            0.0007846412463651253,
+            0.0007824073009384813,
+            0.0007801733526847654,
+            0.0007779394072792156,
+            0.0007757054609838221
+          ],
+          "segment_tensions_N": [
+            1.2148352369570903,
+            1.212313529842944,
+            1.209800579601001,
+            1.2072964507067343,
+            1.204801197039735,
+            1.2023148742048335,
+            1.199837533330155,
+            1.197369232636604,
+            1.2148352411032022,
+            1.2123135280583477,
+            1.209800580737473,
+            1.2072964530143646,
+            1.2048011996772918,
+            1.2023148737422986,
+            1.1998375363384153,
+            1.1973692379000842,
+            1.4068321441909304,
+            1.4028606874332024,
+            1.398889231445821,
+            1.3949177713157783,
+            1.3909463127795223,
+            1.3869748492173606,
+            1.3830033907186055,
+            1.3790319306379057
+          ],
+          "total_potential_J": -1.3189495453696283,
+          "two_support_reactions_N": [
+            -0.9594991419376511,
+            1.0738629510377856e-10,
+            0.7471673555674418,
+            0.9594991457052794,
+            4.976093792004305e-10,
+            0.74716735747563
+          ]
+        },
+        {
+          "branch_minimum_curvature_denominators": {
+            "left": 1.9999962484752847,
+            "lower": 2.0,
+            "right": 1.9999962484758063
+          },
+          "clearance": {
+            "bob_rod_centerline_distance_m": 0.13091976831017982,
+            "bob_rod_net_clearance_m": 0.07991976831017981,
+            "evaluated_bob_segment_domains": 23,
+            "evaluated_rod_pair_domains": 276,
+            "minimum_net_clearance_m": 0.07879841897135562,
+            "minimum_net_clearance_required_m": 0.002,
+            "rod_rod_centerline_distance_m": 0.08079841897135562,
+            "rod_rod_net_clearance_m": 0.07879841897135562,
+            "role": "postsolve_domain_audit_only"
+          },
+          "energy_components_J": {
+            "attachment_node_gravity_buoyancy": -0.010485680729078387,
+            "bob_center_gravity_buoyancy": -1.2837509166873882,
+            "discrete_bending": 3.6735086209251005e-08,
+            "material_node_gravity_buoyancy": -0.03586707587997328,
+            "unilateral_axial": 0.011154091191725309
+          },
+          "global_force_closure_residual_N": [
+            -2.1320350745934305e-18,
+            -1.809457589959748e-25,
+            4.85722573273506e-17
+          ],
+          "global_moment_closure_residual_N_m": [
+            3.8108210820317985e-21,
+            -3.5267167913239654e-17,
+            0.0
+          ],
+          "independent_gate_status": "PASS",
+          "junction_attachment_bob_shape_m": [
+            1.3793353851068556e-12,
+            -8.142245366008093e-12,
+            -0.3426704626481825,
+            3.747668869913541e-10,
+            3.704760167049549e-11,
+            -0.8889386568183835,
+            2.2691516144465422e-10,
+            1.6501744682598632e-10,
+            -0.9389386568183835
+          ],
+          "minimum_curvature_denominator": 1.9999962484752847,
+          "minimum_curvature_denominator_required": 0.25,
+          "minimum_extension_m": 0.0006984653881662306,
+          "minimum_extension_required_m": 1e-05,
+          "minimum_segment_length_m": 0.06827570545735473,
+          "minimum_segment_length_required_m": 0.001,
+          "minimum_tension_N": 1.1973692368563953,
+          "minimum_tension_required_N": 0.001,
+          "optimizer": {
+            "function_evaluations": 94,
+            "gradient_evaluations": 94,
+            "iterations": 85,
+            "message": "Desired error not necessarily achieved due to precision loss.",
+            "status": 2,
+            "success_record_only": false
+          },
+          "raw_equilibrium_force_residual_N": [
+            -5.211322484655057e-10,
+            -2.2574846109180889e-10,
+            5.518864254483447e-10
+          ],
+          "raw_equilibrium_moment_residual_N_m": [
+            -2.2595327954251516e-10,
+            3.3394331744318606e-10,
+            -2.2308894262079874e-10
+          ],
+          "scaled_generalized_force_residual": 4.974258594975979e-09,
+          "scaled_generalized_force_residual_max": 2e-07,
+          "scaled_global_force_balance": 3.253556668742901e-17,
+          "scaled_global_force_balance_max": 2e-10,
+          "scaled_global_moment_balance": 2.3600581470687173e-17,
+          "scaled_global_moment_balance_max": 2e-09,
+          "second_order": {
+            "directional_curvatures": [
+              1327.208444770297,
+              1365.497210895767,
+              497.859178364177,
+              622.5334296282589,
+              726.2189222149356,
+              457.8877282739099,
+              944.549002116997,
+              1698.1603300821243,
+              434.2842738270061,
+              426.43790081832054,
+              819.5002979602882,
+              466.1884923881015
+            ],
+            "gauge_curvatures": [
+              1.2414298509729514e-19
+            ],
+            "gauge_eigenvalue_absolute_max": 2e-05,
+            "maximum_absolute_gauge_curvature": 1.2414298509729514e-19,
+            "minimum_nongauge_normalized_eigenvalue": 0.045626888591497876,
+            "minimum_nongauge_normalized_eigenvalue_required": 1e-05,
+            "minimum_normalized_directional_curvature": 426.43790081832054,
+            "minimum_normalized_directional_curvature_required": 1e-05,
+            "nongauge_eigenvalues": [
+              0.045626888591497876,
+              0.04562987375741216,
+              0.1637691975320942,
+              0.4589136415282235,
+              0.9104953508983229,
+              1.6981783065459382,
+              1.7161820829015348,
+              1.7400730844115002,
+              3.0550373102797943,
+              4.028391121154562,
+              5.186513262327417,
+              6.133412531659218,
+              6.651469554191926,
+              6.719612264742333,
+              9.08498719842858,
+              9.209709992641056,
+              10.713951301591182,
+              12.405287188737216,
+              14.081907975575948,
+              14.239158652509351,
+              14.57513347580952,
+              17.813449917922902,
+              19.6656902611964,
+              21.55523958805431,
+              23.01813411491587,
+              23.21252184897062,
+              23.336242929823097,
+              27.69877587780361,
+              29.675035808254698,
+              31.301259503510508,
+              32.07118614026747,
+              32.29779086051231,
+              32.329995943408306,
+              37.42087330692984,
+              39.1206739976229,
+              40.087391587109764,
+              40.08787857616544,
+              40.13772901167189,
+              40.179901403246994,
+              44.815538779329465,
+              45.09288630783062,
+              45.33854539354035,
+              45.34113901882219,
+              46.62064210882703,
+              47.40895854151151,
+              50.0729341417899,
+              53.208889023467776,
+              54.489653840683324,
+              57.07952116017772,
+              101.98577551291339,
+              247.52659326579246,
+              365.5501125727086,
+              510.22718010340367,
+              783.8520252271494,
+              958.0470595858977,
+              1174.8161677137064,
+              1542.2897191174184,
+              1735.729365675874,
+              2000.2782671841608,
+              2413.7859386362684,
+              2585.3485033743073,
+              2869.5707601587546,
+              3271.5202753646863,
+              3386.6751964002333,
+              3661.3735597796476,
+              3987.8619008360974,
+              4032.7789528617723,
+              4270.289458380496,
+              4446.938864609836,
+              4448.825524047059,
+              4638.129247242174
+            ],
+            "normalization_energy_J": 1.494334712173657,
+            "status": "PASS",
+            "unsymmetrized_relative_asymmetry": 2.817400002301064e-08,
+            "unsymmetrized_relative_asymmetry_max": 2e-05
+          },
+          "seed_id": "seed_02_counter_skew",
+          "segment_current_lengths_m": [
+            0.07070865388956629,
+            0.07070718289010534,
+            0.07070571700497241,
+            0.07070425626394825,
+            0.0707028006995185,
+            0.070701350343179,
+            0.07069990522963401,
+            0.07069846538816624,
+            0.07070865388931652,
+            0.07070718289044407,
+            0.0707057170045389,
+            0.07070425626289115,
+            0.07070280069859487,
+            0.07070135034277714,
+            0.0706999052292749,
+            0.07069846538944502,
+            0.06829134308141988,
+            0.0682891091379606,
+            0.06828687519136556,
+            0.06828464124546585,
+            0.0682824072987035,
+            0.06828017335267555,
+            0.06827793940525528,
+            0.06827570545735473
+          ],
+          "segment_extensions_m": [
+            0.0007086538895662853,
+            0.0007071828901053373,
+            0.000705717004972406,
+            0.0007042562639482386,
+            0.0007028006995184882,
+            0.0007013503431789886,
+            0.0006999052296340069,
+            0.0006984653881662306,
+            0.0007086538893165129,
+            0.0007071828904440663,
+            0.0007057170045388916,
+            0.0007042562628911397,
+            0.0007028006985948659,
+            0.0007013503427771295,
+            0.0006999052292748914,
+            0.0006984653894450132,
+            0.0007913430814198708,
+            0.0007891091379605975,
+            0.0007868751913655547,
+            0.0007846412454658447,
+            0.0007824072987034913,
+            0.0007801733526755505,
+            0.000777939405255279,
+            0.0007757054573547251
+          ],
+          "segment_tensions_N": [
+            1.214835239256489,
+            1.2123135258948639,
+            1.2098005799526959,
+            1.2072964524826948,
+            1.2048011991745513,
+            1.2023148740211234,
+            1.1998375365154403,
+            1.1973692368563953,
+            1.2148352388283077,
+            1.2123135264755422,
+            1.2098005792095285,
+            1.2072964506705253,
+            1.2048011975911987,
+            1.202314873332222,
+            1.199837535899814,
+            1.1973692390485942,
+            1.4068321447464367,
+            1.4028606897077287,
+            1.3988892290943193,
+            1.3949177697170572,
+            1.3909463088062066,
+            1.3869748492009786,
+            1.3830033871204959,
+            1.3790319241861777
+          ],
+          "total_potential_J": -1.3189495453696283,
+          "two_support_reactions_N": [
+            -0.9594991442208338,
+            1.3500237236609414e-10,
+            0.7471673563762891,
+            0.9594991436997016,
+            -3.60750833457903e-10,
+            0.7471673563492544
+          ]
+        }
+      ],
+      "gauge_invariant_multiseed_shape_spread_m": 1.169997797128234e-09,
+      "gauge_invariant_multiseed_shape_spread_max_m": 2e-05,
+      "generalized_size": 72,
+      "layout_mass_and_rest_binding": {
+        "coordinate_slices": {
+          "bob_position": [
+            66,
+            69
+          ],
+          "bob_rotation_body": [
+            69,
+            72
+          ],
+          "junction": [
+            42,
+            45
+          ],
+          "left_n001": [
+            0,
+            3
+          ],
+          "left_n002": [
+            3,
+            6
+          ],
+          "left_n003": [
+            6,
+            9
+          ],
+          "left_n004": [
+            9,
+            12
+          ],
+          "left_n005": [
+            12,
+            15
+          ],
+          "left_n006": [
+            15,
+            18
+          ],
+          "left_n007": [
+            18,
+            21
+          ],
+          "lower_n001": [
+            45,
+            48
+          ],
+          "lower_n002": [
+            48,
+            51
+          ],
+          "lower_n003": [
+            51,
+            54
+          ],
+          "lower_n004": [
+            54,
+            57
+          ],
+          "lower_n005": [
+            57,
+            60
+          ],
+          "lower_n006": [
+            60,
+            63
+          ],
+          "lower_n007": [
+            63,
+            66
+          ],
+          "right_n001": [
+            21,
+            24
+          ],
+          "right_n002": [
+            24,
+            27
+          ],
+          "right_n003": [
+            27,
+            30
+          ],
+          "right_n004": [
+            30,
+            33
+          ],
+          "right_n005": [
+            33,
+            36
+          ],
+          "right_n006": [
+            36,
+            39
+          ],
+          "right_n007": [
+            39,
+            42
+          ]
+        },
+        "free_node_ids": [
+          "left_n001",
+          "left_n002",
+          "left_n003",
+          "left_n004",
+          "left_n005",
+          "left_n006",
+          "left_n007",
+          "right_n001",
+          "right_n002",
+          "right_n003",
+          "right_n004",
+          "right_n005",
+          "right_n006",
+          "right_n007",
+          "junction",
+          "lower_n001",
+          "lower_n002",
+          "lower_n003",
+          "lower_n004",
+          "lower_n005",
+          "lower_n006",
+          "lower_n007"
+        ],
+        "generalized_size": 72,
+        "layout_token": "2b7fd2c990a5d2e2b45f41e2b11a9d8d7b1ffddd57d90209def8b2d4a2c764e6",
+        "material_mass_absolute_error_kg": 1.734723475976807e-18,
+        "material_mass_expected_kg": 0.012960000000000003,
+        "material_mass_total_kg": 0.012960000000000001,
+        "material_volume_absolute_error_m3": 0.0,
+        "material_volume_expected_m3": 3.3200000000000004e-06,
+        "material_volume_total_m3": 3.3200000000000004e-06,
+        "node_ids": [
+          "support_left",
+          "support_right",
+          "left_n001",
+          "left_n002",
+          "left_n003",
+          "left_n004",
+          "left_n005",
+          "left_n006",
+          "left_n007",
+          "right_n001",
+          "right_n002",
+          "right_n003",
+          "right_n004",
+          "right_n005",
+          "right_n006",
+          "right_n007",
+          "junction",
+          "lower_n001",
+          "lower_n002",
+          "lower_n003",
+          "lower_n004",
+          "lower_n005",
+          "lower_n006",
+          "lower_n007",
+          "attachment"
+        ],
+        "node_lumped_displaced_volume_m3": [
+          7e-08,
+          7e-08,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          1.4e-07,
+          2.0750000000000003e-07,
+          1.35e-07,
+          1.35e-07,
+          1.35e-07,
+          1.35e-07,
+          1.35e-07,
+          1.35e-07,
+          1.35e-07,
+          6.75e-08
+        ],
+        "node_lumped_mass_kg": [
+          0.00021000000000000004,
+          0.00021000000000000004,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.00042000000000000007,
+          0.0026225000000000003,
+          0.00040500000000000003,
+          0.00040500000000000003,
+          0.00040500000000000003,
+          0.00040500000000000003,
+          0.00040500000000000003,
+          0.00040500000000000003,
+          0.00040500000000000003,
+          0.0012025
+        ],
+        "rest_binding_max_absolute_error_m": 0.0,
+        "segment_ids": [
+          "left_s000",
+          "left_s001",
+          "left_s002",
+          "left_s003",
+          "left_s004",
+          "left_s005",
+          "left_s006",
+          "left_s007",
+          "right_s000",
+          "right_s001",
+          "right_s002",
+          "right_s003",
+          "right_s004",
+          "right_s005",
+          "right_s006",
+          "right_s007",
+          "lower_s000",
+          "lower_s001",
+          "lower_s002",
+          "lower_s003",
+          "lower_s004",
+          "lower_s005",
+          "lower_s006",
+          "lower_s007"
+        ],
+        "segment_rest_lengths_m": [
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.0675,
+          0.0675,
+          0.0675,
+          0.0675,
+          0.0675,
+          0.0675,
+          0.0675,
+          0.0675
+        ],
+        "status": "PASS"
+      },
+      "mesh_segments_per_branch": 8,
+      "multiseed_energy_spread_J": 2.220446049250313e-16,
+      "multiseed_energy_spread_max_J": 2e-08,
+      "selected_seed_id": "seed_00_base",
+      "selection_rule": "lowest_total_potential_then_seed_id_among_candidates_passing_all_independent_gates",
+      "status": "PASS"
+    }
+  ]
+}
