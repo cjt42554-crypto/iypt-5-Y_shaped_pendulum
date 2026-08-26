@@ -1,0 +1,40 @@
+{
+  "schema": "YPS-HF-HARD-CONTACT-CANDIDATE-VALIDATION-1.0",
+  "validated_at": "2026-08-26T20:20:56+09:00",
+  "prefreeze_manifest_sha256": "d11ecfc9918dfd7b23b233fb4f4eeb4d44696fe634932a9b1259424e030f9e05",
+  "environment": {
+    "python": "3.13",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "checks": {
+    "python_compile": "PASS",
+    "directed_pytest": "12 passed",
+    "contract_json_parse": "PASS",
+    "prefreeze_json_parse": "PASS",
+    "readme_pandoc_parse": "PASS",
+    "decision_pandoc_parse": "PASS"
+  },
+  "directed_test_coverage": [
+    "unit-square contact domain",
+    "rest-material separation polygon including point limit",
+    "interior closest-point witness",
+    "finite-difference gap Jacobian",
+    "parallel-overlap non-uniqueness fail-closed behavior",
+    "collapsed-segment fail-closed behavior",
+    "global nodal Jacobian assembly",
+    "static KKT pass and failure cases",
+    "generic unilateral spring constrained solve",
+    "projected-Hessian tangent instability",
+    "prefreeze file hashes"
+  ],
+  "not_run": [
+    "formal HighFidelityModel registration adapter",
+    "alpha=1e-2 contact preparation",
+    "alpha=1e-4 contact preparation",
+    "alpha=1e-6 contact preparation",
+    "dynamic complementarity or impulse integration",
+    "full existing candidate test suite"
+  ],
+  "conclusion": "Candidate mathematical primitives are internally testable; no physical target-alpha contact result or formal numerical qualification is claimed."
+}

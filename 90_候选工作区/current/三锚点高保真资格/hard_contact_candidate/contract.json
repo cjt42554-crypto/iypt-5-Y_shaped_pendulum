@@ -1,0 +1,84 @@
+{
+  "schema": "YPS-HF-HARD-CONTACT-CANDIDATE-1.0",
+  "status": "CANDIDATE_ONLY_NO_FORMAL_PROGRAM_AUTHORIZATION",
+  "decision": "STAGED_FRICTIONLESS_RIGID_UNILATERAL_NORMAL_CONTACT",
+  "scientific_question": "Do alpha-specific held-endpoint conservative equilibria exist inside the exact registered nonpenetration domain once normal contact reactions are admitted?",
+  "formal_source_identity": {
+    "model_py_git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+    "solver_py_git_blob": "325ad43aa8088a55defeae9851c9ccfa508fe936",
+    "validation_py_git_blob": "7b66ae8c54a507c974d69be9ded05267dbb21439"
+  },
+  "model_selection": {
+    "selected_now": "frictionless rigid unilateral normal contact for static feasibility only",
+    "not_selected_now": {
+      "terminate_at_no_contact_boundary": "premature before a parameter-free static contact feasibility test",
+      "compliant_contact": "would introduce uncalibrated normal stiffness, damping and possibly friction",
+      "dynamic_hard_contact": "closed until the static KKT gate passes on a target alpha"
+    }
+  },
+  "static_equations": {
+    "primal": "g_i(q) >= 0",
+    "dual": "lambda_i >= 0",
+    "complementarity": "lambda_i g_i(q) = 0",
+    "stationarity": "gradient(Pi)(q) - J_g(q)^T lambda = 0",
+    "contact_generalized_force": "J_g(q)^T lambda"
+  },
+  "geometry_contract": {
+    "individual_constraints_required": true,
+    "global_minimum_clearance_is_not_a_kkt_constraint_set": true,
+    "ordinary_segment_pairs": "unit-square closest-point parameter domain",
+    "partial_same_branch_pairs": "exact fixed rest-material separation half-space clipped from the unit square",
+    "junction_socket_pairs": "must be expanded from the formal registered active subsegments without changing the socket crop",
+    "required_center_distance": "must retain the formal diameters and minimum_clearance exactly",
+    "degenerate_or_nonunique_witness": "fail closed; no arbitrary normal or multiplier is accepted"
+  },
+  "implemented_candidate_scope": {
+    "convex_parameter_domain_clipping": true,
+    "closest_point_witness": true,
+    "unique_witness_detection": true,
+    "gap_jacobian": true,
+    "global_nodal_gap_assembly": true,
+    "nonnegative_multiplier_reconstruction": true,
+    "dimensional_kkt_audit": true,
+    "generic_slsqp_static_feasibility_driver": true,
+    "projected_hessian_nullspace_psd_helper": true,
+    "formal_registration_adapter": false,
+    "alpha_specific_contact_preparation_runs": 0,
+    "dynamic_complementarity_or_impulse_solver": false
+  },
+  "candidate_default_thresholds": {
+    "primal_gap_m": 1e-10,
+    "stationarity_N": 1e-8,
+    "dual_force_N": 1e-10,
+    "complementarity_Nm": 1e-12,
+    "active_gap_m": 1e-8,
+    "note": "Defaults are unit-test and prototype values. A physical alpha run must pre-freeze scale-aware thresholds before observing its result."
+  },
+  "hard_static_acceptance_gate": [
+    "Every individual registered gap is finite and satisfies the frozen primal tolerance.",
+    "Every normal multiplier is finite and nonnegative within the frozen force tolerance.",
+    "The dimensional stationarity residual satisfies the same force-balance standard as preparation.",
+    "The complementarity product is below its frozen N*m tolerance.",
+    "Every active contact has a unique differentiable closest-point witness, or a separately specified nonsmooth method is used.",
+    "A second-order stability audit is performed; the included nullspace PSD helper is only a sufficient check, not a complete weak-active critical-cone theorem.",
+    "The exact formal guard registration, contact domains, diameters and minimum clearance are preserved."
+  ],
+  "dynamic_gate": {
+    "status": "CLOSED",
+    "required_before_opening": [
+      "at least one target alpha passes the static KKT and stability gates",
+      "a pre-frozen time-stepping complementarity or impulse law",
+      "nonpenetration and impulse complementarity certificates at every accepted step",
+      "momentum and energy accounting that separates physical impact loss from numerical drift",
+      "time-step and contact-set refinement",
+      "an explicit friction and restitution policy; neither is silently inferred"
+    ]
+  },
+  "prohibited_shortcuts": [
+    "Do not constrain only min_i g_i; it hides contact identity and produces a nonsmooth scalar.",
+    "Do not add a static nonpenetration constraint and then release into the unchanged no-contact ODE.",
+    "Do not relax the formal same-branch material exclusion or junction socket crop to manufacture feasibility.",
+    "Do not call penalty stiffness a first-principles prediction without calibration or an independently justified asymptotic limit.",
+    "Do not promote this candidate module into 02_模拟程序 without explicit user authorization."
+  ]
+}
