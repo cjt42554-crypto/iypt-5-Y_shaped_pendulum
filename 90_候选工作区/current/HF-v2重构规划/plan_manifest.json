@@ -1,16 +1,31 @@
 {
-  "schema": "YPS-HFV2-REFACTOR-PLAN-1.0",
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.1",
   "date": "2026-08-26",
   "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
   "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
-  "candidate_backend": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
+  "historical_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
+  "target_candidate_after_g1r": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
   "formal_modifications_allowed": false,
   "branch_policy": "main_only",
   "rc1_policy": "freeze_as_reference_do_not_delete",
-  "next_codex_scope": ["P0", "P1"],
-  "mandatory_stop_gate": "G1",
+  "pro_review_bound_commit": "4d8777095e90f431d686ae338b754abb430a6a98",
+  "pro_review_decision": "G1_IMPLEMENTATION_TESTS_PASS__P2_HOLD_PENDING_G1R",
+  "next_codex_scope": [
+    "G1R"
+  ],
+  "mandatory_stop_gate": "G1R_PRO_REVIEW",
+  "p2_gate": "HOLD_PENDING_G1R_PRO_APPROVAL_AND_NEW_USER_INSTRUCTION",
   "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
+  "g1r_required_changes": [
+    "replace_tangent_difference_bending_with_curvature_binormal_energy_and_analytic_force",
+    "remove_duplicate_material_coordinate_and_rest_length_truth",
+    "bind_state_and_mass_arrays_to_exact_free_node_layout",
+    "manifest_driven_reproducible_evidence_generation",
+    "complete_source_module_classification_and_architecture_audit",
+    "physical_inertia_realizability_and_finite_momentum_checks",
+    "consistent_so3_roundoff_contract"
+  ],
   "primary_design_rules": [
     "equations_before_guards",
     "one_model_identity_one_equation_set",
@@ -21,23 +36,65 @@
     "no_rc1_monolith_copy"
   ],
   "phases": [
-    {"id": "P0", "name": "baseline_and_skeleton", "review": "CODEX_SELF_CHECK"},
-    {"id": "P1", "name": "pure_physics_kernel", "review": "STOP_AT_G1"},
-    {"id": "P2", "name": "no_contact_statics", "review": "NEW_USER_INSTRUCTION"},
-    {"id": "P3", "name": "hard_contact_statics", "review": "PRO_REQUIRED"},
-    {"id": "P4", "name": "smooth_dynamics", "review": "PRO_RECOMMENDED"},
-    {"id": "P5", "name": "unilateral_tension_active_set", "review": "PRO_REQUIRED"},
-    {"id": "P6", "name": "dynamic_contact", "review": "CLOSED_PRO_REQUIRED"},
-    {"id": "P7", "name": "api_io_ui_adapters", "review": "AFTER_CORE_QUALIFICATION"},
-    {"id": "P8", "name": "three_anchor_and_promotion", "review": "USER_AND_PRO_REQUIRED"}
+    {
+      "id": "P0",
+      "name": "baseline_and_skeleton",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "P1",
+      "name": "pure_physics_kernel_0_1",
+      "status": "IMPLEMENTATION_TESTS_PASS"
+    },
+    {
+      "id": "G1R",
+      "name": "pro_review_corrections_0_2",
+      "review": "STOP_AND_PRO_REQUIRED"
+    },
+    {
+      "id": "P2",
+      "name": "no_contact_statics",
+      "review": "HOLD_PENDING_G1R_PRO_APPROVAL"
+    },
+    {
+      "id": "P3",
+      "name": "hard_contact_statics",
+      "review": "PRO_REQUIRED"
+    },
+    {
+      "id": "P4",
+      "name": "smooth_dynamics",
+      "review": "PRO_RECOMMENDED"
+    },
+    {
+      "id": "P5",
+      "name": "unilateral_tension_active_set",
+      "review": "PRO_REQUIRED"
+    },
+    {
+      "id": "P6",
+      "name": "dynamic_contact",
+      "review": "CLOSED_PRO_REQUIRED"
+    },
+    {
+      "id": "P7",
+      "name": "api_io_ui_adapters",
+      "review": "AFTER_CORE_QUALIFICATION"
+    },
+    {
+      "id": "P8",
+      "name": "three_anchor_and_promotion",
+      "review": "USER_AND_PRO_REQUIRED"
+    }
   ],
   "prohibited_automatic_actions": [
+    "start_p2_before_g1r_pro_approval",
     "switch_optimizer_after_failure",
     "relax_tolerance_after_failure",
     "disable_guard_after_failure",
-    "clip_state_to_manufacture_validity",
+    "clip_state_or_curvature_denominator_to_manufacture_validity",
     "assume_contact_restitution_or_friction",
     "modify_formal_program_without_new_authorization",
-    "continue_beyond_G1_in_next_codex_turn"
+    "rewrite_historical_0_1_g1_evidence_as_0_2"
   ]
 }
