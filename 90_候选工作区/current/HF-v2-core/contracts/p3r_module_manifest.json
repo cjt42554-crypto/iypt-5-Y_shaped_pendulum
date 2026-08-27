@@ -1,0 +1,81 @@
+{
+  "schema": "YPS-HFV2-P3R-MODULE-CLASSIFICATION-1.0",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.4-CONTACT-CANDIDATE",
+  "package_name": "ypendulum_hfv2_p3r",
+  "classifications": [
+    "public_contract",
+    "contact_static_assembly",
+    "contact_static_solver",
+    "qualification_audit"
+  ],
+  "production_classifications": [
+    "public_contract",
+    "contact_static_assembly",
+    "contact_static_solver"
+  ],
+  "allowed_internal_dependencies": {
+    "public_contract": ["public_contract"],
+    "contact_static_assembly": ["public_contract", "contact_static_assembly"],
+    "contact_static_solver": ["public_contract", "contact_static_assembly", "contact_static_solver"],
+    "qualification_audit": ["public_contract", "contact_static_assembly", "contact_static_solver", "qualification_audit"]
+  },
+  "allowed_external_import_prefixes": {
+    "public_contract": [],
+    "contact_static_assembly": ["numpy", "ypendulum_hfv2"],
+    "contact_static_solver": ["numpy", "scipy.optimize", "ypendulum_hfv2"],
+    "qualification_audit": ["numpy", "scipy", "ypendulum_hfv2"]
+  },
+  "path_classification_rules": [],
+  "exact_path_classification": {
+    "__init__.py": "public_contract",
+    "assembly.py": "contact_static_assembly",
+    "solver.py": "contact_static_solver"
+  },
+  "modules": [
+    {
+      "path": "__init__.py",
+      "classification": "public_contract",
+      "responsibility": "P3R_contact_model_and_assembly_identity_constants"
+    },
+    {
+      "path": "assembly.py",
+      "classification": "contact_static_assembly",
+      "responsibility": "versioned_contact_gap_and_finite_socket_validity_inequality_assembly"
+    },
+    {
+      "path": "solver.py",
+      "classification": "contact_static_solver",
+      "responsibility": "single_fixed_SLSQP_solver_over_physical_and_validity_inequalities"
+    },
+    {
+      "path": "kkt.py",
+      "classification": "qualification_audit",
+      "responsibility": "near_active_supported_weak_and_dual_interval_KKT_audit"
+    },
+    {
+      "path": "critical_cone.py",
+      "classification": "qualification_audit",
+      "responsibility": "one_sided_true_critical_cone_second_order_audit"
+    },
+    {
+      "path": "jacobian_audit.py",
+      "classification": "qualification_audit",
+      "responsibility": "independent_physical_gap_and_validity_Jacobian_crosschecks"
+    },
+    {
+      "path": "cases.py",
+      "classification": "qualification_audit",
+      "responsibility": "manifest_driven_observed_regression_and_unobserved_target_construction"
+    },
+    {
+      "path": "evidence_support.py",
+      "classification": "qualification_audit",
+      "responsibility": "runtime_contract_architecture_and_exact_test_node_evidence"
+    },
+    {
+      "path": "evidence.py",
+      "classification": "qualification_audit",
+      "responsibility": "deterministic_G3R_evidence_and_report_builder"
+    }
+  ]
+}
