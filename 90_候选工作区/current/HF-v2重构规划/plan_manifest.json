@@ -1,10 +1,11 @@
 {
-  "schema": "YPS-HFV2-REFACTOR-PLAN-1.4",
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.5",
   "date": "2026-08-27",
   "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
   "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
   "historical_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.1-CANDIDATE",
-  "current_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "base_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "current_candidate": "HFV2-DISCRETE-CORD-RIGID-BOB-0.3-CONTACT-CANDIDATE",
   "formal_modifications_allowed": false,
   "branch_policy": "main_only",
   "rc1_policy": "freeze_as_reference_do_not_delete",
@@ -17,15 +18,21 @@
   "g2r_runtime_amendment_commit": "8adc7f516a6ae94133648f671c853257505d71fc",
   "g2r_implementation_commit": "ff02beed22d3ab006114ebf29e64a17c88d07196",
   "g2r_handoff_commit": "7d1786474b1d2b9c492a07ab38589dd27888040d",
+  "g2r_pro_review_commit": "fe5063fe739506812fa1dfca4dbf907dd89b4465",
   "g2r_pro_review_decision": "G2R_PRO_REVIEW_PASS__NO_CONTACT_STATIC_ALGORITHM_ONLY",
   "p2_status": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED",
+  "p3_protocol_commit": "56c751016ab6e3be13bf7966dc29f20de7bd0f12",
+  "p3_protocol_amendment_a1_commit": "25fac66ea8e6ae157d4ec1e6e5ec872636e8a1ce",
+  "p3_implementation_and_g3_evidence_commit": "74c6354fbe7e4c3b2e62fd21476fd261681e1245",
+  "p3_status": "NO_GO_G3_STATIC_CONTACT_ALGORITHM",
+  "g3_metrics_sha256": "97522f837822e2108bce9fe117ad5a5007e2d48a859a9b7f389481010072aa62",
   "next_codex_scope": [
-    "P3_STATIC_FRICTIONLESS_RIGID_CONTACT"
+    "G3_PRO_REVIEW"
   ],
   "next_scope_requires_new_user_instruction": true,
   "mandatory_stop_gate": "G3_PRO_REVIEW",
-  "p3_gate": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
-  "p4_gate": "CLOSED_PENDING_P3_AND_NEW_REVIEW",
+  "p3_gate": "NO_GO_PENDING_PRO_REVIEW",
+  "p4_gate": "CLOSED_AFTER_G3_NO_GO_PENDING_NEW_PRO_REVIEW",
   "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
   "p3_required_controls": [
@@ -78,13 +85,13 @@
     {
       "id": "P3",
       "name": "static_frictionless_rigid_contact",
-      "status": "PENDING_NEW_USER_INSTRUCTION",
+      "status": "NO_GO_G3_STATIC_CONTACT_ALGORITHM",
       "review": "STOP_AND_PRO_REQUIRED_AT_G3"
     },
     {
       "id": "P4",
       "name": "smooth_dynamics",
-      "status": "CLOSED_PENDING_P3_AND_NEW_REVIEW"
+      "status": "CLOSED_AFTER_G3_NO_GO_PENDING_NEW_PRO_REVIEW"
     },
     {
       "id": "P5",
@@ -109,6 +116,7 @@
   ],
   "prohibited_automatic_actions": [
     "start_P3_without_new_user_instruction",
+    "reinterpret_failed_G3_target_as_pass_by_changing_active_identity_seed_domain_solver_or_tolerance",
     "start_P4_P5_or_P6_after_G3_without_review",
     "copy_or_import_retired_hard_contact_candidate_as_hfv2_implementation",
     "use_rc1_guard_or_compression_results_as_hfv2_contact_evidence",
