@@ -1,0 +1,75 @@
+{
+  "schema": "YPS-HFV2-P3-FORMAL-CONTACT-REGISTRATION-1.0",
+  "source_repository_commit": "fe5063fe739506812fa1dfca4dbf907dd89b4465",
+  "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "formal_registration_id": "FIXED_REST_MATERIAL_SOCKETS_PROJECTIVE_V2",
+  "formal_sources": {
+    "model.py": {
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/model.py",
+      "git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+      "sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6"
+    },
+    "reference.py": {
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/reference.py",
+      "git_blob": "6c9614e999b2940da59c7a8261208c91aa8a217d",
+      "sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa"
+    }
+  },
+  "adapter_policy": "read_only_reimplementation_on_hfv2_topology_no_formal_import",
+  "surface_parameters": {
+    "branch_contact_radius_source": "p3_case_or_assembly_contract_by_branch_id",
+    "bob_contact_radius_source": "p3_case_or_assembly_contract",
+    "minimum_clearance_source": "p3_case_or_assembly_contract",
+    "all_values_enter_contact_assembly_identity": true
+  },
+  "same_branch": {
+    "minimum_material_separation": "1.01*(2*branch_radius+minimum_clearance)",
+    "full_pair_domain": "unit_square_when_second_material_start-first_material_end_is_at_least_minimum_material_separation",
+    "partial_pair_domain": "unit_square_intersection_with_S_second(eta)-S_first(xi)>=minimum_material_separation",
+    "required_center_distance": "2*branch_radius+minimum_clearance",
+    "identity_granularity": "one_unordered_segment_pair_one_constraint"
+  },
+  "junction_socket": {
+    "applies_to": "each_unordered_branch_pair_sharing_exactly_one_non_bob_endpoint_node",
+    "required_center_distance": "first_branch_radius+second_branch_radius+minimum_clearance",
+    "socket_length_each_branch": "2*required_center_distance",
+    "active_domain": "full_segment_pair_material_domain_minus_points_where_both_joint_distances_are_strictly_inside_their_sockets",
+    "representation": "one_unordered_segment_pair_constraint_with_a_finite_union_of_convex_parameter_polygons",
+    "overlap_policy": "union_is_canonicalized_before_registration_no_duplicate_cartesian_product_constraints",
+    "registered_projective_opening_squared": "(required_center_distance/(2*socket_length))^2",
+    "state_validity": [
+      "positive_material_extent_beyond_each_socket",
+      "projective_opening_margin_nonnegative",
+      "socket_cut_center_distance_minus_required_center_distance_nonnegative"
+    ]
+  },
+  "bob_socket": {
+    "attachment_branch": "the_unique_branch_with_the_unique_bob_attachment_node_as_an_endpoint",
+    "socket_side": "the_attachment_endpoint_side",
+    "socket_length": "bob_contact_radius+attachment_branch_radius+minimum_clearance",
+    "attachment_branch_active_domain": "material_points_at_or_beyond_socket_length_from_bob_attachment",
+    "other_branch_active_domain": "complete_segment",
+    "required_center_distance": "bob_contact_radius+branch_radius+minimum_clearance",
+    "identity_granularity": "one_bob_branch_segment_active_interval_one_constraint",
+    "state_validity": [
+      "positive_attachment_branch_material_extent_beyond_socket",
+      "strict_positive_socket_radial_monotonicity",
+      "socket_cut_distance_minus_required_center_distance_nonnegative"
+    ]
+  },
+  "canonical_identity": {
+    "branch_order": "topology_first_appearance_then_segment_material_order",
+    "unordered_pair_order": "canonical_branch_and_segment_identity_order",
+    "numeric_serialization": "IEEE754_finite_JSON_numbers_sort_keys_compact_separators_allow_nan_false",
+    "duplicate_constraint_id": "fail_closed",
+    "duplicate_canonical_domain": "fail_closed"
+  },
+  "excluded": [
+    "friction",
+    "restitution",
+    "compliant_or_penalty_contact",
+    "ground_or_external_obstacle_contact",
+    "dynamic_contact_or_impulse",
+    "knot_sliding_or_topology_change"
+  ]
+}
