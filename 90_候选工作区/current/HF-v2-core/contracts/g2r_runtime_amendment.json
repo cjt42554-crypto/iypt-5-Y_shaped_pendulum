@@ -1,0 +1,45 @@
+{
+  "schema": "YPS-HFV2-G2R-RUNTIME-AMENDMENT-1.0",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "frozen_at_utc": "2026-08-27T08:57:00Z",
+  "frozen_before_first_valid_g2r_target_execution": true,
+  "base_g2r_acceptance_manifest": "contracts/g2r_acceptance_manifest.json",
+  "base_g2r_protocol": "contracts/G2R_FROZEN_PROTOCOL.md",
+  "invalidated_trial": {
+    "runtime_python": "3.12.3",
+    "runtime_numpy": "1.26.4",
+    "runtime_scipy": "1.11.4",
+    "reason": "scipy_optimize_minimize_bfgs_emitted_unknown_solver_options_for_c1_and_c2",
+    "artifact_treatment": "temporary_output_rejected_not_committed_not_acceptance_evidence",
+    "numerical_gate_or_threshold_changed_after_trial": false
+  },
+  "corrected_runtime_contract": {
+    "python_minimum": "3.11",
+    "numpy_minimum": "1.26",
+    "scipy_minimum": "1.12",
+    "bfgs_signature_parameters_required": ["c1", "c2"],
+    "unknown_solver_options_warning_treatment": "raise_and_fail_closed",
+    "first_valid_target_runtime": {
+      "python": "3.12.3",
+      "numpy": "2.5.2",
+      "scipy": "1.18.1"
+    }
+  },
+  "unchanged_g2r_contract_fields": [
+    "physical_equations",
+    "y_anchor_geometry",
+    "mesh_levels_2_4_8",
+    "three_deterministic_seeds",
+    "BFGS_method",
+    "gtol_1e-9",
+    "maxiter_2500",
+    "xrtol_0",
+    "c1_1e-4",
+    "c2_0.9",
+    "candidate_selection_rule",
+    "all_original_G2_numerical_gates",
+    "129_point_centerline_rule_and_ratio_gate",
+    "historical_equivalence_tolerances"
+  ],
+  "official_support_reference": "https://docs.scipy.org/doc/scipy-1.12.0/reference/optimize.minimize-bfgs.html"
+}
