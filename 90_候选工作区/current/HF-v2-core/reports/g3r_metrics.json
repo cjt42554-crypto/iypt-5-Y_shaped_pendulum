@@ -1,0 +1,1512 @@
+{
+  "architecture": {
+    "dependency_violations": [],
+    "discovered_file_count": 9,
+    "line_counts": {
+      "__init__.py": 9,
+      "assembly.py": 355,
+      "cases.py": 255,
+      "critical_cone.py": 277,
+      "evidence.py": 627,
+      "evidence_support.py": 238,
+      "jacobian_audit.py": 113,
+      "kkt.py": 235,
+      "solver.py": 133
+    },
+    "line_limit_exclusive": 800,
+    "missing_manifest_files": [],
+    "module_manifest": "p3r_module_manifest.json",
+    "oversized_modules": {},
+    "path_classification_violations": [],
+    "production_random_call_count": 0,
+    "production_try_statement_count": 0,
+    "status": "PASS",
+    "unclassified_files": []
+  },
+  "contact_model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.4-CONTACT-CANDIDATE",
+  "contract_binding": {
+    "adapter_contract": {
+      "path": "p3r_contact_adapter_contract.json",
+      "sha256": "94d85363e255a5ef5b16acd221df8ab0b1d7552255c7c399c0e492e3eada67bd"
+    },
+    "formal_sources": {
+      "model.py": {
+        "actual_git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+        "actual_sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6",
+        "expected_git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+        "expected_sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6",
+        "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/model.py",
+        "status": "PASS"
+      },
+      "reference.py": {
+        "actual_git_blob": "6c9614e999b2940da59c7a8261208c91aa8a217d",
+        "actual_sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa",
+        "expected_git_blob": "6c9614e999b2940da59c7a8261208c91aa8a217d",
+        "expected_sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa",
+        "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/reference.py",
+        "status": "PASS"
+      }
+    },
+    "frozen_protocol": {
+      "path": "P3R_FROZEN_PROTOCOL.md",
+      "sha256": "8c084a0bde8035292b784305ce646e4f9881be4cd47179b25792786f5016bf30"
+    },
+    "historical_g3_metrics": {
+      "actual_sha256": "97522f837822e2108bce9fe117ad5a5007e2d48a859a9b7f389481010072aa62",
+      "expected_sha256": "97522f837822e2108bce9fe117ad5a5007e2d48a859a9b7f389481010072aa62",
+      "status": "PASS"
+    },
+    "model_identity": {
+      "path": "model_identity_0_4_contact.json",
+      "sha256": "74c8400938cb1112374f0dc3fe0f6843c05151c01b76716dc2dbccb33a9f1cc9"
+    },
+    "prefreeze_commit_exists": true,
+    "prefreeze_source_commit": "5d1053e94c5bb692c505d2a3ca01327bb79ed242",
+    "qualification_target_results_observed_before_freeze": 0,
+    "source_records": {
+      "contracts/model_identity_0_4_contact.json": {
+        "actual_sha256": "74c8400938cb1112374f0dc3fe0f6843c05151c01b76716dc2dbccb33a9f1cc9",
+        "expected_sha256": "74c8400938cb1112374f0dc3fe0f6843c05151c01b76716dc2dbccb33a9f1cc9",
+        "status": "PASS"
+      },
+      "contracts/p3r_contact_adapter_contract.json": {
+        "actual_sha256": "94d85363e255a5ef5b16acd221df8ab0b1d7552255c7c399c0e492e3eada67bd",
+        "expected_sha256": "94d85363e255a5ef5b16acd221df8ab0b1d7552255c7c399c0e492e3eada67bd",
+        "status": "PASS"
+      },
+      "contracts/p3r_module_manifest.json": {
+        "actual_sha256": "7eec5e3f44e3ea1e62a976add307970a6c33cca8b007e335e4bf8d355587476c",
+        "expected_sha256": "7eec5e3f44e3ea1e62a976add307970a6c33cca8b007e335e4bf8d355587476c",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/__init__.py": {
+        "actual_sha256": "604bf7ce81cbf532ef3d8edbbd1e46623df88dc3dadc10eb6b818d194d5322a4",
+        "expected_sha256": "604bf7ce81cbf532ef3d8edbbd1e46623df88dc3dadc10eb6b818d194d5322a4",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/assembly.py": {
+        "actual_sha256": "fd760b100b6a5a2638cf0fe8ce41b7c88edbfc996fc0f2592bc56ea72a743ae7",
+        "expected_sha256": "fd760b100b6a5a2638cf0fe8ce41b7c88edbfc996fc0f2592bc56ea72a743ae7",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/cases.py": {
+        "actual_sha256": "d040baf63c39bb40b37bbe2d2809bdca21737e0bc5849d7a66b527d6f2293612",
+        "expected_sha256": "d040baf63c39bb40b37bbe2d2809bdca21737e0bc5849d7a66b527d6f2293612",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/critical_cone.py": {
+        "actual_sha256": "9e737f988fff106338af94c91fa399643f4283cfbd22c2fa9c5493d565100cde",
+        "expected_sha256": "9e737f988fff106338af94c91fa399643f4283cfbd22c2fa9c5493d565100cde",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/evidence.py": {
+        "actual_sha256": "3e17c3581b9c758915e16ff01d187cd7a014eca26389af235644e666b91587b6",
+        "expected_sha256": "3e17c3581b9c758915e16ff01d187cd7a014eca26389af235644e666b91587b6",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/evidence_support.py": {
+        "actual_sha256": "83fd80bf441cdd8328f4b8f56ad69950c7c3163b2d839ba7c4a327e621d3d584",
+        "expected_sha256": "83fd80bf441cdd8328f4b8f56ad69950c7c3163b2d839ba7c4a327e621d3d584",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/jacobian_audit.py": {
+        "actual_sha256": "c77c0b00c17d616ae91d4a1255026ac437ca10b13aa6f16f7db5307e70a606d7",
+        "expected_sha256": "c77c0b00c17d616ae91d4a1255026ac437ca10b13aa6f16f7db5307e70a606d7",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/kkt.py": {
+        "actual_sha256": "ee3afe0df3412ea9e2013d3a364b558e5fdefd08a198ca41e6d9f26b905fc31e",
+        "expected_sha256": "ee3afe0df3412ea9e2013d3a364b558e5fdefd08a198ca41e6d9f26b905fc31e",
+        "status": "PASS"
+      },
+      "src/ypendulum_hfv2_p3r/solver.py": {
+        "actual_sha256": "4f8b57fb71694c4f5edae73cc77218fa98a50e432bb2e3f3bd37c96ae2875202",
+        "expected_sha256": "4f8b57fb71694c4f5edae73cc77218fa98a50e432bb2e3f3bd37c96ae2875202",
+        "status": "PASS"
+      },
+      "tests/p3r/test_p3r_core.py": {
+        "actual_sha256": "20116f466087d2efcab577a971c7a5ab04a67989e70b40585b6adb46fdfb9ec3",
+        "expected_sha256": "20116f466087d2efcab577a971c7a5ab04a67989e70b40585b6adb46fdfb9ec3",
+        "status": "PASS"
+      },
+      "tests/p3r/test_p3r_solver.py": {
+        "actual_sha256": "95d5b1989f520b8a9f4d9112b12e1a4442acde0fc7d7cdf108e2bdb9c3e26681",
+        "expected_sha256": "95d5b1989f520b8a9f4d9112b12e1a4442acde0fc7d7cdf108e2bdb9c3e26681",
+        "status": "PASS"
+      },
+      "tools/generate_g3r_evidence.py": {
+        "actual_sha256": "ac4408edebbb70e445dd7930bc1324a7c48e4815372891277c950ba26e39f4be",
+        "expected_sha256": "ac4408edebbb70e445dd7930bc1324a7c48e4815372891277c950ba26e39f4be",
+        "status": "PASS"
+      }
+    },
+    "status": "PASS"
+  },
+  "evidence_binding": {
+    "contracts/P3R_FROZEN_PROTOCOL.md": "8c084a0bde8035292b784305ce646e4f9881be4cd47179b25792786f5016bf30",
+    "contracts/model_identity_0_4_contact.json": "74c8400938cb1112374f0dc3fe0f6843c05151c01b76716dc2dbccb33a9f1cc9",
+    "contracts/p3r_acceptance_manifest.json": "3caa54c1d19ea8f50f90e13039fed66383ea316c687645fd2fc6eaec0732a654",
+    "contracts/p3r_contact_adapter_contract.json": "94d85363e255a5ef5b16acd221df8ab0b1d7552255c7c399c0e492e3eada67bd",
+    "contracts/p3r_module_manifest.json": "7eec5e3f44e3ea1e62a976add307970a6c33cca8b007e335e4bf8d355587476c",
+    "src/ypendulum_hfv2_p3r/__init__.py": "604bf7ce81cbf532ef3d8edbbd1e46623df88dc3dadc10eb6b818d194d5322a4",
+    "src/ypendulum_hfv2_p3r/assembly.py": "fd760b100b6a5a2638cf0fe8ce41b7c88edbfc996fc0f2592bc56ea72a743ae7",
+    "src/ypendulum_hfv2_p3r/cases.py": "d040baf63c39bb40b37bbe2d2809bdca21737e0bc5849d7a66b527d6f2293612",
+    "src/ypendulum_hfv2_p3r/critical_cone.py": "9e737f988fff106338af94c91fa399643f4283cfbd22c2fa9c5493d565100cde",
+    "src/ypendulum_hfv2_p3r/evidence.py": "3e17c3581b9c758915e16ff01d187cd7a014eca26389af235644e666b91587b6",
+    "src/ypendulum_hfv2_p3r/evidence_support.py": "83fd80bf441cdd8328f4b8f56ad69950c7c3163b2d839ba7c4a327e621d3d584",
+    "src/ypendulum_hfv2_p3r/jacobian_audit.py": "c77c0b00c17d616ae91d4a1255026ac437ca10b13aa6f16f7db5307e70a606d7",
+    "src/ypendulum_hfv2_p3r/kkt.py": "ee3afe0df3412ea9e2013d3a364b558e5fdefd08a198ca41e6d9f26b905fc31e",
+    "src/ypendulum_hfv2_p3r/solver.py": "4f8b57fb71694c4f5edae73cc77218fa98a50e432bb2e3f3bd37c96ae2875202",
+    "tests/p3r/test_p3r_core.py": "20116f466087d2efcab577a971c7a5ab04a67989e70b40585b6adb46fdfb9ec3",
+    "tests/p3r/test_p3r_solver.py": "95d5b1989f520b8a9f4d9112b12e1a4442acde0fc7d7cdf108e2bdb9c3e26681",
+    "tools/generate_g3r_evidence.py": "ac4408edebbb70e445dd7930bc1324a7c48e4815372891277c950ba26e39f4be"
+  },
+  "forbidden_scope_not_executed": [
+    "P2_equation_or_no_contact_potential_change",
+    "friction_restitution_penalty_or_compliant_contact",
+    "dynamic_contact_impulse_or_contact_time_integration",
+    "solver_fallback_random_restart_or_tolerance_relaxation",
+    "result_driven_target_seed_domain_or_threshold_change",
+    "formal_program_public_API_HDF5_or_UI_modification",
+    "P4_P5_or_P6_start"
+  ],
+  "formal_numerical_qualification": "HF_NUMERICAL_QUALIFICATION_NO_GO",
+  "gate_summary": {
+    "architecture": true,
+    "benchmark_identity_binding_before_target": true,
+    "contract_and_frozen_source_binding": true,
+    "exact_runtime": true,
+    "observed_symmetric_regression_before_target": true,
+    "unobserved_qualification_target": false
+  },
+  "historical_g3_status_preserved": "NO_GO_G3_STATIC_CONTACT_ALGORITHM",
+  "mandatory_stop": "G3R_PRO_REVIEW",
+  "not_executed": [
+    "friction",
+    "restitution",
+    "penalty_or_compliant_contact",
+    "dynamic_contact_or_impulse",
+    "contact_time_integration",
+    "P4",
+    "P5",
+    "P6",
+    "formal_program_migration",
+    "public_API_HDF5_or_UI_change",
+    "physical_apparatus_validation",
+    "experimental_validation"
+  ],
+  "observed_symmetric_regression": {
+    "audits": {
+      "action_reaction": {
+        "global_force_residual_N": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "global_moment_residual_N_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maximum_individual_force_residual_N": 0.0,
+        "maximum_individual_moment_residual_N_m": 0.0
+      },
+      "critical_cone": {
+        "critical_direction_count": 4,
+        "critical_direction_minimum_linearized_gap": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "critical_equality_rank": 2,
+        "definition": "J_near_active*d>=0_and_gradient_Pi_dot_d=0_with_registered_gauge_removed",
+        "gauge_dimension": 1,
+        "independent_directional_curvatures": [
+          0.0117321909127113,
+          0.0117321909127113,
+          9.866012299849846,
+          9.866012299849846
+        ],
+        "matrix_directional_curvatures": [
+          0.011732535723084955,
+          0.011732535723084955,
+          9.866043026788091,
+          9.866043026788091
+        ],
+        "maximum_curvature_crosscheck_error": 3.072693824535122e-05,
+        "minimum_critical_cone_curvature": 0.011732535723084955,
+        "minimum_supported_tangent_curvature": 0.011732535723084955,
+        "near_active_count": 4,
+        "near_active_rank": 3,
+        "passed": true,
+        "supported_tangent_dimension": 3,
+        "supported_tangent_eigenvalues": [
+          0.011732535723084955,
+          0.11362391553407036,
+          9.866043026788088
+        ],
+        "unsymmetrized_relative_asymmetry": 4.778496168534261e-09
+      },
+      "critical_passed": true,
+      "dual_interval_maximum_width_N": "POSITIVE_INFINITY",
+      "kkt": {
+        "complementarity_limit_N_m": 9.952111647378006e-11,
+        "complementarity_residual_N_m": 0.0,
+        "dual_interval_feasible": true,
+        "dual_intervals": [
+          {
+            "canonical_multiplier_N": 0.0,
+            "constraint_id": "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+            "lower_N": 0.0,
+            "upper_N": "POSITIVE_INFINITY"
+          },
+          {
+            "canonical_multiplier_N": 0.0,
+            "constraint_id": "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+            "lower_N": 0.0,
+            "upper_N": "POSITIVE_INFINITY"
+          },
+          {
+            "canonical_multiplier_N": 0.2885322548412712,
+            "constraint_id": "bob:upper_A:upper_A_s000",
+            "lower_N": 0.28853212359771463,
+            "upper_N": 0.2885323860848277
+          },
+          {
+            "canonical_multiplier_N": 0.28853225484127115,
+            "constraint_id": "bob:upper_B:upper_B_s000",
+            "lower_N": 0.28853212359771463,
+            "upper_N": 0.2885323860848277
+          }
+        ],
+        "dual_nonunique": true,
+        "dual_violation_N": 0.0,
+        "energy_scale_N_m": 0.9952111647378006,
+        "force_scale_N": 0.9952111647378006,
+        "mandatory_supported_ids": [
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ],
+        "near_active_ids": [
+          "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+          "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ],
+        "near_active_rank": 3,
+        "passed": true,
+        "possible_supported_ids": [
+          "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+          "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ],
+        "primal_violation_m": 0.0,
+        "stationarity_limit_N": 1e-08,
+        "stationarity_residual_N": 5.551115123125783e-17,
+        "supported_ids": [
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ],
+        "supported_rank": 2,
+        "weak_active_ids": [
+          "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+          "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside"
+        ]
+      },
+      "p2_potential_and_force_bitwise_unchanged": true,
+      "physical_final_error": 3.3404658591243397e-10,
+      "physical_gap_jacobian": [
+        {
+          "difference_step": 1e-05,
+          "matrix_relative_error": 3.0758023122007267e-09,
+          "maximum_row_relative_error": 1.218888361496694e-08
+        },
+        {
+          "difference_step": 3e-06,
+          "matrix_relative_error": 2.7617863641863465e-10,
+          "maximum_row_relative_error": 1.0944078517526664e-09
+        },
+        {
+          "difference_step": 1e-06,
+          "matrix_relative_error": 2.501974729203204e-11,
+          "maximum_row_relative_error": 7.710848855434541e-11
+        },
+        {
+          "difference_step": 3e-07,
+          "matrix_relative_error": 1.0313789268447034e-10,
+          "maximum_row_relative_error": 3.3404658591243397e-10
+        }
+      ],
+      "validity": {
+        "constraint_ids": [
+          "validity:bob_socket:lower:attachment:material_extent",
+          "validity:bob_socket:lower:attachment:radial_monotonicity_margin",
+          "validity:bob_socket:lower:attachment:cut_gap_margin",
+          "validity:junction_socket:junction:junction:upper_A|upper_B:material_extent",
+          "validity:junction_socket:junction:junction:upper_A|upper_B:projective_opening_margin",
+          "validity:junction_socket:junction:junction:upper_A|upper_B:cut_gap_margin",
+          "validity:junction_socket:junction:junction:upper_A|lower:material_extent",
+          "validity:junction_socket:junction:junction:upper_A|lower:projective_opening_margin",
+          "validity:junction_socket:junction:junction:upper_A|lower:cut_gap_margin",
+          "validity:junction_socket:junction:junction:upper_B|lower:material_extent",
+          "validity:junction_socket:junction:junction:upper_B|lower:projective_opening_margin",
+          "validity:junction_socket:junction:junction:upper_B|lower:cut_gap_margin"
+        ],
+        "minimum_normalized_residual": 0.00527317480222379,
+        "normalized_residuals": [
+          0.059999999999999984,
+          0.2895238094238095,
+          0.509047620047619,
+          6.688203230275509,
+          0.187500000001,
+          0.120000001,
+          0.38999999999999996,
+          0.005546066509159892,
+          0.00527317480222379,
+          0.38999999999999996,
+          0.005546066509159892,
+          0.00527317480222379
+        ],
+        "scales": [
+          0.1,
+          0.01,
+          0.1,
+          0.1,
+          1.0,
+          0.1,
+          0.1,
+          1.0,
+          0.1,
+          0.1,
+          1.0,
+          0.1
+        ],
+        "signed_residuals": [
+          0.005999999999999998,
+          0.0028952380942380953,
+          0.050904762004761905,
+          0.6688203230275509,
+          0.187500000001,
+          0.0120000001,
+          0.039,
+          0.005546066509159892,
+          0.000527317480222379,
+          0.039,
+          0.005546066509159892,
+          0.000527317480222379
+        ],
+        "units": [
+          "m",
+          "m^2",
+          "m",
+          "m",
+          "1",
+          "m",
+          "m",
+          "1",
+          "m",
+          "m",
+          "1",
+          "m"
+        ]
+      },
+      "validity_final_error": 4.532466518368394e-10,
+      "validity_jacobian": [
+        {
+          "difference_step": 1e-05,
+          "matrix_relative_error": 3.423344261444211e-11,
+          "maximum_row_relative_error": 5.2439463212535666e-11
+        },
+        {
+          "difference_step": 3e-06,
+          "matrix_relative_error": 3.554276536554791e-11,
+          "maximum_row_relative_error": 1.5108221727894646e-10
+        },
+        {
+          "difference_step": 1e-06,
+          "matrix_relative_error": 4.8468303754776373e-11,
+          "maximum_row_relative_error": 4.532466518368394e-10
+        }
+      ]
+    },
+    "case_id": "SYMMETRIC_BOB_TWO_CORD_CONTACT_1_P3R_REGRESSION",
+    "checks": {
+      "critical_cone": true,
+      "dual_nonuniqueness_reported": true,
+      "four_near_active_identities": true,
+      "mandatory_support_is_the_bob_pair": true,
+      "near_active_rank_three": true,
+      "p2_unchanged": true,
+      "supported_rank_two": true,
+      "two_supported_identities": true
+    },
+    "role": "observed_regression_not_qualification_target",
+    "status": "PASS"
+  },
+  "optimizer_success_used_as_acceptance_gate": false,
+  "qualification_target": {
+    "case_id": "P3R_SYMMETRIC_35_DEG_TWO_BOB_CONTACT_1",
+    "completed_seed_count": 3,
+    "multiseed_checks": {
+      "energy_spread": true,
+      "position_spread": true,
+      "required_passing_seed_count": false
+    },
+    "multiseed_energy_spread_J": 1.3877787807814457e-17,
+    "multiseed_position_spread_m": 9.35469869408195e-10,
+    "qualified_seed_count": 2,
+    "role": "prefrozen_unobserved_static_contact_algorithm_qualification_target",
+    "seed_count": 3,
+    "seeds": [
+      {
+        "audits": {
+          "action_reaction": {
+            "global_force_residual_N": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "global_moment_residual_N_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_individual_force_residual_N": 5.551115123125783e-17,
+            "maximum_individual_moment_residual_N_m": 0.0
+          },
+          "critical_cone": {
+            "critical_direction_count": 6,
+            "critical_direction_minimum_linearized_gap": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "critical_equality_rank": 2,
+            "definition": "J_near_active*d>=0_and_gradient_Pi_dot_d=0_with_registered_gauge_removed",
+            "gauge_dimension": 1,
+            "independent_directional_curvatures": [
+              0.00793865279560491,
+              0.00793865279560491,
+              4.661607283866609,
+              4.661607283866609,
+              0.03543642118996208,
+              0.03543642118996208
+            ],
+            "matrix_directional_curvatures": [
+              0.00793866362985704,
+              0.00793866362985704,
+              4.6616237000691605,
+              4.6616237000691605,
+              0.035436315789534434,
+              0.035436315789534434
+            ],
+            "maximum_curvature_crosscheck_error": 1.6416202551106096e-05,
+            "minimum_critical_cone_curvature": 0.00793866362985704,
+            "minimum_supported_tangent_curvature": 0.007938663629857044,
+            "near_active_count": 2,
+            "near_active_rank": 2,
+            "passed": true,
+            "supported_tangent_dimension": 3,
+            "supported_tangent_eigenvalues": [
+              0.007938663629857044,
+              0.035436315789534795,
+              4.6616237000691605
+            ],
+            "unsymmetrized_relative_asymmetry": 1.2450636655231276e-09
+          },
+          "critical_passed": true,
+          "dual_interval_maximum_width_N": 2.9642213850156196e-08,
+          "kkt": {
+            "complementarity_limit_N_m": 9.97333718330475e-11,
+            "complementarity_residual_N_m": 5.206547214860021e-18,
+            "dual_interval_feasible": true,
+            "dual_intervals": [
+              {
+                "canonical_multiplier_N": 0.37517126554768776,
+                "constraint_id": "bob:upper_A:upper_A_s000",
+                "lower_N": 0.37517125072658086,
+                "upper_N": 0.37517128036879466
+              },
+              {
+                "canonical_multiplier_N": 0.37517126554768776,
+                "constraint_id": "bob:upper_B:upper_B_s000",
+                "lower_N": 0.37517125072658086,
+                "upper_N": 0.3751712803687947
+              }
+            ],
+            "dual_nonunique": false,
+            "dual_violation_N": 0.0,
+            "energy_scale_N_m": 0.9973337183304749,
+            "force_scale_N": 0.9973337183304749,
+            "mandatory_supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "near_active_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "near_active_rank": 2,
+            "passed": true,
+            "possible_supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "primal_violation_m": 0.0,
+            "stationarity_limit_N": 1e-08,
+            "stationarity_residual_N": 4.305981007597439e-18,
+            "supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "supported_rank": 2,
+            "weak_active_ids": []
+          },
+          "p2_potential_and_force_bitwise_unchanged": true,
+          "physical_final_error": 3.829163055271616e-10,
+          "physical_gap_jacobian": [
+            {
+              "difference_step": 1e-05,
+              "matrix_relative_error": 1.6480646654687918e-09,
+              "maximum_row_relative_error": 7.93629156558649e-09
+            },
+            {
+              "difference_step": 3e-06,
+              "matrix_relative_error": 1.4659672522826895e-10,
+              "maximum_row_relative_error": 7.026382977027106e-10
+            },
+            {
+              "difference_step": 1e-06,
+              "matrix_relative_error": 2.424371822966372e-11,
+              "maximum_row_relative_error": 1.0769260587973899e-10
+            },
+            {
+              "difference_step": 3e-07,
+              "matrix_relative_error": 1.3531704565227386e-10,
+              "maximum_row_relative_error": 3.829163055271616e-10
+            }
+          ],
+          "validity": {
+            "constraint_ids": [
+              "validity:bob_socket:lower:attachment:material_extent",
+              "validity:bob_socket:lower:attachment:radial_monotonicity_margin",
+              "validity:bob_socket:lower:attachment:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:material_extent",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_A|lower:material_extent",
+              "validity:junction_socket:junction:junction:upper_A|lower:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_A|lower:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_B|lower:material_extent",
+              "validity:junction_socket:junction:junction:upper_B|lower:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_B|lower:cut_gap_margin"
+            ],
+            "minimum_normalized_residual": 0.02566837272429566,
+            "normalized_residuals": [
+              0.20999999999999996,
+              0.11601175987366538,
+              0.2100588008683267,
+              7.695034826949463,
+              0.26648992833816554,
+              0.1553166904485021,
+              0.5399999999999999,
+              0.029511952254726255,
+              0.02566837272429566,
+              0.5399999999999999,
+              0.029511952254726255,
+              0.02566837272429566
+            ],
+            "scales": [
+              0.1,
+              0.01,
+              0.1,
+              0.1,
+              1.0,
+              0.1,
+              0.1,
+              1.0,
+              0.1,
+              0.1,
+              1.0,
+              0.1
+            ],
+            "signed_residuals": [
+              0.020999999999999998,
+              0.0011601175987366538,
+              0.02100588008683267,
+              0.7695034826949464,
+              0.26648992833816554,
+              0.01553166904485021,
+              0.054,
+              0.029511952254726255,
+              0.002566837272429566,
+              0.054,
+              0.029511952254726255,
+              0.002566837272429566
+            ],
+            "units": [
+              "m",
+              "m^2",
+              "m",
+              "m",
+              "1",
+              "m",
+              "m",
+              "1",
+              "m",
+              "m",
+              "1",
+              "m"
+            ]
+          },
+          "validity_final_error": 2.266233259184197e-10,
+          "validity_jacobian": [
+            {
+              "difference_step": 1e-05,
+              "matrix_relative_error": 5.5541296823845376e-11,
+              "maximum_row_relative_error": 7.9254150745329e-11
+            },
+            {
+              "difference_step": 3e-06,
+              "matrix_relative_error": 5.5591053106858596e-11,
+              "maximum_row_relative_error": 7.916524131693431e-11
+            },
+            {
+              "difference_step": 1e-06,
+              "matrix_relative_error": 5.5549822380422004e-11,
+              "maximum_row_relative_error": 2.266233259184197e-10
+            }
+          ]
+        },
+        "bob_position_m": [
+          0.0,
+          0.0,
+          -0.0993764673504026
+        ],
+        "checks": {
+          "action_reaction_force": true,
+          "action_reaction_moment": true,
+          "critical_cone": true,
+          "dual_interval_width": true,
+          "finite": true,
+          "interior_witnesses": true,
+          "kkt": true,
+          "mandatory_support_identity": true,
+          "multipliers": true,
+          "near_active_identity": true,
+          "near_active_rank": true,
+          "p2_unchanged": true,
+          "physical_gap_jacobian": true,
+          "position": true,
+          "possible_support_identity": true,
+          "supported_identity": true,
+          "supported_rank": true,
+          "validity_jacobian": true,
+          "validity_strict_interior": true
+        },
+        "coordinates": [
+          0.0,
+          0.0,
+          -0.0993764673504026,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "execution_status": "COMPLETED",
+        "minimum_contact_gap_m": 1.3877787807814457e-17,
+        "minimum_validity_normalized_residual": 0.02566837272429566,
+        "optimizer": {
+          "function_evaluations": 1,
+          "gradient_evaluations": 1,
+          "iterations": 1,
+          "message": "Optimization terminated successfully",
+          "status": 0,
+          "success": true,
+          "success_used_as_acceptance_gate": false
+        },
+        "position_error_m": 0.0,
+        "qualified": true,
+        "seed_id": "target_seed_00_analytic",
+        "supported_multiplier_max_error_N": 1.6653345369377348e-16,
+        "supported_witness_parameter_margin": 0.10258863150521991,
+        "total_potential_J": -0.10160683634426756
+      },
+      {
+        "audits": {
+          "action_reaction": {
+            "global_force_residual_N": [
+              0.0,
+              0.0,
+              -2.7755575615628914e-17
+            ],
+            "global_moment_residual_N_m": [
+              -5.169878828456423e-26,
+              0.0,
+              0.0
+            ],
+            "maximum_individual_force_residual_N": 6.206335383118183e-17,
+            "maximum_individual_moment_residual_N_m": 3.469446951953615e-18
+          },
+          "critical_cone": {
+            "critical_direction_count": 14,
+            "critical_direction_minimum_linearized_gap": [
+              1.6458359061644604e-11,
+              -1.6458954415227996e-11,
+              -5.068197644990079e-09,
+              5.068181395855246e-09,
+              1.343901855574054e-25,
+              -3.4312642451991666e-10,
+              1.4760159156936551e-16,
+              -3.4312641631344886e-10,
+              5.541355050704798e-26,
+              -1.2588294526976573e-16,
+              -1.8024398372237428e-16,
+              -1.8796564889539273e-16,
+              -3.831106843244388e-18,
+              -5.4990128741321146e-18
+            ],
+            "critical_equality_rank": 2,
+            "definition": "J_near_active*d>=0_and_gradient_Pi_dot_d=0_with_registered_gauge_removed",
+            "gauge_dimension": 1,
+            "independent_directional_curvatures": [
+              0.007938548433938753,
+              0.007938548433938753,
+              4.661607388228275,
+              4.661607388228275,
+              0.035436386402740036,
+              0.035436386402740036,
+              4.661607457802719,
+              0.03543642118996208,
+              0.03543642118996208,
+              4.661607457802719,
+              0.007979771292070404,
+              0.007979771292070404,
+              0.04073921138346284,
+              0.04073921138346284
+            ],
+            "matrix_directional_curvatures": [
+              0.007938663629852318,
+              0.007938663629852318,
+              4.6616237000689855,
+              4.6616237000689855,
+              0.03543631564013171,
+              0.03543631564013171,
+              4.661623700068985,
+              0.035436315938930645,
+              0.035436315938930645,
+              4.661623700068987,
+              0.007979758993364106,
+              0.007979758993364106,
+              0.04073921583778343,
+              0.04073921583778343
+            ],
+            "maximum_curvature_crosscheck_error": 1.631184071015923e-05,
+            "minimum_critical_cone_curvature": 0.007938663629852318,
+            "minimum_supported_tangent_curvature": 0.00793866362985221,
+            "near_active_count": 2,
+            "near_active_rank": 2,
+            "passed": true,
+            "supported_tangent_dimension": 3,
+            "supported_tangent_eigenvalues": [
+              0.00793866362985221,
+              0.03543631578953202,
+              4.661623700068597
+            ],
+            "unsymmetrized_relative_asymmetry": 1.2450638417246964e-09
+          },
+          "critical_passed": true,
+          "dual_interval_maximum_width_N": 2.9642213850156196e-08,
+          "kkt": {
+            "complementarity_limit_N_m": 9.97333718330475e-11,
+            "complementarity_residual_N_m": 3.1239283223311997e-17,
+            "dual_interval_feasible": true,
+            "dual_intervals": [
+              {
+                "canonical_multiplier_N": 0.3751712647568781,
+                "constraint_id": "bob:upper_A:upper_A_s000",
+                "lower_N": 0.37517124993577117,
+                "upper_N": 0.375171279577985
+              },
+              {
+                "canonical_multiplier_N": 0.3751712663385976,
+                "constraint_id": "bob:upper_B:upper_B_s000",
+                "lower_N": 0.37517125151749053,
+                "upper_N": 0.37517128115970433
+              }
+            ],
+            "dual_nonunique": false,
+            "dual_violation_N": 0.0,
+            "energy_scale_N_m": 0.9973337183304749,
+            "force_scale_N": 0.9973337183304749,
+            "mandatory_supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "near_active_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "near_active_rank": 2,
+            "passed": true,
+            "possible_supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "primal_violation_m": 0.0,
+            "stationarity_limit_N": 1e-08,
+            "stationarity_residual_N": 3.792575640397599e-09,
+            "supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "supported_rank": 2,
+            "weak_active_ids": []
+          },
+          "p2_potential_and_force_bitwise_unchanged": true,
+          "physical_final_error": 5.880858643664991e-10,
+          "physical_gap_jacobian": [
+            {
+              "difference_step": 1e-05,
+              "matrix_relative_error": 1.6480672262127636e-09,
+              "maximum_row_relative_error": 7.939791901361946e-09
+            },
+            {
+              "difference_step": 3e-06,
+              "matrix_relative_error": 1.5063676614973124e-10,
+              "maximum_row_relative_error": 7.262188841577182e-10
+            },
+            {
+              "difference_step": 1e-06,
+              "matrix_relative_error": 4.055275239196282e-11,
+              "maximum_row_relative_error": 2.1579704124677862e-10
+            },
+            {
+              "difference_step": 3e-07,
+              "matrix_relative_error": 1.5095669334556872e-10,
+              "maximum_row_relative_error": 5.880858643664991e-10
+            }
+          ],
+          "validity": {
+            "constraint_ids": [
+              "validity:bob_socket:lower:attachment:material_extent",
+              "validity:bob_socket:lower:attachment:radial_monotonicity_margin",
+              "validity:bob_socket:lower:attachment:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:material_extent",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_A|lower:material_extent",
+              "validity:junction_socket:junction:junction:upper_A|lower:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_A|lower:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_B|lower:material_extent",
+              "validity:junction_socket:junction:junction:upper_B|lower:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_B|lower:cut_gap_margin"
+            ],
+            "minimum_normalized_residual": 0.025668372512470155,
+            "normalized_residuals": [
+              0.20999999999999996,
+              0.11601175987366547,
+              0.21005880086832726,
+              7.695034826949463,
+              0.26648992833816554,
+              0.1553166904485021,
+              0.5399999999999999,
+              0.029511951986901368,
+              0.025668372512470155,
+              0.5399999999999999,
+              0.029511952522551323,
+              0.02566837293612132
+            ],
+            "scales": [
+              0.1,
+              0.01,
+              0.1,
+              0.1,
+              1.0,
+              0.1,
+              0.1,
+              1.0,
+              0.1,
+              0.1,
+              1.0,
+              0.1
+            ],
+            "signed_residuals": [
+              0.020999999999999998,
+              0.0011601175987366547,
+              0.021005880086832726,
+              0.7695034826949464,
+              0.26648992833816554,
+              0.01553166904485021,
+              0.054,
+              0.029511951986901368,
+              0.0025668372512470156,
+              0.054,
+              0.029511952522551323,
+              0.002566837293612132
+            ],
+            "units": [
+              "m",
+              "m^2",
+              "m",
+              "m",
+              "1",
+              "m",
+              "m",
+              "1",
+              "m",
+              "m",
+              "1",
+              "m"
+            ]
+          },
+          "validity_final_error": 2.266233259184197e-10,
+          "validity_jacobian": [
+            {
+              "difference_step": 1e-05,
+              "matrix_relative_error": 7.461241972055484e-11,
+              "maximum_row_relative_error": 1.3396762606941466e-10
+            },
+            {
+              "difference_step": 3e-06,
+              "matrix_relative_error": 7.5293103663727e-11,
+              "maximum_row_relative_error": 1.4093784550893404e-10
+            },
+            {
+              "difference_step": 1e-06,
+              "matrix_relative_error": 7.83484953261307e-11,
+              "maximum_row_relative_error": 2.266233259184197e-10
+            }
+          ]
+        },
+        "bob_position_m": [
+          3.189956710131308e-17,
+          9.35469869408193e-10,
+          -0.09937646735040266
+        ],
+        "checks": {
+          "action_reaction_force": true,
+          "action_reaction_moment": true,
+          "critical_cone": true,
+          "dual_interval_width": true,
+          "finite": true,
+          "interior_witnesses": true,
+          "kkt": true,
+          "mandatory_support_identity": true,
+          "multipliers": true,
+          "near_active_identity": true,
+          "near_active_rank": true,
+          "p2_unchanged": true,
+          "physical_gap_jacobian": true,
+          "position": true,
+          "possible_support_identity": true,
+          "supported_identity": true,
+          "supported_rank": true,
+          "validity_jacobian": true,
+          "validity_strict_interior": true
+        },
+        "coordinates": [
+          3.189956710131308e-17,
+          9.35469869408193e-10,
+          -0.09937646735040266,
+          1.492551128498848e-09,
+          -3.6424602003821267e-09,
+          1.2672416630601423e-06
+        ],
+        "execution_status": "COMPLETED",
+        "minimum_contact_gap_m": 6.938893903907228e-18,
+        "minimum_validity_normalized_residual": 0.025668372512470155,
+        "optimizer": {
+          "function_evaluations": 39,
+          "gradient_evaluations": 24,
+          "iterations": 24,
+          "message": "Optimization terminated successfully",
+          "status": 0,
+          "success": true,
+          "success_used_as_acceptance_gate": false
+        },
+        "position_error_m": 9.35469869408195e-10,
+        "qualified": true,
+        "seed_id": "target_seed_01_positive_skew",
+        "supported_multiplier_max_error_N": 7.909096710889685e-10,
+        "supported_witness_parameter_margin": 0.10258863150521991,
+        "total_potential_J": -0.10160683634426755
+      },
+      {
+        "audits": {
+          "action_reaction": {
+            "global_force_residual_N": [
+              5.551115123125783e-17,
+              6.617444900424222e-24,
+              2.7755575615628914e-17
+            ],
+            "global_moment_residual_N_m": [
+              4.1359030627651384e-25,
+              -1.0408340855860843e-17,
+              6.203854594147708e-25
+            ],
+            "maximum_individual_force_residual_N": 6.206335383118183e-17,
+            "maximum_individual_moment_residual_N_m": 6.93889390390724e-18
+          },
+          "critical_cone": {
+            "critical_direction_count": 15,
+            "critical_direction_minimum_linearized_gap": [
+              -1.1742943350822717e-09,
+              1.1742582569024869e-09,
+              1.4868482892355332e-08,
+              2.660576500226119e-18,
+              -2.34855253756741e-09,
+              4.662871514030739e-24,
+              -3.450941943098575e-17,
+              -9.745377152339229e-18,
+              -2.3485526452550754e-09,
+              -5.130420661874904e-24,
+              1.264044002985619e-16,
+              -1.9618659885999345e-18,
+              -1.615162644420808e-18,
+              -4.585632576164877e-17,
+              -1.103579496349105e-17
+            ],
+            "critical_equality_rank": 2,
+            "definition": "J_near_active*d>=0_and_gradient_Pi_dot_d=0_with_registered_gauge_removed",
+            "gauge_dimension": 1,
+            "independent_directional_curvatures": [
+              0.007938374497828493,
+              0.007938374497828493,
+              4.661607144717721,
+              0.007938478859494648,
+              0.007938478859494648,
+              0.03543628204107388,
+              4.661607214292165,
+              0.0079385136467167,
+              0.0079385136467167,
+              0.03543621246662977,
+              4.661607144717721,
+              0.008935271920173436,
+              0.008935271920173436,
+              0.694411846925396,
+              0.694411846925396
+            ],
+            "matrix_directional_curvatures": [
+              0.00793866362148053,
+              0.00793866362148053,
+              4.661623698966834,
+              0.00793866362148057,
+              0.00793866362148057,
+              0.035436320967477335,
+              4.661623698966841,
+              0.007938663621480567,
+              0.007938663621480567,
+              0.035436310605132505,
+              4.6616236989668405,
+              0.008935476225427232,
+              0.008935476225427232,
+              0.6944165156644414,
+              0.6944165156644414
+            ],
+            "maximum_curvature_crosscheck_error": 1.655424911906067e-05,
+            "minimum_critical_cone_curvature": 0.00793866362148053,
+            "minimum_supported_tangent_curvature": 0.007938663621436512,
+            "near_active_count": 2,
+            "near_active_rank": 2,
+            "passed": true,
+            "supported_tangent_dimension": 3,
+            "supported_tangent_eigenvalues": [
+              0.007938663621436512,
+              0.035436315786260816,
+              4.6616236989734965
+            ],
+            "unsymmetrized_relative_asymmetry": 1.2450638453837439e-09
+          },
+          "critical_passed": true,
+          "dual_interval_maximum_width_N": "NOT_A_NUMBER",
+          "kkt": {
+            "complementarity_limit_N_m": 9.97333718330475e-11,
+            "complementarity_residual_N_m": 1.5158861110051396e-14,
+            "dual_interval_feasible": false,
+            "dual_intervals": [
+              {
+                "canonical_multiplier_N": 0.37517129302854746,
+                "constraint_id": "bob:upper_A:upper_A_s000",
+                "lower_N": "NOT_A_NUMBER",
+                "upper_N": "NOT_A_NUMBER"
+              },
+              {
+                "canonical_multiplier_N": 0.3751712381746238,
+                "constraint_id": "bob:upper_B:upper_B_s000",
+                "lower_N": "NOT_A_NUMBER",
+                "upper_N": "NOT_A_NUMBER"
+              }
+            ],
+            "dual_nonunique": true,
+            "dual_violation_N": 0.0,
+            "energy_scale_N_m": 0.9973337183304749,
+            "force_scale_N": 0.9973337183304749,
+            "mandatory_supported_ids": [],
+            "near_active_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "near_active_rank": 2,
+            "passed": false,
+            "possible_supported_ids": [],
+            "primal_violation_m": 0.0,
+            "stationarity_limit_N": 1e-08,
+            "stationarity_residual_N": 1.1056080207858155e-08,
+            "supported_ids": [
+              "bob:upper_A:upper_A_s000",
+              "bob:upper_B:upper_B_s000"
+            ],
+            "supported_rank": 2,
+            "weak_active_ids": []
+          },
+          "p2_potential_and_force_bitwise_unchanged": true,
+          "physical_final_error": 3.687350946178835e-10,
+          "physical_gap_jacobian": [
+            {
+              "difference_step": 1e-05,
+              "matrix_relative_error": 1.6478708665301392e-09,
+              "maximum_row_relative_error": 7.941578395416189e-09
+            },
+            {
+              "difference_step": 3e-06,
+              "matrix_relative_error": 1.4647138778214196e-10,
+              "maximum_row_relative_error": 7.118386813584997e-10
+            },
+            {
+              "difference_step": 1e-06,
+              "matrix_relative_error": 4.160457794174847e-11,
+              "maximum_row_relative_error": 1.3655859653770424e-10
+            },
+            {
+              "difference_step": 3e-07,
+              "matrix_relative_error": 1.1506105737773789e-10,
+              "maximum_row_relative_error": 3.687350946178835e-10
+            }
+          ],
+          "validity": {
+            "constraint_ids": [
+              "validity:bob_socket:lower:attachment:material_extent",
+              "validity:bob_socket:lower:attachment:radial_monotonicity_margin",
+              "validity:bob_socket:lower:attachment:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:material_extent",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_A|upper_B:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_A|lower:material_extent",
+              "validity:junction_socket:junction:junction:upper_A|lower:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_A|lower:cut_gap_margin",
+              "validity:junction_socket:junction:junction:upper_B|lower:material_extent",
+              "validity:junction_socket:junction:junction:upper_B|lower:projective_opening_margin",
+              "validity:junction_socket:junction:junction:upper_B|lower:cut_gap_margin"
+            ],
+            "minimum_normalized_residual": 0.025668365378260612,
+            "normalized_residuals": [
+              0.20999999999999996,
+              0.11601175987375185,
+              0.21005880086876524,
+              7.695034826949463,
+              0.26648992833816554,
+              0.1553166904485021,
+              0.5399999999999999,
+              0.029511961542946448,
+              0.025668380070452797,
+              0.5399999999999999,
+              0.02951194296664584,
+              0.025668365378260612
+            ],
+            "scales": [
+              0.1,
+              0.01,
+              0.1,
+              0.1,
+              1.0,
+              0.1,
+              0.1,
+              1.0,
+              0.1,
+              0.1,
+              1.0,
+              0.1
+            ],
+            "signed_residuals": [
+              0.020999999999999998,
+              0.0011601175987375186,
+              0.021005880086876524,
+              0.7695034826949464,
+              0.26648992833816554,
+              0.01553166904485021,
+              0.054,
+              0.029511961542946448,
+              0.00256683800704528,
+              0.054,
+              0.02951194296664584,
+              0.0025668365378260613
+            ],
+            "units": [
+              "m",
+              "m^2",
+              "m",
+              "m",
+              "1",
+              "m",
+              "m",
+              "1",
+              "m",
+              "m",
+              "1",
+              "m"
+            ]
+          },
+          "validity_final_error": 2.266233259184197e-10,
+          "validity_jacobian": [
+            {
+              "difference_step": 1e-05,
+              "matrix_relative_error": 9.599139443482415e-11,
+              "maximum_row_relative_error": 1.222542484502341e-10
+            },
+            {
+              "difference_step": 3e-06,
+              "matrix_relative_error": 9.434007668694041e-11,
+              "maximum_row_relative_error": 1.1969433573875837e-10
+            },
+            {
+              "difference_step": 1e-06,
+              "matrix_relative_error": 9.2128481071528e-11,
+              "maximum_row_relative_error": 2.266233259184197e-10
+            }
+          ]
+        },
+        "bob_position_m": [
+          -6.982788430609629e-15,
+          -6.161943133952269e-09,
+          -0.09937646735046247
+        ],
+        "checks": {
+          "action_reaction_force": true,
+          "action_reaction_moment": true,
+          "critical_cone": true,
+          "dual_interval_width": false,
+          "finite": true,
+          "interior_witnesses": true,
+          "kkt": false,
+          "mandatory_support_identity": false,
+          "multipliers": true,
+          "near_active_identity": true,
+          "near_active_rank": true,
+          "p2_unchanged": true,
+          "physical_gap_jacobian": true,
+          "position": true,
+          "possible_support_identity": false,
+          "supported_identity": true,
+          "supported_rank": true,
+          "validity_jacobian": true,
+          "validity_strict_interior": true
+        },
+        "coordinates": [
+          -6.982788430609629e-15,
+          -6.161943133952269e-09,
+          -0.09937646735046247,
+          -1.1114036705025286e-07,
+          1.263227642987311e-07,
+          4.044552263592595e-05
+        ],
+        "execution_status": "COMPLETED",
+        "minimum_contact_gap_m": 2.892130979148533e-14,
+        "minimum_validity_normalized_residual": 0.025668365378260612,
+        "optimizer": {
+          "function_evaluations": 25,
+          "gradient_evaluations": 23,
+          "iterations": 23,
+          "message": "Optimization terminated successfully",
+          "status": 0,
+          "success": true,
+          "success_used_as_acceptance_gate": false
+        },
+        "position_error_m": 6.161943134247065e-09,
+        "qualified": false,
+        "seed_id": "target_seed_02_counter_skew",
+        "supported_multiplier_max_error_N": 2.748085953241386e-08,
+        "supported_witness_parameter_margin": 0.10258863150527664,
+        "total_potential_J": -0.10160683634424121
+      }
+    ],
+    "selected_seed_id": "target_seed_00_analytic",
+    "status": "FAIL"
+  },
+  "runtime": {
+    "actual": {
+      "numpy_version": "2.5.2",
+      "pytest_version": "9.1.1",
+      "python_implementation": "CPython",
+      "python_version": "3.12.3",
+      "ruff_version": "0.16.4",
+      "scipy_version": "1.18.1"
+    },
+    "byteorder": "little",
+    "checks": {
+      "numpy_version": true,
+      "pytest_minimum": true,
+      "python_implementation": true,
+      "python_version": true,
+      "ruff_version": true,
+      "scipy_version": true
+    },
+    "expected": {
+      "numpy_version": "2.5.2",
+      "pytest_minimum": "9.1",
+      "python_implementation": "CPython",
+      "python_version": "3.12.3",
+      "ruff_version": "0.16.4",
+      "scipy_version": "1.18.1"
+    },
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+    "status": "PASS"
+  },
+  "schema": "YPS-HFV2-G3R-EVIDENCE-1.0",
+  "small_benchmarks": {
+    "executed_before_qualification_target": true,
+    "mapping_count": 19,
+    "records": [
+      {
+        "benchmark_id": "interior_point_segment_gap_normal_endpoint_gradient",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_interior_point_segment_witness_has_exact_gap_and_gradient"
+      },
+      {
+        "benchmark_id": "interior_skew_segment_pair_gap_normal_endpoint_gradient",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_interior_skew_segment_pair_has_exact_endpoint_gradient"
+      },
+      {
+        "benchmark_id": "partial_same_branch_material_boundary_witness",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_partial_material_halfspace_forces_a_unique_boundary_witness"
+      },
+      {
+        "benchmark_id": "junction_multi_polygon_unique_witness",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_multi_polygon_union_selects_one_unique_piece"
+      },
+      {
+        "benchmark_id": "junction_duplicate_convex_piece_rejection",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_duplicate_convex_piece_is_rejected"
+      },
+      {
+        "benchmark_id": "junction_symmetric_union_split_identity",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_symmetric_socket_union_is_nonsmooth_but_split_pieces_are_unique"
+      },
+      {
+        "benchmark_id": "parallel_overlap_and_zero_distance_fail_closed",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_parallel_overlap_and_zero_distance_fail_closed"
+      },
+      {
+        "benchmark_id": "collapsed_segment_fail_closed",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_geometry.py::test_collapsed_segment_fails_closed"
+      },
+      {
+        "benchmark_id": "one_dof_exact_slsqp_kkt_projected_hessian",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_solver_audit.py::test_one_dof_unilateral_quadratic_has_exact_slsqp_kkt_and_projected_hessian"
+      },
+      {
+        "benchmark_id": "physical_contact_gap_analytic_jacobian",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_assembly.py::test_contact_gap_jacobian_matches_centered_difference"
+      },
+      {
+        "benchmark_id": "finite_invalid_socket_signed_residual_and_jacobian",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_core.py::test_finite_invalid_socket_state_returns_signed_residuals_and_jacobian"
+      },
+      {
+        "benchmark_id": "validity_jacobian_independent_five_point",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_core.py::test_validity_jacobian_has_independent_five_point_convergence"
+      },
+      {
+        "benchmark_id": "new_model_and_assembly_identity_binding",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_core.py::test_p3r_identity_binds_new_model_adapter_protocol_and_validity_numerics"
+      },
+      {
+        "benchmark_id": "dual_interval_for_degenerate_near_active_rows",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_core.py::test_duplicate_near_active_rows_report_dual_intervals_without_false_licq_failure"
+      },
+      {
+        "benchmark_id": "true_critical_cone_weak_one_sided_direction",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_core.py::test_true_critical_cone_keeps_weak_active_one_sided_direction"
+      },
+      {
+        "benchmark_id": "observed_symmetric_integrated_structure_regression",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_core.py::test_observed_symmetric_regression_preserves_four_near_two_supported_structure"
+      },
+      {
+        "benchmark_id": "single_solver_combined_physical_and_validity_vector",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/p3r/test_p3r_solver.py::test_slsqp_receives_one_combined_inequality_vector_and_only_frozen_options"
+      },
+      {
+        "benchmark_id": "p2_contact_layer_bitwise_read_only",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_contact_assembly.py::test_contact_evaluation_is_a_read_only_layer_over_p2_potential"
+      },
+      {
+        "benchmark_id": "historical_g3_evidence_hash_immutable",
+        "failure_output": "",
+        "return_code": 0,
+        "status": "PASS",
+        "test_node": "tests/unit/test_g3_evidence.py::test_committed_g3_evidence_hashes_match_current_inputs"
+      }
+    ],
+    "status": "PASS",
+    "unique_test_node_count": 19
+  },
+  "status": "NO_GO_G3R_STATIC_CONTACT_ALGORITHM"
+}
