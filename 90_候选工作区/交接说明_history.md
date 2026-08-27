@@ -148,3 +148,11 @@ BFGS 调用显式传入 `c1=1e-4` 和 `c2=0.9`。第一次使用历史 SciPy 1.1
 G2R 单命令逐字节检查、`72 passed`、Ruff、`compileall`、JSON、Pandoc 解析和 standalone HTML 生成通过。浏览器视觉截图未完成：命令行 Chrome 未产出截图，内置浏览器安全策略拒绝本地 `file://` 页面。正式理论和正式程序未修改。
 
 当前最高状态为 `G2R_CANDIDATE_PASS_PENDING_PRO_REVIEW__HF_NUMERICAL_QUALIFICATION_NO_GO`。P3 及后续接触/动力学阶段继续关闭，下一步唯一任务是 Pro 独立复审。远程推送因会话未明确确认目标 GitHub 远端为可信接收方而被安全审查拒绝，本地提交历史保留。
+
+# 2026-08-27 17:45 +0800：退役三锚点残留清理与异常提交撤回
+
+用户明确裁决退役 `90_候选工作区/current/三锚点高保真资格/` 全部文件均无保留必要。删除前核验该精确目录约 `2.1 GiB`，包含 12,009 个普通文件和 4 个符号链接；此前异常提交 `c08cfa6` 的 388 个跟踪路径全部位于该目录，共误纳入 106,580 行文本，没有夹带其他路径。
+
+由于 `c08cfa6` 尚未推送，先将本地 `main` 恢复到其父提交 `ff02bee`，避免海量退役生成物留在待推送历史；随后将整个退役目录移入系统回收站，工作区中不再存在该路径。异常提交仍可在 Git reflog 和对象回收前追溯，目录在清空系统回收站前可恢复。
+
+清理后普通 `git push origin main` 成功将三个预期 G2R 提交从远端 `5612940` 推送至 `ff02bee`。先前 `pre-receive hook declined` 属于 GitHub 对当时聚合更新的远端拒绝，不是 `AGENTS.md` 或本地 hook；因完整远端规则诊断未保存，不对具体拒绝规则作推断。正式理论、正式程序、HF-v2 实现和 G2R 数值证据均未因本次治理清理而改变，结论仍为 `G2R_CANDIDATE_PASS_PENDING_PRO_REVIEW__HF_NUMERICAL_QUALIFICATION_NO_GO`。
