@@ -1,5 +1,5 @@
 {
-  "schema": "YPS-HFV2-REFACTOR-PLAN-1.3",
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.4",
   "date": "2026-08-27",
   "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
   "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
@@ -13,34 +13,32 @@
   "g2_prefreeze_commit": "2c91306f5da15c0025cf7b4efa3fc861d3075129",
   "g2_implementation_commit": "3d507bb0c82e8a0a8e7560b4f80a8ddefb2ea2f1",
   "g2_handoff_commit": "564ba7c8020b52a541032098b55872cd54289cef",
-  "g2_candidate_status": "PASS_G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONAL_ONLY",
-  "g2_pro_review_decision": "G2_SUBSTANTIVE_STATIC_EVIDENCE_PASS__APPROVAL_HOLD_PENDING_G2R",
-  "g2_approval_status": "HOLD_PENDING_G2R",
+  "g2r_protocol_commit": "7a19702b636231073b58e7e1a8e2b3734a78dd0d",
+  "g2r_runtime_amendment_commit": "8adc7f516a6ae94133648f671c853257505d71fc",
+  "g2r_implementation_commit": "ff02beed22d3ab006114ebf29e64a17c88d07196",
+  "g2r_handoff_commit": "7d1786474b1d2b9c492a07ab38589dd27888040d",
+  "g2r_pro_review_decision": "G2R_PRO_REVIEW_PASS__NO_CONTACT_STATIC_ALGORITHM_ONLY",
+  "p2_status": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED",
   "next_codex_scope": [
-    "G2R"
+    "P3_STATIC_FRICTIONLESS_RIGID_CONTACT"
   ],
   "next_scope_requires_new_user_instruction": true,
-  "mandatory_stop_gate": "G2R_PRO_REVIEW",
-  "p3_gate": "CLOSED_PENDING_G2R_PRO_APPROVAL_AND_NEW_USER_INSTRUCTION",
+  "mandatory_stop_gate": "G3_PRO_REVIEW",
+  "p3_gate": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
+  "p4_gate": "CLOSED_PENDING_P3_AND_NEW_REVIEW",
   "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
-  "g2r_blockers": [
-    "static_coordinate_token_does_not_bind_complete_coordinate_or_assembly_identity",
-    "prefrozen_module_dependency_manifest_changed_after_prefreeze_commit",
-    "post_target_trial_closure_audit_definition_correction_not_versioned_as_protocol_deviation",
-    "bfgs_c1_c2_validated_but_not_explicitly_passed_to_scipy",
-    "mesh_shape_trend_omits_full_material_centerlines"
-  ],
-  "g2r_required_changes": [
-    "complete_coordinate_layout_and_assembly_identity_contract",
-    "real_cross_assembly_token_collision_tests",
-    "explicit_bfgs_c1_c2_options",
-    "versioned_protocol_deviation_record_preserving_current_g2_artifacts",
-    "full_branch_material_coordinate_centerline_mesh_trend",
-    "dimensionless_strain_and_stretch_domain_diagnostics",
-    "unchanged_physics_parameters_seeds_meshes_solver_method_and_existing_thresholds",
-    "before_after_static_observable_equivalence",
-    "stop_after_g2r_and_return_for_pro_review"
+  "p3_required_controls": [
+    "new_hfv2_contact_model_and_assembly_identity_frozen_before_target_results",
+    "formal_contact_registration_read_only_adapter_to_individual_constraints",
+    "individual_contact_pair_identity_parameter_domain_witness_gap_normal_and_jacobian",
+    "nonunique_zero_distance_collapsed_duplicate_and_rank_deficient_fail_closed_policy",
+    "single_primary_static_contact_solver_no_fallback_waterfall",
+    "deterministic_multiseed_and_selection_protocol_frozen_before_target_results",
+    "dimensional_primal_dual_stationarity_complementarity_and_second_order_gates",
+    "analytic_or_high_precision_small_contact_benchmarks_before_target_case",
+    "p2_no_contact_regression_and_shared_physics_core",
+    "stop_after_G3"
   ],
   "primary_design_rules": [
     "equations_before_guards",
@@ -70,55 +68,53 @@
     {
       "id": "P2",
       "name": "no_contact_statics",
-      "status": "SUBSTANTIVE_EVIDENCE_PASS_G2_APPROVAL_HOLD"
+      "status": "CONDITIONALLY_QUALIFIED"
     },
     {
       "id": "G2R",
       "name": "g2_review_corrections",
-      "status": "PENDING_CODEX_EXECUTION",
-      "review": "STOP_AND_PRO_REQUIRED"
+      "status": "PRO_REVIEW_PASS"
     },
     {
       "id": "P3",
-      "name": "hard_contact_statics",
-      "status": "CLOSED_PENDING_G2R",
-      "review": "PRO_REQUIRED"
+      "name": "static_frictionless_rigid_contact",
+      "status": "PENDING_NEW_USER_INSTRUCTION",
+      "review": "STOP_AND_PRO_REQUIRED_AT_G3"
     },
     {
       "id": "P4",
       "name": "smooth_dynamics",
-      "review": "PRO_RECOMMENDED"
+      "status": "CLOSED_PENDING_P3_AND_NEW_REVIEW"
     },
     {
       "id": "P5",
       "name": "unilateral_tension_active_set",
-      "review": "PRO_REQUIRED"
+      "status": "CLOSED_PENDING_PRO_REVIEW"
     },
     {
       "id": "P6",
       "name": "dynamic_contact",
-      "review": "CLOSED_PRO_REQUIRED"
+      "status": "CLOSED_PENDING_PRO_REVIEW"
     },
     {
       "id": "P7",
       "name": "api_io_ui_adapters",
-      "review": "AFTER_CORE_QUALIFICATION"
+      "status": "AFTER_CORE_QUALIFICATION"
     },
     {
       "id": "P8",
       "name": "three_anchor_and_promotion",
-      "review": "USER_AND_PRO_REQUIRED"
+      "status": "USER_AND_PRO_REQUIRED"
     }
   ],
   "prohibited_automatic_actions": [
-    "start_P3_before_G2R_pro_approval_and_new_user_instruction",
-    "change_y_anchor_seeds_meshes_bfgs_method_or_existing_pass_thresholds_in_G2R",
-    "add_restart_or_alternate_optimizer_for_bfgs_status_2",
-    "overwrite_historical_G1_G1R_or_current_G2_evidence",
-    "add_contact_force_or_penalty_in_G2R",
-    "start_dynamics_or_active_set_work",
-    "clip_state_or_curvature_denominator_to_manufacture_validity",
-    "assume_contact_restitution_or_friction",
+    "start_P3_without_new_user_instruction",
+    "start_P4_P5_or_P6_after_G3_without_review",
+    "copy_or_import_retired_hard_contact_candidate_as_hfv2_implementation",
+    "use_rc1_guard_or_compression_results_as_hfv2_contact_evidence",
+    "add_penalty_compliance_friction_restitution_or_dynamic_impulse_in_P3",
+    "change_P2_axial_bending_rigid_mass_or_no_contact_static_equations_to_create_contact_feasibility",
+    "switch_solver_restart_randomize_or_relax_tolerances_after_failure",
     "modify_formal_program_without_new_authorization"
   ]
 }
