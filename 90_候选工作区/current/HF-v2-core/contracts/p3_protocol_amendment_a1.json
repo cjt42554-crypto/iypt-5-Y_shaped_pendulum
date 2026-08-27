@@ -1,0 +1,39 @@
+{
+  "schema": "YPS-HFV2-P3-PROTOCOL-AMENDMENT-A1-1.0",
+  "amended_at": "2026-08-27T19:01:00+08:00",
+  "base_prefreeze_commit": "56c7510",
+  "contact_target_results_observed_before_amendment": 0,
+  "dynamic_contact_results_observed_before_amendment": 0,
+  "trigger": "analytic_symmetric_junction_socket_union_has_two_separated_equal_distance_minimizers",
+  "counterexample": {
+    "first_unit_ray_angle_deg": 0.0,
+    "second_unit_ray_angle_deg": 60.0,
+    "socket_material_length_each": 0.2,
+    "first_piece_minimizer": [0.2, 0.1],
+    "second_piece_minimizer": [0.1, 0.2],
+    "merged_union_witness": "nonunique_and_nondifferentiable",
+    "directed_test": "test_symmetric_socket_union_is_nonsmooth_but_split_pieces_are_unique"
+  },
+  "amended_junction_mapping": {
+    "physical_active_domain": "unchanged_exact_complement_of_both_points_strictly_inside_sockets",
+    "constraint_identity_granularity": "one_nonempty_two_dimensional_convex_piece_per_constraint",
+    "piece_roles": [
+      "first_outside",
+      "second_outside_first_inside"
+    ],
+    "interior_overlap": false,
+    "closed_shared_boundary": true,
+    "shared_boundary_duplicate_active_witness": "fail_closed",
+    "active_rank_deficiency": "fail_closed"
+  },
+  "unchanged": [
+    "formal_source_and_registration_id",
+    "socket_lengths_material_crops_and_required_center_distances",
+    "same_branch_and_bob_socket_domains",
+    "contact_model_id",
+    "SLSQP_algorithm_options_and_no_fallback_policy",
+    "target_case_seeds_selection_and_analytic_expectations",
+    "all_acceptance_thresholds",
+    "G3_stop_gate_and_prohibited_scopes"
+  ]
+}
