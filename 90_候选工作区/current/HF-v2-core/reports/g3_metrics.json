@@ -1,0 +1,1271 @@
+{
+  "architecture": {
+    "dependency_violations": [],
+    "discovered_file_count": 36,
+    "line_limit_exclusive": 800,
+    "maximum_source_line_count": 783,
+    "missing_manifest_files": [],
+    "module_manifest": "p3_module_manifest.json",
+    "oversized_modules": {},
+    "path_classification_violations": [],
+    "production_random_call_count": 0,
+    "production_try_statement_count": 0,
+    "status": "PASS",
+    "unclassified_files": []
+  },
+  "base_model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "contact_model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.3-CONTACT-CANDIDATE",
+  "contract_binding": {
+    "documents": {
+      "acceptance_manifest": {
+        "path": "contracts/p3_acceptance_manifest.json",
+        "sha256": "5af909115b8161dd78d80ca746d5dddf56617b73ed01469bc1599352c54cdc7d"
+      },
+      "amendment_a1": {
+        "path": "contracts/p3_protocol_amendment_a1.json",
+        "sha256": "28463583b48c8691325c49972a4d53926b30ae6d466b5d6ba4d77168fc5b9a41"
+      },
+      "formal_registration": {
+        "path": "contracts/p3_formal_contact_registration.json",
+        "sha256": "37fe00beeefbd6f51208c3b3476cb51acefc10ddc3c10c59122e0068400be221"
+      },
+      "model_identity": {
+        "path": "contracts/model_identity_0_3_contact.json",
+        "sha256": "ec2539c0791572a789ed6577f523cdb19ba64d4ce56181b84b4836534c08922a"
+      },
+      "protocol": {
+        "path": "contracts/P3_FROZEN_PROTOCOL.md",
+        "sha256": "1ec3eb861bdb8ddd0e7c71b5bd351b29eb9aef99191e325191760ec32510c870"
+      }
+    },
+    "dynamic_contact_results_observed_before_freeze": 0,
+    "formal_sources": {
+      "model.py": {
+        "actual_git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+        "actual_sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6",
+        "expected_git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+        "expected_sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6",
+        "path": "02_\u6a21\u62df\u7a0b\u5e8f/02_\u7b2c\u4e00\u6027\u539f\u7406\u9ad8\u4fdd\u771f\u6a21\u62df\u5668/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/model.py",
+        "status": "PASS"
+      },
+      "reference.py": {
+        "actual_git_blob": "6c9614e999b2940da59c7a8261208c91aa8a217d",
+        "actual_sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa",
+        "expected_git_blob": "6c9614e999b2940da59c7a8261208c91aa8a217d",
+        "expected_sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa",
+        "path": "02_\u6a21\u62df\u7a0b\u5e8f/02_\u7b2c\u4e00\u6027\u539f\u7406\u9ad8\u4fdd\u771f\u6a21\u62df\u5668/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/reference.py",
+        "status": "PASS"
+      }
+    },
+    "prefreeze_commit_exists": true,
+    "prefreeze_source_commit": "fe5063fe739506812fa1dfca4dbf907dd89b4465",
+    "status": "PASS",
+    "target_results_observed_before_freeze": 0
+  },
+  "evidence_binding": {
+    "named_paths": {
+      "README.md": "062db7fa7ce5480a67f5535592d18b26ad97ad87703dedabb5da31b5e46fa66f",
+      "contracts/P3_FROZEN_PROTOCOL.md": "1ec3eb861bdb8ddd0e7c71b5bd351b29eb9aef99191e325191760ec32510c870",
+      "contracts/P3_PROTOCOL_AMENDMENT_A1.md": "a0215a72c856ea7e0b2cffb3cd227df016f5efdd0a154f2c80a55911c2a9560f",
+      "contracts/model_identity_0_3_contact.json": "ec2539c0791572a789ed6577f523cdb19ba64d4ce56181b84b4836534c08922a",
+      "contracts/p3_acceptance_manifest.json": "5af909115b8161dd78d80ca746d5dddf56617b73ed01469bc1599352c54cdc7d",
+      "contracts/p3_formal_contact_registration.json": "37fe00beeefbd6f51208c3b3476cb51acefc10ddc3c10c59122e0068400be221",
+      "contracts/p3_module_manifest.json": "474c1fdaa038b7e20b2ef0006700d5573d47eab49acc55276759c3afae445060",
+      "contracts/p3_protocol_amendment_a1.json": "28463583b48c8691325c49972a4d53926b30ae6d466b5d6ba4d77168fc5b9a41",
+      "pyproject.toml": "12181da78095dddf44b2a12263bdd037a1afd1c0e74593076bb8f15aa3241a96",
+      "tools/generate_g3_evidence.py": "f1e47c0b203de249123487dc16dcc4293230c2282c31cf1fdbb74fdf1a7c02ad"
+    },
+    "source_sha256": {
+      "src/ypendulum_hfv2/__init__.py": "e18a3694a79be759f7c460bc7796e0d1d74eeca5e98516ac6b5b415b9ff1c7e5",
+      "src/ypendulum_hfv2/audit/__init__.py": "c509df5e594eb9053ef96bbe8b5b6c420ac94dddbb07fe0d24bc9409b23b88d9",
+      "src/ypendulum_hfv2/audit/architecture.py": "5a085514d1fe32ac3d6d2db66b046344b81c48a506e81f867b68b46d28030bbb",
+      "src/ypendulum_hfv2/audit/clearance.py": "e467ecb9d6c1a9c2e8b4bdaa711b46ee01a878ea39c241f04d15e18275bc8661",
+      "src/ypendulum_hfv2/audit/contact.py": "1b456eb0b648e591eaba6f6fadb86d143b8cd2d055ca8b8528d006d499cd0aad",
+      "src/ypendulum_hfv2/audit/dependency.py": "5c823b39d756044422d380f4366111a0af376dc3e258a52cfcfcd0c721e90438",
+      "src/ypendulum_hfv2/audit/energy_gradient.py": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
+      "src/ypendulum_hfv2/audit/evidence.py": "43f0f02739b50992155e87de7c317ffa5761bf534f016bb74abd618735a2c56e",
+      "src/ypendulum_hfv2/audit/g2_cases.py": "195f867560bdd22959a46ed23f1b720922cb918b3b13ca89b091479aac259553",
+      "src/ypendulum_hfv2/audit/g2_evidence.py": "376e650251e9d6bdd0ade06a63e049f2582ac7ea98df70659a691087bccfc595",
+      "src/ypendulum_hfv2/audit/g2r_evidence.py": "15faced37e1822d636c69296a9af4a18f10817cbb243cd11aeda0f9be79c8fe6",
+      "src/ypendulum_hfv2/audit/g3_cases.py": "357de57bedc0c288202df0aa7a9b70eabf0dad883f56e3cf77ea6d719b0b4338",
+      "src/ypendulum_hfv2/audit/g3_evidence.py": "67d98389499b1203bf00d91b288c74b54ea12eb6c7a342e43bc14cadfc914b0d",
+      "src/ypendulum_hfv2/audit/invariance.py": "a0ed1428ed20195db059ae4cfbe53ce13eb81686cf988ee5d1358c2777ef4ad4",
+      "src/ypendulum_hfv2/audit/passivity.py": "cc351a071cef233bc22dbc8577f76b0c8f6791b535b883a2cc62141b6657f086",
+      "src/ypendulum_hfv2/audit/statics.py": "eaf79ae69a96d1fa908bb3d2410c81679bf5b80442e7dd2b78d26ae0adece9e1",
+      "src/ypendulum_hfv2/constitutive/__init__.py": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
+      "src/ypendulum_hfv2/constitutive/axial.py": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
+      "src/ypendulum_hfv2/constitutive/bending.py": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
+      "src/ypendulum_hfv2/contact/__init__.py": "f2a849c398896529d7ec1d9cd2baa2776c56c6a6beab222f61389d860cd6e2ef",
+      "src/ypendulum_hfv2/contact/contracts.py": "7fe0c170d2fa8a17b21cfc09c7153898b00d6d498796f3c5657e00a7637a3ee5",
+      "src/ypendulum_hfv2/contact/geometry.py": "1f3d8a2de6a46c3c23243d9fafeb119e5a59d1ef1764f5ab2743a37695da59e6",
+      "src/ypendulum_hfv2/contact/registration.py": "10f5e8bb4a6c88c6a4c050b76cfc600a161e0d85f33c2ac82419ae271ad70f45",
+      "src/ypendulum_hfv2/loads.py": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
+      "src/ypendulum_hfv2/mass.py": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
+      "src/ypendulum_hfv2/rigid/__init__.py": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
+      "src/ypendulum_hfv2/rigid/attachment.py": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
+      "src/ypendulum_hfv2/rigid/rotation.py": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
+      "src/ypendulum_hfv2/state.py": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
+      "src/ypendulum_hfv2/statics/__init__.py": "0efee8bc1ce0762ff214e3656cb9d860590fcfc92d2704facb89b41f15b1d411",
+      "src/ypendulum_hfv2/statics/assembly.py": "3af7df8a1a8078b6f721f790314e6c176009dbc3dc94c5228558bdfacefc1332",
+      "src/ypendulum_hfv2/statics/contact_assembly.py": "90539f8f9d557b36e932a084e7af1083566c154754d6ae177a94f27ca16b9d0c",
+      "src/ypendulum_hfv2/statics/contact_solver.py": "4694a65eb9241361841539029906e9fe8a1b9ffa089ee0613add4cbdf674cf91",
+      "src/ypendulum_hfv2/statics/contracts.py": "f032f6fb1110cfde96a31f3a99dcb7f8a4d022ade54b11f6144fb9c111a53981",
+      "src/ypendulum_hfv2/statics/solver.py": "38a70a105e40ebfbd80c00e8eeef7eded01c02cb7270a00a3cc1ff47f67a33aa",
+      "src/ypendulum_hfv2/topology.py": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07"
+    },
+    "test_sha256": {
+      "tests/characterization/test_p0_contracts.py": "9eccdcf3a3ad5fb7bbefea8dd5e4ba7e7e2b1d58da8ba3846294d348c9b04d43",
+      "tests/characterization/test_rc1_characterization.py": "e14ad44f5160f5a369d289947ea456ef5415bc96a0b13d7cfa108cb94a9f5037",
+      "tests/unit/test_architecture.py": "98e9863c9bec1a9dd47ba64c958938f308d52ad014b789c29afc39e4e018b2ad",
+      "tests/unit/test_axial.py": "c9f9dc361c3049d31491c50ba3f9187d621fda40b304a6880b4b8a2766e92363",
+      "tests/unit/test_bending.py": "7216187663851e902a4ac048b4fea8f596310bfe08ed4c2f08a26c32f55f4f45",
+      "tests/unit/test_contact_assembly.py": "980c1c22e65909fe3e5853bdb836f5acde0ffa01c2a059466bd6eb2095f1fd42",
+      "tests/unit/test_contact_geometry.py": "a5cd3f3067015877361b652f8350b0d8751467d2876050ec7574452e5ec54502",
+      "tests/unit/test_contact_registration.py": "13b500cccc5f9989325dc04bc7cc911047754d2e4f7f67d574b0b3f6f0075927",
+      "tests/unit/test_contact_solver_audit.py": "7ca34029ec96bd63f757eef7697e99252292e0ca73066ce4d82e87d0cab2c9aa",
+      "tests/unit/test_g1r_evidence.py": "405750a947d961fe31794057bccb60e0b99b68c9001346b1943038d19d7aa4f0",
+      "tests/unit/test_g2_evidence.py": "7a7c5ad9cd266760f5db77bbc8db16875b1ad31d5b24cb85e801b4416d308c40",
+      "tests/unit/test_g2r_evidence.py": "f676cd1dee4dbc097e463d19809af1951f3dd5c9b68b7f80553881d38a2864b9",
+      "tests/unit/test_g3_evidence.py": "78dca25ec4003e5a7b06c9284b6a6c587a328646cd0b8b998d5b9750a02780c4",
+      "tests/unit/test_mass_loads.py": "3e5079019ab33bc75b8ac7d66dc067a73ae18b619f396c45c25f8cf35c94067e",
+      "tests/unit/test_rigid.py": "ccd16108d01899bad14017cf2e727a63c24516ca5735c43750f056c332f2dc60",
+      "tests/unit/test_static_assembly.py": "556a46c54d4abaacee3025c537cef23468eb00e975bd506c7a4609867523e043",
+      "tests/unit/test_topology_state.py": "62e7e8436e905af443d1a782ef84db2f82e1d16f9fc89c4930dffd30011c05da"
+    }
+  },
+  "forbidden_scope_not_executed": [
+    "friction",
+    "restitution",
+    "penalty_or_compliant_contact",
+    "dynamic_contact_or_impulse",
+    "contact_time_integration",
+    "solver_fallback_or_random_restart",
+    "result_driven_seed_domain_or_tolerance_change",
+    "P2_equation_change_to_create_feasibility",
+    "formal_program_public_api_hdf5_or_ui_modification",
+    "P4_P5_or_P6_start"
+  ],
+  "formal_numerical_qualification": "HF_NUMERICAL_QUALIFICATION_NO_GO",
+  "gate_summary": {
+    "architecture": true,
+    "contract_and_formal_source_binding": true,
+    "exact_runtime": true,
+    "frozen_target": false,
+    "p2_regression": true,
+    "small_benchmarks_before_target": true
+  },
+  "not_executed": [
+    "friction",
+    "restitution",
+    "penalty_or_compliant_contact",
+    "dynamic_contact_or_impulse",
+    "contact_time_integration",
+    "P4",
+    "P5",
+    "P6",
+    "formal_program_migration",
+    "public_api_hdf5_or_ui_change",
+    "physical_apparatus_validation",
+    "experimental_validation"
+  ],
+  "optimizer_success_used_as_acceptance_gate": false,
+  "p2_regression": {
+    "contact_layer_energy_policy": {
+      "bitwise_regression_covered_by": "tests/unit/test_contact_assembly.py",
+      "contact_energy_added": false,
+      "contact_force_added_to_base_generalized_force": false,
+      "generalized_force_bitwise_equal": true,
+      "potential_bitwise_equal": true
+    },
+    "full_material_centerline_trend": {
+      "all_branches": {
+        "fine_to_coarse_difference_ratio": 0.24972440803973256,
+        "maximum_pointwise_difference_m": [
+          0.0003844917947958158,
+          9.601698585151942e-05
+        ],
+        "status": "PASS",
+        "strictly_decreased": true
+      },
+      "audit_only_not_in_solver_or_selection": true,
+      "branches": {
+        "left": {
+          "fine_to_coarse_difference_ratio": 0.24972440803973256,
+          "maximum_pointwise_difference_m": [
+            0.0003844917947958158,
+            9.601698585151942e-05
+          ],
+          "status": "PASS",
+          "strictly_decreased": true
+        },
+        "lower": {
+          "fine_to_coarse_difference_ratio": 0.24898301897190878,
+          "maximum_pointwise_difference_m": [
+            3.4066930360556866e-06,
+            8.482087168277226e-07
+          ],
+          "status": "PASS",
+          "strictly_decreased": true
+        },
+        "right": {
+          "fine_to_coarse_difference_ratio": 0.24972441407601903,
+          "maximum_pointwise_difference_m": [
+            0.0003844917166618382,
+            9.601696866046027e-05
+          ],
+          "status": "PASS",
+          "strictly_decreased": true
+        }
+      },
+      "difference_norm": "maximum_pointwise_euclidean_distance",
+      "interpolation": "piecewise_linear_in_reference_material_arc_coordinate",
+      "levels": [
+        2,
+        4,
+        8
+      ],
+      "normalized_material_coordinate_rule": "u_j=j/128_for_j_0_through_128_inclusive",
+      "sample_count_per_branch": 129,
+      "status": "PASS",
+      "successive_difference_ratio_max": 0.95
+    },
+    "gate_checks": {
+      "base_potential_and_force_layer_unchanged": true,
+      "existing_g2r_centerline_observables": true,
+      "existing_g2r_equivalence_observables": true,
+      "existing_no_contact_tests": true,
+      "historical_g2r_metrics_immutable": true
+    },
+    "historical_g2_equivalence": {
+      "historical_schema": "YPS-HFV2-G2-EVIDENCE-1.0",
+      "mesh_levels": [
+        {
+          "differences": {
+            "macro_shape_l2_difference_m": 0.0,
+            "minimum_nongauge_hessian_eigenvalue_absolute_difference": 0.0,
+            "segment_tension_max_absolute_difference_N": 0.0,
+            "support_reaction_l2_difference_N": 0.0,
+            "total_potential_absolute_difference_J": 0.0
+          },
+          "g2r_selected_seed_id": "seed_00_base",
+          "gate_checks": {
+            "macro_shape": true,
+            "same_selected_seed_id": true,
+            "segment_tension": true,
+            "stability": true,
+            "support_reaction": true,
+            "total_potential": true
+          },
+          "historical_selected_seed_id": "seed_00_base",
+          "mesh_segments_per_branch": 2,
+          "status": "PASS"
+        },
+        {
+          "differences": {
+            "macro_shape_l2_difference_m": 0.0,
+            "minimum_nongauge_hessian_eigenvalue_absolute_difference": 0.0,
+            "segment_tension_max_absolute_difference_N": 0.0,
+            "support_reaction_l2_difference_N": 0.0,
+            "total_potential_absolute_difference_J": 0.0
+          },
+          "g2r_selected_seed_id": "seed_00_base",
+          "gate_checks": {
+            "macro_shape": true,
+            "same_selected_seed_id": true,
+            "segment_tension": true,
+            "stability": true,
+            "support_reaction": true,
+            "total_potential": true
+          },
+          "historical_selected_seed_id": "seed_00_base",
+          "mesh_segments_per_branch": 4,
+          "status": "PASS"
+        },
+        {
+          "differences": {
+            "macro_shape_l2_difference_m": 0.0,
+            "minimum_nongauge_hessian_eigenvalue_absolute_difference": 0.0,
+            "segment_tension_max_absolute_difference_N": 0.0,
+            "support_reaction_l2_difference_N": 0.0,
+            "total_potential_absolute_difference_J": 0.0
+          },
+          "g2r_selected_seed_id": "seed_00_base",
+          "gate_checks": {
+            "macro_shape": true,
+            "same_selected_seed_id": true,
+            "segment_tension": true,
+            "stability": true,
+            "support_reaction": true,
+            "total_potential": true
+          },
+          "historical_selected_seed_id": "seed_00_base",
+          "mesh_segments_per_branch": 8,
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS",
+      "thresholds": {
+        "macro_shape_l2_difference_max_m": 1e-10,
+        "minimum_nongauge_hessian_eigenvalue_absolute_difference_max": 5e-07,
+        "same_selected_seed_id_required": true,
+        "segment_tension_max_absolute_difference_max_N": 1e-09,
+        "support_reaction_l2_difference_max_N": 1e-09,
+        "total_potential_absolute_difference_max_J": 1e-12
+      }
+    },
+    "historical_g2r_metrics": {
+      "actual_sha256": "c9fa31a59ab68ce83eae24760dfdf07be818dc10d2d79ce8487260de3c8967df",
+      "expected_sha256": "c9fa31a59ab68ce83eae24760dfdf07be818dc10d2d79ce8487260de3c8967df",
+      "path": "reports/g2r_metrics.json"
+    },
+    "no_contact_test_run": {
+      "command": [
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/90_\u5019\u9009\u5de5\u4f5c\u533a/current/HF-v2-core/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/unit/test_axial.py",
+        "tests/unit/test_bending.py",
+        "tests/unit/test_mass_loads.py",
+        "tests/unit/test_rigid.py",
+        "tests/unit/test_static_assembly.py",
+        "tests/unit/test_topology_state.py",
+        "tests/characterization/test_p0_contracts.py",
+        "tests/characterization/test_rc1_characterization.py"
+      ],
+      "passed_test_count": 57,
+      "return_code": 0,
+      "status": "PASS",
+      "test_paths": [
+        "tests/unit/test_axial.py",
+        "tests/unit/test_bending.py",
+        "tests/unit/test_mass_loads.py",
+        "tests/unit/test_rigid.py",
+        "tests/unit/test_static_assembly.py",
+        "tests/unit/test_topology_state.py",
+        "tests/characterization/test_p0_contracts.py",
+        "tests/characterization/test_rc1_characterization.py"
+      ]
+    },
+    "status": "PASS"
+  },
+  "runtime": {
+    "actual": {
+      "numpy_version": "2.5.2",
+      "pytest_version": "9.1.1",
+      "python_implementation": "CPython",
+      "python_version": "3.12.3",
+      "ruff_version": "0.16.4",
+      "scipy_version": "1.18.1"
+    },
+    "byteorder": "little",
+    "exact_version_checks": {
+      "numpy_version": true,
+      "pytest_minimum": true,
+      "python_implementation": true,
+      "python_version": true,
+      "ruff_version": true,
+      "scipy_version": true
+    },
+    "expected": {
+      "numpy_version": "2.5.2",
+      "pytest_minimum": "9.1",
+      "python_implementation": "CPython",
+      "python_version": "3.12.3",
+      "ruff_version": "0.16.4",
+      "scipy_version": "1.18.1"
+    },
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+    "status": "PASS"
+  },
+  "schema": "YPS-HFV2-G3-EVIDENCE-1.0",
+  "scope": "static_frictionless_rigid_unilateral_normal_contact_algorithm",
+  "small_benchmarks": {
+    "command": [
+      "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/90_\u5019\u9009\u5de5\u4f5c\u533a/current/HF-v2-core/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_contact_geometry.py",
+      "tests/unit/test_contact_registration.py",
+      "tests/unit/test_contact_assembly.py",
+      "tests/unit/test_contact_solver_audit.py"
+    ],
+    "passed_test_count": 21,
+    "return_code": 0,
+    "status": "PASS",
+    "test_paths": [
+      "tests/unit/test_contact_geometry.py",
+      "tests/unit/test_contact_registration.py",
+      "tests/unit/test_contact_assembly.py",
+      "tests/unit/test_contact_solver_audit.py"
+    ]
+  },
+  "status": "NO_GO_G3_STATIC_CONTACT_ALGORITHM",
+  "stop_gate": "G3_PRO_REVIEW",
+  "target": {
+    "case_id": "SYMMETRIC_BOB_TWO_CORD_CONTACT_1",
+    "completed_seed_count": 1,
+    "constraint_count": 9,
+    "constraint_ids": [
+      "junction:junction:upper_A:upper_A_s000|upper_B:upper_B_s000:first_outside",
+      "junction:junction:upper_A:upper_A_s000|upper_B:upper_B_s000:second_outside_first_inside",
+      "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+      "junction:junction:upper_A:upper_A_s000|lower:lower_s000:second_outside_first_inside",
+      "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+      "junction:junction:upper_B:upper_B_s000|lower:lower_s000:second_outside_first_inside",
+      "bob:upper_A:upper_A_s000",
+      "bob:upper_B:upper_B_s000",
+      "bob:lower:lower_s000"
+    ],
+    "contact_assembly_token": "0d6c6c738fd67bc73c4582f3218003c6c6cda47a16e9c32f965049416ed9df90",
+    "formal_registration_id": "FIXED_REST_MATERIAL_SOCKETS_PROJECTIVE_V2",
+    "gate_checks": {
+      "all_frozen_seeds_returned_candidates": false,
+      "multiseed_energy_spread": false,
+      "multiseed_position_spread": false,
+      "required_passing_seed_count": false
+    },
+    "multiseed_spread": {
+      "available": false,
+      "energy_gate": false,
+      "position_gate": false,
+      "reason": "one_or_more_frozen_seeds_failed_closed_before_a_candidate_was_returned"
+    },
+    "qualified_seed_count": 0,
+    "required_qualified_seed_count": 3,
+    "role": "static_contact_algorithm_target_not_apparatus_prediction",
+    "seeds": [
+      {
+        "acceptance_gate_checks": {
+          "complementarity": true,
+          "directional_curvature": true,
+          "dual": true,
+          "finite": true,
+          "gap_active_full_row_rank": false,
+          "gap_active_identity": false,
+          "gap_jacobian_decrease": true,
+          "gap_jacobian_final": true,
+          "hessian_asymmetry": true,
+          "interior_witnesses": true,
+          "multipliers": true,
+          "position": true,
+          "primal": true,
+          "projected_hessian": true,
+          "stationarity": true,
+          "supported_full_row_rank": true,
+          "supported_identity": true
+        },
+        "action_reaction": {
+          "global_force_residual_N": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "global_moment_residual_N_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_individual_force_residual_N": 0.0,
+          "maximum_individual_moment_residual_N_m": 0.0
+        },
+        "bob_position_m": [
+          0.0,
+          0.0,
+          -0.114
+        ],
+        "constraint_ids": [
+          "junction:junction:upper_A:upper_A_s000|upper_B:upper_B_s000:first_outside",
+          "junction:junction:upper_A:upper_A_s000|upper_B:upper_B_s000:second_outside_first_inside",
+          "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+          "junction:junction:upper_A:upper_A_s000|lower:lower_s000:second_outside_first_inside",
+          "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+          "junction:junction:upper_B:upper_B_s000|lower:lower_s000:second_outside_first_inside",
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000",
+          "bob:lower:lower_s000"
+        ],
+        "coordinates": [
+          0.0,
+          0.0,
+          -0.114,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "execution_status": "COMPLETED",
+        "expectation_errors": {
+          "minimum_supported_witness_unit_interval_margin": 0.14250000000000007,
+          "position_l2_error_m": 0.0,
+          "supported_multiplier_max_absolute_error_N": 1.6653345369377348e-16
+        },
+        "gap_active_ids": [
+          "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+          "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ],
+        "gap_jacobian_audit": {
+          "samples": [
+            {
+              "matrix_relative_error": 3.0758023122007267e-09,
+              "maximum_row_relative_error": 1.218888361496694e-08,
+              "relative_step": 1e-05
+            },
+            {
+              "matrix_relative_error": 2.7617863641863465e-10,
+              "maximum_row_relative_error": 1.0944078517526664e-09,
+              "relative_step": 3e-06
+            },
+            {
+              "matrix_relative_error": 2.501974729203204e-11,
+              "maximum_row_relative_error": 7.710848855434541e-11,
+              "relative_step": 1e-06
+            },
+            {
+              "matrix_relative_error": 1.0313789268447034e-10,
+              "maximum_row_relative_error": 3.3404658591243397e-10,
+              "relative_step": 3e-07
+            }
+          ],
+          "strict_decrease_interval": [
+            0,
+            2
+          ]
+        },
+        "gaps_m": [
+          0.008784609690826586,
+          0.008784609690826544,
+          1.0408340855860843e-17,
+          0.00019047619047619056,
+          1.0408340855860843e-17,
+          0.00019047619047619056,
+          0.0,
+          0.0,
+          0.050904761904761904
+        ],
+        "initial": {
+          "coordinates": [
+            0.0,
+            0.0,
+            -0.114,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "gaps_m": [
+            0.008784609690826586,
+            0.008784609690826544,
+            1.0408340855860843e-17,
+            0.00019047619047619056,
+            1.0408340855860843e-17,
+            0.00019047619047619056,
+            0.0,
+            0.0,
+            0.050904761904761904
+          ],
+          "minimum_gap_m": 0.0,
+          "state_valid": true,
+          "validity": {
+            "bob_socket_cut_gap_m": 0.050904761904761904,
+            "bob_socket_material_extent_m": 0.005999999999999998,
+            "bob_socket_radial_monotonicity_m2": 0.0028952380952380953,
+            "junction_sockets": [
+              {
+                "cut_gap_m": 0.012,
+                "material_extent_m": 0.6688203230275509,
+                "projective_opening_margin": 0.1875,
+                "registration_id": "junction:junction:upper_A|upper_B"
+              },
+              {
+                "cut_gap_m": 0.000527317380222379,
+                "material_extent_m": 0.039,
+                "projective_opening_margin": 0.0055460665081598914,
+                "registration_id": "junction:junction:upper_A|lower"
+              },
+              {
+                "cut_gap_m": 0.000527317380222379,
+                "material_extent_m": 0.039,
+                "projective_opening_margin": 0.0055460665081598914,
+                "registration_id": "junction:junction:upper_B|lower"
+              }
+            ]
+          }
+        },
+        "kkt": {
+          "active_constraint_rank": 3,
+          "active_indices": [
+            2,
+            4,
+            6,
+            7
+          ],
+          "audit_passed": false,
+          "complementarity_limit_N_m": 9.952111647378006e-11,
+          "complementarity_residual_N_m": 0.0,
+          "dual_violation_N": 0.0,
+          "independent_nnls": true,
+          "multipliers_N": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2885322548412712,
+            0.28853225484127115,
+            0.0
+          ],
+          "optimizer_multipliers_used": false,
+          "primal_violation_m": 0.0,
+          "stationarity_limit_N": 1e-08,
+          "stationarity_residual_N": 5.551115123125783e-17,
+          "stationarity_vector_N": [
+            -4.888368889033261e-17,
+            -0.0,
+            5.551115123125783e-17,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          "supported_constraint_rank": 2,
+          "supported_indices": [
+            6,
+            7
+          ]
+        },
+        "optimizer": {
+          "function_evaluations": 1,
+          "gradient_evaluations": 1,
+          "iterations": 1,
+          "message": "Optimization terminated successfully",
+          "status": 0,
+          "success": true,
+          "success_used_as_acceptance_gate": false
+        },
+        "qualified_by_independent_gates": false,
+        "second_order": {
+          "active_constraint_rank": 3,
+          "directional_curvatures": [
+            9.582702155293688,
+            3.3533655349045417,
+            3.566065068477079,
+            1.6272131644237564,
+            5.15322267612698,
+            5.055583103624634,
+            0.1674439086776858,
+            0.11000024500636155
+          ],
+          "gauge_dimension": 1,
+          "projected_eigenvalues": [
+            0.011732535723084955,
+            9.866043026788088
+          ],
+          "tested_tangent_dimension": 2,
+          "unsymmetrized_relative_asymmetry": 4.778496168534261e-09
+        },
+        "seed_id": "seed_00_analytic",
+        "supported_ids": [
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ],
+        "total_potential_J": -0.11529679674641954,
+        "validity": {
+          "bob_socket_cut_gap_m": 0.050904761904761904,
+          "bob_socket_material_extent_m": 0.005999999999999998,
+          "bob_socket_radial_monotonicity_m2": 0.0028952380952380953,
+          "junction_sockets": [
+            {
+              "cut_gap_m": 0.012,
+              "material_extent_m": 0.6688203230275509,
+              "projective_opening_margin": 0.1875,
+              "registration_id": "junction:junction:upper_A|upper_B"
+            },
+            {
+              "cut_gap_m": 0.000527317380222379,
+              "material_extent_m": 0.039,
+              "projective_opening_margin": 0.0055460665081598914,
+              "registration_id": "junction:junction:upper_A|lower"
+            },
+            {
+              "cut_gap_m": 0.000527317380222379,
+              "material_extent_m": 0.039,
+              "projective_opening_margin": 0.0055460665081598914,
+              "registration_id": "junction:junction:upper_B|lower"
+            }
+          ]
+        },
+        "witnesses": [
+          {
+            "active_feature": "domain_0:edge_1",
+            "category": "junction_socket",
+            "competing_minimizer_count": 1,
+            "constraint_id": "junction:junction:upper_A:upper_A_s000|upper_B:upper_B_s000:first_outside",
+            "distance_m": 0.020784609690826586,
+            "first_parameter": 0.9653589838486224,
+            "first_point_m": [
+              -0.01200000000000001,
+              0.0,
+              -0.020784609690826517
+            ],
+            "gap_m": 0.008784609690826586,
+            "normal_second_to_first": [
+              -0.8660254037844369,
+              0.0,
+              -0.500000000000001
+            ],
+            "object_gap_gradients": [
+              [
+                -0.02999999999999999,
+                0.0,
+                -0.017320508075688835
+              ],
+              [
+                -0.8360254037844369,
+                0.0,
+                -0.48267949192431214
+              ],
+              [
+                0.014999999999999946,
+                -0.0,
+                0.00866025403784439
+              ],
+              [
+                0.851025403784437,
+                -0.0,
+                0.4913397459621566
+              ]
+            ],
+            "object_ids": [
+              "support_A",
+              "junction",
+              "support_B",
+              "junction"
+            ],
+            "required_center_distance_m": 0.012,
+            "second_parameter": 0.9826794919243113,
+            "second_point_m": [
+              0.006000000000000005,
+              0.0,
+              -0.010392304845413203
+            ],
+            "unit_interval_parameter_margin": 0.017320508075688745
+          },
+          {
+            "active_feature": "domain_0:edge_2",
+            "category": "junction_socket",
+            "competing_minimizer_count": 1,
+            "constraint_id": "junction:junction:upper_A:upper_A_s000|upper_B:upper_B_s000:second_outside_first_inside",
+            "distance_m": 0.020784609690826544,
+            "first_parameter": 0.9826794919243113,
+            "first_point_m": [
+              -0.006000000000000005,
+              0.0,
+              -0.010392304845413203
+            ],
+            "gap_m": 0.008784609690826544,
+            "normal_second_to_first": [
+              -0.8660254037844387,
+              0.0,
+              0.500000000000002
+            ],
+            "object_gap_gradients": [
+              [
+                -0.014999999999999977,
+                0.0,
+                0.008660254037844407
+              ],
+              [
+                -0.8510254037844387,
+                0.0,
+                0.49133974596215757
+              ],
+              [
+                0.03000000000000005,
+                -0.0,
+                -0.01732050807568887
+              ],
+              [
+                0.8360254037844387,
+                -0.0,
+                -0.48267949192431314
+              ]
+            ],
+            "object_ids": [
+              "support_A",
+              "junction",
+              "support_B",
+              "junction"
+            ],
+            "required_center_distance_m": 0.012,
+            "second_parameter": 0.9653589838486224,
+            "second_point_m": [
+              0.01200000000000001,
+              0.0,
+              -0.020784609690826517
+            ],
+            "unit_interval_parameter_margin": 0.017320508075688745
+          },
+          {
+            "active_feature": "domain_0:edge_1",
+            "category": "junction_socket",
+            "competing_minimizer_count": 1,
+            "constraint_id": "junction:junction:upper_A:upper_A_s000|lower:lower_s000:first_outside",
+            "distance_m": 0.01200000000000001,
+            "first_parameter": 0.9653589838486224,
+            "first_point_m": [
+              -0.01200000000000001,
+              0.0,
+              -0.020784609690826517
+            ],
+            "gap_m": 1.0408340855860843e-17,
+            "normal_second_to_first": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "object_gap_gradients": [
+              [
+                -0.0346410161513776,
+                0.0,
+                0.0
+              ],
+              [
+                -0.9653589838486224,
+                0.0,
+                0.0
+              ],
+              [
+                0.6752404735808357,
+                -0.0,
+                -0.0
+              ],
+              [
+                0.32475952641916433,
+                -0.0,
+                -0.0
+              ]
+            ],
+            "object_ids": [
+              "support_A",
+              "junction",
+              "junction",
+              "attachment"
+            ],
+            "required_center_distance_m": 0.012,
+            "second_parameter": 0.32475952641916433,
+            "second_point_m": [
+              0.0,
+              0.0,
+              -0.020784609690826517
+            ],
+            "unit_interval_parameter_margin": 0.0346410161513776
+          },
+          {
+            "active_feature": "domain_0:edge_0",
+            "category": "junction_socket",
+            "competing_minimizer_count": 1,
+            "constraint_id": "junction:junction:upper_A:upper_A_s000|lower:lower_s000:second_outside_first_inside",
+            "distance_m": 0.01219047619047619,
+            "first_parameter": 0.9695238095238095,
+            "first_point_m": [
+              -0.01055726206518176,
+              0.0,
+              -0.01828571428571435
+            ],
+            "gap_m": 0.00019047619047619056,
+            "normal_second_to_first": [
+              -0.8660254037844413,
+              0.0,
+              0.4999999999999948
+            ],
+            "object_gap_gradients": [
+              [
+                -0.02639315516295446,
+                0.0,
+                0.015238095238095113
+              ],
+              [
+                -0.8396322486214868,
+                0.0,
+                0.4847619047618997
+              ],
+              [
+                0.5361109642475113,
+                -0.0,
+                -0.3095238095238063
+              ],
+              [
+                0.32991443953693,
+                -0.0,
+                -0.19047619047618847
+              ]
+            ],
+            "object_ids": [
+              "support_A",
+              "junction",
+              "junction",
+              "attachment"
+            ],
+            "required_center_distance_m": 0.012,
+            "second_parameter": 0.38095238095238093,
+            "second_point_m": [
+              0.0,
+              0.0,
+              -0.02438095238095238
+            ],
+            "unit_interval_parameter_margin": 0.030476190476190546
+          },
+          {
+            "active_feature": "domain_0:edge_1",
+            "category": "junction_socket",
+            "competing_minimizer_count": 1,
+            "constraint_id": "junction:junction:upper_B:upper_B_s000|lower:lower_s000:first_outside",
+            "distance_m": 0.01200000000000001,
+            "first_parameter": 0.9653589838486224,
+            "first_point_m": [
+              0.01200000000000001,
+              0.0,
+              -0.020784609690826517
+            ],
+            "gap_m": 1.0408340855860843e-17,
+            "normal_second_to_first": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "object_gap_gradients": [
+              [
+                0.0346410161513776,
+                0.0,
+                0.0
+              ],
+              [
+                0.9653589838486224,
+                0.0,
+                0.0
+              ],
+              [
+                -0.6752404735808357,
+                -0.0,
+                -0.0
+              ],
+              [
+                -0.32475952641916433,
+                -0.0,
+                -0.0
+              ]
+            ],
+            "object_ids": [
+              "support_B",
+              "junction",
+              "junction",
+              "attachment"
+            ],
+            "required_center_distance_m": 0.012,
+            "second_parameter": 0.32475952641916433,
+            "second_point_m": [
+              0.0,
+              0.0,
+              -0.020784609690826517
+            ],
+            "unit_interval_parameter_margin": 0.0346410161513776
+          },
+          {
+            "active_feature": "domain_0:edge_0",
+            "category": "junction_socket",
+            "competing_minimizer_count": 1,
+            "constraint_id": "junction:junction:upper_B:upper_B_s000|lower:lower_s000:second_outside_first_inside",
+            "distance_m": 0.01219047619047619,
+            "first_parameter": 0.9695238095238095,
+            "first_point_m": [
+              0.01055726206518176,
+              0.0,
+              -0.01828571428571435
+            ],
+            "gap_m": 0.00019047619047619056,
+            "normal_second_to_first": [
+              0.8660254037844413,
+              0.0,
+              0.4999999999999948
+            ],
+            "object_gap_gradients": [
+              [
+                0.02639315516295446,
+                0.0,
+                0.015238095238095113
+              ],
+              [
+                0.8396322486214868,
+                0.0,
+                0.4847619047618997
+              ],
+              [
+                -0.5361109642475113,
+                -0.0,
+                -0.3095238095238063
+              ],
+              [
+                -0.32991443953693,
+                -0.0,
+                -0.19047619047618847
+              ]
+            ],
+            "object_ids": [
+              "support_B",
+              "junction",
+              "junction",
+              "attachment"
+            ],
+            "required_center_distance_m": 0.012,
+            "second_parameter": 0.38095238095238093,
+            "second_point_m": [
+              0.0,
+              0.0,
+              -0.02438095238095238
+            ],
+            "unit_interval_parameter_margin": 0.030476190476190546
+          },
+          {
+            "active_feature": "interval_interior",
+            "category": "bob_segment",
+            "competing_minimizer_count": 1,
+            "constraint_id": "bob:upper_A:upper_A_s000",
+            "distance_m": 0.057,
+            "first_parameter": null,
+            "first_point_m": [
+              0.0,
+              0.0,
+              -0.114
+            ],
+            "gap_m": 0.0,
+            "normal_second_to_first": [
+              0.8660254037844389,
+              0.0,
+              -0.4999999999999997
+            ],
+            "object_gap_gradients": [
+              [
+                0.8660254037844389,
+                0.0,
+                -0.4999999999999997
+              ],
+              [
+                -0.12340862003928262,
+                -0.0,
+                0.07125
+              ],
+              [
+                -0.7426167837451563,
+                -0.0,
+                0.42874999999999974
+              ]
+            ],
+            "object_ids": [
+              "__bob_center__",
+              "support_A",
+              "junction"
+            ],
+            "required_center_distance_m": 0.057,
+            "second_parameter": 0.8574999999999999,
+            "second_point_m": [
+              -0.04936344801571302,
+              0.0,
+              -0.08550000000000002
+            ],
+            "unit_interval_parameter_margin": 0.14250000000000007
+          },
+          {
+            "active_feature": "interval_interior",
+            "category": "bob_segment",
+            "competing_minimizer_count": 1,
+            "constraint_id": "bob:upper_B:upper_B_s000",
+            "distance_m": 0.057,
+            "first_parameter": null,
+            "first_point_m": [
+              0.0,
+              0.0,
+              -0.114
+            ],
+            "gap_m": 0.0,
+            "normal_second_to_first": [
+              -0.8660254037844389,
+              0.0,
+              -0.4999999999999997
+            ],
+            "object_gap_gradients": [
+              [
+                -0.8660254037844389,
+                0.0,
+                -0.4999999999999997
+              ],
+              [
+                0.12340862003928262,
+                -0.0,
+                0.07125
+              ],
+              [
+                0.7426167837451563,
+                -0.0,
+                0.42874999999999974
+              ]
+            ],
+            "object_ids": [
+              "__bob_center__",
+              "support_B",
+              "junction"
+            ],
+            "required_center_distance_m": 0.057,
+            "second_parameter": 0.8574999999999999,
+            "second_point_m": [
+              0.04936344801571302,
+              0.0,
+              -0.08550000000000002
+            ],
+            "unit_interval_parameter_margin": 0.14250000000000007
+          },
+          {
+            "active_feature": "interval_max",
+            "category": "bob_segment",
+            "competing_minimizer_count": 1,
+            "constraint_id": "bob:lower:lower_s000",
+            "distance_m": 0.1079047619047619,
+            "first_parameter": null,
+            "first_point_m": [
+              0.0,
+              0.0,
+              -0.114
+            ],
+            "gap_m": 0.050904761904761904,
+            "normal_second_to_first": [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "object_gap_gradients": [
+              [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              [
+                -0.0,
+                -0.0,
+                0.9047619047619048
+              ],
+              [
+                -0.0,
+                -0.0,
+                0.0952380952380952
+              ]
+            ],
+            "object_ids": [
+              "__bob_center__",
+              "junction",
+              "attachment"
+            ],
+            "required_center_distance_m": 0.057,
+            "second_parameter": 0.0952380952380952,
+            "second_point_m": [
+              0.0,
+              0.0,
+              -0.006095238095238094
+            ],
+            "unit_interval_parameter_margin": 0.0952380952380952
+          }
+        ]
+      },
+      {
+        "execution_status": "FAIL_CLOSED_CONTACT_GEOMETRY",
+        "failure_message": "Junction socket projective opening is invalid.",
+        "failure_type": "DegenerateContactGeometry",
+        "initial": {
+          "coordinates": [
+            0.001,
+            0.0015,
+            -0.109,
+            0.01,
+            -0.008,
+            0.0
+          ],
+          "failure_message": "Junction socket projective opening is invalid.",
+          "failure_type": "DegenerateContactGeometry",
+          "state_valid": false
+        },
+        "qualified_by_independent_gates": false,
+        "seed_id": "seed_01_infeasible_skew"
+      },
+      {
+        "execution_status": "FAIL_CLOSED_CONTACT_GEOMETRY",
+        "failure_message": "Bob socket radial monotonicity left its frozen valid domain.",
+        "failure_type": "DegenerateContactGeometry",
+        "initial": {
+          "coordinates": [
+            -0.002,
+            -0.001,
+            -0.12000000000000001,
+            -0.012,
+            0.009,
+            0.0
+          ],
+          "gaps_m": [
+            0.008784609690826586,
+            0.008784609690826544,
+            -0.0004623998671314418,
+            0.0008239372635185545,
+            0.0004576967708092728,
+            0.0018466162804236675,
+            0.0012765296074820631,
+            0.004740149796613427,
+            0.05635201623404885
+          ],
+          "minimum_gap_m": -0.0004623998671314418,
+          "state_valid": true,
+          "validity": {
+            "bob_socket_cut_gap_m": 0.05635201623404885,
+            "bob_socket_material_extent_m": 0.005999999999999998,
+            "bob_socket_radial_monotonicity_m2": 0.003167413055796618,
+            "junction_sockets": [
+              {
+                "cut_gap_m": 0.012,
+                "material_extent_m": 0.6688203230275509,
+                "projective_opening_margin": 0.1875,
+                "registration_id": "junction:junction:upper_A|upper_B"
+              },
+              {
+                "cut_gap_m": 0.0008383845025955461,
+                "material_extent_m": 0.039,
+                "projective_opening_margin": 0.005727423636653947,
+                "registration_id": "junction:junction:upper_A|lower"
+              },
+              {
+                "cut_gap_m": 0.0018984633088446074,
+                "material_extent_m": 0.039,
+                "projective_opening_margin": 0.017989750203273994,
+                "registration_id": "junction:junction:upper_B|lower"
+              }
+            ]
+          }
+        },
+        "qualified_by_independent_gates": false,
+        "seed_id": "seed_02_feasible_counter_skew"
+      }
+    ],
+    "selection": {
+      "reason": "no_frozen_seed_passed_every_independent_gate",
+      "rule": "lowest_total_potential_then_seed_id_among_candidates_passing_every_independent_gate",
+      "selected_seed_id": null
+    },
+    "solver": {
+      "disp": false,
+      "fallback_used": false,
+      "ftol": 1e-12,
+      "maximum_iterations": 3000,
+      "method": "SLSQP",
+      "seed_set_mutated": false,
+      "tolerance_mutated": false
+    },
+    "status": "FAIL"
+  }
+}

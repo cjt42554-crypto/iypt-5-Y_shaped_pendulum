@@ -21,8 +21,10 @@ from .state import HFV2State
 from .topology import HFV2Topology, MaterialNode, MaterialSegment
 
 MODEL_ID = "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE"
+CONTACT_MODEL_ID = "HFV2-DISCRETE-CORD-RIGID-BOB-0.3-CONTACT-CANDIDATE"
 
 __all__ = [
+    "CONTACT_MODEL_ID",
     "MODEL_ID",
     "AxialMaterial",
     "AxialResponse",

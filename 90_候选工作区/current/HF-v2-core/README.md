@@ -1,61 +1,91 @@
-# HF-v2 候选核心与 G2R 无接触静力学修正
+# HF-v2 候选核心与 G3 静态刚性接触 NO-GO
 
-本目录是模型 `HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE` 的独立候选包。它与正式 RC1 后端并行存在，不修改或替代 `HF-DISCRETE-ROD-RIGID-BOB-1.0`。原 `0.1-CANDIDATE` 的 G1 工件、Pro 已接受的 `0.2-CANDIDATE` G1R 工件和未获 Pro 批准的 G2 工件均作为历史证据保留。
+本目录并行维护两个候选模型身份：
 
-当前完成范围是 P2 无接触静力学的 G2R 修正候选。静态硬接触、时间积分、活动集、动态接触、公共 API 适配、HDF5、UI 和正式资格认证均未实现。
+- 无接触底层：`HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE`；
+- 启用静态接触：`HFV2-DISCRETE-CORD-RIGID-BOB-0.3-CONTACT-CANDIDATE`。
+
+它们与正式 RC1 后端 `HF-DISCRETE-ROD-RIGID-BOB-1.0` 并行存在。本轮没有修改、替代或导入正式程序；正式 RC1 只作为只读接触登记来源和回归参考。
 
 ## 当前状态
 
-G2R 本地候选证据状态为：
+P2 无接触静力算法保持 Pro 已批准的条件性资格：
 
-`G2R_CANDIDATE_PASS_PENDING_PRO_REVIEW__HF_NUMERICAL_QUALIFICATION_NO_GO`
+`G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED`
 
-该状态只表示 G2R 预冻结门在绑定的本机环境中通过，不是 Pro 批准。正式高保真数值资格仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`；P3 及后续阶段保持关闭。
+P3 按预冻结协议完成静态、无摩擦、刚性、单边法向接触的实现与 G3 证据，但冻结目标失败：
 
-## G2R 修正
+`NO_GO_G3_STATIC_CONTACT_ALGORITHM`
 
-- `layout_token` 保留兼容字段名，但现在是坐标解释与完整静态物理组装的单一 SHA-256 身份，绑定节点种类、连接节点、切片、参考姿态、旋转图、规定支点、材料、质量、摆球和环境。
-- 真实跨组装测试分别改变参考摆球姿态、连接/规定节点身份、支点位置和重力；外来坐标全部失败关闭。
-- SciPy BFGS 调用显式传入 `gtol`、`maxiter`、`xrtol`、`norm`、`disp`、`c1` 和 `c2`；未知求解器选项警告被提升为异常。
-- 候选包最低 SciPy 版本修正为 1.12，因为 SciPy 1.11.4 不接受 BFGS 的 `c1`、`c2` 选项。第一次带未知选项警告的临时运行已明确作废。
-- 三条支路都在 129 个公共归一化材料坐标点上重采样并比较完整分段线性中心线。
-- 每段新增工程应变、当前长度中的伸长占比和当前长/静长比诊断；这些量不替换既有绝对伸长、张力或段长门。
-- 新结果与历史 G2 的能量、宏观形状、张力、反力和最小非规范 Hessian 特征值使用预冻结容差比较。
+正式高保真数值资格仍为：
+
+`HF_NUMERICAL_QUALIFICATION_NO_GO`
+
+本轮已经停在 `G3_PRO_REVIEW`。P4 平滑动力学、P5 张紧—松弛活动集、P6 动态接触、正式程序迁移、公共 API、HDF5 和 UI 均未开始。
+
+## P3 实现范围
+
+- 以新的接触组装 SHA-256 身份绑定 P2 静态组装、正式登记合同、接触表面、逐约束参数域、几何容差和协议附录。
+- 只读重建正式 `FIXED_REST_MATERIAL_SOCKETS_PROJECTIVE_V2` 的同支材料域、结点套筒和摆球套筒登记；没有导入正式 Python 包。
+- 每项约束输出固定身份、最近点参数、见证点、中心距、间隙、法向、端点梯度和广义雅可比。
+- 对塌缩段、零距离法向、分离的等价最近点、重复规范域和套筒有效域失效执行失败关闭。
+- 唯一主算法为 `scipy.optimize.minimize(method="SLSQP")`，固定 `ftol=1e-12`、`maxiter=3000`、`disp=false`；没有 fallback、随机重启、容差放宽或结果驱动的新种子。
+- 独立审计使用 NNLS 重构乘子，并检查原始、对偶、平衡、互补、活动身份、秩、间隙雅可比、动作—反作用和投影二阶曲率。
+
+结点套筒非凸补域在任何目标结果产生前，由协议附录 A1 拆为两个互不重叠内部的凸约束身份。物理活动域、正式登记、目标、种子、求解器和阈值没有改变。
+
+## 冻结目标结果
+
+唯一目标 `SYMMETRIC_BOB_TWO_CORD_CONTACT_1` 要求三个冻结种子全部通过，实际只有解析种子返回候选，且没有任何种子通过全部独立门。
+
+- `seed_00_analytic` 命中摆球位置 `[0, 0, -0.114] m` 和两个预期正乘子，分别约为 `0.288532254841271 N`；但另有两项零乘子的结点套筒边界落入活动间隙阈值。活动行数为 4、秩为 3，而冻结预期为两项活动接触、秩为 2，因此活动身份和满行秩门失败。
+- `seed_01_infeasible_skew` 在初始登记状态触发结点套筒投影开度失效，按协议失败关闭。
+- `seed_02_feasible_counter_skew` 的初始状态可登记，但唯一 SLSQP 路径进入摆球套筒径向单调性失效域，按协议失败关闭。
+
+不能通过修改种子、登记域、求解器或阈值后重跑，将这次结果改写为同一协议下的 PASS。
+
+## 通过但不抬高结论的证据
+
+- 21 项冻结前置接触基准通过，覆盖解析几何、非唯一/退化失败关闭、一自由度单边 KKT、SLSQP 选项转发和接触组装雅可比中心差分。
+- P2 无接触回归的 57 项定向测试通过。
+- 接触评估前后的 P2 总势能和广义力逐位相同。
+- 历史 G2R 指标哈希不变；三层主要静态观测量等价和完整材料中心线趋势复算通过。
+- 候选架构清单完整，没有未分类源码、非法依赖、生产随机调用、生产 `try` 或超限模块。
+
+这些结果只说明底层回归、小型接触原语和局部审计有效，不能抵消冻结目标的多种子、活动身份和秩失败。
 
 ## 合同与证据
 
-- `contracts/G2R_FROZEN_PROTOCOL.md`：原 G2R 预冻结协议；
-- `contracts/G2R_PROTOCOL_DEVIATIONS.md`：原 G2 模块清单和闭合审计的后验修正披露；
-- `contracts/G2R_RUNTIME_AMENDMENT.md`：SciPy 1.11.4 未知选项试算作废及第一次有效重跑环境；
-- `contracts/g2r_acceptance_manifest.json`：中心线、诊断和历史等价性冻结门；
-- `contracts/g2r_runtime_amendment.json`：机器可读运行时附录；
-- `reports/g2r_metrics.json`：确定性 G2R 证据；
-- `reports/G2R_REPORT.md`：人类可审查报告。
+- `contracts/P3_FROZEN_PROTOCOL.md`：目标结果前冻结的 P3 协议；
+- `contracts/P3_PROTOCOL_AMENDMENT_A1.md`：目标结果前冻结的结点套筒约束身份修正；
+- `contracts/p3_acceptance_manifest.json`：机器可读求解器、目标和验收门；
+- `contracts/p3_formal_contact_registration.json`：正式只读登记和源码哈希；
+- `reports/g3_metrics.json`：完整逐身份、逐种子、KKT、雅可比和二阶原始证据；
+- `reports/G3_REPORT.md`：人类可审查的 G3 NO-GO 报告。
 
-历史 `reports/G2_REPORT.md` 和 `reports/g2_metrics.json` 保持字节不变。由于 G2R 源码和测试已经演进，历史 `tools/generate_g2_evidence.py --check` 不再是当前源码的有效验收入口；这不修改历史 G2 工件，也不把它重新描述为无偏预注册证据。
+历史 `reports/G2_REPORT.md`、`reports/g2_metrics.json`、`reports/G2R_REPORT.md` 和 `reports/g2r_metrics.json` 均保留，不被 G3 证据覆盖。
 
-## 当前证据入口
+## 当前验证入口
 
-在本目录、使用合同绑定的 CPython 3.12.3、NumPy 2.5.2、SciPy 1.18.1 环境运行：
+在本目录和合同绑定的隔离环境中运行：
 
 ```bash
-python tools/generate_g2r_evidence.py --check
+.venv/bin/python tools/generate_g3_evidence.py --check
 ruff check src tests tools
-python -m compileall -q src tests tools
-python -m pytest -q
+.venv/bin/python -m compileall -q src tests tools
+.venv/bin/python -m pytest -q
 ```
 
-完整测试中的既有 RC1 表征用例还需要正式程序依赖；这些依赖只用于测试，不进入 HF-v2 候选物理核心。
+G3 JSON 还可用标准 JSON 解析器复核；Markdown 交付物以 Pandoc Markdown 解析，并在浏览器中实际渲染检查。
 
 ## 结论上限与停止门
 
-G2R 没有实现或验证：
+当前证据只支持“冻结 P3 静态接触算法候选为 NO-GO”。它不支持：
 
-- 静态硬接触与 KKT；
-- 平滑或非光滑动力学；
-- 单边活动集和动态接触；
-- 正式程序、公共 API、HDF5 和 UI 适配；
-- 装置级物理验证；
+- 动态接触、冲量、摩擦、恢复系数或接触后时间推进；
+- P4、P5 或 P6 的任何资格；
+- 正式程序、公共 API、HDF5 或 UI 迁移；
+- 装置级物理预测；
 - 实验验证。
 
-因此 G2R 完成后必须停止并交回 Pro。只有 Pro 再审通过且用户随后再次明确要求继续，才可讨论 P3。
+下一步唯一允许的工作是 Pro 独立审查 G3 实现、预冻结合同和 NO-GO 根因。任何新的 P3 修订协议或后续阶段都需要新的裁决和用户明确指令。

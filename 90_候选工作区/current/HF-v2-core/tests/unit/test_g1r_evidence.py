@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 CANDIDATE_ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_ROOT = CANDIDATE_ROOT.parents[2]
+G1R_IMPLEMENTATION_COMMIT = "55cb5db754adde63af77363b3d2d59aa4c9a31d9"
 G2_ACCEPTANCE = json.loads(
-    (CANDIDATE_ROOT / "contracts" / "g2_acceptance_manifest.json").read_text(
-        encoding="utf-8"
-    )
+    (CANDIDATE_ROOT / "contracts" / "g2_acceptance_manifest.json").read_text(encoding="utf-8")
 )
 
 
@@ -22,7 +23,17 @@ def test_pro_accepted_g1r_artifacts_remain_byte_identical() -> None:
         assert hashlib.sha256(path.read_bytes()).hexdigest() == historical[hash_key]
 
 
-def test_historical_g1r_binding_still_matches_its_bound_files() -> None:
+def _historical_bytes(commit: str, relative: str) -> bytes:
+    repository_path = (CANDIDATE_ROOT / relative).relative_to(REPOSITORY_ROOT)
+    return subprocess.run(
+        ["git", "show", f"{commit}:{repository_path.as_posix()}"],
+        cwd=REPOSITORY_ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout
+
+
+def test_historical_g1r_binding_matches_the_accepted_commit() -> None:
     evidence = json.loads(
         (CANDIDATE_ROOT / "reports" / "g1r_metrics.json").read_text(encoding="utf-8")
     )
@@ -36,7 +47,7 @@ def test_historical_g1r_binding_still_matches_its_bound_files() -> None:
         **binding["historical_g1_artifact_sha256"],
     }
     for relative, expected_sha256 in paths.items():
-        actual = hashlib.sha256((CANDIDATE_ROOT / relative).read_bytes()).hexdigest()
+        actual = hashlib.sha256(_historical_bytes(G1R_IMPLEMENTATION_COMMIT, relative)).hexdigest()
         assert actual == expected_sha256, relative
 
 

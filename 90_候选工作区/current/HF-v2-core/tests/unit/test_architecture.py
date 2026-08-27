@@ -9,15 +9,15 @@ from ypendulum_hfv2.audit.dependency import audit_g2_dependencies
 
 PACKAGE_ROOT = Path(ypendulum_hfv2.__file__).resolve().parent
 CANDIDATE_ROOT = PACKAGE_ROOT.parents[1]
-MODULE_MANIFEST = CANDIDATE_ROOT / "contracts" / "g2r_module_manifest.json"
+MODULE_MANIFEST = CANDIDATE_ROOT / "contracts" / "p3_module_manifest.json"
 ACCEPTANCE = json.loads(
-    (CANDIDATE_ROOT / "contracts" / "g2_acceptance_manifest.json").read_text(
+    (CANDIDATE_ROOT / "contracts" / "p3_acceptance_manifest.json").read_text(
         encoding="utf-8"
     )
 )
 
 
-def test_g2r_dependency_matrix_is_manifest_complete_and_passes() -> None:
+def test_p3_dependency_matrix_is_manifest_complete_and_passes() -> None:
     audit = audit_g2_dependencies(PACKAGE_ROOT, MODULE_MANIFEST)
     assert audit.passed, audit
     assert audit.unclassified_files == ()
@@ -76,6 +76,8 @@ def test_all_classified_source_files_remain_bounded_by_responsibility() -> None:
 def test_candidate_public_namespace_still_exposes_no_solver_or_io() -> None:
     exported = set(ypendulum_hfv2.__all__)
     assert "MODEL_ID" in exported
+    assert "CONTACT_MODEL_ID" in exported
+    assert ypendulum_hfv2.CONTACT_MODEL_ID == ACCEPTANCE["contact_model_id"]
     assert not any("solver" in name.lower() for name in exported)
     assert not any("validation" in name.lower() for name in exported)
     assert not any("hdf5" in name.lower() for name in exported)
