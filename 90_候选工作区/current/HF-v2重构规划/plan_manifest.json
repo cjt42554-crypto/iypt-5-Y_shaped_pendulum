@@ -1,5 +1,5 @@
 {
-  "schema": "YPS-HFV2-REFACTOR-PLAN-1.5",
+  "schema": "YPS-HFV2-REFACTOR-PLAN-1.6",
   "date": "2026-08-27",
   "repository": "cjt42554-crypto/iypt-5-Y_shaped_pendulum",
   "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
@@ -24,16 +24,21 @@
   "p3_protocol_commit": "56c751016ab6e3be13bf7966dc29f20de7bd0f12",
   "p3_protocol_amendment_a1_commit": "25fac66ea8e6ae157d4ec1e6e5ec872636e8a1ce",
   "p3_implementation_and_g3_evidence_commit": "74c6354fbe7e4c3b2e62fd21476fd261681e1245",
-  "p3_status": "NO_GO_G3_STATIC_CONTACT_ALGORITHM",
+  "p3_status": "HISTORICAL_NO_GO_G3_STATIC_CONTACT_ALGORITHM",
   "g3_metrics_sha256": "97522f837822e2108bce9fe117ad5a5007e2d48a859a9b7f389481010072aa62",
+  "g3_pro_review_commit": "b59c628db9124c7aae725ec7f6d7540c787b6048",
+  "g3_pro_review_decision": "G3_PRO_REVIEW_CONFIRMS_FROZEN_NO_GO__P3R_REQUIRED",
+  "p3r_status": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
+  "p3r_model_identity_policy": "NEW_CONTACT_MODEL_AND_ASSEMBLY_IDENTITY_REQUIRED_NOT_0_3",
   "next_codex_scope": [
-    "G3_PRO_REVIEW"
+    "P3R_STATIC_CONTACT_PROTOCOL_AND_CORRECTION"
   ],
   "next_scope_requires_new_user_instruction": true,
-  "mandatory_stop_gate": "G3_PRO_REVIEW",
-  "p3_gate": "NO_GO_PENDING_PRO_REVIEW",
-  "p4_gate": "CLOSED_AFTER_G3_NO_GO_PENDING_NEW_PRO_REVIEW",
-  "dynamic_contact_gate": "CLOSED_PENDING_PRO_REVIEW",
+  "mandatory_stop_gate": "G3R_PRO_REVIEW",
+  "p3_gate": "HISTORICAL_NO_GO_CONFIRMED_BY_PRO_REVIEW",
+  "p3r_gate": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
+  "p4_gate": "CLOSED_PENDING_G3R_PRO_REVIEW",
+  "dynamic_contact_gate": "CLOSED_PENDING_G3R_PRO_REVIEW",
   "formal_promotion_gate": "EXPLICIT_USER_AUTHORIZATION_AND_PRO_REVIEW",
   "p3_required_controls": [
     "new_hfv2_contact_model_and_assembly_identity_frozen_before_target_results",
@@ -46,6 +51,22 @@
     "analytic_or_high_precision_small_contact_benchmarks_before_target_case",
     "p2_no_contact_regression_and_shared_physics_core",
     "stop_after_G3"
+  ],
+  "p3r_required_controls": [
+    "preserve_all_P3_G3_contracts_reports_metrics_and_hashes_unchanged",
+    "new_contact_model_and_assembly_identity_not_0_3",
+    "self_contained_formal_registration_adapter_contract_superseding_P3_plus_A1_interpretation",
+    "finite_signed_socket_validity_constraints_with_stable_identities_units_and_jacobians",
+    "exceptions_reserved_for_nonfinite_or_genuinely_undefined_contact_geometry",
+    "separate_near_active_supported_and_critical_constraint_sets",
+    "report_multiplier_nonuniqueness_or_dual_force_intervals_when_active_rows_are_dependent",
+    "second_order_audit_on_the_true_inequality_critical_cone",
+    "explicit_machine_binding_from_required_benchmark_ids_to_test_nodes",
+    "observed_symmetric_target_used_only_as_regression",
+    "at_least_one_new_prefrozen_unobserved_qualification_target_and_deterministic_multiseed_set",
+    "single_primary_solver_no_fallback_random_restart_penalty_or_tolerance_relaxation",
+    "p2_equations_and_regressions_unchanged",
+    "stop_after_G3R_for_Pro_review"
   ],
   "primary_design_rules": [
     "equations_before_guards",
@@ -85,23 +106,29 @@
     {
       "id": "P3",
       "name": "static_frictionless_rigid_contact",
-      "status": "NO_GO_G3_STATIC_CONTACT_ALGORITHM",
-      "review": "STOP_AND_PRO_REQUIRED_AT_G3"
+      "status": "HISTORICAL_NO_GO_CONFIRMED_BY_PRO_REVIEW",
+      "review": "G3_PRO_REVIEW_CONFIRMS_FROZEN_NO_GO__P3R_REQUIRED"
+    },
+    {
+      "id": "P3R",
+      "name": "static_contact_protocol_and_solver_interface_corrections",
+      "status": "ELIGIBLE_ON_NEW_USER_INSTRUCTION",
+      "review": "STOP_AND_PRO_REQUIRED_AT_G3R"
     },
     {
       "id": "P4",
       "name": "smooth_dynamics",
-      "status": "CLOSED_AFTER_G3_NO_GO_PENDING_NEW_PRO_REVIEW"
+      "status": "CLOSED_PENDING_G3R_PRO_REVIEW"
     },
     {
       "id": "P5",
       "name": "unilateral_tension_active_set",
-      "status": "CLOSED_PENDING_PRO_REVIEW"
+      "status": "CLOSED_PENDING_G3R_PRO_REVIEW"
     },
     {
       "id": "P6",
       "name": "dynamic_contact",
-      "status": "CLOSED_PENDING_PRO_REVIEW"
+      "status": "CLOSED_PENDING_G3R_PRO_REVIEW"
     },
     {
       "id": "P7",
@@ -115,12 +142,16 @@
     }
   ],
   "prohibited_automatic_actions": [
-    "start_P3_without_new_user_instruction",
-    "reinterpret_failed_G3_target_as_pass_by_changing_active_identity_seed_domain_solver_or_tolerance",
-    "start_P4_P5_or_P6_after_G3_without_review",
+    "start_P3R_without_new_user_instruction",
+    "reinterpret_or_overwrite_the_historical_G3_no_go",
+    "reuse_the_observed_symmetric_G3_target_as_the_only_new_qualification_target",
+    "delete_zero_multiplier_weakly_active_constraints_to_force_the_old_expected_identity",
+    "equate_gap_active_constraints_with_force_supported_constraints",
+    "treat_finite_socket_validity_violations_only_as_exceptions_without_registered_residuals",
+    "start_P4_P5_or_P6_before_G3R_Pro_review",
     "copy_or_import_retired_hard_contact_candidate_as_hfv2_implementation",
     "use_rc1_guard_or_compression_results_as_hfv2_contact_evidence",
-    "add_penalty_compliance_friction_restitution_or_dynamic_impulse_in_P3",
+    "add_penalty_compliance_friction_restitution_or_dynamic_impulse_in_P3R",
     "change_P2_axial_bending_rigid_mass_or_no_contact_static_equations_to_create_contact_feasibility",
     "switch_solver_restart_randomize_or_relax_tolerances_after_failure",
     "modify_formal_program_without_new_authorization"
