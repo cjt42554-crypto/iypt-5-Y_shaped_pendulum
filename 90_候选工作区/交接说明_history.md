@@ -178,3 +178,15 @@ G2R 单命令逐字节检查、`72 passed`、Ruff、`compileall`、JSON、Pandoc
 最终提交 `74c6354fbe7e4c3b2e62fd21476fd261681e1245` 交付实现和 G3 证据，指标 SHA-256 为 `97522f837822e2108bce9fe117ad5a5007e2d48a859a9b7f389481010072aa62`。P2/RC1 定向回归 `57 passed`，完整候选 `96 passed`；Ruff、`compileall`、JSON、Pandoc、浏览器实际渲染和证据逐字节检查通过。正式登记源码哈希只读复核通过，接触层没有改变 P2 势能或广义力，历史 G2R 等价观测量保持通过。
 
 G3 状态为 `NO_GO_G3_STATIC_CONTACT_ALGORITHM`，正式状态继续为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。本轮在 `G3_PRO_REVIEW` 停止；没有进入 P4、P5、P6，没有实现动态接触，也没有修改正式理论、正式程序、公共 API、HDF5 或 UI。
+
+# 2026-08-27 19:55 +0800：Pro G3 独立复审与 P3R 修正门
+
+独立复审 P3 预冻结提交 `56c751016ab6e3be13bf7966dc29f20de7bd0f12`、A1 提交 `25fac66ea8e6ae157d4ec1e6e5ec872636e8a1ce`、实现与 G3 证据提交 `74c6354fbe7e4c3b2e62fd21476fd261681e1245` 及交接提交 `ddf6e1d8cad7c42b40a1395d18e662e005ae87bc` 后，保持历史状态 `NO_GO_G3_STATIC_CONTACT_ALGORITHM`，并裁决为 `G3_PRO_REVIEW_CONFIRMS_FROZEN_NO_GO__P3R_REQUIRED`。该 NO-GO 只否决 `0.3-CONTACT-CANDIDATE` 与冻结 P3 协议，不否决静态刚性单边接触路线。
+
+解析复算确认，上支—下支所需中心距为 `0.012 m`、结点套筒长度为 `0.024 m`；在对称解处，两项上支套筒边界到竖直下支中心线的距离严格等于 `0.012 m`。正式登记保留套筒公共边界，因此“四项间隙活动、活动秩三、两项正乘子支撑、支撑秩二”是结构事实，不是活动阈值或舍入误差。冻结目标要求间隙活动身份恰为两项并满行秩，故历史 G3 必须保持 NO-GO。
+
+复审还确认，当前组装对有限的套筒有效域违反直接抛异常，而唯一 SLSQP 只接收接触间隙，导致初始不可行种子和有限不可行试探没有恢复路径；当前 KKT 总门又把全部近活动行满秩当作必要条件，二阶门把零乘子弱活动约束强制为等式切空间。P3R 必须以新的模型身份暴露有符号套筒有效域约束，区分近活动、正乘子支撑、对偶非唯一性和真实临界锥，并在临界锥上重建二阶审计。
+
+新增裁决文件 `09_PRO_G3_REVIEW_AND_P3R_GATE.md`，提交为 `b59c628db9124c7aae725ec7f6d7540c787b6048`；机器计划、Codex 入口、阶段计划和 current 交接随后同步更新。P3/G3 历史合同、A1、报告、指标和哈希保持不变；HF-v2 数值源码、测试、正式理论和正式程序均未修改。本次通过 GitHub 连接器完成静态复核和解析复算，没有独立重跑提交所称的 `21 passed`、`57 passed`、`96 passed` 或其他工具链验证。
+
+P3R 状态为 `ELIGIBLE_ON_NEW_USER_INSTRUCTION`。旧对称目标只可作回归，新的资格结论必须另有预冻结、未观察目标；P3R 完成后必须停在 `G3R_PRO_REVIEW`。P4、P5、P6、动态接触和正式提升继续关闭，正式总状态仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。
