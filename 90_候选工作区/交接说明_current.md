@@ -1,102 +1,89 @@
 # 交接说明（current）
 
-更新时间：2026-08-27（Pro G2 独立复审；旧 RC1 候选目录清理）
+更新时间：2026-08-27 17:07 +0800（HF-v2 G2R 候选完成，等待 Pro 复审）
 
-## 1. 复审结论
+## 1. 当前裁决状态
 
-已独立复审：
+G2R 候选已完成，机器证据状态为：
 
-- P2 预冻结：`2c91306f5da15c0025cf7b4efa3fc861d3075129`
-- P2 实现与证据：`3d507bb0c82e8a0a8e7560b4f80a8ddefb2ea2f1`
-- P2 交接：`564ba7c8020b52a541032098b55872cd54289cef`
+`G2R_CANDIDATE_PASS_PENDING_PRO_REVIEW`
 
-认可 P2 方程、静态组装和所提交结果的实质性证据：
+允许的最高表述为：
 
-`G2_SUBSTANTIVE_STATIC_EVIDENCE_PASS`
+`G2R_CANDIDATE_PASS_PENDING_PRO_REVIEW__HF_NUMERICAL_QUALIFICATION_NO_GO`
 
-但不批准当前 G2 条件性资格，也不开放 P3。当前状态为：
-
-`G2_PRO_APPROVAL_HOLD_PENDING_G2R`
-
-正式数值资格仍为：
+这不是 Pro 批准。正式数值资格仍为：
 
 `HF_NUMERICAL_QUALIFICATION_NO_GO`
 
-静态和动态硬接触仍为：
+P3 静态硬接触、P4 动力学、P5 活动集、P6 动态接触和后续阶段均为：
 
 `CLOSED_PENDING_PRO_REVIEW`
 
-完整裁决见：
+## 2. 本轮完成事项
 
-`90_候选工作区/current/HF-v2重构规划/07_PRO_G2_REVIEW_AND_G2R.md`
+1. 以本地提交 `7a19702` 在任何 G2R 目标运行前冻结身份、中心线、无量纲诊断和历史等价性协议。
+2. 保留历史 `G2_REPORT.md`、`g2_metrics.json`、G2 冻结协议和验收清单字节不变；版本化披露原 G2 模块清单变化和闭合审计后验修正。
+3. 将兼容字段名 `layout_token` 的语义修正为坐标解释与完整静态物理组装的单一 SHA-256 身份，覆盖节点种类/附件、切片、参考姿态、旋转图、支点、材料、质量、摆球和环境。
+4. 增加四类真实跨组装测试：参考姿态、连接/规定节点身份、支点位置和重力。所有变体 token 均改变，外来坐标均失败关闭。
+5. BFGS 调用显式传入 `c1=1e-4`、`c2=0.9` 及其余冻结选项；测试实际捕获传入映射。
+6. 首次试用历史 SciPy 1.11.4 时发现其忽略 `c1`、`c2` 并报告未知选项。该 `/tmp` 运行整体作废。以本地提交 `8adc7f5` 在第一次有效重跑前冻结 G2R-A1：最低 SciPy 修正为 1.12，未知求解器选项失败关闭，有效目标环境绑定 CPython 3.12.3、NumPy 2.5.2、SciPy 1.18.1。
+7. 在每条支路 129 个公共归一化材料坐标点上比较完整中心线。左、右、下支 4→8/2→4 差值比分别约为 `0.2497244`、`0.2497244`、`0.2489830`，全部 PASS。
+8. 增加逐段工程应变、当前长度中的伸长占比和当前长/静长比。三网格全部有限，代数恒等式最大误差 `1.7347e-18`。
+9. 修正前后能量、宏观形状、全部段张力、两支点反力和最小非规范 Hessian 特征值在三个网格上均为精确浮点零差，满足预冻结等价门。
+10. 没有改变物理方程、Y 形锚点、三个种子、2/4/8 网格、BFGS 方法、选择规则或既有通过阈值。
 
-## 2. 已确认事项
+## 3. 证据与复现
 
-1. 总势能、单边轴向、离散弯曲、重力/浮力和偏心刚体连接的解析广义力符号正确；右 Jacobian 转矩映射与有限差分相容。
-2. 参考静长只从材料弧长坐标生成，端点质量/排液体积集总和支点反力处理正确。
-3. 修正后的作用—反作用闭合定义正确，且原始平衡残差仍单独保存。
-4. BFGS 状态 2 没有被当作成功门，也没有触发换算法、重启或放宽容差；独立残差和二阶门有明显余量。
-5. 解析竖直小系统与三层 Y 形结果总体可信；净空只作解后审计，没有进入势能或求解器。
-6. 正式理论、正式模拟程序、顶层 `AGENTS.md`、UI、公共 API 和 HDF5 均未修改。
+主要工件：
 
-## 3. 阻断 G2 的问题
+- `90_候选工作区/current/HF-v2-core/contracts/G2R_FROZEN_PROTOCOL.md`；
+- `90_候选工作区/current/HF-v2-core/contracts/G2R_PROTOCOL_DEVIATIONS.md`；
+- `90_候选工作区/current/HF-v2-core/contracts/G2R_RUNTIME_AMENDMENT.md`；
+- `90_候选工作区/current/HF-v2-core/contracts/g2r_acceptance_manifest.json`；
+- `90_候选工作区/current/HF-v2-core/contracts/g2r_runtime_amendment.json`；
+- `90_候选工作区/current/HF-v2-core/reports/g2r_metrics.json`；
+- `90_候选工作区/current/HF-v2-core/reports/G2R_REPORT.md`。
 
-### 3.1 静态身份绑定不完整
+`g2r_metrics.json` 的 SHA-256 为：
 
-当前 `layout_token` 没有绑定节点种类/附件节点、参考摆球姿态、规定支点位置、环境和旋转图域。不同物理组装可以生成相同 token，并互相接受 `StaticCoordinates`。现有“alien-layout”测试没有覆盖两个真实组装的碰撞。
+`c9fa31a59ab68ce83eae24760dfdf07be818dc10d2d79ce8487260de3c8967df`
 
-### 3.2 预冻结完整性不成立
+在 `90_候选工作区/current/HF-v2-core/` 使用绑定环境复现：
 
-预冻结后的 `g2_module_manifest.json` 被修改：`physical_core` 的允许依赖从仅 `physical_core` 扩展到 `state_contract` 和 `topology_contract`。第一次目标试算后还修正了闭合审计定义。两项修正都有合理原因，但必须按后验修正版本化披露，不能继续声称完整审计协议从结果出现前起完全未变。
+```bash
+python tools/generate_g2r_evidence.py --check
+python -m pytest -q
+ruff check src tests tools
+python -m compileall -q src tests tools
+```
 
-### 3.3 求解器冻结参数未完全生效
+已完成：
 
-`StaticSolverSettings` 校验了 BFGS `c1=1e-4`、`c2=0.9`，但调用 SciPy 时没有显式传入，只是依赖当前版本默认值。
+- G2R 证据逐字节 `--check`：PASS；
+- 全量测试：`72 passed`；
+- Ruff、`compileall`、JSON、`git diff --check`：PASS；
+- 新增/实质改写 Markdown 的 Pandoc `markdown` reader 解析：PASS；
+- Pandoc standalone HTML 生成：PASS。
 
-### 3.4 静态形状趋势证据不完整
+未完成浏览器视觉截图检查：命令行 Chrome 三次没有生成截图文件，内置浏览器安全策略拒绝本地 `file://` 页面且禁止换表面绕过。没有把 HTML 生成写成视觉验收通过。
 
-当前三网格“形状”只比较结点、附件和摆球，没有比较三条绳的完整材料中心线。
+## 4. 下一次唯一任务：Pro G2R 独立复审
 
-## 4. 下一次唯一任务：G2R
+下一次只允许 Pro 独立复审当前 G2R 候选，重点核对：
 
-下一次 Codex 只执行 G2R：
+1. 单一完整 token 的字段是否完备，四类真实跨组装互拒是否覆盖裁决反例；
+2. SciPy 1.11.4 作废试算和 G2R-A1 运行时附录的时间顺序是否可接受；
+3. `c1`、`c2` 是否在受支持运行时中实际进入 BFGS；
+4. 历史 G2 工件是否保持不变，协议偏离是否披露充分；
+5. 129 点三支路中心线趋势、无量纲段诊断和历史等价性是否足以关闭 G2R；
+6. 是否批准状态 `G2R_PRO_REVIEW_PASS__NO_CONTACT_STATIC_ALGORITHM_ONLY`。
 
-1. 建立字段完备的坐标布局身份与物理组装身份，或将全部绑定字段纳入单一 token；
-2. 增加真实跨组装碰撞测试，至少改变参考姿态、附件节点身份、支点位置和重力；
-3. 显式把冻结的 `c1`、`c2` 传给 BFGS；
-4. 保留当前 G2 报告和指标为历史工件，新增协议偏离记录，绑定预冻结版和修正版清单；
-5. 在固定公共材料坐标网格上比较三条支路完整中心线的 2→4、4→8 差值；
-6. 增加最小应变、伸长比和当前长/静长比诊断；
-7. 不改变物理方程、Y 锚点、种子、2/4/8 网格、BFGS 方法和现有数值门，重新生成 G2R 证据；
-8. 对修正前后能量、宏观形状、张力、反力和稳定性做等价性比较；
-9. 运行全部测试与静态检查，更新交接，提交后停止交回 Pro。
+在 Pro 明确批准且用户再次明确要求继续之前，不得实现或运行 P3，也不得把 G2R 候选 PASS 提升为正式数值资格、物理验证或实验验证。
 
-## 5. G2R 禁止范围
+## 5. 仓库与外部状态
 
-不得：
-
-- 实现或运行 P3 接触；
-- 实现动力学、活动集或动态接触；
-- 因 BFGS 状态 2 增加重启、替代求解器或放宽容差；
-- 改变 Y 锚点、种子、网格或既有通过阈值；
-- 修改正式理论、正式程序、UI、公共 API 或 HDF5；
-- 覆盖历史 G1、G1R 或当前 G2 工件。
-
-G2R 完成后必须再次由 Pro 审查。只有复审通过且用户再次明确要求继续，才可讨论 P3。
-
-## 6. 当前工作树清理边界
-
-现行重构主线不再使用旧 RC1 候选工作目录，因此以下目录已从 `current/` 删除：
-
-- `三锚点模型阶梯/`；
-- `三锚点高保真资格/`，包括旧 guard、压缩极限和 `hard_contact_candidate`。
-
-删除前完整快照可从提交 `04149084f5ae12a8da75a8955ab9b74afc95cd87` 按路径恢复。旧结论仍保留在 `交接说明_history.md`；G2R 不得重新依赖这些旧目录。
-
-`current/` 继续保留：
-
-- `HF-v2-core/`；
-- `HF-v2重构规划/`；
-- `无实验参数图谱/`。
-
-正式 RC1 没有删除，仍作为回滚、公共接口迁移和历史结果解释基线。详细政策见 `HF-v2重构规划/04_MIGRATION_AND_ROLLBACK.md`。
+- 正式 `01_最终理论/**`、`02_模拟程序/**`、顶层 `AGENTS.md`、UI、公共 API 和 HDF5 均未修改。
+- 现行候选写入只发生在 `90_候选工作区/current/HF-v2-core/**` 和两份交接文件。
+- 已退役旧目录 `current/三锚点高保真资格/` 仍有未跟踪残留；本轮将其视为用户现场，未读取为活动输入、未修改、未暂存、未删除。
+- 远程 `origin/main` 仍停在 `5612940`。安全审查因当前会话未明确确认远端 `https://github.com/cjt42554-crypto/iypt-5-Y_shaped_pendulum.git` 为可信且获准接收候选研究文件而拒绝 `git push origin main`。本地提交历史保留完整先后顺序；推送需要用户明确确认该远端可接收本轮内容。

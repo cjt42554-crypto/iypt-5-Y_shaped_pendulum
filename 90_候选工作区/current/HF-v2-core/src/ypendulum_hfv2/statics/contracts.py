@@ -147,7 +147,12 @@ class StaticSeed:
 
 @dataclass(frozen=True)
 class StaticCoordinates:
-    """Opaque coordinate vector carrying its complete assembly-layout token."""
+    """Opaque coordinate vector carrying its complete physical-assembly token.
+
+    ``layout_token`` is retained as a compatibility field name.  Since G2R it
+    identifies both the coordinate interpretation and the complete bound static
+    physical assembly; coordinates are not implicitly reusable across assemblies.
+    """
 
     layout_token: str
     values: np.ndarray

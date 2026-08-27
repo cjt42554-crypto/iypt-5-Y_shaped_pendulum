@@ -1,52 +1,61 @@
-# HF-v2 候选核心与无接触静力学
+# HF-v2 候选核心与 G2R 无接触静力学修正
 
-本目录是模型 `HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE` 的独立候选包。它与正式 RC1 后端并行存在，不修改或替代 `HF-DISCRETE-ROD-RIGID-BOB-1.0`。原 `0.1-CANDIDATE` 的 G1 工件和 Pro 已接受的 `0.2-CANDIDATE` G1R 工件均作为历史证据保留。
+本目录是模型 `HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE` 的独立候选包。它与正式 RC1 后端并行存在，不修改或替代 `HF-DISCRETE-ROD-RIGID-BOB-1.0`。原 `0.1-CANDIDATE` 的 G1 工件、Pro 已接受的 `0.2-CANDIDATE` G1R 工件和未获 Pro 批准的 G2 工件均作为历史证据保留。
 
-当前完成范围到 P2 无接触静力学 G2 候选门。静态硬接触、时间积分、活动集、动态接触、公共 API 适配、HDF5、UI 和正式资格认证均未实现。
+当前完成范围是 P2 无接触静力学的 G2R 修正候选。静态硬接触、时间积分、活动集、动态接触、公共 API 适配、HDF5、UI 和正式资格认证均未实现。
 
-## 0.2 模型合同
+## 当前状态
 
-- 轴向材料是只传递拉力的单边 Kelvin--Voigt 材料；压缩段的最终轴力严格为零。
-- 弯曲项采用三点离散曲率二次能，并由闭式解析负梯度给出节点力。非零刚度下，精确反平行是曲率分母本身的域边界；零刚度分支在计算该分母前返回精确零能和零力。
-- 材料坐标是 SI 参考弧长，材料段静长只能由 `material_end - material_start` 派生。
-- 状态和自由节点质量绑定不可变的 `free_node_ids` 顺序；数量相同但顺序错配会失败关闭。
-- 摆球惯量满足对称正定和主惯量三角不等式；摆球姿态使用 `SO(3)` 指数映射和群乘法，不使用姿态归一化或投影。
-- P2 静态组装在构造时强制绑定拓扑、状态、质量、材料段顺序和广义坐标切片，并以 `layout_token` 拒绝身份错配。
-- 参考段质量和排液体积各向两个材料端点集总一半；支点、共享结点和摆球连接点的贡献保持各自真实位置。
-- P2 总势能只含单边轴向能、离散弯曲能、重力势能、浮力势能和刚体偏心连接运动学。
-- P2 唯一求解器是固定容差的 BFGS。净空只作解后域审计，不进入势能、广义力或求解分支。
-- 静态接触和动态接触均未实现；动态硬接触仍是 `CLOSED_PENDING_PRO_REVIEW`。
+G2R 本地候选证据状态为：
+
+`G2R_CANDIDATE_PASS_PENDING_PRO_REVIEW__HF_NUMERICAL_QUALIFICATION_NO_GO`
+
+该状态只表示 G2R 预冻结门在绑定的本机环境中通过，不是 Pro 批准。正式高保真数值资格仍为 `HF_NUMERICAL_QUALIFICATION_NO_GO`；P3 及后续阶段保持关闭。
+
+## G2R 修正
+
+- `layout_token` 保留兼容字段名，但现在是坐标解释与完整静态物理组装的单一 SHA-256 身份，绑定节点种类、连接节点、切片、参考姿态、旋转图、规定支点、材料、质量、摆球和环境。
+- 真实跨组装测试分别改变参考摆球姿态、连接/规定节点身份、支点位置和重力；外来坐标全部失败关闭。
+- SciPy BFGS 调用显式传入 `gtol`、`maxiter`、`xrtol`、`norm`、`disp`、`c1` 和 `c2`；未知求解器选项警告被提升为异常。
+- 候选包最低 SciPy 版本修正为 1.12，因为 SciPy 1.11.4 不接受 BFGS 的 `c1`、`c2` 选项。第一次带未知选项警告的临时运行已明确作废。
+- 三条支路都在 129 个公共归一化材料坐标点上重采样并比较完整分段线性中心线。
+- 每段新增工程应变、当前长度中的伸长占比和当前长/静长比诊断；这些量不替换既有绝对伸长、张力或段长门。
+- 新结果与历史 G2 的能量、宏观形状、张力、反力和最小非规范 Hessian 特征值使用预冻结容差比较。
+
+## 合同与证据
+
+- `contracts/G2R_FROZEN_PROTOCOL.md`：原 G2R 预冻结协议；
+- `contracts/G2R_PROTOCOL_DEVIATIONS.md`：原 G2 模块清单和闭合审计的后验修正披露；
+- `contracts/G2R_RUNTIME_AMENDMENT.md`：SciPy 1.11.4 未知选项试算作废及第一次有效重跑环境；
+- `contracts/g2r_acceptance_manifest.json`：中心线、诊断和历史等价性冻结门；
+- `contracts/g2r_runtime_amendment.json`：机器可读运行时附录；
+- `reports/g2r_metrics.json`：确定性 G2R 证据；
+- `reports/G2R_REPORT.md`：人类可审查报告。
+
+历史 `reports/G2_REPORT.md` 和 `reports/g2_metrics.json` 保持字节不变。由于 G2R 源码和测试已经演进，历史 `tools/generate_g2_evidence.py --check` 不再是当前源码的有效验收入口；这不修改历史 G2 工件，也不把它重新描述为无偏预注册证据。
 
 ## 当前证据入口
 
-在本目录运行：
+在本目录、使用合同绑定的 CPython 3.12.3、NumPy 2.5.2、SciPy 1.18.1 环境运行：
 
 ```bash
-python3 tools/generate_g2_evidence.py --check
+python tools/generate_g2r_evidence.py --check
 ruff check src tests tools
-python3 -m compileall -q src tests tools
+python -m compileall -q src tests tools
+python -m pytest -q
 ```
 
-完整测试还需要既有 RC1 表征测试的正式程序依赖。本机本轮使用：
+完整测试中的既有 RC1 表征用例还需要正式程序依赖；这些依赖只用于测试，不进入 HF-v2 候选物理核心。
 
-```bash
-uv run --no-project \
-  --with pytest \
-  --with numpy \
-  --with scipy \
-  --with pydantic \
-  --with PyYAML \
-  --with h5py \
-  --with pandas \
-  --with matplotlib \
-  --with pint \
-  python -m pytest -q
-```
+## 结论上限与停止门
 
-`contracts/g2_acceptance_manifest.json` 是目标结果前冻结的质量、求解器、种子、锚点和 G2 门；`contracts/g2_module_manifest.json` 完整分类当前包源码并执行规范导入依赖矩阵；`reports/g2_metrics.json` 由单一命令确定性生成；`reports/G2_REPORT.md` 给出人类可审查解释。
+G2R 没有实现或验证：
 
-G1R 工件保持字节不变，但不再针对 P2 新源码重算。当前 G2 证据支持的最高结论只有：
+- 静态硬接触与 KKT；
+- 平滑或非光滑动力学；
+- 单边活动集和动态接触；
+- 正式程序、公共 API、HDF5 和 UI 适配；
+- 装置级物理验证；
+- 实验验证。
 
-`G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED__HF_NUMERICAL_QUALIFICATION_NO_GO`
-
-它不证明接触或动力学数值资格，不证明三锚点结果，不构成装置级物理验证或实验验证。达到 G2 后必须停止，等待 Pro 复审与用户新的明确指令。
+因此 G2R 完成后必须停止并交回 Pro。只有 Pro 再审通过且用户随后再次明确要求继续，才可讨论 P3。

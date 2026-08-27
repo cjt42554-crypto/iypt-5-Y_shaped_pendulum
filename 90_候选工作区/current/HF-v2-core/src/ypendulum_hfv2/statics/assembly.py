@@ -68,6 +68,7 @@ class CoordinateSlice:
 
 @dataclass(frozen=True)
 class BoundStaticLayout:
+    identity_schema: str
     layout_token: str
     node_ids: tuple[str, ...]
     free_node_ids: tuple[str, ...]
@@ -112,9 +113,10 @@ class StaticAssembly:
     """Bind topology, state, mass, materials, segment order and coordinate slices.
 
     Every numerical entry point requires :class:`StaticCoordinates` carrying the
-    deterministic token generated from the complete binding.  Rest lengths are
-    derived internally from material coordinates and are never accepted as an
-    assembly input.
+    deterministic token generated from the complete coordinate and physical
+    binding.  ``layout_token`` is the retained compatibility name for this single
+    complete assembly identity.  Rest lengths are derived internally from
+    material coordinates and are never accepted as an assembly input.
     """
 
     def __init__(
@@ -214,9 +216,34 @@ class StaticAssembly:
         bob_start = 3 * topology.free_node_count
         bob_position_slice = CoordinateSlice("bob_position", bob_start, bob_start + 3)
         bob_rotation_slice = CoordinateSlice("bob_rotation_body", bob_start + 3, bob_start + 6)
+        identity_schema = "YPS-HFV2-STATIC-ASSEMBLY-IDENTITY-1.0"
         binding = {
-            "node_ids": topology.node_ids,
-            "free_node_ids": topology.free_node_ids,
+            "identity_schema": identity_schema,
+            "coordinate_interpretation": {
+                "nodes": [[node.node_id, node.kind] for node in topology.nodes],
+                "bob_attachment_node_id": next(
+                    node.node_id for node in topology.nodes if node.kind == "bob_attachment"
+                ),
+                "free_node_ids": topology.free_node_ids,
+                "free_position_slices": [
+                    [entry.identity, entry.start, entry.stop] for entry in free_slices
+                ],
+                "bob_position_slice": [
+                    bob_position_slice.identity,
+                    bob_position_slice.start,
+                    bob_position_slice.stop,
+                ],
+                "bob_rotation_slice": [
+                    bob_rotation_slice.identity,
+                    bob_rotation_slice.start,
+                    bob_rotation_slice.stop,
+                ],
+                "generalized_size": generalized_size,
+                "reference_bob_rotation": reference_state.bob_rotation.tolist(),
+                "rotation_parameterization": "reference_rotation_right_SO3_exponential",
+                "rotation_tangent_frame": "body",
+                "rotation_chart_norm_max": chart_limit,
+            },
             "segments": [
                 [
                     segment.segment_id,
@@ -228,28 +255,58 @@ class StaticAssembly:
                 ]
                 for segment in topology.segments
             ],
-            "materials": [
-                [
-                    material.branch_id,
-                    material.axial_rigidity,
-                    material.bending_stiffness,
-                    material.line_density,
-                    material.displaced_volume_per_length,
-                ]
-                for material in materials
-            ],
-            "node_mass": node_mass.tolist(),
-            "node_volume": node_volume.tolist(),
-            "bob_mass": bob.mass,
-            "bob_volume": bob.displaced_volume,
-            "bob_inertia": bob.inertia_body.tolist(),
-            "attachment_arm": bob.attachment_arm_body.tolist(),
-            "generalized_size": generalized_size,
+            "physical_assembly": {
+                "prescribed_node_ids": prescribed_ids,
+                "prescribed_node_positions": [
+                    [node_id, prescribed[node_id].tolist()] for node_id in prescribed_ids
+                ],
+                "reference_state": {
+                    "free_node_ids": reference_state.free_node_ids,
+                    "free_node_positions": reference_state.free_node_positions.tolist(),
+                    "bob_position": reference_state.bob_position.tolist(),
+                    "bob_rotation": reference_state.bob_rotation.tolist(),
+                },
+                "materials": [
+                    [
+                        material.branch_id,
+                        material.axial_rigidity,
+                        material.bending_stiffness,
+                        material.line_density,
+                        material.displaced_volume_per_length,
+                    ]
+                    for material in materials
+                ],
+                "explicit_node_mass": [
+                    [node_id, explicit_mass[node_id]] for node_id in topology.node_ids
+                ],
+                "explicit_node_displaced_volume": [
+                    [node_id, explicit_volume[node_id]] for node_id in topology.node_ids
+                ],
+                "node_lumped_mass": node_mass.tolist(),
+                "node_lumped_displaced_volume": node_volume.tolist(),
+                "bob": {
+                    "mass": bob.mass,
+                    "displaced_volume": bob.displaced_volume,
+                    "inertia_body": bob.inertia_body.tolist(),
+                    "attachment_arm_body": bob.attachment_arm_body.tolist(),
+                },
+                "environment": {
+                    "gravity": environment.gravity.tolist(),
+                    "fluid_density": environment.fluid_density,
+                    "buoyancy_enabled": environment.buoyancy_enabled,
+                },
+            },
         }
         token = hashlib.sha256(
-            json.dumps(binding, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            json.dumps(
+                binding,
+                sort_keys=True,
+                separators=(",", ":"),
+                allow_nan=False,
+            ).encode("utf-8")
         ).hexdigest()
         layout = BoundStaticLayout(
+            identity_schema=identity_schema,
             layout_token=token,
             node_ids=topology.node_ids,
             free_node_ids=topology.free_node_ids,

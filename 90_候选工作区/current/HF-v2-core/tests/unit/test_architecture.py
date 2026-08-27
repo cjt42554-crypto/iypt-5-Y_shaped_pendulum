@@ -9,7 +9,7 @@ from ypendulum_hfv2.audit.dependency import audit_g2_dependencies
 
 PACKAGE_ROOT = Path(ypendulum_hfv2.__file__).resolve().parent
 CANDIDATE_ROOT = PACKAGE_ROOT.parents[1]
-MODULE_MANIFEST = CANDIDATE_ROOT / "contracts" / "g2_module_manifest.json"
+MODULE_MANIFEST = CANDIDATE_ROOT / "contracts" / "g2r_module_manifest.json"
 ACCEPTANCE = json.loads(
     (CANDIDATE_ROOT / "contracts" / "g2_acceptance_manifest.json").read_text(
         encoding="utf-8"
@@ -17,7 +17,7 @@ ACCEPTANCE = json.loads(
 )
 
 
-def test_g2_dependency_matrix_is_manifest_complete_and_passes() -> None:
+def test_g2r_dependency_matrix_is_manifest_complete_and_passes() -> None:
     audit = audit_g2_dependencies(PACKAGE_ROOT, MODULE_MANIFEST)
     assert audit.passed, audit
     assert audit.unclassified_files == ()

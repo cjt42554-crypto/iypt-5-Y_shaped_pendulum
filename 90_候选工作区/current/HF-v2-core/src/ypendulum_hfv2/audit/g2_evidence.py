@@ -354,6 +354,22 @@ def _candidate_metrics(
     min_curvature = float(
         min(value for _, value in evaluation.branch_minimum_curvature_denominators)
     )
+    rest_lengths = case.assembly.layout.segment_rest_lengths
+    engineering_strain = evaluation.segment_extensions / rest_lengths
+    extension_fraction = evaluation.segment_extensions / evaluation.segment_current_lengths
+    current_to_rest = evaluation.segment_current_lengths / rest_lengths
+    extension_fraction_identity_error = float(
+        np.max(
+            np.abs(
+                extension_fraction
+                - engineering_strain / (1.0 + engineering_strain)
+            ),
+            initial=0.0,
+        )
+    )
+    stretch_identity_error = float(
+        np.max(np.abs(current_to_rest - (1.0 + engineering_strain)), initial=0.0)
+    )
     passed = (
         balance.scaled_generalized_force_residual
         <= float(y_contract["scaled_generalized_force_residual_max"])
@@ -436,6 +452,25 @@ def _candidate_metrics(
             "segment_extensions_m": evaluation.segment_extensions.tolist(),
             "segment_tensions_N": evaluation.segment_tensions.tolist(),
             "segment_current_lengths_m": evaluation.segment_current_lengths.tolist(),
+            "dimensionless_segment_diagnostics": {
+                "engineering_strain": engineering_strain.tolist(),
+                "engineering_strain_minimum": float(np.min(engineering_strain)),
+                "engineering_strain_maximum": float(np.max(engineering_strain)),
+                "extension_fraction_of_current_length": extension_fraction.tolist(),
+                "extension_fraction_of_current_length_minimum": float(
+                    np.min(extension_fraction)
+                ),
+                "extension_fraction_of_current_length_maximum": float(
+                    np.max(extension_fraction)
+                ),
+                "current_to_rest_length_ratio": current_to_rest.tolist(),
+                "current_to_rest_length_ratio_minimum": float(np.min(current_to_rest)),
+                "current_to_rest_length_ratio_maximum": float(np.max(current_to_rest)),
+                "extension_fraction_identity_max_absolute_error": (
+                    extension_fraction_identity_error
+                ),
+                "stretch_identity_max_absolute_error": stretch_identity_error,
+            },
             "branch_minimum_curvature_denominators": dict(
                 evaluation.branch_minimum_curvature_denominators
             ),
@@ -456,7 +491,7 @@ def _mesh_metrics(
     case: YAnchorCase,
     manifest: dict[str, Any],
     settings: StaticSolverSettings,
-) -> tuple[dict[str, Any], dict[str, np.ndarray | float], bool]:
+) -> tuple[dict[str, Any], dict[str, Any], bool]:
     results = solve_deterministic_seeds(case.assembly, case.seeds, settings)
     candidate_documents: list[dict[str, Any]] = []
     candidate_pass: list[bool] = []
@@ -500,8 +535,30 @@ def _mesh_metrics(
     layout = _layout_metrics(case.assembly, manifest)
     passed = multiseed_pass and layout["status"] == "PASS"
     selected_document = selected_pair[1] if selected_pair is not None else None
-    observables: dict[str, np.ndarray | float] = {}
+    observables: dict[str, Any] = {}
     if selected_document is not None:
+        selected_result = selected_pair[0]
+        branch_polylines: dict[str, dict[str, np.ndarray]] = {}
+        for material in case.assembly.branch_materials:
+            segments = case.assembly.topology.branch_segments(material.branch_id)
+            node_ids = case.assembly.branch_node_ids(material.branch_id)
+            material_coordinates = np.array(
+                [segments[0].material_start]
+                + [segment.material_end for segment in segments],
+                dtype=float,
+            )
+            node_positions = np.vstack(
+                [
+                    selected_result.evaluation.node_positions[
+                        case.assembly.topology.node_index(node_id)
+                    ]
+                    for node_id in node_ids
+                ]
+            )
+            branch_polylines[material.branch_id] = {
+                "material_coordinates_m": material_coordinates,
+                "node_positions_m": node_positions,
+            }
         observables = {
             "shape": np.asarray(
                 selected_document["junction_attachment_bob_shape_m"], dtype=float
@@ -510,6 +567,8 @@ def _mesh_metrics(
                 selected_document["two_support_reactions_N"], dtype=float
             ),
             "potential": float(selected_document["total_potential_J"]),
+            "selected_candidate": selected_document,
+            "branch_polylines": branch_polylines,
         }
     return (
         {
@@ -542,7 +601,7 @@ def _trend_ratio(coarse: float, fine: float, floor: float) -> float:
 
 
 def _mesh_trend_metrics(
-    observables: list[dict[str, np.ndarray | float]],
+    observables: list[dict[str, Any]],
     manifest: dict[str, Any],
 ) -> dict[str, Any]:
     contract = manifest["mesh_trend"]
@@ -643,7 +702,7 @@ def build_g2_evidence(candidate_root: str | Path) -> dict[str, Any]:
     energy_force = _energy_force_metrics(cases[0], manifest)
     vertical = _vertical_metrics(root, manifest, settings)
     mesh_documents: list[dict[str, Any]] = []
-    observables: list[dict[str, np.ndarray | float]] = []
+    observables: list[dict[str, Any]] = []
     mesh_passes: list[bool] = []
     for case in cases:
         document, selected_observables, passed = _mesh_metrics(

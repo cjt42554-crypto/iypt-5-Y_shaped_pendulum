@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 
 import numpy as np
-from scipy.optimize import minimize
+from scipy.optimize import OptimizeWarning, minimize
 
 from .assembly import StaticAssembly, StaticEvaluation
 from .contracts import StaticCoordinates, StaticSeed
@@ -58,6 +59,20 @@ class StaticSolveResult:
     gradient_evaluations: int
 
 
+def bfgs_minimize_options(settings: StaticSolverSettings) -> dict[str, object]:
+    """Return every frozen SciPy BFGS option as the actual call mapping."""
+
+    return {
+        "gtol": settings.gradient_infinity_tolerance,
+        "maxiter": settings.maximum_iterations,
+        "xrtol": settings.x_relative_tolerance,
+        "norm": np.inf,
+        "disp": False,
+        "c1": settings.armijo_c1,
+        "c2": settings.curvature_c2,
+    }
+
+
 def solve_static_seed(
     assembly: StaticAssembly,
     seed: StaticSeed,
@@ -71,19 +86,19 @@ def solve_static_seed(
         evaluation = assembly.evaluate(assembly.coordinates_from_values(values))
         return evaluation.total_potential, -evaluation.generalized_force
 
-    result = minimize(
-        objective,
-        initial.values,
-        method=settings.method,
-        jac=True,
-        options={
-            "gtol": settings.gradient_infinity_tolerance,
-            "maxiter": settings.maximum_iterations,
-            "xrtol": settings.x_relative_tolerance,
-            "norm": np.inf,
-            "disp": False,
-        },
-    )
+    with warnings.catch_warnings():
+        warnings.filterwarnings(
+            "error",
+            message=r"Unknown solver options.*",
+            category=OptimizeWarning,
+        )
+        result = minimize(
+            objective,
+            initial.values,
+            method=settings.method,
+            jac=True,
+            options=bfgs_minimize_options(settings),
+        )
     coordinates = assembly.coordinates_from_values(np.asarray(result.x, dtype=float))
     evaluation = assembly.evaluate(coordinates)
     return StaticSolveResult(
