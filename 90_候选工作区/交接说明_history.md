@@ -342,3 +342,13 @@ Pro 裁决为 `G3R5_PRO_REVIEW_CONFIRMS_P3R5_TARGET_SUITE_NOT_ADMISSIBLE__G3R5_N
 复审永久记录两个非阻断语义偏差：`P3R5_CRITICAL_CONE_CROSSCHECK_LABEL_COUPLING`，即 `critical_cone_crosscheck` 实际继承同时含正曲率门的聚合 `critical.passed`；以及 `P3R5_EXECUTION_SUMMARY_FIELD_UNDERCONSTRAINED`，即 `all_holdout_cards_executed_exactly_once` 只直接检查冻结顺序和输入装配计数。原始交叉误差、未对称量、完整账本和逐阶段计数足以独立闭合当前分类，因此不重写历史证据。
 
 新增复审文件 `90_候选工作区/current/HF-v2重构规划/14_PRO_G3R5_REVIEW_AND_CERTIFICATION_CLOSURE.md`。本次没有重跑留出、测试或数值求解，没有独立重算既有四个 SHA-256；只执行 GitHub 静态提交链、账本、原始指标和关键源码复核，并对新增 Markdown 执行 Pandoc 解析。正式状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`；P3R6、G3R5、P4、P5、P6、动力学、动态接触、正式程序迁移、物理验证和实验验证均未授权或执行。正式理论和正式程序未修改。当前无待交接任务。
+
+# 2026-08-29 01:05 +0900：全项目正式提升审查与实验前阶段裁决
+
+以远程 `main` 提交 `be2d8ffbf6771e1ff512d5c22c74df159aebb6d7` 为基线，静态审查 `01_最终理论/**`、`02_模拟程序/**`、无实验参数图谱、HF-v2 G1R/G2R 物理与无接触静力证据，以及 P3–P3R5/G3R5 接触认证收口。正式理想环面解析理论和前向求解器继续作为主线；无实验参数图谱可在复用正式环面后端、配置化、确定性 schema 和测试后提升；HF-v2 离散曲率弯曲核与 G2R 无接触静力只能作为身份独立的静态参考模型准备迁移，不得替换连续柔索或 RC1。
+
+接触链只允许贡献“驻定—二阶—流形—算法吸引”证据分层的一般方法，不提升 P3–P3R5 接触程序、部分目标或未运行的 G3R5。正式结构理论中基于 0.12 s RC1 轨迹的强高保真措辞需要降级为来源受限的归档候选轨迹；RC1 继续冻结为参考/回滚后端。P3R5 尺度卡的负临界锥曲率被确定为下一阶段可解析研究的机制问题，但只属于候选静态刚性无摩擦模型，不是装置不稳定结论。
+
+新增 `90_候选工作区/current/全项目正式提升审查/PROJECT_WIDE_FORMAL_PROMOTION_REVIEW.md` 和 `formal_promotion_matrix.json`。建议下一次只执行有界的 `F0_FORMAL_CONSOLIDATION_AND_ANALYTIC_STABILITY_MAP`：在候选区准备正式勘误、图谱重构、无接触静态最小迁移稿、RC1 状态说明、机器状态清单、负曲率稳定性图和实验测量清单。F0 完成后停止并进入实验门；不授权 P3R6、G3R5、新接触资格、动力学、动态接触或自动修改正式目录。
+
+本轮只执行 GitHub 项目树、理论、程序、合同、报告和关键源码的静态审查，以及本轮 Markdown 的 Pandoc 解析和 JSON 解析；没有克隆仓库、运行 pytest/Ruff/compileall、数值复算、模拟、接触求解或实验。正式理论和正式程序未修改。
