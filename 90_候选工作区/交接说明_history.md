@@ -352,3 +352,13 @@ Pro 裁决为 `G3R5_PRO_REVIEW_CONFIRMS_P3R5_TARGET_SUITE_NOT_ADMISSIBLE__G3R5_N
 新增 `90_候选工作区/current/全项目正式提升审查/PROJECT_WIDE_FORMAL_PROMOTION_REVIEW.md` 和 `formal_promotion_matrix.json`。建议下一次只执行有界的 `F0_FORMAL_CONSOLIDATION_AND_ANALYTIC_STABILITY_MAP`：在候选区准备正式勘误、图谱重构、无接触静态最小迁移稿、RC1 状态说明、机器状态清单、负曲率稳定性图和实验测量清单。F0 完成后停止并进入实验门；不授权 P3R6、G3R5、新接触资格、动力学、动态接触或自动修改正式目录。
 
 本轮只执行 GitHub 项目树、理论、程序、合同、报告和关键源码的静态审查，以及本轮 Markdown 的 Pandoc 解析和 JSON 解析；没有克隆仓库、运行 pytest/Ruff/compileall、数值复算、模拟、接触求解或实验。正式理论和正式程序未修改。
+
+# 2026-08-29 01:43 +0800：F0 正式整理与解析稳定性图谱完成
+
+按最新 current 交接和全项目正式提升审查，只执行 `F0_FORMAL_CONSOLIDATION_AND_ANALYTIC_STABILITY_MAP`。以同步的 `main` 提交 `313a4a47ce47d85fa49d4a70e84e44390f8ef5fc` 为输入，在 `90_候选工作区/current/F0_正式整理与解析稳定性图谱/` 完成理论证据等级勘误候选、参数图谱正式化迁移稿、身份独立的无接触静态最小包、RC1 状态说明、机器状态和 75 条逐文件提升映射、P3R5 负曲率约化 Hessian 图谱，以及实验门最小测量清单。候选实现提交为 `0e6028e83c9ad39e6643682f6568a7ecff3baf4a`。
+
+参数图谱复用正式理想环面后端，16 个参数组合共 48 条轨迹，三次完整运行逐字节一致，测试为 `5 passed`。无接触静态包绑定 18 个源码迁移，当前和下限依赖单元分别为 `54 passed` 与 `54 passed`；两个单元的 BFGS 状态 2 都仅作记录，独立能量—力和全局平衡审计通过。稳定性图测试为 `4 passed`；四张冻结尺度卡在 $0.74\le s\le1.62$ 的约化 Hessian 参数化中保持 $(-,+,+)$，没有观察到零特征值过零，禁止外推，也不形成装置级稳定性结论。
+
+Ruff、`compileall`、迁移溯源复算、理论补丁应用检查、13 个既有 JSON 解析、Atlas Draft 2020-12 schema、12 个工件哈希、75 条提升映射和正式目录差分检查通过。10 份 F0 Markdown 通过 Pandoc 解析；四份复杂报告经 Pandoc HTML、本地临时 MathJax 与 Playwright/Chrome 实际渲染，389/389 个数学节点完成、错误为 0，共 36 页逐页检查，三张核心 PNG 也已人工查看。XeLaTeX 因缺少 `xeCJK.sty` 未采用，没有修改全局 TeX 环境。
+
+正式 `01_最终理论/**`、`02_模拟程序/**` 和顶层 `AGENTS.md` 未修改。没有启动 P3R6、生成新接触资格卡、运行 G3R5、修改 P3–P3R5 冻结证据，也没有开始 P4/P5/P6、动力学、动态接触、RC1 扩展、物理验证或实验。正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`；F0 状态为 `F0_COMPLETE_CANDIDATE_ONLY__STOP_FOR_HUMAN_REVIEW_AND_EXPERIMENT_GATE`，下一步只能是人工逐文件正式提升审查，随后在没有实验数据时进入实验门。

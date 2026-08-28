@@ -1,0 +1,215 @@
+{
+  "schema": "YPS-F0-MACHINE-STATUS-1.0",
+  "generated_at": "2026-08-29T01:43:15+08:00",
+  "phase": "F0_FORMAL_CONSOLIDATION_AND_ANALYTIC_STABILITY_MAP",
+  "execution_status": "F0_COMPLETE_CANDIDATE_ONLY__STOP_FOR_HUMAN_REVIEW_AND_EXPERIMENT_GATE",
+  "authority": {
+    "precedence": [
+      "AGENTS.md",
+      "90_候选工作区/交接说明_current.md at F0 start",
+      "90_候选工作区/current/全项目正式提升审查/PROJECT_WIDE_FORMAL_PROMOTION_REVIEW.md",
+      "90_候选工作区/current/全项目正式提升审查/formal_promotion_matrix.json"
+    ],
+    "legacy_plan_manifest": "HISTORICAL_SNAPSHOT_NOT_EXECUTION_AUTHORITY",
+    "formal_write_authorized": false
+  },
+  "git_binding": {
+    "branch": "main",
+    "input_head": "313a4a47ce47d85fa49d4a70e84e44390f8ef5fc",
+    "input_origin_main": "313a4a47ce47d85fa49d4a70e84e44390f8ef5fc",
+    "candidate_implementation_commit": "0e6028e83c9ad39e6643682f6568a7ecff3baf4a",
+    "governance_commit": "COMMIT_CONTAINING_THIS_STATUS_AND_HANDOFFS",
+    "formal_directories_modified": false,
+    "top_level_agents_modified": false
+  },
+  "project_status": {
+    "formal_high_fidelity": "HF_NUMERICAL_QUALIFICATION_NO_GO",
+    "no_contact_static_historical_ceiling": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED",
+    "contact_certification_closure": "G3R5_PRO_REVIEW_CONFIRMS_P3R5_TARGET_SUITE_NOT_ADMISSIBLE__G3R5_NOT_RUN__P3R5_CERTIFICATION_RETRY_PATH_CLOSED",
+    "formal_promotion": "NOT_PERFORMED_PENDING_HUMAN_FILE_BY_FILE_REVIEW",
+    "device_prediction": "NOT_QUALIFIED",
+    "experimental_validation": "NOT_PERFORMED"
+  },
+  "deliverables": [
+    {
+      "id": "F0_THEORY_EVIDENCE_ERRATUM",
+      "status": "COMPLETE_CANDIDATE_DRAFT",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/ERRATUM_README.md",
+      "primary_artifact_sha256": "fb2935872b0040eb341610365e6bb7b1c9d2d07ed9e44b48a571b1094df8cd08",
+      "patch_sha256": "18b40e0f759a7a48cbf6bd39f0fcd7618e47dfc2710a0fc42358ddab0b8f36fa"
+    },
+    {
+      "id": "F0_PATTERN_ATLAS_FORMALIZATION",
+      "status": "COMPLETE_CANDIDATE_DRAFT",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/README.md",
+      "artifact_manifest_sha256": "25720e2a4cd361647970467f323b62cf428266000bf16dec693ea6809ccf5881"
+    },
+    {
+      "id": "F0_NO_CONTACT_STATIC_MINIMAL_PACKAGE",
+      "status": "COMPLETE_CANDIDATE_DRAFT",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/README.md",
+      "migration_provenance_sha256": "aba0bf65846cf35a094bef82affd85d1416f169d0c4d33154d38fa6370d6cd93",
+      "runtime_matrix_sha256": "ba5314f4c1e9390fef165900da82b4f8c35b21af862a94609ed529d1866d8920"
+    },
+    {
+      "id": "F0_RC1_STATUS_NOTE",
+      "status": "COMPLETE_CANDIDATE_DRAFT",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/04_RC1正式状态说明草案/RC1_STATUS_NOTE_DRAFT.md"
+    },
+    {
+      "id": "F0_MACHINE_STATUS_AND_FILE_MAP",
+      "status": "COMPLETE_CANDIDATE_GOVERNANCE",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/05_正式提升清单/formal_promotion_file_map.json",
+      "entry_count": 75,
+      "formal_write_authorized_true_count": 0,
+      "file_map_sha256": "0f9d5a28248674a1081a5a049df9402e0ae2c80358f9d261540e6b057c9ee477"
+    },
+    {
+      "id": "F0_ANALYTIC_STABILITY_MAP",
+      "status": "COMPLETE_READ_ONLY_CANDIDATE_ANALYSIS",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/P3R5_NEGATIVE_CURVATURE_AND_REDUCED_HESSIAN_MAP.md",
+      "artifact_manifest_sha256": "836d0ef0068f77b07096b5a8342d17dbfea4e8fdffd86121fe9afff2dab6ce44"
+    },
+    {
+      "id": "F0_EXPERIMENT_GATE_MINIMUM_MEASUREMENTS",
+      "status": "COMPLETE_CANDIDATE_CONTRACT",
+      "path": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/07_实验门最小测量清单/EXPERIMENT_GATE_MINIMUM_MEASUREMENTS.md",
+      "sha256": "feb75816a4e29ec2446c11b64f26ad09b3dbd10158d960b136cd5061862dae2e"
+    }
+  ],
+  "source_bindings": {
+    "formal_theory": {
+      "path": "01_最终理论/03-结构性理论.md",
+      "sha256": "3c932edf50a5fdee8df3c685b9f0c098fa190b279969c750fd3ca516bf3002e3"
+    },
+    "formal_ideal_torus_backend": {
+      "path": "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/torus.py",
+      "sha256": "a7cef2c45868bedf5b045a9409b9347a45549f480de24dd83ded523349d10363"
+    },
+    "frozen_p3r5_holdout_cards": {
+      "path": "90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_cards.json",
+      "sha256": "48f418094ef7ccaa595a63a080f65f82d5b0125eaec0fb25cc58acf823bcb0f0"
+    },
+    "frozen_p3r5_admissibility_metrics": {
+      "path": "90_候选工作区/current/HF-v2-core/reports/p3r5_admissibility_metrics.json",
+      "sha256": "e93eb9a0cb074ca1cc9a137149b89b8d2c4384f100c9a9eefaf5c0ff79a3f987"
+    }
+  },
+  "model_identities": {
+    "pattern_atlas": "FORMAL_IDEAL_TORUS_BACKEND_ADAPTER_CANDIDATE",
+    "no_contact_static": "YPS-DISCRETE-ROD-RIGID-BOB-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.0",
+    "stability_map": "READ_ONLY_REDUCED_HESSIAN_MAP_OF_FROZEN_P3R5_SCALE_CARDS"
+  },
+  "validation": {
+    "implementation_tests": {
+      "pattern_atlas": {
+        "passed": 5,
+        "failed": 0
+      },
+      "no_contact_static_current_dependency_cell": {
+        "passed": 54,
+        "failed": 0
+      },
+      "no_contact_static_lower_dependency_cell": {
+        "passed": 54,
+        "failed": 0
+      },
+      "stability_map": {
+        "passed": 4,
+        "failed": 0
+      }
+    },
+    "static_runtime_matrix": {
+      "current": "CPython 3.12.3; NumPy 2.5.2; SciPy 1.18.1; pytest 9.1.1",
+      "lower": "CPython 3.12.3; NumPy 1.26.4; SciPy 1.12.0; pytest 8.4.2",
+      "bound_optimizer_status_record_only": 2,
+      "optimizer_success_record_only": false,
+      "independent_implementation_diagnostics_passed": true
+    },
+    "pattern_atlas_full_run": {
+      "parameter_combinations": 16,
+      "trajectories": 48,
+      "byte_identical_full_runs": 3,
+      "maximum_pure_mode_period_relative_difference": 8.45754019287237e-13,
+      "maximum_relative_energy_drift": 1.6506421112458225e-12,
+      "minimum_sampled_guard": 0.2531985517514922,
+      "maximum_step_frequency_ratio_difference": 5.10702591327572e-14,
+      "maximum_step_resonant_phase_difference_radian": 1.4779288903810084e-11,
+      "maximum_residual_phase_radian": {
+        "zero_amplitude_geometry": 1.1219356473007451,
+        "quartic_compensation": 0.06287943197645518,
+        "numeric_internal_tuning": 0.00039208690907344135
+      }
+    },
+    "stability_map": {
+      "frozen_scale_card_count": 4,
+      "parameter_domain": [
+        0.74,
+        1.62
+      ],
+      "interpolation": "PCHIP_NO_EXTRAPOLATION",
+      "reduced_hessian_signature_over_domain": "(-,+,+)",
+      "negative_eigenvalue_observed_range": [
+        -0.067828,
+        -0.0346075
+      ],
+      "zero_crossing_observed": false,
+      "device_level_interpretation_authorized": false
+    },
+    "static_checks": {
+      "ruff": "PASS_ALL_THREE_PACKAGES_AND_FILE_MAP_GENERATOR",
+      "compileall": "PASS_ALL_THREE_PACKAGES",
+      "migration_provenance": "PASS_18_SOURCE_TRANSFORMS_AND_BYTE_REGENERATION",
+      "theory_patch_apply_check": "PASS",
+      "formal_scope_diff": "PASS_NO_CHANGES",
+      "frozen_source_hashes": "PASS"
+    },
+    "structured_artifacts": {
+      "json_parse_count_before_this_status": 13,
+      "atlas_schema": "PASS_DRAFT_2020_12",
+      "artifact_manifest_hash_checks": 12,
+      "promotion_map_entries": 75
+    },
+    "markdown": {
+      "pandoc_reader": "markdown",
+      "f0_documents_parsed": 10,
+      "math_and_control_character_hygiene": "PASS"
+    },
+    "rendering": {
+      "path": "PANDOC_HTML_LOCAL_MATHJAX_PLAYWRIGHT_CHROME",
+      "math_nodes_completed": 389,
+      "math_nodes_total": 389,
+      "math_errors": 0,
+      "rendered_pages_inspected": 36,
+      "core_png_images_inspected": 3,
+      "xelatex_attempt": "NOT_ACCEPTED_MISSING_XECJK_STY_NO_GLOBAL_ENVIRONMENT_CHANGE"
+    }
+  },
+  "forbidden_actions": {
+    "p3r6_started": false,
+    "new_contact_qualification_holdout_cards_generated": false,
+    "g3r5_run": false,
+    "p3_through_p3r5_frozen_evidence_modified": false,
+    "p4_started": false,
+    "p5_started": false,
+    "p6_started": false,
+    "dynamics_started": false,
+    "dynamic_contact_started": false,
+    "rc1_extended_or_recomputed": false
+  },
+  "not_performed": [
+    "formal directory merge",
+    "continuous flexible-string or RC1 numerical rerun",
+    "device-level physical validation",
+    "experimental measurement",
+    "experimental validation"
+  ],
+  "conclusion_ceiling": {
+    "f0": "CANDIDATE_DELIVERABLES_COMPLETE_AND_VALIDATED",
+    "formal_project": "HF_NUMERICAL_QUALIFICATION_NO_GO",
+    "physics": "MODEL_INTERNAL_ONLY_NOT_DEVICE_VALIDATED",
+    "experiment": "MEASUREMENT_CONTRACT_ONLY_NO_DATA"
+  },
+  "next_gate": "HUMAN_FILE_BY_FILE_FORMAL_PROMOTION_REVIEW_THEN_EXPERIMENT_GATE",
+  "stop_required": true
+}
