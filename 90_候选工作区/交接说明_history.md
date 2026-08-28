@@ -362,3 +362,11 @@ Pro 裁决为 `G3R5_PRO_REVIEW_CONFIRMS_P3R5_TARGET_SUITE_NOT_ADMISSIBLE__G3R5_N
 Ruff、`compileall`、迁移溯源复算、理论补丁应用检查、13 个既有 JSON 解析、Atlas Draft 2020-12 schema、12 个工件哈希、75 条提升映射和正式目录差分检查通过。10 份 F0 Markdown 通过 Pandoc 解析；四份复杂报告经 Pandoc HTML、本地临时 MathJax 与 Playwright/Chrome 实际渲染，389/389 个数学节点完成、错误为 0，共 36 页逐页检查，三张核心 PNG 也已人工查看。XeLaTeX 因缺少 `xeCJK.sty` 未采用，没有修改全局 TeX 环境。
 
 正式 `01_最终理论/**`、`02_模拟程序/**` 和顶层 `AGENTS.md` 未修改。没有启动 P3R6、生成新接触资格卡、运行 G3R5、修改 P3–P3R5 冻结证据，也没有开始 P4/P5/P6、动力学、动态接触、RC1 扩展、物理验证或实验。正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`；F0 状态为 `F0_COMPLETE_CANDIDATE_ONLY__STOP_FOR_HUMAN_REVIEW_AND_EXPERIMENT_GATE`，下一步只能是人工逐文件正式提升审查，随后在没有实验数据时进入实验门。
+
+# 2026-08-29 03:00 +0900：F0 独立复审与 F0R 正式提升阻断修正门
+
+静态复审 F0 候选实现 `0e6028e83c9ad39e6643682f6568a7ecff3baf4a` 和完成交接 `fde55687ca3ebd067309e4c972379d8132aa0996` 后，裁决为 `F0_PRO_REVIEW_SUBSTANTIVE_PASS__FORMAL_PROMOTION_HOLD_PENDING_F0R`。F0 七类候选交付范围完整，正式理论、正式程序和顶层 `AGENTS.md` 未修改；RC1 状态说明草案与实验门最小测量清单可继续保留。
+
+正式提升仍被四类问题阻断：理论候选稿的 HF 证据标签与 RC1 降级结论不自洽，且补丁新路径不是正式目标路径；参数图谱的 Matplotlib 后端顺序、配置/输出 schema、完整来源与运行时绑定及 `sys.path` 隔离不足；无接触静态迁移稿仍公开携带速度、动量、阻力、耗散和姿态时间推进等非静态能力，阈值与运行证据合同也不完整；P3R5 图谱把四点 PCHIP 插值性质过强写成连续尺度观察。提交携带的测试和数值结果本轮未独立重跑，GitHub 也无绑定状态检查。
+
+下一次唯一范围为 `F0R_FORMAL_PROMOTION_BLOCKER_CORRECTIONS`，仍只修改 `90_候选工作区/current/F0_正式整理与解析稳定性图谱/**`。F0R 必须修正上述问题，重跑三个子项目、静态双依赖单元、完整 48 轨迹图谱、严格 schema/来源漂移负例、同目标理论补丁、Ruff/compileall/Pandoc/渲染和正式目录零差分检查，并停在 `F0R_PRO_REVIEW`。不授权正式目录写入、P3R6、G3R5、新接触卡、动力学、动态接触、RC1 扩展或冻结证据修改。
