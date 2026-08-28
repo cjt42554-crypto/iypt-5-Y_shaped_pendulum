@@ -67,6 +67,11 @@ def test_implementation_binding_is_complete_and_has_no_new_results() -> None:
     manifest = _load("contracts/p3r4_acceptance_manifest.json")
     binding = _load("contracts/p3r4_implementation_binding.json")
     assert binding["prefreeze_commit"] == "411e1dd6537be50f55c5c5229b2e9a23350f44be"
+    assert binding["initial_implementation_commit"] == "7519585cdf35fd202ed8e822a0aca733b63d6eb6"
+    assert binding["zero_result_correction_reason"] == (
+        "R4_ASYM_B02 input assembly raised ContactGeometryError before any design solver "
+        "or result output; classify each frozen card independently and fail invalid input closed"
+    )
     assert binding["admissibility_not_yet_executed"] is True
     assert binding["targets_and_solver_initial_guesses_not_yet_frozen"] is True
     result_keys = (

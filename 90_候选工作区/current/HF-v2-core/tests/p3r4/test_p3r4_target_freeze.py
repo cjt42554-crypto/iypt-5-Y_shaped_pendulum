@@ -23,6 +23,7 @@ def _outcome(design_id: str, category: str) -> dict[str, object]:
         "design_id": design_id,
         "category": category,
         "status": "ADMISSIBLE",
+        "input_assembly_validation_execution_count": 1,
         "reference_discovery_execution_count": 1,
         "admissibility_execution_count": 1,
         "second_order_execution_count": 1,
@@ -54,7 +55,13 @@ def test_target_and_solver_initial_guess_freeze_is_a_separate_zero_run_artifact(
     categories = manifest["target_design_and_selection"]["required_categories"]
     outcomes = [
         _outcome("R4_ASYM_B01", categories[0]),
+        {**_outcome("R4_ASYM_B02", categories[0]), "status": "TARGET_INVALID"},
+        {**_outcome("R4_ASYM_B03", categories[0]), "status": "TARGET_INVALID"},
+        {**_outcome("R4_ASYM_B04", categories[0]), "status": "TARGET_INVALID"},
         _outcome("R4_SCALE_T01", categories[1]),
+        {**_outcome("R4_SCALE_T02", categories[1]), "status": "TARGET_INVALID"},
+        {**_outcome("R4_SCALE_T03", categories[1]), "status": "TARGET_INVALID"},
+        {**_outcome("R4_SCALE_T04", categories[1]), "status": "TARGET_INVALID"},
     ]
     selection = build_admissibility_selection(
         manifest,

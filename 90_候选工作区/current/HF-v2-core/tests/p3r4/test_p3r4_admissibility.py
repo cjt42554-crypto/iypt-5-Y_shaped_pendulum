@@ -17,6 +17,7 @@ def _outcome(design_id: str, category: str, status: str = "ADMISSIBLE") -> dict[
         "design_id": design_id,
         "category": category,
         "status": status,
+        "input_assembly_validation_execution_count": 1,
         "reference_discovery_execution_count": 1,
         "admissibility_execution_count": 1,
         "second_order_execution_count": 1,
@@ -30,10 +31,14 @@ def test_selection_is_lexicographic_and_does_not_generate_seeds() -> None:
     designs = _load("contracts/p3r4_design_cards.json")
     categories = manifest["target_design_and_selection"]["required_categories"]
     outcomes = [
-        _outcome("R4_ASYM_B03", categories[0]),
-        _outcome("R4_SCALE_T03", categories[1]),
         _outcome("R4_ASYM_B01", categories[0]),
+        _outcome("R4_ASYM_B02", categories[0], "TARGET_INVALID"),
+        _outcome("R4_ASYM_B03", categories[0]),
+        _outcome("R4_ASYM_B04", categories[0], "TARGET_INVALID"),
         _outcome("R4_SCALE_T01", categories[1]),
+        _outcome("R4_SCALE_T02", categories[1], "TARGET_INVALID"),
+        _outcome("R4_SCALE_T03", categories[1]),
+        _outcome("R4_SCALE_T04", categories[1], "TARGET_INVALID"),
     ]
     selection = build_admissibility_selection(
         manifest,
@@ -54,13 +59,37 @@ def test_selection_is_lexicographic_and_does_not_generate_seeds() -> None:
 def test_incomplete_category_fails_without_partial_target_selection() -> None:
     manifest = _load("contracts/p3r4_acceptance_manifest.json")
     designs = _load("contracts/p3r4_design_cards.json")
-    category = manifest["target_design_and_selection"]["required_categories"][0]
+    categories = manifest["target_design_and_selection"]["required_categories"]
+    outcomes = [
+        _outcome(item["design_id"], item["category"], "TARGET_INVALID")
+        for item in designs["design_cards"]
+    ]
+    outcomes[0] = _outcome("R4_ASYM_B01", categories[0])
     selection = build_admissibility_selection(
         manifest,
         designs,
-        [_outcome("R4_ASYM_B01", category)],
+        outcomes,
         implementation_commit="a" * 40,
         generated_at="2026-08-28T00:00:00+08:00",
     )
     assert selection["status"] == "TARGET_SUITE_NOT_ADMISSIBLE"
     assert selection["qualification_seed_results_observed_before_separate_target_freeze"] == 0
+
+
+def test_partial_or_out_of_order_campaign_cannot_freeze_targets() -> None:
+    manifest = _load("contracts/p3r4_acceptance_manifest.json")
+    designs = _load("contracts/p3r4_design_cards.json")
+    categories = manifest["target_design_and_selection"]["required_categories"]
+    outcomes = [
+        _outcome("R4_SCALE_T01", categories[1]),
+        _outcome("R4_ASYM_B01", categories[0]),
+    ]
+    selection = build_admissibility_selection(
+        manifest,
+        designs,
+        outcomes,
+        implementation_commit="a" * 40,
+        generated_at="2026-08-28T00:00:00+08:00",
+    )
+    assert selection["all_design_cards_executed_exactly_once"] is False
+    assert selection["status"] == "TARGET_SUITE_NOT_ADMISSIBLE"

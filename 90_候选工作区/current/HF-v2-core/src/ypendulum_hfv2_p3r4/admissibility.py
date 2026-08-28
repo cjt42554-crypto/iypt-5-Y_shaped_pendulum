@@ -38,7 +38,7 @@ from . import (
     P3R4_SECOND_ORDER_ID,
     P3R4_TARGET_ADMISSIBILITY_ID,
 )
-from .cases import P3R4DesignCase, build_admissibility_selection, build_design_cases
+from .cases import P3R4DesignCase, build_admissibility_selection, build_design_case
 from .certification import characteristic_scales, deterministic_tangent_basis
 from .dual_certification import (
     audit_contact_kkt,
@@ -182,6 +182,7 @@ def _invalid_discovery_record(
         "design_id": case.design_id,
         "category": case.category,
         "reference_discovery_identity": P3R4_REFERENCE_DISCOVERY_ID,
+        "input_assembly_validation_execution_count": 1,
         "reference_discovery_execution_count": 1,
         "admissibility_execution_count": 0,
         "second_order_execution_count": 0,
@@ -191,6 +192,34 @@ def _invalid_discovery_record(
         "failure_reason": reason,
         "failure_type": failure_type,
         "qualification_seed_execution_count": 0,
+    }
+
+
+def _invalid_input_record(
+    contract: dict[str, Any],
+    reason: str,
+    *,
+    failure_type: str,
+) -> dict[str, Any]:
+    """Fail one frozen design closed before any numerical solver is entered."""
+
+    return {
+        "design_id": str(contract["design_id"]),
+        "category": str(contract["category"]),
+        "reference_discovery_identity": P3R4_REFERENCE_DISCOVERY_ID,
+        "target_admissibility_identity": P3R4_TARGET_ADMISSIBILITY_ID,
+        "second_order_identity": P3R4_SECOND_ORDER_ID,
+        "manifold_retraction_identity": P3R4_MANIFOLD_RETRACTION_ID,
+        "input_assembly_validation_execution_count": 1,
+        "reference_discovery_execution_count": 0,
+        "admissibility_execution_count": 0,
+        "second_order_execution_count": 0,
+        "manifold_neighborhood_execution_count": 0,
+        "qualification_seed_execution_count": 0,
+        "status": "TARGET_INVALID",
+        "failure_stage": "INPUT_ASSEMBLY_VALIDATION",
+        "failure_reason": reason,
+        "failure_type": failure_type,
     }
 
 
@@ -346,6 +375,7 @@ def _run_design(
             "target_admissibility_identity": P3R4_TARGET_ADMISSIBILITY_ID,
             "second_order_identity": P3R4_SECOND_ORDER_ID,
             "manifold_retraction_identity": P3R4_MANIFOLD_RETRACTION_ID,
+            "input_assembly_validation_execution_count": 1,
             "reference_discovery_execution_count": 1,
             "admissibility_execution_count": 1,
             "second_order_execution_count": 1,
@@ -429,18 +459,31 @@ def run_admissibility_campaign(
         raise RuntimeError("P3R4 implementation binding is not committed and closed.")
     repository_root = root.parents[2]
     implementation_commit = git_head(repository_root)
-    cases = build_design_cases(
-        manifest,
-        predecessor,
-        design_cards,
-        adapter_contract_sha256=sha256(root / "contracts" / manifest["adapter_contract"]),
-        frozen_protocol_sha256=sha256(root / "contracts" / manifest["frozen_protocol"]),
-        predecessor_adapter_sha256=sha256(root / "contracts/p3r3_contact_adapter_contract.json"),
-        predecessor_protocol_sha256=sha256(root / "contracts/P3R3_FROZEN_PROTOCOL.md"),
-    )
+    adapter_contract_sha256 = sha256(root / "contracts" / manifest["adapter_contract"])
+    frozen_protocol_sha256 = sha256(root / "contracts" / manifest["frozen_protocol"])
+    predecessor_adapter_sha256 = sha256(root / "contracts/p3r3_contact_adapter_contract.json")
+    predecessor_protocol_sha256 = sha256(root / "contracts/P3R3_FROZEN_PROTOCOL.md")
     outcomes: list[dict[str, Any]] = []
-    for case in cases:
-        outcomes.append(_run_design(case, manifest, predecessor))
+    for design_contract in design_cards["design_cards"]:
+        try:
+            case = build_design_case(
+                manifest,
+                predecessor,
+                design_contract,
+                adapter_contract_sha256=adapter_contract_sha256,
+                frozen_protocol_sha256=frozen_protocol_sha256,
+                predecessor_adapter_sha256=predecessor_adapter_sha256,
+                predecessor_protocol_sha256=predecessor_protocol_sha256,
+            )
+        except (ContactGeometryError, ValueError, np.linalg.LinAlgError) as error:
+            outcome = _invalid_input_record(
+                design_contract,
+                str(error),
+                failure_type=type(error).__name__,
+            )
+        else:
+            outcome = _run_design(case, manifest, predecessor)
+        outcomes.append(outcome)
         if checkpoint is not None:
             checkpoint(outcomes)
     generated_at = datetime.now().astimezone().isoformat(timespec="seconds")
@@ -456,7 +499,13 @@ def run_admissibility_campaign(
         "generated_at": generated_at,
         "implementation_commit": implementation_commit,
         "design_card_sha256": sha256(root / "contracts/p3r4_design_cards.json"),
-        "reference_discovery_run_count": len(outcomes),
+        "design_card_attempt_count": len(outcomes),
+        "input_assembly_validation_run_count": sum(
+            int(item["input_assembly_validation_execution_count"]) for item in outcomes
+        ),
+        "reference_discovery_run_count": sum(
+            int(item["reference_discovery_execution_count"]) for item in outcomes
+        ),
         "target_admissibility_run_count": sum(
             int(item["admissibility_execution_count"]) for item in outcomes
         ),
@@ -492,16 +541,18 @@ def render_admissibility_report(metrics: dict[str, Any]) -> str:
         "",
         "本报告只覆盖参考点约束稳定性、二阶数值一致性和约束流形有限邻域；不含资格种子运行，不构成正式数值资格、物理验证或实验验证。",
         "",
-        "| 设计卡 | 类别 | 参考运行 | 准入运行 | 二阶审计 | 流形审计 | 状态 |",
-        "|---|---|---:|---:|---:|---:|---|",
+        "| 设计卡 | 类别 | 输入装配 | 参考运行 | 准入运行 | 二阶审计 | 流形审计 | 失败阶段 | 状态 |",
+        "|---|---|---:|---:|---:|---:|---:|---|---|",
     ]
     for item in metrics["outcomes"]:
         lines.append(
             f"| {item['design_id']} | {item['category']} | "
+            f"{item['input_assembly_validation_execution_count']} | "
             f"{item['reference_discovery_execution_count']} | "
             f"{item['admissibility_execution_count']} | "
             f"{item['second_order_execution_count']} | "
-            f"{item['manifold_neighborhood_execution_count']} | {item['status']} |"
+            f"{item['manifold_neighborhood_execution_count']} | "
+            f"{item.get('failure_stage', '-')} | {item['status']} |"
         )
     lines.extend(["", "## 选择结果", ""])
     if metrics["selected_design_ids"]:

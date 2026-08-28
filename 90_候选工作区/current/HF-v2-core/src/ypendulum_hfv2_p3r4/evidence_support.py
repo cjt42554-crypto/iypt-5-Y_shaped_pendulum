@@ -141,16 +141,29 @@ def contract_binding(
         repository_root,
         root / "contracts" / manifest["frozen_protocol"],
     )
+    initial_implementation_commit = str(implementation["initial_implementation_commit"])
     implementation_commit = commit_for_path(repository_root, implementation_path)
     base_order = bool(
         commit_exists(repository_root, source_parent)
         and commit_exists(repository_root, prefreeze_commit)
+        and commit_exists(repository_root, initial_implementation_commit)
         and commit_exists(repository_root, implementation_commit)
-        and len({source_parent, prefreeze_commit, implementation_commit}) == 3
+        and len(
+            {
+                source_parent,
+                prefreeze_commit,
+                initial_implementation_commit,
+                implementation_commit,
+            }
+        )
+        == 4
         and is_ancestor(repository_root, source_parent, prefreeze_commit)
-        and is_ancestor(repository_root, prefreeze_commit, implementation_commit)
+        and is_ancestor(repository_root, prefreeze_commit, initial_implementation_commit)
+        and is_ancestor(repository_root, initial_implementation_commit, implementation_commit)
         and commit_distance(repository_root, source_parent, prefreeze_commit) == 1
-        and commit_distance(repository_root, prefreeze_commit, implementation_commit) == 1
+        and commit_distance(repository_root, prefreeze_commit, initial_implementation_commit) == 1
+        and commit_distance(repository_root, initial_implementation_commit, implementation_commit)
+        == 1
     )
 
     admissibility_record: dict[str, Any] | None = None
@@ -174,7 +187,13 @@ def contract_binding(
             and commit_exists(repository_root, admissibility_commit)
             and is_ancestor(repository_root, implementation_commit, admissibility_commit)
             and commit_distance(repository_root, implementation_commit, admissibility_commit) == 1
-            and metrics["reference_discovery_run_count"] == 8
+            and metrics["design_card_attempt_count"] == 8
+            and metrics["input_assembly_validation_run_count"] == 8
+            and selection["all_design_cards_executed_exactly_once"] is True
+            and all(
+                item["input_assembly_validation_execution_count"] == 1
+                for item in metrics["outcomes"]
+            )
             and zero_qualification
         )
         admissibility_record = {
@@ -228,6 +247,7 @@ def contract_binding(
         "required_stage": required_stage,
         "prefreeze_source_commit": source_parent,
         "prefreeze_commit": prefreeze_commit,
+        "initial_implementation_commit": initial_implementation_commit,
         "implementation_commit": implementation_commit,
         "admissibility_commit": admissibility_commit or None,
         "target_freeze_commit": target_commit or None,

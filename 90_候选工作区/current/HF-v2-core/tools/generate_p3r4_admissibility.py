@@ -101,18 +101,25 @@ def _check() -> int:
     metrics = json.loads(METRICS.read_text(encoding="utf-8"))
     selection = json.loads(SELECTION.read_text(encoding="utf-8"))
     report = render_admissibility_report(metrics).encode("utf-8")
+    outcomes = metrics["outcomes"]
     counts_pass = bool(
-        metrics["reference_discovery_run_count"] == 8
+        metrics["design_card_attempt_count"] == 8
+        and metrics["input_assembly_validation_run_count"] == 8
+        and len(outcomes) == 8
+        and metrics["reference_discovery_run_count"]
+        == sum(item["reference_discovery_execution_count"] for item in outcomes)
         and metrics["target_freeze_run_count"] == 0
         and metrics["qualification_seed_run_count"] == 0
         and all(
-            item["reference_discovery_execution_count"] == 1
+            item["input_assembly_validation_execution_count"] == 1
+            and item["reference_discovery_execution_count"] in (0, 1)
             and item["qualification_seed_execution_count"] == 0
-            for item in metrics["outcomes"]
+            for item in outcomes
         )
     )
     selection_pass = bool(
         metrics["selected_design_ids"] == selection["selected_design_ids"]
+        and selection["all_design_cards_executed_exactly_once"] is True
         and selection["target_freeze_generated"] is False
         and selection["qualification_seed_results_observed_before_separate_target_freeze"] == 0
         and selection["qualification_seed_execution_counts_before_separate_target_freeze"] == {}

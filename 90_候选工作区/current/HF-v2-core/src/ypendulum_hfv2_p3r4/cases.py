@@ -78,47 +78,69 @@ def build_design_cases(
     predecessor_protocol_sha256: str,
 ) -> tuple[P3R4DesignCase, ...]:
     _assert_physical_numerics_match(manifest, predecessor_manifest)
-    cases = []
-    for contract in design_cards["design_cards"]:
-        analytic = np.asarray(contract["analytic_stationary_bob_position_m"], dtype=float)
-        base = _static_assembly(contract, analytic)
-        predecessor = P3R3ContactAssembly(
-            **_assembly_kwargs(
-                predecessor_manifest,
-                contract,
-                base,
-                adapter_contract_sha256=predecessor_adapter_sha256,
-                frozen_protocol_sha256=predecessor_protocol_sha256,
-            )
+    return tuple(
+        build_design_case(
+            manifest,
+            predecessor_manifest,
+            contract,
+            adapter_contract_sha256=adapter_contract_sha256,
+            frozen_protocol_sha256=frozen_protocol_sha256,
+            predecessor_adapter_sha256=predecessor_adapter_sha256,
+            predecessor_protocol_sha256=predecessor_protocol_sha256,
         )
-        assembly = P3R4ContactAssembly(
-            **_assembly_kwargs(
-                manifest,
-                contract,
-                base,
-                adapter_contract_sha256=adapter_contract_sha256,
-                frozen_protocol_sha256=frozen_protocol_sha256,
-            )
+        for contract in design_cards["design_cards"]
+    )
+
+
+def build_design_case(
+    manifest: dict[str, Any],
+    predecessor_manifest: dict[str, Any],
+    contract: dict[str, Any],
+    *,
+    adapter_contract_sha256: str,
+    frozen_protocol_sha256: str,
+    predecessor_adapter_sha256: str,
+    predecessor_protocol_sha256: str,
+) -> P3R4DesignCase:
+    """Construct one frozen design so invalid input cannot abort later cards."""
+
+    _assert_physical_numerics_match(manifest, predecessor_manifest)
+    analytic = np.asarray(contract["analytic_stationary_bob_position_m"], dtype=float)
+    base = _static_assembly(contract, analytic)
+    predecessor = P3R3ContactAssembly(
+        **_assembly_kwargs(
+            predecessor_manifest,
+            contract,
+            base,
+            adapter_contract_sha256=predecessor_adapter_sha256,
+            frozen_protocol_sha256=predecessor_protocol_sha256,
         )
-        seed_contract = contract["reference_discovery_seed"]
-        seed = StaticSeed(
-            seed_id=f"{contract['design_id']}_reference_discovery",
-            free_node_ids=(),
-            free_node_positions=np.empty((0, 3)),
-            bob_position=analytic + np.asarray(seed_contract["bob_offset_m"], dtype=float),
-            bob_rotation_vector=np.asarray(seed_contract["rotation_vector_rad"], dtype=float),
+    )
+    assembly = P3R4ContactAssembly(
+        **_assembly_kwargs(
+            manifest,
+            contract,
+            base,
+            adapter_contract_sha256=adapter_contract_sha256,
+            frozen_protocol_sha256=frozen_protocol_sha256,
         )
-        cases.append(
-            P3R4DesignCase(
-                design_id=str(contract["design_id"]),
-                category=str(contract["category"]),
-                predecessor_assembly=predecessor,
-                assembly=assembly,
-                discovery_seed=seed,
-                contract=contract,
-            )
-        )
-    return tuple(cases)
+    )
+    seed_contract = contract["reference_discovery_seed"]
+    seed = StaticSeed(
+        seed_id=f"{contract['design_id']}_reference_discovery",
+        free_node_ids=(),
+        free_node_positions=np.empty((0, 3)),
+        bob_position=analytic + np.asarray(seed_contract["bob_offset_m"], dtype=float),
+        bob_rotation_vector=np.asarray(seed_contract["rotation_vector_rad"], dtype=float),
+    )
+    return P3R4DesignCase(
+        design_id=str(contract["design_id"]),
+        category=str(contract["category"]),
+        predecessor_assembly=predecessor,
+        assembly=assembly,
+        discovery_seed=seed,
+        contract=contract,
+    )
 
 
 def build_case_from_contract(
@@ -254,7 +276,12 @@ def build_admissibility_selection(
 ) -> dict[str, Any]:
     categories = tuple(manifest["target_design_and_selection"]["required_categories"])
     selected = select_admissible_designs(outcomes, categories)
-    complete = len(selected) == len(categories)
+    frozen_order = [item["design_id"] for item in design_cards["design_cards"]]
+    all_attempted_once = bool(
+        [item["design_id"] for item in outcomes] == frozen_order
+        and all(item["input_assembly_validation_execution_count"] == 1 for item in outcomes)
+    )
+    complete = all_attempted_once and len(selected) == len(categories)
     internal = any(item["status"] == "CERTIFIER_INTERNAL_INCONSISTENCY" for item in outcomes)
     if internal:
         selected = {}
@@ -272,10 +299,7 @@ def build_admissibility_selection(
         "second_order_identity": P3R4_SECOND_ORDER_ID,
         "manifold_retraction_identity": P3R4_MANIFOLD_RETRACTION_ID,
         "selection_rule": manifest["target_design_and_selection"]["selection_rule"],
-        "all_design_cards_executed_exactly_once": bool(
-            len(outcomes) == len(design_cards["design_cards"])
-            and all(item["reference_discovery_execution_count"] == 1 for item in outcomes)
-        ),
+        "all_design_cards_executed_exactly_once": all_attempted_once,
         "selected_design_ids": {category: selected[category]["design_id"] for category in selected},
         "selected_admissibility_record_sha256": {
             category: canonical_sha256(selected[category]) for category in selected
@@ -447,6 +471,7 @@ __all__ = [
     "P3R4StaticContactCase",
     "build_admissibility_selection",
     "build_case_from_contract",
+    "build_design_case",
     "build_design_cases",
     "build_historical_cases",
     "build_qualification_targets",
