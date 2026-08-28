@@ -1,0 +1,135 @@
+{
+  "schema": "YPS-HFV2-P3R5-MODULE-CLASSIFICATION-1.0",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.8-CONTACT-CANDIDATE",
+  "package_name": "ypendulum_hfv2_p3r5",
+  "classifications": [
+    "public_contract",
+    "contact_static_assembly",
+    "contact_static_solver",
+    "qualification_audit"
+  ],
+  "production_classifications": [
+    "public_contract",
+    "contact_static_assembly",
+    "contact_static_solver"
+  ],
+  "allowed_internal_dependencies": {
+    "public_contract": ["public_contract"],
+    "contact_static_assembly": ["public_contract", "contact_static_assembly"],
+    "contact_static_solver": [
+      "public_contract",
+      "contact_static_assembly",
+      "contact_static_solver"
+    ],
+    "qualification_audit": [
+      "public_contract",
+      "contact_static_assembly",
+      "contact_static_solver",
+      "qualification_audit"
+    ]
+  },
+  "allowed_external_import_prefixes": {
+    "public_contract": [],
+    "contact_static_assembly": ["ypendulum_hfv2_p3r4"],
+    "contact_static_solver": [
+      "numpy",
+      "scipy",
+      "ypendulum_hfv2",
+      "ypendulum_hfv2_p3r3",
+      "ypendulum_hfv2_p3r4"
+    ],
+    "qualification_audit": [
+      "numpy",
+      "scipy",
+      "ypendulum_hfv2",
+      "ypendulum_hfv2_p3r",
+      "ypendulum_hfv2_p3r2",
+      "ypendulum_hfv2_p3r3",
+      "ypendulum_hfv2_p3r4"
+    ]
+  },
+  "path_classification_rules": [],
+  "exact_path_classification": {
+    "__init__.py": "public_contract",
+    "assembly.py": "contact_static_assembly",
+    "reference.py": "contact_static_solver",
+    "solver.py": "contact_static_solver"
+  },
+  "modules": [
+    {
+      "path": "__init__.py",
+      "classification": "public_contract",
+      "responsibility": "P3R5_model_assembly_reference_holdout_and_qualification_identity_constants"
+    },
+    {
+      "path": "assembly.py",
+      "classification": "contact_static_assembly",
+      "responsibility": "new_identity_over_exact_P3R4_physical_contact_and_validity_domain"
+    },
+    {
+      "path": "certification.py",
+      "classification": "contact_static_solver",
+      "responsibility": "inherited_scales_gauge_projection_and_deterministic_tangent_basis"
+    },
+    {
+      "path": "reference.py",
+      "classification": "contact_static_solver",
+      "responsibility": "fixed_declared_dual_active_projected_KKT_Newton_reference_constructor_and_full_Jacobian_audit"
+    },
+    {
+      "path": "solver.py",
+      "classification": "contact_static_solver",
+      "responsibility": "byte_behavior_inherited_actual_SLSQP_plus_projected_quasi_Newton_qualification_algorithm"
+    },
+    {
+      "path": "second_order.py",
+      "classification": "qualification_audit",
+      "responsibility": "read_only_inherited_three_level_Richardson_second_order_audit"
+    },
+    {
+      "path": "manifold.py",
+      "classification": "qualification_audit",
+      "responsibility": "read_only_inherited_active_contact_and_gauge_manifold_neighborhood_audit"
+    },
+    {
+      "path": "dual_certification.py",
+      "classification": "qualification_audit",
+      "responsibility": "read_only_centered_dual_behavior_and_separated_component_KKT_finiteness"
+    },
+    {
+      "path": "domain.py",
+      "classification": "qualification_audit",
+      "responsibility": "pure_candidate_enumeration_constructibility_predicate_hash_selection_and_zero_numerical_holdout_freeze"
+    },
+    {
+      "path": "cases.py",
+      "classification": "qualification_audit",
+      "responsibility": "observed_development_holdout_and_post_admissibility_target_case_construction"
+    },
+    {
+      "path": "attempt_ledger.py",
+      "classification": "qualification_audit",
+      "responsibility": "append_only_atomic_one_shot_attempt_ledger_from_process_start"
+    },
+    {
+      "path": "admissibility.py",
+      "classification": "qualification_audit",
+      "responsibility": "one_shot_holdout_reference_stability_second_order_and_manifold_admissibility"
+    },
+    {
+      "path": "target_freeze.py",
+      "classification": "qualification_audit",
+      "responsibility": "post_admissibility_complete_target_and_solver_seed_freeze"
+    },
+    {
+      "path": "evidence_support.py",
+      "classification": "qualification_audit",
+      "responsibility": "runtime_architecture_hash_and_seven_stage_commit_binding"
+    },
+    {
+      "path": "evidence.py",
+      "classification": "qualification_audit",
+      "responsibility": "deterministic_G3R5_historical_and_actual_multiseed_evidence_classification"
+    }
+  ]
+}

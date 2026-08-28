@@ -1,0 +1,54 @@
+{
+  "schema": "YPS-HFV2-P3R5-CONTACT-ADAPTER-6.0",
+  "contract_role": "self_contained_read_only_physical_registration_adapter_with_holdout_reference_identity",
+  "physical_predecessor": {
+    "schema": "YPS-HFV2-P3R4-CONTACT-ADAPTER-5.0",
+    "path": "contracts/p3r4_contact_adapter_contract.json",
+    "sha256": "0233d47fd9f763574e8474eab70ea091a994d474917a09b1712b7497db33b0f0",
+    "physical_domain_change": false
+  },
+  "formal_backend": "HF-DISCRETE-ROD-RIGID-BOB-1.0",
+  "formal_registration_id": "FIXED_REST_MATERIAL_SOCKETS_PROJECTIVE_V2",
+  "formal_sources": {
+    "model.py": {
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/model.py",
+      "git_blob": "e1f18805cf4100055f74f36738f4137f9d7d44c6",
+      "sha256": "02f8811d495aaf5cd622ca698eb8189bb31059910f081181320fb90252c553b6"
+    },
+    "reference.py": {
+      "path": "02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/src/ypendulum/hf/reference.py",
+      "git_blob": "6c9614e999b2940da59c7a8261208c91aa8a217d",
+      "sha256": "2049d67d80ad72027060035286e7c33f9728d2bec846519c4688335588e241aa"
+    }
+  },
+  "adapter_policy": {
+    "formal_import_allowed": false,
+    "formal_files_writable": false,
+    "implementation": "read_only_inheritance_of_frozen_P3R4_physical_registration_with_P3R5_reference_and_holdout_governance_identity",
+    "physical_domain_change_from_p3_through_p3r4": false
+  },
+  "physical_contact_and_validity_contract": {
+    "source": "contracts/p3r4_contact_adapter_contract.json",
+    "inherit_exactly": true,
+    "surface_parameters_enter_assembly_identity": true,
+    "gap_sign": "gap_m_greater_than_or_equal_to_zero",
+    "physical_gap_jacobian": "analytic_unique_closest_witness_envelope_gradient",
+    "validity_jacobian": "fixed_centered_difference_of_identity_signed_residuals",
+    "finite_invalid_state": "signed_validity_residual_to_single_solver",
+    "undefined_geometry": "fail_closed"
+  },
+  "canonical_identity": {
+    "numeric_serialization": "IEEE754_finite_JSON_sort_keys_compact_separators_allow_nan_false",
+    "adapter_hash_enters_assembly_identity": true,
+    "protocol_hash_enters_assembly_identity": true,
+    "reference_constructor_holdout_second_order_manifold_and_actual_multiseed_identities_enter_assembly_identity": true
+  },
+  "excluded": [
+    "friction",
+    "restitution",
+    "compliant_or_penalty_contact",
+    "ground_or_external_obstacle_contact",
+    "dynamic_contact_or_impulse",
+    "knot_sliding_or_topology_change"
+  ]
+}

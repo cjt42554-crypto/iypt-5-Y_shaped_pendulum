@@ -1,0 +1,170 @@
+{
+  "schema": "YPS-HFV2-P3R5-HOLDOUT-DOMAIN-1.0",
+  "frozen_at": "2026-08-28T19:24:00+08:00",
+  "holdout_cards_generated_before_freeze": 0,
+  "input_assembly_results_observed_before_freeze": 0,
+  "reference_construction_results_observed_before_freeze": 0,
+  "target_admissibility_results_observed_before_freeze": 0,
+  "qualification_seed_results_observed_before_freeze": 0,
+  "observed_development_and_regression_only": {
+    "classification": "OBSERVED_DEVELOPMENT_AND_REGRESSION_ONLY",
+    "p3r3_design_cards_path": "contracts/p3r3_design_cards.json",
+    "p3r3_design_cards_sha256": "e281925e88ba2d844486e5eb5b178fbcab59a12c946352ec182ee2debb08b6ea",
+    "p3r3_admissibility_metrics_path": "reports/p3r3_admissibility_metrics.json",
+    "p3r3_admissibility_metrics_sha256": "8ad318b0ae579f05af6c4b52450d42ffbc7f0d681bf7bb42e60cb94b60be139f",
+    "p3r4_design_cards_path": "contracts/p3r4_design_cards.json",
+    "p3r4_design_cards_sha256": "9c88f45def09933c023b5cae055f9da1e3d70d7ee474e87c09bcc0065e27a631",
+    "p3r4_admissibility_metrics_path": "reports/p3r4_admissibility_metrics.json",
+    "p3r4_admissibility_metrics_sha256": "87fe67e0f32dda0e508f86be18e796907ec71e22834c0826a9314454f817acdd",
+    "p3r4_admissibility_selection_path": "contracts/p3r4_admissibility_selection.json",
+    "p3r4_admissibility_selection_sha256": "ce1c882065a3dc64900a2e51b14157296d0558a38c23ffb70d8d53578dc34dce",
+    "allowed_roles": [
+      "reference_constructor_development",
+      "behavior_regression",
+      "failure_classification_regression"
+    ],
+    "forbidden_roles": [
+      "P3R5_qualification_target",
+      "P3R5_target_substitution",
+      "P3R5_holdout_generalization_claim"
+    ]
+  },
+  "required_categories_in_order": [
+    "asymmetric_unequal_positive_multipliers",
+    "changed_geometry_and_load_scale"
+  ],
+  "holdout_count_per_category": 4,
+  "candidate_enumeration": {
+    "asymmetric_unequal_positive_multipliers": {
+      "cartesian_product_order": [
+        "upper_A_angle_from_vertical_deg",
+        "upper_B_angle_from_vertical_deg",
+        "analytic_bob_depth_m",
+        "upper_A_rest_length_m",
+        "upper_B_rest_length_m",
+        "bob_contact_radius_m",
+        "minimum_clearance_m"
+      ],
+      "upper_A_angle_from_vertical_deg": [31.5, 32.5, 33.5, 34.5],
+      "upper_B_angle_from_vertical_deg": [42.5, 43.5, 44.5, 45.5],
+      "analytic_bob_depth_m": [0.112, 0.116, 0.12],
+      "upper_A_rest_length_m": [0.93, 0.97],
+      "upper_B_rest_length_m": [1.01, 1.05],
+      "bob_contact_radius_m": [0.044, 0.046],
+      "minimum_clearance_m": [0.0021, 0.0023],
+      "derived_values": {
+        "junction_position_m": [0.0, 0.0, 0.0],
+        "support_A_position_formula": "[-L_A*sin(theta_A),0,-L_A*cos(theta_A)]",
+        "support_B_position_formula": "[L_B*sin(theta_B),0,-L_B*cos(theta_B)]",
+        "upper_A_contact_radius_formula": "d*sin(theta_A)-R_b-c_min",
+        "upper_B_contact_radius_formula": "d*sin(theta_B)-R_b-c_min",
+        "lower_branch_rest_length_formula": "0.78*d",
+        "lower_contact_radius_formula": "0.05*d",
+        "axial_rigidity_formula_N": "800*d",
+        "line_density_formula_kg_per_m": "0.0098*d",
+        "bob_mass_formula_kg": "0.95*d",
+        "bob_inertia_diagonal_formula_kg_m2": "0.5*m_b*R_b^2",
+        "attachment_arm_z_formula_m": "0.21*d",
+        "gravity_m_per_s2": [0.0, 0.0, -9.81],
+        "analytic_stationary_bob_position_formula": "[0,0,-d]",
+        "declared_active_constraint_ids": [
+          "bob:upper_A:upper_A_s000",
+          "bob:upper_B:upper_B_s000"
+        ]
+      }
+    },
+    "changed_geometry_and_load_scale": {
+      "scale_values_in_enumeration_order": [
+        0.74,
+        0.78,
+        0.86,
+        0.91,
+        0.99,
+        1.1,
+        1.18,
+        1.24,
+        1.37,
+        1.46,
+        1.62,
+        1.88
+      ],
+      "excluded_observed_scale_values": [0.82, 0.9, 1.05, 1.2, 1.3, 1.6, 1.75],
+      "base_family": {
+        "support_A_position_m": [-0.4551348998363113, 0.0, -0.65],
+        "support_B_position_m": [0.4551348998363113, 0.0, -0.65],
+        "junction_position_m": [0.0, 0.0, 0.0],
+        "upper_branch_rest_length_m": 0.7935034826949462,
+        "lower_branch_rest_length_m": 0.078,
+        "axial_rigidity_N": 80.0,
+        "line_density_kg_per_m": 0.0009,
+        "branch_contact_radius_m": 0.005,
+        "minimum_clearance_m": 0.002,
+        "bob_mass_kg": 0.09,
+        "bob_contact_radius_m": 0.05,
+        "bob_inertia_diagonal_kg_m2": 0.00009,
+        "attachment_arm_z_m": 0.02,
+        "gravity_m_per_s2": [0.0, 0.0, -9.81],
+        "analytic_stationary_bob_position_m": [0.0, 0.0, -0.0993764673504026]
+      },
+      "scaling_law": {
+        "length_like": "multiply_by_s",
+        "axial_rigidity": "multiply_by_s",
+        "line_density": "multiply_by_s",
+        "bob_mass": "multiply_by_s",
+        "bob_inertia": "multiply_by_s_cubed",
+        "gravity": "unchanged"
+      },
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ]
+    }
+  },
+  "pure_input_constructibility_predicate": {
+    "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+    "may_import_or_call_contact_assembly": false,
+    "may_call_reference_solver_or_certifier": false,
+    "all_numeric_values_finite": true,
+    "positive_fields": [
+      "upper_branch_rest_lengths",
+      "lower_branch_rest_length",
+      "axial_rigidity",
+      "line_density",
+      "branch_contact_radii",
+      "minimum_clearance",
+      "bob_mass",
+      "bob_contact_radius",
+      "bob_inertia_diagonal",
+      "attachment_arm_norm",
+      "characteristic_length",
+      "characteristic_force",
+      "characteristic_energy"
+    ],
+    "support_length_identity_absolute_tolerance_m": 2e-15,
+    "analytic_tangency_identity_absolute_tolerance_m": 2e-15,
+    "junction_socket_rule": "2*(r_i+r_j+c_min)<min(L_i,L_j)_for_every_branch_pair",
+    "bob_socket_rule": "R_b+r_lower+c_min<L_lower",
+    "upper_contact_witness_parameter_margin_min": 0.08,
+    "upper_contact_witness_parameter_margin_formula": "min(d*cos(theta_i)/L_i,1-d*cos(theta_i)/L_i)",
+    "declared_active_identity_count": 2,
+    "declared_active_identities_unique": true,
+    "physical_signature_duplicate_with_observed_P3R3_or_P3R4_forbidden": true,
+    "collapsed_or_duplicate_support_or_branch_identity_forbidden": true
+  },
+  "selection": {
+    "implementation_commit_requirement": "exact_remote_main_head_after_development_implementation_push",
+    "digest_preimage": "UTF8('P3R5-HOLDOUT-1.0\\u0000'+implementation_commit+'\\u0000'+category+'\\u0000'+canonical_candidate_json)",
+    "canonical_candidate_json": "UTF8_JSON_sort_keys_compact_separators_ensure_ascii_false_allow_nan_false",
+    "digest": "SHA-256",
+    "order": "ascending_digest_then_ascending_canonical_candidate_json",
+    "take": "first_four_pure_predicate_passes_per_required_category",
+    "holdout_id_assignment": "R5_ASYM_H01_to_H04_then_R5_SCALE_H01_to_H04_in_digest_order",
+    "selection_after_implementation_commit_only": true,
+    "selection_may_call_numerical_solver": false,
+    "selection_may_use_observed_admissibility_or_qualification_result": false,
+    "implementation_commit_redo_or_grinding_for_holdout_choice_forbidden": true
+  },
+  "frozen_execution_order": "required_category_order_then_holdout_id_order",
+  "target_selection_rule": "lexicographically_smallest_ADMISSIBLE_holdout_id_in_each_required_category",
+  "partial_target_freeze_forbidden": true
+}
