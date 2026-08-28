@@ -1,0 +1,46 @@
+{
+  "schema": "YPS-HFV2-P3R3-IMPLEMENTATION-BINDING-1.0",
+  "created_at": "2026-08-28T14:44:18+08:00",
+  "prefreeze_commit": "8401cfe617720b3532cdafd1249dd0edfbf6d789",
+  "implementation_scope": "P3R3_static_contact_target_admissibility_dual_local_basin_and_qualification_evidence_only",
+  "reference_discovery_results_observed_before_implementation_commit": 0,
+  "target_admissibility_results_observed_before_implementation_commit": 0,
+  "basin_probe_results_observed_before_implementation_commit": 0,
+  "qualification_seed_results_observed_before_implementation_commit": 0,
+  "source_sha256": {
+    "src/ypendulum_hfv2_p3r3/__init__.py": "117c8f537af129d918742f14778b3e3d166cfdebc81deec34c8d6a3dc470f23d",
+    "src/ypendulum_hfv2_p3r3/admissibility.py": "14c6d343c18781df0e3cea8c0984844f27d72df3f2d26fbcc4b5ac0969716aa1",
+    "src/ypendulum_hfv2_p3r3/assembly.py": "6e62da91b50a4201002802280b82486de127018eb2e11d23d87fe711fb77c57a",
+    "src/ypendulum_hfv2_p3r3/cases.py": "7ab43745e1c1d1e877cc5cd82c84b7e538f3273d1fe154c7ca090501b965a75a",
+    "src/ypendulum_hfv2_p3r3/certification.py": "7c4c39e08cf51a83768a6df7a2fa91b206b324409bb7f148f25df47f90433cd5",
+    "src/ypendulum_hfv2_p3r3/dual_certification.py": "9e27b61da50bb3828a1729bfa5d58b1f16da5f889824f8bb0f0635f0c25d0c0f",
+    "src/ypendulum_hfv2_p3r3/evidence.py": "c5729230c1ac61cabc5710534de428a4a39c46204719ba6945f89b86bde6cbee",
+    "src/ypendulum_hfv2_p3r3/evidence_support.py": "1760f29049c5979c609c3c92a98ed306808d09ec5244932eafc4476a9b4fe547",
+    "src/ypendulum_hfv2_p3r3/restoration.py": "98642efeb188379118effffdd43ee3051a1b93fa9c487db220d01493d84f7119",
+    "src/ypendulum_hfv2_p3r3/solver.py": "93c59d07c9593e818a68b19a5935aabc7d601dc4d91a80245457c35554fecb52",
+    "tests/p3r3/test_g3r3_evidence.py": "1df1dfa2a759d2f60ba913f9fb8e770868f80a8eac4740925ae5cbaef70132c6",
+    "tests/p3r3/test_p3r3_admissibility.py": "0098cd10c0cfcdfa0319cfa20fd167a618e1dc38a80f9b814073d1a08ddc457c",
+    "tests/p3r3/test_p3r3_contracts.py": "0ec1bd089464b44d5d8b00c3ec147ccbebb9935854e915a833c41c7367faadd9",
+    "tests/p3r3/test_p3r3_dual.py": "c6e4bfa18751f8d005b70649188a7a63c85269cb336d9765421aaa52324e0657",
+    "tests/p3r3/test_p3r3_restoration.py": "d72cd6e3170a4ca5644da8713a6b7aa783f27df63594c0d3e111ba51ea6b25fc",
+    "tools/generate_g3r3_evidence.py": "be0dda37066c062e52c6055aeb560d29f9389386a370d54fa604c48caf685ce1",
+    "tools/generate_p3r3_admissibility.py": "9f104a9f1c01bba16f6ef08994dabc2be03498e48c8541d49f234ee46b4574ca"
+  },
+  "new_design_cards_not_executed": [
+    "ASYM_A01",
+    "ASYM_A02",
+    "ASYM_A03",
+    "SCALE_S01",
+    "SCALE_S02",
+    "SCALE_S03"
+  ],
+  "qualification_targets_not_yet_frozen": true,
+  "forbidden_scope_not_implemented": [
+    "P2_equation_change",
+    "P3_P3R_or_P3R2_artifact_change",
+    "fallback_random_restart_or_tolerance_relaxation",
+    "penalty_compliance_friction_restitution_or_impulse",
+    "dynamic_contact_P4_P5_or_P6",
+    "formal_program_API_HDF5_or_UI_change"
+  ]
+}
