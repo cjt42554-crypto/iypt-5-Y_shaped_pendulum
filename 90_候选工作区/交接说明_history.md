@@ -370,3 +370,13 @@ Ruff、`compileall`、迁移溯源复算、理论补丁应用检查、13 个既�
 正式提升仍被四类问题阻断：理论候选稿的 HF 证据标签与 RC1 降级结论不自洽，且补丁新路径不是正式目标路径；参数图谱的 Matplotlib 后端顺序、配置/输出 schema、完整来源与运行时绑定及 `sys.path` 隔离不足；无接触静态迁移稿仍公开携带速度、动量、阻力、耗散和姿态时间推进等非静态能力，阈值与运行证据合同也不完整；P3R5 图谱把四点 PCHIP 插值性质过强写成连续尺度观察。提交携带的测试和数值结果本轮未独立重跑，GitHub 也无绑定状态检查。
 
 下一次唯一范围为 `F0R_FORMAL_PROMOTION_BLOCKER_CORRECTIONS`，仍只修改 `90_候选工作区/current/F0_正式整理与解析稳定性图谱/**`。F0R 必须修正上述问题，重跑三个子项目、静态双依赖单元、完整 48 轨迹图谱、严格 schema/来源漂移负例、同目标理论补丁、Ruff/compileall/Pandoc/渲染和正式目录零差分检查，并停在 `F0R_PRO_REVIEW`。不授权正式目录写入、P3R6、G3R5、新接触卡、动力学、动态接触、RC1 扩展或冻结证据修改。
+
+# 2026-08-29 03:59 +0800：F0R 正式提升阻断修正完成并停止于 Pro 复审
+
+按 current 交接只执行 `F0R_FORMAL_PROMOTION_BLOCKER_CORRECTIONS`。在 F0 候选目录中修正理论证据分级与同目标补丁、参数图谱严格 schema/完整来源和运行时绑定/导入隔离、无接触静态-only 身份和窄公共 API，以及 P3R5 四点观察与描述性插值的语义分层。实现与证据提交为 `e2a1992b29502d673fe372665280510fb7c5852d`；正式理论、正式程序、顶层 `AGENTS.md` 和 P3–P3R5 冻结证据未修改。
+
+参数图谱为 `14 passed`，并完成三次 16 组合、48 主轨迹全量运行，三次各 9 个工件逐字节一致。无接触静态 current/lower 依赖单元均为 `57 passed`，共同复现 BFGS `status 2`、`success=false` 和五项通过的独立诊断；该结果只构成候选静态实现与运行时证据，不携带历史资格。稳定性图谱为 `7 passed`，三份绑定输出逐字节一致，没有运行新接触算例。
+
+理论干净树补丁、严格 schema 与故意漂移负例、来源锁、静态-only AST、迁移溯源、Ruff、`compileall`、24 个 JSON、两个 manifest 内 13 个工件、92 条文件映射、正式目录零差分和冻结哈希检查通过。10 份 F0 Markdown 与两份交接通过 Pandoc 3.1.3 解析；三份关键报告以临时 MathJax 3.2.2、Playwright/Chrome 和 Poppler 完成 385/385 个公式节点、45 页逐页实际渲染检查。仓库没有 `.github/workflows/**`，因此没有独立远端 CI 背书。
+
+当前状态为 `F0R_COMPLETE_CANDIDATE_ONLY__STOP_AT_F0R_PRO_REVIEW`，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。没有启动 P3R6、生成新接触资格卡、运行 G3R5、开始 P4/P5/P6、动力学、动态接触、RC1 扩展、正式提升、装置级物理验证或实验。下一步只允许 `F0R_PRO_REVIEW`；即使复审通过，仍需用户随后对具体正式目标逐项授权。
