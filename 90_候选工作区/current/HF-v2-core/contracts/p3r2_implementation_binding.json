@@ -1,0 +1,35 @@
+{
+  "schema": "YPS-HFV2-P3R2-IMPLEMENTATION-BINDING-1.0",
+  "created_at": "2026-08-28T11:53:06+08:00",
+  "prefreeze_commit": "227b4472cc33f4c5f70d81185030bb5709f6cfa1",
+  "qualification_target_results_observed_before_implementation_commit": 0,
+  "implementation_scope": "P3R2_static_contact_numerical_certification_closure_only",
+  "source_sha256": {
+    "src/ypendulum_hfv2_p3r2/__init__.py": "82dd9210ee580143fedfb136a8bbd770a06790c16d4b88979c6a4c78fee5c8f3",
+    "src/ypendulum_hfv2_p3r2/assembly.py": "24f9d5d007da22efbc843af95c91af48f42f5079daaeff85078e0b287d53c1b2",
+    "src/ypendulum_hfv2_p3r2/certification.py": "0a0c25b2f2e5be9952fffc92a0df3700939c878e689a12004cdff347051ea1b6",
+    "src/ypendulum_hfv2_p3r2/restoration.py": "92f663b1e0552a279956f38f5e7a17a3126223b364998713289ed206cb528c37",
+    "src/ypendulum_hfv2_p3r2/solver.py": "71a347bc184e121a4c9308d5902a75cffa8d8c64422d1792de1ad685688cbd19",
+    "src/ypendulum_hfv2_p3r2/kkt.py": "78caf003f501aa300c7caea7ac82bcd7062f2bcb646fe5414e030cde555ddacf",
+    "src/ypendulum_hfv2_p3r2/cases.py": "fc12dd982559f742e5e41a9a61bd9d14d58dca9864f20458c6a819b9c5c2bcfc",
+    "src/ypendulum_hfv2_p3r2/evidence_support.py": "0d81e4cca3a8fa5bf5ef7e77bd452357c2563edc8f1efaf29be6b8018d361c2a",
+    "src/ypendulum_hfv2_p3r2/evidence.py": "c49f2f890033fe06472a390a2cd853a0b23fa77310e5545d4ebeb5620fa6ab6f",
+    "tests/p3r2/test_p3r2_contracts.py": "340d8417288bcf1db91fddaf58c781924a97d5c59ff57941b76fb19bca34b3f8",
+    "tests/p3r2/test_p3r2_certification.py": "770b12b6a8d8442cb79670665a578fe6d8db4a44f6e5a9749ef17c2b2f2ed7d9",
+    "tests/p3r2/test_p3r2_solver.py": "e35b5c463b6ed9f055ff0274b0dd05ef79b580742dee92e57e9141c46569f006",
+    "tests/p3r2/test_g3r2_evidence.py": "f549382e5451585e9b59058ac1ead459a6466f347ee1044c2169a6354bea4732",
+    "tools/generate_g3r2_evidence.py": "24701f96a74f452a13469c2813823b62563e3ed25edbd6ebb6a2691e8d9b5042"
+  },
+  "qualification_targets_not_executed": [
+    "P3R2_ASYMMETRIC_32_41_DEG_TWO_BOB_CONTACT_1",
+    "P3R2_SCALED_1P4_35_DEG_TWO_BOB_CONTACT_1"
+  ],
+  "forbidden_scope_not_implemented": [
+    "P2_equation_change",
+    "P3_or_P3R_artifact_change",
+    "fallback_random_restart_or_tolerance_relaxation",
+    "penalty_compliance_friction_restitution_or_impulse",
+    "dynamic_contact_P4_P5_or_P6",
+    "formal_program_API_HDF5_or_UI_change"
+  ]
+}
