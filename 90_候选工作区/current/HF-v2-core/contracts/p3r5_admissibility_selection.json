@@ -1,0 +1,20 @@
+{
+  "admissibility_payload_sha256": "5774cea52e12a2f2f686a80f15ebe3145d314139a58c41152fc6c0f71b9f2b8b",
+  "all_holdout_cards_executed_exactly_once": true,
+  "attempt_ledger_sha256": "f87c5aa3675ea792c2cbc6e24ae3b2daca8abdd4a7900a31f01de848316fd66c",
+  "generated_at": "2026-08-28T20:14:14+08:00",
+  "holdout_freeze_commit": "802bcd00113e163e2c5584edcf8a61930a3cbf6f",
+  "implementation_commit": "d751848044cbb805bacbc72f3fa28c1c22d25757",
+  "manifold_retraction_identity": "YPS-HFV2-P3R5-DETERMINISTIC-ACTIVE-MANIFOLD-RETRACTION-1.0",
+  "qualification_seed_execution_counts_before_separate_target_freeze": {},
+  "qualification_seed_results_observed_before_separate_target_freeze": 0,
+  "reference_constructor_identity": "YPS-HFV2-P3R5-FIXED-DUAL-ACTIVE-PROJECTED-KKT-NEWTON-1.0",
+  "schema": "YPS-HFV2-P3R5-ADMISSIBILITY-SELECTION-1.0",
+  "second_order_identity": "YPS-HFV2-P3R5-RICHARDSON-SECOND-ORDER-CONSISTENCY-1.0",
+  "selected_admissibility_record_sha256": {},
+  "selected_holdout_ids": {},
+  "selection_rule": "lexicographically_smallest_ADMISSIBLE_holdout_id_in_each_required_category",
+  "status": "TARGET_SUITE_NOT_ADMISSIBLE",
+  "target_admissibility_identity": "YPS-HFV2-P3R5-REFERENCE-STABILITY-AND-MANIFOLD-ADMISSIBILITY-1.0",
+  "target_freeze_generated": false
+}
