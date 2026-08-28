@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/iypt5/yps-formal-pattern-atlas-output-1.0.schema.json",
+  "title": "Y-pendulum ideal-torus pattern atlas deterministic output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "model_identity",
+    "claim_limit",
+    "source_binding",
+    "configuration",
+    "validation",
+    "cases"
+  ],
+  "properties": {
+    "schema": {"const": "YPS-FORMAL-PATTERN-ATLAS-OUTPUT-1.0"},
+    "model_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backend_model_id", "atlas_identity", "tuning_interpretation"],
+      "properties": {
+        "backend_model_id": {"const": "FWD-TORUS-1.0"},
+        "atlas_identity": {"const": "YPS-IDEAL-TORUS-PATTERN-ATLAS-DRAFT-1.0"},
+        "tuning_interpretation": {"const": "ideal_model_internal_not_experimental_calibration"}
+      }
+    },
+    "claim_limit": {"type": "string", "minLength": 1},
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["config_sha256", "formal_torus_backend_path", "formal_torus_backend_sha256", "atlas_source_sha256"],
+      "properties": {
+        "config_sha256": {"$ref": "#/$defs/sha256"},
+        "formal_torus_backend_path": {"type": "string", "minLength": 1},
+        "formal_torus_backend_sha256": {"$ref": "#/$defs/sha256"},
+        "atlas_source_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "required": ["targets", "amplitudes_rad", "slow_cycles"],
+      "properties": {
+        "targets": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "amplitudes_rad": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "prefixItems": [{"type": "number"}, {"type": "number"}],
+            "items": false
+          }
+        },
+        "slow_cycles": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    },
+    "validation": {
+      "type": "object",
+      "required": ["pure_mode_period_checks", "step_halving_checks", "aggregate_gates"],
+      "properties": {
+        "pure_mode_period_checks": {"type": "array", "items": {"type": "object"}},
+        "step_halving_checks": {"type": "array", "items": {"type": "object"}},
+        "aggregate_gates": {
+          "type": "object",
+          "additionalProperties": {"type": "boolean"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["target", "p", "q", "A_phi_rad", "A_theta_rad", "zero", "quartic", "numeric"],
+        "properties": {
+          "target": {"type": "string"},
+          "p": {"type": "integer", "minimum": 1},
+          "q": {"type": "integer", "minimum": 1},
+          "A_phi_rad": {"type": "number"},
+          "A_theta_rad": {"type": "number"},
+          "zero": {"$ref": "#/$defs/caseResult"},
+          "quartic": {"$ref": "#/$defs/caseResult"},
+          "numeric": {"$ref": "#/$defs/caseResult"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "caseResult": {
+      "type": "object",
+      "required": [
+        "eta",
+        "frequency_ratio",
+        "resonant_phase_error_rad",
+        "normalized_state_closure_error",
+        "relative_energy_drift_max",
+        "minimum_guards"
+      ],
+      "properties": {
+        "eta": {"type": "number"},
+        "frequency_ratio": {"type": "number"},
+        "resonant_phase_error_rad": {"type": "number"},
+        "normalized_state_closure_error": {"type": "number", "minimum": 0},
+        "relative_energy_drift_max": {"type": "number", "minimum": 0},
+        "minimum_guards": {
+          "type": "object",
+          "required": ["R_m", "T_A_N", "T_B_N", "T_lower_N"],
+          "additionalProperties": false,
+          "properties": {
+            "R_m": {"type": "number"},
+            "T_A_N": {"type": "number"},
+            "T_B_N": {"type": "number"},
+            "T_lower_N": {"type": "number"}
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "YPS-NO-CONTACT-STATIC-RUNTIME-MATRIX-1.0",
+  "model_id": "YPS-DISCRETE-ROD-RIGID-BOB-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.0",
+  "supported_python": ">=3.12,<3.13",
+  "supported_numpy": ">=1.26,<3",
+  "supported_scipy": ">=1.12,<2",
+  "matrix_status": "PASS_TWO_DEPENDENCY_CELLS_ON_CPYTHON_3_12",
+  "cells": [
+    {
+      "id": "current_candidate_runtime",
+      "runtime": {
+        "python": "3.12.3",
+        "python_implementation": "CPython",
+        "numpy": "2.5.2",
+        "scipy": "1.18.1",
+        "pytest": "9.1.1"
+      },
+      "tests": {
+        "passed": 54,
+        "failed": 0,
+        "status": "PASS"
+      },
+      "bound_status_2_probe": {
+        "optimizer_success_record_only": false,
+        "optimizer_status_record_only": 2,
+        "optimizer_message_record_only": "Desired error not necessarily achieved due to precision loss.",
+        "implementation_diagnostics_passed": true,
+        "finite_difference_final_relative_error": 5.632531027296806e-10,
+        "scaled_generalized_force_residual": 1.2023846194477924e-8,
+        "scaled_global_force_balance": 5.804333734085187e-17,
+        "scaled_global_moment_balance": 0.0
+      }
+    },
+    {
+      "id": "lower_supported_dependency_cell",
+      "runtime": {
+        "python": "3.12.3",
+        "python_implementation": "CPython",
+        "numpy": "1.26.4",
+        "scipy": "1.12.0",
+        "pytest": "8.4.2"
+      },
+      "tests": {
+        "passed": 54,
+        "failed": 0,
+        "status": "PASS"
+      },
+      "bound_status_2_probe": {
+        "optimizer_success_record_only": false,
+        "optimizer_status_record_only": 2,
+        "optimizer_message_record_only": "Desired error not necessarily achieved due to precision loss.",
+        "implementation_diagnostics_passed": true,
+        "finite_difference_final_relative_error": 5.632531027296806e-10,
+        "scaled_generalized_force_residual": 1.2023846194477924e-8,
+        "scaled_global_force_balance": 5.804333734085187e-17,
+        "scaled_global_moment_balance": 0.0
+      }
+    }
+  ],
+  "interpretation": "Both supported dependency cells preserve SciPy BFGS status 2 as a record-only outcome while all independent implementation diagnostics pass. This is implementation/runtime evidence only, not formal numerical qualification, contact capability, device validation or experimental validation.",
+  "not_tested": [
+    "Python 3.11",
+    "Python 3.13 or later",
+    "NumPy earlier than 1.26",
+    "SciPy earlier than 1.12 or 2.x",
+    "non-Linux platforms"
+  ]
+}

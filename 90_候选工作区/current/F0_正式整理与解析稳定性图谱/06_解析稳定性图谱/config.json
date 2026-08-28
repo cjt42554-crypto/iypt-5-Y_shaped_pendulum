@@ -1,0 +1,33 @@
+{
+  "schema": "YPS-P3R5-READONLY-STABILITY-MAP-CONFIG-1.0",
+  "source_cards": {
+    "path": "90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_cards.json",
+    "sha256": "48f418094ef7ccaa595a63a080f65f82d5b0125eaec0fb25cc58acf823bcb0f0"
+  },
+  "source_metrics": {
+    "path": "90_候选工作区/current/HF-v2-core/reports/p3r5_admissibility_metrics.json",
+    "sha256": "e93eb9a0cb074ca1cc9a137149b89b8d2c4384f100c9a9eefaf5c0ff79a3f987"
+  },
+  "source_category": "changed_geometry_and_load_scale",
+  "expected_holdout_ids": [
+    "R5_SCALE_H01",
+    "R5_SCALE_H02",
+    "R5_SCALE_H03",
+    "R5_SCALE_H04"
+  ],
+  "coordinate_order": [
+    "bob_translation_x_over_length_scale",
+    "bob_translation_y_over_length_scale",
+    "bob_translation_z_over_length_scale",
+    "bob_rotation_x_rad",
+    "bob_rotation_y_rad",
+    "bob_rotation_z_rad"
+  ],
+  "parameterization": {
+    "independent_parameter": "geometry_scale_from_P3R_35_degree",
+    "interpolator": "shape_preserving_piecewise_cubic_PCHIP",
+    "grid_points": 221,
+    "extrapolation_allowed": false
+  },
+  "interpretation_limit": "frozen P3R5 candidate model and fixed double-active reference branch only; not device stability, contact law validation or qualification"
+}

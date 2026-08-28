@@ -1,0 +1,51 @@
+{
+  "schema": "YPS-FORMAL-PATTERN-ATLAS-CONFIG-1.0",
+  "model_id": "FWD-TORUS-1.0",
+  "scope": "ideal symmetric massless inextensible always-taut torus; model-internal tuning only; no experimental calibration",
+  "targets": [
+    {"p": 4, "q": 3},
+    {"p": 3, "q": 2},
+    {"p": 5, "q": 3},
+    {"p": 2, "q": 1}
+  ],
+  "amplitudes_rad": [
+    [0.05, 0.04],
+    [0.10, 0.08],
+    [0.15, 0.10],
+    [0.20, 0.12]
+  ],
+  "analysis": {
+    "slow_cycles": 18,
+    "phase_tolerance_rad": 0.10,
+    "reference_lower_length_m": 0.300,
+    "symmetric_upper_slope": 0.4,
+    "end_window_extra_slow_cycles": 0.8,
+    "phase_samples_per_slow_period": 600,
+    "tuning_samples_per_slow_period": 180,
+    "maximum_output_step": 0.025,
+    "tuning_initial_half_width_eta": 0.012,
+    "tuning_maximum_bracket_expansions": 9,
+    "tuning_bracket_growth": 1.7,
+    "tuning_positive_radius_margin": 0.002,
+    "pure_mode_eta": 1.25,
+    "pure_mode_amplitudes_rad": [0.05, 0.20],
+    "pure_mode_output_step": 0.0005
+  },
+  "numerics": {
+    "method": "DOP853",
+    "rtol": 3e-11,
+    "atol_angle": 3e-13,
+    "atol_rate": 3e-13,
+    "maximum_step": 0.16,
+    "step_halving_maximum_step": 0.08,
+    "event_cluster_tolerance": 1e-9
+  },
+  "validation_thresholds": {
+    "pure_mode_relative_period_error_max": 2e-6,
+    "relative_energy_drift_max": 1e-9,
+    "minimum_guard_strictly_positive": 0.0,
+    "step_halving_frequency_ratio_difference_max": 2e-8,
+    "step_halving_resonant_phase_difference_rad_max": 2e-6,
+    "step_halving_closure_difference_max": 2e-6
+  }
+}
