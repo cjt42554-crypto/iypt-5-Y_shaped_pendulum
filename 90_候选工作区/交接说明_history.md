@@ -332,3 +332,13 @@ P3R4 正式账本仍支持非对称类别 `0/4`、尺度类别 `4/4`、部分选
 因尺度类别 `0/4` 可准入，总分类为 `TARGET_SUITE_NOT_ADMISSIBLE`，选择集为空。准入证据提交为 `69f12bf54d0f00ee30be275813dcb6d702384234`；账本、指标、选择和报告 SHA-256 分别为 `f87c5aa3675ea792c2cbc6e24ae3b2daca8abdd4a7900a31f01de848316fd66c`、`e93eb9a0cb074ca1cc9a137149b89b8d2c4384f100c9a9eefaf5c0ff79a3f987`、`2a8eab29bda268a87bf8e8c488690a4150225b8964562e440f79b328fa733ff4` 和 `8db7859639ac36920050d820776e513e941692ace5339bc619675923190122cd`。
 
 一次性工具静态检查、JSON 与计数闭合、账本哈希闭合、Pandoc 解析和 HTML/Chrome 实际渲染检查通过。没有生成目标或种子冻结，没有运行 G3R5，因此不存在 G3R5 算法 PASS 或 NO-GO。本轮停在 `G3R5_PRO_REVIEW`；P3R5 失败不自动授权 P3R6。正式状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`，正式理论、正式程序、顶层 `AGENTS.md`、公共 API、HDF5、UI、P4、P5、P6、动力学、物理验证和实验验证均未修改或执行。
+
+# 2026-08-29 00:32 +0900：Pro G3R5 独立复审与认证层收口
+
+静态复审 P3R5 零结果协议 `fc110ca8ab980b3628a510ede5badacde6652e6a`、开发实现 `d751848044cbb805bacbc72f3fa28c1c22d25757`、留出冻结 `802bcd00113e163e2c5584edcf8a61930a3cbf6f`、一次性准入证据 `69f12bf54d0f00ee30be275813dcb6d702384234` 和停止交接 `7b937b4893869cd319ecbf9bd2c8d26c7fd092a3` 后，维持 P3R5 分类 `TARGET_SUITE_NOT_ADMISSIBLE`。
+
+Pro 裁决为 `G3R5_PRO_REVIEW_CONFIRMS_P3R5_TARGET_SUITE_NOT_ADMISSIBLE__G3R5_NOT_RUN__P3R5_CERTIFICATION_RETRY_PATH_CLOSED`。非对称类别 `4/4` 可准入，尺度变化类别 `0/4` 可准入；没有生成目标或种子冻结，也没有运行 G3R5，因此不存在 G3R5 算法 PASS 或 `NO_GO_G3R5_STATIC_CONTACT_ALGORITHM`。四张尺度卡的严格负临界锥曲率独立使目标失效，只是候选静态刚性无摩擦接触模型内的局部稳定性反证，不是装置或实验结论。
+
+复审永久记录两个非阻断语义偏差：`P3R5_CRITICAL_CONE_CROSSCHECK_LABEL_COUPLING`，即 `critical_cone_crosscheck` 实际继承同时含正曲率门的聚合 `critical.passed`；以及 `P3R5_EXECUTION_SUMMARY_FIELD_UNDERCONSTRAINED`，即 `all_holdout_cards_executed_exactly_once` 只直接检查冻结顺序和输入装配计数。原始交叉误差、未对称量、完整账本和逐阶段计数足以独立闭合当前分类，因此不重写历史证据。
+
+新增复审文件 `90_候选工作区/current/HF-v2重构规划/14_PRO_G3R5_REVIEW_AND_CERTIFICATION_CLOSURE.md`。本次没有重跑留出、测试或数值求解，没有独立重算既有四个 SHA-256；只执行 GitHub 静态提交链、账本、原始指标和关键源码复核，并对新增 Markdown 执行 Pandoc 解析。正式状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`；P3R6、G3R5、P4、P5、P6、动力学、动态接触、正式程序迁移、物理验证和实验验证均未授权或执行。正式理论和正式程序未修改。当前无待交接任务。
