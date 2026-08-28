@@ -282,3 +282,15 @@ G3R2 证据提交为 `507f403c2c08697d111e286eac88e3126564ff98`，指标 SHA-256
 新增 `12_PRO_G3R3_REVIEW_AND_P3R4_GATE.md`，裁决为 `G3R3_PRO_REVIEW_CONFIRMS_P3R3_TARGET_SUITE_NOT_ADMISSIBLE__P3R4_MANIFOLD_ADMISSIBILITY_AND_SOLVER_BASIN_SEPARATION_AUTHORIZED`。P3R4 只允许以新身份分离参考约束稳定性、二阶误差审计、可选的约束流形有限邻域和实际多种子算法吸引证据；P3R3 六张已观察卡不得重跑、补选或充当新目标。若目标集合不足，必须在准入后停止；若完整，则先提交目标与零运行种子冻结，再运行 G3R4，并最终停在 `G3R4_PRO_REVIEW`。
 
 本次只修改候选治理和交接文档。通过 GitHub 连接器完成提交链、合同、关键源码和指标静态复核；没有重跑 `128 passed`、Ruff、`compileall`、准入器或 G3R3 工具。正式理论、正式程序、数值源码、测试、公共 API、HDF5 和 UI 均未修改。
+
+# 2026-08-28 17:02 +0800：HF-v2 P3R4 约束流形目标准入与不完整套件停止
+
+从远程 `main` 快进拉取 Pro G3R3 复审收口提交 `b0e97f9910996397dac83667e09c8ca9aac73b11` 后，按用户继续指令只执行 `P3R4_STATIC_CONTACT_MANIFOLD_ADMISSIBILITY_AND_SOLVER_BASIN_SEPARATION`。在八张新设计卡的参考、二阶、流形、目标冻结和资格结果全为零时，以提交 `411e1dd6537be50f55c5c5229b2e9a23350f44be` 冻结 `0.7-CONTACT-CANDIDATE`、组装身份 5.0、三层步长 Richardson 二阶一致性、确定性活动流形收回、新的非对称和尺度卡族、字典序选择规则以及目标冻结后才允许的实际多种子吸引证据。
+
+独立包 `ypendulum_hfv2_p3r4`、测试、三个工具和机器绑定以提交 `7519585cdf35fd202ed8e822a0aca733b63d6eb6` 进入 Git 历史。首次启动一次性工具时，`R4_ASYM_B02` 在任何设计求解或结果输出前因材料套筒无正活动范围触发 `ContactGeometryError`，当时没有结果文件或部分账本。因此在仍为零结果时以提交 `964ebb3f8ff942a1a75a99c9bb1510d6c016f129` 使每张冻结卡独立做输入装配校验：无效卡失败关闭且不中断后续卡。冻结卡、协议、阈值和选择规则均未改动。纠偏后完整回归为 `142 passed in 86.77s`，Ruff 规则、定向格式、`compileall` 和实现提交绑定通过。
+
+实现提交推送后，八张卡按冻结顺序各尝试一次。`R4_ASYM_B01` 和 `R4_ASYM_B04` 因前代恢复的活动集数或秩失败而未进入准入；`R4_ASYM_B02` 在输入装配阶段失败；`R4_ASYM_B03` 通过二阶数值一致性和流形有限邻域，但 `component_scaled_kkt=false`。四张尺度卡均为 `ADMISSIBLE`，字典序部分选择为 `R4_SCALE_T01`；非对称必需类别为 `0/4`，因此总分类为 `TARGET_SUITE_NOT_ADMISSIBLE`。全局计数为输入装配 `8`、参考发现 `7`、准入/二阶/流形各 `5`、目标冻结 `0`、资格种子 `0`。
+
+一次性准入证据以提交 `dad339c3fc9190c0f07391181b64fe8ec8712c4b` 进入远程 `main`。指标 SHA-256 为 `87fe67e0f32dda0e508f86be18e796907ec71e22834c0826a9314454f817acdd`，选择记录 SHA-256 为 `ce1c882065a3dc64900a2e51b14157296d0558a38c23ffb70d8d53578dc34dce`，人类报告 SHA-256 为 `5657ab33fdd7453806131200a9bec0bd2f6215d491198ed4552ce2ac8095b20e`。准入工具静态检查、JSON 计数闭合和 Pandoc 解析通过；浏览器实际渲染已检查，宽视口结构正常，窄纸张 PDF 的宽表需横向滚动，该布局限制已显式记录。
+
+按预冻结空套件门，没有生成 `p3r4_qualification_targets.json`，没有冻结或运行资格种子，也没有 G3R4 静态接触算法 PASS/FAIL。当前停在 `G3R4_PRO_REVIEW`，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。所有修改都在 `90_候选工作区/current/**`；正式理论、正式程序、顶层 `AGENTS.md`、公共 API、HDF5、UI、P4、P5、P6、动态接触、物理验证和实验验证均未修改或执行。
