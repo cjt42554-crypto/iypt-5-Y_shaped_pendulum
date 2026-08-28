@@ -1,0 +1,913 @@
+{
+  "generated_at": "2026-08-28T20:12:54+08:00",
+  "holdout_cards": [
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.112
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.02352
+      ],
+      "axial_rigidity_N": 89.60000000000001,
+      "bob_contact_radius_m": 0.046,
+      "bob_inertia_body_kg_m2": [
+        [
+          0.00011257119999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00011257119999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.00011257119999999999
+        ]
+      ],
+      "bob_mass_kg": 0.1064,
+      "branch_contact_radius_m": {
+        "lower": 0.005600000000000001,
+        "upper_A": 0.013516942354950514,
+        "upper_B": 0.028795712477700446
+      },
+      "category": "asymmetric_unequal_positive_multipliers",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_angles_from_vertical_deg": {
+        "upper_A": 33.5,
+        "upper_B": 43.5
+      },
+      "design_construction": "analytic_axis_point_tangent_to_two_unequal_angle_upper_branch_capsules",
+      "design_id": "R5_ASYM_H01",
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_ASYM_H01",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.0010976,
+      "lower_branch_rest_length_m": 0.08736000000000001,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.0023,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.033460000000000004,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.013968575044599127,
+        "minimum_upper_contact_witness_parameter_margin": 0.0804375540132436,
+        "passed": true,
+        "physical_signature_sha256": "1f0e070cab52fe8c02cbc82ec4c9ab67258717618586320f5f455154dcba0700"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "009190be36e2af4fcac7513d1c773675447f48c7f0564c3dd8c727b740a183c6",
+      "support_A_position_m": [
+        -0.5353788757526964,
+        0.0,
+        -0.8088692474051531
+      ],
+      "support_B_position_m": [
+        0.6952381214506914,
+        0.0,
+        -0.7326281147224105
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.97,
+        "upper_B": 1.01
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.116
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.02436
+      ],
+      "axial_rigidity_N": 92.80000000000001,
+      "bob_contact_radius_m": 0.044,
+      "bob_inertia_body_kg_m2": [
+        [
+          0.00010667359999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00010667359999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.00010667359999999999
+        ]
+      ],
+      "bob_mass_kg": 0.1102,
+      "branch_contact_radius_m": {
+        "lower": 0.0058000000000000005,
+        "upper_A": 0.014309833507050066,
+        "upper_B": 0.0320684640834166
+      },
+      "category": "asymmetric_unequal_positive_multipliers",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_angles_from_vertical_deg": {
+        "upper_A": 31.5,
+        "upper_B": 42.5
+      },
+      "design_construction": "analytic_axis_point_tangent_to_two_unequal_angle_upper_branch_capsules",
+      "design_id": "R5_ASYM_H02",
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_ASYM_H02",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.0011368,
+      "lower_branch_rest_length_m": 0.09048,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.0023,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.03838000000000001,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.010143071833166817,
+        "minimum_upper_contact_witness_parameter_margin": 0.08467739709898447,
+        "passed": true,
+        "physical_signature_sha256": "57c28ddf4f1185b4267d30cf9697c109c3bc328fdde36f11e199bbbb1e0686b1"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "021f16c37c2cf2db28b7c300e48163653e7d1762f8e0240fb6bfaec2576bac60",
+      "support_A_position_m": [
+        -0.4859236651858324,
+        0.0,
+        -0.7929553528493057
+      ],
+      "support_B_position_m": [
+        0.6823461096918169,
+        0.0,
+        -0.7446501101782252
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.93,
+        "upper_B": 1.01
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.12
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.025199999999999997
+      ],
+      "axial_rigidity_N": 96.0,
+      "bob_contact_radius_m": 0.044,
+      "bob_inertia_body_kg_m2": [
+        [
+          0.00011035199999999998,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00011035199999999998,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.00011035199999999998
+        ]
+      ],
+      "bob_mass_kg": 0.11399999999999999,
+      "branch_contact_radius_m": {
+        "lower": 0.006,
+        "upper_A": 0.016399827765913862,
+        "upper_B": 0.036302549083250465
+      },
+      "category": "asymmetric_unequal_positive_multipliers",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_angles_from_vertical_deg": {
+        "upper_A": 31.5,
+        "upper_B": 43.5
+      },
+      "design_construction": "analytic_axis_point_tangent_to_two_unequal_angle_upper_branch_capsules",
+      "design_id": "R5_ASYM_H03",
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_ASYM_H03",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.001176,
+      "lower_branch_rest_length_m": 0.0936,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.0023,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.0413,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.004394901833499068,
+        "minimum_upper_contact_witness_parameter_margin": 0.08289992811569002,
+        "passed": true,
+        "physical_signature_sha256": "423af772110238f32acaf5e9df723594efe0202ad70697b5eeecd7ead990474c"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "028db5134f85d2003d8faa73116b4e3fec067b71663c7b126018be73d1ae9a4c",
+      "support_A_position_m": [
+        -0.5068236077744703,
+        0.0,
+        -0.8270609594234694
+      ],
+      "support_B_position_m": [
+        0.7227723044784417,
+        0.0,
+        -0.761643089562902
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.97,
+        "upper_B": 1.05
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.116
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.02436
+      ],
+      "axial_rigidity_N": 92.80000000000001,
+      "bob_contact_radius_m": 0.046,
+      "bob_inertia_body_kg_m2": [
+        [
+          0.0001165916,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0001165916,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0001165916
+        ]
+      ],
+      "bob_mass_kg": 0.1102,
+      "branch_contact_radius_m": {
+        "lower": 0.0058000000000000005,
+        "upper_A": 0.017403123483280613,
+        "upper_B": 0.03154913078047546
+      },
+      "category": "asymmetric_unequal_positive_multipliers",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_angles_from_vertical_deg": {
+        "upper_A": 34.5,
+        "upper_B": 43.5
+      },
+      "design_construction": "analytic_axis_point_tangent_to_two_unequal_angle_upper_branch_capsules",
+      "design_id": "R5_ASYM_H04",
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_ASYM_H04",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.0011368,
+      "lower_branch_rest_length_m": 0.09048,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.0023,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.03638000000000001,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.0111817384390491,
+        "minimum_upper_contact_witness_parameter_margin": 0.08331032379943093,
+        "passed": true,
+        "physical_signature_sha256": "0c697d6f0c0b563e0298ec6a4a0c2b1711183b3e2a041bd2e27c69f792679684"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "03fcc74e7bcc0d07463246518b5806b12049103a39663196e0d4cc8c04309f0d",
+      "support_A_position_m": [
+        -0.5267578003400946,
+        0.0,
+        -0.7664373554184747
+      ],
+      "support_B_position_m": [
+        0.6952381214506914,
+        0.0,
+        -0.7326281147224105
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.93,
+        "upper_B": 1.01
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.07353858583929793
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.0148
+      ],
+      "axial_rigidity_N": 59.2,
+      "bob_contact_radius_m": 0.037,
+      "bob_inertia_body_kg_m2": [
+        [
+          3.647016e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          3.647016e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          3.647016e-05
+        ]
+      ],
+      "bob_mass_kg": 0.06659999999999999,
+      "branch_contact_radius_m": {
+        "lower": 0.0037,
+        "upper_A": 0.0037,
+        "upper_B": 0.0037
+      },
+      "category": "changed_geometry_and_load_scale",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_construction": "uniform_geometry_scale_of_read_only_P3R_35_degree_family_with_new_unobserved_scale",
+      "design_id": "R5_SCALE_H01",
+      "geometry_scale_from_P3R_35_degree": 0.74,
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_SCALE_H01",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.0006659999999999999,
+      "lower_branch_rest_length_m": 0.05772,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.00148,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.015539999999999998,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.039959999999999996,
+        "minimum_upper_contact_witness_parameter_margin": 0.10258863150521991,
+        "passed": true,
+        "physical_signature_sha256": "e88f834e0876d2bfc5b015fec43887abfc2b06d2489ae59360948baec63ecf98"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "06fadf70601121a75274886ea97e81568b00f7f9ab0bd81ad7e2585f96dfaf32",
+      "support_A_position_m": [
+        -0.33679982587887036,
+        0.0,
+        -0.481
+      ],
+      "support_B_position_m": [
+        0.33679982587887036,
+        0.0,
+        -0.481
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.5871925771942602,
+        "upper_B": 0.5871925771942602
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.09838270267689858
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.0198
+      ],
+      "axial_rigidity_N": 79.2,
+      "bob_contact_radius_m": 0.0495,
+      "bob_inertia_body_kg_m2": [
+        [
+          8.732691e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          8.732691e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          8.732691e-05
+        ]
+      ],
+      "bob_mass_kg": 0.0891,
+      "branch_contact_radius_m": {
+        "lower": 0.00495,
+        "upper_A": 0.00495,
+        "upper_B": 0.00495
+      },
+      "category": "changed_geometry_and_load_scale",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_construction": "uniform_geometry_scale_of_read_only_P3R_35_degree_family_with_new_unobserved_scale",
+      "design_id": "R5_SCALE_H02",
+      "geometry_scale_from_P3R_35_degree": 0.99,
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_SCALE_H02",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.000891,
+      "lower_branch_rest_length_m": 0.07722,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.00198,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.02078999999999999,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.053459999999999994,
+        "minimum_upper_contact_witness_parameter_margin": 0.10258863150522002,
+        "passed": true,
+        "physical_signature_sha256": "a0dfbc06363c7fd5963c45872960b1164c9f06dfabe01cd3130a5c3f8761a7ef"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "1d989ce1f7aba72417fa39169a7fa10347e42e464710e050d26cca2af3512294",
+      "support_A_position_m": [
+        -0.45058355083794815,
+        0.0,
+        -0.6435
+      ],
+      "support_B_position_m": [
+        0.45058355083794815,
+        0.0,
+        -0.6435
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.7855684478679967,
+        "upper_B": 0.7855684478679967
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.16098987710765222
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.032400000000000005
+      ],
+      "axial_rigidity_N": 129.60000000000002,
+      "bob_contact_radius_m": 0.08100000000000002,
+      "bob_inertia_body_kg_m2": [
+        [
+          0.00038263752000000005,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00038263752000000005,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.00038263752000000005
+        ]
+      ],
+      "bob_mass_kg": 0.1458,
+      "branch_contact_radius_m": {
+        "lower": 0.008100000000000001,
+        "upper_A": 0.008100000000000001,
+        "upper_B": 0.008100000000000001
+      },
+      "category": "changed_geometry_and_load_scale",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_construction": "uniform_geometry_scale_of_read_only_P3R_35_degree_family_with_new_unobserved_scale",
+      "design_id": "R5_SCALE_H03",
+      "geometry_scale_from_P3R_35_degree": 1.62,
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_SCALE_H03",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.001458,
+      "lower_branch_rest_length_m": 0.12636,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.0032400000000000003,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.03401999999999998,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.08748,
+        "minimum_upper_contact_witness_parameter_margin": 0.10258863150522002,
+        "passed": true,
+        "physical_signature_sha256": "b8b536ec0a49d043295d7584574c22cfca35f0e926f205c9c1ae31860064520a"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "24e52c13b05bcc132e920007495838dfba0b4f7b29ecdea14eb8fe085e778644",
+      "support_A_position_m": [
+        -0.7373185377348244,
+        0.0,
+        -1.0530000000000002
+      ],
+      "support_B_position_m": [
+        0.7373185377348244,
+        0.0,
+        -1.0530000000000002
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 1.2854756419658129,
+        "upper_B": 1.2854756419658129
+      }
+    },
+    {
+      "analytic_stationary_bob_position_m": [
+        0.0,
+        0.0,
+        -0.08546376192134623
+      ],
+      "attachment_arm_body_m": [
+        0.0,
+        0.0,
+        0.0172
+      ],
+      "axial_rigidity_N": 68.8,
+      "bob_contact_radius_m": 0.043000000000000003,
+      "bob_inertia_body_kg_m2": [
+        [
+          5.724504e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.724504e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.724504e-05
+        ]
+      ],
+      "bob_mass_kg": 0.0774,
+      "branch_contact_radius_m": {
+        "lower": 0.0043,
+        "upper_A": 0.0043,
+        "upper_B": 0.0043
+      },
+      "category": "changed_geometry_and_load_scale",
+      "declared_active_constraint_ids": [
+        "bob:upper_A:upper_A_s000",
+        "bob:upper_B:upper_B_s000"
+      ],
+      "design_construction": "uniform_geometry_scale_of_read_only_P3R_35_degree_family_with_new_unobserved_scale",
+      "design_id": "R5_SCALE_H04",
+      "geometry_scale_from_P3R_35_degree": 0.86,
+      "gravity_m_per_s2": [
+        0.0,
+        0.0,
+        -9.81
+      ],
+      "holdout_id": "R5_SCALE_H04",
+      "input_assembly_execution_count_before_holdout_freeze": 0,
+      "junction_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "line_density_kg_per_m": 0.000774,
+      "lower_branch_rest_length_m": 0.06708,
+      "manifold_neighborhood_execution_count_before_holdout_freeze": 0,
+      "minimum_clearance_m": 0.00172,
+      "pure_constructibility": {
+        "bob_socket_active_extent_margin_m": 0.01806,
+        "checks": {
+          "all_numeric_values_finite": true,
+          "analytic_tangency_identity": true,
+          "bob_socket_positive_active_extent": true,
+          "declared_active_identities_unique": true,
+          "declared_active_identity_count": true,
+          "junction_socket_positive_active_extent": true,
+          "noncollapsed_distinct_supports": true,
+          "physical_signature_unobserved": true,
+          "positive_fields": true,
+          "support_length_identity": true,
+          "upper_contact_witness_parameter_margin": true
+        },
+        "identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+        "minimum_junction_socket_active_extent_margin_m": 0.04644,
+        "minimum_upper_contact_witness_parameter_margin": 0.10258863150521991,
+        "passed": true,
+        "physical_signature_sha256": "e9d7913307b53156ea15be1f471fff272eabc24c0a5ceddbf9109ce72848771c"
+      },
+      "qualification_seed_execution_count_before_holdout_freeze": 0,
+      "reference_construction_execution_count_before_holdout_freeze": 0,
+      "second_order_execution_count_before_holdout_freeze": 0,
+      "selection_digest_sha256": "29a5cd793f0eec129625332330bdaba457ab25ed613ce985dc861baf932bd577",
+      "support_A_position_m": [
+        -0.3914160138592277,
+        0.0,
+        -0.559
+      ],
+      "support_B_position_m": [
+        0.3914160138592277,
+        0.0,
+        -0.559
+      ],
+      "target_admissibility_execution_count_before_holdout_freeze": 0,
+      "upper_branch_rest_length_m": {
+        "upper_A": 0.6824129951176537,
+        "upper_B": 0.6824129951176537
+      }
+    }
+  ],
+  "holdout_count_per_category": 4,
+  "holdout_domain_sha256": "27defd95ab3cb84d022b1ec43ffa89bd142374591f97a15de93b17b3c5a96d17",
+  "implementation_commit": "d751848044cbb805bacbc72f3fa28c1c22d25757",
+  "input_assembly_run_count_before_holdout_freeze": 0,
+  "manifold_neighborhood_run_count_before_holdout_freeze": 0,
+  "pure_input_constructibility_identity": "YPS-HFV2-P3R5-PURE-INPUT-CONSTRUCTIBILITY-1.0",
+  "qualification_seed_run_count_before_holdout_freeze": 0,
+  "reference_construction_run_count_before_holdout_freeze": 0,
+  "required_categories_in_order": [
+    "asymmetric_unequal_positive_multipliers",
+    "changed_geometry_and_load_scale"
+  ],
+  "schema": "YPS-HFV2-P3R5-HOLDOUT-CARDS-1.0",
+  "second_order_run_count_before_holdout_freeze": 0,
+  "selection_rule": {
+    "canonical_candidate_json": "UTF8_JSON_sort_keys_compact_separators_ensure_ascii_false_allow_nan_false",
+    "digest": "SHA-256",
+    "digest_preimage": "UTF8('P3R5-HOLDOUT-1.0\\u0000'+implementation_commit+'\\u0000'+category+'\\u0000'+canonical_candidate_json)",
+    "holdout_id_assignment": "R5_ASYM_H01_to_H04_then_R5_SCALE_H01_to_H04_in_digest_order",
+    "implementation_commit_redo_or_grinding_for_holdout_choice_forbidden": true,
+    "implementation_commit_requirement": "exact_remote_main_head_after_development_implementation_push",
+    "order": "ascending_digest_then_ascending_canonical_candidate_json",
+    "selection_after_implementation_commit_only": true,
+    "selection_may_call_numerical_solver": false,
+    "selection_may_use_observed_admissibility_or_qualification_result": false,
+    "take": "first_four_pure_predicate_passes_per_required_category"
+  },
+  "selection_trace": [
+    {
+      "canonical_candidate_sha256": "ef8fd88733476f198f5e094cb4ba08c6d9ac9e7a0447522666411222259ed515",
+      "category": "asymmetric_unequal_positive_multipliers",
+      "holdout_id": "R5_ASYM_H01",
+      "physical_signature_sha256": "1f0e070cab52fe8c02cbc82ec4c9ab67258717618586320f5f455154dcba0700",
+      "selection_digest_sha256": "009190be36e2af4fcac7513d1c773675447f48c7f0564c3dd8c727b740a183c6"
+    },
+    {
+      "canonical_candidate_sha256": "3b79466a221fb8cae95a0b48cf626ff9e4b16c1eab4352258d876432c36f7f76",
+      "category": "asymmetric_unequal_positive_multipliers",
+      "holdout_id": "R5_ASYM_H02",
+      "physical_signature_sha256": "57c28ddf4f1185b4267d30cf9697c109c3bc328fdde36f11e199bbbb1e0686b1",
+      "selection_digest_sha256": "021f16c37c2cf2db28b7c300e48163653e7d1762f8e0240fb6bfaec2576bac60"
+    },
+    {
+      "canonical_candidate_sha256": "f90c9bd4fcd4cb4674b36c733f905f62ce2d8397295ffb7126a4ee2c57d25a40",
+      "category": "asymmetric_unequal_positive_multipliers",
+      "holdout_id": "R5_ASYM_H03",
+      "physical_signature_sha256": "423af772110238f32acaf5e9df723594efe0202ad70697b5eeecd7ead990474c",
+      "selection_digest_sha256": "028db5134f85d2003d8faa73116b4e3fec067b71663c7b126018be73d1ae9a4c"
+    },
+    {
+      "canonical_candidate_sha256": "2674e9a28324691d78e0b8d3274fb3f167ad54443043ec7fbe07f7073ea31de8",
+      "category": "asymmetric_unequal_positive_multipliers",
+      "holdout_id": "R5_ASYM_H04",
+      "physical_signature_sha256": "0c697d6f0c0b563e0298ec6a4a0c2b1711183b3e2a041bd2e27c69f792679684",
+      "selection_digest_sha256": "03fcc74e7bcc0d07463246518b5806b12049103a39663196e0d4cc8c04309f0d"
+    },
+    {
+      "canonical_candidate_sha256": "a3863fda44729578073c770a43befa9d766b0fc108a37d9b13846ed7afdf815e",
+      "category": "changed_geometry_and_load_scale",
+      "holdout_id": "R5_SCALE_H01",
+      "physical_signature_sha256": "e88f834e0876d2bfc5b015fec43887abfc2b06d2489ae59360948baec63ecf98",
+      "selection_digest_sha256": "06fadf70601121a75274886ea97e81568b00f7f9ab0bd81ad7e2585f96dfaf32"
+    },
+    {
+      "canonical_candidate_sha256": "b4725d94b8147947de84bf6a0d113bad430628286477a778948fd5d49a39f9c5",
+      "category": "changed_geometry_and_load_scale",
+      "holdout_id": "R5_SCALE_H02",
+      "physical_signature_sha256": "a0dfbc06363c7fd5963c45872960b1164c9f06dfabe01cd3130a5c3f8761a7ef",
+      "selection_digest_sha256": "1d989ce1f7aba72417fa39169a7fa10347e42e464710e050d26cca2af3512294"
+    },
+    {
+      "canonical_candidate_sha256": "41cdd8e55ca32afb76cb3adf9310e4eba34f12d9736fffb075f2b22aff676127",
+      "category": "changed_geometry_and_load_scale",
+      "holdout_id": "R5_SCALE_H03",
+      "physical_signature_sha256": "b8b536ec0a49d043295d7584574c22cfca35f0e926f205c9c1ae31860064520a",
+      "selection_digest_sha256": "24e52c13b05bcc132e920007495838dfba0b4f7b29ecdea14eb8fe085e778644"
+    },
+    {
+      "canonical_candidate_sha256": "e730b1c8c1ca1c4205bf14e815ef8ece8b844c3958048fae29f06fd0f65a14cb",
+      "category": "changed_geometry_and_load_scale",
+      "holdout_id": "R5_SCALE_H04",
+      "physical_signature_sha256": "e9d7913307b53156ea15be1f471fff272eabc24c0a5ceddbf9109ce72848771c",
+      "selection_digest_sha256": "29a5cd793f0eec129625332330bdaba457ab25ed613ce985dc861baf932bd577"
+    }
+  ],
+  "status": "P3R5_HOLDOUTS_FROZEN_WITH_ZERO_NUMERICAL_RUNS",
+  "target_admissibility_run_count_before_holdout_freeze": 0,
+  "target_freeze_run_count_before_holdout_freeze": 0
+}
