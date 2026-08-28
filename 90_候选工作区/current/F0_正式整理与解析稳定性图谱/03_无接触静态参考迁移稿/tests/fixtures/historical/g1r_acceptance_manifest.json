@@ -1,5 +1,5 @@
 {
-  "schema": "YPS-HFV2-G1R-ACCEPTANCE-1.0",
+  "schema": "YPS-HISTORICAL-REGRESSION-G1R-ACCEPTANCE-1.0",
   "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
   "criteria_source": "Pro G1 review bound to 4d8777095e90f431d686ae338b754abb430a6a98 plus unchanged G1 thresholds",
   "frozen_before_g1r_metrics_generation": true,

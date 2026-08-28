@@ -1,0 +1,46 @@
+{
+  "artifacts": [
+    {
+      "bytes": 45750,
+      "path": "atlas_results.json",
+      "sha256": "55a619b1e461532f70695bec537de4033eb90613392d215fb0ea008e1a0d010c"
+    },
+    {
+      "bytes": 15836,
+      "path": "atlas_run_evidence.json",
+      "sha256": "3a773efd8f99067da3e970aa54e273ea6ba0d969d1e9573a73ca4e4580113162"
+    },
+    {
+      "bytes": 5103,
+      "path": "atlas_summary.csv",
+      "sha256": "e4c59fc746a215d0b3cc6725c31d9a73d8439a9571aab8aa5126a61127fde8e4"
+    },
+    {
+      "bytes": 80570,
+      "path": "figures/compensation_accuracy.png",
+      "sha256": "9a2282bb06cb98fc5fb7945b551f8f0ca7495cfd50c8103451c1fe424efa6a77"
+    },
+    {
+      "bytes": 20666,
+      "path": "figures/compensation_accuracy.svg",
+      "sha256": "a42d99cb309189a13f029bcd98c25f911cc9ea578828f5405dfc5a5916aa2166"
+    },
+    {
+      "bytes": 161519,
+      "path": "figures/phase_atlas_3to2.png",
+      "sha256": "84d56868ff92f236b024098fc08ec58b549c23df15f4953c67526313f24975bd"
+    },
+    {
+      "bytes": 70073,
+      "path": "figures/phase_atlas_3to2.svg",
+      "sha256": "89b8134a521d471580de57bcbe8c28d01349b2fed13fe9fe0f1a149bb2adac91"
+    },
+    {
+      "bytes": 370,
+      "path": "geometry_tolerance.csv",
+      "sha256": "ab380a16c940509d6cdd9287eebca932abaeee9985ab2007d4078d0c5742163a"
+    }
+  ],
+  "deterministic": true,
+  "schema": "YPS-FORMAL-PATTERN-ATLAS-ARTIFACT-MANIFEST-1.0"
+}

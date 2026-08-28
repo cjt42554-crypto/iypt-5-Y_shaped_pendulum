@@ -1,4 +1,4 @@
-"""Discrete-rod rigid-bob no-contact static reference migration draft."""
+"""Candidate-only no-contact conservative static reference package."""
 
 from .constitutive import (
     AxialMaterial,
@@ -22,17 +22,15 @@ from .interface import (
     StaticReferencePostAudit,
     solve_no_contact_static_reference,
 )
-from .loads import IsotropicDragLaw, PointLoadResponse, point_external_load
-from .mass import MassProperties
+from .loads import StaticPointLoadResponse, point_static_load
+from .mass import StaticMassDistribution
 from .rigid import (
-    advance_rotation_body,
     attachment_action_reaction,
-    attachment_kinematics,
+    attachment_geometry,
     exp_so3,
 )
-from .state import HFV2State as StaticReferenceState
-from .topology import HFV2Topology as StaticReferenceTopology
-from .topology import MaterialNode, MaterialSegment
+from .state import StaticReferenceState
+from .topology import MaterialNode, MaterialSegment, StaticReferenceTopology
 
 __all__ = [
     "CAPABILITY",
@@ -44,23 +42,21 @@ __all__ = [
     "AxialResponse",
     "BendingGeometryError",
     "BendingResponse",
-    "IsotropicDragLaw",
-    "MassProperties",
     "MaterialNode",
     "MaterialSegment",
-    "PointLoadResponse",
+    "StaticMassDistribution",
+    "StaticPointLoadResponse",
     "StaticReferenceAuditThresholds",
     "StaticReferenceBatchResult",
     "StaticReferencePostAudit",
     "StaticReferenceState",
     "StaticReferenceTopology",
-    "advance_rotation_body",
     "attachment_action_reaction",
-    "attachment_kinematics",
+    "attachment_geometry",
     "axial_segment_response",
     "bending_energy",
     "bending_energy_forces",
     "exp_so3",
-    "point_external_load",
+    "point_static_load",
     "solve_no_contact_static_reference",
 ]

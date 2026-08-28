@@ -6,11 +6,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+from tests.helpers.invariance import internal_balance, objectivity_audit
 from ypendulum_static_reference.audit.energy_gradient import (
     central_difference_gradient,
     force_gradient_samples,
 )
-from ypendulum_static_reference.audit.invariance import internal_balance, objectivity_audit
 from ypendulum_static_reference.audit.statics import strict_decrease_interval
 from ypendulum_static_reference.constitutive.bending import (
     BendingGeometryError,
@@ -21,7 +21,9 @@ from ypendulum_static_reference.rigid.rotation import exp_so3
 
 CANDIDATE_ROOT = Path(__file__).resolve().parents[2]
 ACCEPTANCE = json.loads(
-    (CANDIDATE_ROOT / "contracts" / "g1r_acceptance_manifest.json").read_text(encoding="utf-8")
+    (CANDIDATE_ROOT / "tests/fixtures/historical/g1r_acceptance_manifest.json").read_text(
+        encoding="utf-8"
+    )
 )
 FINITE_DIFFERENCE = ACCEPTANCE["finite_difference"]
 BENDING_CONTRACT = ACCEPTANCE["bending_equation"]

@@ -1,159 +1,204 @@
 {
-  "excluded_source_prefixes": [
-    "contact/",
+  "excluded_source_components": [
+    "contact/**",
     "statics/contact_assembly.py",
     "statics/contact_solver.py",
-    "ypendulum_hfv2_p3r*"
+    "audit/passivity.py",
+    "audit/invariance.py",
+    "audit/g2_cases.py",
+    "all motion-state and time-advance APIs"
   ],
   "formal_promotion_status": "NOT_PROMOTED_CANDIDATE_DRAFT",
-  "migrated_files": [
+  "lineage_interpretation": "Semantic static-only extraction; no namespace-only or byte-equivalence claim is made.",
+  "model_id": "YPS-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.1",
+  "production_static_guards": {
+    "ast_forbidden_identifiers_absent": true,
+    "dynamic_and_contact_modules_absent": true,
+    "historical_case_builders_in_test_layer": true,
+    "source_set_exact": true
+  },
+  "qualification_carried_by_migration": false,
+  "schema": "YPS-NO-CONTACT-STATIC-MIGRATION-PROVENANCE-2.0",
+  "semantic_lineage": [
     {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/topology.py",
-      "source_sha256": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/topology.py",
-      "target_sha256": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "closed_static_public_exports",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/__init__.py",
+      "source_sha256": "e18a3694a79be759f7c460bc7796e0d1d74eeca5e98516ac6b5b415b9ff1c7e5",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/__init__.py",
+      "target_sha256": "d2e9b0da1d20314e71f986106f6897ae11a9dad0bc9712f24b0d141781ba79fa"
     },
     {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/state.py",
-      "source_sha256": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/state.py",
-      "target_sha256": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "retain_conservative_static_audits_only",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/__init__.py",
+      "source_sha256": "c509df5e594eb9053ef96bbe8b5b6c420ac94dddbb07fe0d24bc9409b23b88d9",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/__init__.py",
+      "target_sha256": "dc054e41230cdf1db7331a2df3e4fc5a4b2ed79d3986ab19e628cf64f9303b74"
     },
     {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/mass.py",
-      "source_sha256": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/mass.py",
-      "target_sha256": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/loads.py",
-      "source_sha256": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/loads.py",
-      "target_sha256": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/__init__.py",
-      "source_sha256": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/__init__.py",
-      "target_sha256": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/axial.py",
-      "source_sha256": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/axial.py",
-      "target_sha256": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/bending.py",
-      "source_sha256": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/bending.py",
-      "target_sha256": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/__init__.py",
-      "source_sha256": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/__init__.py",
-      "target_sha256": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/attachment.py",
-      "source_sha256": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/attachment.py",
-      "target_sha256": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/rotation.py",
-      "source_sha256": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/rotation.py",
-      "target_sha256": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/assembly.py",
-      "source_sha256": "3af7df8a1a8078b6f721f790314e6c176009dbc3dc94c5228558bdfacefc1332",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/assembly.py",
-      "target_sha256": "3af7df8a1a8078b6f721f790314e6c176009dbc3dc94c5228558bdfacefc1332",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/contracts.py",
-      "source_sha256": "f032f6fb1110cfde96a31f3a99dcb7f8a4d022ade54b11f6144fb9c111a53981",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/contracts.py",
-      "target_sha256": "f032f6fb1110cfde96a31f3a99dcb7f8a4d022ade54b11f6144fb9c111a53981",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/solver.py",
-      "source_sha256": "38a70a105e40ebfbd80c00e8eeef7eded01c02cb7270a00a3cc1ff47f67a33aa",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/solver.py",
-      "target_sha256": "38a70a105e40ebfbd80c00e8eeef7eded01c02cb7270a00a3cc1ff47f67a33aa",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "preserve_static_energy_gradient_audit",
       "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/energy_gradient.py",
       "source_sha256": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
       "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/energy_gradient.py",
-      "target_sha256": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
+      "target_sha256": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18"
     },
     {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/invariance.py",
-      "source_sha256": "a0ed1428ed20195db059ae4cfbe53ce13eb81686cf988ee5d1358c2777ef4ad4",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/invariance.py",
-      "target_sha256": "ade3450f5149cc6a8be1e13c91ab9eb0dd89969bb506af605176b3cf48c2a529",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/passivity.py",
-      "source_sha256": "cc351a071cef233bc22dbc8577f76b0c8f6791b535b883a2cc62141b6657f086",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/passivity.py",
-      "target_sha256": "7db98ad5d3f773546ac698d1403d7b9f6d6cccb71c19aeee7aa5715c7808c349",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
-    },
-    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "preserve_static_force_balance_and_hessian_audits",
       "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/statics.py",
       "source_sha256": "eaf79ae69a96d1fa908bb3d2410c81679bf5b80442e7dd2b78d26ae0adece9e1",
       "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/statics.py",
-      "target_sha256": "89d520d67add050970e12dfd71d7ccf2fa83f236b447a5fabb18aab5705cdf13",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
+      "target_sha256": "89d520d67add050970e12dfd71d7ccf2fa83f236b447a5fabb18aab5705cdf13"
     },
     {
-      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/g2_cases.py",
-      "source_sha256": "195f867560bdd22959a46ed23f1b720922cb918b3b13ca89b091479aac259553",
-      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/g2_cases.py",
-      "target_sha256": "1ffb2f16f1f9b02beab50bd76cbae1e92bb7d37dbed8db5c3351f963dd14ef0b",
-      "transform": "package_namespace_replace_and_terminal_newline_normalization",
-      "transform_verified": true
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "export_conservative_constitutive_laws_only",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/__init__.py",
+      "source_sha256": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/__init__.py",
+      "target_sha256": "ff2f0745ab0a57f5b2d8d826995c07578066e7b0f00246e2cd8fe249fbaf9dea"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "extract_unilateral_elastic_static_potential_and_remove_rate_terms",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/axial.py",
+      "source_sha256": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/axial.py",
+      "target_sha256": "4857ae8e917f874dc69591f5efd2c801f69472f0f161ce51afcdbc8e0d7806b7"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "preserve_conservative_discrete_bending_energy_and_force",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/bending.py",
+      "source_sha256": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/bending.py",
+      "target_sha256": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "new_candidate_governance_or_interface",
+      "semantic_transform": "new_candidate_identity_without_historical_qualification_carry",
+      "source": null,
+      "source_sha256": null,
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/identity.py",
+      "target_sha256": "2210689022f685242bc828543719c84eb8e8baf18da34f71e0c1351e2eb2c170"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "new_candidate_governance_or_interface",
+      "semantic_transform": "new_threshold_validated_static_solve_interface",
+      "source": null,
+      "source_sha256": null,
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/interface.py",
+      "target_sha256": "659ceb8943928c9a798aac9386eec45eb1ca685f48b7283e34e58d2752e67b4b"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "extract_separate_gravity_and_buoyancy_static_loads",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/loads.py",
+      "source_sha256": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/loads.py",
+      "target_sha256": "15d380e6eec7202c155cea1b52d25be868d9400dd28e72dd06904859301fa47b"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "extract_static_mass_registration_and_remove_dynamic_observables",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/mass.py",
+      "source_sha256": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/mass.py",
+      "target_sha256": "772901d8a7cc8c9ccdaacfdecb1461c93b6b6569a58809772b8dcc023668a351"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "export_static_orientation_and_attachment_geometry_only",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/__init__.py",
+      "source_sha256": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/__init__.py",
+      "target_sha256": "3fd49c83b7535f2fc00dbc560f4222bca73245bfe5e5e876f102d1d5c4de8145"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "extract_attachment_geometry_and_static_wrench_mapping",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/attachment.py",
+      "source_sha256": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/attachment.py",
+      "target_sha256": "ce59b2c9ce57e0232043de4216cbcccfc12c979c5b8247beabe5c27863cbbd0e"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "retain_SO3_validation_exponential_and_composition_only",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/rotation.py",
+      "source_sha256": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/rotation.py",
+      "target_sha256": "6650a439c72afcf672eef74f2dc61fff92ecd8079c12a21856b13d198808c94f"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "extract_position_and_orientation_state_only",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/state.py",
+      "source_sha256": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/state.py",
+      "target_sha256": "b30396df00b914ac5521f03bb2ef9ee732481924df0aaf205adc8349fa6e7491"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "retain_static_assembly_contracts_and_solver_exports",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/__init__.py",
+      "source_sha256": "0efee8bc1ce0762ff214e3656cb9d860590fcfc92d2704facb89b41f15b1d411",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/__init__.py",
+      "target_sha256": "15ddae2d0c411ef194cb1c450f28f0e0970d74d00d0aba9dec09be03e3c6346d"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "bind_conservative_static_total_potential_without_motion_inputs",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/assembly.py",
+      "source_sha256": "3af7df8a1a8078b6f721f790314e6c176009dbc3dc94c5228558bdfacefc1332",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/assembly.py",
+      "target_sha256": "7edb4a13ec87157d7840e7d0c98c60a0aa2a6b9e2b4a9ed6abea6ec5ba5be8df"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "remove_inertial_data_and_bind_static_coordinates",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/contracts.py",
+      "source_sha256": "f032f6fb1110cfde96a31f3a99dcb7f8a4d022ade54b11f6144fb9c111a53981",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/contracts.py",
+      "target_sha256": "a772eb62b10c5f5ca8b1f210097011aa3a6885e08d1ba89cfbcdb80f7b0cb534"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "retain_single_deterministic_BFGS_static_algorithm",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/solver.py",
+      "source_sha256": "38a70a105e40ebfbd80c00e8eeef7eded01c02cb7270a00a3cc1ff47f67a33aa",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/solver.py",
+      "target_sha256": "838ba8ad466b365a4f0029c1be855cc3c2bf409cd9e01126645a988fb40743bf"
+    },
+    {
+      "byte_identity_claimed": false,
+      "lineage_kind": "semantic_static_extraction",
+      "semantic_transform": "retain_material_topology_and_position_tangent_map_only",
+      "source": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/topology.py",
+      "source_sha256": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07",
+      "target": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/topology.py",
+      "target_sha256": "aa488bd668c66529c6dd866c20a6ca5512ef86c4752be4687baec44130cef460"
     }
-  ],
-  "model_id": "YPS-DISCRETE-ROD-RIGID-BOB-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.0",
-  "schema": "YPS-NO-CONTACT-STATIC-MIGRATION-PROVENANCE-1.0",
-  "source_namespace": "ypendulum_hfv2",
-  "target_namespace": "ypendulum_static_reference"
+  ]
 }

@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "y-pendulum-pattern-atlas-draft"
-version = "0.1.0"
+version = "0.2.0"
 description = "Candidate formalization of the ideal-torus parameter-pattern atlas"
 requires-python = ">=3.11"
-dependencies = ["matplotlib>=3.6", "numpy>=1.26", "scipy>=1.12"]
+dependencies = ["jsonschema>=4.10", "matplotlib>=3.6", "numpy>=1.26", "scipy>=1.11.4"]
 
 [project.optional-dependencies]
-dev = ["jsonschema>=4.10", "pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=8", "ruff>=0.5"]
 
 [project.scripts]
 y-pendulum-pattern-atlas = "y_pendulum_pattern_atlas.cli:main"

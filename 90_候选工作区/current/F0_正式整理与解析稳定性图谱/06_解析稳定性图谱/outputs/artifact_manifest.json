@@ -1,0 +1,46 @@
+{
+  "analysis_source_manifest_sha256": "d777171ba41a93859d6c2bba2b392daf92e9d88c2ea21c6d89316bef5fd3cf84",
+  "artifacts": [
+    {
+      "bytes": 1360,
+      "path": "observed_modes.csv",
+      "sha256": "6b835b0fe3d7ebadb773d5d5a1256bcc1c0e2f3bf8019408502f821059b64e13"
+    },
+    {
+      "bytes": 35543,
+      "path": "parameterized_map.csv",
+      "sha256": "888c81b308dc0ab1ab684fb605dce84e2406c89b67c00ff67d3fca1bba944684"
+    },
+    {
+      "bytes": 186934,
+      "path": "reduced_hessian_stability_map.png",
+      "sha256": "3fc06b54024f031d4f32115728a5e4e7e3928fd13bf14b498b9ca2a34727f773"
+    },
+    {
+      "bytes": 35306,
+      "path": "reduced_hessian_stability_map.svg",
+      "sha256": "d8c2415e1b3a00091945bab1cf1857af097600b73511eb241bac357b93b104c6"
+    },
+    {
+      "bytes": 208531,
+      "path": "stability_map.json",
+      "sha256": "9fccd9f9d9445c8043721a5af47a6009576276dbc57ff7f0c48abd1652e5ac92"
+    }
+  ],
+  "determinism_scope": "BYTE_IDENTICAL_WITHIN_RECORDED_ANALYSIS_SOURCE_CONFIG_AND_RUNTIME",
+  "deterministic": true,
+  "runtime_identity": {
+    "packages": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "scipy": "1.11.4"
+    },
+    "platform_machine": "x86_64",
+    "platform_system": "Linux",
+    "python_implementation": "CPython",
+    "python_version": "3.12.3",
+    "schema": "YPS-P3R5-STABILITY-MAP-RUNTIME-IDENTITY-1.0"
+  },
+  "runtime_identity_sha256": "6074ee4f2e403036ec229e67ddf2abcd8adc6d9a341ef919544440ff7dcee9bd",
+  "schema": "YPS-P3R5-STABILITY-MAP-ARTIFACT-MANIFEST-1.0"
+}

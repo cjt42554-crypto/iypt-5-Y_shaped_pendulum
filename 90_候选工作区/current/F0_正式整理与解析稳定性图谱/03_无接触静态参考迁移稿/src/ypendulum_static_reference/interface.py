@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+import numpy as np
+
 from .audit.statics import balance_audit, energy_force_samples, strict_decrease_interval
 from .identity import CAPABILITY, CLAIM_CEILING, MODEL_ID, QUALIFICATION_STATUS
 from .statics.assembly import StaticAssembly
@@ -23,6 +25,33 @@ class StaticReferenceAuditThresholds:
     scaled_generalized_force_residual_max: float
     scaled_global_force_balance_max: float
     scaled_global_moment_balance_max: float
+
+    def __post_init__(self) -> None:
+        steps = tuple(float(value) for value in self.finite_difference_relative_steps)
+        if len(steps) < 2 or not all(np.isfinite(value) and value > 0.0 for value in steps):
+            raise ValueError(
+                "finite_difference_relative_steps must contain at least two positive finite values."
+            )
+        if not all(right < left for left, right in zip(steps[:-1], steps[1:], strict=True)):
+            raise ValueError("finite_difference_relative_steps must be strictly decreasing.")
+        minimum = self.finite_difference_minimum_strict_decrease_steps
+        if type(minimum) is not int or not 1 <= minimum < len(steps):
+            raise ValueError(
+                "finite_difference_minimum_strict_decrease_steps must be an integer "
+                "between one and len(steps)-1."
+            )
+        names = (
+            "finite_difference_final_relative_error_max",
+            "scaled_generalized_force_residual_max",
+            "scaled_global_force_balance_max",
+            "scaled_global_moment_balance_max",
+        )
+        values = tuple(float(getattr(self, name)) for name in names)
+        if not all(np.isfinite(value) and value > 0.0 for value in values):
+            raise ValueError("All static audit maxima must be positive and finite.")
+        object.__setattr__(self, "finite_difference_relative_steps", steps)
+        for name, value in zip(names, values, strict=True):
+            object.__setattr__(self, name, value)
 
 
 @dataclass(frozen=True)

@@ -1,4 +1,4 @@
-"""Rigid-motion objectivity and internal resultant audits."""
+"""Test-layer rigid-motion objectivity and internal-resultant helpers."""
 
 from __future__ import annotations
 

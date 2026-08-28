@@ -12,11 +12,11 @@ import numpy as np
 
 from ..constitutive.axial import AxialMaterial, axial_segment_response
 from ..constitutive.bending import bending_energy_forces
-from ..loads import IsotropicDragLaw, point_external_load
-from ..mass import MassProperties
+from ..loads import point_static_load
+from ..mass import StaticMassDistribution
 from ..rigid.rotation import compose_rotation, exp_so3, hat
-from ..state import HFV2State
-from ..topology import HFV2Topology
+from ..state import StaticReferenceState
+from ..topology import StaticReferenceTopology
 from .contracts import (
     BranchMaterial,
     RigidBobProperties,
@@ -69,7 +69,7 @@ class CoordinateSlice:
 @dataclass(frozen=True)
 class BoundStaticLayout:
     identity_schema: str
-    layout_token: str
+    assembly_token: str
     node_ids: tuple[str, ...]
     free_node_ids: tuple[str, ...]
     segment_ids: tuple[str, ...]
@@ -114,16 +114,15 @@ class StaticAssembly:
 
     Every numerical entry point requires :class:`StaticCoordinates` carrying the
     deterministic token generated from the complete coordinate and physical
-    binding.  ``layout_token`` is the retained compatibility name for this single
-    complete assembly identity.  Rest lengths are derived internally from
-    material coordinates and are never accepted as an assembly input.
+    binding. Rest lengths are derived internally from material coordinates and
+    are never accepted as an assembly input.
     """
 
     def __init__(
         self,
         *,
-        topology: HFV2Topology,
-        reference_state: HFV2State,
+        topology: StaticReferenceTopology,
+        reference_state: StaticReferenceState,
         branch_materials: tuple[BranchMaterial, ...],
         prescribed_node_positions: Mapping[str, np.ndarray],
         environment: StaticEnvironment,
@@ -133,15 +132,6 @@ class StaticAssembly:
         rotation_chart_norm_max: float = 0.75,
     ) -> None:
         reference_state.validate_topology(topology)
-        if any(
-            np.any(value != 0.0)
-            for value in (
-                reference_state.free_node_velocities,
-                reference_state.bob_velocity,
-                reference_state.bob_angular_velocity_body,
-            )
-        ):
-            raise ValueError("The bound static reference state must have zero velocities.")
         chart_limit = float(rotation_chart_norm_max)
         if not np.isfinite(chart_limit) or chart_limit <= 0.0 or chart_limit >= np.pi:
             raise ValueError("rotation_chart_norm_max must lie strictly between zero and pi.")
@@ -190,7 +180,6 @@ class StaticAssembly:
                 AxialMaterial(
                     rest_length=rest,
                     axial_rigidity=material.axial_rigidity,
-                    axial_viscosity=0.0,
                 )
             )
         if np.any(node_mass <= 0.0):
@@ -199,14 +188,13 @@ class StaticAssembly:
         free_mass = np.array(
             [node_mass[topology.node_index(node_id)] for node_id in topology.free_node_ids]
         )
-        mass_properties = MassProperties(
+        mass_distribution = StaticMassDistribution(
             free_node_ids=topology.free_node_ids,
             free_node_mass=free_mass,
             bob_mass=bob.mass,
-            bob_inertia_body=bob.inertia_body,
         )
-        mass_properties.validate_topology(topology)
-        mass_properties.validate_state(reference_state)
+        mass_distribution.validate_topology(topology)
+        mass_distribution.validate_state(reference_state)
 
         generalized_size = topology.generalized_position_tangent_size
         free_slices = tuple(
@@ -216,7 +204,7 @@ class StaticAssembly:
         bob_start = 3 * topology.free_node_count
         bob_position_slice = CoordinateSlice("bob_position", bob_start, bob_start + 3)
         bob_rotation_slice = CoordinateSlice("bob_rotation_body", bob_start + 3, bob_start + 6)
-        identity_schema = "YPS-HFV2-STATIC-ASSEMBLY-IDENTITY-1.0"
+        identity_schema = "YPS-NO-CONTACT-STATIC-ASSEMBLY-IDENTITY-1.1"
         binding = {
             "identity_schema": identity_schema,
             "coordinate_interpretation": {
@@ -287,7 +275,6 @@ class StaticAssembly:
                 "bob": {
                     "mass": bob.mass,
                     "displaced_volume": bob.displaced_volume,
-                    "inertia_body": bob.inertia_body.tolist(),
                     "attachment_arm_body": bob.attachment_arm_body.tolist(),
                 },
                 "environment": {
@@ -307,7 +294,7 @@ class StaticAssembly:
         ).hexdigest()
         layout = BoundStaticLayout(
             identity_schema=identity_schema,
-            layout_token=token,
+            assembly_token=token,
             node_ids=topology.node_ids,
             free_node_ids=topology.free_node_ids,
             segment_ids=tuple(segment.segment_id for segment in topology.segments),
@@ -332,13 +319,13 @@ class StaticAssembly:
         self.node_displaced_volume = _readonly(node_volume)
         self.segment_materials = tuple(segment_materials)
         self.axial_materials = tuple(axial_materials)
-        self.mass_properties = mass_properties
+        self.mass_distribution = mass_distribution
         self.layout = layout
         self._material_by_branch = MappingProxyType(material_by_branch)
 
     @staticmethod
     def _validated_node_scalars(
-        topology: HFV2Topology,
+        topology: StaticReferenceTopology,
         values: Mapping[str, float],
         name: str,
     ) -> dict[str, float]:
@@ -369,10 +356,10 @@ class StaticAssembly:
         rotation_vector = vector[self.layout.bob_rotation_slice.slice]
         if float(np.linalg.norm(rotation_vector)) >= self.rotation_chart_norm_max:
             raise ValueError("Rotation vector left the frozen static coordinate chart.")
-        return StaticCoordinates(self.layout.layout_token, vector)
+        return StaticCoordinates(self.layout.assembly_token, vector)
 
     def _validate_coordinates(self, coordinates: StaticCoordinates) -> np.ndarray:
-        if coordinates.layout_token != self.layout.layout_token:
+        if coordinates.assembly_token != self.layout.assembly_token:
             raise ValueError("StaticCoordinates belong to a different assembly layout.")
         if coordinates.values.shape != (self.layout.generalized_size,):
             raise ValueError("StaticCoordinates size differs from the bound layout.")
@@ -417,7 +404,6 @@ class StaticAssembly:
         segment_extensions = np.empty(len(self.topology.segments), dtype=float)
         segment_tensions = np.empty(len(self.topology.segments), dtype=float)
         axial_energy = 0.0
-        zero = np.zeros(3)
         for index, (segment, material) in enumerate(
             zip(self.topology.segments, self.axial_materials, strict=True)
         ):
@@ -426,8 +412,6 @@ class StaticAssembly:
             response = axial_segment_response(
                 positions[start_index],
                 positions[end_index],
-                zero,
-                zero,
                 material,
             )
             node_forces[start_index] += response.force_on_start
@@ -459,21 +443,17 @@ class StaticAssembly:
                 (material.branch_id, float(response.minimum_turn_clearance))
             )
 
-        no_drag = IsotropicDragLaw(enabled=False)
         node_potential = 0.0
         attachment_potential = 0.0
         attachment_id = next(
             node.node_id for node in self.topology.nodes if node.kind == "bob_attachment"
         )
         for node_index, node in enumerate(self.topology.nodes):
-            load = point_external_load(
+            load = point_static_load(
                 mass=float(self.node_mass[node_index]),
                 displaced_volume=float(self.node_displaced_volume[node_index]),
                 fluid_density=self.environment.fluid_density,
                 gravity=self.environment.gravity,
-                velocity=zero,
-                air_velocity=zero,
-                drag=no_drag,
                 buoyancy_enabled=self.environment.buoyancy_enabled,
             )
             external_node_forces[node_index] = load.total_force
@@ -484,14 +464,11 @@ class StaticAssembly:
             else:
                 node_potential += contribution
 
-        bob_load = point_external_load(
+        bob_load = point_static_load(
             mass=self.bob.mass,
             displaced_volume=self.bob.displaced_volume,
             fluid_density=self.environment.fluid_density,
             gravity=self.environment.gravity,
-            velocity=zero,
-            air_velocity=zero,
-            drag=no_drag,
             buoyancy_enabled=self.environment.buoyancy_enabled,
         )
         bob_potential = -float(bob_load.total_force @ bob_position)
@@ -517,7 +494,7 @@ class StaticAssembly:
             [-node_forces[self.topology.node_index(node_id)] for node_id in self.prescribed_node_ids]
         )
         components = (
-            ("unilateral_axial", float(axial_energy)),
+            ("unilateral_elastic_axial", float(axial_energy)),
             ("discrete_bending", float(bending_energy)),
             ("material_node_gravity_buoyancy", float(node_potential)),
             ("attachment_node_gravity_buoyancy", float(attachment_potential)),

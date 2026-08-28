@@ -65,7 +65,7 @@ class MaterialSegment:
 
 
 @dataclass(frozen=True)
-class HFV2Topology:
+class StaticReferenceTopology:
     """Immutable node/segment registration with an explicit free-DOF map."""
 
     nodes: tuple[MaterialNode, ...]
@@ -77,7 +77,7 @@ class HFV2Topology:
         object.__setattr__(self, "nodes", nodes)
         object.__setattr__(self, "segments", segments)
         if not nodes:
-            raise ValueError("HFV2Topology requires at least one material node.")
+            raise ValueError("StaticReferenceTopology requires at least one material node.")
         node_ids = [node.node_id for node in nodes]
         if len(node_ids) != len(set(node_ids)):
             raise ValueError("Material-node identities must be unique.")
@@ -94,7 +94,7 @@ class HFV2Topology:
                 )
             used_nodes.update((segment.start_node, segment.end_node))
         if not segments:
-            raise ValueError("HFV2Topology requires at least one material segment.")
+            raise ValueError("StaticReferenceTopology requires at least one material segment.")
         unreferenced = known - used_nodes
         if unreferenced:
             raise ValueError(
@@ -102,7 +102,9 @@ class HFV2Topology:
             )
         attachment_count = sum(node.kind == "bob_attachment" for node in nodes)
         if attachment_count != 1:
-            raise ValueError("HFV2Topology requires exactly one bob_attachment node.")
+            raise ValueError(
+                "StaticReferenceTopology requires exactly one bob_attachment node."
+            )
         for branch_id in {segment.branch_id for segment in segments}:
             branch = sorted(
                 (segment for segment in segments if segment.branch_id == branch_id),
@@ -142,10 +144,6 @@ class HFV2Topology:
         """Free nodes, bob translation and three-dimensional rotation tangent."""
 
         return 3 * self.free_node_count + 6
-
-    @property
-    def generalized_velocity_size(self) -> int:
-        return self.generalized_position_tangent_size
 
     def node_index(self, node_id: str) -> int:
         if node_id not in self.node_ids:

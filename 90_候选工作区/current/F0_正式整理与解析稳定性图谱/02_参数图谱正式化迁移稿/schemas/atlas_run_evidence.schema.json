@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/iypt5/yps-formal-pattern-atlas-run-evidence-1.0.schema.json",
+  "title": "Closed run evidence for the candidate ideal-torus pattern atlas",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "run_kind",
+    "claim_limit",
+    "source_manifest",
+    "source_manifest_sha256",
+    "source_manifest_lock",
+    "configuration_binding",
+    "execution",
+    "solver_settings",
+    "validation_thresholds",
+    "optimizer",
+    "diagnostics"
+  ],
+  "properties": {
+    "schema": {"const": "YPS-FORMAL-PATTERN-ATLAS-RUN-EVIDENCE-1.0"},
+    "run_kind": {
+      "enum": ["SMOKE_SUBSET", "FULL_16_CASE_48_PRIMARY_TRAJECTORY_MATRIX"]
+    },
+    "claim_limit": {"type": "string", "minLength": 1},
+    "source_manifest": {"$ref": "#/$defs/sourceManifest"},
+    "source_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "source_manifest_lock": {"$ref": "#/$defs/fileBinding"},
+    "configuration_binding": {"$ref": "#/$defs/fileBinding"},
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_count",
+        "amplitude_pair_count",
+        "atlas_case_count",
+        "primary_result_trajectory_count",
+        "pure_mode_trajectory_count",
+        "step_halving_trajectory_count"
+      ],
+      "properties": {
+        "target_count": {"type": "integer", "minimum": 1},
+        "amplitude_pair_count": {"type": "integer", "minimum": 1},
+        "atlas_case_count": {"type": "integer", "minimum": 1},
+        "primary_result_trajectory_count": {"type": "integer", "minimum": 3},
+        "pure_mode_trajectory_count": {"type": "integer", "minimum": 1},
+        "step_halving_trajectory_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "solver_settings": {"$ref": "#/$defs/numerics"},
+    "validation_thresholds": {"$ref": "#/$defs/thresholds"},
+    "optimizer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "all_states", "case_count", "cases"],
+      "properties": {
+        "method": {"const": "scipy.optimize.brentq"},
+        "all_states": {"const": "CONVERGED"},
+        "case_count": {"type": "integer", "minimum": 1},
+        "cases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/optimizerCase"}
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aggregate_gates",
+        "all_sampled_taut_guards_strictly_positive",
+        "all_numerical_gates_passed"
+      ],
+      "properties": {
+        "aggregate_gates": {"$ref": "#/$defs/aggregateGates"},
+        "all_sampled_taut_guards_strictly_positive": {"const": true},
+        "all_numerical_gates_passed": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "sourceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "path", "sha256"],
+      "properties": {
+        "role": {
+          "enum": [
+            "formal_theory",
+            "formal_contracts",
+            "formal_backend",
+            "production_source",
+            "configuration",
+            "schema",
+            "build_metadata"
+          ]
+        },
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "runtimeIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "python_implementation",
+        "python_version",
+        "platform_system",
+        "platform_machine",
+        "packages"
+      ],
+      "properties": {
+        "schema": {"const": "YPS-FORMAL-PATTERN-ATLAS-RUNTIME-IDENTITY-1.0"},
+        "python_implementation": {"const": "CPython"},
+        "python_version": {"type": "string", "minLength": 1},
+        "platform_system": {"type": "string", "minLength": 1},
+        "platform_machine": {"type": "string", "minLength": 1},
+        "packages": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["jsonschema", "matplotlib", "numpy", "scipy"],
+          "properties": {
+            "jsonschema": {"type": "string", "minLength": 1},
+            "matplotlib": {"type": "string", "minLength": 1},
+            "numpy": {"type": "string", "minLength": 1},
+            "scipy": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "sourceManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "atlas_identity",
+        "entries",
+        "runtime_identity",
+        "runtime_identity_sha256"
+      ],
+      "properties": {
+        "schema": {"const": "YPS-FORMAL-PATTERN-ATLAS-SOURCE-MANIFEST-1.0"},
+        "atlas_identity": {"const": "YPS-IDEAL-TORUS-PATTERN-ATLAS-DRAFT-1.1"},
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/sourceEntry"}
+        },
+        "runtime_identity": {"$ref": "#/$defs/runtimeIdentity"},
+        "runtime_identity_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "numerics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "rtol",
+        "atol_angle",
+        "atol_rate",
+        "maximum_step",
+        "step_halving_maximum_step",
+        "event_cluster_tolerance"
+      ],
+      "properties": {
+        "method": {"const": "DOP853"},
+        "rtol": {"type": "number", "exclusiveMinimum": 0},
+        "atol_angle": {"type": "number", "exclusiveMinimum": 0},
+        "atol_rate": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "event_cluster_tolerance": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pure_mode_relative_period_error_max",
+        "relative_energy_drift_max",
+        "minimum_guard_strictly_positive",
+        "step_halving_frequency_ratio_difference_max",
+        "step_halving_resonant_phase_difference_rad_max",
+        "step_halving_closure_difference_max"
+      ],
+      "properties": {
+        "pure_mode_relative_period_error_max": {"type": "number"},
+        "relative_energy_drift_max": {"type": "number"},
+        "minimum_guard_strictly_positive": {"const": 0.0},
+        "step_halving_frequency_ratio_difference_max": {"type": "number"},
+        "step_halving_resonant_phase_difference_rad_max": {"type": "number"},
+        "step_halving_closure_difference_max": {"type": "number"}
+      }
+    },
+    "aggregateGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pure_mode_period", "energy", "sampled_taut_guards", "step_halving"],
+      "properties": {
+        "pure_mode_period": {"const": true},
+        "energy": {"const": true},
+        "sampled_taut_guards": {"const": true},
+        "step_halving": {"const": true}
+      }
+    },
+    "optimizerCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "A_phi_rad",
+        "A_theta_rad",
+        "method",
+        "state",
+        "bracket_left_eta",
+        "bracket_right_eta",
+        "objective_left",
+        "objective_right",
+        "bracket_expansions",
+        "function_evaluations",
+        "xtol",
+        "rtol",
+        "root_eta",
+        "root_residual"
+      ],
+      "properties": {
+        "target": {"type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$"},
+        "A_phi_rad": {"type": "number", "exclusiveMinimum": 0},
+        "A_theta_rad": {"type": "number", "exclusiveMinimum": 0},
+        "method": {"const": "scipy.optimize.brentq"},
+        "state": {"const": "CONVERGED"},
+        "bracket_left_eta": {"type": "number"},
+        "bracket_right_eta": {"type": "number"},
+        "objective_left": {"type": "number"},
+        "objective_right": {"type": "number"},
+        "bracket_expansions": {"type": "integer", "minimum": 0},
+        "function_evaluations": {"type": "integer", "minimum": 3},
+        "xtol": {"const": 3e-10},
+        "rtol": {"const": 2e-11},
+        "root_eta": {"type": "number"},
+        "root_residual": {"type": "number"}
+      }
+    }
+  }
+}

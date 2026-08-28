@@ -4,26 +4,34 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import importlib.metadata
 import json
 import math
+import platform
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import matplotlib
-import matplotlib.pyplot as plt
+
+matplotlib.use("Agg", force=True)
+
+import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np
 from scipy.interpolate import PchipInterpolator
 
-matplotlib.use("Agg", force=True)
 matplotlib.rcParams["svg.fonttype"] = "none"
-matplotlib.rcParams["svg.hashsalt"] = "yps-p3r5-readonly-stability-map-1.0"
+matplotlib.rcParams["svg.hashsalt"] = "yps-p3r5-readonly-stability-map-1.1"
 
-OUTPUT_SCHEMA = "YPS-P3R5-READONLY-REDUCED-HESSIAN-MAP-1.0"
+OUTPUT_SCHEMA = "YPS-P3R5-READONLY-REDUCED-HESSIAN-MAP-1.1"
+OBSERVED_EVIDENCE = "OBSERVED_AT_FOUR_FROZEN_POINTS"
+INTERPOLANT_EVIDENCE = "INTERPOLANT_PROPERTY"
 FIGURE_METADATA = {
-    "Creator": "YPS-P3R5-READONLY-REDUCED-HESSIAN-MAP-1.0",
+    "Creator": OUTPUT_SCHEMA,
     "Date": None,
 }
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _sha256(path: Path) -> str:
@@ -32,6 +40,61 @@ def _sha256(path: Path) -> str:
         for block in iter(lambda: handle.read(1 << 20), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _sha256_json(value: Any) -> str:
+    serialized = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+        allow_nan=False,
+    ).encode("utf-8")
+    return hashlib.sha256(serialized).hexdigest()
+
+
+def _runtime_identity() -> dict[str, Any]:
+    identity = {
+        "schema": "YPS-P3R5-STABILITY-MAP-RUNTIME-IDENTITY-1.0",
+        "python_implementation": platform.python_implementation(),
+        "python_version": platform.python_version(),
+        "platform_system": platform.system(),
+        "platform_machine": platform.machine(),
+        "packages": {
+            name: importlib.metadata.version(name)
+            for name in ("matplotlib", "numpy", "scipy")
+        },
+    }
+    return identity
+
+
+def _analysis_source_manifest(config_path: Path) -> dict[str, Any]:
+    entries = [
+        ("configuration", config_path),
+        ("build_metadata", PROJECT_ROOT / "pyproject.toml"),
+        ("production_source", PROJECT_ROOT / "src/p3r5_stability_map/__init__.py"),
+        ("production_source", PROJECT_ROOT / "src/p3r5_stability_map/__main__.py"),
+        ("production_source", PROJECT_ROOT / "src/p3r5_stability_map/map.py"),
+    ]
+    rows = []
+    for role, path in entries:
+        resolved = path.resolve()
+        try:
+            relative_path = resolved.relative_to(PROJECT_ROOT).as_posix()
+        except ValueError:
+            relative_path = resolved.as_posix()
+        rows.append(
+            {
+                "role": role,
+                "path": relative_path,
+                "sha256": _sha256(resolved),
+            }
+        )
+    rows.sort(key=lambda row: (row["path"], row["role"]))
+    return {
+        "schema": "YPS-P3R5-STABILITY-MAP-ANALYSIS-SOURCE-MANIFEST-1.0",
+        "entries": rows,
+    }
 
 
 @dataclass(frozen=True)
@@ -150,70 +213,119 @@ def _pchip_coefficients(interpolator: PchipInterpolator) -> list[dict[str, Any]]
     return rows
 
 
+def _descriptor_interpolators(
+    modes: tuple[ObservedMode, ...],
+) -> tuple[np.ndarray, dict[str, PchipInterpolator]]:
+    scale = np.asarray([mode.geometry_scale for mode in modes], dtype=float)
+    return scale, {
+        "lambda_negative": PchipInterpolator(
+            scale,
+            [mode.lambda_negative for mode in modes],
+            extrapolate=False,
+        ),
+        "lambda_rotation_y": PchipInterpolator(
+            scale,
+            [mode.lambda_rotation_y for mode in modes],
+            extrapolate=False,
+        ),
+        "lambda_stiff": PchipInterpolator(
+            scale,
+            [mode.lambda_stiff for mode in modes],
+            extrapolate=False,
+        ),
+        "mode_angle_rad": PchipInterpolator(
+            scale,
+            [mode.mode_angle_rad for mode in modes],
+            extrapolate=False,
+        ),
+    }
+
+
+def _evaluate_descriptor(
+    scale: np.ndarray,
+    interpolators: dict[str, PchipInterpolator],
+    geometry_scale: float,
+) -> dict[str, Any]:
+    value = float(geometry_scale)
+    if not np.isfinite(value):
+        raise ValueError("geometry_scale must be finite.")
+    if value < float(scale[0]) or value > float(scale[-1]):
+        raise ValueError(
+            "NO_EXTRAPOLATION: geometry_scale lies outside the observed convex hull."
+        )
+    alpha = float(interpolators["mode_angle_rad"](value))
+    a = math.cos(alpha)
+    b = math.sin(alpha)
+    lambda_negative = float(interpolators["lambda_negative"](value))
+    lambda_rotation_y = float(interpolators["lambda_rotation_y"](value))
+    lambda_stiff = float(interpolators["lambda_stiff"](value))
+    rotation = np.array([[a, -b], [b, a]])
+    block = rotation @ np.diag([lambda_negative, lambda_stiff]) @ rotation.T
+    reduced = np.array(
+        [
+            [block[0, 0], block[0, 1], 0.0],
+            [block[1, 0], block[1, 1], 0.0],
+            [0.0, 0.0, lambda_rotation_y],
+        ]
+    )
+    return {
+        "evidence_class": INTERPOLANT_EVIDENCE,
+        "geometry_scale": value,
+        "lambda_negative": lambda_negative,
+        "lambda_rotation_y": lambda_rotation_y,
+        "lambda_stiff": lambda_stiff,
+        "negative_y_normalized": a,
+        "negative_rotation_x": b,
+        "mode_angle_deg": math.degrees(alpha),
+        "H_reduced_coordinate_order": [
+            "delta_y_over_length_scale",
+            "delta_rotation_x_rad",
+            "delta_rotation_y_rad",
+        ],
+        "H_reduced_descriptor": reduced.tolist(),
+        "interpolant_spectral_signature": "(-,+,+)",
+    }
+
+
+def evaluate_descriptor_at_scale(
+    modes: tuple[ObservedMode, ...], geometry_scale: float
+) -> dict[str, Any]:
+    """Evaluate the descriptive interpolant only inside the observed convex hull."""
+
+    scale, interpolators = _descriptor_interpolators(modes)
+    return _evaluate_descriptor(scale, interpolators, geometry_scale)
+
+
 def _parameterize(
     modes: tuple[ObservedMode, ...], grid_points: int
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    scale = np.asarray([mode.geometry_scale for mode in modes], dtype=float)
-    negative = PchipInterpolator(scale, [mode.lambda_negative for mode in modes], extrapolate=False)
-    rotation_y = PchipInterpolator(
-        scale, [mode.lambda_rotation_y for mode in modes], extrapolate=False
-    )
-    stiff = PchipInterpolator(scale, [mode.lambda_stiff for mode in modes], extrapolate=False)
-    angle = PchipInterpolator(scale, [mode.mode_angle_rad for mode in modes], extrapolate=False)
+    scale, interpolators = _descriptor_interpolators(modes)
     grid = np.linspace(scale[0], scale[-1], grid_points)
-    rows: list[dict[str, Any]] = []
-    for value in grid:
-        alpha = float(angle(value))
-        a = math.cos(alpha)
-        b = math.sin(alpha)
-        lambda_negative = float(negative(value))
-        lambda_rotation_y = float(rotation_y(value))
-        lambda_stiff = float(stiff(value))
-        rotation = np.array([[a, -b], [b, a]])
-        block = rotation @ np.diag([lambda_negative, lambda_stiff]) @ rotation.T
-        reduced = np.array(
-            [
-                [block[0, 0], block[0, 1], 0.0],
-                [block[1, 0], block[1, 1], 0.0],
-                [0.0, 0.0, lambda_rotation_y],
-            ]
-        )
-        rows.append(
-            {
-                "geometry_scale": float(value),
-                "lambda_negative": lambda_negative,
-                "lambda_rotation_y": lambda_rotation_y,
-                "lambda_stiff": lambda_stiff,
-                "negative_y_normalized": a,
-                "negative_rotation_x": b,
-                "mode_angle_deg": math.degrees(alpha),
-                "H_reduced_coordinate_order": [
-                    "delta_y_over_length_scale",
-                    "delta_rotation_x_rad",
-                    "delta_rotation_y_rad",
-                ],
-                "H_reduced": reduced.tolist(),
-                "spectral_signature": "(-,+,+)",
-            }
-        )
+    rows = [_evaluate_descriptor(scale, interpolators, float(value)) for value in grid]
     parameterization = {
+        "evidence_class": INTERPOLANT_EVIDENCE,
         "domain": [float(scale[0]), float(scale[-1])],
         "extrapolation_allowed": False,
         "interpolator": "shape_preserving_piecewise_cubic_PCHIP",
+        "interpretation": (
+            "descriptive visualization of four frozen observations only; values between "
+            "observations are not evaluated model results or continuous proof"
+        ),
         "coordinate_definition": (
             "dimensionless delta_y/length_scale, rotation_x_rad, rotation_y_rad"
         ),
-        "local_quadratic_potential": ("Delta_Pi = 0.5 * xi^T H_reduced(scale) xi + O(norm(xi)^3)"),
+        "descriptor_matrix_definition": (
+            "H_reduced_descriptor is reconstructed from independently interpolated "
+            "eigenvalues and mode angle"
+        ),
         "coefficients": {
-            "lambda_negative": _pchip_coefficients(negative),
-            "lambda_rotation_y": _pchip_coefficients(rotation_y),
-            "lambda_stiff": _pchip_coefficients(stiff),
-            "mode_angle_rad": _pchip_coefficients(angle),
+            name: _pchip_coefficients(interpolator)
+            for name, interpolator in interpolators.items()
         },
         "zero_crossing_status": (
-            "NO_ZERO_CROSSING_OBSERVED_IN_FROZEN_DEVELOPMENT_INTERVAL"
+            "INTERPOLANT_HAS_NO_ZERO_CROSSING_ON_OBSERVED_CONVEX_HULL"
             if all(row["lambda_negative"] < 0.0 for row in rows)
-            else "ZERO_CROSSING_PRESENT_IN_INTERPOLATED_DEVELOPMENT_INTERVAL"
+            else "INTERPOLANT_HAS_ZERO_CROSSING_ON_OBSERVED_CONVEX_HULL"
         ),
     }
     return rows, parameterization
@@ -222,6 +334,7 @@ def _parameterize(
 def _observed_rows(modes: tuple[ObservedMode, ...]) -> list[dict[str, Any]]:
     return [
         {
+            "evidence_class": OBSERVED_EVIDENCE,
             "holdout_id": mode.holdout_id,
             "geometry_scale": mode.geometry_scale,
             "length_scale_m": mode.length_scale_m,
@@ -256,45 +369,81 @@ def _plot(
 ) -> None:
     figure, axes = plt.subplots(2, 1, figsize=(8.0, 8.2), sharex=True)
     scale = [row["geometry_scale"] for row in grid]
-    axes[0].plot(scale, [row["lambda_negative"] for row in grid], label="lambda negative")
+    observed_scale = [row["geometry_scale"] for row in observed]
+    axes[0].plot(
+        scale,
+        [row["lambda_negative"] for row in grid],
+        label="descriptive PCHIP: lambda negative",
+    )
     axes[0].plot(
         scale,
         [row["lambda_rotation_y"] for row in grid],
-        label="lambda rotation-y",
+        label="descriptive PCHIP: lambda rotation-y",
     )
-    axes[0].plot(scale, [row["lambda_stiff"] for row in grid], label="lambda stiff")
+    axes[0].plot(
+        scale,
+        [row["lambda_stiff"] for row in grid],
+        label="descriptive PCHIP: lambda stiff",
+    )
     axes[0].scatter(
-        [row["geometry_scale"] for row in observed],
+        observed_scale,
         [row["lambda_negative"] for row in observed],
         color="black",
         marker="x",
         zorder=4,
-        label="frozen scale cards",
+        label="four observed negative values",
+    )
+    axes[0].scatter(
+        observed_scale,
+        [row["lambda_rotation_y"] for row in observed],
+        color="tab:orange",
+        marker="o",
+        facecolors="none",
+        zorder=4,
+        label="four observed rotation-y values",
+    )
+    axes[0].scatter(
+        observed_scale,
+        [row["lambda_stiff"] for row in observed],
+        color="tab:green",
+        marker="s",
+        facecolors="none",
+        zorder=4,
+        label="four observed stiff values",
     )
     axes[0].axhline(0.0, color="black", linewidth=0.8)
     axes[0].set_yscale("symlog", linthresh=0.1)
     axes[0].set_ylabel("normalized reduced-Hessian eigenvalue")
     axes[0].grid(alpha=0.25)
     axes[0].legend(ncol=2)
+    axes[0].text(
+        0.02,
+        0.97,
+        "Observed: four frozen points\nCurves: descriptive PCHIP only\nNo extrapolation",
+        transform=axes[0].transAxes,
+        fontsize=9,
+        verticalalignment="top",
+        bbox={"facecolor": "white", "alpha": 0.85, "edgecolor": "0.7"},
+    )
 
     axes[1].plot(
         scale,
         [abs(row["negative_y_normalized"]) for row in grid],
-        label="abs(delta y / L)",
+        label="descriptive PCHIP: abs(delta y / L)",
     )
     axes[1].plot(
         scale,
         [abs(row["negative_rotation_x"]) for row in grid],
-        label="abs(delta rotation x)",
+        label="descriptive PCHIP: abs(delta rotation x)",
     )
     axes[1].scatter(
-        [row["geometry_scale"] for row in observed],
+        observed_scale,
         [abs(row["negative_y_normalized"]) for row in observed],
         color="tab:blue",
         marker="x",
     )
     axes[1].scatter(
-        [row["geometry_scale"] for row in observed],
+        observed_scale,
         [abs(row["negative_rotation_x"]) for row in observed],
         color="tab:orange",
         marker="x",
@@ -303,9 +452,10 @@ def _plot(
     axes[1].set_ylabel("negative-mode normalized component")
     axes[1].grid(alpha=0.25)
     axes[1].legend()
+    axes[1].set_xlim(min(observed_scale), max(observed_scale))
     figure.suptitle(
-        "Frozen P3R5 scale-card reduced spectrum\n"
-        "candidate fixed-double-active branch; not device stability"
+        "Four frozen P3R5 observations with a descriptive interpolant\n"
+        "interpolant properties are not unobserved model evidence"
     )
     figure.tight_layout(rect=(0.0, 0.0, 1.0, 0.95))
     figure.savefig(output_base.with_suffix(".svg"), metadata=FIGURE_METADATA)
@@ -317,16 +467,18 @@ def build_stability_map(
     config_path: Path, repository_root: Path, output_directory: Path
 ) -> dict[str, Any]:
     config = json.loads(config_path.read_text(encoding="utf-8"))
-    if config.get("schema") != "YPS-P3R5-READONLY-STABILITY-MAP-CONFIG-1.0":
+    if config.get("schema") != "YPS-P3R5-READONLY-STABILITY-MAP-CONFIG-1.1":
         raise ValueError("Unexpected stability-map configuration schema.")
     cards = _load_bound_json(repository_root, config["source_cards"])
     metrics = _load_bound_json(repository_root, config["source_metrics"])
     modes = _extract_modes(config, cards, metrics)
     grid, parameterization = _parameterize(modes, int(config["parameterization"]["grid_points"]))
     observed = _observed_rows(modes)
+    runtime_identity = _runtime_identity()
+    source_manifest = _analysis_source_manifest(config_path)
     payload = {
         "schema": OUTPUT_SCHEMA,
-        "analysis_identity": "P3R5_FROZEN_SCALE_DEVELOPMENT_SET_READONLY_MAP",
+        "analysis_identity": "P3R5_FOUR_FROZEN_POINTS_READONLY_DESCRIPTIVE_MAP",
         "qualification_run": False,
         "new_contact_cards_generated": 0,
         "contact_solver_runs": 0,
@@ -335,21 +487,44 @@ def build_stability_map(
             "metrics": config["source_metrics"],
             "expected_holdout_ids": config["expected_holdout_ids"],
         },
+        "analysis_source_manifest": source_manifest,
+        "analysis_source_manifest_sha256": _sha256_json(source_manifest),
+        "runtime_identity": runtime_identity,
+        "runtime_identity_sha256": _sha256_json(runtime_identity),
         "coordinate_order": config["coordinate_order"],
         "interpretation_limit": config["interpretation_limit"],
+        "evidence_layers": {
+            "observed": {
+                "evidence_class": OBSERVED_EVIDENCE,
+                "point_count": len(observed),
+                "geometry_scales": [row["geometry_scale"] for row in observed],
+                "interpretation": "directly extracted from four hash-bound frozen cards",
+            },
+            "interpolant": {
+                "evidence_class": INTERPOLANT_EVIDENCE,
+                "domain": parameterization["domain"],
+                "extrapolation_allowed": False,
+                "interpretation": (
+                    "descriptive PCHIP visualization only; not evaluated model evidence "
+                    "between observations"
+                ),
+            },
+        },
         "direction_interpretation": (
-            "The negative eigenvector is confined, in the normalized coordinate chart, "
-            "to lateral bob translation y plus roll about x. The orthogonal y-roll "
-            "combination and rotation about y remain positive on all four frozen cards."
+            "At each of the four frozen observations, the negative eigenvector is confined, "
+            "in the normalized coordinate chart, to lateral bob translation y plus roll "
+            "about x. The orthogonal y-roll combination and rotation about y are positive "
+            "at those same four points."
         ),
         "observed_modes": observed,
         "parameterization": parameterization,
-        "interpolated_map": grid,
+        "descriptive_interpolant": grid,
         "conclusion": (
-            "The frozen P3R5 fixed-double-active candidate reference has spectral "
-            "signature (-,+,+) over the observed scale interval under the bounded "
-            "PCHIP descriptor. No zero crossing is observed inside that interval; "
-            "nothing is inferred outside it or about the physical device."
+            "All four frozen observations have spectral signature (-,+,+). Separately, "
+            "the chosen bounded PCHIP descriptor retains that signature and has no zero "
+            "crossing on the observed convex hull. This is an interpolant property, not "
+            "evidence at unobserved scales, a continuous proof, a bifurcation inference, "
+            "a device prediction or an experimental conclusion."
         ),
     }
     output_directory.mkdir(parents=True, exist_ok=True)
@@ -369,7 +544,8 @@ def build_stability_map(
                 "negative_y_normalized",
                 "negative_rotation_x",
                 "mode_angle_deg",
-                "spectral_signature",
+                "evidence_class",
+                "interpolant_spectral_signature",
             )
         }
         for row in grid
@@ -388,6 +564,12 @@ def build_stability_map(
     manifest = {
         "schema": "YPS-P3R5-STABILITY-MAP-ARTIFACT-MANIFEST-1.0",
         "deterministic": True,
+        "determinism_scope": (
+            "BYTE_IDENTICAL_WITHIN_RECORDED_ANALYSIS_SOURCE_CONFIG_AND_RUNTIME"
+        ),
+        "analysis_source_manifest_sha256": _sha256_json(source_manifest),
+        "runtime_identity": runtime_identity,
+        "runtime_identity_sha256": _sha256_json(runtime_identity),
         "artifacts": [
             {
                 "path": path.name,

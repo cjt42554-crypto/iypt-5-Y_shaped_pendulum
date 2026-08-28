@@ -1,4 +1,4 @@
-"""Immutable contracts for the gated HF-v2 no-contact static phase."""
+"""Immutable contracts for the candidate no-contact static reference."""
 
 from __future__ import annotations
 
@@ -71,36 +71,26 @@ class StaticEnvironment:
             "fluid_density",
             _nonnegative_finite(self.fluid_density, "fluid_density"),
         )
-        object.__setattr__(self, "buoyancy_enabled", bool(self.buoyancy_enabled))
+        if type(self.buoyancy_enabled) is not bool:
+            raise ValueError("buoyancy_enabled must be a boolean without conversion.")
 
 
 @dataclass(frozen=True)
 class RigidBobProperties:
     mass: float
     displaced_volume: float
-    inertia_body: np.ndarray
     attachment_arm_body: np.ndarray
 
     def __post_init__(self) -> None:
         mass = float(self.mass)
         if not np.isfinite(mass) or mass <= 0.0:
             raise ValueError("Bob mass must be finite and strictly positive.")
-        inertia = _frozen_array(self.inertia_body, (3, 3), "inertia_body")
-        if not np.allclose(inertia, inertia.T, rtol=0.0, atol=1.0e-14):
-            raise ValueError("inertia_body must be symmetric.")
-        moments = np.linalg.eigvalsh(inertia)
-        if float(np.min(moments)) <= 0.0:
-            raise ValueError("inertia_body must be positive definite.")
-        tolerance = 64.0 * np.finfo(float).eps * float(np.max(moments))
-        if moments[2] > moments[0] + moments[1] + tolerance:
-            raise ValueError("inertia_body violates the rigid-body triangle inequality.")
         object.__setattr__(self, "mass", mass)
         object.__setattr__(
             self,
             "displaced_volume",
             _nonnegative_finite(self.displaced_volume, "displaced_volume"),
         )
-        object.__setattr__(self, "inertia_body", inertia)
         object.__setattr__(
             self,
             "attachment_arm_body",
@@ -147,19 +137,14 @@ class StaticSeed:
 
 @dataclass(frozen=True)
 class StaticCoordinates:
-    """Opaque coordinate vector carrying its complete physical-assembly token.
+    """Opaque coordinate vector carrying its complete static-assembly token."""
 
-    ``layout_token`` is retained as a compatibility field name.  Since G2R it
-    identifies both the coordinate interpretation and the complete bound static
-    physical assembly; coordinates are not implicitly reusable across assemblies.
-    """
-
-    layout_token: str
+    assembly_token: str
     values: np.ndarray
 
     def __post_init__(self) -> None:
-        if not self.layout_token:
-            raise ValueError("layout_token must be non-empty.")
+        if not self.assembly_token:
+            raise ValueError("assembly_token must be non-empty.")
         values = np.array(self.values, dtype=float, copy=True)
         if values.ndim != 1 or not np.all(np.isfinite(values)):
             raise ValueError("StaticCoordinates values must be a finite vector.")

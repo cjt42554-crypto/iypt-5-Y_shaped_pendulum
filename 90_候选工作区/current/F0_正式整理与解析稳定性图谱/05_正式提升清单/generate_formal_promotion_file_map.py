@@ -67,6 +67,8 @@ def build(repository_root: Path) -> dict[str, object]:
     for name in (
         "01_正式理论证据勘误/03-结构性理论_证据等级勘误.patch",
         "01_正式理论证据勘误/ERRATUM_README.md",
+        "01_正式理论证据勘误/theory_patch_verification.json",
+        "01_正式理论证据勘误/verify_theory_erratum.py",
     ):
         rows.append(
             _row(
@@ -113,6 +115,17 @@ def build(repository_root: Path) -> dict[str, object]:
                 rationale="Generated reproducibility artifact; regenerate in CI before promotion.",
             )
         )
+    rows.append(
+        _row(
+            root,
+            atlas / "outputs/full_repeat_verification.json",
+            decision="KEEP_CANDIDATE_NUMERICAL_EVIDENCE",
+            formal_target=None,
+            rationale=(
+                "Machine evidence for three byte-identical full 16-case/48-trajectory runs."
+            ),
+        )
+    )
 
     static = f0 / "03_无接触静态参考迁移稿"
     static_target = Path("02_模拟程序/04_离散杆刚体无接触静态参考模型")
@@ -193,7 +206,8 @@ def build(repository_root: Path) -> dict[str, object]:
     rows.sort(key=lambda row: str(row["candidate"]))
     return {
         "schema": "YPS-F0-FORMAL-PROMOTION-FILE-MAP-1.0",
-        "phase": "F0_FORMAL_CONSOLIDATION_AND_ANALYTIC_STABILITY_MAP",
+        "phase": "F0R_FORMAL_PROMOTION_BLOCKER_CORRECTIONS",
+        "parent_phase": "F0_FORMAL_CONSOLIDATION_AND_ANALYTIC_STABILITY_MAP",
         "formal_directories_modified": False,
         "formal_write_authorized": False,
         "required_review_before_any_formal_write": True,

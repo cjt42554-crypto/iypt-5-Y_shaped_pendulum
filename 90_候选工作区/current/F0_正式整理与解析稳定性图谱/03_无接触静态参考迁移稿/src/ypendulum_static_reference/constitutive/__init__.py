@@ -1,4 +1,4 @@
-"""Local constitutive laws for the HF-v2 candidate."""
+"""Conservative local constitutive laws for the static reference package."""
 
 from .axial import AxialMaterial, AxialResponse, axial_segment_response
 from .bending import (

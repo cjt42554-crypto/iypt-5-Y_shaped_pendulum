@@ -1,14 +1,14 @@
-"""Closed identity and capability boundary for the migration draft."""
+"""Closed identity and capability boundary for the static migration draft."""
 
-MODEL_ID = "YPS-DISCRETE-ROD-RIGID-BOB-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.0"
-CAPABILITY = "conservative_no_contact_static_reference_only"
-CLAIM_CEILING = "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED"
-QUALIFICATION_STATUS = "NOT_CARRIED_BY_MIGRATION"
+MODEL_ID = "YPS-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.1"
+CAPABILITY = "position_orientation_conservative_no_contact_static_reference_only"
+CLAIM_CEILING = "CANDIDATE_STATIC_IMPLEMENTATION_AND_RUNTIME_EVIDENCE_ONLY"
+QUALIFICATION_STATUS = "NO_FORMAL_NUMERICAL_QUALIFICATION_CARRIED"
 
 EXPLICIT_EXCLUSIONS = (
     "contact",
     "friction",
-    "P3_to_P3R5_packages",
+    "qualification_packages_P3_through_P3R5",
     "dynamics",
     "dynamic_contact",
     "RC1_replacement",

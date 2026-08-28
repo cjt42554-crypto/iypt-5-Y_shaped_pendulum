@@ -1,28 +1,32 @@
 {
-  "schema": "YPS-NO-CONTACT-STATIC-REFERENCE-MODEL-IDENTITY-1.0",
-  "model_id": "YPS-DISCRETE-ROD-RIGID-BOB-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.0",
+  "schema": "YPS-NO-CONTACT-STATIC-REFERENCE-MODEL-IDENTITY-1.1",
+  "model_id": "YPS-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.1",
   "status": "CANDIDATE_MIGRATION_DRAFT_NOT_FORMALLY_PROMOTED",
-  "capability": "conservative_no_contact_static_reference_only",
+  "capability": "position_orientation_conservative_no_contact_static_reference_only",
   "equation_identity": {
+    "state": "free-node positions, bob position and bob orientation only",
     "centerline": "material-coordinate discrete rod branches",
-    "axial": "unilateral projected Kelvin-Voigt local material evaluated at zero velocity in static assembly",
+    "axial": "conservative unilateral elastic segment potential",
     "bending": "discrete curvature-binormal energy with analytic negative gradient and antiparallel barrier",
-    "rigid_body": "SO(3) orientation with eccentric attachment arm",
+    "rigid_geometry": "SO(3) orientation with eccentric attachment arm",
+    "external_loads": "separate conservative gravity and buoyancy forces",
     "static_problem": "unconstrained total-potential stationarity without contact",
     "solver": "deterministic SciPy BFGS with analytic generalized force"
   },
-  "claim_ceiling": "G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED",
+  "claim_ceiling": "CANDIDATE_STATIC_IMPLEMENTATION_AND_RUNTIME_EVIDENCE_ONLY",
+  "qualification_status": "NO_FORMAL_NUMERICAL_QUALIFICATION_CARRIED",
   "qualification_carried_by_migration": false,
+  "historical_source_result": "A prior source package recorded a conditional no-contact static algorithm result; this migration neither imports nor reasserts that qualification.",
   "explicit_exclusions": [
     "contact",
     "friction",
-    "P3_to_P3R5_packages",
+    "qualification packages P3 through P3R5",
     "dynamics",
-    "dynamic_contact",
-    "RC1_replacement",
-    "continuous_cable_replacement",
-    "complete_simulator",
-    "device_level_physics",
-    "experimental_validation"
+    "dynamic contact",
+    "RC1 replacement",
+    "continuous cable replacement",
+    "complete simulator",
+    "device-level physics",
+    "experimental validation"
   ]
 }

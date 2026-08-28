@@ -23,7 +23,7 @@ class StaticSolverSettings:
 
     def __post_init__(self) -> None:
         if self.method != "BFGS":
-            raise ValueError("P2 freezes BFGS as the only static solver.")
+            raise ValueError("The static reference freezes BFGS as its only solver.")
         values = np.asarray(
             [
                 self.gradient_infinity_tolerance,
@@ -40,9 +40,9 @@ class StaticSolverSettings:
         if not 0.0 < self.armijo_c1 < self.curvature_c2 < 1.0:
             raise ValueError("BFGS line-search constants must satisfy 0 < c1 < c2 < 1.")
         if self.armijo_c1 != 1.0e-4 or self.curvature_c2 != 0.9:
-            raise ValueError("P2 freezes the SciPy BFGS default c1=1e-4 and c2=0.9.")
-        if self.maximum_iterations <= 0:
-            raise ValueError("maximum_iterations must be positive.")
+            raise ValueError("The static reference freezes BFGS c1=1e-4 and c2=0.9.")
+        if type(self.maximum_iterations) is not int or self.maximum_iterations <= 0:
+            raise ValueError("maximum_iterations must be a positive integer.")
 
 
 @dataclass(frozen=True)

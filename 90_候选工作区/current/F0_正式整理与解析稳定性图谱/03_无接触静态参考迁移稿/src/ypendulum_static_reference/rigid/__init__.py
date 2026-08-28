@@ -1,39 +1,33 @@
-"""Finite rigid-bob rotation and attachment mechanics."""
+"""Static rigid-bob orientation and eccentric attachment geometry."""
 
 from .attachment import (
+    AttachmentGeometry,
     AttachmentInteraction,
-    AttachmentKinematics,
     RigidWrench,
     attachment_action_reaction,
-    attachment_kinematics,
+    attachment_geometry,
     map_attachment_force_to_body,
 )
 from .rotation import (
     RotationMetrics,
-    advance_rotation_body,
-    advance_rotation_world,
-    body_to_world_angular_velocity,
     compose_rotation,
     exp_so3,
     hat,
     rotation_metrics,
-    world_to_body_angular_velocity,
+    validate_rotation,
 )
 
 __all__ = [
+    "AttachmentGeometry",
     "AttachmentInteraction",
-    "AttachmentKinematics",
     "RigidWrench",
     "RotationMetrics",
-    "advance_rotation_body",
-    "advance_rotation_world",
     "attachment_action_reaction",
-    "attachment_kinematics",
-    "body_to_world_angular_velocity",
+    "attachment_geometry",
     "compose_rotation",
     "exp_so3",
     "hat",
     "map_attachment_force_to_body",
     "rotation_metrics",
-    "world_to_body_angular_velocity",
+    "validate_rotation",
 ]

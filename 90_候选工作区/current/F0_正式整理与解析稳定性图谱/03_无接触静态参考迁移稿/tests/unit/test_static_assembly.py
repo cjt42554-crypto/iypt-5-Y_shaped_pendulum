@@ -10,10 +10,10 @@ import numpy as np
 import pytest
 from scipy.optimize import OptimizeWarning
 
-from ypendulum_static_reference.audit.g2_cases import build_vertical_case, build_y_anchor_case
+from tests.fixtures.static_cases import build_vertical_case, build_y_anchor_case
 from ypendulum_static_reference.audit.statics import energy_force_samples, force_scale
 from ypendulum_static_reference.rigid.rotation import exp_so3
-from ypendulum_static_reference.state import HFV2State
+from ypendulum_static_reference.state import StaticReferenceState
 from ypendulum_static_reference.statics import solver as static_solver
 from ypendulum_static_reference.statics.assembly import StaticAssembly
 from ypendulum_static_reference.statics.contracts import (
@@ -21,11 +21,13 @@ from ypendulum_static_reference.statics.contracts import (
     StaticCoordinates,
     StaticSeed,
 )
-from ypendulum_static_reference.topology import HFV2Topology, MaterialNode
+from ypendulum_static_reference.topology import MaterialNode, StaticReferenceTopology
 
 CANDIDATE_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = json.loads(
-    (CANDIDATE_ROOT / "contracts" / "g2_acceptance_manifest.json").read_text(encoding="utf-8")
+    (CANDIDATE_ROOT / "tests/fixtures/historical/g2_acceptance_manifest.json").read_text(
+        encoding="utf-8"
+    )
 )
 
 
@@ -57,8 +59,8 @@ def _assert_foreign_coordinates_fail_closed(
     seed: StaticSeed,
 ) -> None:
     coordinates = source.coordinates_from_seed(seed)
-    assert source.layout.identity_schema == "YPS-HFV2-STATIC-ASSEMBLY-IDENTITY-1.0"
-    assert variant.layout.layout_token != source.layout.layout_token
+    assert source.layout.identity_schema == "YPS-NO-CONTACT-STATIC-ASSEMBLY-IDENTITY-1.1"
+    assert variant.layout.assembly_token != source.layout.assembly_token
     with pytest.raises(ValueError, match="different assembly"):
         variant.evaluate(coordinates)
 
@@ -96,15 +98,14 @@ def test_complete_assembly_identity_rejects_real_physical_variants() -> None:
         )
         for node in base.topology.nodes
     )
-    swapped_topology = HFV2Topology(nodes=swapped_nodes, segments=base.topology.segments)
-    swapped_state = HFV2State(
+    swapped_topology = StaticReferenceTopology(
+        nodes=swapped_nodes, segments=base.topology.segments
+    )
+    swapped_state = StaticReferenceState(
         free_node_ids=base.reference_state.free_node_ids,
         free_node_positions=base.reference_state.free_node_positions,
-        free_node_velocities=base.reference_state.free_node_velocities,
         bob_position=base.reference_state.bob_position,
-        bob_velocity=base.reference_state.bob_velocity,
         bob_rotation=base.reference_state.bob_rotation,
-        bob_angular_velocity_body=base.reference_state.bob_angular_velocity_body,
     )
     swapped = StaticAssembly(
         topology=swapped_topology,

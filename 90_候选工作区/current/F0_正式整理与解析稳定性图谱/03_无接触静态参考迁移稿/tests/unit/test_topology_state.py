@@ -3,11 +3,15 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from ypendulum_static_reference.state import HFV2State
-from ypendulum_static_reference.topology import HFV2Topology, MaterialNode, MaterialSegment
+from ypendulum_static_reference.state import StaticReferenceState
+from ypendulum_static_reference.topology import (
+    MaterialNode,
+    MaterialSegment,
+    StaticReferenceTopology,
+)
 
 
-def _topology() -> HFV2Topology:
+def _topology() -> StaticReferenceTopology:
     nodes = (
         MaterialNode("support_A", "prescribed"),
         MaterialNode("upper_A_mid", "free"),
@@ -25,7 +29,7 @@ def _topology() -> HFV2Topology:
         MaterialSegment("l0", "lower", "junction", "lower_mid", 0.0, 0.4),
         MaterialSegment("l1", "lower", "lower_mid", "bob_attachment", 0.4, 0.8),
     )
-    return HFV2Topology(nodes=nodes, segments=segments)
+    return StaticReferenceTopology(nodes=nodes, segments=segments)
 
 
 def test_shared_junction_is_explicit_and_dof_map_is_contiguous() -> None:
@@ -58,12 +62,12 @@ def test_incidence_matrix_closes_each_oriented_segment() -> None:
 
 def test_topology_rejects_implicit_or_invalid_registration() -> None:
     with pytest.raises(ValueError, match="unique"):
-        HFV2Topology(
+        StaticReferenceTopology(
             nodes=(MaterialNode("same", "free"), MaterialNode("same", "prescribed")),
             segments=(),
         )
     with pytest.raises(ValueError, match="unknown"):
-        HFV2Topology(
+        StaticReferenceTopology(
             nodes=(MaterialNode("known", "free"),),
             segments=(MaterialSegment("s", "branch", "known", "missing", 0.0, 1.0),),
         )
@@ -77,7 +81,7 @@ def test_topology_rejects_disconnected_material_chain() -> None:
         MaterialNode("bob", "bob_attachment"),
     )
     with pytest.raises(ValueError, match="connected oriented material chain"):
-        HFV2Topology(
+        StaticReferenceTopology(
             nodes=nodes,
             segments=(
                 MaterialSegment("s0", "branch", "support", "first", 0.0, 0.5),
@@ -88,40 +92,30 @@ def test_topology_rejects_disconnected_material_chain() -> None:
 
 def test_state_validates_topology_and_immutable_so3_contract() -> None:
     topology = _topology()
-    state = HFV2State(
+    state = StaticReferenceState(
         free_node_ids=topology.free_node_ids,
         free_node_positions=np.zeros((4, 3)),
-        free_node_velocities=np.zeros((4, 3)),
         bob_position=np.array([0.0, 0.0, -1.0]),
-        bob_velocity=np.zeros(3),
         bob_rotation=np.eye(3),
-        bob_angular_velocity_body=np.array([0.1, -0.2, 0.3]),
     )
     state.validate_topology(topology)
-    np.testing.assert_allclose(state.bob_angular_velocity_world, state.bob_angular_velocity_body)
     with pytest.raises(ValueError, match="read-only"):
         state.bob_position[0] = 1.0
     with pytest.raises(ValueError, match=r"SO\(3\)"):
-        HFV2State(
+        StaticReferenceState(
             free_node_ids=topology.free_node_ids,
             free_node_positions=np.zeros((4, 3)),
-            free_node_velocities=np.zeros((4, 3)),
             bob_position=np.zeros(3),
-            bob_velocity=np.zeros(3),
             bob_rotation=np.diag([1.0, 1.0, -1.0]),
-            bob_angular_velocity_body=np.zeros(3),
         )
 
 
 def test_state_count_mismatch_fails_closed() -> None:
-    state = HFV2State(
+    state = StaticReferenceState(
         free_node_ids=("only",),
         free_node_positions=np.zeros((1, 3)),
-        free_node_velocities=np.zeros((1, 3)),
         bob_position=np.zeros(3),
-        bob_velocity=np.zeros(3),
         bob_rotation=np.eye(3),
-        bob_angular_velocity_body=np.zeros(3),
     )
     with pytest.raises(ValueError, match="does not exactly match"):
         state.validate_topology(_topology())
@@ -160,14 +154,11 @@ def test_branch_span_and_subdivision_preserve_length_mass_and_equivalent_stiffne
 
 def test_equal_count_but_permuted_state_layout_fails_closed() -> None:
     topology = _topology()
-    state = HFV2State(
+    state = StaticReferenceState(
         free_node_ids=("junction", "upper_A_mid", "upper_B_mid", "lower_mid"),
         free_node_positions=np.zeros((4, 3)),
-        free_node_velocities=np.zeros((4, 3)),
         bob_position=np.zeros(3),
-        bob_velocity=np.zeros(3),
         bob_rotation=np.eye(3),
-        bob_angular_velocity_body=np.zeros(3),
     )
     with pytest.raises(ValueError, match="layout"):
         state.validate_topology(topology)

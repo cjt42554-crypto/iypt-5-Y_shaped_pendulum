@@ -1,5 +1,5 @@
 {
-  "schema": "YPS-FORMAL-PATTERN-ATLAS-CONFIG-1.0",
+  "schema": "YPS-FORMAL-PATTERN-ATLAS-CONFIG-1.1",
   "model_id": "FWD-TORUS-1.0",
   "scope": "ideal symmetric massless inextensible always-taut torus; model-internal tuning only; no experimental calibration",
   "targets": [

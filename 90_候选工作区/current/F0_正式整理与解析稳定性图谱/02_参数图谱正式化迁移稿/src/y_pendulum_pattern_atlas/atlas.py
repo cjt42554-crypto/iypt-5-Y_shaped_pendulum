@@ -8,7 +8,6 @@ tuning as experimental calibration.
 from __future__ import annotations
 
 import csv
-import hashlib
 import json
 import math
 from collections.abc import Iterable
@@ -17,33 +16,48 @@ from pathlib import Path
 from typing import Any
 
 import matplotlib
-import matplotlib.pyplot as plt
+
+matplotlib.use("Agg", force=True)
+
+import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np
 from scipy.optimize import brentq
 from scipy.special import ellipk
 
 from .backend import (
-    FORMAL_BACKEND_RELATIVE_PATH,
     FormalTorusBackend,
     find_repository_root,
     load_formal_backend,
+)
+from .source_manifest import (
+    ATLAS_IDENTITY,
+    FORMAL_BACKEND_RELATIVE_PATH,
+    FORMAL_CONTRACTS_RELATIVE_PATH,
+    FORMAL_THEORY_RELATIVE_PATH,
+    BoundSourceManifest,
+    load_json_strict,
     sha256_file,
+    validate_json_contract,
+    verify_source_manifest,
 )
 
-matplotlib.use("Agg", force=True)
 matplotlib.rcParams["svg.fonttype"] = "none"
-matplotlib.rcParams["svg.hashsalt"] = "yps-formal-pattern-atlas-draft-1.0"
+matplotlib.rcParams["svg.hashsalt"] = "yps-formal-pattern-atlas-draft-1.1"
 
 
-CONFIG_SCHEMA = "YPS-FORMAL-PATTERN-ATLAS-CONFIG-1.0"
-OUTPUT_SCHEMA = "YPS-FORMAL-PATTERN-ATLAS-OUTPUT-1.0"
-ATLAS_IDENTITY = "YPS-IDEAL-TORUS-PATTERN-ATLAS-DRAFT-1.0"
+CONFIG_SCHEMA = "YPS-FORMAL-PATTERN-ATLAS-CONFIG-1.1"
+OUTPUT_SCHEMA = "YPS-FORMAL-PATTERN-ATLAS-OUTPUT-1.1"
+RUN_EVIDENCE_SCHEMA = "YPS-FORMAL-PATTERN-ATLAS-RUN-EVIDENCE-1.0"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+CONFIG_SCHEMA_PATH = PROJECT_ROOT / "schemas" / "atlas_config.schema.json"
+OUTPUT_SCHEMA_PATH = PROJECT_ROOT / "schemas" / "atlas_output.schema.json"
+RUN_EVIDENCE_SCHEMA_PATH = PROJECT_ROOT / "schemas" / "atlas_run_evidence.schema.json"
 CLAIM_LIMIT = (
     "Ideal symmetric all-taut torus model only; numerical tuning is internal "
     "to FWD-TORUS-1.0 and is neither device calibration nor experimental validation."
 )
 FIGURE_METADATA = {
-    "Creator": "YPS-IDEAL-TORUS-PATTERN-ATLAS-DRAFT-1.0",
+    "Creator": ATLAS_IDENTITY,
     "Date": None,
 }
 
@@ -54,6 +68,8 @@ class Target:
     q: int
 
     def __post_init__(self) -> None:
+        if type(self.p) is not int or type(self.q) is not int:
+            raise ValueError("Target p and q must be JSON integers without conversion.")
         if self.p <= 0 or self.q <= 0 or math.gcd(self.p, self.q) != 1:
             raise ValueError("Target p:q must be a positive reduced ratio.")
         if self.p <= self.q:
@@ -72,46 +88,14 @@ class Target:
         return self.ratio**2 - 1.0
 
 
-def _canonical_json_bytes(value: Any) -> bytes:
-    return json.dumps(
-        value,
-        ensure_ascii=False,
-        sort_keys=True,
-        separators=(",", ":"),
-        allow_nan=False,
-    ).encode("utf-8")
-
-
-def _sha256_bytes(value: bytes) -> str:
-    return hashlib.sha256(value).hexdigest()
-
-
 def _load_config(path: Path) -> dict[str, Any]:
-    config = json.loads(path.read_text(encoding="utf-8"))
+    config = load_json_strict(path)
+    validate_json_contract(config, CONFIG_SCHEMA_PATH, label="atlas configuration")
     if not isinstance(config, dict):
         raise ValueError("Atlas configuration must be a JSON object.")
-    if config.get("schema") != CONFIG_SCHEMA:
-        raise ValueError(f"Atlas configuration schema must be {CONFIG_SCHEMA}.")
-    if config.get("model_id") != "FWD-TORUS-1.0":
-        raise ValueError("Atlas backend model_id must be FWD-TORUS-1.0.")
-    allowed = {
-        "schema",
-        "model_id",
-        "scope",
-        "targets",
-        "amplitudes_rad",
-        "analysis",
-        "numerics",
-        "validation_thresholds",
-    }
-    unknown = sorted(set(config) - allowed)
-    if unknown:
-        raise ValueError(f"Unknown atlas configuration fields: {unknown}")
     targets = _targets(config)
     amplitudes = _amplitudes(config)
-    slow_cycles = int(config["analysis"]["slow_cycles"])
-    if slow_cycles <= 0:
-        raise ValueError("analysis.slow_cycles must be positive.")
+    slow_cycles = config["analysis"]["slow_cycles"]
     if any(slow_cycles % target.q != 0 for target in targets):
         raise ValueError(
             "analysis.slow_cycles must contain an integer number of common "
@@ -119,6 +103,13 @@ def _load_config(path: Path) -> dict[str, Any]:
         )
     if not amplitudes:
         raise ValueError("At least one amplitude pair is required.")
+    if (
+        config["numerics"]["step_halving_maximum_step"]
+        >= config["numerics"]["maximum_step"]
+    ):
+        raise ValueError(
+            "numerics.step_halving_maximum_step must be smaller than maximum_step."
+        )
     return config
 
 
@@ -126,7 +117,7 @@ def _targets(config: dict[str, Any]) -> tuple[Target, ...]:
     raw = config.get("targets")
     if not isinstance(raw, list) or not raw:
         raise ValueError("targets must be a non-empty array.")
-    targets = tuple(Target(int(item["p"]), int(item["q"])) for item in raw)
+    targets = tuple(Target(item["p"], item["q"]) for item in raw)
     if len(targets) != len(set(targets)):
         raise ValueError("Target ratios must be unique.")
     return targets
@@ -140,7 +131,9 @@ def _amplitudes(config: dict[str, Any]) -> tuple[tuple[float, float], ...]:
     for pair in raw:
         if not isinstance(pair, list) or len(pair) != 2:
             raise ValueError("Each amplitude entry must contain A_phi and A_theta.")
-        a_phi, a_theta = map(float, pair)
+        a_phi, a_theta = pair
+        if isinstance(a_phi, bool) or isinstance(a_theta, bool):
+            raise ValueError("Amplitude entries must be JSON numbers, not booleans.")
         if not (
             np.isfinite(a_phi)
             and np.isfinite(a_theta)
@@ -148,7 +141,7 @@ def _amplitudes(config: dict[str, Any]) -> tuple[tuple[float, float], ...]:
             and 0.0 < a_theta < math.pi / 2
         ):
             raise ValueError("Amplitude pairs must be finite and in (0, pi/2).")
-        result.append((a_phi, a_theta))
+        result.append((float(a_phi), float(a_theta)))
     if len(result) != len(set(result)):
         raise ValueError("Amplitude pairs must be unique.")
     return tuple(result)
@@ -193,7 +186,7 @@ def _formal_run_config(
     return {
         "schema_version": "YPS-FWD-CONFIG-1.0",
         "model_id": "FWD-TORUS-1.0",
-        "theory_sha256": backend.theory_sha256,
+        "theory_sha256": backend.embedded_theory_sha256,
         "units": "SI",
         "physical": {
             "A": [-half_support_distance, 0.0, 0.0],
@@ -382,7 +375,7 @@ def _tune_eta(
     target: Target,
     a_phi: float,
     a_theta: float,
-) -> float:
+) -> tuple[float, dict[str, Any]]:
     analysis = config["analysis"]
     guess = _quartic_eta(target, a_phi, a_theta)
     cache: dict[float, float] = {}
@@ -399,15 +392,40 @@ def _tune_eta(
     floor = -math.cos(a_phi) + float(analysis["tuning_positive_radius_margin"])
     left = max(guess - half_width, floor)
     right = guess + half_width
-    for _ in range(int(analysis["tuning_maximum_bracket_expansions"])):
-        if objective(left) * objective(right) <= 0.0:
+    bracket_expansions = 0
+    for attempt in range(
+        int(analysis["tuning_maximum_bracket_expansions"])
+    ):
+        bracket_expansions = attempt
+        objective_left = objective(left)
+        objective_right = objective(right)
+        if objective_left * objective_right <= 0.0:
             break
         half_width *= float(analysis["tuning_bracket_growth"])
         left = max(guess - half_width, floor)
         right = guess + half_width
     else:
         raise RuntimeError(f"Could not bracket eta for target {target.label}.")
-    return float(brentq(objective, left, right, xtol=3.0e-10, rtol=2.0e-11))
+    root = float(brentq(objective, left, right, xtol=3.0e-10, rtol=2.0e-11))
+    residual = float(objective(root))
+    diagnostics = {
+        "target": target.label,
+        "A_phi_rad": float(a_phi),
+        "A_theta_rad": float(a_theta),
+        "method": "scipy.optimize.brentq",
+        "state": "CONVERGED",
+        "bracket_left_eta": float(left),
+        "bracket_right_eta": float(right),
+        "objective_left": float(objective(left)),
+        "objective_right": float(objective(right)),
+        "bracket_expansions": int(bracket_expansions),
+        "function_evaluations": len(cache),
+        "xtol": 3.0e-10,
+        "rtol": 2.0e-11,
+        "root_eta": root,
+        "root_residual": residual,
+    }
+    return root, diagnostics
 
 
 def _first_downward_zero(time: np.ndarray, coordinate: np.ndarray) -> float:
@@ -677,6 +695,70 @@ def _aggregate_gates(
     }
 
 
+def _single_source_entry(
+    source_manifest: BoundSourceManifest, role: str
+) -> dict[str, str]:
+    matches = source_manifest.entries_by_role.get(role, [])
+    if len(matches) != 1:
+        raise RuntimeError(f"Expected one source-manifest entry for {role}, got {len(matches)}")
+    return matches[0]
+
+
+def _build_run_evidence(
+    *,
+    source_manifest: BoundSourceManifest,
+    repository_root: Path,
+    config: dict[str, Any],
+    config_path: Path,
+    targets: tuple[Target, ...],
+    amplitudes: tuple[tuple[float, float], ...],
+    cases: list[dict[str, Any]],
+    pure: list[dict[str, Any]],
+    step: list[dict[str, Any]],
+    aggregate: dict[str, bool],
+    tuning_diagnostics: list[dict[str, Any]],
+    smoke: bool,
+) -> dict[str, Any]:
+    return {
+        "schema": RUN_EVIDENCE_SCHEMA,
+        "run_kind": "SMOKE_SUBSET" if smoke else "FULL_16_CASE_48_PRIMARY_TRAJECTORY_MATRIX",
+        "claim_limit": CLAIM_LIMIT,
+        "source_manifest": source_manifest.manifest,
+        "source_manifest_sha256": source_manifest.source_manifest_sha256,
+        "source_manifest_lock": {
+            "path": source_manifest.lock_path.relative_to(repository_root).as_posix(),
+            "sha256": source_manifest.lock_sha256,
+        },
+        "configuration_binding": {
+            "path": config_path.relative_to(repository_root).as_posix(),
+            "sha256": sha256_file(config_path),
+        },
+        "execution": {
+            "target_count": len(targets),
+            "amplitude_pair_count": len(amplitudes),
+            "atlas_case_count": len(cases),
+            "primary_result_trajectory_count": 3 * len(cases),
+            "pure_mode_trajectory_count": len(pure),
+            "step_halving_trajectory_count": len(step),
+        },
+        "solver_settings": config["numerics"],
+        "validation_thresholds": config["validation_thresholds"],
+        "optimizer": {
+            "method": "scipy.optimize.brentq",
+            "all_states": "CONVERGED",
+            "case_count": len(tuning_diagnostics),
+            "cases": tuning_diagnostics,
+        },
+        "diagnostics": {
+            "aggregate_gates": aggregate,
+            "all_sampled_taut_guards_strictly_positive": aggregate[
+                "sampled_taut_guards"
+            ],
+            "all_numerical_gates_passed": all(aggregate.values()),
+        },
+    }
+
+
 def run_atlas(
     config_path: Path,
     output_directory: Path,
@@ -694,7 +776,23 @@ def run_atlas(
         if repository_root is not None
         else find_repository_root(Path(__file__))
     )
-    backend = load_formal_backend(root)
+    source_manifest = verify_source_manifest(PROJECT_ROOT, root)
+    configuration_entry = _single_source_entry(source_manifest, "configuration")
+    bound_configuration_path = (root / configuration_entry["path"]).resolve()
+    if config_path != bound_configuration_path:
+        raise ValueError(
+            "result-bearing atlas runs require the source-locked configuration: "
+            f"expected {bound_configuration_path}, got {config_path}"
+        )
+    formal_theory_entry = _single_source_entry(source_manifest, "formal_theory")
+    formal_contracts_entry = _single_source_entry(source_manifest, "formal_contracts")
+    formal_backend_entry = _single_source_entry(source_manifest, "formal_backend")
+    backend = load_formal_backend(
+        root,
+        expected_source_sha256=formal_backend_entry["sha256"],
+        expected_contracts_sha256=formal_contracts_entry["sha256"],
+        expected_theory_source_sha256=formal_theory_entry["sha256"],
+    )
     targets = _targets(config)
     amplitudes = _amplitudes(config)
     if smoke:
@@ -703,12 +801,16 @@ def run_atlas(
 
     cases: list[dict[str, Any]] = []
     tuned: dict[tuple[str, float, float], float] = {}
+    tuning_diagnostics: list[dict[str, Any]] = []
     for target in targets:
         for a_phi, a_theta in amplitudes:
             eta_zero = target.eta0
             eta_quartic = _quartic_eta(target, a_phi, a_theta)
-            eta_numeric = _tune_eta(backend, config, target, a_phi, a_theta)
+            eta_numeric, tuning = _tune_eta(
+                backend, config, target, a_phi, a_theta
+            )
             tuned[(target.label, a_phi, a_theta)] = eta_numeric
+            tuning_diagnostics.append(tuning)
             zero = _analyze(
                 backend,
                 config,
@@ -755,20 +857,64 @@ def run_atlas(
     if not all(aggregate.values()):
         raise AssertionError(f"Atlas validation gate failed: {aggregate}")
 
-    source_path = Path(__file__).resolve()
+    output_directory.mkdir(parents=True, exist_ok=True)
+    run_evidence = _build_run_evidence(
+        source_manifest=source_manifest,
+        repository_root=root,
+        config=config,
+        config_path=config_path,
+        targets=targets,
+        amplitudes=amplitudes,
+        cases=cases,
+        pure=pure,
+        step=step,
+        aggregate=aggregate,
+        tuning_diagnostics=tuning_diagnostics,
+        smoke=smoke,
+    )
+    validate_json_contract(
+        run_evidence,
+        RUN_EVIDENCE_SCHEMA_PATH,
+        label="atlas run evidence",
+    )
+    run_evidence_path = output_directory / "atlas_run_evidence.json"
+    run_evidence_path.write_text(
+        json.dumps(
+            run_evidence,
+            ensure_ascii=False,
+            indent=2,
+            sort_keys=True,
+            allow_nan=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     payload = {
         "schema": OUTPUT_SCHEMA,
         "model_identity": {
             "backend_model_id": "FWD-TORUS-1.0",
             "atlas_identity": ATLAS_IDENTITY,
             "tuning_interpretation": ("ideal_model_internal_not_experimental_calibration"),
+            "formal_contract_embedded_theory_sha256": backend.embedded_theory_sha256,
         },
         "claim_limit": CLAIM_LIMIT,
         "source_binding": {
-            "config_sha256": _sha256_bytes(_canonical_json_bytes(config)),
+            "config_path": configuration_entry["path"],
+            "config_sha256": configuration_entry["sha256"],
+            "formal_theory_path": FORMAL_THEORY_RELATIVE_PATH.as_posix(),
+            "formal_theory_sha256": backend.theory_source_sha256,
+            "formal_contracts_path": FORMAL_CONTRACTS_RELATIVE_PATH.as_posix(),
+            "formal_contracts_sha256": backend.contracts_sha256,
             "formal_torus_backend_path": FORMAL_BACKEND_RELATIVE_PATH.as_posix(),
             "formal_torus_backend_sha256": backend.source_sha256,
-            "atlas_source_sha256": sha256_file(source_path),
+            "source_manifest_lock_path": source_manifest.lock_path.relative_to(root).as_posix(),
+            "source_manifest_lock_sha256": source_manifest.lock_sha256,
+            "source_manifest_sha256": source_manifest.source_manifest_sha256,
+            "runtime_identity_sha256": source_manifest.manifest[
+                "runtime_identity_sha256"
+            ],
+            "run_evidence_path": run_evidence_path.relative_to(output_directory).as_posix(),
+            "run_evidence_sha256": sha256_file(run_evidence_path),
         },
         "configuration": {
             "targets": [target.label for target in targets],
@@ -787,7 +933,7 @@ def run_atlas(
         "cases": cases,
     }
 
-    output_directory.mkdir(parents=True, exist_ok=True)
+    validate_json_contract(payload, OUTPUT_SCHEMA_PATH, label="atlas output")
     result_path = output_directory / "atlas_results.json"
     result_path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False) + "\n",

@@ -1,4 +1,4 @@
-"""Manifest-driven analytic and Y-anchor case construction for G2."""
+"""Regression and canonical static-case construction kept outside production."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any
 import numpy as np
 
 from ypendulum_static_reference.rigid.rotation import exp_so3
-from ypendulum_static_reference.state import HFV2State
+from ypendulum_static_reference.state import StaticReferenceState
 from ypendulum_static_reference.statics.assembly import StaticAssembly
 from ypendulum_static_reference.statics.contracts import (
     BranchMaterial,
@@ -16,7 +16,11 @@ from ypendulum_static_reference.statics.contracts import (
     StaticEnvironment,
     StaticSeed,
 )
-from ypendulum_static_reference.topology import HFV2Topology, MaterialNode, MaterialSegment
+from ypendulum_static_reference.topology import (
+    MaterialNode,
+    MaterialSegment,
+    StaticReferenceTopology,
+)
 
 
 @dataclass(frozen=True)
@@ -48,22 +52,19 @@ def _static_state(
     free_positions: np.ndarray,
     bob_position: np.ndarray,
     bob_rotation: np.ndarray,
-) -> HFV2State:
-    return HFV2State(
+) -> StaticReferenceState:
+    return StaticReferenceState(
         free_node_ids=free_node_ids,
         free_node_positions=free_positions,
-        free_node_velocities=np.zeros_like(free_positions),
         bob_position=bob_position,
-        bob_velocity=np.zeros(3),
         bob_rotation=bob_rotation,
-        bob_angular_velocity_body=np.zeros(3),
     )
 
 
 def build_vertical_case(manifest: dict[str, Any]) -> VerticalCase:
     case = manifest["analytic_vertical_case"]
     rest = float(case["rest_length_m"])
-    topology = HFV2Topology(
+    topology = StaticReferenceTopology(
         nodes=(
             MaterialNode("support", "prescribed"),
             MaterialNode("attachment", "bob_attachment"),
@@ -96,7 +97,6 @@ def build_vertical_case(manifest: dict[str, Any]) -> VerticalCase:
     bob = RigidBobProperties(
         mass=float(case["bob_mass_kg"]),
         displaced_volume=float(case["bob_displaced_volume_m3"]),
-        inertia_body=np.asarray(case["bob_inertia_body_kg_m2"], dtype=float),
         attachment_arm_body=np.asarray(case["attachment_arm_body_m"], dtype=float),
     )
     assembly = StaticAssembly(
@@ -219,7 +219,7 @@ def build_y_anchor_case(
         *_branch_segments("right", right_chain, upper_rest),
         *_branch_segments("lower", lower_chain, lower_rest),
     )
-    topology = HFV2Topology(nodes=nodes, segments=segments)
+    topology = StaticReferenceTopology(nodes=nodes, segments=segments)
     left_support = np.asarray(case["support_left_position_m"], dtype=float)
     right_support = np.asarray(case["support_right_position_m"], dtype=float)
     geometry = case["base_geometry"]
@@ -296,7 +296,6 @@ def build_y_anchor_case(
     bob = RigidBobProperties(
         mass=float(case["bob_mass_kg"]),
         displaced_volume=float(case["bob_displaced_volume_m3"]),
-        inertia_body=np.asarray(case["bob_inertia_body_kg_m2"], dtype=float),
         attachment_arm_body=arm,
     )
     assembly = StaticAssembly(
