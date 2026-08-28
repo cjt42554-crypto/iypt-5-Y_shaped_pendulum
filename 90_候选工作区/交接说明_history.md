@@ -258,3 +258,17 @@ G3 指标 SHA-256 仍为
 G3R2 证据提交为 `507f403c2c08697d111e286eac88e3126564ff98`，指标 SHA-256 为 `b9580859b3eccbaf21ee240b911d2c83354ffe7a88916612f6993efdeab2bfe8`。完整候选为 `117 passed`；Ruff、`compileall`、JSON、架构门、生成器 `--check`、两份独立输出逐字节复算、Pandoc 解析和 PDF 栅格化逐页视觉检查通过。应用内浏览器拒绝本地 `file://` 页面，没有绕过安全限制。
 
 冻结状态为 `NO_GO_G3R2_STATIC_CONTACT_ALGORITHM`，结论只否决 `0.5-CONTACT-CANDIDATE` 与本轮协议，不否定静态刚性无摩擦接触路线。正式状态继续为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。本轮停在 `G3R2_PRO_REVIEW`；P4、P5、P6、动力学、正式提升、物理验证和实验验证均未执行。正式理论、正式程序、公共 API、HDF5 和 UI 均未修改。
+
+# 2026-08-28 14:51 +0800：HF-v2 P3R3 目标准入与空目标集合停止门
+
+从 GitHub 快进到 Pro G3R2 复审和 P3R3 交接提交 `c543b8a37db02e90b391567a0ae45d0b59a4082a`、`5e28dfec6098451316f82000c5d0428f64078e74` 后，按用户继续指令只执行 `P3R3_STATIC_CONTACT_TARGET_ADMISSIBILITY_AND_DUAL_CERTIFICATION_CORRECTION`。首次 `git pull --ff-only` 因 GnuTLS 握手瞬时终止失败，确认工作树未变化后重试并成功快进。
+
+在全部新结果运行数为零时，以提交 `8401cfe617720b3532cdafd1249dd0edfbf6d789` 冻结 `0.6-CONTACT-CANDIDATE`、组装身份 4.0、中心化显式对偶证书、二维端点复核、确定性切空间、双半径局部盆地、投影拟 Newton Jacobian 身份、六张设计卡和空资格种子清单。独立包 `ypendulum_hfv2_p3r3`、测试、一次性准入器和 G3R3 工具随后以提交 `7db0abb7c0a59e7ca568c3f9797ff8edfe9d33d2` 进入 Git 历史；该提交前六张设计卡仍未执行。
+
+实现提交推送后，六张卡按冻结顺序各运行一次前代参考发现，没有重试、换种子或改门。`ASYM_A02` 因前代恢复 `FAIL_CLOSED_ACTIVE_SET_CARDINALITY_OR_RANK` 未进入准入。其余五张通过预期双摆球接触、正乘子、中心化对偶证书、二维端点复核、真实临界锥、完整复合 Jacobian、物理和有效域 Jacobian、作用—反作用以及 P2 逐比特只读门，但都未通过冻结的双半径盆地曲率一致性：最大层差为 `6.263601563474275e-4` 到 `9.082545842220568e-4`，超过 `1.0e-4`。`ASYM_A03` 另有 `component_scaled_kkt=false`。
+
+因此六张卡均为 `TARGET_INVALID`，两类选择集合均为空，最终分类为 `TARGET_SUITE_NOT_ADMISSIBLE`。没有冻结资格目标，没有运行任何资格种子或 G3R3 资格证据活动，`TARGET_INVALID` 没有被改记为算法种子失败。准入证据提交为 `214361e2fa946c491a337bc9c30e1d8083daa711`；目标准入指标 SHA-256 为 `8ad318b0ae579f05af6c4b52450d42ffbc7f0d681bf7bb42e60cb94b60be139f`。
+
+提交前完整候选为 `128 passed`；Ruff、compileall、G3R2 冻结生成器静态检查、17 项实现哈希、10 模块架构门、JSON、Pandoc、P3R3 协议 6 页 PDF 栅格化视觉检查和一次性准入工具静态 `--check` 均通过。正式理论、正式程序、顶层 `AGENTS.md`、公共 API、HDF5、UI 及历史 P3/P3R/P3R2 工件均未修改。
+
+本轮按空目标集合门停在 `G3R3_PRO_REVIEW`。下一步只允许 Pro 独立复审，不得重跑六张卡、补选失败卡、放宽盆地门或运行空目标集合的 G3R3 资格工具；P4、P5、P6、动力学、正式提升、物理验证和实验验证继续关闭，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。
