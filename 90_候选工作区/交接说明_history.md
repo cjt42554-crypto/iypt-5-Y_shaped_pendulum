@@ -272,3 +272,13 @@ G3R2 证据提交为 `507f403c2c08697d111e286eac88e3126564ff98`，指标 SHA-256
 提交前完整候选为 `128 passed`；Ruff、compileall、G3R2 冻结生成器静态检查、17 项实现哈希、10 模块架构门、JSON、Pandoc、P3R3 协议 6 页 PDF 栅格化视觉检查和一次性准入工具静态 `--check` 均通过。正式理论、正式程序、顶层 `AGENTS.md`、公共 API、HDF5、UI 及历史 P3/P3R/P3R2 工件均未修改。
 
 本轮按空目标集合门停在 `G3R3_PRO_REVIEW`。下一步只允许 Pro 独立复审，不得重跑六张卡、补选失败卡、放宽盆地门或运行空目标集合的 G3R3 资格工具；P4、P5、P6、动力学、正式提升、物理验证和实验验证继续关闭，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。
+
+# 2026-08-28 16:17 +0900：Pro G3R3 独立复审与 P3R4 约束流形准入修正门
+
+独立复审 P3R3 预冻结 `8401cfe617720b3532cdafd1249dd0edfbf6d789`、实现 `7db0abb7c0a59e7ca568c3f9797ff8edfe9d33d2`、一次性准入证据 `214361e2fa946c491a337bc9c30e1d8083daa711` 和交接 `b729004d5befab082f331982adaed530ae7fe73a` 后，维持冻结分类 `TARGET_SUITE_NOT_ADMISSIBLE`。三段提交均为严格单提交前进，六张卡各运行一次，没有重试、补选或资格种子；因此本轮没有形成 G3R3 算法 PASS 或 FAIL。
+
+复审确认当前“局部盆地”实现沿参考切空间作直线扰动，以固定参考乘子计算拉格朗日量双半径曲率，但不把端点收回活动接触约束流形，也不执行求解器吸引实验。它可作为参考 Hessian 数值审计，不能同时证明有限约束邻域和算法盆地。统一 `1.0e-4` 最大绝对层差门又与逐方向稳定裕量脱钩；例如 `ASYM_A01` 的两个主方向曲率约为 `4.01318` 和 `4.01409`，相对差仅约 `0.0226%`，仍按冻结门失败。该事实不追溯改变 P3R3，但阻止把目标套件失败解释为参考不稳定或算法失败。`ASYM_A03` 的 `component_scaled_kkt=false` 继续作为独立失败保留。
+
+新增 `12_PRO_G3R3_REVIEW_AND_P3R4_GATE.md`，裁决为 `G3R3_PRO_REVIEW_CONFIRMS_P3R3_TARGET_SUITE_NOT_ADMISSIBLE__P3R4_MANIFOLD_ADMISSIBILITY_AND_SOLVER_BASIN_SEPARATION_AUTHORIZED`。P3R4 只允许以新身份分离参考约束稳定性、二阶误差审计、可选的约束流形有限邻域和实际多种子算法吸引证据；P3R3 六张已观察卡不得重跑、补选或充当新目标。若目标集合不足，必须在准入后停止；若完整，则先提交目标与零运行种子冻结，再运行 G3R4，并最终停在 `G3R4_PRO_REVIEW`。
+
+本次只修改候选治理和交接文档。通过 GitHub 连接器完成提交链、合同、关键源码和指标静态复核；没有重跑 `128 passed`、Ruff、`compileall`、准入器或 G3R3 工具。正式理论、正式程序、数值源码、测试、公共 API、HDF5 和 UI 均未修改。
