@@ -1,159 +1,139 @@
 # 交接说明（current）
 
-更新时间：2026-08-28 18:33 +0900（G3R4 Pro 独立复审完成，P3R5 已授权）
+更新时间：2026-08-28 20:16 +0800（P3R5 一次性留出准入完成，目标套件不完整）
 
-## 1. 当前裁决与状态
+## 1. 当前结论与停止门
 
-P3R4 冻结分类保持：
+P3R5 冻结分类为：
 
 `TARGET_SUITE_NOT_ADMISSIBLE`
 
-G3R4 Pro 独立复审裁决为：
+八张未观察留出卡均按冻结顺序完整执行一次。非对称类别 `4/4` 为 `ADMISSIBLE`，尺度变化类别 `0/4` 为 `ADMISSIBLE`，因此不能形成两个必需类别的完整目标套件。非对称类别的局部通过已按冻结规则丢弃，不得结转为部分资格目标。
 
-`G3R4_PRO_REVIEW_CONFIRMS_P3R4_TARGET_SUITE_NOT_ADMISSIBLE_WITH_ASSEMBLY_PREFLIGHT_DEVIATION__P3R5_HOLDOUT_REFERENCE_CONSTRUCTION_AUTHORIZED`
+没有生成 `p3r5_qualification_targets.json`，没有冻结资格种子，没有运行 G3R5 实际复合算法。因此本轮不存在 G3R5 算法 PASS 或 `NO_GO_G3R5_STATIC_CONTACT_ALGORITHM`；只有 P3R5 目标套件不可准入。
 
-复审与 P3R5 授权提交为：
+强制停止门为：
 
-`d8e9173a3078d73e42a3875bd707758abf456521`
+`G3R5_PRO_REVIEW`
 
-P3R5 当前状态为：
-
-`P3R5_READY_FOR_CODEX_EXECUTION`
-
-P2 无接触静力算法继续保持：
-
-`G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED`
-
-历史静态接触裁决继续保持：
-
-- `NO_GO_G3_STATIC_CONTACT_ALGORITHM`；
-- `NO_GO_G3R_STATIC_CONTACT_ALGORITHM`；
-- `NO_GO_G3R2_STATIC_CONTACT_ALGORITHM`；
-- P3R3 的 `TARGET_SUITE_NOT_ADMISSIBLE`；
-- P3R4 的 `TARGET_SUITE_NOT_ADMISSIBLE`。
+当前没有获授权的 Codex 后续执行任务。P3R5 失败不自动授权 P3R6；只能先做 Pro 独立复审，新一轮数值或物理修正必须有新假设、新版本协议与用户明确授权。
 
 正式高保真总状态继续为：
 
 `HF_NUMERICAL_QUALIFICATION_NO_GO`
 
-P4、P5、P6、动力学、动态接触、正式程序迁移、公共 API、HDF5、UI、装置级物理验证和实验验证全部关闭。
+## 2. 有序提交链
 
-## 2. P3R4 复审结论
+P3R5 已形成四个适用的严格顺序边界，且都已推送远程 `main`：
 
-P3R4 正式账本的结果为：
+1. 零结果协议提交：`fc110ca8ab980b3628a510ede5badacde6652e6a`；
+2. 开发实现提交：`d751848044cbb805bacbc72f3fa28c1c22d25757`；
+3. 零数值运行留出冻结提交：`802bcd00113e163e2c5584edcf8a61930a3cbf6f`；
+4. 一次性留出准入证据提交：`69f12bf54d0f00ee30be275813dcb6d702384234`。
 
-- 八张冻结卡各有一次输入装配记录；
-- 参考发现运行 `7`；
-- 准入、二阶和流形审计各运行 `5`；
-- 非对称类别 `0/4` 可准入；
-- 尺度类别 `4/4` 可准入；
-- 部分选择为 `R4_SCALE_T01`；
-- 目标冻结和资格种子运行均为 `0`。
+因目标套件不完整，冻结协议的第 5 段目标与种子冻结和第 6 段 G3R5 资格证据不适用，已按失败关闭规则跳过。本交接为第 7 段停止边界。
 
-没有生成 `p3r4_qualification_targets.json`，没有运行 G3R4 资格算法，因此不存在 G3R4 算法 PASS 或 FAIL。
+## 3. 一次性准入事实
 
-首次一次性工具启动在数值求解前因 `R4_ASYM_B02` 输入装配失败而中断；随后存在一次账本外、仅装配级逐卡诊断。该诊断没有运行参考发现、KKT、二阶、流形或资格求解，也没有改变卡、阈值、种子、算法或选择规则，所以不推翻正式数值分类。
+一次性账本共 `91` 条 JSONL 记录：
 
-但输入可构造性被额外观察过，必须永久保留：
+- 首条在打开具体留出文件前排他创建，尝试编号为 `1`；
+- 末条为 `ADMISSIBILITY_CAMPAIGN_CLOSED`；
+- 中间没有中断、重试、补选、阈值变更、随机重启或回退算法记录；
+- 账本存在后未再运行 `--run-once`。
 
-`P3R4_ASSEMBLY_PREFLIGHT_DEVIATION`
+全局运行计数为：
 
-`all_design_cards_executed_exactly_once=true` 只能解释为正式账本内受计数执行恰好一次，不得扩张为现实中的所有装配操作只发生一次。全部 P3R4 卡只能作为已观察开发/回归材料，不能再充当未观察目标。
+- 输入装配 `8`；
+- 参考构造 `8`；
+- 目标准入 `8`；
+- 二阶数值一致性 `8`；
+- 约束流形有限邻域 `8`；
+- 目标冻结 `0`；
+- 资格种子 `0`。
 
-完整裁决见：
+八张卡的固定双活动 KKT 参考均在解析初值处以 `CONVERGED_AT_ENTRY` 闭合，Newton 迭代数为 `0`，三层完整残差 Jacobian 审计均通过。这只证明参考构造和冻结数值门在这些卡上自洽，不是算法吸引域、物理验证或实验验证。
 
-`90_候选工作区/current/HF-v2重构规划/13_PRO_G3R4_REVIEW_AND_P3R5_GATE.md`
+## 4. 目标套件失败原因
 
-## 3. 下一次开始前必须读取
+四张非对称卡 `R5_ASYM_H01` 至 `R5_ASYM_H04` 的冻结准入检查全部通过，临界锥最小归一化曲率约为 `0.0237721` 至 `0.0253535`，高于冻结下限 `0.0005`。
+
+四张尺度变化卡的参考构造、分量 KKT、中心化对偶证书、二阶 Richardson 一致性、流形有限邻域和完整复合 Jacobian 都通过，但临界锥和支撑切空间最小曲率均为负：
+
+- `R5_SCALE_H01`：`-0.034607470089469086`；
+- `R5_SCALE_H02`：`-0.04509710039136304`；
+- `R5_SCALE_H03`：`-0.0678280310859007`；
+- `R5_SCALE_H04`：`-0.03973832758607185`。
+
+因此这四个驻定参考不满足冻结的严格正临界锥曲率门，各分类为 `TARGET_INVALID`。这是候选静态刚性无摩擦接触模型内的数值稳定性反证，不是实验装置预测。
+
+指标中这四张卡的 `critical_cone_crosscheck=false` 不是第二个独立数值交叉误差失败：该布尔字段继承自历史实现的聚合 `critical.passed`，其中同时包含正曲率门。实际独立曲率交叉误差为 `4.10e-6` 至 `4.53e-5`，均不超过冻结上限 `5.0e-5`；未对称相对量约为 `7.66e-10` 至 `1.68e-9`，也不超过 `3.0e-5`。该标签耦合不改变负曲率已独立使目标失效的分类，但 Pro 复审时应按此解读。
+
+## 5. 关键工件与哈希
+
+必须保留且不得重写的 P3R5 工件包括：
+
+- `90_候选工作区/current/HF-v2-core/contracts/P3R5_FROZEN_PROTOCOL.md`；
+- `90_候选工作区/current/HF-v2-core/contracts/p3r5_implementation_binding.json`；
+- `90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_cards.json`；
+- `90_候选工作区/current/HF-v2-core/reports/p3r5_attempt_ledger.jsonl`；
+- `90_候选工作区/current/HF-v2-core/contracts/p3r5_admissibility_selection.json`；
+- `90_候选工作区/current/HF-v2-core/reports/p3r5_admissibility_metrics.json`；
+- `90_候选工作区/current/HF-v2-core/reports/P3R5_ADMISSIBILITY_REPORT.md`。
+
+关键结果哈希为：
+
+- 账本：`f87c5aa3675ea792c2cbc6e24ae3b2daca8abdd4a7900a31f01de848316fd66c`；
+- 准入指标：`e93eb9a0cb074ca1cc9a137149b89b8d2c4384f100c9a9eefaf5c0ff79a3f987`；
+- 选择记录：`2a8eab29bda268a87bf8e8c488690a4150225b8964562e440f79b328fa733ff4`；
+- Markdown 报告：`8db7859639ac36920050d820776e513e941692ace5339bc619675923190122cd`。
+
+## 6. 已执行与未执行验证
+
+实现提交前已执行：
+
+- P3R5 定向候选测试：`30 passed in 5.13s`；
+- 完整候选测试：`172 passed in 97.14s`；
+- Ruff 规则检查与格式检查；
+- `compileall`；
+- 27 个实现路径哈希绑定；
+- 架构门：`PASS`，生产层 `try=0`、随机调用 `=0`、依赖违规 `=0`、超限模块 `=0`；
+- 运行时合同：`PASS`。
+
+留出冻结后严格按协议只运行一次真实留出准入。结果后已执行一次性工具静态 `--check`、JSON 解析、计数闭合、账本哈希闭合、Pandoc `--from=markdown` 解析和 HTML/Chrome 实际渲染检查。Pandoc standalone 默认窄正文宽度使宽表的计数列标题换行，但没有渲染失败或内容截断。仓库中不存在 `tools/check_markdown_math.py`，因此未执行该专用检查器。
+
+未执行：
+
+- 目标与资格种子冻结；
+- G3R5 实际多种子复合算法；
+- P4、P5、P6、动力学或动态接触；
+- 装置级物理验证或实验验证；
+- 正式程序迁移、公共 API、HDF5 或 UI 验证。
+
+## 7. 下一次开始前必须读取
 
 按以下顺序读取：
 
 1. 顶层 `AGENTS.md`；
 2. 本文件；
-3. `90_候选工作区/current/HF-v2重构规划/00_CODEX_EXECUTION_ENTRY.md`；
-4. `90_候选工作区/current/HF-v2重构规划/13_PRO_G3R4_REVIEW_AND_P3R5_GATE.md`；
-5. `90_候选工作区/current/HF-v2-core/contracts/P3R4_FROZEN_PROTOCOL.md`；
-6. `90_候选工作区/current/HF-v2-core/contracts/p3r4_acceptance_manifest.json`；
-7. `90_候选工作区/current/HF-v2-core/contracts/p3r4_implementation_binding.json`；
-8. `90_候选工作区/current/HF-v2-core/contracts/p3r4_admissibility_selection.json`；
-9. `90_候选工作区/current/HF-v2-core/reports/P3R4_ADMISSIBILITY_REPORT.md`；
-10. `90_候选工作区/current/HF-v2-core/reports/p3r4_admissibility_metrics.json`；
-11. P3R4 的准入、算例、恢复、证据绑定、一次性工具及相关测试。
+3. `90_候选工作区/current/HF-v2重构规划/13_PRO_G3R4_REVIEW_AND_P3R5_GATE.md`；
+4. `90_候选工作区/current/HF-v2-core/contracts/P3R5_FROZEN_PROTOCOL.md`；
+5. `90_候选工作区/current/HF-v2-core/contracts/p3r5_acceptance_manifest.json`；
+6. `90_候选工作区/current/HF-v2-core/contracts/p3r5_implementation_binding.json`；
+7. `90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_cards.json`；
+8. P3R5 账本、选择记录、准入指标和报告。
 
-P3 至 P3R4 的冻结协议、源码绑定、设计卡、目标、种子、报告、指标和哈希均为不可变历史。
+如果下一次任务是 Pro 独立复审，应静态审查提交链、一次性账本、哈希绑定、负曲率原始记录和上述 `critical_cone_crosscheck` 标签耦合；不得重跑留出准入。
 
-## 4. 下一次唯一范围
+## 8. 下一次禁止事项
 
-只执行：
+在新的用户与 Pro 授权前，不得：
 
-`P3R5_STATIC_CONTACT_REFERENCE_CONSTRUCTION_AND_HOLDOUT_QUALIFICATION`
+- 删除、截断、重写或重跑 P3R5 一次性账本与留出准入；
+- 修改留出卡、参考构造、临界锥阈值、选择规则或实现提交；
+- 冻结部分目标、运行资格种子或运行 G3R5；
+- 把 `TARGET_SUITE_NOT_ADMISSIBLE` 写成 G3R5 算法 NO-GO；
+- 自动开始 P3R6、P4、P5、P6、动力学或动态接触；
+- 修改正式理论、正式程序、公共 API、HDF5 或 UI。
 
-P3R5 是同一静态刚性、无摩擦、单边接触物理下最后一次仅修参考构造和资格治理的认证层修订。建议最低身份为：
-
-- `HFV2-DISCRETE-CORD-RIGID-BOB-0.8-CONTACT-CANDIDATE`；
-- `YPS-HFV2-CONTACT-ASSEMBLY-IDENTITY-6.0`；
-- 独立包 `ypendulum_hfv2_p3r5`；
-- `P3R5_*` 与 `G3R5_*` 工件命名空间。
-
-全部 P3R3/P3R4 卡必须标记为：
-
-`OBSERVED_DEVELOPMENT_AND_REGRESSION_ONLY`
-
-它们只能用于开发、诊断和回归，不得用于 P3R5 资格目标、补选或留出泛化声明。
-
-## 5. P3R5 必须完成的核心修正
-
-P3R5 必须：
-
-1. 在零留出结果时冻结参数域、纯输入可构造性谓词、确定性哈希选择规则、留出数量、顺序和选择规则；
-2. 先在已观察开发集上实现并提交确定性双活动接触 KKT 参考构造器；
-3. 实现提交进入远程 `main` 后，才按冻结规则生成具体未观察留出卡；
-4. 在留出冻结前以纯合同谓词排除材料套筒无正活动范围、非法区间、非正长度/半径/尺度、非有限、塌缩和重复身份；
-5. 默认原值继承 P3R4 的 KKT、对偶、临界锥、Richardson、流形、Jacobians、作用—反作用和 P2 逐比特只读门；
-6. 在读取或装配第一张留出卡前写入不可删除的一次性尝试账本，异常、中断或部分执行后保留账本并停止。
-
-留出冻结后若发生输入装配失败，必须分类为：
-
-`P3R5_PROTOCOL_CONSTRUCTION_FAILURE`
-
-不得修代码后重跑同一留出集。
-
-## 6. 强制提交顺序
-
-至少形成七个有序边界：
-
-1. P3R5 零结果协议提交；
-2. 开发实现提交，只运行已观察回归集；
-3. 留出冻结提交，全部数值运行计数为零；
-4. 一次性目标准入提交，含从进程启动开始的完整账本；
-5. 目标与种子冻结提交，仅在两个必需类别完整时生成；
-6. G3R5 资格证据提交，第 5 项进入远程 `main` 后才运行；
-7. 交接提交，并停止在 `G3R5_PRO_REVIEW`。
-
-任一阶段发生协议构造失败、目标套件不足、认证器内部不一致、历史回归失败或算法 NO-GO，都跳过不再适用的后续阶段并停止。
-
-## 7. 禁止事项
-
-不得：
-
-- 修改或覆盖 P3 至 P3R4 历史冻结工件；
-- 重跑、补选或结转 P3R4 卡与部分目标；
-- 把账本外装配诊断改写成从未发生；
-- 用已观察结果调整 KKT、对偶、二阶或流形门；
-- 通过修改或重做实现提交磨取有利留出卡；
-- 在留出冻结后修代码并重跑同一留出集；
-- 增加 fallback、随机重启、罚刚度、柔顺接触、摩擦、恢复系数、冲量或动力学；
-- 修改正式目录、公共 API、HDF5 或 UI；
-- 开始 P4、P5、P6、动力学、动态接触或正式提升。
-
-## 8. 停止规则与验证边界
-
-P3R5 无论得到协议构造失败、目标套件不足、G3R5 候选 PASS 或算法 NO-GO，都必须停止在：
-
-`G3R5_PRO_REVIEW`
-
-P3R5 失败不自动授权 P3R6。继续必须提出新的物理或数值假设，并取得用户与 Pro 的新授权。
-
-本次 Pro 复审通过 GitHub 连接器完成提交链、冻结协议、纠偏差分、关键源码和已提交指标的静态复核。没有重新运行仓库所称的 `142 passed`、Ruff、`compileall`、P3R4 一次性工具或数值求解，也没有独立重算三个已记录 SHA-256。
-
-本次新增或实质改写的 Markdown 已通过 Pandoc `--from=markdown` 解析和基本格式检查。正式 `01_最终理论/**`、`02_模拟程序/**`、顶层 `AGENTS.md`、数值源码、测试、公共 API、HDF5 和 UI 均未修改。
+本轮所有修改均位于 `90_候选工作区/current/**`。`01_最终理论/**`、`02_模拟程序/**`、顶层 `AGENTS.md`、既有目录结构、公共 API、HDF5 和 UI 均未修改。
