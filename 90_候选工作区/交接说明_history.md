@@ -296,3 +296,21 @@ G3R2 证据提交为 `507f403c2c08697d111e286eac88e3126564ff98`，指标 SHA-256
 一次性准入证据以提交 `dad339c3fc9190c0f07391181b64fe8ec8712c4b` 进入远程 `main`。指标 SHA-256 为 `87fe67e0f32dda0e508f86be18e796907ec71e22834c0826a9314454f817acdd`，选择记录 SHA-256 为 `ce1c882065a3dc64900a2e51b14157296d0558a38c23ffb70d8d53578dc34dce`，人类报告 SHA-256 为 `5657ab33fdd7453806131200a9bec0bd2f6215d491198ed4552ce2ac8095b20e`。准入工具静态检查、JSON 计数闭合和 Pandoc 解析通过；浏览器实际渲染已检查，宽视口结构正常，窄纸张 PDF 的宽表需横向滚动，该布局限制已显式记录。
 
 按预冻结空套件门，没有生成 `p3r4_qualification_targets.json`，没有冻结或运行资格种子，也没有 G3R4 静态接触算法 PASS/FAIL。当前停在 `G3R4_PRO_REVIEW`，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。所有修改都在 `90_候选工作区/current/**`；正式理论、正式程序、顶层 `AGENTS.md`、公共 API、HDF5、UI、P4、P5、P6、动态接触、物理验证和实验验证均未修改或执行。
+
+# 2026-08-28 19:02 +0900：Pro G3R4 独立复审与 P3R5 留出参考构造门
+
+复核 P3R4 零结果协议、初始实现、零数值结果纠偏、一次性准入证据和装配预检澄清后，保持冻结分类：
+
+`TARGET_SUITE_NOT_ADMISSIBLE`
+
+Pro 裁决为：
+
+`G3R4_PRO_REVIEW_CONFIRMS_P3R4_TARGET_SUITE_NOT_ADMISSIBLE_WITH_ASSEMBLY_PREFLIGHT_DEVIATION__P3R5_HOLDOUT_REFERENCE_CONSTRUCTION_AUTHORIZED`
+
+P3R4 正式账本仍支持非对称类别 `0/4`、尺度类别 `4/4`、部分选择 `R4_SCALE_T01`、目标与资格种子运行均为零的数值分类。账本外逐卡装配诊断没有运行参考发现、KKT、二阶、流形或资格求解，也没有改变冻结卡、阈值、种子、算法或选择规则，因此不推翻该分类；但输入可构造性确实被额外观察，必须永久保留 `P3R4_ASSEMBLY_PREFLIGHT_DEVIATION`。`all_design_cards_executed_exactly_once=true` 只限正式账本内受计数执行，不得解释为现实中的全部装配操作只发生一次。
+
+全部 P3R3/P3R4 卡改按 `OBSERVED_DEVELOPMENT_AND_REGRESSION_ONLY` 治理。新增 `13_PRO_G3R4_REVIEW_AND_P3R5_GATE.md`，并更新 `00_CODEX_EXECUTION_ENTRY.md` 与 `交接说明_current.md`。复审授权提交为 `d8e9173a3078d73e42a3875bd707758abf456521`；活动交接提交为 `509e4a92fa06c9e8e55c6e2b777d2b9bb8702b17`。
+
+下一次唯一范围为 `P3R5_STATIC_CONTACT_REFERENCE_CONSTRUCTION_AND_HOLDOUT_QUALIFICATION`：先冻结零结果协议与纯输入可构造性谓词，在全部已观察卡上开发确定性双活动接触 KKT 参考构造器；实现进入远程 `main` 后，才按预冻结哈希规则生成未观察留出卡；一次性账本必须在读取或装配第一张留出卡前落盘。P3R5 是同一物理和认证框架下最后一次仅修参考构造与治理的修订，失败不自动授权 P3R6，且无论结果均停止在 `G3R5_PRO_REVIEW`。
+
+本次只修改候选治理、执行入口与交接文档。通过 GitHub 连接器完成提交链、冻结协议、纠偏差分、关键源码和已提交指标的静态复核；新增或实质改写的 Markdown 通过 Pandoc `--from=markdown` 解析和基本格式检查。没有重新运行仓库所称的 `142 passed`、Ruff、`compileall`、P3R4 一次性工具或任何数值求解，也没有独立重算三个已记录 SHA-256。正式 `01_最终理论/**`、`02_模拟程序/**`、顶层 `AGENTS.md`、数值源码、测试、公共 API、HDF5 和 UI 均未修改。
