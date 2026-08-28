@@ -1,0 +1,35 @@
+{
+  "schema": "YPS-HFV2-MODEL-IDENTITY-1.0",
+  "model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.5-CONTACT-CANDIDATE",
+  "base_model_id": "HFV2-DISCRETE-CORD-RIGID-BOB-0.2-CANDIDATE",
+  "historical_failed_contact_model_ids": [
+    "HFV2-DISCRETE-CORD-RIGID-BOB-0.3-CONTACT-CANDIDATE",
+    "HFV2-DISCRETE-CORD-RIGID-BOB-0.4-CONTACT-CANDIDATE"
+  ],
+  "contact_assembly_identity_schema": "YPS-HFV2-CONTACT-ASSEMBLY-IDENTITY-3.0",
+  "composite_algorithm_identity": "YPS-HFV2-P3R2-COMPOSITE-SLSQP-KKT-RESTORATION-1.0",
+  "component_scale_identity": "YPS-HFV2-P3R2-COMPONENT-SCALE-1.0",
+  "package_name": "ypendulum_hfv2_p3r2",
+  "contact_mode": "static_frictionless_rigid_unilateral_normal_nonpenetration",
+  "physical_contact_domain_change_from_0_4": false,
+  "algorithm_identity_changes_from_0_4": [
+    "fixed_SLSQP_and_always_executed_projected_KKT_restoration_form_one_composite_algorithm",
+    "registered_attachment_rotation_gauge_is_projected_and_coordinate_fixed",
+    "translation_force_and_rotation_torque_stationarity_are_componentwise_and_dimensionlessly_certified",
+    "dual_interval_LP_uses_the_same_prefrozen_component_scale_contract"
+  ],
+  "unchanged_base_equations": [
+    "unilateral_axial_energy_and_force",
+    "discrete_bending_energy_and_analytic_force",
+    "rigid_bob_attachment_kinematics",
+    "mass_gravity_and_buoyancy",
+    "no_contact_total_potential_and_generalized_force",
+    "P3R_registered_physical_contact_and_socket_validity_domain"
+  ],
+  "contact_energy": "none",
+  "penalty_or_compliance": false,
+  "friction": false,
+  "restitution": false,
+  "dynamic_contact": false,
+  "qualification_scope": "candidate_static_contact_algorithm_only_not_apparatus_prediction"
+}
