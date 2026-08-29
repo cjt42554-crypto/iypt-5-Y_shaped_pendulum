@@ -1,0 +1,47 @@
+name: Append F0R Pro review history
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/append_f0r_pro_review_history.yml
+
+permissions:
+  contents: write
+
+jobs:
+  append-history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Append review history and remove one-shot workflow
+        shell: bash
+        env:
+          ENTRY_B64: "IyAyMDI2LTA4LTI577yaRjBSIFBybyDni6znq4vpnZnmgIHlpI3lrqHpgJrov4fkuI7lrp7pqozliY3mmoLlgZzpl6gKCumdmeaAgeWkjeWuoei/nOeoiyBgbWFpbmAg5LiK55qEIEYwUiDlgJnpgInlrp7njrAgYGUyYTE5OTJiMjk1MDJkNjczZmUzNzI2NjUyODA1MTBmYjdjNTg1MmRg44CB5a6M5oiQ5Lqk5o6lIGA3NGQyYWM0YTQ1YzcwMjkwMzlkN2ViZTVjMWM3MDVhNTUzM2FiYzlhYCDku6Xlj4ogVC9BL1MvTSDlm5vnsbvmlbTmlLnlt6Xku7blkI7vvIzoo4HlhrPkuLrvvJoKCmBGMFJfUFJPX1JFVklFV19QQVNTX19DQU5ESURBVEVfQkxPQ0tFUlNfQ0xPU0VEX19QUkVfRVhQRVJJTUVOVF9QQVVTRV9HQVRFX1JFQUNIRURgCgrnkIborrrlgJnpgInnqL/nmoTor4Hmja7liIbnuqflt7Lnu5/kuIDkuLogQeOAgU5J44CBQ+OAgVLjgIFF77yM5ZCM55uu5qCH6KGl5LiB5Y+K5bmy5YeA5Li05pe25qCR6aqM6K+B5Zmo6Zet5ZCI77yb5Y+C5pWw5Zu+6LCx5bu656uL5LqG5YWz6Zet55qE6YWN572uL+i+k+WHui/ov5DooYzor4Hmja4gc2NoZW1h44CB5a6M5pW05p2l5rqQ5LiO6L+Q6KGM5pe26ZSB44CB5Y+v5oGi5aSN55qE5q2j5byP5ZCO56uv5a+85YWl5ZKM5ryC56e76LSf5L6L77yb5peg5o6l6Kem6Z2Z5oCB5YyF5bey5pS256qE5Li65L2N572u4oCU5ae/5oCB44CB5L+d5a6I44CB5peg5o6l6Kem44CBc3RhdGljLW9ubHkg55qE5paw6Lqr5Lu977yM5bm26KGl6b2Q6ZiI5YC85LiO6KeE6IyD6L+Q6KGM6K+B5o2u77ybUDNSNSDlm77osLHlt7LkuKXmoLzliIbnprvlm5vngrnlhrvnu5Pop4Llr5/kuI4gUENISVAg5o+S5YC85Zmo5oCn6LSo44CCUkMxIOeKtuaAgeivtOaYjuWSjOWunumqjOmXqOa1i+mHj+a4heWNlee7p+e7reS/neaMgeWAmemAiei+ueeVjOOAggoK5pys6L2u6YCa6L+HIEdpdEh1YiDpnZnmgIHmoLjlr7nmj5DkuqTovrnnlYzjgIHlhbPplK7mupDnoIHjgIHlkIjlkIzjgIFzY2hlbWHjgIHmtYvor5XlkozmnLrlmajor4Hmja7vvIzmsqHmnInni6znq4vph43ot5EgQ29kZXgg5oql5ZGK55qEIHB5dGVzdOOAgeaVsOWAvOWkjeeul+aIlua4suafk++8m0YwUiDmj5DkuqTkuZ/msqHmnInnu5Hlrprov5znq6/nirbmgIHmo4Dmn6XjgILlm6DmraTnu5PorrrmmK/lgJnpgInmupDnoIHkuI7nu5PorrrovrnnlYznmoTni6znq4vpnZnmgIEgUEFTU++8jOS4jeaYr+esrOS6jOS7veeLrOeriyBDSSDlpI3njrDjgILmraPlvI/pq5jkv53nnJ/nirbmgIHjgIFQMiDljoblj7Lnu5PorrrlkowgUDNSNS9HM1I1IOaUtuWPo+Wdh+S/neaMgeS4jeWPmOOAggoK6aG555uu5Zyo5rKh5pyJ5a6e6aqM5pWw5o2u5pe25bey6L6+5Yiw5Y+v5Lul5pqC5YGc5paw5aKe55CG6K665LiO5qih5ouf5byA5Y+R55qE56eR5a2m6IqC54K544CC5b2T5YmN5peg5Y+v6Ieq5Yqo5omn6KGM55qEIENvZGV4IOS7u+WKoe+8jOetieW+heeUqOaIt+aYjuehrumAieaLqe+8mmBQQVVTRV9GT1JfRVhQRVJJTUVOVF9HQVRFYO+8jOaIlumAkOmhueaOiOadgyBUL0EvUy9SIOato+W8j+ebruagh+WQjuaJp+ihjCBgRjFfRVhQTElDSVRfRk9STUFMX1BST01PVElPTl9BTkRfRklOQUxfQVVESVRfUFJFUEFSQVRJT05g44CC5LiA6Iis4oCc57un57ut4oCd5LiN5p6E5oiQ5q2j5byP55uu5b2V5YaZ5YWl5o6I5p2D77ybUDNSNuOAgUczUjXjgIHmlrDmjqXop6botYTmoLzjgIHliqjlipvlrabjgIHliqjmgIHmjqXop6bjgIFSQzEg5omp5bGV5ZKM5Ya757uT6K+B5o2u5L+u5pS557un57ut56aB5q2i44CCCg=="
+          MARKER: "# 2026-08-29：F0R Pro 独立静态复审通过与实验前暂停门"
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64
+          import os
+          from pathlib import Path
+
+          history = Path("90_候选工作区/交接说明_history.md")
+          workflow = Path(".github/workflows/append_f0r_pro_review_history.yml")
+          text = history.read_text(encoding="utf-8")
+          marker = os.environ["MARKER"]
+          if marker not in text.splitlines():
+              entry = base64.b64decode(os.environ["ENTRY_B64"]).decode("utf-8")
+              separator = "" if not text or text.endswith("\n\n") else ("\n" if text.endswith("\n") else "\n\n")
+              history.write_text(text + separator + entry, encoding="utf-8")
+          workflow.unlink()
+          PY
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'docs(f0r): archive Pro review and remove one-shot workflow'
+          git push origin HEAD:main
