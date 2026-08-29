@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from .atlas import run_atlas
+from .source_manifest import ContractViolation
 
 
 def main() -> None:
@@ -16,12 +17,15 @@ def main() -> None:
     parser.add_argument("--repository-root", type=Path)
     parser.add_argument("--smoke", action="store_true")
     arguments = parser.parse_args()
-    payload = run_atlas(
-        arguments.config,
-        arguments.output,
-        repository_root=arguments.repository_root,
-        smoke=arguments.smoke,
-    )
+    try:
+        payload = run_atlas(
+            arguments.config,
+            arguments.output,
+            repository_root=arguments.repository_root,
+            smoke=arguments.smoke,
+        )
+    except (ContractViolation, FileNotFoundError) as error:
+        parser.error(str(error))
     print(
         json.dumps(
             {

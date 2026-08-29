@@ -31,10 +31,12 @@ from .backend import (
 )
 from .source_manifest import (
     ATLAS_IDENTITY,
+    FORMAL_ATLAS_RELATIVE_PATH,
     FORMAL_BACKEND_RELATIVE_PATH,
     FORMAL_CONTRACTS_RELATIVE_PATH,
     FORMAL_THEORY_RELATIVE_PATH,
     BoundSourceManifest,
+    ContractViolation,
     load_json_strict,
     sha256_file,
     validate_json_contract,
@@ -60,6 +62,39 @@ FIGURE_METADATA = {
     "Creator": ATLAS_IDENTITY,
     "Date": None,
 }
+
+
+def _validate_repository_checkout(repository_root: Path) -> None:
+    """Reject installed-wheel and incomplete checkout layouts before reading inputs."""
+
+    expected_project_root = (
+        repository_root.resolve() / FORMAL_ATLAS_RELATIVE_PATH
+    ).resolve()
+    if PROJECT_ROOT.resolve() != expected_project_root:
+        raise ContractViolation(
+            "repository-bound formal atlas must run from the formal repository "
+            "checkout source tree; installed-wheel execution is unsupported: "
+            f"expected {expected_project_root}, got {PROJECT_ROOT.resolve()}"
+        )
+    required_resources = {
+        "configuration schema": CONFIG_SCHEMA_PATH,
+        "output schema": OUTPUT_SCHEMA_PATH,
+        "run-evidence schema": RUN_EVIDENCE_SCHEMA_PATH,
+        "source-manifest lock": PROJECT_ROOT / "contracts/source_manifest_lock.json",
+        "source-manifest lock schema": (
+            PROJECT_ROOT / "schemas/source_manifest_lock.schema.json"
+        ),
+    }
+    missing = [
+        f"{label}={path}"
+        for label, path in required_resources.items()
+        if not path.is_file()
+    ]
+    if missing:
+        raise ContractViolation(
+            "repository-bound formal atlas checkout is incomplete; missing "
+            + ", ".join(missing)
+        )
 
 
 @dataclass(frozen=True, order=True)
@@ -770,12 +805,18 @@ def run_atlas(
 
     config_path = config_path.resolve()
     output_directory = output_directory.resolve()
+    if repository_root is not None:
+        root = repository_root.resolve()
+    else:
+        try:
+            root = find_repository_root(Path(__file__))
+        except FileNotFoundError as error:
+            raise ContractViolation(
+                "repository-bound formal atlas must run from the formal repository "
+                "checkout source tree; installed-wheel execution is unsupported"
+            ) from error
+    _validate_repository_checkout(root)
     config = _load_config(config_path)
-    root = (
-        repository_root.resolve()
-        if repository_root is not None
-        else find_repository_root(Path(__file__))
-    )
     source_manifest = verify_source_manifest(PROJECT_ROOT, root)
     configuration_entry = _single_source_entry(source_manifest, "configuration")
     bound_configuration_path = (root / configuration_entry["path"]).resolve()

@@ -13,6 +13,7 @@ import jsonschema
 import pytest
 
 from y_pendulum_pattern_atlas import ATLAS_IDENTITY, OUTPUT_SCHEMA, run_atlas
+from y_pendulum_pattern_atlas import atlas as atlas_module
 from y_pendulum_pattern_atlas import backend as backend_module
 from y_pendulum_pattern_atlas.atlas import _load_config
 from y_pendulum_pattern_atlas.source_manifest import (
@@ -119,6 +120,25 @@ def test_repository_root_discovery_and_formal_checkout_location(tmp_path: Path) 
         backend_module.find_repository_root(outside)
     with pytest.raises(ContractViolation, match="formal atlas must run from"):
         build_source_lock(PROJECT_ROOT, tmp_path)
+
+
+def test_installed_wheel_layout_fails_closed_before_reading_config(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    installed_layout = tmp_path / "venv/lib/python3.12"
+    monkeypatch.setattr(atlas_module, "PROJECT_ROOT", installed_layout)
+    output = tmp_path / "must-not-exist"
+    with pytest.raises(
+        ContractViolation,
+        match="repository-bound formal atlas must run from the formal repository checkout",
+    ):
+        run_atlas(
+            tmp_path / "missing-config.json",
+            output,
+            repository_root=REPOSITORY_ROOT,
+            smoke=True,
+        )
+    assert not output.exists()
 
 
 def test_formal_production_tree_contains_no_second_ode_or_integrator() -> None:

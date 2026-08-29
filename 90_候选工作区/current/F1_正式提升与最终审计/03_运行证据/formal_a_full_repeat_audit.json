@@ -3,7 +3,7 @@
     "byte_identical_across_all_repeats": true,
     "full_repeat_verification": {
       "bytes": 2547,
-      "sha256": "eb168e72d7007336d2ba8e886e82d5773acb72394f93a06d1d92c2807f93457d"
+      "sha256": "28683aa78759be4f5628f5e618de5fa17eff6dc37510dfa0d9e1f7a07eb2db08"
     },
     "repeat_count": 3,
     "repeat_matrix": [
@@ -13,17 +13,17 @@
           {
             "bytes": 1399,
             "path": "artifact_manifest.json",
-            "sha256": "ce8c3a3df4f6bc90ff9e4545492e534c975f02696199ba6791b5664ca608faef"
+            "sha256": "5abc034b2818a92e025845522c0ec52f84a47adc8fc3acc18027ee19722226e3"
           },
           {
             "bytes": 45664,
             "path": "atlas_results.json",
-            "sha256": "ed0530b2fe58a0d4b1bdf86b3565c2f99d3b3c1e7cd16dc9428e701d3f668d59"
+            "sha256": "84c39cda45a86300d071019f1e1da512c9a9c87cc4ac2bc97d18d5e80a1a2f47"
           },
           {
             "bytes": 15270,
             "path": "atlas_run_evidence.json",
-            "sha256": "a31be5b40e9edb45fd87ac520141ac71c48cd4b22f37bfffec55de00f4de7fb5"
+            "sha256": "b973bb89c7902102fd729c04b6167b08f9883552fce96f08acba7a8da08c8953"
           },
           {
             "bytes": 5103,
@@ -67,17 +67,17 @@
           {
             "bytes": 1399,
             "path": "artifact_manifest.json",
-            "sha256": "ce8c3a3df4f6bc90ff9e4545492e534c975f02696199ba6791b5664ca608faef"
+            "sha256": "5abc034b2818a92e025845522c0ec52f84a47adc8fc3acc18027ee19722226e3"
           },
           {
             "bytes": 45664,
             "path": "atlas_results.json",
-            "sha256": "ed0530b2fe58a0d4b1bdf86b3565c2f99d3b3c1e7cd16dc9428e701d3f668d59"
+            "sha256": "84c39cda45a86300d071019f1e1da512c9a9c87cc4ac2bc97d18d5e80a1a2f47"
           },
           {
             "bytes": 15270,
             "path": "atlas_run_evidence.json",
-            "sha256": "a31be5b40e9edb45fd87ac520141ac71c48cd4b22f37bfffec55de00f4de7fb5"
+            "sha256": "b973bb89c7902102fd729c04b6167b08f9883552fce96f08acba7a8da08c8953"
           },
           {
             "bytes": 5103,
@@ -121,17 +121,17 @@
           {
             "bytes": 1399,
             "path": "artifact_manifest.json",
-            "sha256": "ce8c3a3df4f6bc90ff9e4545492e534c975f02696199ba6791b5664ca608faef"
+            "sha256": "5abc034b2818a92e025845522c0ec52f84a47adc8fc3acc18027ee19722226e3"
           },
           {
             "bytes": 45664,
             "path": "atlas_results.json",
-            "sha256": "ed0530b2fe58a0d4b1bdf86b3565c2f99d3b3c1e7cd16dc9428e701d3f668d59"
+            "sha256": "84c39cda45a86300d071019f1e1da512c9a9c87cc4ac2bc97d18d5e80a1a2f47"
           },
           {
             "bytes": 15270,
             "path": "atlas_run_evidence.json",
-            "sha256": "a31be5b40e9edb45fd87ac520141ac71c48cd4b22f37bfffec55de00f4de7fb5"
+            "sha256": "b973bb89c7902102fd729c04b6167b08f9883552fce96f08acba7a8da08c8953"
           },
           {
             "bytes": 5103,
@@ -202,9 +202,9 @@
     "runtime_identity_sha256": "e2e4a543eeef549904b3c8f21c9b6b0f657d19a3be9245da91d087781fc64abe",
     "source_manifest_lock": {
       "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/contracts/source_manifest_lock.json",
-      "sha256": "169e088868186497195a520329334f623d4ef542953ba9d7e13ce864c23b0f21"
+      "sha256": "427bbc7d3d55a5ceaeadba3df58f74b13efb2c92a697900ea4fbf63bede1f2b8"
     },
-    "source_manifest_sha256": "1c0b6e9a2b3e9c5ab40d6387aef70dbbe0e5efc0bd9f29e64ea0ee50d7bf6111",
+    "source_manifest_sha256": "4f09859be7e5e6c4a0422f9f82b9da2728891c67e13779e4155c171ee9778a58",
     "verification_tool": {
       "path": "tools/verify_full_repeats.py",
       "sha256": "8c8713a48e2e0dd7265bcc23f1695db196007db14c308c384593ef72dcc2f371"

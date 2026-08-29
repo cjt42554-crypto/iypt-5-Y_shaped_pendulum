@@ -44,6 +44,8 @@ Python distribution 为 `y-pendulum-pattern-atlas==1.1.0`。本程序只在本�
 
 ## 4. 从仓库 checkout 运行
 
+构建出的 wheel 只用于元数据、导入和包装边界检查，不是可执行的独立图谱。从 checkout 外启动 wheel 中的 CLI，或尝试用 `--repository-root` 使 wheel 绕过正式源码布局，都必须在读取配置或写入输出前以明确的 `repository-bound` 错误失败关闭。
+
 从仓库根目录进入本目录：
 
 ```bash
