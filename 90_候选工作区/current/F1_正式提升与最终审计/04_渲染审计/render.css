@@ -1,0 +1,90 @@
+@page {
+  size: A4;
+  margin: 14mm 12mm 16mm;
+}
+
+:root {
+  color: #111827;
+  font-family: "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+}
+
+body {
+  margin: 0;
+  max-width: none;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  break-after: avoid-page;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 20pt;
+}
+
+h2 {
+  border-bottom: 0.5pt solid #9ca3af;
+  font-size: 15pt;
+  padding-bottom: 2mm;
+}
+
+h3 {
+  font-size: 12.5pt;
+}
+
+pre,
+code {
+  font-family: "Noto Sans Mono CJK SC", "Source Han Mono SC", monospace;
+}
+
+pre {
+  background: #f3f4f6;
+  border: 0.5pt solid #d1d5db;
+  border-radius: 2mm;
+  overflow-wrap: anywhere;
+  padding: 2.5mm;
+  white-space: pre-wrap;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  margin: 3mm 0;
+  width: 100%;
+}
+
+th,
+td {
+  border: 0.5pt solid #9ca3af;
+  padding: 1.2mm 1.5mm;
+  vertical-align: top;
+}
+
+tr,
+figure,
+blockquote {
+  break-inside: avoid-page;
+}
+
+img,
+svg {
+  height: auto;
+  max-width: 100%;
+}
+
+mjx-container[display="true"] {
+  margin: 2.5mm 0 !important;
+  max-width: 100%;
+}
+
+hr {
+  border: 0;
+  border-top: 0.5pt solid #6b7280;
+  margin: 6mm 0;
+}

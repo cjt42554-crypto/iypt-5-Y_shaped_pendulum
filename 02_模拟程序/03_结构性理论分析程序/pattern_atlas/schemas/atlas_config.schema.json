@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:iypt:y-pendulum:pattern-atlas:schema:config:1.1",
+  "title": "Closed configuration for the formal ideal-torus pattern atlas",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "model_id",
+    "scope",
+    "targets",
+    "amplitudes_rad",
+    "analysis",
+    "numerics",
+    "validation_thresholds"
+  ],
+  "properties": {
+    "schema": {"const": "YPS-FORMAL-PATTERN-ATLAS-CONFIG-1.1"},
+    "model_id": {"const": "FWD-TORUS-1.0"},
+    "scope": {
+      "const": "ideal symmetric massless inextensible always-taut torus; model-internal tuning only; no experimental calibration"
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["p", "q"],
+        "properties": {
+          "p": {"type": "integer", "minimum": 1},
+          "q": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "amplitudes_rad": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1.5707963267948966},
+          {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1.5707963267948966}
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slow_cycles",
+        "phase_tolerance_rad",
+        "reference_lower_length_m",
+        "symmetric_upper_slope",
+        "end_window_extra_slow_cycles",
+        "phase_samples_per_slow_period",
+        "tuning_samples_per_slow_period",
+        "maximum_output_step",
+        "tuning_initial_half_width_eta",
+        "tuning_maximum_bracket_expansions",
+        "tuning_bracket_growth",
+        "tuning_positive_radius_margin",
+        "pure_mode_eta",
+        "pure_mode_amplitudes_rad",
+        "pure_mode_output_step"
+      ],
+      "properties": {
+        "slow_cycles": {"type": "integer", "minimum": 1},
+        "phase_tolerance_rad": {"type": "number", "exclusiveMinimum": 0},
+        "reference_lower_length_m": {"type": "number", "exclusiveMinimum": 0},
+        "symmetric_upper_slope": {"type": "number", "exclusiveMinimum": 0},
+        "end_window_extra_slow_cycles": {"type": "number", "minimum": 0},
+        "phase_samples_per_slow_period": {"type": "integer", "minimum": 8},
+        "tuning_samples_per_slow_period": {"type": "integer", "minimum": 8},
+        "maximum_output_step": {"type": "number", "exclusiveMinimum": 0},
+        "tuning_initial_half_width_eta": {"type": "number", "exclusiveMinimum": 0},
+        "tuning_maximum_bracket_expansions": {"type": "integer", "minimum": 1},
+        "tuning_bracket_growth": {"type": "number", "exclusiveMinimum": 1},
+        "tuning_positive_radius_margin": {"type": "number", "exclusiveMinimum": 0},
+        "pure_mode_eta": {"type": "number", "exclusiveMinimum": 0},
+        "pure_mode_amplitudes_rad": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1.5707963267948966}
+        },
+        "pure_mode_output_step": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "numerics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "rtol",
+        "atol_angle",
+        "atol_rate",
+        "maximum_step",
+        "step_halving_maximum_step",
+        "event_cluster_tolerance"
+      ],
+      "properties": {
+        "method": {"const": "DOP853"},
+        "rtol": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.001},
+        "atol_angle": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.001},
+        "atol_rate": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.001},
+        "maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "event_cluster_tolerance": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "validation_thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pure_mode_relative_period_error_max",
+        "relative_energy_drift_max",
+        "minimum_guard_strictly_positive",
+        "step_halving_frequency_ratio_difference_max",
+        "step_halving_resonant_phase_difference_rad_max",
+        "step_halving_closure_difference_max"
+      ],
+      "properties": {
+        "pure_mode_relative_period_error_max": {"type": "number", "exclusiveMinimum": 0},
+        "relative_energy_drift_max": {"type": "number", "exclusiveMinimum": 0},
+        "minimum_guard_strictly_positive": {"const": 0.0},
+        "step_halving_frequency_ratio_difference_max": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_resonant_phase_difference_rad_max": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_closure_difference_max": {"type": "number", "exclusiveMinimum": 0}
+      }
+    }
+  }
+}

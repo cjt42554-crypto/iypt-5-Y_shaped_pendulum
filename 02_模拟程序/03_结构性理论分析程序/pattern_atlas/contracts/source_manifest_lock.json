@@ -1,0 +1,95 @@
+{
+  "atlas_identity": "YPS-IDEAL-TORUS-PATTERN-ATLAS-1.1",
+  "entries": [
+    {
+      "path": "01_最终理论/01-前向预测理论.md",
+      "role": "formal_theory",
+      "sha256": "a71f18f33cd738afd5830dd919ceb37e17ad77d1714722c4568243387503b73f"
+    },
+    {
+      "path": "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/contracts.py",
+      "role": "formal_contracts",
+      "sha256": "6d5266d0b9f50cdafc05811c0e3d581215c708e434d5b485792faa00cb9cefe6"
+    },
+    {
+      "path": "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/torus.py",
+      "role": "formal_backend",
+      "sha256": "a7cef2c45868bedf5b045a9409b9347a45549f480de24dd83ded523349d10363"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/configs/atlas_v1.json",
+      "role": "configuration",
+      "sha256": "77e3772badae667f22ed4a5ccd311b96bcfadeea54016d3ddefef5919524ca64"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/pyproject.toml",
+      "role": "build_metadata",
+      "sha256": "ac182ece6dd21ad733c0b96696591f3a7b556a59f7e9f566ff6c17a1fb327fef"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/schemas/atlas_config.schema.json",
+      "role": "schema",
+      "sha256": "f4b76846b449f37b88b8974240def7d2e77d65e998b361f2922ddfc586d9d778"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/schemas/atlas_output.schema.json",
+      "role": "schema",
+      "sha256": "693d2fb9a7689704a17bb76bf8b7ee886394ca601d904db0886c85306a5e03cd"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/schemas/atlas_run_evidence.schema.json",
+      "role": "schema",
+      "sha256": "a367d135e5c46bb9aa98567cd0f431456bf4f9b9fbc27d9b496a2588dc87adf2"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/schemas/source_manifest_lock.schema.json",
+      "role": "schema",
+      "sha256": "1c4c2b4aae8fd2423702f99428f37aff48cd96e30d00c852c718289a491996b5"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/src/y_pendulum_pattern_atlas/__init__.py",
+      "role": "production_source",
+      "sha256": "ce03f85d8f800a2df491d98835555e2c1925fed444620e77f5cccd08f71c88f0"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/src/y_pendulum_pattern_atlas/__main__.py",
+      "role": "production_source",
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/src/y_pendulum_pattern_atlas/atlas.py",
+      "role": "production_source",
+      "sha256": "bf93430802daad9fc901e3057eeedd94800d463f68f2947746c611a7bbb68f3e"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/src/y_pendulum_pattern_atlas/backend.py",
+      "role": "production_source",
+      "sha256": "ab4dcfb7d2311fe9bae7fda1e0404a4d145575924a08ea99018309961f4d45bc"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/src/y_pendulum_pattern_atlas/cli.py",
+      "role": "production_source",
+      "sha256": "efa74ef21ce72045e9965c00f58daa89801040fcfb8748d9e30e0eb3a2d6dfb6"
+    },
+    {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/src/y_pendulum_pattern_atlas/source_manifest.py",
+      "role": "production_source",
+      "sha256": "0ef9a7f851c3eec668d61b40b8fbbbcdea413eeb8b5177558e52505e3df32e8b"
+    }
+  ],
+  "runtime_identity": {
+    "packages": {
+      "jsonschema": "4.10.3",
+      "matplotlib": "3.8.4",
+      "numpy": "1.26.4",
+      "scipy": "1.11.4"
+    },
+    "platform_machine": "x86_64",
+    "platform_system": "Linux",
+    "python_implementation": "CPython",
+    "python_version": "3.12.3",
+    "schema": "YPS-FORMAL-PATTERN-ATLAS-RUNTIME-IDENTITY-1.0"
+  },
+  "runtime_identity_sha256": "e2e4a543eeef549904b3c8f21c9b6b0f657d19a3be9245da91d087781fc64abe",
+  "schema": "YPS-FORMAL-PATTERN-ATLAS-SOURCE-LOCK-1.0"
+}

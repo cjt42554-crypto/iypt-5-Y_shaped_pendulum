@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/iypt5/yps-no-contact-static-run-evidence-1.1.schema.json",
+  "title": "Closed canonical run evidence for the formal static reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "model_identity",
+    "claim_limit",
+    "source_manifest",
+    "source_manifest_sha256",
+    "runtime",
+    "runtime_identity_sha256",
+    "case_binding",
+    "solver_settings",
+    "audit_thresholds",
+    "optimizer_state",
+    "diagnostics",
+    "interpretation"
+  ],
+  "properties": {
+    "schema": {"const": "YPS-NO-CONTACT-STATIC-RUN-EVIDENCE-1.1"},
+    "model_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "release_status",
+        "capability",
+        "claim_ceiling",
+        "qualification_status"
+      ],
+      "properties": {
+        "model_id": {"const": "YPS-NO-CONTACT-STATIC-REFERENCE-1.1"},
+        "release_status": {"const": "FORMAL_RELEASE_STATIC_REFERENCE_ONLY"},
+        "capability": {"const": "position_orientation_conservative_no_contact_static_reference_only"},
+        "claim_ceiling": {"const": "FORMAL_STATIC_REFERENCE_IMPLEMENTATION_AND_RUNTIME_EVIDENCE_ONLY"},
+        "qualification_status": {"const": "NO_FORMAL_NUMERICAL_QUALIFICATION_CARRIED"}
+      }
+    },
+    "claim_limit": {
+      "const": "formal static-reference implementation and runtime evidence only; no formal numerical qualification is carried"
+    },
+    "source_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "entries"],
+      "properties": {
+        "schema": {"const": "YPS-NO-CONTACT-STATIC-SOURCE-MANIFEST-1.1"},
+        "entries": {
+          "type": "array",
+          "minItems": 26,
+          "maxItems": 26,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/sourceEntry"}
+        }
+      }
+    },
+    "source_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "runtime": {"$ref": "#/$defs/runtime"},
+    "runtime_identity_sha256": {"$ref": "#/$defs/sha256"},
+    "case_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_path",
+        "contract_sha256",
+        "case_id",
+        "mesh_segments_per_branch",
+        "assembly_identity_schema",
+        "assembly_token",
+        "seed_id",
+        "seed_sha256"
+      ],
+      "properties": {
+        "contract_path": {"const": "contracts/static_reference_run_contract.json"},
+        "contract_sha256": {"$ref": "#/$defs/sha256"},
+        "case_id": {"const": "STATIC_REFERENCE_CANONICAL_Y_1"},
+        "mesh_segments_per_branch": {"const": 2},
+        "assembly_identity_schema": {"const": "YPS-NO-CONTACT-STATIC-ASSEMBLY-IDENTITY-1.1"},
+        "assembly_token": {"$ref": "#/$defs/sha256"},
+        "seed_id": {"const": "static_seed_00_base"},
+        "seed_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "solver_settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "library",
+        "method",
+        "jacobian",
+        "gradient_infinity_tolerance",
+        "maximum_iterations",
+        "x_relative_tolerance",
+        "armijo_c1",
+        "curvature_c2",
+        "gradient_norm",
+        "display"
+      ],
+      "properties": {
+        "library": {"const": "scipy.optimize.minimize"},
+        "method": {"const": "BFGS"},
+        "jacobian": {"const": "analytic_total_potential_gradient"},
+        "gradient_infinity_tolerance": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_iterations": {"type": "integer", "minimum": 1},
+        "x_relative_tolerance": {"type": "number", "minimum": 0},
+        "armijo_c1": {"const": 0.0001},
+        "curvature_c2": {"const": 0.9},
+        "gradient_norm": {"const": "infinity"},
+        "display": {"const": false}
+      }
+    },
+    "audit_thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finite_difference_relative_steps",
+        "finite_difference_final_relative_error_max",
+        "finite_difference_minimum_strict_decrease_steps",
+        "scaled_generalized_force_residual_max",
+        "scaled_global_force_balance_max",
+        "scaled_global_moment_balance_max"
+      ],
+      "properties": {
+        "finite_difference_relative_steps": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "number", "exclusiveMinimum": 0}
+        },
+        "finite_difference_final_relative_error_max": {"type": "number", "exclusiveMinimum": 0},
+        "finite_difference_minimum_strict_decrease_steps": {"type": "integer", "minimum": 1},
+        "scaled_generalized_force_residual_max": {"type": "number", "exclusiveMinimum": 0},
+        "scaled_global_force_balance_max": {"type": "number", "exclusiveMinimum": 0},
+        "scaled_global_moment_balance_max": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "optimizer_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "success_record_only",
+        "status_record_only",
+        "message_record_only",
+        "iterations",
+        "function_evaluations",
+        "gradient_evaluations"
+      ],
+      "properties": {
+        "success_record_only": {"type": "boolean"},
+        "status_record_only": {"type": "integer", "minimum": 0},
+        "message_record_only": {"type": "string", "minLength": 1},
+        "iterations": {"type": "integer", "minimum": 0},
+        "function_evaluations": {"type": "integer", "minimum": 1},
+        "gradient_evaluations": {"type": "integer", "minimum": 1}
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finite_difference_probe",
+        "finite_difference_relative_errors",
+        "scaled_generalized_force_residual",
+        "scaled_global_force_balance",
+        "scaled_global_moment_balance",
+        "independent_checks",
+        "implementation_diagnostics_passed"
+      ],
+      "properties": {
+        "finite_difference_probe": {"const": "initial_coordinates_before_optimization"},
+        "finite_difference_relative_errors": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "number", "minimum": 0}
+        },
+        "scaled_generalized_force_residual": {"type": "number", "minimum": 0},
+        "scaled_global_force_balance": {"type": "number", "minimum": 0},
+        "scaled_global_moment_balance": {"type": "number", "minimum": 0},
+        "independent_checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "finite_difference_decrease",
+            "finite_difference_final",
+            "generalized_force",
+            "global_force_balance",
+            "global_moment_balance"
+          ],
+          "properties": {
+            "finite_difference_decrease": {"const": true},
+            "finite_difference_final": {"const": true},
+            "generalized_force": {"const": true},
+            "global_force_balance": {"const": true},
+            "global_moment_balance": {"const": true}
+          }
+        },
+        "implementation_diagnostics_passed": {"const": true}
+      }
+    },
+    "interpretation": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sourceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "path", "sha256"],
+      "properties": {
+        "role": {
+          "enum": [
+            "production_source",
+            "canonical_contract",
+            "model_identity",
+            "build_metadata",
+            "evidence_schema",
+            "canonical_case_builder",
+            "evidence_tool"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+        },
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python",
+        "python_implementation",
+        "numpy",
+        "scipy",
+        "pytest",
+        "jsonschema",
+        "executable_name"
+      ],
+      "properties": {
+        "python": {"type": "string", "pattern": "^3\\.12(?:\\.|$)"},
+        "python_implementation": {"const": "CPython"},
+        "numpy": {"type": "string", "minLength": 1},
+        "scipy": {"type": "string", "minLength": 1},
+        "pytest": {"type": "string", "minLength": 1},
+        "jsonschema": {"type": "string", "minLength": 1},
+        "executable_name": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

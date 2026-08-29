@@ -1,0 +1,74 @@
+{
+  "schema": "YPS-NO-CONTACT-STATIC-CANONICAL-RUN-CONTRACT-1.1",
+  "model_id": "YPS-NO-CONTACT-STATIC-REFERENCE-1.1",
+  "release_status": "FORMAL_RELEASE_STATIC_REFERENCE_ONLY",
+  "capability": "position_orientation_conservative_no_contact_static_reference_only",
+  "claim_ceiling": "FORMAL_STATIC_REFERENCE_IMPLEMENTATION_AND_RUNTIME_EVIDENCE_ONLY",
+  "qualification_status": "NO_FORMAL_NUMERICAL_QUALIFICATION_CARRIED",
+  "claim_limit": "formal static-reference implementation and runtime evidence only; no formal numerical qualification is carried",
+  "coordinate_chart": {
+    "rotation_chart_norm_max_rad": 0.75
+  },
+  "primary_solver": {
+    "method": "BFGS",
+    "gradient_infinity_tolerance": 1e-9,
+    "maximum_iterations": 2500,
+    "x_relative_tolerance": 0.0,
+    "armijo_c1": 0.0001,
+    "curvature_c2": 0.9
+  },
+  "finite_difference": {
+    "relative_step_sequence": [0.0001, 0.00003, 0.00001, 0.000003, 0.000001, 3e-7],
+    "final_relative_error_max": 0.000002,
+    "minimum_strict_decrease_steps": 3
+  },
+  "y_anchor": {
+    "case_id": "STATIC_REFERENCE_CANONICAL_Y_1",
+    "mesh_segments_per_branch": [2],
+    "support_left_position_m": [-0.45, 0.0, 0.0],
+    "support_right_position_m": [0.45, 0.0, 0.0],
+    "upper_branch_rest_length_m": 0.56,
+    "lower_branch_rest_length_m": 0.54,
+    "upper_axial_rigidity_N": 120.0,
+    "lower_axial_rigidity_N": 120.0,
+    "bending_stiffness_N_m2": 0.00005,
+    "line_density_kg_per_m": 0.006,
+    "displaced_volume_per_length_m2": 0.000002,
+    "explicit_node_mass_kg": {
+      "junction": 0.002,
+      "attachment": 0.001
+    },
+    "explicit_node_displaced_volume_m3": {
+      "junction": 0.0,
+      "attachment": 0.0
+    },
+    "bob_mass_kg": 0.14,
+    "bob_displaced_volume_m3": 0.0005235987755982989,
+    "attachment_arm_body_m": [0.0, 0.0, 0.05],
+    "gravity_m_per_s2": [0.0, 0.0, -9.81],
+    "fluid_density_kg_per_m3": 1.2,
+    "buoyancy_enabled": true,
+    "base_geometry": {
+      "junction_position_m": [0.0, 0.0, -0.345],
+      "attachment_position_m": [0.0, 0.0, -0.891],
+      "bob_position_m": [0.0, 0.0, -0.941],
+      "reference_rotation": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ]
+    },
+    "deterministic_seeds": [
+      {
+        "seed_id": "static_seed_00_base",
+        "junction_offset_m": [0.0, 0.0, 0.0],
+        "interior_y_amplitude_m": 0.0,
+        "bob_offset_m": [0.0, 0.0, 0.0],
+        "rotation_vector_rad": [0.0, 0.0, 0.0]
+      }
+    ],
+    "scaled_generalized_force_residual_max": 2e-7,
+    "scaled_global_force_balance_max": 2e-10,
+    "scaled_global_moment_balance_max": 2e-9
+  }
+}

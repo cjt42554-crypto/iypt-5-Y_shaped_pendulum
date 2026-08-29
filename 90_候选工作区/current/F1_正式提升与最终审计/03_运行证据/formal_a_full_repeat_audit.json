@@ -1,0 +1,215 @@
+{
+  "accepted_evidence": {
+    "byte_identical_across_all_repeats": true,
+    "full_repeat_verification": {
+      "bytes": 2547,
+      "sha256": "eb168e72d7007336d2ba8e886e82d5773acb72394f93a06d1d92c2807f93457d"
+    },
+    "repeat_count": 3,
+    "repeat_matrix": [
+      {
+        "artifact_count": 9,
+        "artifacts": [
+          {
+            "bytes": 1399,
+            "path": "artifact_manifest.json",
+            "sha256": "ce8c3a3df4f6bc90ff9e4545492e534c975f02696199ba6791b5664ca608faef"
+          },
+          {
+            "bytes": 45664,
+            "path": "atlas_results.json",
+            "sha256": "ed0530b2fe58a0d4b1bdf86b3565c2f99d3b3c1e7cd16dc9428e701d3f668d59"
+          },
+          {
+            "bytes": 15270,
+            "path": "atlas_run_evidence.json",
+            "sha256": "a31be5b40e9edb45fd87ac520141ac71c48cd4b22f37bfffec55de00f4de7fb5"
+          },
+          {
+            "bytes": 5103,
+            "path": "atlas_summary.csv",
+            "sha256": "e4c59fc746a215d0b3cc6725c31d9a73d8439a9571aab8aa5126a61127fde8e4"
+          },
+          {
+            "bytes": 79934,
+            "path": "figures/compensation_accuracy.png",
+            "sha256": "fa52bb442996abb1f149d22e8571b5a1ac756fcaf43b44d65009820dfd30c70c"
+          },
+          {
+            "bytes": 20602,
+            "path": "figures/compensation_accuracy.svg",
+            "sha256": "cffe841213b908b844bde307d42d09195b3c8cf4dc66b8affdefd13f96565c5c"
+          },
+          {
+            "bytes": 160104,
+            "path": "figures/phase_atlas_3to2.png",
+            "sha256": "bdbc9374479cdb56e97b0a0b822bfe7ac5344df7f18017d1f1efeb82b34adad8"
+          },
+          {
+            "bytes": 70096,
+            "path": "figures/phase_atlas_3to2.svg",
+            "sha256": "5d3772f9bf68e85281c80e23d5089c82efcef6d30efc0ec69af23d9816dc0ab5"
+          },
+          {
+            "bytes": 370,
+            "path": "geometry_tolerance.csv",
+            "sha256": "ab380a16c940509d6cdd9287eebca932abaeee9985ab2007d4078d0c5742163a"
+          }
+        ],
+        "atlas_case_count": 16,
+        "byte_identity_against_repeat_1": "PASS",
+        "primary_result_trajectory_count": 48,
+        "repeat_id": 1
+      },
+      {
+        "artifact_count": 9,
+        "artifacts": [
+          {
+            "bytes": 1399,
+            "path": "artifact_manifest.json",
+            "sha256": "ce8c3a3df4f6bc90ff9e4545492e534c975f02696199ba6791b5664ca608faef"
+          },
+          {
+            "bytes": 45664,
+            "path": "atlas_results.json",
+            "sha256": "ed0530b2fe58a0d4b1bdf86b3565c2f99d3b3c1e7cd16dc9428e701d3f668d59"
+          },
+          {
+            "bytes": 15270,
+            "path": "atlas_run_evidence.json",
+            "sha256": "a31be5b40e9edb45fd87ac520141ac71c48cd4b22f37bfffec55de00f4de7fb5"
+          },
+          {
+            "bytes": 5103,
+            "path": "atlas_summary.csv",
+            "sha256": "e4c59fc746a215d0b3cc6725c31d9a73d8439a9571aab8aa5126a61127fde8e4"
+          },
+          {
+            "bytes": 79934,
+            "path": "figures/compensation_accuracy.png",
+            "sha256": "fa52bb442996abb1f149d22e8571b5a1ac756fcaf43b44d65009820dfd30c70c"
+          },
+          {
+            "bytes": 20602,
+            "path": "figures/compensation_accuracy.svg",
+            "sha256": "cffe841213b908b844bde307d42d09195b3c8cf4dc66b8affdefd13f96565c5c"
+          },
+          {
+            "bytes": 160104,
+            "path": "figures/phase_atlas_3to2.png",
+            "sha256": "bdbc9374479cdb56e97b0a0b822bfe7ac5344df7f18017d1f1efeb82b34adad8"
+          },
+          {
+            "bytes": 70096,
+            "path": "figures/phase_atlas_3to2.svg",
+            "sha256": "5d3772f9bf68e85281c80e23d5089c82efcef6d30efc0ec69af23d9816dc0ab5"
+          },
+          {
+            "bytes": 370,
+            "path": "geometry_tolerance.csv",
+            "sha256": "ab380a16c940509d6cdd9287eebca932abaeee9985ab2007d4078d0c5742163a"
+          }
+        ],
+        "atlas_case_count": 16,
+        "byte_identity_against_repeat_1": "PASS",
+        "primary_result_trajectory_count": 48,
+        "repeat_id": 2
+      },
+      {
+        "artifact_count": 9,
+        "artifacts": [
+          {
+            "bytes": 1399,
+            "path": "artifact_manifest.json",
+            "sha256": "ce8c3a3df4f6bc90ff9e4545492e534c975f02696199ba6791b5664ca608faef"
+          },
+          {
+            "bytes": 45664,
+            "path": "atlas_results.json",
+            "sha256": "ed0530b2fe58a0d4b1bdf86b3565c2f99d3b3c1e7cd16dc9428e701d3f668d59"
+          },
+          {
+            "bytes": 15270,
+            "path": "atlas_run_evidence.json",
+            "sha256": "a31be5b40e9edb45fd87ac520141ac71c48cd4b22f37bfffec55de00f4de7fb5"
+          },
+          {
+            "bytes": 5103,
+            "path": "atlas_summary.csv",
+            "sha256": "e4c59fc746a215d0b3cc6725c31d9a73d8439a9571aab8aa5126a61127fde8e4"
+          },
+          {
+            "bytes": 79934,
+            "path": "figures/compensation_accuracy.png",
+            "sha256": "fa52bb442996abb1f149d22e8571b5a1ac756fcaf43b44d65009820dfd30c70c"
+          },
+          {
+            "bytes": 20602,
+            "path": "figures/compensation_accuracy.svg",
+            "sha256": "cffe841213b908b844bde307d42d09195b3c8cf4dc66b8affdefd13f96565c5c"
+          },
+          {
+            "bytes": 160104,
+            "path": "figures/phase_atlas_3to2.png",
+            "sha256": "bdbc9374479cdb56e97b0a0b822bfe7ac5344df7f18017d1f1efeb82b34adad8"
+          },
+          {
+            "bytes": 70096,
+            "path": "figures/phase_atlas_3to2.svg",
+            "sha256": "5d3772f9bf68e85281c80e23d5089c82efcef6d30efc0ec69af23d9816dc0ab5"
+          },
+          {
+            "bytes": 370,
+            "path": "geometry_tolerance.csv",
+            "sha256": "ab380a16c940509d6cdd9287eebca932abaeee9985ab2007d4078d0c5742163a"
+          }
+        ],
+        "atlas_case_count": 16,
+        "byte_identity_against_repeat_1": "PASS",
+        "primary_result_trajectory_count": 48,
+        "repeat_id": 3
+      }
+    ],
+    "run_kind": "FULL_16_CASE_48_PRIMARY_TRAJECTORY_MATRIX",
+    "semantic_checks": {
+      "all_numerical_gates_passed": true,
+      "all_optimizer_states_converged": true,
+      "atlas_case_count": 16,
+      "primary_result_trajectory_count": 48,
+      "result_case_count": 16
+    }
+  },
+  "claim_limit": "IMPLEMENTATION_LEVEL_DETERMINISM_AND_IDEAL_MODEL_NUMERICAL_VALIDATION_ONLY",
+  "formal_package_output_policy": {
+    "candidate_audit_contains_summaries_only": true,
+    "formal_pattern_atlas_contains_result_outputs": false,
+    "repeat_output_directories_are_external_ephemeral_inputs": true
+  },
+  "provenance": {
+    "runtime_identity": {
+      "packages": {
+        "jsonschema": "4.10.3",
+        "matplotlib": "3.8.4",
+        "numpy": "1.26.4",
+        "scipy": "1.11.4"
+      },
+      "platform_machine": "x86_64",
+      "platform_system": "Linux",
+      "python_implementation": "CPython",
+      "python_version": "3.12.3",
+      "schema": "YPS-FORMAL-PATTERN-ATLAS-RUNTIME-IDENTITY-1.0"
+    },
+    "runtime_identity_sha256": "e2e4a543eeef549904b3c8f21c9b6b0f657d19a3be9245da91d087781fc64abe",
+    "source_manifest_lock": {
+      "path": "02_模拟程序/03_结构性理论分析程序/pattern_atlas/contracts/source_manifest_lock.json",
+      "sha256": "169e088868186497195a520329334f623d4ef542953ba9d7e13ce864c23b0f21"
+    },
+    "source_manifest_sha256": "1c0b6e9a2b3e9c5ab40d6387aef70dbbe0e5efc0bd9f29e64ea0ee50d7bf6111",
+    "verification_tool": {
+      "path": "tools/verify_full_repeats.py",
+      "sha256": "8c8713a48e2e0dd7265bcc23f1695db196007db14c308c384593ef72dcc2f371"
+    }
+  },
+  "schema": "YPS-F1-FORMAL-A-RUNTIME-AUDIT-1.0",
+  "status": "PASS_IMPLEMENTATION_LEVEL_DETERMINISM_AND_IDEAL_MODEL_NUMERICAL_VALIDATION_ONLY"
+}

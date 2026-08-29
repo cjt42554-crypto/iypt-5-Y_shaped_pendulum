@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:iypt:y-pendulum:pattern-atlas:schema:output:1.1",
+  "title": "Closed deterministic output for the formal ideal-torus pattern atlas",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "model_identity",
+    "claim_limit",
+    "source_binding",
+    "configuration",
+    "validation",
+    "cases"
+  ],
+  "properties": {
+    "schema": {"const": "YPS-FORMAL-PATTERN-ATLAS-OUTPUT-1.1"},
+    "model_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "backend_model_id",
+        "atlas_identity",
+        "tuning_interpretation",
+        "formal_contract_embedded_theory_sha256"
+      ],
+      "properties": {
+        "backend_model_id": {"const": "FWD-TORUS-1.0"},
+        "atlas_identity": {"const": "YPS-IDEAL-TORUS-PATTERN-ATLAS-1.1"},
+        "tuning_interpretation": {"const": "ideal_model_internal_not_experimental_calibration"},
+        "formal_contract_embedded_theory_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "claim_limit": {"type": "string", "minLength": 1},
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "config_path",
+        "config_sha256",
+        "formal_theory_path",
+        "formal_theory_sha256",
+        "formal_contracts_path",
+        "formal_contracts_sha256",
+        "formal_torus_backend_path",
+        "formal_torus_backend_sha256",
+        "source_manifest_lock_path",
+        "source_manifest_lock_sha256",
+        "source_manifest_sha256",
+        "runtime_identity_sha256",
+        "run_evidence_path",
+        "run_evidence_sha256"
+      ],
+      "properties": {
+        "config_path": {"type": "string", "minLength": 1},
+        "config_sha256": {"$ref": "#/$defs/sha256"},
+        "formal_theory_path": {"const": "01_最终理论/01-前向预测理论.md"},
+        "formal_theory_sha256": {"$ref": "#/$defs/sha256"},
+        "formal_contracts_path": {
+          "const": "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/contracts.py"
+        },
+        "formal_contracts_sha256": {"$ref": "#/$defs/sha256"},
+        "formal_torus_backend_path": {
+          "const": "02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/torus.py"
+        },
+        "formal_torus_backend_sha256": {"$ref": "#/$defs/sha256"},
+        "source_manifest_lock_path": {"type": "string", "minLength": 1},
+        "source_manifest_lock_sha256": {"$ref": "#/$defs/sha256"},
+        "source_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "runtime_identity_sha256": {"$ref": "#/$defs/sha256"},
+        "run_evidence_path": {"const": "atlas_run_evidence.json"},
+        "run_evidence_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targets",
+        "amplitudes_rad",
+        "slow_cycles",
+        "scope",
+        "numerics",
+        "validation_thresholds",
+        "smoke_subset"
+      ],
+      "properties": {
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$"}
+        },
+        "amplitudes_rad": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {"type": "number", "exclusiveMinimum": 0},
+              {"type": "number", "exclusiveMinimum": 0}
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "slow_cycles": {"type": "integer", "minimum": 1},
+        "scope": {
+          "const": "ideal symmetric massless inextensible always-taut torus; model-internal tuning only; no experimental calibration"
+        },
+        "numerics": {"$ref": "#/$defs/numerics"},
+        "validation_thresholds": {"$ref": "#/$defs/thresholds"},
+        "smoke_subset": {"type": "boolean"}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pure_mode_period_checks", "step_halving_checks", "aggregate_gates"],
+      "properties": {
+        "pure_mode_period_checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/pureModeCheck"}
+        },
+        "step_halving_checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/stepHalvingCheck"}
+        },
+        "aggregate_gates": {"$ref": "#/$defs/aggregateGates"}
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/atlasCase"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "numerics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "rtol",
+        "atol_angle",
+        "atol_rate",
+        "maximum_step",
+        "step_halving_maximum_step",
+        "event_cluster_tolerance"
+      ],
+      "properties": {
+        "method": {"const": "DOP853"},
+        "rtol": {"type": "number", "exclusiveMinimum": 0},
+        "atol_angle": {"type": "number", "exclusiveMinimum": 0},
+        "atol_rate": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "event_cluster_tolerance": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pure_mode_relative_period_error_max",
+        "relative_energy_drift_max",
+        "minimum_guard_strictly_positive",
+        "step_halving_frequency_ratio_difference_max",
+        "step_halving_resonant_phase_difference_rad_max",
+        "step_halving_closure_difference_max"
+      ],
+      "properties": {
+        "pure_mode_relative_period_error_max": {"type": "number", "exclusiveMinimum": 0},
+        "relative_energy_drift_max": {"type": "number", "exclusiveMinimum": 0},
+        "minimum_guard_strictly_positive": {"const": 0.0},
+        "step_halving_frequency_ratio_difference_max": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_resonant_phase_difference_rad_max": {"type": "number", "exclusiveMinimum": 0},
+        "step_halving_closure_difference_max": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "aggregateGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pure_mode_period", "energy", "sampled_taut_guards", "step_halving"],
+      "properties": {
+        "pure_mode_period": {"const": true},
+        "energy": {"const": true},
+        "sampled_taut_guards": {"const": true},
+        "step_halving": {"const": true}
+      }
+    },
+    "minimumGuards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["R_m", "T_A_N", "T_B_N", "T_lower_N"],
+      "properties": {
+        "R_m": {"type": "number", "exclusiveMinimum": 0},
+        "T_A_N": {"type": "number", "exclusiveMinimum": 0},
+        "T_B_N": {"type": "number", "exclusiveMinimum": 0},
+        "T_lower_N": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "caseResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eta",
+        "omega_phi",
+        "omega_theta",
+        "frequency_ratio",
+        "ratio_error",
+        "resonant_phase_error_rad",
+        "normalized_state_closure_error",
+        "relative_energy_drift_max",
+        "phase_fit_rms_phi_rad",
+        "phase_fit_rms_theta_rad",
+        "closure_time_s_at_g_equals_ell_equals_one",
+        "minimum_guards"
+      ],
+      "properties": {
+        "eta": {"type": "number"},
+        "omega_phi": {"type": "number", "exclusiveMinimum": 0},
+        "omega_theta": {"type": "number", "exclusiveMinimum": 0},
+        "frequency_ratio": {"type": "number", "exclusiveMinimum": 0},
+        "ratio_error": {"type": "number"},
+        "resonant_phase_error_rad": {"type": "number"},
+        "normalized_state_closure_error": {"type": "number", "minimum": 0},
+        "relative_energy_drift_max": {"type": "number", "minimum": 0},
+        "phase_fit_rms_phi_rad": {"type": "number", "minimum": 0},
+        "phase_fit_rms_theta_rad": {"type": "number", "minimum": 0},
+        "closure_time_s_at_g_equals_ell_equals_one": {"type": "number", "exclusiveMinimum": 0},
+        "minimum_guards": {"$ref": "#/$defs/minimumGuards"}
+      }
+    },
+    "atlasCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "p", "q", "A_phi_rad", "A_theta_rad", "zero", "quartic", "numeric"],
+      "properties": {
+        "target": {"type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$"},
+        "p": {"type": "integer", "minimum": 1},
+        "q": {"type": "integer", "minimum": 1},
+        "A_phi_rad": {"type": "number", "exclusiveMinimum": 0},
+        "A_theta_rad": {"type": "number", "exclusiveMinimum": 0},
+        "zero": {"$ref": "#/$defs/caseResult"},
+        "quartic": {"$ref": "#/$defs/caseResult"},
+        "numeric": {"$ref": "#/$defs/caseResult"}
+      }
+    },
+    "pureModeCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coordinate", "amplitude_rad", "period_exact", "period_numeric", "relative_difference"],
+      "properties": {
+        "coordinate": {"enum": ["phi_fast", "theta_slow"]},
+        "amplitude_rad": {"type": "number", "exclusiveMinimum": 0},
+        "period_exact": {"type": "number", "exclusiveMinimum": 0},
+        "period_numeric": {"type": "number", "exclusiveMinimum": 0},
+        "relative_difference": {"type": "number"}
+      }
+    },
+    "stepHalvingCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "coarse_maximum_step",
+        "fine_maximum_step",
+        "frequency_ratio_abs_difference",
+        "resonant_phase_abs_difference_rad",
+        "closure_abs_difference"
+      ],
+      "properties": {
+        "target": {"type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$"},
+        "coarse_maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "fine_maximum_step": {"type": "number", "exclusiveMinimum": 0},
+        "frequency_ratio_abs_difference": {"type": "number", "minimum": 0},
+        "resonant_phase_abs_difference_rad": {"type": "number", "minimum": 0},
+        "closure_abs_difference": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "f0r_pandoc_ast_structure_audit": "FAIL",
+    "f0r_patched_candidate_byte_equality": "PASS",
+    "f0r_zero_fuzz_dry_run_and_application": "PASS",
+    "f1_delta_exactly_blank_line_and_p9_title_only": "PASS",
+    "f1_equations_and_numeric_arrays_unchanged": "PASS",
+    "f1_pandoc_ast_87_headers_20_horizontal_rules": "PASS",
+    "f1_patched_candidate_byte_equality": "PASS",
+    "f1_zero_fuzz_dry_run_and_application": "PASS",
+    "formal_before_reverse_reconstruction": "PASS",
+    "frozen_input_hashes": "PASS",
+    "live_formal_target_allowed_state": "PASS",
+    "same_formal_target_headers_on_both_patches": "PASS"
+  },
+  "commands": [
+    "patch --batch --fuzz=0 --dry-run --forward -p1 -i <patch>",
+    "patch --batch --fuzz=0 --forward -p1 -i <patch>",
+    "pandoc --from=markdown --to=json <candidate>"
+  ],
+  "formal_target": "01_最终理论/03-结构性理论.md",
+  "formal_target_state": "FORMAL_AFTER_MATCHES_F1",
+  "lineage": [
+    {
+      "sha256": "3c932edf50a5fdee8df3c685b9f0c098fa190b279969c750fd3ca516bf3002e3",
+      "stage": "formal-before"
+    },
+    {
+      "candidate_sha256": "ae176119f46841d67a201d5b848b3f786c159f56b255ef78e8f19904419e485f",
+      "failure_interpretation": "EXPECTED_HISTORICAL_INPUT_LIMITATION_MISSING_BLANK_BEFORE_HORIZONTAL_RULE",
+      "pandoc_ast_counts": {
+        "headers": 88,
+        "horizontal_rules": 19
+      },
+      "pandoc_ast_structure_audit": "FAIL",
+      "patch_application": "PASS",
+      "patch_sha256": "efb990109c7120dacfe616a35dd6186609afc6a8b496dd8d5836aaabf9f4023c",
+      "patched_candidate_byte_equality": "PASS",
+      "stage": "F0R-candidate-and-patch",
+      "zero_fuzz_dry_run": "PASS"
+    },
+    {
+      "candidate_sha256": "235666d7e7d1e23a4c4785e1b9721e1538f75ba9af24ed5e207e4ead77d77bdb",
+      "pandoc_ast_counts": {
+        "headers": 87,
+        "horizontal_rules": 20
+      },
+      "pandoc_ast_structure_audit": "PASS",
+      "patch_application": "PASS",
+      "patch_sha256": "0be7071c350736075f011e47b2334a4fabce87ca303f2508461464d76a98f333",
+      "patched_candidate_byte_equality": "PASS",
+      "stage": "F1-candidate-and-patch",
+      "zero_fuzz_dry_run": "PASS"
+    },
+    {
+      "live_target_match": "PASS",
+      "sha256": "235666d7e7d1e23a4c4785e1b9721e1538f75ba9af24ed5e207e4ead77d77bdb",
+      "stage": "formal-after"
+    }
+  ],
+  "pandoc": {
+    "reader": "markdown",
+    "version": "pandoc 3.1.3"
+  },
+  "schema": "YPS-F1-THEORY-FORMAL-PROMOTION-VERIFICATION-1.0",
+  "status": "PASS_WITH_EXPECTED_F0R_PANDOC_STRUCTURE_AUDIT_FAIL"
+}

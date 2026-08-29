@@ -1,0 +1,39 @@
+{
+  "accepted_evidence": {
+    "formal_a_runtime_audit": {
+      "path": "formal_a_full_repeat_audit.json",
+      "sha256": "f644542df58d5040f60e35f220015fcb3688cf6f674a989befb690a82555e4a4"
+    },
+    "formal_s_runtime_matrix": {
+      "path": "formal_s_runtime_matrix.json",
+      "sha256": "7ae30ca56769e82fa612c911a55b905f1aa72d3b1694ab50269873077d27dc33"
+    }
+  },
+  "discarded_pre_result_attempts": [
+    {
+      "admissible_for_pass_evidence": false,
+      "attempt": "formal-A clean installation with matplotlib 3.6.3 on CPython 3.12",
+      "failure": "source build stopped before any result-bearing run because Python.h was unavailable",
+      "included_in_accepted_inputs": false,
+      "resolution": "freeze the installable formal runtime at matplotlib 3.8.4 before executing the accepted matrix",
+      "stage": "environment_preflight_before_results"
+    },
+    {
+      "admissible_for_pass_evidence": false,
+      "attempt": "first formal-A complete pytest run while implementation was still being finalized",
+      "failure": "3 failed and 14 passed: four schemas changed after the source lock was generated, so two smoke tests correctly reported hash_drift; one negative runtime test used schema-invalid 0.0.0 while expecting a later runtime-identity-drift rejection",
+      "included_in_accepted_inputs": false,
+      "resolution": "freeze the files, regenerate the source lock, change the negative runtime value to schema-valid but drifting 3.12.999, obtain 19 passed, then run three serialized full matrices in isolated directories",
+      "stage": "source_lock_and_file_finalization_timing_race_before_results"
+    }
+  ],
+  "generator": {
+    "launches_numerical_calculations": false,
+    "path": "generate_f1_runtime_evidence.py",
+    "sha256": "f2e45fa7856ca504e8f6a911d5c95c0113fcfd807bc5e4cd54af0d7988ce25a2"
+  },
+  "overall_claim_limit": "HF_NUMERICAL_QUALIFICATION_NO_GO",
+  "schema": "YPS-F1-RUNTIME-EVIDENCE-STATUS-1.0",
+  "self_check": "PASS",
+  "status": "F1_RUNTIME_EVIDENCE_CLOSED__STOP_AT_F1_FINAL_PRO_REVIEW"
+}

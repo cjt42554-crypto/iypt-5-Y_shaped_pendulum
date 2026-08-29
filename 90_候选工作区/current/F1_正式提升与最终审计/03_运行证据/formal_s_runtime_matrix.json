@@ -1,0 +1,99 @@
+{
+  "claim_limit": "formal static-reference implementation and runtime evidence only; no formal numerical qualification is carried",
+  "cross_runtime_invariants": {
+    "assembly_token_identical": true,
+    "evidence_identical_after_removing_runtime_and_runtime_identity_sha256": true,
+    "five_independent_diagnostics_identical_and_passed": true,
+    "raw_optimizer_state_identical": true,
+    "raw_optimizer_status_record_only": 2,
+    "raw_optimizer_success_record_only": false,
+    "seed_identical": true,
+    "source_manifest_identical": true,
+    "source_manifest_sha256": "bb35c4999c9ae48d9208487288dc7cd4839671a30ecb68c19c28973527548547"
+  },
+  "formal_package_output_policy": {
+    "candidate_audit_contains_summaries_only": true,
+    "formal_static_package_contains_runtime_evidence": false,
+    "runtime_evidence_documents_are_external_ephemeral_inputs": true
+  },
+  "model_identity": {
+    "capability": "position_orientation_conservative_no_contact_static_reference_only",
+    "claim_ceiling": "FORMAL_STATIC_REFERENCE_IMPLEMENTATION_AND_RUNTIME_EVIDENCE_ONLY",
+    "model_id": "YPS-NO-CONTACT-STATIC-REFERENCE-1.1",
+    "qualification_status": "NO_FORMAL_NUMERICAL_QUALIFICATION_CARRIED",
+    "release_status": "FORMAL_RELEASE_STATIC_REFERENCE_ONLY"
+  },
+  "runtime_count": 2,
+  "runtimes": [
+    {
+      "assembly_token": "950c2ca2a93bf4931bee5ba9b05481d536ea819611bbcef0b74a505c7a07bc85",
+      "complete_evidence": {
+        "bytes": 8897,
+        "sha256": "9d25936fccef4deca12bd8ca0c3ca3b83bcc144502162b772bbc9513be674981"
+      },
+      "five_independent_checks": {
+        "finite_difference_decrease": true,
+        "finite_difference_final": true,
+        "generalized_force": true,
+        "global_force_balance": true,
+        "global_moment_balance": true
+      },
+      "implementation_diagnostics_passed": true,
+      "raw_optimizer_state": {
+        "message_record_only": "Desired error not necessarily achieved due to precision loss.",
+        "status_record_only": 2,
+        "success_record_only": false
+      },
+      "runtime": {
+        "executable_name": "python",
+        "jsonschema": "4.25.1",
+        "numpy": "2.5.2",
+        "pytest": "9.1.1",
+        "python": "3.12.3",
+        "python_implementation": "CPython",
+        "scipy": "1.18.1"
+      },
+      "runtime_id": "current",
+      "runtime_identity_sha256": "3a4abea5ec62f0990dd3a6f69bf007c4690809725f96ceb663e3b7e51e69aa4e",
+      "seed_id": "static_seed_00_base",
+      "seed_sha256": "631058661e7d95601ed02861b297330f0a8d5c87f7b8e0258653ecf9851e9953",
+      "source_manifest_sha256": "bb35c4999c9ae48d9208487288dc7cd4839671a30ecb68c19c28973527548547"
+    },
+    {
+      "assembly_token": "950c2ca2a93bf4931bee5ba9b05481d536ea819611bbcef0b74a505c7a07bc85",
+      "complete_evidence": {
+        "bytes": 8898,
+        "sha256": "5dc84c56541dd5847797a7f66e0c4f5dd40f43f840132430b4e28624aac9f95b"
+      },
+      "five_independent_checks": {
+        "finite_difference_decrease": true,
+        "finite_difference_final": true,
+        "generalized_force": true,
+        "global_force_balance": true,
+        "global_moment_balance": true
+      },
+      "implementation_diagnostics_passed": true,
+      "raw_optimizer_state": {
+        "message_record_only": "Desired error not necessarily achieved due to precision loss.",
+        "status_record_only": 2,
+        "success_record_only": false
+      },
+      "runtime": {
+        "executable_name": "python",
+        "jsonschema": "4.10.3",
+        "numpy": "1.26.4",
+        "pytest": "8.4.2",
+        "python": "3.12.3",
+        "python_implementation": "CPython",
+        "scipy": "1.12.0"
+      },
+      "runtime_id": "lower_bound",
+      "runtime_identity_sha256": "f10aad62b788bf1b3f692ddcfae695a9d90ff48b3da3ead90a2fc14d9677ad62",
+      "seed_id": "static_seed_00_base",
+      "seed_sha256": "631058661e7d95601ed02861b297330f0a8d5c87f7b8e0258653ecf9851e9953",
+      "source_manifest_sha256": "bb35c4999c9ae48d9208487288dc7cd4839671a30ecb68c19c28973527548547"
+    }
+  ],
+  "schema": "YPS-F1-FORMAL-S-RUNTIME-MATRIX-1.0",
+  "status": "PASS_FORMAL_STATIC_REFERENCE_IMPLEMENTATION_AND_TWO_RUNTIME_EVIDENCE_ONLY"
+}
