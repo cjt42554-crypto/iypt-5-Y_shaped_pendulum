@@ -380,3 +380,15 @@ Ruff、`compileall`、迁移溯源复算、理论补丁应用检查、13 个既�
 理论干净树补丁、严格 schema 与故意漂移负例、来源锁、静态-only AST、迁移溯源、Ruff、`compileall`、24 个 JSON、两个 manifest 内 13 个工件、92 条文件映射、正式目录零差分和冻结哈希检查通过。10 份 F0 Markdown 与两份交接通过 Pandoc 3.1.3 解析；三份关键报告以临时 MathJax 3.2.2、Playwright/Chrome 和 Poppler 完成 385/385 个公式节点、45 页逐页实际渲染检查。仓库没有 `.github/workflows/**`，因此没有独立远端 CI 背书。
 
 当前状态为 `F0R_COMPLETE_CANDIDATE_ONLY__STOP_AT_F0R_PRO_REVIEW`，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。没有启动 P3R6、生成新接触资格卡、运行 G3R5、开始 P4/P5/P6、动力学、动态接触、RC1 扩展、正式提升、装置级物理验证或实验。下一步只允许 `F0R_PRO_REVIEW`；即使复审通过，仍需用户随后对具体正式目标逐项授权。
+
+# 2026-08-29：F0R Pro 独立静态复审通过与实验前暂停门
+
+静态复审远程 `main` 上的 F0R 候选实现 `e2a1992b29502d673fe372665280510fb7c5852d`、完成交接 `74d2ac4a45c7029039d7ebe5c1c705a5533abc9a` 以及 T/A/S/M 四类整改工件后，裁决为：
+
+`F0R_PRO_REVIEW_PASS__CANDIDATE_BLOCKERS_CLOSED__PRE_EXPERIMENT_PAUSE_GATE_REACHED`
+
+理论候选稿的证据分级已统一为 A、NI、C、R、E，同目标补丁及干净临时树验证器闭合；参数图谱建立了关闭的配置/输出/运行证据 schema、完整来源与运行时锁、可恢复的正式后端导入和漂移负例；无接触静态包已收窄为位置—姿态、保守、无接触、static-only 的新身份，并补齐阈值与规范运行证据；P3R5 图谱已严格分离四点冻结观察与 PCHIP 插值器性质。RC1 状态说明和实验门测量清单继续保持候选边界。
+
+本轮通过 GitHub 静态核对提交边界、关键源码、合同、schema、测试和机器证据，没有独立重跑 Codex 报告的 pytest、数值复算或渲染；F0R 提交也没有绑定远端状态检查。因此结论是候选源码与结论边界的独立静态 PASS，不是第二份独立 CI 复现。正式高保真状态、P2 历史结论和 P3R5/G3R5 收口均保持不变。
+
+项目在没有实验数据时已达到可以暂停新增理论与模拟开发的科学节点。当前无可自动执行的 Codex 任务，等待用户明确选择：`PAUSE_FOR_EXPERIMENT_GATE`，或逐项授权 T/A/S/R 正式目标后执行 `F1_EXPLICIT_FORMAL_PROMOTION_AND_FINAL_AUDIT_PREPARATION`。一般“继续”不构成正式目录写入授权；P3R6、G3R5、新接触资格、动力学、动态接触、RC1 扩展和冻结证据修改继续禁止。
