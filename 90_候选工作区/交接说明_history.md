@@ -392,3 +392,19 @@ Ruff、`compileall`、迁移溯源复算、理论补丁应用检查、13 个既�
 本轮通过 GitHub 静态核对提交边界、关键源码、合同、schema、测试和机器证据，没有独立重跑 Codex 报告的 pytest、数值复算或渲染；F0R 提交也没有绑定远端状态检查。因此结论是候选源码与结论边界的独立静态 PASS，不是第二份独立 CI 复现。正式高保真状态、P2 历史结论和 P3R5/G3R5 收口均保持不变。
 
 项目在没有实验数据时已达到可以暂停新增理论与模拟开发的科学节点。当前无可自动执行的 Codex 任务，等待用户明确选择：`PAUSE_FOR_EXPERIMENT_GATE`，或逐项授权 T/A/S/R 正式目标后执行 `F1_EXPLICIT_FORMAL_PROMOTION_AND_FINAL_AUDIT_PREPARATION`。一般“继续”不构成正式目录写入授权；P3R6、G3R5、新接触资格、动力学、动态接触、RC1 扩展和冻结证据修改继续禁止。
+
+# 2026-08-29 15:36 +0800：路径 F 正式提升、失败关闭纠偏与最终干净复演
+
+用户明确选择并批准路径 F 后，按 T、A、S、R 四批授权范围执行正式提升。提升前基线为 `3ea4892ab56b47d9aa6d61bc717bc242717c76be`；正式提升提交为 `d29f4392debd8fb39abb0cd0781d7ba5849d7369`。F1 manifest 精确闭合 60 个正式目标：T=1、A=17、S=41、R=1；另新增 14 个候选 F1 审计文件，没有修改未授权的 `02_模拟程序/README.md`、M/E 工件或 P3–P3R5 冻结证据。
+
+T 将结构性理论按同目标补丁提升到 SHA-256 `235666d7e7d1e23a4c4785e1b9721e1538f75ba9af24ed5e207e4ead77d77bdb`，恢复状态段与水平分隔线之间的空行，并把 P9 标题的来源表述改为“目标配置”；方程与数值数组不变。R 只在 RC1 根目录新增 SHA-256 `ae07d9e632fe446516309d865f88f57cf69e201b2337620224adceb9ae67b775` 的 `STATUS.md`，原有 150 个 tracked 条目逐项不变。
+
+A 在正式 `pattern_atlas` 目录形成 17 文件、`YPS-IDEAL-TORUS-PATTERN-ATLAS-1.1`、只复用正式 `FWD-TORUS-1.0` 的 repository-checkout-only 包。首次干净包装复演发现 installed wheel 实际运行会暴露裸 `FileNotFoundError`，因此将其作为发布质量阻断处理；修正为在配置读取与输出写入前验证正式 checkout 布局，并以提交 `fed0fa621e1133a2787cf75dce71fef5c9a77500` 推送，同时重建源锁、A 三重复和 F1 运行证据。最终两个真实 wheel 负例均明确失败关闭且不能通过显式 repository root 绕过。
+
+S 在正式目录形成 41 文件、20 个生产源的 `YPS-NO-CONTACT-STATIC-REFERENCE-1.1` static-only 参考实现。current/lower 两个干净依赖环境各为 `72 passed`，Ruff、compileall、构建、全新安装和 runtime probe 通过；两份证据除运行时身份字段外一致。BFGS 原始 `status=2`、`success=false` 继续保留，只由五项实现级独立诊断支撑静态参考运行证据，不携带正式数值资格。
+
+最终独立 clone 绑定 `fed0fa621e1133a2787cf75dce71fef5c9a77500`。A 在全新冻结环境中为 `20 passed`，源锁、Ruff、compileall、四份 schema、构建与 wheel 边界通过；三次串行完整复算各有 16 cases、48 primary trajectories、9 artifacts，四类聚合门全部为 true，三次工件逐字节一致。F1 runtime generator 从最终 A/S 输入重生三份提交 JSON 并逐字节匹配。复演结束时 clone 的 tracked、untracked、ignored、cache 和 `.pyc` 残留均为零。
+
+正式理论、A README、S README 和 R STATUS 使用系统 Pandoc、Zettlr Pandoc、MathJax、Chrome 和 Poppler 完成解析、PDF 栅格化与逐页视觉检查；理论 339/339 个数学容器正常，全部正式文档未见裁切、溢出或中文缺字。完整实现、验证、失败记录与未执行边界写入 `current/F1_正式提升与最终审计/F1_FINAL_AUDIT_REPORT.md`。
+
+本轮裁决为 `F1_IMPLEMENTATION_AND_CLEAN_REPLAY_PASS__STOP_AT_F1_FINAL_PRO_REVIEW`。它只覆盖正式提升闭包、实现级测试、理想模型内部数值复演、静态参考运行证据与发布边界；正式总状态继续为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。没有运行 RC1 新轨迹、连续柔索、高保真接触或动力学资格、装置物理验证或实验验证。下一步只允许独立 `F1_FINAL_PRO_REVIEW`；待授权索引补丁、新实验、新理论、新模拟和任何资格阶段均不得自动开始。

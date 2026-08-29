@@ -1,147 +1,114 @@
 # 交接说明（current）
 
-更新时间：2026-08-29（F0R 独立静态复审通过；已达到实验前暂停门，正式提升等待用户逐项目明确授权）
+更新时间：2026-08-29 15:36 +0800（路径 F 已完成正式提升与独立干净复演；停止于 F1 最终 Pro 审查）
 
 ## 1. 当前裁决
 
-本次复审绑定远程 `main`：
+用户已明确选择并批准路径 F；T、A、S、R 四批正式目标已经完成提升、纠偏、验证、提交和推送。
 
-`74d2ac4a45c7029039d7ebe5c1c705a5533abc9a`
+当前实现与复演状态为：
 
-其中：
+`F1_IMPLEMENTATION_AND_CLEAN_REPLAY_PASS__STOP_AT_F1_FINAL_PRO_REVIEW`
 
-- F0R 输入基线：`18a8a7055ddc70fd8a2b9898df0bb2b0d7368ca9`；
-- F0R 候选实现与证据提交：`e2a1992b29502d673fe372665280510fb7c5852d`；
-- F0R 完成交接提交：`74d2ac4a45c7029039d7ebe5c1c705a5533abc9a`。
+正式高保真总状态仍为：
 
-独立静态复审裁决为：
+`HF_NUMERICAL_QUALIFICATION_NO_GO`
 
-`F0R_PRO_REVIEW_PASS__CANDIDATE_BLOCKERS_CLOSED__PRE_EXPERIMENT_PAUSE_GATE_REACHED`
+这个 PASS 只覆盖正式提升闭包、实现级验证、理想模型内部数值复演、静态参考实现运行证据、发布边界和 Git 可追踪性。它不构成连续柔索、高保真接触或动力学资格，不构成真实装置预测、物理验证或实验验证。
 
-该裁决表示：
+绑定提交链：
 
-1. 上轮列出的 T、A、S、M 四类正式提升阻断项已经在候选区实质关闭；
-2. RC1 状态说明草案和实验门最小测量清单继续保持合格的候选边界；
-3. F0R 候选已具备进入“明确授权后的正式提升”或“直接实验前暂停”决策门的条件；
-4. 本裁决不等于任何正式目录已获写入授权，也不改变现有模型的资格上限。
+- 提升前基线：`3ea4892ab56b47d9aa6d61bc717bc242717c76be`；
+- T/A/S/R 正式提升：`d29f4392debd8fb39abb0cd0781d7ba5849d7369`；
+- A installed-wheel 失败关闭修正与证据重建：`fed0fa621e1133a2787cf75dce71fef5c9a77500`。
 
-正式状态保持不变：
+完整审计记录见 `current/F1_正式提升与最终审计/F1_FINAL_AUDIT_REPORT.md`。
 
-- 正式高保真总状态：`HF_NUMERICAL_QUALIFICATION_NO_GO`；
-- P2 无接触静力历史结论上限：`G2_NO_CONTACT_STATIC_ALGORITHM_CONDITIONALLY_QUALIFIED`；
-- 接触认证收口：`G3R5_PRO_REVIEW_CONFIRMS_P3R5_TARGET_SUITE_NOT_ADMISSIBLE__G3R5_NOT_RUN__P3R5_CERTIFICATION_RETRY_PATH_CLOSED`。
+## 2. 已完成的正式范围
 
-旧 `90_候选工作区/current/HF-v2重构规划/plan_manifest.json` 继续只作历史快照，不是当前执行指令。
+F1 manifest 精确包含 60 个正式目标：T=1、A=17、S=41、R=1。manifest SHA-256 为：
 
-## 2. 复审核对结果
+`dff7c4ed9a04923cefa4cf90ad814f5a50e0e5d9ae8776a83ce81b049072c99d`
 
-### 2.1 T：结构性理论证据勘误
+生成器 `--check` 通过，60 项当前字节数和 SHA-256 全部匹配。
 
-通过。候选稿已统一采用五类证据：
+### 2.1 T：结构性理论
 
-- `A`：理想前向方程的解析结论；
-- `NI`：理想环面方程的独立数值核验；
-- `C`：配置直接量或仅依赖配置的几何派生量；
-- `R`：来源受限的归档 RC1 候选轨迹统计；
-- `E`：只能由实验决定且目前待测的量。
+正式 `01_最终理论/03-结构性理论.md` 已提升为 F1 稿，最终 SHA-256 为：
 
-`R` 类不再被写成合格高保真机制证据。补丁旧、新路径均指向 `01_最终理论/03-结构性理论.md`；验证器对正式源 SHA-256、干净临时树 dry-run、实际应用、应用结果与候选全文逐字节相等以及正式源未变化作失败关闭检查。正式理论仍未修改。
+`235666d7e7d1e23a4c4785e1b9721e1538f75ba9af24ed5e207e4ead77d77bdb`
 
-### 2.2 A：参数—图样图谱正式化候选
+同目标补丁从绑定基线执行 zero-fuzz dry-run 和实际应用均通过，应用结果与冻结 F1 稿及正式文件逐字节相等。修正恢复来源受限状态段后的 Markdown 分隔结构，并把 P9 标题中的“目标 HF 配置”澄清为“目标配置”；方程和数值数组不变。
 
-通过。候选身份为 `YPS-IDEAL-TORUS-PATTERN-ATLAS-DRAFT-1.1`，仍只消费正式 `FWD-TORUS-1.0` 后端，没有第二套环面 ODE。
+### 2.2 A：理想环面参数—图样图谱
 
-配置、结果、运行证据和来源锁均采用关闭 schema；`p,q` 不再隐式强制转换。来源清单绑定正式前向理论、正式 `contracts.py`、正式 `torus.py`、全部候选生产源码、配置、schema、构建元数据和运行时。正式后端导入期间的 `sys.path` 在成功和失败路径都恢复，并核对实际导入文件路径。测试覆盖未知嵌套键、字符串或小数 `p,q`、理论/合同漂移、运行时漂移、错误后端路径、额外输出字段和导入路径污染。
+正式新增 `02_模拟程序/03_结构性理论分析程序/pattern_atlas/**`，共 17 个文件。身份为 `YPS-IDEAL-TORUS-PATTERN-ATLAS-1.1`，只消费正式 `FWD-TORUS-1.0` 后端，不含第二套 ODE。
 
-提交携带的本机证据记录 `14 passed`，以及三次完整 16 案例、48 条主轨迹复算逐字节一致；这些结果本轮未在独立环境重跑，且没有远端 CI 状态检查，因此仍按绑定候选证据解释。
+包被明确限定为 repository-checkout-only。安装 wheel 可以 import 和显示帮助，但从正式 checkout 外执行会在配置读取和输出写入前明确失败关闭；显式传入真实 `--repository-root` 也不能绕过该边界。
 
-### 2.3 S：离散杆—刚体无接触静态参考候选
+### 2.3 S：无接触静态参考模型
 
-通过。新身份为 `YPS-NO-CONTACT-STATIC-REFERENCE-DRAFT-1.1`，明确不携带历史 G2 资格。
+正式新增 `02_模拟程序/04_离散杆刚体无接触静态参考模型/**`，共 41 个文件，其中生产 Python 源 20 个。正式身份为 `YPS-NO-CONTACT-STATIC-REFERENCE-1.1`，能力上限为无接触、保守、位置—姿态 static-only 参考实现，明确不携带历史数值资格。
 
-生产状态只含结点位置、摆球位置和姿态；生产树已移除速度、角速度、阻力、功率、耗散、动能、动量和姿态时间推进。轴向律为保守单边弹性势，外载只含静态重力与浮力；历史 G2 构造器和回归辅助移入测试层。生产类型、装配 identity 和公共导出已改为新静态参考模型语义。
+候选生成输出、runtime matrix、migration provenance、一次性迁移生成器和缓存均未进入正式目录。
 
-审计阈值对有限性、正性、步长严格递减和下降步数范围失败关闭。规范运行证据绑定模型身份、完整生产源码清单、运行时、装配 token、种子哈希、求解器设置、阈值、原始优化器状态和五项独立诊断。提交携带的 current/lower 两个依赖单元均为 `57 passed`，但本次未独立重跑。
+### 2.4 R：RC1 冻结状态
 
-### 2.4 M：四点冻结负曲率描述图
+正式新增 `02_模拟程序/02_第一性原理高保真模拟器/Y-Pendulum-Simulator-v1.0.0-rc1/STATUS.md`，SHA-256 为：
 
-通过。报告、JSON、CSV、图和测试已严格区分：
+`ae07d9e632fe446516309d865f88f57cf69e201b2337620224adceb9ae67b775`
 
-- `OBSERVED_AT_FOUR_FROZEN_POINTS`；
-- `INTERPOLANT_PROPERTY`。
+RC1 基线 150 个 tracked 条目的模式、blob OID 和路径全部不变；没有修改 RC1 物理、源码、配置、测试或历史工件。
 
-PCHIP 只作为四个冻结点之间的无外推描述性可视化，区间外求值失败关闭。状态 `INTERPOLANT_HAS_NO_ZERO_CROSSING_ON_OBSERVED_CONVEX_HULL` 只描述插值器，不再被解释为连续尺度模型观察、解析证明、临界尺度或分岔结论。没有运行新接触算例或修改冻结 P3R5 工件。
+## 3. 已执行验证
 
-### 2.5 R/E：RC1 状态说明与实验门清单
+### 3.1 T 与 R
 
-继续通过候选审查。RC1 仍冻结为历史参考与回滚后端；实验清单不预设装置必然失张或接触，并要求先测几何、质量惯量、材料、模态、多振幅衰减以及事件检测下限。
+- 理论 F1 verifier 重生结果与提交 JSON 逐字节一致；
+- 系统 Pandoc 3.1.3 与 Zettlr 随附 Pandoc 3.10.1 得到一致 AST：87 headers、20 horizontal rules、339 math nodes、9 tables；
+- R STATUS 的正式化变换与候选草案逐段核对通过；
+- T 与 R 的正式文件完成 Pandoc、MathJax、Chrome、Poppler PDF 渲染和逐页视觉检查。
 
-## 3. 复审方法与限制
+### 3.2 A
 
-本轮通过 GitHub 静态核对提交边界、候选报告、机器状态、同目标补丁验证器、严格 schema、来源/运行时锁、关键生产源码、负例测试和逐文件提升清单。
+在最终独立 clone 和全新 CPython 3.12.3 冻结环境中：
 
-本轮没有在独立克隆中重新执行：
+- source lock `--check` 通过；
+- pytest 为 `20 passed`；
+- Ruff lint、compileall 和四份 Draft 2020-12 schema 自校验通过；
+- sdist/wheel 构建、全新 wheel 安装、import、help 和 `pip check` 通过；
+- 两个真实 installed-wheel 负例均 exit 2、无 traceback、无输出，并明确报告 repository-bound checkout 限制；
+- 三次相互隔离的完整运行各为 16 cases、48 primary trajectories 和 9 artifacts；四类聚合门均为 true，三次 9 个工件逐字节一致；
+- full-repeat verification SHA-256 为 `28683aa78759be4f5628f5e618de5fa17eff6dc37510dfa0d9e1f7a07eb2db08`。
 
-- pytest、Ruff 或 `compileall`；
-- 三次完整图谱复算；
-- 静态参考双依赖单元；
-- Pandoc、MathJax、Chrome 或逐页栅格化检查；
-- 任何连续柔索、RC1、接触或实验运行。
+### 3.3 S
 
-GitHub 对 F0R 实现提交没有绑定状态检查。因此，Codex 报告的运行结果保持为提交携带且内部绑定的证据；本次 Pro 结论是候选源码、合同和结论边界的独立静态通过，不是第二份独立 CI 复现。
+在 current 和 lower 两个独立依赖环境中：
 
-## 4. 当前科学阶段
+- 两边完整测试均为 `72 passed`；
+- 两边 Ruff、compileall、sdist/wheel 构建、全新安装、import、`pip check` 和正式 runtime probe 通过；
+- 两份证据除运行时身份字段外完全相同；
+- 原始 BFGS 继续记录为 `status=2`、`success=false`，五项实现级独立诊断为 true；没有把该记录改写为优化器 PASS 或正式数值资格。
 
-在没有实验数据的条件下，当前已经到达可以暂停新理论与新模拟开发的节点。
+### 3.4 F1、渲染与 Git
 
-继续开展 P3R6、新接触资格、动态接触、P4/P5/P6、RC1 扩展或新的大规模扫描，都会主要依赖尚未测得的材料、阻尼、真实模态、失张和接触参数，当前没有足够证据支持。
+- F1 runtime generator 的 A 审计、S 矩阵和 master 状态均从最终输入逐字节重生；
+- 正式理论、A README、S README 和 R STATUS 共 30 页完成 PDF 栅格化与视觉检查；数学、浏览器和水平溢出错误均为 0；
+- 最终干净 clone 中 `HEAD == origin/main == fed0fa621e1133a2787cf75dce71fef5c9a77500`，staged、unstaged、untracked、ignored residue、cache 和 `.pyc` 均为 0；
+- `3ea4892..fed0fa6` 精确为 60 个正式目标加 14 个 F1 审计文件，其他路径为 0。
 
-正式提升属于仓库整理与发布治理，不是进入实验前暂停的科学前置条件。因此现在有两条合法路径，必须由用户明确选择，Codex 不得自行选择。
+## 4. 明确保留的边界
 
-## 5. 等待用户明确选择
+- `02_模拟程序/README.md` 未获本次授权，保持基线字节不变；F1 区的同目标补丁状态为 `NOT_APPLIED_PENDING_SEPARATE_AUTHORIZATION`；
+- A 的额外 `ruff format --check` 会建议重排 5 个文件，但它不是冻结验收门；本轮没有为了纯格式重排而破坏来源锁与数值证据绑定；
+- A/S 两次构建的归档成员集和成员内容一致，但整体归档受时间元数据影响，不声明 byte-reproducible build；
+- 仓库没有 `.github/workflows/**`，没有远端 CI PASS 可声明；
+- 未运行 RC1 新轨迹、连续柔索等价性、高保真收敛、接触、摩擦、动力学、装置标定、物理验证或实验验证。
 
-### 路径 X：实验前暂停
+## 5. 下一步与停止门
 
-用户明确选择 `PAUSE_FOR_EXPERIMENT_GATE` 后：
+当前唯一合法下一步是独立：
 
-- 不再安排新的 Codex 理论、模拟或资格任务；
-- 以 `07_实验门最小测量清单/EXPERIMENT_GATE_MINIMUM_MEASUREMENTS.md` 组织实验；
-- 在取得可追踪实验数据前，保持现有正式目录和全部模型状态不变。
+`F1_FINAL_PRO_REVIEW`
 
-### 路径 F：最后一次正式提升
-
-用户必须逐项明确授权以下一个或多个正式目标；“继续工作”“接续任务”等一般措辞不构成授权：
-
-- **T**：修改 `01_最终理论/03-结构性理论.md`；
-- **A**：新增 `02_模拟程序/03_结构性理论分析程序/pattern_atlas/**`，排除候选 `outputs/**`；
-- **S**：新增 `02_模拟程序/04_离散杆刚体无接触静态参考模型/**`，排除候选生成输出和仅供审查的工具/证据；
-- **R**：新增 RC1 根目录 `STATUS.md`。
-
-逐文件范围以 `05_正式提升清单/formal_promotion_file_map.json` 中的候选 SHA-256、正式目标和操作裁决为准。M 类四点稳定性图、E 类实验清单、F0/F0R 报告、机器状态和生成输出默认继续留在候选区。
-
-只有在用户明确授权具体目标后，才允许执行：
-
-`F1_EXPLICIT_FORMAL_PROMOTION_AND_FINAL_AUDIT_PREPARATION`
-
-F1 必须：
-
-1. 在写入前复核全部候选哈希和既有正式目标哈希；
-2. 只写入被明确授权的正式目标；
-3. T 使用同目标补丁；A/S 在正式路径下建立明确的正式发布身份，不得把 `DRAFT` 或 `CANDIDATE_MIGRATION_DRAFT_NOT_FORMALLY_PROMOTED` 状态原样伪装成正式发布；
-4. 因正式路径、身份或包名变化而更新 schema、来源清单、锁、测试和运行证据，并在干净环境重新生成；
-5. A 继续复用正式环面后端且不得复制第二套 ODE；S 继续保持 static-only、无接触、无动力学且不携带历史资格；R 只增加状态说明，不改 RC1 物理；
-6. 排除候选生成输出、P3–P3R5 接触包、稳定性插值工件和实验待测结论；
-7. 重跑目标包测试、严格 schema、来源漂移负例、运行时矩阵、Markdown 解析和实际渲染；
-8. 检查正式目录差分只包含授权文件，提交后停止在 `F1_FINAL_PRO_REVIEW`。
-
-## 6. 继续禁止
-
-在用户作出上述明确选择前，当前无可自动执行的 Codex 任务。继续禁止：
-
-- 自动修改或合并 `01_最终理论/**`、`02_模拟程序/**` 或顶层 `AGENTS.md`；
-- 启动 P3R6、生成新接触资格留出卡或运行 G3R5；
-- 修改、重算或追溯改写 P3–P3R5 冻结证据、目标、阈值或状态；
-- 开始 P4、P5、P6、动力学或动态接触；
-- 扩展、修补、复算或重新资格化 RC1；
-- 为四点插值运行新的接触尺度扫描；
-- 把候选负曲率、理想模型调谐或静态参考结果写成装置级或实验结论。
+本轮已停止，不自动应用待授权索引补丁，不自动进入实验、新理论、新模拟或任何资格阶段。Pro 审查若只复核现有结果，应把结论上限保持为实现级确定性、理想模型内部数值验证和静态参考运行证据；除非产生相应的新证据与明确授权，不得提升 `HF_NUMERICAL_QUALIFICATION_NO_GO`。
