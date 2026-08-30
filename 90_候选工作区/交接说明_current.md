@@ -1,4 +1,4 @@
-# 当前交接：E0R2 采集与溯源闭包完成，停止于 Pro 复核
+# 当前交接：E0R2 Pro 复核通过，等待人工 Pilot
 
 Pro 对 E0R 的最终裁决为：
 
@@ -11,6 +11,14 @@ Pro 对 E0R 的最终裁决为：
 本轮候选状态为：
 
 `E0R2_ACQUISITION_AND_PROVENANCE_CLOSURE_COMPLETE__STOP_AT_E0R2_PRO_REVIEW`
+
+Pro 对 E0R2 的最终裁决为：
+
+`E0R2_PRO_REVIEW_PASS__ACQUISITION_AND_PROVENANCE_BOUNDARIES_CLOSED__OPEN_HUMAN_PILOT_GATE`
+
+当前下一门为：
+
+`HUMAN_PILOT_ACQUISITION_REQUIRED`
 
 正式高保真总状态继续保持：
 
@@ -25,6 +33,8 @@ Pro 对 E0R 的最终裁决为：
 - detection 到 trajectory、trajectory 到 common observables 均先解析并按 schema 验证上游 manifest，再核对实际 NPZ SHA-256、字段集合、shape、dtype、时间/位置轴以及 run、attempt、apparatus、camera-rig 和 origin 身份。common valid mask 不得恢复上游无效样本。
 - 所有实测来源文档继续统一拒绝 `UNSET_REQUIRES_HUMAN`。正式派生输入必须内嵌版本化 derivation 方法、输入 ID、输入记录哈希和配置；canonical derivation hash 与 schema 均在 builder 内失败关闭。
 - 候选包版本升级为 `0.3.0`；阶段检查器和负例覆盖错误 camera hash、run、attempt、apparatus、origin、空上游 `{}`、相同长度但错误时间轴、measured+UNSET、P00 无证据失败、pilot 中途硬停止、retry pending 和派生内容篡改。
+- Pro 已对远程 `main` 上的 E0R2 实现提交 `b3db52693bf3071e084b360ab0c2c54f25282237` 和复核交接提交 `c3cd7eac44b50d9b53cf3a7bf073a874b8391ed1` 完成内容闭合的独立静态复核，九类 E0R2 修正均形成 schema、consumer/builder 与正负例闭环；Pro 未写入 GitHub。
+- 按 Pro 指出的非阻断文档笔误，Pilot 协议与验收矩阵中的证据状态缩写已改成 schema 的精确枚举：`NO_RAW_DATA_CREATED`、`PARTIAL_RAW_DATA_RETAINED` 和 `COMPLETE_RAW_DATA_RETAINED`。本修正不改变 schema、代码、测试、结论或 E0R2 裁决。
 
 ## 已执行验证
 
@@ -35,6 +45,7 @@ Pro 对 E0R 的最终裁决为：
 - `0.3.0` wheel 从临时源码副本隔离构建，在全新 Python 3.12 环境安装，并从仓库外、site-packages 实际运行 self-test 通过。
 - 7 份阶段 Markdown 均通过 Pandoc `--from=markdown` 解析；合并文档以 MathML/Chrome 实际渲染为 22 页 PDF，完成全页视觉检查，未见裁切、溢出、缺字或公式失效。
 - 正式包源码哈希保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c`；理论哈希保持 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。
+- Pro 本轮执行的是 GitHub 远程静态复核，没有独立重跑上述 47 项测试、wheel 安装、自检或文档渲染，也没有新的远端 CI/status check；因此 Pro PASS 是实现与合同闭包的独立静态裁决，不是第二份运行复现。
 
 ## 结论边界
 
@@ -44,6 +55,7 @@ Pro 对 E0R 的最终裁决为：
 
 ## 下一步
 
-1. Pro 读取远程 `main` 上的 E0R2 实现提交和本交接，独立复核实现、验证证据与结论边界；过程更新或思考摘要不算最终裁决。
-2. 若 Pro 内容闭合地接受 E0R2，下一门才可提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`；若有阻断项，只按其明确修正范围继续。
-3. 人工完成真实装置测量、相机布置与标定、释放、安全判断和 pilot，并返回带原始数据与哈希的资料前，不得进入 `E1_PILOT_DATA_INGESTION_AND_MODEL_ASSUMPTION_SCREENING`。
+1. 当前没有可继续自动执行的 Codex 理论或模拟任务。由人工按 `P00 -> P01 -> P02 -> P03 -> P04 -> 条件性 P05 -> P06` 执行 Pilot；这里的 P05 是 E0 Pilot slot，不是既有高保真研究阶段 P5。
+2. 每个实际 attempt 必须保留测量、标定、ledger、失败或重试原因、原始文件及其 SHA-256；硬停止后的未执行 slot 必须按合同关闭，不得删除失败 attempt、预造重试或用占位证据补齐。
+3. 只有真实原始数据、测量/标定记录、采集台账与哈希返回，并且用户随后明确授权，才可进入 `E1_PILOT_DATA_INGESTION_AND_MODEL_ASSUMPTION_SCREENING`。
+4. 在此以前继续禁止 HF-v3、P3R6、G3R5、静态接触认证重试、研究阶段 P4/P5/P6、RC1 扩展、无数据参数细调、动力学或接触资格升级，以及任何物理或实验 PASS。

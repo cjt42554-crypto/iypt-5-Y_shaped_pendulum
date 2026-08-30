@@ -452,3 +452,13 @@ detection 到 trajectory、trajectory 到 common observables 均解析并验证�
 精确 Python 3.12 环境为 `47 passed in 9.96s`；Ruff、格式、`compileall`、stage checker、48 文件/10 schema/7 template 闭包、Git allowlist 和 `git diff --check` 通过。0.3.0 wheel 在全新环境从 site-packages、仓库外实际运行 self-test 通过。7 份 Markdown 通过 Pandoc 解析，并以 MathML/Chrome 渲染为 22 页 PDF，完成全页视觉检查。正式源码/理论哈希保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c` 与 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。
 
 当前状态为 `E0R2_ACQUISITION_AND_PROVENANCE_CLOSURE_COMPLETE__STOP_AT_E0R2_PRO_REVIEW`，结论上限仍为 `IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY`，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。没有真实测量、标定、视频、pilot、数值资格升级、物理或实验验证；正式理论、正式程序、顶层 `AGENTS.md`、F0/F1 和冻结证据未修改。下一步只允许 Pro 独立复核；接受后才可进入 `HUMAN_PILOT_ACQUISITION_REQUIRED`，人工资料返回前不得进入 E1。
+
+# 2026-08-31 05:43 +0800：E0R2 Pro 复核通过并开放人工 Pilot 门
+
+Pro 对远程 `main` 上的 E0R2 实现提交 `b3db52693bf3071e084b360ab0c2c54f25282237` 和交接提交 `c3cd7eac44b50d9b53cf3a7bf073a874b8391ed1` 完成内容闭合的独立静态复核，最终裁决为 `E0R2_PRO_REVIEW_PASS__ACQUISITION_AND_PROVENANCE_BOUNDARIES_CLOSED__OPEN_HUMAN_PILOT_GATE`。九类 E0R2 修正均形成 schema、consumer/builder 与正负例闭环，没有需进入 E0R3 的阻断项；Pro 未写入 GitHub。
+
+下一门正式提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`。人工应依次执行 P00、P01、P02、P03、P04、条件性 P05 和 P06，并如实保留实际 attempt、失败、重试、硬停止后的未执行 slot、测量/标定、原始文件及其 SHA-256。只有真实资料返回且用户明确授权后，才可进入 `E1_PILOT_DATA_INGESTION_AND_MODEL_ASSUMPTION_SCREENING`。
+
+Pro 指出两处不阻断 Pilot 的文档缩写偏差：Pilot 协议和验收矩阵使用了 `NO_RAW_DATA` 等简称，而 schema 的精确枚举为 `NO_RAW_DATA_CREATED`、`PARTIAL_RAW_DATA_RETAINED` 和 `COMPLETE_RAW_DATA_RETAINED`。本轮在自然的候选文档维护中按 schema 修正这些字面值；没有修改 schema、代码、测试或科学结论，不重开 E0R3。
+
+Pro 本轮没有独立重跑 Codex 已报告的 47 项测试、wheel 安装、自检、渲染或新增远端 CI/status check，因此该 PASS 是实现与合同闭包的独立静态裁决，不是第二份运行复现。结论上限继续为 `IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY`，正式总状态继续为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。没有真实测量、标定、视频、Pilot、数值资格升级、物理或实验验证；正式理论、正式程序、顶层 `AGENTS.md`、F0/F1 和冻结证据未修改。自动 Pro--Codex 闭环在人工 Pilot 门正常结束。

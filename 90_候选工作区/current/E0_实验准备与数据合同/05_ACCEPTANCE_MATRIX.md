@@ -20,7 +20,7 @@
 | E0R-A14 | 正式输入绑定 measurement IDs、bundle/record/derivation/trajectory/evidence 哈希 | 不代表正式模型通过物理验证 |
 | E0R-A15 | 不规则采样、残留 UNSET、缺失 uncertainty/raw hash 和伪来源标签失败关闭 | 不代表真实数据质量合格 |
 | E0R2-A16 | 12 个计划 slot 与实际 attempt 分层记录；未开始 slot 无伪时间、raw、camera hash 或 attempt ID，campaign 可在未来 slot 或 `RETRY_PENDING` 待执行时保持 `IN_PROGRESS` | 不代表已经开始 pilot |
-| E0R2-A17 | P00 等 setup/calibration 可在尚无有效 rig 或 raw file 时以 `NO_RAW_DATA` 失败；硬停止后的未来 slot 以 `NOT_STARTED_DUE_TO_STOP` 关闭 | 不代表失败可以丢失原因或 lineage |
+| E0R2-A17 | P00 等 setup/calibration 可在尚无有效 rig 或 raw file 时以 `NO_RAW_DATA_CREATED` 失败；硬停止后的未来 slot 以 `NOT_STARTED_DUE_TO_STOP` 关闭 | 不代表失败可以丢失原因或 lineage |
 | E0R2-A18 | 每个 sample 和 camera 都机器记录 frame index、raw/aligned timestamp、sync event、offset、uncertainty、drop flag 与可区分 invalid reason | 不代表真实同步精度已经合格 |
 | E0R2-A19 | detection 到 trajectory、trajectory 到 common observables 都解析并验证上游 manifest，核对实际 NPZ 哈希、字段、时间/位置轴与 run/attempt/apparatus/camera/origin 身份 | 不代表链上数据本身物理正确 |
 | E0R2-A20 | 任一 `data_origin=MEASURED` 产物残留 `UNSET_REQUIRES_HUMAN` 时失败关闭；派生正式输入的哈希绑定实际 canonical derivation 内容、方法和输入记录 | 不代表派生方法已经通过实验验证 |

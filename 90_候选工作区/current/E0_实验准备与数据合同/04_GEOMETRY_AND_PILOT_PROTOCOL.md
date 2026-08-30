@@ -38,7 +38,7 @@ pilot 首先使用届时已有的一套真实装置，先测清其实际几何�
 
 campaign 可以在尚有未来 slot 为 `PENDING` 时保持 `IN_PROGRESS`。条件前提不满足的 slot 标记为 `SKIPPED_DUE_TO_PREREQUISITE`；硬停止后的未开始 slot 标记为 `NOT_STARTED_DUE_TO_STOP`。这两类 slot，以及仍为 `PENDING` 的 slot，都不得伪造开始/结束时间、raw file、camera rig 哈希或 attempt ID。
 
-实际 attempt 使用 `evidence_state` 区分 `NO_RAW_DATA`、`PARTIAL_RAW_DATA` 和 `COMPLETE_RAW_DATA`。成功完成的 attempt 必须绑定预注册文件、apparatus revision、camera rig SHA-256 和每个原始文件 SHA-256；但 P00 等 setup/calibration 可能在相机 rig 尚未形成、原始文件尚未落盘时失败，此时允许 `FAILED` 或 `ABORTED` attempt 明确记录为 `NO_RAW_DATA`，且 `raw_files=[]`、`camera_rig_sha256=null`。不得用占位哈希假装证据存在。
+实际 attempt 使用 `evidence_state` 区分 `NO_RAW_DATA_CREATED`、`PARTIAL_RAW_DATA_RETAINED` 和 `COMPLETE_RAW_DATA_RETAINED`。成功完成的 attempt 必须绑定预注册文件、apparatus revision、camera rig SHA-256 和每个原始文件 SHA-256；但 P00 等 setup/calibration 可能在相机 rig 尚未形成、原始文件尚未落盘时失败，此时允许 `FAILED` 或 `ABORTED` attempt 明确记录为 `NO_RAW_DATA_CREATED`，且 `raw_files=[]`、`camera_rig_sha256=null`。不得用占位哈希假装证据存在。
 
 重试不得覆盖原 attempt。失败后决定重试、但下一次操作尚未开始时，slot 标记为 `RETRY_PENDING`，保留 governing failure，而不提前创建 attempt。新 attempt 只有在实际操作开始时才生成 ID，并通过 `retry_parent_id` 指向同一 slot、同一 repeat 的失败或中止记录，保留完整 lineage。
 
