@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/yps/e0/material_test_manifest.schema.json",
+  "title": "YPS E0 material test manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "data_origin", "apparatus_revision", "specimens", "test_plan", "raw_files"],
+  "properties": {
+    "schema_id": {"const": "YPS-E0-MATERIAL-TEST-MANIFEST-1.0"},
+    "data_origin": {"enum": ["HUMAN_REQUIRED_TEMPLATE", "MEASURED_BUNDLE"]},
+    "apparatus_revision": {"type": "string", "minLength": 1},
+    "specimens": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["specimen_id", "branch_id", "material_batch_id", "source_type"],
+        "properties": {
+          "specimen_id": {"type": "string", "minLength": 1},
+          "branch_id": {"enum": ["A", "B", "LOWER"]},
+          "material_batch_id": {"type": "string", "minLength": 1},
+          "source_type": {"enum": ["MEASURED", "UNSET_REQUIRES_HUMAN"]}
+        }
+      }
+    },
+    "test_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cycles_per_rate", "minimum_slow_rates", "crosses_slack_to_working_range", "retain_raw_time_series"],
+      "properties": {
+        "cycles_per_rate": {"type": "integer", "minimum": 5},
+        "minimum_slow_rates": {"type": "integer", "minimum": 2},
+        "crosses_slack_to_working_range": {"const": true},
+        "retain_raw_time_series": {"const": true}
+      }
+    },
+    "raw_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "specimen_id", "rate_id"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "specimen_id": {"type": "string", "minLength": 1},
+          "rate_id": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"data_origin": {"const": "MEASURED_BUNDLE"}}},
+      "then": {"properties": {"raw_files": {"minItems": 1}}}
+    }
+  ]
+}

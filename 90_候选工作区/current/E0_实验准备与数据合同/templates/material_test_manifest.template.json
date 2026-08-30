@@ -1,0 +1,17 @@
+{
+  "schema_id": "YPS-E0-MATERIAL-TEST-MANIFEST-1.0",
+  "data_origin": "HUMAN_REQUIRED_TEMPLATE",
+  "apparatus_revision": "UNSET_REQUIRES_HUMAN",
+  "specimens": [
+    {"specimen_id": "UNSET_A", "branch_id": "A", "material_batch_id": "UNSET_REQUIRES_HUMAN", "source_type": "UNSET_REQUIRES_HUMAN"},
+    {"specimen_id": "UNSET_B", "branch_id": "B", "material_batch_id": "UNSET_REQUIRES_HUMAN", "source_type": "UNSET_REQUIRES_HUMAN"},
+    {"specimen_id": "UNSET_LOWER", "branch_id": "LOWER", "material_batch_id": "UNSET_REQUIRES_HUMAN", "source_type": "UNSET_REQUIRES_HUMAN"}
+  ],
+  "test_plan": {
+    "cycles_per_rate": 5,
+    "minimum_slow_rates": 2,
+    "crosses_slack_to_working_range": true,
+    "retain_raw_time_series": true
+  },
+  "raw_files": []
+}

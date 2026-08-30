@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/yps/e0/camera_rig.schema.json",
+  "title": "YPS E0 calibrated camera rig",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "data_origin", "apparatus_revision", "world_frame", "cameras", "synchronization"],
+  "properties": {
+    "schema_id": {"const": "YPS-E0-CAMERA-RIG-1.0"},
+    "data_origin": {"enum": ["HUMAN_REQUIRED_TEMPLATE", "MEASURED_CALIBRATION", "SYNTHETIC"]},
+    "apparatus_revision": {"type": "string", "minLength": 1},
+    "world_frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "x_axis", "y_axis", "z_axis"],
+      "properties": {
+        "origin": {"const": "MIDPOINT_OF_SUPPORTS_A_B"},
+        "x_axis": {"const": "HORIZONTAL_PROJECTION_FROM_A_TO_B"},
+        "y_axis": {"const": "Z_CROSS_X"},
+        "z_axis": {"const": "UP_OPPOSITE_GRAVITY"}
+      }
+    },
+    "cameras": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/camera"}
+    },
+    "synchronization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "maximum_residual_fraction_of_frame", "raw_sync_sha256"],
+      "properties": {
+        "method": {"enum": ["UNSET_REQUIRES_HUMAN", "COMMON_FLASH", "HARD_TRIGGER", "SYNTHETIC_COMMON_EVENT"]},
+        "maximum_residual_fraction_of_frame": {"const": 0.25},
+        "raw_sync_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  },
+  "$defs": {
+    "nullableNumber": {"type": ["number", "null"]},
+    "nullableInteger": {"type": ["integer", "null"]},
+    "nullableArray": {"type": ["array", "null"], "items": {"type": "number"}},
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "camera_id", "source_type", "image_width_px", "image_height_px", "nominal_fps",
+        "timestamp_source", "R_c", "c_c", "f_x", "f_y", "c_x", "c_y", "k1", "k2", "k3",
+        "p1", "p2", "Omega_cal", "calibration_board_id", "board_dimensions_m",
+        "board_dimension_uncertainty_m", "calibration_time", "reprojection_rms_px",
+        "raw_calibration_sha256"
+      ],
+      "properties": {
+        "camera_id": {"type": "string", "minLength": 1},
+        "source_type": {"enum": ["MEASURED", "SYNTHETIC", "UNSET_REQUIRES_HUMAN"]},
+        "image_width_px": {"$ref": "#/$defs/nullableInteger"},
+        "image_height_px": {"$ref": "#/$defs/nullableInteger"},
+        "nominal_fps": {"$ref": "#/$defs/nullableNumber"},
+        "timestamp_source": {"type": ["string", "null"]},
+        "R_c": {"$ref": "#/$defs/nullableArray"},
+        "c_c": {"$ref": "#/$defs/nullableArray"},
+        "f_x": {"$ref": "#/$defs/nullableNumber"},
+        "f_y": {"$ref": "#/$defs/nullableNumber"},
+        "c_x": {"$ref": "#/$defs/nullableNumber"},
+        "c_y": {"$ref": "#/$defs/nullableNumber"},
+        "k1": {"$ref": "#/$defs/nullableNumber"},
+        "k2": {"$ref": "#/$defs/nullableNumber"},
+        "k3": {"$ref": "#/$defs/nullableNumber"},
+        "p1": {"$ref": "#/$defs/nullableNumber"},
+        "p2": {"$ref": "#/$defs/nullableNumber"},
+        "Omega_cal": {"$ref": "#/$defs/nullableArray"},
+        "calibration_board_id": {"type": ["string", "null"]},
+        "board_dimensions_m": {"$ref": "#/$defs/nullableArray"},
+        "board_dimension_uncertainty_m": {"$ref": "#/$defs/nullableNumber"},
+        "calibration_time": {"type": ["string", "null"]},
+        "reprojection_rms_px": {"$ref": "#/$defs/nullableNumber"},
+        "raw_calibration_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"source_type": {"enum": ["MEASURED", "SYNTHETIC"]}}},
+          "then": {
+            "properties": {
+              "image_width_px": {"type": "integer", "minimum": 1},
+              "image_height_px": {"type": "integer", "minimum": 1},
+              "nominal_fps": {"type": "number", "exclusiveMinimum": 0},
+              "R_c": {"type": "array", "minItems": 9, "maxItems": 9},
+              "c_c": {"type": "array", "minItems": 3, "maxItems": 3},
+              "f_x": {"type": "number", "exclusiveMinimum": 0},
+              "f_y": {"type": "number", "exclusiveMinimum": 0},
+              "Omega_cal": {"type": "array", "minItems": 4, "maxItems": 4},
+              "raw_calibration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

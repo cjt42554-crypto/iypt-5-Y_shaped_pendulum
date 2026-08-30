@@ -1,0 +1,8 @@
+pilot_id,attempt_id,operation,planned_repeats,prerequisite,status,stop_code,operator_note,raw_hashes,retry_parent_id
+P00,UNSET_REQUIRES_HUMAN,calibration_board_and_sync_flash_batch_start,1,SAFE_RIG_READY,NOT_RUN,,,,
+P01,UNSET_REQUIRES_HUMAN,static_rig_recording_60_s,2,P00_COMPLETE,NOT_RUN,,,,
+P02,UNSET_REQUIRES_HUMAN,small_near_fast_mode_release,2,P01_DATA_QUALITY_OK,NOT_RUN,,,,
+P03,UNSET_REQUIRES_HUMAN,small_near_slow_mode_release,2,P02_DATA_QUALITY_OK,NOT_RUN,,,,
+P04,UNSET_REQUIRES_HUMAN,small_mixed_release,2,P03_DATA_QUALITY_OK,NOT_RUN,,,,
+P05,UNSET_REQUIRES_HUMAN,medium_mixed_release_conditional,2,P00_TO_P04_ALL_OK_AND_SAFE,NOT_RUN,,,,
+P06,UNSET_REQUIRES_HUMAN,calibration_board_batch_end,1,LAST_EXECUTED_PILOT_COMPLETE,NOT_RUN,,,,

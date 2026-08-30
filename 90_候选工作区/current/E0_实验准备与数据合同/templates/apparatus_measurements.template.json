@@ -1,0 +1,124 @@
+{
+  "schema_id": "YPS-E0-APPARATUS-MEASUREMENTS-1.0",
+  "data_origin": "HUMAN_REQUIRED_TEMPLATE",
+  "apparatus_revision": "UNSET_REQUIRES_HUMAN",
+  "measurements": [
+    {
+      "measurement_id": "SUPPORT_A_XYZ", "component_id": "SUPPORT_A", "quantity": "position_world", "unit": "m",
+      "operational_definition": "Mechanical center of the actual constraint eye in the frozen world frame; measure before and after mounting.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "SUPPORT_B_XYZ", "component_id": "SUPPORT_B", "quantity": "position_world", "unit": "m",
+      "operational_definition": "Mechanical center of the actual constraint eye in the frozen world frame; measure before and after mounting.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BRANCH_A_UNLOADED_LENGTH", "component_id": "BRANCH_A", "quantity": "unloaded_length", "unit": "m",
+      "operational_definition": "Material length at a recorded low-preload threshold or zero-force intercept from the force-extension curve.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BRANCH_B_UNLOADED_LENGTH", "component_id": "BRANCH_B", "quantity": "unloaded_length", "unit": "m",
+      "operational_definition": "Material length at a recorded low-preload threshold or zero-force intercept from the force-extension curve.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "LOWER_UNLOADED_LENGTH", "component_id": "LOWER_BRANCH", "quantity": "unloaded_length", "unit": "m",
+      "operational_definition": "Material length at a recorded low-preload threshold or zero-force intercept from the force-extension curve.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "JUNCTION_MASS", "component_id": "JUNCTION", "quantity": "mass_including_moving_fasteners", "unit": "kg",
+      "operational_definition": "Mass of the central connector and all fasteners moving with it; fixed support hardware excluded.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BOB_TOTAL_MASS", "component_id": "BOB", "quantity": "mass_with_runtime_attachments", "unit": "kg",
+      "operational_definition": "Total moving bob mass including every attachment used during the run.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BOB_COM_TO_ATTACHMENT", "component_id": "BOB", "quantity": "com_to_attachment_vector_body", "unit": "m",
+      "operational_definition": "Vector from bob center of mass to the actual attachment point in the fixed bob body frame.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BOB_GEOMETRY", "component_id": "BOB", "quantity": "surface_geometry", "unit": "m",
+      "operational_definition": "Declared surface model measured in at least three independent directions.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BOB_PRINCIPAL_INERTIA", "component_id": "BOB", "quantity": "principal_inertia", "unit": "kg m^2",
+      "operational_definition": "Three principal moments from a traceable measurement or estimate with method and covariance.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BRANCH_LINEAR_DENSITY", "component_id": "ALL_BRANCHES", "quantity": "linear_density_by_branch_or_batch", "unit": "kg/m",
+      "operational_definition": "Mass per material length from independent samples with attachment mass excluded.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "BRANCH_DIAMETER", "component_id": "ALL_BRANCHES", "quantity": "diameter_by_position_and_direction", "unit": "m",
+      "operational_definition": "Diameter at five or more axial locations and two orthogonal directions with gauge preload recorded.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    },
+    {
+      "measurement_id": "SUPPORT_STATIC_REFERENCE", "component_id": "SUPPORT_RIG", "quantity": "support_fiducial_reference", "unit": "m",
+      "operational_definition": "Static support fiducial positions for detecting support motion during pilot acquisition.",
+      "source_type": "UNSET_REQUIRES_HUMAN", "raw_repeats": [], "value_si": null,
+      "type_a_standard_uncertainty": null, "type_b_standard_uncertainty": null, "combined_standard_uncertainty": null,
+      "covariance_group": null, "instrument_id": null, "calibration_ref": null, "timestamp": null,
+      "environment": {"temperature_c": null, "relative_humidity_percent": null, "pressure_pa": null},
+      "raw_data_sha256": null, "derivation": null
+    }
+  ]
+}

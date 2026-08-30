@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/yps/e0/model_input_binding.schema.json",
+  "title": "YPS E0 formal model input binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "model_id", "purpose", "formal_package_path", "formal_source_sha256", "parameter_sources", "compatibility_status", "missing_fields"],
+  "properties": {
+    "schema_id": {"const": "YPS-E0-MODEL-INPUT-BINDING-1.0"},
+    "model_id": {"enum": ["FWD-TORUS-1.0", "FWD-CABLE-1.0"]},
+    "purpose": {"enum": ["EXPERIMENT_COMPARISON", "SENSITIVITY_ONLY"]},
+    "formal_package_path": {"type": "string", "minLength": 1},
+    "formal_source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "parameter_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": ["MEASURED", "DERIVED_FROM_MEASURED", "ASSUMPTION_SENSITIVITY_ONLY"]
+      }
+    },
+    "compatibility_status": {
+      "enum": [
+        "READY_FOR_FORMAL_RUN", "TORUS_INPUT_OR_DOMAIN_INCOMPATIBLE",
+        "FWD_CABLE_INPUT_INCOMPLETE",
+        "ADAPTER_LIMITATION_MEASURED_INITIAL_STATE_NOT_REPRESENTABLE"
+      ]
+    },
+    "missing_fields": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/yps/e0/apparatus_measurements.schema.json",
+  "title": "YPS E0 apparatus measurement register",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "data_origin", "apparatus_revision", "measurements"],
+  "properties": {
+    "schema_id": {"const": "YPS-E0-APPARATUS-MEASUREMENTS-1.0"},
+    "data_origin": {"enum": ["HUMAN_REQUIRED_TEMPLATE", "MEASURED_BUNDLE"]},
+    "apparatus_revision": {"type": "string", "minLength": 1},
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/measurement"}
+    }
+  },
+  "$defs": {
+    "nullableNumber": {"type": ["number", "null"]},
+    "nullableString": {"type": ["string", "null"]},
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["temperature_c", "relative_humidity_percent", "pressure_pa"],
+      "properties": {
+        "temperature_c": {"$ref": "#/$defs/nullableNumber"},
+        "relative_humidity_percent": {"$ref": "#/$defs/nullableNumber"},
+        "pressure_pa": {"$ref": "#/$defs/nullableNumber"}
+      }
+    },
+    "derivation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["formula", "input_measurement_ids", "source_sha256"],
+      "properties": {
+        "formula": {"type": "string", "minLength": 1},
+        "input_measurement_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measurement_id", "component_id", "quantity", "unit",
+        "operational_definition", "source_type", "raw_repeats", "value_si",
+        "type_a_standard_uncertainty", "type_b_standard_uncertainty",
+        "combined_standard_uncertainty", "covariance_group", "instrument_id",
+        "calibration_ref", "timestamp", "environment", "raw_data_sha256",
+        "derivation"
+      ],
+      "properties": {
+        "measurement_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"},
+        "component_id": {"type": "string", "minLength": 1},
+        "quantity": {"type": "string", "minLength": 1},
+        "unit": {"type": "string", "minLength": 1},
+        "operational_definition": {"type": "string", "minLength": 1},
+        "source_type": {
+          "enum": [
+            "MEASURED", "DERIVED_FROM_MEASURED", "THEORY_DESIGN_CENTER",
+            "ASSUMPTION_SENSITIVITY_ONLY", "UNSET_REQUIRES_HUMAN"
+          ]
+        },
+        "raw_repeats": {"type": "array", "items": {"type": "number"}},
+        "value_si": {"$ref": "#/$defs/nullableNumber"},
+        "type_a_standard_uncertainty": {"$ref": "#/$defs/nullableNumber"},
+        "type_b_standard_uncertainty": {"$ref": "#/$defs/nullableNumber"},
+        "combined_standard_uncertainty": {"$ref": "#/$defs/nullableNumber"},
+        "covariance_group": {"$ref": "#/$defs/nullableString"},
+        "instrument_id": {"$ref": "#/$defs/nullableString"},
+        "calibration_ref": {"$ref": "#/$defs/nullableString"},
+        "timestamp": {"$ref": "#/$defs/nullableString"},
+        "environment": {"$ref": "#/$defs/environment"},
+        "raw_data_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "derivation": {"$ref": "#/$defs/derivation"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"source_type": {"const": "MEASURED"}}},
+          "then": {
+            "properties": {
+              "raw_repeats": {"minItems": 1},
+              "value_si": {"type": "number"},
+              "instrument_id": {"type": "string", "minLength": 1},
+              "timestamp": {"type": "string", "minLength": 1},
+              "raw_data_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"source_type": {"const": "DERIVED_FROM_MEASURED"}}},
+          "then": {
+            "properties": {
+              "value_si": {"type": "number"},
+              "derivation": {"type": "object"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"source_type": {"const": "UNSET_REQUIRES_HUMAN"}}},
+          "then": {
+            "properties": {
+              "raw_repeats": {"maxItems": 0},
+              "value_si": {"type": "null"},
+              "raw_data_sha256": {"type": "null"},
+              "derivation": {"type": "null"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}
