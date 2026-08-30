@@ -418,3 +418,13 @@ S 在正式目录形成 41 文件、20 个生产源的 `YPS-NO-CONTACT-STATIC-RE
 A 只支持锁定理想环面模型的实现级确定性与内部数值验证；S 的 BFGS 原始 `status=2`、`success=false` 继续作为记录，五项独立诊断不能被解释为优化器成功或正式数值资格。RC1 仍是历史参考/回滚后端。正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。
 
 本轮通过 GitHub 连接器执行静态源码、合同、schema、测试、证据生成逻辑和提交范围审查，没有本地克隆，也没有重新运行 pytest、Ruff、`compileall`、构建、数值复算、渲染或实验。新增 `current/F1_正式提升与最终审计/F1_FINAL_PRO_REVIEW.md`；正式理论和正式程序未修改。路径 F 已收口，待授权索引补丁、实验门、新理论、新模拟和任何资格阶段均未自动开启；current 改为“当前无待交接任务”。
+
+# 2026-08-31 03:53 +0800：E0 实验准备、数据合同与合成处理管线完成
+
+在路径 F 收口且尚无真实实验数据后，先由 Pro 只读规划下一阶段，再按其 `E0_EXPERIMENT_PREPARATION_AND_DATA_CONTRACTS` 方案只在 `90_候选工作区/current/E0_实验准备与数据合同/` 实施。新增 41 个候选文件：既有实验门复用矩阵、测量登记、70 条结果型运行预注册、Brown--Conrady 相机/同步/轨迹合同、三类代表几何与 P00--P06 Pilot 协议、E0-A1 至 E0-A10 验收矩阵、8 个 Draft 2020-12 schema、6 个未实测模板、候选 Python 包、27 项测试和失败关闭阶段检查器。实现提交为 `d1bb9ce6ce34f06831f6b09df20ae4d40fe177a6`。
+
+70 条运行均预分配唯一 run/attempt ID，并保持 `NOT_RUN` 与 `UNSET_REQUIRES_HUMAN`。相机实现复用正式 `X_camera = R_c @ (X_world - c_c)` 约定，拒绝非有限相机参数、标定域外像素和镜后解；轨迹 bundle 要求九类最低数组、严格样本轴、时间单调性和 NPZ 哈希。正式 adapter 只加载公开 `run_config`/`run_ensemble`，并把 Cable 实验比较与假设敏感性用途分开。比较程序只输出 `CONSISTENT_WITH_CURRENT_UNCERTAINTY`、`SYSTEMATIC_DISCREPANCY`、`INCONCLUSIVE` 或 `OUT_OF_MODEL_DOMAIN`，且固定声明不构成物理或实验验证。
+
+精确 Python 3.12 环境为 `27 passed in 1.09s`；Ruff、格式、`compileall`、JSON/schema/template、41 文件精确闭包和 Git allowlist 通过。wheel 经隔离构建后在全新临时环境安装，安装后的命令入口实际完成合成自检；双目最大误差约 `8.13e-13 m`。7 份 Markdown 通过系统 Pandoc 3.1.3 解析，并经 MathML、Chrome 和 Poppler 实际渲染为 18 页 PDF，Pandoc 警告为零且完成视觉抽查。一次使用无 NumPy 的无关全局 pytest 入口在收集阶段失败，随后精确环境完整通过；一次关闭构建隔离的 wheel 尝试因临时环境缺少 setuptools 失败，随后隔离构建、安装和运行完整通过，这两次均未形成科学结果或仓库残留。
+
+本轮没有真实装置参数、材料测量、相机标定、视频、Pilot、真实轨迹、物理验证或实验验证。正式理论、正式程序和顶层 `AGENTS.md` 未修改；正式源码/理论哈希分别保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c` 与 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。当前状态为 `E0_EXPERIMENT_PREPARATION_IMPLEMENTATION_PASS__SYNTHETIC_ONLY__STOP_AT_HUMAN_PILOT_GATE`，结论上限为 `IMPLEMENTATION_AND_SYNTHETIC_FIXTURE_ONLY`，正式总状态继续为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。下一步先由 Pro 独立复核；无阻断项后停止在 `HUMAN_PILOT_ACQUISITION_REQUIRED`，真实 Pilot 返回且用户明确授权以前不得进入 E1。
