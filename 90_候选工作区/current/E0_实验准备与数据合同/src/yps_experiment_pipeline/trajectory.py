@@ -23,7 +23,7 @@ REQUIRED_ARRAY_FIELDS = {
 }
 
 
-def _validate_bundle_arrays(
+def validate_trajectory_arrays(
     arrays: dict[str, np.ndarray],
     units: dict[str, str],
     valid_mask: np.ndarray,
@@ -46,6 +46,47 @@ def _validate_bundle_arrays(
     time = np.asarray(arrays["time_s"], dtype=float)
     if not np.all(np.isfinite(time)) or not np.all(np.diff(time) > 0):
         raise ValueError("time_s must be finite and strictly increasing")
+    bob = np.asarray(arrays["r_bob_W_m"], dtype=float)
+    junction = np.asarray(arrays["r_junction_W_m"], dtype=float)
+    branch_markers = np.asarray(arrays["branch_marker_positions_W_m"], dtype=float)
+    orientation = np.asarray(arrays["bob_orientation_WB"], dtype=float)
+    covariance = np.asarray(arrays["position_covariance"], dtype=float)
+    occlusion = np.asarray(arrays["occlusion_mask"], dtype=bool)
+    annotations = np.asarray(arrays["event_annotations"])
+    if bob.shape != (valid.size, 3) or junction.shape != (valid.size, 3):
+        raise ValueError("bob and junction positions must have shape (sample, 3)")
+    if branch_markers.ndim != 3 or branch_markers.shape[1] < 3 or branch_markers.shape[2] != 3:
+        raise ValueError("branch markers must have shape (sample, marker>=3, 3)")
+    if orientation.shape != (valid.size, 3, 3):
+        raise ValueError("bob orientation must have shape (sample, 3, 3)")
+    if covariance.shape != (valid.size, 2, 3, 3):
+        raise ValueError("position covariance must have shape (sample, 2, 3, 3)")
+    if occlusion.shape != (valid.size, 2):
+        raise ValueError("trajectory occlusion mask must have shape (sample, 2)")
+    if annotations.shape != (valid.size,):
+        raise ValueError("event annotations must have shape (sample,)")
+    if not (
+        np.all(np.isfinite(bob[valid]))
+        and np.all(np.isfinite(junction[valid]))
+        and np.all(np.isfinite(branch_markers[valid]))
+        and np.all(np.isfinite(orientation[valid]))
+        and np.all(np.isfinite(covariance[valid]))
+    ):
+        raise ValueError("trajectory arrays must be finite on valid samples")
+    selected_orientation = orientation[valid]
+    if selected_orientation.size:
+        orthogonality_error = np.max(
+            np.abs(np.swapaxes(selected_orientation, -1, -2) @ selected_orientation - np.eye(3))
+        )
+        determinants = np.linalg.det(selected_orientation)
+        if orthogonality_error > 1e-8 or np.max(np.abs(determinants - 1.0)) > 1e-8:
+            raise ValueError("bob orientations must be members of SO(3)")
+    selected_covariance = covariance[valid]
+    if selected_covariance.size:
+        if np.max(np.abs(selected_covariance - np.swapaxes(selected_covariance, -1, -2))) > 1e-12:
+            raise ValueError("position covariance must be symmetric")
+        if float(np.min(np.linalg.eigvalsh(selected_covariance))) < -1e-12:
+            raise ValueError("position covariance must be positive semidefinite")
     return valid
 
 
@@ -75,27 +116,38 @@ def mask_after_first_domain_event(
 def bundle_manifest(
     *,
     run_id: str,
+    attempt_id: str,
+    apparatus_revision: str,
     data_origin: str,
+    detection_manifest_file: Path,
+    camera_rig_sha256: str,
     array_file: Path,
     arrays: dict[str, np.ndarray],
     units: dict[str, str],
     valid_mask: np.ndarray,
     event_codes: list[str],
 ) -> dict[str, Any]:
-    valid = _validate_bundle_arrays(arrays, units, valid_mask)
+    valid = validate_trajectory_arrays(arrays, units, valid_mask)
     fields = {}
     for name, value in sorted(arrays.items()):
         array = np.asarray(value)
         fields[name] = {"shape": list(array.shape), "unit": units[name], "dtype": str(array.dtype)}
     return {
-        "schema_id": "YPS-E0-TRAJECTORY-BUNDLE-1.0",
+        "schema_id": "YPS-E0-TRAJECTORY-BUNDLE-1.1",
         "data_origin": data_origin,
         "run_id": run_id,
+        "attempt_id": attempt_id,
+        "apparatus_revision": apparatus_revision,
+        "detection_manifest_file": detection_manifest_file.name,
+        "detection_manifest_sha256": sha256_file(detection_manifest_file),
+        "camera_rig_sha256": camera_rig_sha256,
         "array_file": array_file.name,
         "array_sha256": sha256_file(array_file),
         "fields": fields,
         "sample_count": int(valid.size),
         "valid_fraction": float(np.mean(valid)),
+        "position_covariance_marker_ids": ["BOB", "JUNCTION"],
+        "covariance_convention": "WORLD_XYZ_3X3_PER_BOB_AND_JUNCTION_SAMPLE",
         "event_codes": list(event_codes),
     }
 
@@ -104,19 +156,31 @@ def write_bundle(
     output_directory: Path,
     *,
     run_id: str,
+    attempt_id: str,
+    apparatus_revision: str,
     data_origin: str,
+    detection_manifest_file: Path,
+    camera_rig_sha256: str,
     arrays: dict[str, np.ndarray],
     units: dict[str, str],
     valid_mask: np.ndarray,
     event_codes: list[str],
 ) -> dict[str, Any]:
-    _validate_bundle_arrays(arrays, units, valid_mask)
+    validate_trajectory_arrays(arrays, units, valid_mask)
+    if not detection_manifest_file.is_file():
+        raise ValueError("source 2D detection manifest does not exist")
+    if len(camera_rig_sha256) != 64:
+        raise ValueError("camera rig hash must be SHA-256")
     output_directory.mkdir(parents=True, exist_ok=False)
     array_file = output_directory / "trajectory.npz"
     np.savez_compressed(array_file, **arrays)
     manifest = bundle_manifest(
         run_id=run_id,
+        attempt_id=attempt_id,
+        apparatus_revision=apparatus_revision,
         data_origin=data_origin,
+        detection_manifest_file=detection_manifest_file,
+        camera_rig_sha256=camera_rig_sha256,
         array_file=array_file,
         arrays=arrays,
         units=units,

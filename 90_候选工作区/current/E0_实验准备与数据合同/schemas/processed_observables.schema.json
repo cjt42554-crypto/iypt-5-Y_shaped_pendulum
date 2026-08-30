@@ -1,17 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/processed_observables.schema.json",
-  "title": "YPS common experiment/model observables",
+  "title": "YPS E0R common experiment/model observables",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_id", "data_origin", "identity", "valid_interval_s", "frequency", "damping", "resonant_phase", "closure_error", "event_list", "uncertainty", "domain_status"],
+  "required": [
+    "schema_id", "data_origin", "identity", "trajectory_manifest_sha256",
+    "array_file", "array_sha256", "fields", "sample_count", "modal_basis_provenance",
+    "sampling", "valid_interval_s", "frequency", "damping", "closure_error",
+    "event_list", "uncertainty", "domain_status"
+  ],
   "properties": {
-    "schema_id": {"const": "YPS-EXPERIMENT-COMMON-OBSERVABLES-1.0"},
-    "data_origin": {"enum": ["SYNTHETIC", "MEASURED", "FORMAL_MODEL"]},
+    "schema_id": {"const": "YPS-EXPERIMENT-COMMON-OBSERVABLES-1.1"},
+    "data_origin": {"enum": ["SYNTHETIC_REAL_SHAPE_FIXTURE", "MEASURED", "FORMAL_MODEL"]},
     "identity": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source_id", "source_sha256"],
+      "required": ["source_id", "source_sha256", "run_id", "apparatus_revision"],
       "properties": {
         "source_id": {"type": "string", "minLength": 1},
         "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
@@ -19,6 +24,62 @@
         "model_id": {"type": "string", "minLength": 1},
         "apparatus_revision": {"type": "string", "minLength": 1}
       }
+    },
+    "trajectory_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "array_file": {"type": "string", "minLength": 1},
+    "array_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fields": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shape", "unit", "dtype"],
+        "properties": {
+          "shape": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+          "unit": {"type": "string", "minLength": 1},
+          "dtype": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "sample_count": {"type": "integer", "minimum": 32},
+    "modal_basis_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "method_sha256", "source_run_ids", "source_bundle_sha256", "basis_frozen_before_run"],
+      "properties": {
+        "method": {"type": "string", "minLength": 1},
+        "method_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_run_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "source_bundle_sha256": {"type": "array", "minItems": 2, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+        "basis_frozen_before_run": {"const": true}
+      }
+    },
+    "sampling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "median_interval_s", "maximum_relative_interval_deviation", "resampling_configuration_sha256"],
+      "properties": {
+        "method": {"enum": ["NATIVE_UNIFORM", "PREREGISTERED_RESAMPLE"]},
+        "median_interval_s": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_relative_interval_deviation": {"type": "number", "minimum": 0},
+        "resampling_configuration_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      },
+      "allOf": [
+        {
+          "if": {"required": ["method"], "properties": {"method": {"const": "NATIVE_UNIFORM"}}},
+          "then": {
+            "properties": {
+              "maximum_relative_interval_deviation": {"maximum": 0.01},
+              "resampling_configuration_sha256": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {"required": ["method"], "properties": {"method": {"const": "PREREGISTERED_RESAMPLE"}}},
+          "then": {"properties": {"resampling_configuration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}
+        }
+      ]
     },
     "valid_interval_s": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
     "frequency": {
@@ -35,12 +96,8 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["fast_per_s", "slow_per_s"],
-      "properties": {
-        "fast_per_s": {"type": "number"},
-        "slow_per_s": {"type": "number"}
-      }
+      "properties": {"fast_per_s": {"type": "number"}, "slow_per_s": {"type": "number"}}
     },
-    "resonant_phase": {"type": "array", "items": {"type": "number"}},
     "closure_error": {"type": "number", "minimum": 0},
     "event_list": {
       "type": "array",
@@ -60,19 +117,20 @@
     "uncertainty": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["method", "components", "covariance_ref"],
+      "required": ["method", "components", "covariance_ref", "covariance_sha256"],
       "properties": {
         "method": {"type": "string", "minLength": 1},
-        "components": {
-          "type": "object",
-          "minProperties": 1,
-          "additionalProperties": {"type": "number", "minimum": 0}
-        },
-        "covariance_ref": {"type": ["string", "null"]}
-      }
+        "components": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "minimum": 0}},
+        "covariance_ref": {"type": ["string", "null"]},
+        "covariance_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      },
+      "allOf": [
+        {
+          "if": {"required": ["covariance_ref"], "properties": {"covariance_ref": {"type": "string"}}},
+          "then": {"properties": {"covariance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}
+        }
+      ]
     },
-    "domain_status": {
-      "enum": ["IN_DOMAIN", "OUT_OF_MODEL_DOMAIN", "TRUNCATED_AT_DOMAIN_EVENT", "ADAPTER_LIMITATION"]
-    }
+    "domain_status": {"enum": ["IN_DOMAIN", "OUT_OF_MODEL_DOMAIN", "TRUNCATED_AT_DOMAIN_EVENT", "ADAPTER_LIMITATION"]}
   }
 }

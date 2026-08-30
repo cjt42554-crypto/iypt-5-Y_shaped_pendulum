@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from hashlib import sha256
 from pathlib import Path
 
 import numpy as np
@@ -11,6 +12,7 @@ import numpy as np
 from .camera import project_points, triangulate_two_view
 from .comparison import compare_scalar
 from .contracts import STAGE_RELATIVE, validate_all_templates, validate_document
+from .detections import triangulate_markers_with_covariance
 from .forward_adapter import cable_compatibility, formal_identity, torus_compatibility
 from .observables import estimate_damped_mode
 from .synchronization import estimate_event_offset
@@ -74,6 +76,24 @@ def synthetic_self_test(repository_root: Path) -> dict:
     )
     if reconstruction_error > 1e-8:
         raise RuntimeError(f"synthetic stereo reconstruction error: {reconstruction_error}")
+    stereo_pixels = np.stack((pixels_a, pixels_b), axis=1)[:, :, None, :]
+    stereo_valid = np.stack((valid_a, valid_b), axis=1)[:, :, None]
+    pixel_covariance = np.broadcast_to(0.04 * np.eye(2), (time.size, 2, 1, 2, 2)).copy()
+    covariance_points, covariance_3d, covariance_valid = triangulate_markers_with_covariance(
+        stereo_pixels,
+        pixel_covariance,
+        stereo_valid,
+        camera_a,
+        camera_b,
+    )
+    if not np.all(covariance_valid):
+        raise RuntimeError("synthetic covariance-aware stereo reconstruction failed")
+    covariance_reconstruction_error = float(
+        np.max(np.linalg.norm(covariance_points[:, 0] - points, axis=1))
+    )
+    covariance_min_eigenvalue = float(np.min(np.linalg.eigvalsh(covariance_3d)))
+    if covariance_reconstruction_error > 1e-8 or covariance_min_eigenvalue < -1e-12:
+        raise RuntimeError("synthetic 2D-to-3D covariance propagation failed")
 
     fast_truth, slow_truth = 4.0, 3.0
     fast_signal = 0.15 * np.exp(-0.025 * time) * np.cos(fast_truth * time + 0.2)
@@ -91,7 +111,7 @@ def synthetic_self_test(repository_root: Path) -> dict:
         raise RuntimeError("synthetic synchronization recovery failed")
 
     comparison = compare_scalar(
-        data_origin="SYNTHETIC",
+        data_origin="SYNTHETIC_REAL_SHAPE_FIXTURE",
         observable="omega_fast_rad_s",
         experimental_value=fast.omega_rad_s,
         model_value=fast_truth,
@@ -102,21 +122,34 @@ def synthetic_self_test(repository_root: Path) -> dict:
     validate_document("comparison_result.schema.json", comparison, schema_root=schema_root)
     torus_status = torus_compatibility(
         {
-            "geometry_embedding_compatible": True,
-            "initial_state_mappable": True,
-            "no_slack_or_contact_in_window": True,
-            "mapping_residual": 0.2,
-            "mapping_standard_uncertainty": 0.5,
+            "torus_evidence": {
+                "geometry_embedding": {
+                    "decision": True,
+                    "evidence_sha256": sha256(b"synthetic-geometry").hexdigest(),
+                },
+                "initial_state_mapping": {
+                    "decision": True,
+                    "evidence_sha256": sha256(b"synthetic-initial-state").hexdigest(),
+                },
+                "domain_window": {
+                    "decision": True,
+                    "evidence_sha256": sha256(b"synthetic-domain-window").hexdigest(),
+                },
+                "mapping_residual": 0.2,
+                "mapping_standard_uncertainty": 0.5,
+            }
         }
     )
     cable_status, _ = cable_compatibility(
-        {"parameter_sources": {}, "initial_state_representable": True}
+        {"purpose": "EXPERIMENT_COMPARISON", "parameter_bindings": []}
     )
     identity = formal_identity(repository_root)
     return {
-        "status": "E0_SYNTHETIC_SELF_TEST_PASS__NOT_EXPERIMENT_EVIDENCE",
-        "data_origin": "SYNTHETIC",
+        "status": "E0R_SYNTHETIC_REAL_SHAPE_SELF_TEST_PASS__NOT_EXPERIMENT_EVIDENCE",
+        "data_origin": "SYNTHETIC_REAL_SHAPE_FIXTURE",
         "stereo_max_error_m": reconstruction_error,
+        "covariance_stereo_max_error_m": covariance_reconstruction_error,
+        "covariance_min_eigenvalue_m2": covariance_min_eigenvalue,
         "omega_fast_error_rad_s": abs(fast.omega_rad_s - fast_truth),
         "omega_slow_error_rad_s": abs(slow.omega_rad_s - slow_truth),
         "sync_offset_error_s": abs(float(sync["offset_s"]) - 0.008),
@@ -124,7 +157,7 @@ def synthetic_self_test(repository_root: Path) -> dict:
         "torus_adapter_status": torus_status,
         "cable_adapter_status": cable_status,
         "formal_identity": identity,
-        "claim_ceiling": "IMPLEMENTATION_AND_SYNTHETIC_FIXTURE_ONLY",
+        "claim_ceiling": "IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY",
     }
 
 

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yps-experiment-pipeline"
-version = "0.1.0"
-description = "Candidate-only experiment data contracts and synthetic readiness checks for the Y-shaped pendulum"
+version = "0.2.0"
+description = "Candidate-only real-shape experiment contracts and synthetic provenance checks for the Y-shaped pendulum"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "jsonschema==4.10.3",

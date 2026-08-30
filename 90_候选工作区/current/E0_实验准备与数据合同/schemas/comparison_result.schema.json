@@ -7,7 +7,7 @@
   "required": ["schema_id", "data_origin", "observable", "experimental_value", "model_value", "uncertainty_components", "combined_uncertainty", "normalized_discrepancy", "status", "claim_ceiling"],
   "properties": {
     "schema_id": {"const": "YPS-E0-COMPARISON-RESULT-1.0"},
-    "data_origin": {"enum": ["SYNTHETIC", "MEASURED"]},
+    "data_origin": {"enum": ["SYNTHETIC", "SYNTHETIC_REAL_SHAPE_FIXTURE", "MEASURED"]},
     "observable": {"type": "string", "minLength": 1},
     "experimental_value": {"type": "number"},
     "model_value": {"type": "number"},

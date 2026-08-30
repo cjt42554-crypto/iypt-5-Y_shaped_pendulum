@@ -1,0 +1,26 @@
+{
+  "schema_id": "YPS-E0-ACQUISITION-ATTEMPTS-1.0",
+  "data_origin": "HUMAN_REQUIRED_TEMPLATE",
+  "contains_measured_values": false,
+  "campaign_id": "E0_PILOT_V1",
+  "preregistration": {
+    "plan_id": "E0_PILOT_V1",
+    "plan_file": "04_GEOMETRY_AND_PILOT_PROTOCOL.md",
+    "plan_sha256": null
+  },
+  "apparatus_revision": "UNSET_REQUIRES_HUMAN",
+  "attempts": [
+    {"slot_id": "P00", "attempt_id": "P00-R01-A00", "repeat_index": 1, "operation": "calibration_board_and_sync_flash_batch_start", "release_target_id": "NO_RELEASE_CALIBRATION", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P01", "attempt_id": "P01-R01-A00", "repeat_index": 1, "operation": "static_rig_recording_60_s", "release_target_id": "NO_RELEASE_STATIC", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P01", "attempt_id": "P01-R02-A00", "repeat_index": 2, "operation": "static_rig_recording_60_s", "release_target_id": "NO_RELEASE_STATIC", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P02", "attempt_id": "P02-R01-A00", "repeat_index": 1, "operation": "small_near_fast_mode_release", "release_target_id": "PILOT_FAST_SMALL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P02", "attempt_id": "P02-R02-A00", "repeat_index": 2, "operation": "small_near_fast_mode_release", "release_target_id": "PILOT_FAST_SMALL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P03", "attempt_id": "P03-R01-A00", "repeat_index": 1, "operation": "small_near_slow_mode_release", "release_target_id": "PILOT_SLOW_SMALL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P03", "attempt_id": "P03-R02-A00", "repeat_index": 2, "operation": "small_near_slow_mode_release", "release_target_id": "PILOT_SLOW_SMALL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P04", "attempt_id": "P04-R01-A00", "repeat_index": 1, "operation": "small_mixed_release", "release_target_id": "PILOT_MIXED_SMALL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P04", "attempt_id": "P04-R02-A00", "repeat_index": 2, "operation": "small_mixed_release", "release_target_id": "PILOT_MIXED_SMALL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P05", "attempt_id": "P05-R01-A00", "repeat_index": 1, "operation": "medium_mixed_release_conditional", "release_target_id": "PILOT_MIXED_MEDIUM_CONDITIONAL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P05", "attempt_id": "P05-R02-A00", "repeat_index": 2, "operation": "medium_mixed_release_conditional", "release_target_id": "PILOT_MIXED_MEDIUM_CONDITIONAL", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null},
+    {"slot_id": "P06", "attempt_id": "P06-R01-A00", "repeat_index": 1, "operation": "calibration_board_batch_end", "release_target_id": "NO_RELEASE_CALIBRATION", "status": "NOT_RUN", "started_at": null, "ended_at": null, "operator_id": null, "raw_files": [], "failure": null, "retry_parent_id": null, "corrective_action": null, "apparatus_revision": "UNSET_REQUIRES_HUMAN", "camera_rig_sha256": null}
+  ]
+}

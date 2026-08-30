@@ -8,14 +8,14 @@ E0 直接复用既有[实验门最小测量清单](../F0_正式整理与解析�
 
 | 既有要求 | 处理方式 | E0 执行层 |
 |---|---|---|
-| 最低仪器、双相机和公共同步 | 直接引用 | `03_CAMERA_TRAJECTORY_DATA_CONTRACT.md` 与 `camera_rig.schema.json` |
+| 最低仪器、双相机和公共同步 | 直接引用 | `03_CAMERA_TRAJECTORY_DATA_CONTRACT.md`、完整相机 schema 与 2D detection schema |
 | A 级装置几何、质量和材料输入 | 直接引用 | `01_MEASUREMENT_REGISTER_PROTOCOL.md` 与长表式测量 schema |
 | 力--伸长、循环滞回和速率效应 | 直接引用 | 材料试验 manifest 与原始文件哈希合同 |
 | 小振幅两个方向、每方向至少 5 次 | 直接引用 | 预生成且不可复用的 run ID 与纳入/排除规则 |
 | 四个振幅层、每级至少 5 次 | 直接引用 | 3:2 主矩阵与升级停止规则 |
 | 失张、接近和接触筛查 | 直接引用 | 事件代码、检测下限、第一事件截断与失败记录 |
 | 从低复杂度模型开始判别 | 直接引用 | Torus/Cable 只读适配和 `OUT_OF_MODEL_DOMAIN` |
-| 原始数据、配置、代码和结论可追踪 | 直接引用 | SHA-256、manifest 和原始/处理数据关系 |
+| 原始数据、配置、代码和结论可追踪 | 直接引用 | acquisition attempt、SHA-256、manifest 和原始/处理数据关系 |
 | 实验门五项通过条件 | 保持为最终实验门 | E0-A1 至 E0-A10 只验证准备包 |
 
 ## 3. E0 新增而既有清单未冻结的内容
@@ -23,13 +23,15 @@ E0 直接复用既有[实验门最小测量清单](../F0_正式整理与解析�
 E0 新增以下执行合同：
 
 1. 每一个测量量的机器字段、来源类型和条件必填关系；
-2. 第一轮 70 条结果型运行的 run ID、几何分配和分析预注册；
-3. 世界坐标、Brown--Conrady 相机、帧时间和双目三角化数据合同；
-4. 大型数组 NPZ 与紧凑 JSON manifest 的分离；
-5. `YPS-EXPERIMENT-COMMON-OBSERVABLES-1.0` 共同比较接口；
-6. 正式 Torus/Cable 输入不兼容时的失败关闭状态；
-7. 低成本 pilot run sheet、模型遗漏因素筛查和硬停止码；
-8. 合成夹具不得升级为实验结论的机器检查。
+2. 第一轮 70 条结果型运行的 run ID、机器冻结的释放振幅、几何分配和分析预注册；
+3. 每个 pilot/full-round repeat、失败 attempt 与 retry parent 的采集 ledger；
+4. 世界坐标、完整 Brown--Conrady 相机、帧时间和双目三角化数据合同；
+5. 原始视频到 2D detection、逐帧 $2\times2$ covariance 和 3D $3\times3$ covariance 的哈希链；
+6. 大型数组 NPZ 与紧凑 JSON manifest 的分离；
+7. `YPS-EXPERIMENT-COMMON-OBSERVABLES-1.1` 共同比较接口；
+8. 测量 ID、测量 bundle、派生方法、轨迹和兼容性证据到正式输入的绑定；
+9. 正式 Torus/Cable 输入不兼容时的失败关闭状态；
+10. 合成夹具不得升级为实验结论的机器检查。
 
 ## 4. 不重复实现的内容
 

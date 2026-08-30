@@ -8,10 +8,11 @@
 
 - `measurement_id`、`apparatus_revision`、`component_id` 和 `quantity`；
 - `raw_repeats`、`unit` 和 `operational_definition`；
+- `value_kind` 与 `component_labels`；向量的每次重复、值和不确定度都必须具有相同维数；
 - `instrument_id`、`calibration_ref` 和时间戳；
 - 温度、湿度、气压等环境状态；
 - Type A、Type B 和合成标准不确定度；
-- 协方差组、来源类型、原始文件哈希；
+- 完整 covariance matrix、协方差组、来源类型、原始文件哈希；
 - 派生量的公式、输入 measurement IDs 和源哈希。
 
 ## 2. 来源类型
@@ -23,6 +24,7 @@
 | `THEORY_DESIGN_CENTER` | 无量纲理论设计中心，不是制造值 |
 | `ASSUMPTION_SENSITIVITY_ONLY` | 只用于敏感性分析的假设 |
 | `UNSET_REQUIRES_HUMAN` | 等待人工测量 |
+| `SYNTHETIC_REAL_SHAPE_FIXTURE` | 只验证真实字段维度、协方差和溯源链，不是实测 |
 
 模板不得把理想图谱的 `eta_numeric`、`tuned_eta` 或类似字段标为制造值或实测值。
 
@@ -59,4 +61,4 @@ $$
 
 ## 5. 版本与失败关闭
 
-每次机械改装、重新装夹或几何调整都生成新的 `apparatus_revision`，不得覆盖旧记录。字段缺失、单位不合格、未知键、`MEASURED` 无原始哈希或派生量无输入绑定时，schema/validator 必须失败关闭。
+每次机械改装、重新装夹或几何调整都生成新的 `apparatus_revision`，不得覆盖旧记录。`MEASURED_BUNDLE` 中不允许残留 `UNSET_REQUIRES_HUMAN`。字段缺失、向量维数与标签不一致、covariance 形状不合格、未知键、`MEASURED` 无完整不确定度或原始哈希、派生量无输入绑定时，schema/validator 必须失败关闭。

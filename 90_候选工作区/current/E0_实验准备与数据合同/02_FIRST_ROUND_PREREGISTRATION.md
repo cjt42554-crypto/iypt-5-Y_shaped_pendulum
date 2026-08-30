@@ -21,11 +21,17 @@ pilot 运行不计入下表。第一轮计划 70 条结果型运行：
 | 2:1 | 两个低/中混合振幅层 | 每层 5 | 10 |
 | 合计 |  |  | 70 |
 
-3:2 nominal release anchor 可使用正式理想图谱已有的 $(0.05,0.04)$、$(0.10,0.08)$、$(0.15,0.10)$ 和 $(0.20,0.12)$ rad，只作为释放目标。4:3 与 2:1 第一轮只使用前两个安全层。真实初始振幅必须由实验轨迹重建，不能把 nominal target 当成测量结果。
+### Nominal release targets
+
+`first_round_plan.template.json` 把 nominal release target 冻结为机器字段：近纯 fast 为 $(0.05,0)$ rad，近纯 slow 为 $(0,0.04)$ rad；3:2 mixed 使用 $(0.05,0.04)$、$(0.10,0.08)$、$(0.15,0.10)$ 和 $(0.20,0.12)$ rad，4:3 与 2:1 mixed 只使用前两层。每层具有确定的 `release_target_id`、level index、容差、理论来源和 `TRAJECTORY_RECONSTRUCTION_REQUIRED` 标记。
+
+这些数值只作为释放目标。真实初始振幅必须由实验轨迹重建，不能把 nominal target 当成测量结果。
 
 ## 3. Run 身份
 
-`first_round_plan.template.json` 已为 70 条结果型运行预分配唯一 `run_id` 和首个 `attempt_id`，并将状态固定为 `NOT_RUN`、装置版本固定为 `UNSET_REQUIRES_HUMAN`。采集前人工必须绑定实际 `apparatus_revision`。失败的 ID 永不复用；重试必须生成新 attempt 并记录 `retry_parent_id`。失败或排除的运行仍保留原始数据、哈希和原因。
+`first_round_plan.template.json` 已为 70 条结果型运行预分配唯一 `run_id` 和首个 `attempt_id`，并将状态固定为 `NOT_RUN`、装置版本固定为 `UNSET_REQUIRES_HUMAN`。实际采集使用 `YPS-E0-ACQUISITION-ATTEMPTS-1.0`：每个 repeat 单独记录开始/结束时间、operator、apparatus/camera 哈希、原始文件哈希、failure stage、reason code、corrective action 和 retry parent。采集前人工必须绑定实际 `apparatus_revision` 与预注册文件哈希。
+
+失败的 ID 永不复用；重试必须生成新 attempt，并且 parent 必须是 ledger 中同一 slot、同一 repeat 的失败或中止 attempt。失败或排除的运行仍保留原始数据、哈希和原因。
 
 禁止根据结果重新挑选“最好看的五次”。
 
@@ -37,6 +43,7 @@ pilot 运行不计入下表。第一轮计划 70 条结果型运行：
 - 不跨越超过 $0.1$ 个最快周期的连续缺测区间进行科学拟合；
 - 展示插值不得改变 `valid_mask=false`；
 - primary 过滤器、拟合窗和 estimator 在 full round 前冻结；
+- native time interval 的最大相对偏差不得超过 1%；超过时原 estimator 失败关闭，只能使用预注册且配置哈希绑定的独立 resampling 步骤；
 - 任一失张、接近、接触或模型守卫事件发生后，理想环面比较在第一事件时刻停止；
 - “锁频”必须同时具有频率平台和有界共振相位，二维瓣数单独不构成判据。
 

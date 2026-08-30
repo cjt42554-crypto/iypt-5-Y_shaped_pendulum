@@ -1,22 +1,29 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/model_input_binding.schema.json",
-  "title": "YPS E0 formal model input binding",
+  "title": "YPS E0R formal model input and evidence binding",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_id", "model_id", "purpose", "formal_package_path", "formal_source_sha256", "parameter_sources", "compatibility_status", "missing_fields"],
+  "required": [
+    "schema_id", "model_id", "purpose", "formal_package_path", "formal_source_sha256",
+    "measurement_bundle_sha256", "trajectory_bundle_sha256", "parameter_bindings",
+    "compatibility_evidence", "compatibility_evidence_sha256", "compatibility_status", "missing_fields"
+  ],
   "properties": {
-    "schema_id": {"const": "YPS-E0-MODEL-INPUT-BINDING-1.0"},
+    "schema_id": {"const": "YPS-E0-MODEL-INPUT-BINDING-1.1"},
     "model_id": {"enum": ["FWD-TORUS-1.0", "FWD-CABLE-1.0"]},
-    "purpose": {"enum": ["EXPERIMENT_COMPARISON", "SENSITIVITY_ONLY"]},
+    "purpose": {"enum": ["EXPERIMENT_COMPARISON", "SENSITIVITY_ONLY", "SYNTHETIC_CONTRACT_TEST"]},
     "formal_package_path": {"type": "string", "minLength": 1},
     "formal_source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "parameter_sources": {
-      "type": "object",
-      "additionalProperties": {
-        "enum": ["MEASURED", "DERIVED_FROM_MEASURED", "ASSUMPTION_SENSITIVITY_ONLY"]
-      }
+    "measurement_bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "trajectory_bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "parameter_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/parameterBinding"}
     },
+    "compatibility_evidence": {"$ref": "#/$defs/compatibilityEvidence"},
+    "compatibility_evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "compatibility_status": {
       "enum": [
         "READY_FOR_FORMAL_RUN", "TORUS_INPUT_OR_DOMAIN_INCOMPATIBLE",
@@ -25,5 +32,99 @@
       ]
     },
     "missing_fields": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"required": ["purpose"], "properties": {"purpose": {"const": "EXPERIMENT_COMPARISON"}}},
+      "then": {"properties": {"parameter_bindings": {"items": {"properties": {"source_type": {"enum": ["MEASURED", "DERIVED_FROM_MEASURED"]}}}}}}
+    },
+    {
+      "if": {"required": ["model_id"], "properties": {"model_id": {"const": "FWD-TORUS-1.0"}}},
+      "then": {"properties": {"compatibility_evidence": {"properties": {"torus": {"type": "object"}, "cable": {"type": "null"}}}}}
+    },
+    {
+      "if": {"required": ["model_id"], "properties": {"model_id": {"const": "FWD-CABLE-1.0"}}},
+      "then": {"properties": {"compatibility_evidence": {"properties": {"torus": {"type": "null"}, "cable": {"type": "object"}}}}}
+    }
+  ],
+  "$defs": {
+    "sha256OrNull": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "parameterBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parameter_name", "source_type", "measurement_ids", "measurement_bundle_sha256",
+        "source_record_sha256", "derivation_sha256"
+      ],
+      "properties": {
+        "parameter_name": {"type": "string", "minLength": 1},
+        "source_type": {"enum": ["MEASURED", "DERIVED_FROM_MEASURED", "ASSUMPTION_SENSITIVITY_ONLY", "SYNTHETIC_REAL_SHAPE_FIXTURE"]},
+        "measurement_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "measurement_bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_record_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "derivation_sha256": {"$ref": "#/$defs/sha256OrNull"}
+      },
+      "allOf": [
+        {
+          "if": {"required": ["source_type"], "properties": {"source_type": {"const": "MEASURED"}}},
+          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation_sha256": {"type": "null"}}}
+        },
+        {
+          "if": {"required": ["source_type"], "properties": {"source_type": {"const": "DERIVED_FROM_MEASURED"}}},
+          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}
+        },
+        {
+          "if": {"required": ["source_type"], "properties": {"source_type": {"const": "ASSUMPTION_SENSITIVITY_ONLY"}}},
+          "then": {"properties": {"measurement_ids": {"maxItems": 0}, "derivation_sha256": {"type": "null"}}}
+        },
+        {
+          "if": {"required": ["source_type"], "properties": {"source_type": {"const": "SYNTHETIC_REAL_SHAPE_FIXTURE"}}},
+          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation_sha256": {"type": "null"}}}
+        }
+      ]
+    },
+    "decisionEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "evidence_sha256"],
+      "properties": {
+        "decision": {"type": "boolean"},
+        "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "torusEvidence": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "geometry_embedding", "initial_state_mapping", "domain_window",
+        "mapping_residual", "mapping_standard_uncertainty"
+      ],
+      "properties": {
+        "geometry_embedding": {"$ref": "#/$defs/decisionEvidence"},
+        "initial_state_mapping": {"$ref": "#/$defs/decisionEvidence"},
+        "domain_window": {"$ref": "#/$defs/decisionEvidence"},
+        "mapping_residual": {"type": "number"},
+        "mapping_standard_uncertainty": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "cableEvidence": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["input_completeness_sha256", "initial_state_representable", "initial_state_evidence_sha256"],
+      "properties": {
+        "input_completeness_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "initial_state_representable": {"type": "boolean"},
+        "initial_state_evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "compatibilityEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["torus", "cable"],
+      "properties": {
+        "torus": {"$ref": "#/$defs/torusEvidence"},
+        "cable": {"$ref": "#/$defs/cableEvidence"}
+      }
+    }
   }
 }

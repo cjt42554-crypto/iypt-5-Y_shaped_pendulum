@@ -28,9 +28,11 @@ EXPECTED_FILES = {
         "05_ACCEPTANCE_MATRIX.md",
         "pyproject.toml",
         "schemas/apparatus_measurements.schema.json",
+        "schemas/acquisition_attempts.schema.json",
         "schemas/material_test_manifest.schema.json",
         "schemas/camera_rig.schema.json",
         "schemas/experiment_run.schema.json",
+        "schemas/detection_2d_bundle.schema.json",
         "schemas/trajectory_bundle.schema.json",
         "schemas/processed_observables.schema.json",
         "schemas/model_input_binding.schema.json",
@@ -39,12 +41,14 @@ EXPECTED_FILES = {
         "templates/material_test_manifest.template.json",
         "templates/camera_rig.template.json",
         "templates/first_round_plan.template.json",
+        "templates/pilot_attempts.template.json",
         "templates/uncertainty_budget.template.csv",
         "templates/pilot_run_sheet.template.csv",
         "src/yps_experiment_pipeline/__init__.py",
         "src/yps_experiment_pipeline/__main__.py",
         "src/yps_experiment_pipeline/contracts.py",
         "src/yps_experiment_pipeline/camera.py",
+        "src/yps_experiment_pipeline/detections.py",
         "src/yps_experiment_pipeline/synchronization.py",
         "src/yps_experiment_pipeline/trajectory.py",
         "src/yps_experiment_pipeline/observables.py",
@@ -52,6 +56,8 @@ EXPECTED_FILES = {
         "src/yps_experiment_pipeline/comparison.py",
         "src/yps_experiment_pipeline/cli.py",
         "tests/fixtures/synthetic_stereo_session/fixture_manifest.json",
+        "tests/fixtures/synthetic_real_shape_session/fixture_manifest.json",
+        "tests/real_shape_fixture.py",
         "tests/test_contracts.py",
         "tests/test_camera_and_sync.py",
         "tests/test_trajectory_reconstruction.py",
@@ -59,6 +65,7 @@ EXPECTED_FILES = {
         "tests/test_forward_adapter.py",
         "tests/test_comparison.py",
         "tests/test_no_fake_measurements.py",
+        "tests/test_real_shape_end_to_end.py",
         "tools/check_stage.py",
     )
 }
@@ -69,12 +76,16 @@ def fail(message: str) -> None:
 
 
 def tracked_stage_files(stage_root: Path) -> set[Path]:
-    ignored_parts = {"__pycache__", ".pytest_cache", "build", "dist"}
+    ignored_parts = {"__pycache__", ".pytest_cache", ".ruff_cache", "build", "dist"}
     result = set()
     for path in stage_root.rglob("*"):
-        if not path.is_file() or any(part in ignored_parts for part in path.parts):
+        if (
+            not path.is_file()
+            or any(part in ignored_parts for part in path.parts)
+            or any(part.endswith(".egg-info") for part in path.parts)
+        ):
             continue
-        if path.suffix == ".pyc" or path.name.endswith(".egg-info"):
+        if path.suffix == ".pyc":
             continue
         result.add(path.relative_to(stage_root))
     return result
@@ -106,10 +117,42 @@ def check_csv_templates(template_root: Path) -> None:
         newline="", encoding="utf-8"
     ) as handle:
         pilot = list(csv.DictReader(handle))
-    if [row["pilot_id"] for row in pilot] != [f"P0{index}" for index in range(7)]:
-        fail("pilot IDs must be P00 through P06")
+    expected_slots = [
+        "P00",
+        "P01",
+        "P01",
+        "P02",
+        "P02",
+        "P03",
+        "P03",
+        "P04",
+        "P04",
+        "P05",
+        "P05",
+        "P06",
+    ]
+    if [row["slot_id"] for row in pilot] != expected_slots:
+        fail("pilot CSV must contain every preregistered repeat in execution order")
+    if len({row["attempt_id"] for row in pilot}) != len(pilot):
+        fail("pilot CSV attempt IDs must be unique")
     if any(row["status"] != "NOT_RUN" for row in pilot):
         fail("pilot template contains an executed run")
+    if any(row["apparatus_revision"] != "UNSET_REQUIRES_HUMAN" for row in pilot):
+        fail("pilot template contains an apparatus claim")
+    completion_fields = {
+        "started_at",
+        "ended_at",
+        "operator_id",
+        "failure_stage",
+        "reason_code",
+        "operator_note",
+        "raw_file_hashes",
+        "retry_parent_id",
+        "corrective_action",
+        "camera_rig_sha256",
+    }
+    if any(row[field] for row in pilot for field in completion_fields):
+        fail("unexecuted pilot CSV contains completion or retry evidence")
 
 
 def main() -> int:
@@ -165,6 +208,33 @@ def main() -> int:
         family["family_id"]: family["amplitude_level_count"]
         for family in first_round["run_families"]
     }
+    expected_amplitudes = {
+        "F01": [(0.05, 0.0)],
+        "F02": [(0.0, 0.04)],
+        "F03": [(0.05, 0.0)],
+        "F04": [(0.0, 0.04)],
+        "F05": [(0.05, 0.0)],
+        "F06": [(0.0, 0.04)],
+        "F07": [(0.05, 0.04), (0.10, 0.08), (0.15, 0.10), (0.20, 0.12)],
+        "F08": [(0.05, 0.04), (0.10, 0.08)],
+        "F09": [(0.05, 0.04), (0.10, 0.08)],
+    }
+    for family in first_round["run_families"]:
+        family_id = family["family_id"]
+        levels = family["amplitude_levels"]
+        if len(levels) != family["amplitude_level_count"]:
+            fail(f"{family_id} amplitude level count does not match its frozen definitions")
+        if [level["level_index"] for level in levels] != list(range(1, len(levels) + 1)):
+            fail(f"{family_id} amplitude level indices are not contiguous")
+        if [level["release_target_id"] for level in levels] != [
+            f"{family_id}_L{index:02d}" for index in range(1, len(levels) + 1)
+        ]:
+            fail(f"{family_id} release target IDs are not deterministic")
+        actual = [(level["target_fast_rad"], level["target_slow_rad"]) for level in levels]
+        if actual != expected_amplitudes[family_id]:
+            fail(f"{family_id} release amplitudes differ from the frozen first-round matrix")
+        if family["actual_initial_amplitude_source"] != "TRAJECTORY_RECONSTRUCTION_REQUIRED":
+            fail(f"{family_id} does not require trajectory-reconstructed initial amplitudes")
     expected_slots = {
         (family_id, level, repeat)
         for family_id, level_count in level_counts.items()
@@ -198,6 +268,16 @@ def main() -> int:
         or fixture.get("contains_measured_values") is not False
     ):
         fail("synthetic fixture identity is not fail-closed")
+    real_shape_fixture = load_json(
+        stage_root / "tests/fixtures/synthetic_real_shape_session/fixture_manifest.json"
+    )
+    if (
+        real_shape_fixture.get("data_origin") != "SYNTHETIC_REAL_SHAPE_FIXTURE"
+        or real_shape_fixture.get("contains_measured_values") is not False
+        or real_shape_fixture.get("attempt_lineage", {}).get("logical_repeats") != 2
+        or real_shape_fixture.get("attempt_lineage", {}).get("retry_attempt") != "P02-R02-A01"
+    ):
+        fail("synthetic real-shape fixture identity or retry lineage is not fail-closed")
 
     source_text = "\n".join(
         path.read_text(encoding="utf-8") for path in sorted((stage_root / "src").rglob("*.py"))
@@ -211,6 +291,16 @@ def main() -> int:
     for required in ("FORMAL_FORWARD_RELATIVE", "run_config", "run_ensemble"):
         if required not in adapter_text:
             fail(f"formal adapter lacks required binding token: {required}")
+    detection_text = (stage_root / "src/yps_experiment_pipeline/detections.py").read_text(
+        encoding="utf-8"
+    )
+    for required in (
+        "pixel_covariance_px2",
+        "triangulate_markers_with_covariance",
+        "positive semidefinite",
+    ):
+        if required not in detection_text:
+            fail(f"2D-to-3D covariance pipeline lacks required token: {required}")
     formal = formal_identity(repository_root)
     if len(formal["formal_source_sha256"]) != 64:
         fail("formal source hash is invalid")
@@ -229,13 +319,13 @@ def main() -> int:
         fail(f"Git change outside E0 allowlist: {path}")
 
     result = {
-        "status": "E0_STAGE_CHECK_PASS__SYNTHETIC_ONLY",
+        "status": "E0R_REAL_DATA_CONTRACT_CORRECTIONS_COMPLETE__SYNTHETIC_REAL_SHAPE_FIXTURE_PASS__STOP_AT_E0R_PRO_REVIEW",
         "expected_file_count": len(EXPECTED_FILES),
         "schema_count": len(list(SCHEMA_ROOT.glob("*.schema.json"))),
         "template_count": len(list(TEMPLATE_ROOT.iterdir())),
         "formal_identity": formal,
         "git_changed_paths": [path.as_posix() for path in changed],
-        "claim_ceiling": "IMPLEMENTATION_AND_SYNTHETIC_FIXTURE_ONLY",
+        "claim_ceiling": "IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY",
     }
     print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     return 0

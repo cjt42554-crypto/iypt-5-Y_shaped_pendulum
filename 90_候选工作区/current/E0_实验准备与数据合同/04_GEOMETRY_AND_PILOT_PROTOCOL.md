@@ -34,6 +34,8 @@ pilot 首先使用届时已有的一套真实装置，先测清其实际几何�
 
 只有 P00--P04 的数据质量合格、无安全问题且未见明显模型域失效时才执行 P05。
 
+`pilot_attempts.template.json` 与 CSV convenience view 都按 repeat 展开为 12 个首轮 attempt。JSON ledger 是机器权威记录；CSV 只供现场录入。完成、失败或中止的 attempt 必须绑定预注册文件、apparatus revision、camera rig 和每个原始文件 SHA-256。重试不得覆盖原 attempt；新 ID 必须通过 `retry_parent_id` 指向同一 slot、同一 repeat 的失败或中止记录。
+
 ## 3. 模型遗漏因素筛查
 
 | 因素 | 观测方法 | 处理 |
@@ -66,6 +68,8 @@ pilot 首先使用届时已有的一套真实装置，先测清其实际几何�
 
 失败运行不删除、不覆盖。重试生成新 attempt ID，并保存 failure stage、reason code、operator note、raw hashes、corrective action 和 retry parent ID。
 
-## 5. 下一人工门
+## 5. 当前复核门与下一人工门
 
-E0 只准备协议和机器合同，不执行 pilot。人工必须完成装置与相机的实际操作，返回带原始数据和哈希的资料后，才可单独授权 `E1_PILOT_DATA_INGESTION_AND_MODEL_ASSUMPTION_SCREENING`。
+E0R 只准备协议和机器合同，不执行 pilot。本轮实现必须先停止在 `E0R_REAL_DATA_CONTRACT_CORRECTIONS_COMPLETE__STOP_AT_E0R_PRO_REVIEW`。只有 Pro 接受本轮真实数据合同后，下一门才可提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`。
+
+届时人工仍必须完成装置与相机的实际操作，返回带原始数据和哈希的资料后，才可单独授权 `E1_PILOT_DATA_INGESTION_AND_MODEL_ASSUMPTION_SCREENING`。

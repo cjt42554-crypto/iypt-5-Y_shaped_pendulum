@@ -3,6 +3,7 @@
 from .camera import project_points, triangulate_two_view
 from .comparison import compare_scalar
 from .contracts import validate_document
+from .detections import triangulate_markers_with_covariance
 from .forward_adapter import cable_compatibility, formal_identity, torus_compatibility
 from .observables import estimate_damped_mode
 from .synchronization import estimate_event_offset
@@ -15,8 +16,9 @@ __all__ = [
     "formal_identity",
     "project_points",
     "torus_compatibility",
+    "triangulate_markers_with_covariance",
     "triangulate_two_view",
     "validate_document",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/camera_rig.schema.json",
-  "title": "YPS E0 calibrated camera rig",
+  "title": "YPS E0R calibrated camera rig",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_id", "data_origin", "apparatus_revision", "world_frame", "cameras", "synchronization"],
   "properties": {
-    "schema_id": {"const": "YPS-E0-CAMERA-RIG-1.0"},
-    "data_origin": {"enum": ["HUMAN_REQUIRED_TEMPLATE", "MEASURED_CALIBRATION", "SYNTHETIC"]},
+    "schema_id": {"const": "YPS-E0-CAMERA-RIG-1.1"},
+    "data_origin": {"enum": ["HUMAN_REQUIRED_TEMPLATE", "MEASURED_CALIBRATION", "SYNTHETIC_REAL_SHAPE_FIXTURE"]},
     "apparatus_revision": {"type": "string", "minLength": 1},
     "world_frame": {
       "type": "object",
@@ -23,23 +23,119 @@
     "cameras": {
       "type": "array",
       "minItems": 2,
+      "uniqueItems": true,
       "items": {"$ref": "#/$defs/camera"}
+    },
+    "synchronization": {"$ref": "#/$defs/synchronization"}
+  },
+  "allOf": [
+    {
+      "if": {"required": ["data_origin"], "properties": {"data_origin": {"const": "HUMAN_REQUIRED_TEMPLATE"}}},
+      "then": {
+        "properties": {
+          "apparatus_revision": {"const": "UNSET_REQUIRES_HUMAN"},
+          "cameras": {"items": {"properties": {"source_type": {"const": "UNSET_REQUIRES_HUMAN"}}}},
+          "synchronization": {"properties": {"method": {"const": "UNSET_REQUIRES_HUMAN"}}}
+        }
+      }
+    },
+    {
+      "if": {"required": ["data_origin"], "properties": {"data_origin": {"const": "MEASURED_CALIBRATION"}}},
+      "then": {
+        "properties": {
+          "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}},
+          "cameras": {"items": {"properties": {"source_type": {"const": "MEASURED"}}}},
+          "synchronization": {"properties": {"method": {"enum": ["COMMON_FLASH", "HARD_TRIGGER"]}}}
+        }
+      }
+    },
+    {
+      "if": {"required": ["data_origin"], "properties": {"data_origin": {"const": "SYNTHETIC_REAL_SHAPE_FIXTURE"}}},
+      "then": {
+        "properties": {
+          "apparatus_revision": {"pattern": "^SYNTHETIC_"},
+          "cameras": {"items": {"properties": {"source_type": {"const": "SYNTHETIC_REAL_SHAPE_FIXTURE"}}}},
+          "synchronization": {"properties": {"method": {"const": "SYNTHETIC_COMMON_EVENT"}}}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256OrNull": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "numberOrNull": {"type": ["number", "null"]},
+    "integerOrNull": {"type": ["integer", "null"]},
+    "stringOrNull": {"type": ["string", "null"]},
+    "matrix3OrNull": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "array", "minItems": 3, "maxItems": 3,
+          "items": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}
+        }
+      ]
+    },
+    "vector2OrNull": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}
+      ]
+    },
+    "vector3OrNull": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}
+      ]
+    },
+    "vector4OrNull": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}}
+      ]
     },
     "synchronization": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["method", "maximum_residual_fraction_of_frame", "raw_sync_sha256"],
+      "required": [
+        "method", "maximum_residual_fraction_of_frame", "measured_residual_fraction_of_frame",
+        "offset_s", "offset_standard_uncertainty_s", "jitter_standard_uncertainty_s",
+        "timestamp_alignment_method", "raw_sync_sha256"
+      ],
       "properties": {
         "method": {"enum": ["UNSET_REQUIRES_HUMAN", "COMMON_FLASH", "HARD_TRIGGER", "SYNTHETIC_COMMON_EVENT"]},
         "maximum_residual_fraction_of_frame": {"const": 0.25},
-        "raw_sync_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
-      }
-    }
-  },
-  "$defs": {
-    "nullableNumber": {"type": ["number", "null"]},
-    "nullableInteger": {"type": ["integer", "null"]},
-    "nullableArray": {"type": ["array", "null"], "items": {"type": "number"}},
+        "measured_residual_fraction_of_frame": {"$ref": "#/$defs/numberOrNull"},
+        "offset_s": {"$ref": "#/$defs/numberOrNull"},
+        "offset_standard_uncertainty_s": {"$ref": "#/$defs/numberOrNull"},
+        "jitter_standard_uncertainty_s": {"$ref": "#/$defs/numberOrNull"},
+        "timestamp_alignment_method": {"$ref": "#/$defs/stringOrNull"},
+        "raw_sync_sha256": {"$ref": "#/$defs/sha256OrNull"}
+      },
+      "allOf": [
+        {
+          "if": {"required": ["method"], "properties": {"method": {"const": "UNSET_REQUIRES_HUMAN"}}},
+          "then": {
+            "properties": {
+              "measured_residual_fraction_of_frame": {"type": "null"},
+              "offset_s": {"type": "null"},
+              "offset_standard_uncertainty_s": {"type": "null"},
+              "jitter_standard_uncertainty_s": {"type": "null"},
+              "timestamp_alignment_method": {"type": "null"},
+              "raw_sync_sha256": {"type": "null"}
+            }
+          },
+          "else": {
+            "properties": {
+              "measured_residual_fraction_of_frame": {"type": "number", "minimum": 0, "maximum": 0.25},
+              "offset_s": {"type": "number"},
+              "offset_standard_uncertainty_s": {"type": "number", "minimum": 0},
+              "jitter_standard_uncertainty_s": {"type": "number", "minimum": 0},
+              "timestamp_alignment_method": {"type": "string", "minLength": 1},
+              "raw_sync_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        }
+      ]
+    },
     "camera": {
       "type": "object",
       "additionalProperties": false,
@@ -48,48 +144,70 @@
         "timestamp_source", "R_c", "c_c", "f_x", "f_y", "c_x", "c_y", "k1", "k2", "k3",
         "p1", "p2", "Omega_cal", "calibration_board_id", "board_dimensions_m",
         "board_dimension_uncertainty_m", "calibration_time", "reprojection_rms_px",
-        "raw_calibration_sha256"
+        "raw_calibration_sha256", "parameter_covariance_sha256"
       ],
       "properties": {
         "camera_id": {"type": "string", "minLength": 1},
-        "source_type": {"enum": ["MEASURED", "SYNTHETIC", "UNSET_REQUIRES_HUMAN"]},
-        "image_width_px": {"$ref": "#/$defs/nullableInteger"},
-        "image_height_px": {"$ref": "#/$defs/nullableInteger"},
-        "nominal_fps": {"$ref": "#/$defs/nullableNumber"},
-        "timestamp_source": {"type": ["string", "null"]},
-        "R_c": {"$ref": "#/$defs/nullableArray"},
-        "c_c": {"$ref": "#/$defs/nullableArray"},
-        "f_x": {"$ref": "#/$defs/nullableNumber"},
-        "f_y": {"$ref": "#/$defs/nullableNumber"},
-        "c_x": {"$ref": "#/$defs/nullableNumber"},
-        "c_y": {"$ref": "#/$defs/nullableNumber"},
-        "k1": {"$ref": "#/$defs/nullableNumber"},
-        "k2": {"$ref": "#/$defs/nullableNumber"},
-        "k3": {"$ref": "#/$defs/nullableNumber"},
-        "p1": {"$ref": "#/$defs/nullableNumber"},
-        "p2": {"$ref": "#/$defs/nullableNumber"},
-        "Omega_cal": {"$ref": "#/$defs/nullableArray"},
-        "calibration_board_id": {"type": ["string", "null"]},
-        "board_dimensions_m": {"$ref": "#/$defs/nullableArray"},
-        "board_dimension_uncertainty_m": {"$ref": "#/$defs/nullableNumber"},
-        "calibration_time": {"type": ["string", "null"]},
-        "reprojection_rms_px": {"$ref": "#/$defs/nullableNumber"},
-        "raw_calibration_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+        "source_type": {"enum": ["MEASURED", "SYNTHETIC_REAL_SHAPE_FIXTURE", "UNSET_REQUIRES_HUMAN"]},
+        "image_width_px": {"$ref": "#/$defs/integerOrNull"},
+        "image_height_px": {"$ref": "#/$defs/integerOrNull"},
+        "nominal_fps": {"$ref": "#/$defs/numberOrNull"},
+        "timestamp_source": {"$ref": "#/$defs/stringOrNull"},
+        "R_c": {"$ref": "#/$defs/matrix3OrNull"},
+        "c_c": {"$ref": "#/$defs/vector3OrNull"},
+        "f_x": {"$ref": "#/$defs/numberOrNull"},
+        "f_y": {"$ref": "#/$defs/numberOrNull"},
+        "c_x": {"$ref": "#/$defs/numberOrNull"},
+        "c_y": {"$ref": "#/$defs/numberOrNull"},
+        "k1": {"$ref": "#/$defs/numberOrNull"},
+        "k2": {"$ref": "#/$defs/numberOrNull"},
+        "k3": {"$ref": "#/$defs/numberOrNull"},
+        "p1": {"$ref": "#/$defs/numberOrNull"},
+        "p2": {"$ref": "#/$defs/numberOrNull"},
+        "Omega_cal": {"$ref": "#/$defs/vector4OrNull"},
+        "calibration_board_id": {"$ref": "#/$defs/stringOrNull"},
+        "board_dimensions_m": {"$ref": "#/$defs/vector2OrNull"},
+        "board_dimension_uncertainty_m": {"$ref": "#/$defs/numberOrNull"},
+        "calibration_time": {"$ref": "#/$defs/stringOrNull"},
+        "reprojection_rms_px": {"$ref": "#/$defs/numberOrNull"},
+        "raw_calibration_sha256": {"$ref": "#/$defs/sha256OrNull"},
+        "parameter_covariance_sha256": {"$ref": "#/$defs/sha256OrNull"}
       },
       "allOf": [
         {
-          "if": {"properties": {"source_type": {"enum": ["MEASURED", "SYNTHETIC"]}}},
+          "if": {"required": ["source_type"], "properties": {"source_type": {"const": "UNSET_REQUIRES_HUMAN"}}},
           "then": {
+            "properties": {
+              "image_width_px": {"type": "null"}, "image_height_px": {"type": "null"},
+              "nominal_fps": {"type": "null"}, "timestamp_source": {"type": "null"},
+              "R_c": {"type": "null"}, "c_c": {"type": "null"},
+              "f_x": {"type": "null"}, "f_y": {"type": "null"}, "c_x": {"type": "null"}, "c_y": {"type": "null"},
+              "k1": {"type": "null"}, "k2": {"type": "null"}, "k3": {"type": "null"}, "p1": {"type": "null"}, "p2": {"type": "null"},
+              "Omega_cal": {"type": "null"}, "calibration_board_id": {"type": "null"},
+              "board_dimensions_m": {"type": "null"}, "board_dimension_uncertainty_m": {"type": "null"},
+              "calibration_time": {"type": "null"}, "reprojection_rms_px": {"type": "null"},
+              "raw_calibration_sha256": {"type": "null"}, "parameter_covariance_sha256": {"type": "null"}
+            }
+          },
+          "else": {
             "properties": {
               "image_width_px": {"type": "integer", "minimum": 1},
               "image_height_px": {"type": "integer", "minimum": 1},
               "nominal_fps": {"type": "number", "exclusiveMinimum": 0},
-              "R_c": {"type": "array", "minItems": 9, "maxItems": 9},
-              "c_c": {"type": "array", "minItems": 3, "maxItems": 3},
-              "f_x": {"type": "number", "exclusiveMinimum": 0},
-              "f_y": {"type": "number", "exclusiveMinimum": 0},
-              "Omega_cal": {"type": "array", "minItems": 4, "maxItems": 4},
-              "raw_calibration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+              "timestamp_source": {"type": "string", "minLength": 1},
+              "R_c": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}},
+              "c_c": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+              "f_x": {"type": "number", "exclusiveMinimum": 0}, "f_y": {"type": "number", "exclusiveMinimum": 0},
+              "c_x": {"type": "number"}, "c_y": {"type": "number"}, "k1": {"type": "number"}, "k2": {"type": "number"},
+              "k3": {"type": "number"}, "p1": {"type": "number"}, "p2": {"type": "number"},
+              "Omega_cal": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}},
+              "calibration_board_id": {"type": "string", "minLength": 1},
+              "board_dimensions_m": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number", "exclusiveMinimum": 0}},
+              "board_dimension_uncertainty_m": {"type": "number", "minimum": 0},
+              "calibration_time": {"type": "string", "minLength": 1},
+              "reprojection_rms_px": {"type": "number", "minimum": 0},
+              "raw_calibration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "parameter_covariance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
             }
           }
         }

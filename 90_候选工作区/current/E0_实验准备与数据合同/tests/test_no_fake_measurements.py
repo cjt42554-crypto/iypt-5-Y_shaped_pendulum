@@ -35,12 +35,18 @@ def test_first_round_plan_has_exactly_70_planned_runs():
         item["manufacturing_value_status"] == "UNSET_REQUIRES_HUMAN"
         for item in plan["geometry_designs"]
     )
+    for family in plan["run_families"]:
+        assert len(family["amplitude_levels"]) == family["amplitude_level_count"]
+        assert family["actual_initial_amplitude_source"] == "TRAJECTORY_RECONSTRUCTION_REQUIRED"
+        assert [level["level_index"] for level in family["amplitude_levels"]] == list(
+            range(1, family["amplitude_level_count"] + 1)
+        )
 
 
 def test_synthetic_self_test_cannot_emit_experiment_pass():
     result = synthetic_self_test(REPOSITORY_ROOT)
     encoded = json.dumps(result, sort_keys=True)
-    assert result["data_origin"] == "SYNTHETIC"
-    assert result["status"].startswith("E0_SYNTHETIC_SELF_TEST_PASS")
+    assert result["data_origin"] == "SYNTHETIC_REAL_SHAPE_FIXTURE"
+    assert result["status"].startswith("E0R_SYNTHETIC_REAL_SHAPE_SELF_TEST_PASS")
     assert "EXPERIMENT_PASS" not in encoded
-    assert result["claim_ceiling"] == "IMPLEMENTATION_AND_SYNTHETIC_FIXTURE_ONLY"
+    assert result["claim_ceiling"] == "IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY"

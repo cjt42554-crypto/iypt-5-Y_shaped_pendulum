@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/yps/e0/detection_2d_bundle.schema.json",
+  "title": "YPS E0R hash-bound two-dimensional detection bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id", "data_origin", "run_id", "attempt_id", "apparatus_revision",
+    "camera_rig_file", "camera_rig_sha256", "raw_video_files", "detector",
+    "array_file", "array_sha256", "fields", "sample_count", "camera_ids",
+    "marker_ids", "covariance_convention"
+  ],
+  "properties": {
+    "schema_id": {"const": "YPS-E0-DETECTION-2D-BUNDLE-1.0"},
+    "data_origin": {"enum": ["MEASURED", "SYNTHETIC_REAL_SHAPE_FIXTURE"]},
+    "run_id": {"type": "string", "minLength": 1},
+    "attempt_id": {"type": "string", "minLength": 1},
+    "apparatus_revision": {"type": "string", "minLength": 1},
+    "camera_rig_file": {"type": "string", "minLength": 1},
+    "camera_rig_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "raw_video_files": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["camera_id", "path", "sha256"],
+        "properties": {
+          "camera_id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "detector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "configuration_sha256"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "configuration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "array_file": {"type": "string", "minLength": 1},
+    "array_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fields": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shape", "unit", "dtype"],
+        "properties": {
+          "shape": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+          "unit": {"type": "string", "minLength": 1},
+          "dtype": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "sample_count": {"type": "integer", "minimum": 1},
+    "camera_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "marker_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "covariance_convention": {"const": "PIXEL_UV_2X2_PER_CAMERA_MARKER_SAMPLE"}
+  }
+}
