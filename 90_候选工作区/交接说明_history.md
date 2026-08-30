@@ -428,3 +428,15 @@ A 只支持锁定理想环面模型的实现级确定性与内部数值验证；
 精确 Python 3.12 环境为 `27 passed in 1.09s`；Ruff、格式、`compileall`、JSON/schema/template、41 文件精确闭包和 Git allowlist 通过。wheel 经隔离构建后在全新临时环境安装，安装后的命令入口实际完成合成自检；双目最大误差约 `8.13e-13 m`。7 份 Markdown 通过系统 Pandoc 3.1.3 解析，并经 MathML、Chrome 和 Poppler 实际渲染为 18 页 PDF，Pandoc 警告为零且完成视觉抽查。一次使用无 NumPy 的无关全局 pytest 入口在收集阶段失败，随后精确环境完整通过；一次关闭构建隔离的 wheel 尝试因临时环境缺少 setuptools 失败，随后隔离构建、安装和运行完整通过，这两次均未形成科学结果或仓库残留。
 
 本轮没有真实装置参数、材料测量、相机标定、视频、Pilot、真实轨迹、物理验证或实验验证。正式理论、正式程序和顶层 `AGENTS.md` 未修改；正式源码/理论哈希分别保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c` 与 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。当前状态为 `E0_EXPERIMENT_PREPARATION_IMPLEMENTATION_PASS__SYNTHETIC_ONLY__STOP_AT_HUMAN_PILOT_GATE`，结论上限为 `IMPLEMENTATION_AND_SYNTHETIC_FIXTURE_ONLY`，正式总状态继续为 `HF_NUMERICAL_QUALIFICATION_NO_GO`。下一步先由 Pro 独立复核；无阻断项后停止在 `HUMAN_PILOT_ACQUISITION_REQUIRED`，真实 Pilot 返回且用户明确授权以前不得进入 E1。
+
+# 2026-08-31 04:44 +0800：E0R 真实数据合同与 Pilot 溯源阻断修正完成
+
+Pro 对初版 E0 的独立复核裁决为 `E0_PRO_REVIEW_SUBSTANTIVE_PASS__HUMAN_PILOT_HOLD_PENDING_E0R_REAL_DATA_CONTRACT_CORRECTIONS`。复核确认 E0 的方向与基础实现可保留，但真实 pilot 仍被向量测量表达、相机矩阵/完整性、实际 attempt ledger、2D/3D covariance、公共数组、释放幅度、正式输入 provenance 和不规则采样处理等缺口阻断。
+
+本轮只在 `90_候选工作区/current/E0_实验准备与数据合同/` 实施 E0R。装置合同升级为标量/向量统一登记并检查标签、重复、不确定度与 covariance 维数；相机 rotation 统一为 $3\times3$，完整标定与同步字段非空；新增逐 repeat acquisition attempt ledger、失败/纠正/retry lineage、2D detection bundle 和 covariance-aware 双目重建；trajectory covariance 固定为 bob/junction 两组 $3\times3$ matrix 并绑定 detection/camera；common observables NPZ 实际包含 time、世界坐标、冻结 modal basis、fast/slow coordinate、共振相位和 valid mask。
+
+第一轮 release amplitude 已机器冻结；model input 现绑定 measurement IDs、bundle/record/derivation/trajectory/evidence hashes，并逐项校验 Torus compatibility evidence；native sampling interval 最大相对偏差超过 1% 时 estimator 失败关闭。新增完整 `SYNTHETIC_REAL_SHAPE_FIXTURE`，闭合三维装置量、完整相机、两个 pilot repeat、失败与 retry、2D covariance 到 3D covariance、trajectory、common arrays 与 measurement-hash-bound 正式输入。负例覆盖残留 UNSET、缺 uncertainty/raw hash、伪来源标签、不完整标定、错误 retry、非法 covariance 和不规则采样。
+
+实现提交 `3ab9dc0c4b90c04d39d7a6e5f4b004fe6bf10838` 已推送远程 `main`。精确 Python 3.12 环境为 `35 passed in 9.50s`；Ruff、28 文件格式、`compileall`、48 文件/10 schema/7 template 阶段闭包和 Git allowlist 通过。0.2.0 wheel 在全新环境安装后从 site-packages 运行 self-test 通过；双目与 covariance-aware 双目最大误差均约 `8.13e-13 m`，传播 covariance 最小特征值约 `9.38e-8 m^2`。7 份阶段 Markdown 通过 Pandoc 解析并以 MathML/Chrome 渲染成 19 页 PDF，完成全页缩略图和关键页视觉检查。
+
+当前状态为 `E0R_REAL_DATA_CONTRACT_CORRECTIONS_COMPLETE__STOP_AT_E0R_PRO_REVIEW`，结论上限仅为 `IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY`。没有真实测量、标定、视频、pilot、数值资格升级、物理验证或实验验证；正式理论、正式程序、顶层 `AGENTS.md`、F0/F1 和冻结证据未修改。正式源码/理论哈希保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c` 与 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。下一步只允许 Pro 复核 E0R；接受后才可把下一门提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`。
