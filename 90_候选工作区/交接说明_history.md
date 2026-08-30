@@ -440,3 +440,15 @@ Pro 对初版 E0 的独立复核裁决为 `E0_PRO_REVIEW_SUBSTANTIVE_PASS__HUMAN
 实现提交 `3ab9dc0c4b90c04d39d7a6e5f4b004fe6bf10838` 已推送远程 `main`。精确 Python 3.12 环境为 `35 passed in 9.50s`；Ruff、28 文件格式、`compileall`、48 文件/10 schema/7 template 阶段闭包和 Git allowlist 通过。0.2.0 wheel 在全新环境安装后从 site-packages 运行 self-test 通过；双目与 covariance-aware 双目最大误差均约 `8.13e-13 m`，传播 covariance 最小特征值约 `9.38e-8 m^2`。7 份阶段 Markdown 通过 Pandoc 解析并以 MathML/Chrome 渲染成 19 页 PDF，完成全页缩略图和关键页视觉检查。
 
 当前状态为 `E0R_REAL_DATA_CONTRACT_CORRECTIONS_COMPLETE__STOP_AT_E0R_PRO_REVIEW`，结论上限仅为 `IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY`。没有真实测量、标定、视频、pilot、数值资格升级、物理验证或实验验证；正式理论、正式程序、顶层 `AGENTS.md`、F0/F1 和冻结证据未修改。正式源码/理论哈希保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c` 与 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。下一步只允许 Pro 复核 E0R；接受后才可把下一门提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`。
+
+# 2026-08-31 05:32 +0800：E0R2 采集台账、逐帧时间与溯源交叉绑定闭包
+
+Pro 对 E0R 的内容闭合裁决为 `E0R_PRO_REVIEW_SUBSTANTIVE_PASS__HUMAN_PILOT_HOLD_PENDING_E0R2_ACQUISITION_AND_PROVENANCE_CLOSURE`，并将下一范围限定为 `E0R2_ACQUISITION_LEDGER_AND_PROVENANCE_CROSS_BINDING_CORRECTIONS`。本轮只在 `90_候选工作区/current/E0_实验准备与数据合同/` 实施，候选包升级到 0.3.0，实现提交为 `b3db52693bf3071e084b360ab0c2c54f25282237`。
+
+acquisition ledger 现在分开 12 个 planned slot 与实际开始后才创建的 attempt，支持未来 slot 待执行、失败后 `RETRY_PENDING`、条件跳过和硬停止后未开始。P00/setup/calibration 可以在没有有效 rig 或 raw file 时以 `NO_RAW_DATA_CREATED` 真实失败，不再要求占位哈希。2D detection NPZ 增加逐相机 frame index、raw/aligned timestamp、sync event/offset/uncertainty、drop flag 和 marker 级 invalid reason。
+
+detection 到 trajectory、trajectory 到 common observables 均解析并验证上游 manifest，核对实际 NPZ 哈希、字段集合、shape、dtype、时间/位置轴和 run/attempt/apparatus/camera/origin 身份；common 不得恢复上游无效样本。实测来源继续拒绝 `UNSET_REQUIRES_HUMAN`。派生正式输入在 builder 内验证版本化 derivation 内容、方法、输入记录和 canonical hash。负例覆盖错误身份、空上游、错误时间轴、measured+UNSET、P00 无证据失败、pilot 中途硬停止、retry pending 与派生内容篡改。
+
+精确 Python 3.12 环境为 `47 passed in 9.96s`；Ruff、格式、`compileall`、stage checker、48 文件/10 schema/7 template 闭包、Git allowlist 和 `git diff --check` 通过。0.3.0 wheel 在全新环境从 site-packages、仓库外实际运行 self-test 通过。7 份 Markdown 通过 Pandoc 解析，并以 MathML/Chrome 渲染为 22 页 PDF，完成全页视觉检查。正式源码/理论哈希保持 `cd0dfdc2dbc1e88ef1b9b5b873bc76b403e13b87958a3efd2d842790632b5e0c` 与 `7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2`。
+
+当前状态为 `E0R2_ACQUISITION_AND_PROVENANCE_CLOSURE_COMPLETE__STOP_AT_E0R2_PRO_REVIEW`，结论上限仍为 `IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY`，正式总状态保持 `HF_NUMERICAL_QUALIFICATION_NO_GO`。没有真实测量、标定、视频、pilot、数值资格升级、物理或实验验证；正式理论、正式程序、顶层 `AGENTS.md`、F0/F1 和冻结证据未修改。下一步只允许 Pro 独立复核；接受后才可进入 `HUMAN_PILOT_ACQUISITION_REQUIRED`，人工资料返回前不得进入 E1。
