@@ -7,7 +7,16 @@ from typing import Any
 
 import numpy as np
 
-from .contracts import canonical_json_bytes, sha256_file
+from .contracts import (
+    SCHEMA_ROOT,
+    assert_array_manifest_matches,
+    assert_no_unset_tokens,
+    canonical_json_bytes,
+    load_json,
+    sha256_file,
+    validate_document,
+)
+from .detections import validate_detection_arrays
 
 DOMAIN_EXIT_EVENTS = {"SLACK", "RE_TENSION", "NEAR_CONTACT", "CONTACT", "MODEL_GUARD"}
 REQUIRED_ARRAY_FIELDS = {
@@ -29,8 +38,9 @@ def validate_trajectory_arrays(
     valid_mask: np.ndarray,
 ) -> np.ndarray:
     missing = sorted(REQUIRED_ARRAY_FIELDS - set(arrays))
-    if missing:
-        raise ValueError(f"trajectory bundle lacks required arrays: {missing}")
+    extra = sorted(set(arrays) - REQUIRED_ARRAY_FIELDS)
+    if missing or extra:
+        raise ValueError(f"trajectory array contract mismatch; missing={missing} extra={extra}")
     if set(units) != set(arrays):
         raise ValueError("trajectory units must have exactly one entry per array")
     valid = np.asarray(valid_mask, dtype=bool)
@@ -119,6 +129,7 @@ def bundle_manifest(
     attempt_id: str,
     apparatus_revision: str,
     data_origin: str,
+    detection_manifest: dict[str, Any],
     detection_manifest_file: Path,
     camera_rig_sha256: str,
     array_file: Path,
@@ -133,11 +144,12 @@ def bundle_manifest(
         array = np.asarray(value)
         fields[name] = {"shape": list(array.shape), "unit": units[name], "dtype": str(array.dtype)}
     return {
-        "schema_id": "YPS-E0-TRAJECTORY-BUNDLE-1.1",
+        "schema_id": "YPS-E0-TRAJECTORY-BUNDLE-1.2",
         "data_origin": data_origin,
         "run_id": run_id,
         "attempt_id": attempt_id,
         "apparatus_revision": apparatus_revision,
+        "source_detection_schema_id": detection_manifest["schema_id"],
         "detection_manifest_file": detection_manifest_file.name,
         "detection_manifest_sha256": sha256_file(detection_manifest_file),
         "camera_rig_sha256": camera_rig_sha256,
@@ -165,12 +177,57 @@ def write_bundle(
     units: dict[str, str],
     valid_mask: np.ndarray,
     event_codes: list[str],
+    schema_root: Path = SCHEMA_ROOT,
 ) -> dict[str, Any]:
     validate_trajectory_arrays(arrays, units, valid_mask)
     if not detection_manifest_file.is_file():
         raise ValueError("source 2D detection manifest does not exist")
-    if len(camera_rig_sha256) != 64:
-        raise ValueError("camera rig hash must be SHA-256")
+    detection_manifest = load_json(detection_manifest_file)
+    validate_document(
+        "detection_2d_bundle.schema.json",
+        detection_manifest,
+        schema_root=schema_root,
+    )
+    expected_identity = {
+        "run_id": run_id,
+        "attempt_id": attempt_id,
+        "apparatus_revision": apparatus_revision,
+        "camera_rig_sha256": camera_rig_sha256,
+        "data_origin": data_origin,
+    }
+    mismatched = sorted(
+        key for key, value in expected_identity.items() if detection_manifest.get(key) != value
+    )
+    if mismatched:
+        raise ValueError(
+            "source 2D detection identity does not match trajectory: " + ", ".join(mismatched)
+        )
+    detection_array_file = detection_manifest_file.parent / detection_manifest["array_file"]
+    if not detection_array_file.is_file():
+        raise ValueError("source 2D detection array does not exist")
+    if sha256_file(detection_array_file) != detection_manifest["array_sha256"]:
+        raise ValueError("source 2D detection array hash does not match its manifest")
+    with np.load(detection_array_file, allow_pickle=False) as loaded:
+        detection_arrays = {name: loaded[name] for name in loaded.files}
+    assert_array_manifest_matches(
+        detection_arrays,
+        detection_manifest["fields"],
+        label="source 2D detection array",
+    )
+    validate_detection_arrays(
+        detection_arrays,
+        camera_ids=detection_manifest["camera_ids"],
+        marker_ids=detection_manifest["marker_ids"],
+    )
+    if detection_manifest["sample_count"] != np.asarray(arrays["time_s"]).size:
+        raise ValueError("source 2D detection and trajectory sample counts differ")
+    if not np.array_equal(
+        np.asarray(detection_arrays["time_s"], dtype=float),
+        np.asarray(arrays["time_s"], dtype=float),
+    ):
+        raise ValueError("source 2D detection and trajectory time axes differ")
+    if data_origin == "MEASURED":
+        assert_no_unset_tokens(expected_identity)
     output_directory.mkdir(parents=True, exist_ok=False)
     array_file = output_directory / "trajectory.npz"
     np.savez_compressed(array_file, **arrays)
@@ -179,6 +236,7 @@ def write_bundle(
         attempt_id=attempt_id,
         apparatus_revision=apparatus_revision,
         data_origin=data_origin,
+        detection_manifest=detection_manifest,
         detection_manifest_file=detection_manifest_file,
         camera_rig_sha256=camera_rig_sha256,
         array_file=array_file,
@@ -186,6 +244,13 @@ def write_bundle(
         units=units,
         valid_mask=valid_mask,
         event_codes=event_codes,
+    )
+    if data_origin == "MEASURED":
+        assert_no_unset_tokens(manifest)
+    validate_document(
+        "trajectory_bundle.schema.json",
+        manifest,
+        schema_root=schema_root,
     )
     (output_directory / "trajectory_bundle.json").write_bytes(
         canonical_json_bytes(manifest) + b"\n"

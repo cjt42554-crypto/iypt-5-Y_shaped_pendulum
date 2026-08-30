@@ -1,18 +1,19 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/acquisition_attempts.schema.json",
-  "title": "YPS E0R acquisition attempt ledger",
+  "title": "YPS E0R2 acquisition slot and attempt ledger",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema_id", "data_origin", "contains_measured_values", "campaign_id",
-    "preregistration", "apparatus_revision", "attempts"
+    "campaign_status", "preregistration", "apparatus_revision", "planned_slots", "attempts"
   ],
   "properties": {
-    "schema_id": {"const": "YPS-E0-ACQUISITION-ATTEMPTS-1.0"},
+    "schema_id": {"const": "YPS-E0-ACQUISITION-LEDGER-1.1"},
     "data_origin": {"enum": ["HUMAN_REQUIRED_TEMPLATE", "MEASURED_ACQUISITION", "SYNTHETIC_REAL_SHAPE_FIXTURE"]},
     "contains_measured_values": {"type": "boolean"},
     "campaign_id": {"type": "string", "minLength": 1},
+    "campaign_status": {"enum": ["NOT_STARTED", "IN_PROGRESS", "HARD_STOPPED", "COMPLETED"]},
     "preregistration": {
       "type": "object",
       "additionalProperties": false,
@@ -24,9 +25,13 @@
       }
     },
     "apparatus_revision": {"type": "string", "minLength": 1},
-    "attempts": {
+    "planned_slots": {
       "type": "array",
       "minItems": 1,
+      "items": {"$ref": "#/$defs/plannedSlot"}
+    },
+    "attempts": {
+      "type": "array",
       "items": {"$ref": "#/$defs/attempt"}
     }
   },
@@ -36,9 +41,11 @@
       "then": {
         "properties": {
           "contains_measured_values": {"const": false},
+          "campaign_status": {"const": "NOT_STARTED"},
           "apparatus_revision": {"const": "UNSET_REQUIRES_HUMAN"},
           "preregistration": {"properties": {"plan_sha256": {"type": "null"}}},
-          "attempts": {"items": {"properties": {"status": {"const": "NOT_RUN"}}}}
+          "planned_slots": {"items": {"properties": {"state": {"const": "PENDING"}}}},
+          "attempts": {"maxItems": 0}
         }
       }
     },
@@ -47,9 +54,10 @@
       "then": {
         "properties": {
           "contains_measured_values": {"const": true},
+          "campaign_status": {"enum": ["IN_PROGRESS", "HARD_STOPPED", "COMPLETED"]},
           "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}},
           "preregistration": {"properties": {"plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
-          "attempts": {"items": {"properties": {"status": {"enum": ["COMPLETED", "FAILED", "ABORTED"]}}}}
+          "attempts": {"minItems": 1}
         }
       }
     },
@@ -58,9 +66,10 @@
       "then": {
         "properties": {
           "contains_measured_values": {"const": false},
+          "campaign_status": {"enum": ["IN_PROGRESS", "HARD_STOPPED", "COMPLETED"]},
           "apparatus_revision": {"pattern": "^SYNTHETIC_"},
           "preregistration": {"properties": {"plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
-          "attempts": {"items": {"properties": {"status": {"enum": ["COMPLETED", "FAILED", "ABORTED"]}}}}
+          "attempts": {"minItems": 1}
         }
       }
     }
@@ -97,13 +106,92 @@
         "operator_note": {"type": "string", "minLength": 1}
       }
     },
+    "plannedSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slot_id", "repeat_index", "operation", "release_target_id", "state",
+        "disposition_reason_code", "governing_attempt_id", "linked_attempt_ids"
+      ],
+      "properties": {
+        "slot_id": {"type": "string", "minLength": 1},
+        "repeat_index": {"type": "integer", "minimum": 1},
+        "operation": {"type": "string", "minLength": 1},
+        "release_target_id": {"type": "string", "minLength": 1},
+        "state": {
+          "enum": [
+            "PENDING", "RETRY_PENDING", "IN_PROGRESS", "COMPLETED", "FAILED_FINAL", "ABORTED_FINAL",
+            "SKIPPED_DUE_TO_PREREQUISITE", "NOT_STARTED_DUE_TO_STOP"
+          ]
+        },
+        "disposition_reason_code": {"$ref": "#/$defs/stringOrNull"},
+        "governing_attempt_id": {"$ref": "#/$defs/stringOrNull"},
+        "linked_attempt_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"required": ["state"], "properties": {"state": {"const": "PENDING"}}},
+          "then": {
+            "properties": {
+              "disposition_reason_code": {"type": "null"},
+              "governing_attempt_id": {"type": "null"},
+              "linked_attempt_ids": {"maxItems": 0}
+            }
+          }
+        },
+        {
+          "if": {"required": ["state"], "properties": {"state": {"const": "RETRY_PENDING"}}},
+          "then": {
+            "properties": {
+              "disposition_reason_code": {"type": "string", "minLength": 1},
+              "governing_attempt_id": {"type": "string", "minLength": 1},
+              "linked_attempt_ids": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"required": ["state"], "properties": {"state": {"enum": ["IN_PROGRESS", "COMPLETED"]}}},
+          "then": {
+            "properties": {
+              "disposition_reason_code": {"type": "null"},
+              "governing_attempt_id": {"type": "null"},
+              "linked_attempt_ids": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"required": ["state"], "properties": {"state": {"enum": ["FAILED_FINAL", "ABORTED_FINAL"]}}},
+          "then": {
+            "properties": {
+              "disposition_reason_code": {"type": "string", "minLength": 1},
+              "governing_attempt_id": {"type": "string", "minLength": 1},
+              "linked_attempt_ids": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"required": ["state"], "properties": {"state": {"enum": ["SKIPPED_DUE_TO_PREREQUISITE", "NOT_STARTED_DUE_TO_STOP"]}}},
+          "then": {
+            "properties": {
+              "disposition_reason_code": {"type": "string", "minLength": 1},
+              "governing_attempt_id": {"type": "string", "minLength": 1},
+              "linked_attempt_ids": {"maxItems": 0}
+            }
+          }
+        }
+      ]
+    },
     "attempt": {
       "type": "object",
       "additionalProperties": false,
       "required": [
         "slot_id", "attempt_id", "repeat_index", "operation", "release_target_id",
-        "status", "started_at", "ended_at", "operator_id", "raw_files", "failure",
-        "retry_parent_id", "corrective_action", "apparatus_revision", "camera_rig_sha256"
+        "status", "started_at", "ended_at", "operator_id", "raw_files", "evidence_state",
+        "failure", "retry_parent_id", "corrective_action", "apparatus_revision", "camera_rig_sha256"
       ],
       "properties": {
         "slot_id": {"type": "string", "minLength": 1},
@@ -111,11 +199,12 @@
         "repeat_index": {"type": "integer", "minimum": 1},
         "operation": {"type": "string", "minLength": 1},
         "release_target_id": {"type": "string", "minLength": 1},
-        "status": {"enum": ["NOT_RUN", "COMPLETED", "FAILED", "ABORTED"]},
-        "started_at": {"$ref": "#/$defs/stringOrNull"},
+        "status": {"enum": ["IN_PROGRESS", "COMPLETED", "FAILED", "ABORTED"]},
+        "started_at": {"type": "string", "minLength": 1},
         "ended_at": {"$ref": "#/$defs/stringOrNull"},
-        "operator_id": {"$ref": "#/$defs/stringOrNull"},
+        "operator_id": {"type": "string", "minLength": 1},
         "raw_files": {"type": "array", "items": {"$ref": "#/$defs/rawFile"}},
+        "evidence_state": {"enum": ["NO_RAW_DATA_CREATED", "PARTIAL_RAW_DATA_RETAINED", "COMPLETE_RAW_DATA_RETAINED"]},
         "failure": {"$ref": "#/$defs/failure"},
         "retry_parent_id": {"$ref": "#/$defs/stringOrNull"},
         "corrective_action": {"$ref": "#/$defs/stringOrNull"},
@@ -124,15 +213,13 @@
       },
       "allOf": [
         {
-          "if": {"required": ["status"], "properties": {"status": {"const": "NOT_RUN"}}},
+          "if": {"required": ["status"], "properties": {"status": {"const": "IN_PROGRESS"}}},
           "then": {
             "properties": {
-              "started_at": {"type": "null"}, "ended_at": {"type": "null"},
-              "operator_id": {"type": "null"}, "raw_files": {"maxItems": 0},
-              "failure": {"type": "null"}, "retry_parent_id": {"type": "null"},
+              "ended_at": {"type": "null"},
+              "failure": {"type": "null"},
               "corrective_action": {"type": "null"},
-              "apparatus_revision": {"const": "UNSET_REQUIRES_HUMAN"},
-              "camera_rig_sha256": {"type": "null"}
+              "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}}
             }
           }
         },
@@ -140,9 +227,11 @@
           "if": {"required": ["status"], "properties": {"status": {"const": "COMPLETED"}}},
           "then": {
             "properties": {
-              "started_at": {"type": "string", "minLength": 1}, "ended_at": {"type": "string", "minLength": 1},
-              "operator_id": {"type": "string", "minLength": 1}, "raw_files": {"minItems": 1},
-              "failure": {"type": "null"}, "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}},
+              "ended_at": {"type": "string", "minLength": 1},
+              "raw_files": {"minItems": 1},
+              "evidence_state": {"const": "COMPLETE_RAW_DATA_RETAINED"},
+              "failure": {"type": "null"},
+              "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}},
               "camera_rig_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
             }
           }
@@ -151,11 +240,10 @@
           "if": {"required": ["status"], "properties": {"status": {"enum": ["FAILED", "ABORTED"]}}},
           "then": {
             "properties": {
-              "started_at": {"type": "string", "minLength": 1}, "ended_at": {"type": "string", "minLength": 1},
-              "operator_id": {"type": "string", "minLength": 1}, "raw_files": {"minItems": 1},
-              "failure": {"type": "object"}, "corrective_action": {"type": "string", "minLength": 1},
-              "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}},
-              "camera_rig_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+              "ended_at": {"type": "string", "minLength": 1},
+              "failure": {"type": "object"},
+              "corrective_action": {"type": "string", "minLength": 1},
+              "apparatus_revision": {"not": {"const": "UNSET_REQUIRES_HUMAN"}}
             }
           }
         }

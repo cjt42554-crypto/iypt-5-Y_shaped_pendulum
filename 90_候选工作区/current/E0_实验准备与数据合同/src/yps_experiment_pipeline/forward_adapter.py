@@ -8,7 +8,7 @@ from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
-from .contracts import sha256_document
+from .contracts import SCHEMA_ROOT, ContractError, sha256_document, validate_document
 
 FORMAL_FORWARD_RELATIVE = Path("02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver")
 
@@ -152,10 +152,16 @@ def cable_compatibility(binding: dict[str, Any]) -> tuple[str, list[str]]:
             provenance_invalid.append(f"{name}:INVALID_PROVENANCE")
         elif source_type in {"MEASURED", "DERIVED_FROM_MEASURED"} and not measurement_ids:
             provenance_invalid.append(f"{name}:MISSING_MEASUREMENT_IDS")
-        elif source_type == "DERIVED_FROM_MEASURED" and not _is_sha256(
-            record.get("derivation_sha256")
-        ):
-            provenance_invalid.append(f"{name}:MISSING_DERIVATION_HASH")
+        elif source_type == "DERIVED_FROM_MEASURED":
+            derivation = record.get("derivation")
+            if not isinstance(derivation, dict) or not _is_sha256(record.get("derivation_sha256")):
+                provenance_invalid.append(f"{name}:MISSING_DERIVATION_BINDING")
+            elif sha256_document(derivation) != record.get("derivation_sha256"):
+                provenance_invalid.append(f"{name}:DERIVATION_HASH_MISMATCH")
+            elif derivation.get("input_measurement_ids") != measurement_ids:
+                provenance_invalid.append(f"{name}:DERIVATION_INPUT_MISMATCH")
+            elif derivation.get("input_record_sha256") != record.get("source_record_sha256"):
+                provenance_invalid.append(f"{name}:DERIVATION_RECORD_HASH_MISMATCH")
     purpose = binding.get("purpose")
     allowed_sources = {
         "EXPERIMENT_COMPARISON": {"MEASURED", "DERIVED_FROM_MEASURED"},
@@ -209,6 +215,7 @@ def model_input_binding(
     compatibility_evidence: dict[str, Any],
     compatibility_status: str,
     missing_fields: list[str],
+    schema_root: Path = SCHEMA_ROOT,
 ) -> dict[str, Any]:
     identity = formal_identity(repository_root)
     names = [record.get("parameter_name") for record in parameter_bindings]
@@ -243,6 +250,13 @@ def model_input_binding(
             record.get("source_type") != "MEASURED" for record in selected
         ):
             raise FormalAdapterError("MEASURED parameter binding cites a non-measured record")
+        if source_type == "DERIVED_FROM_MEASURED" and any(
+            record.get("source_type") not in {"MEASURED", "DERIVED_FROM_MEASURED"}
+            for record in selected
+        ):
+            raise FormalAdapterError(
+                "DERIVED_FROM_MEASURED parameter binding cites a non-measured record"
+            )
         if source_type == "SYNTHETIC_REAL_SHAPE_FIXTURE" and any(
             record.get("source_type") != "SYNTHETIC_REAL_SHAPE_FIXTURE" for record in selected
         ):
@@ -253,8 +267,21 @@ def model_input_binding(
                 raise FormalAdapterError(
                     "parameter source record hash does not match cited records"
                 )
-    return {
-        "schema_id": "YPS-E0-MODEL-INPUT-BINDING-1.1",
+        derivation = binding.get("derivation")
+        derivation_sha256 = binding.get("derivation_sha256")
+        if source_type == "DERIVED_FROM_MEASURED":
+            if not isinstance(derivation, dict):
+                raise FormalAdapterError("derived parameter binding lacks derivation content")
+            if sha256_document(derivation) != derivation_sha256:
+                raise FormalAdapterError("derivation hash does not match its content")
+            if derivation.get("input_measurement_ids") != measurement_ids:
+                raise FormalAdapterError("derivation input IDs differ from cited measurements")
+            if derivation.get("input_record_sha256") != binding.get("source_record_sha256"):
+                raise FormalAdapterError("derivation input hash differs from cited records")
+        elif derivation is not None or derivation_sha256 is not None:
+            raise FormalAdapterError("non-derived parameter binding contains derivation evidence")
+    document = {
+        "schema_id": "YPS-E0-MODEL-INPUT-BINDING-1.2",
         "model_id": model_id,
         "purpose": purpose,
         "formal_package_path": identity["formal_package_path"],
@@ -267,3 +294,12 @@ def model_input_binding(
         "compatibility_status": compatibility_status,
         "missing_fields": list(missing_fields),
     }
+    try:
+        validate_document(
+            "model_input_binding.schema.json",
+            document,
+            schema_root=schema_root,
+        )
+    except ContractError as exc:
+        raise FormalAdapterError(f"model input binding contract failed: {exc}") from exc
+    return document

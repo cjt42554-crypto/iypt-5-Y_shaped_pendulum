@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/model_input_binding.schema.json",
-  "title": "YPS E0R formal model input and evidence binding",
+  "title": "YPS E0R2 formal model input, evidence and derivation binding",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -10,7 +10,7 @@
     "compatibility_evidence", "compatibility_evidence_sha256", "compatibility_status", "missing_fields"
   ],
   "properties": {
-    "schema_id": {"const": "YPS-E0-MODEL-INPUT-BINDING-1.1"},
+    "schema_id": {"const": "YPS-E0-MODEL-INPUT-BINDING-1.2"},
     "model_id": {"enum": ["FWD-TORUS-1.0", "FWD-CABLE-1.0"]},
     "purpose": {"enum": ["EXPERIMENT_COMPARISON", "SENSITIVITY_ONLY", "SYNTHETIC_CONTRACT_TEST"]},
     "formal_package_path": {"type": "string", "minLength": 1},
@@ -54,7 +54,7 @@
       "additionalProperties": false,
       "required": [
         "parameter_name", "source_type", "measurement_ids", "measurement_bundle_sha256",
-        "source_record_sha256", "derivation_sha256"
+        "source_record_sha256", "derivation", "derivation_sha256"
       ],
       "properties": {
         "parameter_name": {"type": "string", "minLength": 1},
@@ -62,24 +62,46 @@
         "measurement_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
         "measurement_bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "source_record_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "derivation": {"$ref": "#/$defs/derivationOrNull"},
         "derivation_sha256": {"$ref": "#/$defs/sha256OrNull"}
       },
       "allOf": [
         {
           "if": {"required": ["source_type"], "properties": {"source_type": {"const": "MEASURED"}}},
-          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation_sha256": {"type": "null"}}}
+          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation": {"type": "null"}, "derivation_sha256": {"type": "null"}}}
         },
         {
           "if": {"required": ["source_type"], "properties": {"source_type": {"const": "DERIVED_FROM_MEASURED"}}},
-          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}
+          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation": {"type": "object"}, "derivation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}
         },
         {
           "if": {"required": ["source_type"], "properties": {"source_type": {"const": "ASSUMPTION_SENSITIVITY_ONLY"}}},
-          "then": {"properties": {"measurement_ids": {"maxItems": 0}, "derivation_sha256": {"type": "null"}}}
+          "then": {"properties": {"measurement_ids": {"maxItems": 0}, "derivation": {"type": "null"}, "derivation_sha256": {"type": "null"}}}
         },
         {
           "if": {"required": ["source_type"], "properties": {"source_type": {"const": "SYNTHETIC_REAL_SHAPE_FIXTURE"}}},
-          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation_sha256": {"type": "null"}}}
+          "then": {"properties": {"measurement_ids": {"minItems": 1}, "derivation": {"type": "null"}, "derivation_sha256": {"type": "null"}}}
+        }
+      ]
+    },
+    "derivationOrNull": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "method_id", "method_version", "description", "input_measurement_ids",
+            "input_record_sha256", "configuration"
+          ],
+          "properties": {
+            "method_id": {"type": "string", "minLength": 1},
+            "method_version": {"type": "string", "minLength": 1},
+            "description": {"type": "string", "minLength": 1},
+            "input_measurement_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "input_record_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "configuration": {"type": "object"}
+          }
         }
       ]
     },

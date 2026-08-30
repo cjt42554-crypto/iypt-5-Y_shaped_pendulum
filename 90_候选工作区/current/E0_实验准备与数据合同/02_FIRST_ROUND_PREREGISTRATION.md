@@ -29,9 +29,9 @@ pilot 运行不计入下表。第一轮计划 70 条结果型运行：
 
 ## 3. Run 身份
 
-`first_round_plan.template.json` 已为 70 条结果型运行预分配唯一 `run_id` 和首个 `attempt_id`，并将状态固定为 `NOT_RUN`、装置版本固定为 `UNSET_REQUIRES_HUMAN`。实际采集使用 `YPS-E0-ACQUISITION-ATTEMPTS-1.0`：每个 repeat 单独记录开始/结束时间、operator、apparatus/camera 哈希、原始文件哈希、failure stage、reason code、corrective action 和 retry parent。采集前人工必须绑定实际 `apparatus_revision` 与预注册文件哈希。
+`first_round_plan.template.json` 已为 70 条结果型运行预分配唯一 `run_id` 和首个 `attempt_id`，并将状态固定为 `NOT_RUN`、装置版本固定为 `UNSET_REQUIRES_HUMAN`。实际采集沿用 `YPS-E0-ACQUISITION-LEDGER-1.1` 的分层语义：预注册 repeat 是 planned slot，只有真正开始操作后才建立 actual attempt。campaign 可以在部分 slot 已完成、未来 slot 仍为 `PENDING` 时保持 `IN_PROGRESS`；硬停止后的未开始 slot 使用 `NOT_STARTED_DUE_TO_STOP`，不得伪造成已启动的失败 attempt。
 
-失败的 ID 永不复用；重试必须生成新 attempt，并且 parent 必须是 ledger 中同一 slot、同一 repeat 的失败或中止 attempt。失败或排除的运行仍保留原始数据、哈希和原因。
+每个 actual attempt 单独记录开始/结束时间、operator、apparatus revision、可用时的 camera-rig hash、所有实际创建的原始文件哈希、`evidence_state`、failure stage、reason code、corrective action 和 retry parent。失败后尚待重试的 slot 使用 `RETRY_PENDING`，保留失败 attempt 和 governing reason，但不预造下一次 attempt。失败的 ID 永不复用；重试真正开始时必须生成新 attempt，并且 parent 必须是 ledger 中同一 slot、同一 repeat 的失败或中止 attempt。若 setup、P00 calibration 或 safety stop 发生在任何 raw file 或有效 camera rig 产生之前，必须显式记录 `NO_RAW_DATA_CREATED` 与 `camera_rig_sha256=null`，不能伪造不存在的证据。
 
 禁止根据结果重新挑选“最好看的五次”。
 

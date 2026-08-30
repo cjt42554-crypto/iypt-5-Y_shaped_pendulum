@@ -1,17 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/processed_observables.schema.json",
-  "title": "YPS E0R common experiment/model observables",
+  "title": "YPS E0R2 identity-cross-bound common experiment/model observables",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schema_id", "data_origin", "identity", "trajectory_manifest_sha256",
+    "schema_id", "data_origin", "identity", "source_trajectory_schema_id",
+    "trajectory_manifest_file", "trajectory_manifest_sha256",
     "array_file", "array_sha256", "fields", "sample_count", "modal_basis_provenance",
     "sampling", "valid_interval_s", "frequency", "damping", "closure_error",
     "event_list", "uncertainty", "domain_status"
   ],
   "properties": {
-    "schema_id": {"const": "YPS-EXPERIMENT-COMMON-OBSERVABLES-1.1"},
+    "schema_id": {"const": "YPS-EXPERIMENT-COMMON-OBSERVABLES-1.2"},
     "data_origin": {"enum": ["SYNTHETIC_REAL_SHAPE_FIXTURE", "MEASURED", "FORMAL_MODEL"]},
     "identity": {
       "type": "object",
@@ -21,10 +22,14 @@
         "source_id": {"type": "string", "minLength": 1},
         "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "run_id": {"type": "string", "minLength": 1},
+        "attempt_id": {"type": "string", "minLength": 1},
         "model_id": {"type": "string", "minLength": 1},
-        "apparatus_revision": {"type": "string", "minLength": 1}
+        "apparatus_revision": {"type": "string", "minLength": 1},
+        "camera_rig_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }
     },
+    "source_trajectory_schema_id": {"const": "YPS-E0-TRAJECTORY-BUNDLE-1.2"},
+    "trajectory_manifest_file": {"type": "string", "minLength": 1},
     "trajectory_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "array_file": {"type": "string", "minLength": 1},
     "array_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
@@ -132,5 +137,23 @@
       ]
     },
     "domain_status": {"enum": ["IN_DOMAIN", "OUT_OF_MODEL_DOMAIN", "TRUNCATED_AT_DOMAIN_EVENT", "ADAPTER_LIMITATION"]}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"required": ["data_origin"], "properties": {"data_origin": {"enum": ["MEASURED", "SYNTHETIC_REAL_SHAPE_FIXTURE"]}}},
+      "then": {
+        "properties": {
+          "identity": {"required": ["source_id", "source_sha256", "run_id", "attempt_id", "apparatus_revision", "camera_rig_sha256"]}
+        }
+      }
+    },
+    {
+      "if": {"required": ["data_origin"], "properties": {"data_origin": {"const": "FORMAL_MODEL"}}},
+      "then": {
+        "properties": {
+          "identity": {"required": ["source_id", "source_sha256", "run_id", "model_id", "apparatus_revision"]}
+        }
+      }
+    }
+  ]
 }

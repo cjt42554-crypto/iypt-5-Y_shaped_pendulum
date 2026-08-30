@@ -133,26 +133,15 @@ def check_csv_templates(template_root: Path) -> None:
     ]
     if [row["slot_id"] for row in pilot] != expected_slots:
         fail("pilot CSV must contain every preregistered repeat in execution order")
-    if len({row["attempt_id"] for row in pilot}) != len(pilot):
-        fail("pilot CSV attempt IDs must be unique")
-    if any(row["status"] != "NOT_RUN" for row in pilot):
-        fail("pilot template contains an executed run")
-    if any(row["apparatus_revision"] != "UNSET_REQUIRES_HUMAN" for row in pilot):
-        fail("pilot template contains an apparatus claim")
-    completion_fields = {
-        "started_at",
-        "ended_at",
-        "operator_id",
-        "failure_stage",
-        "reason_code",
-        "operator_note",
-        "raw_file_hashes",
-        "retry_parent_id",
-        "corrective_action",
-        "camera_rig_sha256",
+    if any(row["slot_state"] != "PENDING" for row in pilot):
+        fail("pilot slot template contains an executed or disposed slot")
+    disposition_fields = {
+        "disposition_reason_code",
+        "governing_attempt_id",
+        "linked_attempt_ids",
     }
-    if any(row[field] for row in pilot for field in completion_fields):
-        fail("unexecuted pilot CSV contains completion or retry evidence")
+    if any(row[field] for row in pilot for field in disposition_fields):
+        fail("pending pilot slot template contains disposition or attempt evidence")
 
 
 def main() -> int:
@@ -184,6 +173,24 @@ def main() -> int:
     validate_all_templates()
     assert_templates_are_human_unset()
     check_csv_templates(TEMPLATE_ROOT)
+    pilot_ledger = load_json(TEMPLATE_ROOT / "pilot_attempts.template.json")
+    if (
+        pilot_ledger["campaign_status"] != "NOT_STARTED"
+        or len(pilot_ledger["planned_slots"]) != 12
+        or pilot_ledger["attempts"]
+    ):
+        fail("pilot ledger template does not separate 12 planned slots from actual attempts")
+    acquisition_contract_text = (stage_root / "schemas/acquisition_attempts.schema.json").read_text(
+        encoding="utf-8"
+    )
+    for required in (
+        "RETRY_PENDING",
+        "SKIPPED_DUE_TO_PREREQUISITE",
+        "NOT_STARTED_DUE_TO_STOP",
+        "NO_RAW_DATA_CREATED",
+    ):
+        if required not in acquisition_contract_text:
+            fail(f"acquisition ledger lacks required state: {required}")
 
     first_round = load_json(TEMPLATE_ROOT / "first_round_plan.template.json")
     if sum(item["planned_runs"] for item in first_round["run_families"]) != 70:
@@ -276,6 +283,12 @@ def main() -> int:
         or real_shape_fixture.get("contains_measured_values") is not False
         or real_shape_fixture.get("attempt_lineage", {}).get("logical_repeats") != 2
         or real_shape_fixture.get("attempt_lineage", {}).get("retry_attempt") != "P02-R02-A01"
+        or real_shape_fixture.get("attempt_lineage", {}).get(
+            "p00_failure_without_camera_hash_covered"
+        )
+        is not True
+        or real_shape_fixture.get("attempt_lineage", {}).get("mid_campaign_stop_covered")
+        is not True
     ):
         fail("synthetic real-shape fixture identity or retry lineage is not fail-closed")
 
@@ -295,12 +308,50 @@ def main() -> int:
         encoding="utf-8"
     )
     for required in (
+        "frame_index",
+        "raw_timestamp_s",
+        "aligned_timestamp_s",
+        "sync_event_id",
+        "sync_offset_s",
+        "sync_uncertainty_s",
+        "dropped_frame_flag",
+        "invalid_reason",
         "pixel_covariance_px2",
         "triangulate_markers_with_covariance",
         "positive semidefinite",
     ):
         if required not in detection_text:
             fail(f"2D-to-3D covariance pipeline lacks required token: {required}")
+    trajectory_text = (stage_root / "src/yps_experiment_pipeline/trajectory.py").read_text(
+        encoding="utf-8"
+    )
+    for required in (
+        "validate_document",
+        "assert_array_manifest_matches",
+        "source 2D detection identity does not match trajectory",
+        "source 2D detection array hash does not match its manifest",
+        "source 2D detection and trajectory time axes differ",
+    ):
+        if required not in trajectory_text:
+            fail(f"detection-to-trajectory cross-binding lacks required token: {required}")
+    observable_text = (stage_root / "src/yps_experiment_pipeline/observables.py").read_text(
+        encoding="utf-8"
+    )
+    for required in (
+        "source trajectory identity does not match common observables",
+        "source trajectory array hash does not match its manifest",
+        "assert_array_manifest_matches",
+        "common observables revive samples invalid in the source trajectory",
+    ):
+        if required not in observable_text:
+            fail(f"trajectory-to-common cross-binding lacks required token: {required}")
+    for required in (
+        "derivation hash does not match its content",
+        "derivation input hash differs from cited records",
+        "model input binding contract failed",
+    ):
+        if required not in adapter_text:
+            fail(f"formal-input derivation binding lacks required token: {required}")
     formal = formal_identity(repository_root)
     if len(formal["formal_source_sha256"]) != 64:
         fail("formal source hash is invalid")
@@ -319,7 +370,7 @@ def main() -> int:
         fail(f"Git change outside E0 allowlist: {path}")
 
     result = {
-        "status": "E0R_REAL_DATA_CONTRACT_CORRECTIONS_COMPLETE__SYNTHETIC_REAL_SHAPE_FIXTURE_PASS__STOP_AT_E0R_PRO_REVIEW",
+        "status": "E0R2_ACQUISITION_AND_PROVENANCE_CLOSURE_COMPLETE__SYNTHETIC_REAL_SHAPE_FIXTURE_PASS__STOP_AT_E0R2_PRO_REVIEW",
         "expected_file_count": len(EXPECTED_FILES),
         "schema_count": len(list(SCHEMA_ROOT.glob("*.schema.json"))),
         "template_count": len(list(TEMPLATE_ROOT.iterdir())),

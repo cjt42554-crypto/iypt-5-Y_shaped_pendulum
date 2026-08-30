@@ -11,6 +11,8 @@ from real_shape_fixture import (
     detection_arrays,
     digest,
     measurement_record_hash,
+    mid_campaign_stop_document,
+    p00_failure_document,
     trajectory_truth,
 )
 
@@ -218,7 +220,9 @@ def test_synthetic_real_shape_fixture_closes_the_provenance_chain(tmp_path: Path
             "source_id": "SYNTHETIC_P02_REPEAT_02_RETRY",
             "source_sha256": sha256_file(trajectory_manifest_file),
             "run_id": "SYNTHETIC_P02_REPEAT_02_RETRY",
+            "attempt_id": "P02-R02-A01",
             "apparatus_revision": APPARATUS_REVISION,
+            "camera_rig_sha256": camera_rig_hash,
         },
         trajectory_manifest_file=trajectory_manifest_file,
         arrays=common_arrays,
@@ -252,6 +256,24 @@ def test_synthetic_real_shape_fixture_closes_the_provenance_chain(tmp_path: Path
     validate_document("processed_observables.schema.json", common_manifest)
     assert common_manifest["fields"]["modal_basis_W"]["shape"] == [2, 3]
 
+    measured_detection_with_unset = deepcopy(detection_manifest)
+    measured_detection_with_unset["data_origin"] = "MEASURED"
+    measured_detection_with_unset["apparatus_revision"] = "UNSET_REQUIRES_HUMAN"
+    with pytest.raises(ContractError, match="UNSET_REQUIRES_HUMAN"):
+        validate_document("detection_2d_bundle.schema.json", measured_detection_with_unset)
+
+    measured_trajectory_with_unset = deepcopy(trajectory_manifest)
+    measured_trajectory_with_unset["data_origin"] = "MEASURED"
+    measured_trajectory_with_unset["apparatus_revision"] = "UNSET_REQUIRES_HUMAN"
+    with pytest.raises(ContractError, match="UNSET_REQUIRES_HUMAN"):
+        validate_document("trajectory_bundle.schema.json", measured_trajectory_with_unset)
+
+    measured_common_with_unset = deepcopy(common_manifest)
+    measured_common_with_unset["data_origin"] = "MEASURED"
+    measured_common_with_unset["identity"]["apparatus_revision"] = "UNSET_REQUIRES_HUMAN"
+    with pytest.raises(ContractError, match="UNSET_REQUIRES_HUMAN"):
+        validate_document("processed_observables.schema.json", measured_common_with_unset)
+
     measurement_bundle_hash = sha256_document(apparatus)
     trajectory_bundle_hash = sha256_file(trajectory_manifest_file)
     parameter_measurements = ["SUPPORT_A_XYZ", "SUPPORT_B_XYZ", "BOB_COM_TO_ATTACHMENT"]
@@ -262,6 +284,7 @@ def test_synthetic_real_shape_fixture_closes_the_provenance_chain(tmp_path: Path
             "measurement_ids": parameter_measurements,
             "measurement_bundle_sha256": measurement_bundle_hash,
             "source_record_sha256": measurement_record_hash(apparatus, parameter_measurements),
+            "derivation": None,
             "derivation_sha256": None,
         }
     ]
@@ -353,6 +376,7 @@ def test_source_labels_cannot_be_substituted_for_measurement_evidence():
         "measurement_ids": ["SUPPORT_A_XYZ"],
         "measurement_bundle_sha256": bundle_hash,
         "source_record_sha256": measurement_record_hash(apparatus, ["SUPPORT_A_XYZ"]),
+        "derivation": None,
         "derivation_sha256": None,
     }
     with pytest.raises(FormalAdapterError, match="non-measured"):
@@ -389,6 +413,51 @@ def test_attempt_retry_parent_and_camera_completion_fail_closed():
         validate_document("camera_rig.schema.json", measured_rig)
 
 
+def test_p00_failure_and_mid_campaign_stop_need_no_fabricated_evidence():
+    p00_failure = p00_failure_document()
+    validate_document("acquisition_attempts.schema.json", p00_failure)
+    failed_attempt = p00_failure["attempts"][0]
+    assert failed_attempt["raw_files"] == []
+    assert failed_attempt["camera_rig_sha256"] is None
+    assert p00_failure["planned_slots"][1]["state"] == "NOT_STARTED_DUE_TO_STOP"
+
+    camera_hash = sha256_document(camera_rig_document())
+    mid_stop = mid_campaign_stop_document(camera_hash)
+    validate_document("acquisition_attempts.schema.json", mid_stop)
+    assert mid_stop["campaign_status"] == "HARD_STOPPED"
+    assert any(slot["state"] == "NOT_STARTED_DUE_TO_STOP" for slot in mid_stop["planned_slots"])
+
+
+def test_measured_campaign_can_be_valid_while_future_slots_are_pending():
+    camera_hash = sha256_document(camera_rig_document())
+    document = mid_campaign_stop_document(camera_hash)
+    document["data_origin"] = "MEASURED_ACQUISITION"
+    document["contains_measured_values"] = True
+    document["campaign_id"] = "REAL_CAMPAIGN_IN_PROGRESS"
+    document["campaign_status"] = "IN_PROGRESS"
+    document["apparatus_revision"] = "REAL_RIG_V1"
+    document["attempts"] = document["attempts"][:1]
+    document["attempts"][0]["apparatus_revision"] = "REAL_RIG_V1"
+    for slot in document["planned_slots"][1:]:
+        slot["state"] = "PENDING"
+        slot["disposition_reason_code"] = None
+        slot["governing_attempt_id"] = None
+        slot["linked_attempt_ids"] = []
+    validate_document("acquisition_attempts.schema.json", document)
+
+
+def test_failed_attempt_can_remain_bound_while_retry_is_pending():
+    document = p00_failure_document()
+    document["campaign_status"] = "IN_PROGRESS"
+    document["planned_slots"] = document["planned_slots"][:1]
+    document["planned_slots"][0]["state"] = "RETRY_PENDING"
+    validate_document("acquisition_attempts.schema.json", document)
+
+    document["planned_slots"][0]["governing_attempt_id"] = "ABSENT_ATTEMPT"
+    with pytest.raises(ContractError, match="retry-pending"):
+        validate_document("acquisition_attempts.schema.json", document)
+
+
 def test_detection_covariance_must_be_symmetric_before_bundle_creation(tmp_path: Path):
     camera_rig = camera_rig_document()
     arrays, units = detection_arrays(camera_rig)
@@ -418,6 +487,72 @@ def test_detection_covariance_must_be_symmetric_before_bundle_creation(tmp_path:
             units=units,
         )
     assert not output.exists()
+
+
+def test_per_frame_timing_drop_and_invalid_reason_contract(tmp_path: Path):
+    camera_rig = camera_rig_document()
+    arrays, units = detection_arrays(camera_rig)
+    arrays["dropped_frame_flag"][0, 0] = True
+    arrays["frame_index"][0, 0] = -1
+    arrays["raw_timestamp_s"][0, 0] = np.nan
+    arrays["valid_mask"][0, 0, :] = False
+    arrays["invalid_reason"][0, 0, :] = "DROPPED_FRAME"
+    output = tmp_path / "dropped_detection"
+    manifest = write_detection_bundle(
+        output,
+        run_id="SYNTHETIC_DROPPED_FRAME",
+        attempt_id="SYNTHETIC_DROPPED_FRAME_A00",
+        apparatus_revision=APPARATUS_REVISION,
+        data_origin="SYNTHETIC_REAL_SHAPE_FIXTURE",
+        camera_rig_file="camera_rig.json",
+        camera_rig_sha256=sha256_document(camera_rig),
+        raw_video_files=[
+            {"camera_id": "CAM_A", "path": "a.mp4", "sha256": digest("drop-a")},
+            {"camera_id": "CAM_B", "path": "b.mp4", "sha256": digest("drop-b")},
+        ],
+        detector={
+            "name": "DROPPED_FRAME_CONTRACT_TEST",
+            "version": "1.0",
+            "configuration_sha256": digest("dropped-frame-contract"),
+        },
+        camera_ids=["CAM_A", "CAM_B"],
+        marker_ids=["BOB", "JUNCTION"],
+        arrays=arrays,
+        units=units,
+    )
+    validate_document("detection_2d_bundle.schema.json", manifest)
+    assert manifest["fields"]["raw_timestamp_s"]["shape"] == [401, 2]
+
+    invalid_arrays, invalid_units = detection_arrays(camera_rig)
+    invalid_arrays["dropped_frame_flag"][0, 0] = True
+    invalid_arrays["frame_index"][0, 0] = -1
+    invalid_arrays["raw_timestamp_s"][0, 0] = np.nan
+    invalid_arrays["valid_mask"][0, 0, :] = False
+    invalid_arrays["invalid_reason"][0, 0, :] = "OTHER_INVALID"
+    with pytest.raises(ValueError, match="DROPPED_FRAME"):
+        write_detection_bundle(
+            tmp_path / "invalid_drop",
+            run_id="INVALID_DROP",
+            attempt_id="INVALID_DROP_A00",
+            apparatus_revision=APPARATUS_REVISION,
+            data_origin="SYNTHETIC_REAL_SHAPE_FIXTURE",
+            camera_rig_file="camera_rig.json",
+            camera_rig_sha256=sha256_document(camera_rig),
+            raw_video_files=[
+                {"camera_id": "CAM_A", "path": "a.mp4", "sha256": digest("bad-drop-a")},
+                {"camera_id": "CAM_B", "path": "b.mp4", "sha256": digest("bad-drop-b")},
+            ],
+            detector={
+                "name": "INVALID_DROP_TEST",
+                "version": "1.0",
+                "configuration_sha256": digest("invalid-drop"),
+            },
+            camera_ids=["CAM_A", "CAM_B"],
+            marker_ids=["BOB", "JUNCTION"],
+            arrays=invalid_arrays,
+            units=invalid_units,
+        )
+    assert not (tmp_path / "invalid_drop").exists()
 
 
 def test_irregular_sampling_is_not_silently_treated_as_uniform():

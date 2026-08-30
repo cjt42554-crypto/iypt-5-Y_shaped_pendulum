@@ -145,7 +145,7 @@ def synthetic_self_test(repository_root: Path) -> dict:
     )
     identity = formal_identity(repository_root)
     return {
-        "status": "E0R_SYNTHETIC_REAL_SHAPE_SELF_TEST_PASS__NOT_EXPERIMENT_EVIDENCE",
+        "status": "E0R2_SYNTHETIC_REAL_SHAPE_SELF_TEST_PASS__NOT_EXPERIMENT_EVIDENCE",
         "data_origin": "SYNTHETIC_REAL_SHAPE_FIXTURE",
         "stereo_max_error_m": reconstruction_error,
         "covariance_stereo_max_error_m": covariance_reconstruction_error,

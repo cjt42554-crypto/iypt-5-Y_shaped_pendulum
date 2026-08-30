@@ -10,7 +10,16 @@ import numpy as np
 from scipy.optimize import least_squares
 from scipy.signal import periodogram
 
-from .contracts import canonical_json_bytes, sha256_file
+from .contracts import (
+    SCHEMA_ROOT,
+    assert_array_manifest_matches,
+    assert_no_unset_tokens,
+    canonical_json_bytes,
+    load_json,
+    sha256_file,
+    validate_document,
+)
+from .trajectory import REQUIRED_ARRAY_FIELDS, validate_trajectory_arrays
 
 REQUIRED_COMMON_ARRAYS = {
     "time_s",
@@ -148,8 +157,11 @@ def normalized_closure_error(start_state: np.ndarray, end_state: np.ndarray, sca
 
 def _validate_common_arrays(arrays: dict[str, np.ndarray], units: dict[str, str]) -> np.ndarray:
     missing = sorted(REQUIRED_COMMON_ARRAYS - set(arrays))
-    if missing:
-        raise ValueError(f"common observable bundle lacks required arrays: {missing}")
+    extra = sorted(set(arrays) - REQUIRED_COMMON_ARRAYS)
+    if missing or extra:
+        raise ValueError(
+            f"common observable array contract mismatch; missing={missing} extra={extra}"
+        )
     if set(units) != set(arrays):
         raise ValueError("common observable units must have exactly one entry per array")
     time = np.asarray(arrays["time_s"], dtype=float)
@@ -190,6 +202,7 @@ def common_observable_manifest(
     *,
     data_origin: str,
     identity: dict,
+    trajectory_manifest: dict[str, Any],
     trajectory_manifest_file: Path,
     array_file: Path,
     arrays: dict[str, np.ndarray],
@@ -215,9 +228,11 @@ def common_observable_manifest(
         array = np.asarray(value)
         fields[name] = {"shape": list(array.shape), "unit": units[name], "dtype": str(array.dtype)}
     return {
-        "schema_id": "YPS-EXPERIMENT-COMMON-OBSERVABLES-1.1",
+        "schema_id": "YPS-EXPERIMENT-COMMON-OBSERVABLES-1.2",
         "data_origin": data_origin,
         "identity": identity,
+        "source_trajectory_schema_id": trajectory_manifest["schema_id"],
+        "trajectory_manifest_file": trajectory_manifest_file.name,
         "trajectory_manifest_sha256": sha256_file(trajectory_manifest_file),
         "array_file": array_file.name,
         "array_sha256": sha256_file(array_file),
@@ -254,16 +269,77 @@ def write_common_observables(
     events: list[dict],
     uncertainty: dict,
     domain_status: str,
+    schema_root: Path = SCHEMA_ROOT,
 ) -> dict[str, Any]:
     _validate_common_arrays(arrays, units)
     if not trajectory_manifest_file.is_file():
         raise ValueError("source trajectory manifest does not exist")
+    trajectory_manifest = load_json(trajectory_manifest_file)
+    validate_document(
+        "trajectory_bundle.schema.json",
+        trajectory_manifest,
+        schema_root=schema_root,
+    )
+    trajectory_array_file = trajectory_manifest_file.parent / trajectory_manifest["array_file"]
+    if not trajectory_array_file.is_file():
+        raise ValueError("source trajectory array does not exist")
+    if sha256_file(trajectory_array_file) != trajectory_manifest["array_sha256"]:
+        raise ValueError("source trajectory array hash does not match its manifest")
+    with np.load(trajectory_array_file, allow_pickle=False) as loaded:
+        trajectory_arrays = {name: loaded[name] for name in loaded.files}
+    assert_array_manifest_matches(
+        trajectory_arrays,
+        trajectory_manifest["fields"],
+        label="source trajectory array",
+    )
+    trajectory_units = {
+        name: trajectory_manifest["fields"][name]["unit"] for name in REQUIRED_ARRAY_FIELDS
+    }
+    trajectory_valid = validate_trajectory_arrays(
+        trajectory_arrays,
+        trajectory_units,
+        trajectory_arrays["valid_mask"],
+    )
+    trajectory_sha256 = sha256_file(trajectory_manifest_file)
+    expected_identity = {
+        "source_id": trajectory_manifest["run_id"],
+        "source_sha256": trajectory_sha256,
+        "run_id": trajectory_manifest["run_id"],
+        "attempt_id": trajectory_manifest["attempt_id"],
+        "apparatus_revision": trajectory_manifest["apparatus_revision"],
+        "camera_rig_sha256": trajectory_manifest["camera_rig_sha256"],
+    }
+    if data_origin in {"MEASURED", "SYNTHETIC_REAL_SHAPE_FIXTURE"}:
+        if data_origin != trajectory_manifest["data_origin"]:
+            raise ValueError("source trajectory data origin does not match common observables")
+        mismatched = sorted(
+            key for key, value in expected_identity.items() if identity.get(key) != value
+        )
+        if mismatched:
+            raise ValueError(
+                "source trajectory identity does not match common observables: "
+                + ", ".join(mismatched)
+            )
+        assert_no_unset_tokens({"data_origin": data_origin, "identity": identity})
+    if trajectory_manifest["sample_count"] != np.asarray(arrays["time_s"]).size:
+        raise ValueError("source trajectory and common observable sample counts differ")
+    for field in ("time_s", "r_bob_W_m", "r_junction_W_m"):
+        if not np.array_equal(
+            np.asarray(trajectory_arrays[field]),
+            np.asarray(arrays[field]),
+            equal_nan=True,
+        ):
+            raise ValueError(f"source trajectory and common observable {field} differ")
+    common_valid = np.asarray(arrays["valid_mask"], dtype=bool)
+    if np.any(common_valid & ~trajectory_valid):
+        raise ValueError("common observables revive samples invalid in the source trajectory")
     output_directory.mkdir(parents=True, exist_ok=False)
     array_file = output_directory / "common_observables.npz"
     np.savez_compressed(array_file, **arrays)
     manifest = common_observable_manifest(
         data_origin=data_origin,
         identity=identity,
+        trajectory_manifest=trajectory_manifest,
         trajectory_manifest_file=trajectory_manifest_file,
         array_file=array_file,
         arrays=arrays,
@@ -275,6 +351,13 @@ def write_common_observables(
         events=events,
         uncertainty=uncertainty,
         domain_status=domain_status,
+    )
+    if data_origin == "MEASURED":
+        assert_no_unset_tokens(manifest)
+    validate_document(
+        "processed_observables.schema.json",
+        manifest,
+        schema_root=schema_root,
     )
     (output_directory / "processed_observables.json").write_bytes(
         canonical_json_bytes(manifest) + b"\n"

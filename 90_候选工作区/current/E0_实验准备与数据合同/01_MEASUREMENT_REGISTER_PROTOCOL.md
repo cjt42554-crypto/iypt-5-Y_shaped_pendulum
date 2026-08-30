@@ -13,7 +13,7 @@
 - 温度、湿度、气压等环境状态；
 - Type A、Type B 和合成标准不确定度；
 - 完整 covariance matrix、协方差组、来源类型、原始文件哈希；
-- 派生量的公式、输入 measurement IDs 和源哈希。
+- 派生量的公式或版本化算法、输入 measurement IDs、输入记录哈希与配置；进入正式模型输入时还必须保存完整 derivation 内容及其 canonical SHA-256。
 
 ## 2. 来源类型
 
@@ -61,4 +61,4 @@ $$
 
 ## 5. 版本与失败关闭
 
-每次机械改装、重新装夹或几何调整都生成新的 `apparatus_revision`，不得覆盖旧记录。`MEASURED_BUNDLE` 中不允许残留 `UNSET_REQUIRES_HUMAN`。字段缺失、向量维数与标签不一致、covariance 形状不合格、未知键、`MEASURED` 无完整不确定度或原始哈希、派生量无输入绑定时，schema/validator 必须失败关闭。
+每次机械改装、重新装夹或几何调整都生成新的 `apparatus_revision`，不得覆盖旧记录。`MEASURED_BUNDLE` 中不允许残留 `UNSET_REQUIRES_HUMAN`。字段缺失、向量维数与标签不一致、covariance 形状不合格、未知键、`MEASURED` 无完整不确定度或原始哈希、派生量无输入绑定，或者 `derivation_sha256` 与实际派生内容不一致时，schema/validator 必须失败关闭。

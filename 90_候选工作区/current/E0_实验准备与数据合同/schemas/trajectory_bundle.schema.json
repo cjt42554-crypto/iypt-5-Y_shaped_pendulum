@@ -1,21 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/trajectory_bundle.schema.json",
-  "title": "YPS E0R provenance-bound three-dimensional trajectory bundle",
+  "title": "YPS E0R2 identity-cross-bound three-dimensional trajectory bundle",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema_id", "data_origin", "run_id", "attempt_id", "apparatus_revision",
-    "detection_manifest_file", "detection_manifest_sha256", "camera_rig_sha256",
+    "source_detection_schema_id", "detection_manifest_file", "detection_manifest_sha256", "camera_rig_sha256",
     "array_file", "array_sha256", "fields", "sample_count", "valid_fraction",
     "position_covariance_marker_ids", "covariance_convention", "event_codes"
   ],
   "properties": {
-    "schema_id": {"const": "YPS-E0-TRAJECTORY-BUNDLE-1.1"},
+    "schema_id": {"const": "YPS-E0-TRAJECTORY-BUNDLE-1.2"},
     "data_origin": {"enum": ["MEASURED", "SYNTHETIC_REAL_SHAPE_FIXTURE"]},
     "run_id": {"type": "string", "minLength": 1},
     "attempt_id": {"type": "string", "minLength": 1},
     "apparatus_revision": {"type": "string", "minLength": 1},
+    "source_detection_schema_id": {"const": "YPS-E0-DETECTION-2D-BUNDLE-1.1"},
     "detection_manifest_file": {"type": "string", "minLength": 1},
     "detection_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "camera_rig_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},

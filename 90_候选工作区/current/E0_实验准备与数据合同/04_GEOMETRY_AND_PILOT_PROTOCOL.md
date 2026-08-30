@@ -34,7 +34,13 @@ pilot 首先使用届时已有的一套真实装置，先测清其实际几何�
 
 只有 P00--P04 的数据质量合格、无安全问题且未见明显模型域失效时才执行 P05。
 
-`pilot_attempts.template.json` 与 CSV convenience view 都按 repeat 展开为 12 个首轮 attempt。JSON ledger 是机器权威记录；CSV 只供现场录入。完成、失败或中止的 attempt 必须绑定预注册文件、apparatus revision、camera rig 和每个原始文件 SHA-256。重试不得覆盖原 attempt；新 ID 必须通过 `retry_parent_id` 指向同一 slot、同一 repeat 的失败或中止记录。
+`pilot_attempts.template.json` 把 repeat 展开为 12 个首轮计划 slot，但模板初始不创建任何实际 attempt。JSON ledger 是机器权威记录；CSV 只是计划视图和现场辅助表，不得被解释成已经尝试或已经取得证据。只有操作真正开始时才创建 actual attempt，并把它绑定到唯一的 `slot_id`。
+
+campaign 可以在尚有未来 slot 为 `PENDING` 时保持 `IN_PROGRESS`。条件前提不满足的 slot 标记为 `SKIPPED_DUE_TO_PREREQUISITE`；硬停止后的未开始 slot 标记为 `NOT_STARTED_DUE_TO_STOP`。这两类 slot，以及仍为 `PENDING` 的 slot，都不得伪造开始/结束时间、raw file、camera rig 哈希或 attempt ID。
+
+实际 attempt 使用 `evidence_state` 区分 `NO_RAW_DATA`、`PARTIAL_RAW_DATA` 和 `COMPLETE_RAW_DATA`。成功完成的 attempt 必须绑定预注册文件、apparatus revision、camera rig SHA-256 和每个原始文件 SHA-256；但 P00 等 setup/calibration 可能在相机 rig 尚未形成、原始文件尚未落盘时失败，此时允许 `FAILED` 或 `ABORTED` attempt 明确记录为 `NO_RAW_DATA`，且 `raw_files=[]`、`camera_rig_sha256=null`。不得用占位哈希假装证据存在。
+
+重试不得覆盖原 attempt。失败后决定重试、但下一次操作尚未开始时，slot 标记为 `RETRY_PENDING`，保留 governing failure，而不提前创建 attempt。新 attempt 只有在实际操作开始时才生成 ID，并通过 `retry_parent_id` 指向同一 slot、同一 repeat 的失败或中止记录，保留完整 lineage。
 
 ## 3. 模型遗漏因素筛查
 
@@ -66,10 +72,10 @@ pilot 首先使用届时已有的一套真实装置，先测清其实际几何�
 
 同步残差大于 0.25 frame、最快周期少于 30 samples、主要分析窗 3D bob 有效比例低于 95%，或出现安全问题时，不得进入 full round。
 
-失败运行不删除、不覆盖。重试生成新 attempt ID，并保存 failure stage、reason code、operator note、raw hashes、corrective action 和 retry parent ID。
+失败运行不删除、不覆盖。重试生成新 attempt ID，并保存 failure stage、reason code、operator note、corrective action、evidence state 和 retry parent ID；只有证据实际存在时才记录 camera rig 与 raw hashes。硬停止发生后，ledger 必须记录 governing stop attempt，并把后续尚未开始的 slot 逐一关闭为 `NOT_STARTED_DUE_TO_STOP`。
 
 ## 5. 当前复核门与下一人工门
 
-E0R 只准备协议和机器合同，不执行 pilot。本轮实现必须先停止在 `E0R_REAL_DATA_CONTRACT_CORRECTIONS_COMPLETE__STOP_AT_E0R_PRO_REVIEW`。只有 Pro 接受本轮真实数据合同后，下一门才可提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`。
+E0R2 只修正采集台账、逐帧时间信息、跨产物来源绑定和派生输入可核验性，不执行 pilot。本轮实现必须先停止在 `E0R2_ACQUISITION_AND_PROVENANCE_CLOSURE_COMPLETE__STOP_AT_E0R2_PRO_REVIEW`。只有 Pro 接受 E0R2 后，下一门才可提升为 `HUMAN_PILOT_ACQUISITION_REQUIRED`。
 
 届时人工仍必须完成装置与相机的实际操作，返回带原始数据和哈希的资料后，才可单独授权 `E1_PILOT_DATA_INGESTION_AND_MODEL_ASSUMPTION_SCREENING`。

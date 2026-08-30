@@ -1,6 +1,7 @@
 from hashlib import sha256
 from pathlib import Path
 
+import pytest
 from real_shape_fixture import apparatus_document, measurement_record_hash
 
 from yps_experiment_pipeline.contracts import sha256_document, validate_document
@@ -11,6 +12,7 @@ from yps_experiment_pipeline.forward_adapter import (
     FORMAL_FORWARD_RELATIVE,
     TORUS_INCOMPATIBLE,
     TORUS_READY,
+    FormalAdapterError,
     cable_compatibility,
     formal_identity,
     load_formal_forward,
@@ -37,15 +39,27 @@ def cable_evidence(initial_state_representable: bool = True) -> dict:
 
 def parameter_binding(name: str, source_type: str = "MEASURED") -> dict:
     measurement_ids = [] if source_type == "ASSUMPTION_SENSITIVITY_ONLY" else [f"{name}_M"]
+    source_record_sha256 = digest(f"record:{name}")
+    derivation = (
+        {
+            "method_id": f"DERIVE_{name}",
+            "method_version": "1.0",
+            "description": f"Synthetic derivation contract for {name}.",
+            "input_measurement_ids": measurement_ids,
+            "input_record_sha256": source_record_sha256,
+            "configuration": {"mode": "SYNTHETIC_UNIT_TEST"},
+        }
+        if source_type == "DERIVED_FROM_MEASURED"
+        else None
+    )
     return {
         "parameter_name": name,
         "source_type": source_type,
         "measurement_ids": measurement_ids,
         "measurement_bundle_sha256": digest("measurement-bundle"),
-        "source_record_sha256": digest(f"record:{name}"),
-        "derivation_sha256": digest(f"derivation:{name}")
-        if source_type == "DERIVED_FROM_MEASURED"
-        else None,
+        "source_record_sha256": source_record_sha256,
+        "derivation": derivation,
+        "derivation_sha256": sha256_document(derivation) if derivation is not None else None,
     }
 
 
@@ -163,6 +177,7 @@ def test_model_binding_records_formal_and_input_hashes_and_validates():
             "measurement_ids": measurement_ids,
             "measurement_bundle_sha256": measurement_bundle_hash,
             "source_record_sha256": measurement_record_hash(apparatus, measurement_ids),
+            "derivation": None,
             "derivation_sha256": None,
         }
     ]
@@ -182,3 +197,83 @@ def test_model_binding_records_formal_and_input_hashes_and_validates():
     validate_document("model_input_binding.schema.json", binding)
     assert binding["formal_source_sha256"] == identity["formal_source_sha256"]
     assert binding["measurement_bundle_sha256"] == measurement_bundle_hash
+
+
+def test_derived_parameter_hash_must_match_actual_derivation_content():
+    apparatus = apparatus_document()
+    apparatus["data_origin"] = "MEASURED_BUNDLE"
+    apparatus["apparatus_revision"] = "REAL_RIG_V1"
+    for record in apparatus["measurements"]:
+        record["source_type"] = "MEASURED"
+    measurement_bundle_hash = sha256_document(apparatus)
+    measurement_ids = ["SUPPORT_A_XYZ", "SUPPORT_B_XYZ"]
+    source_record_sha256 = measurement_record_hash(apparatus, measurement_ids)
+    derivation = {
+        "method_id": "SUPPORT_BASELINE_FROM_ENDPOINTS",
+        "method_version": "1.0",
+        "description": "Subtract measured support coordinates to obtain the support baseline.",
+        "input_measurement_ids": measurement_ids,
+        "input_record_sha256": source_record_sha256,
+        "configuration": {"coordinate_frame": "WORLD"},
+    }
+    parameter_bindings = [
+        {
+            "parameter_name": "support_baseline",
+            "source_type": "DERIVED_FROM_MEASURED",
+            "measurement_ids": measurement_ids,
+            "measurement_bundle_sha256": measurement_bundle_hash,
+            "source_record_sha256": source_record_sha256,
+            "derivation": derivation,
+            "derivation_sha256": sha256_document(derivation),
+        }
+    ]
+    compatibility_evidence = {"torus": torus_evidence(), "cable": None}
+    binding = model_input_binding(
+        REPOSITORY_ROOT,
+        model_id="FWD-TORUS-1.0",
+        purpose="EXPERIMENT_COMPARISON",
+        measurement_document=apparatus,
+        measurement_bundle_sha256=measurement_bundle_hash,
+        trajectory_bundle_sha256=digest("trajectory-bundle"),
+        parameter_bindings=parameter_bindings,
+        compatibility_evidence=compatibility_evidence,
+        compatibility_status=TORUS_READY,
+        missing_fields=[],
+    )
+    validate_document("model_input_binding.schema.json", binding)
+
+    incomplete = [dict(parameter_bindings[0])]
+    incomplete_derivation = dict(derivation)
+    incomplete_derivation.pop("method_version")
+    incomplete[0]["derivation"] = incomplete_derivation
+    incomplete[0]["derivation_sha256"] = sha256_document(incomplete_derivation)
+    with pytest.raises(FormalAdapterError, match="model input binding contract"):
+        model_input_binding(
+            REPOSITORY_ROOT,
+            model_id="FWD-TORUS-1.0",
+            purpose="EXPERIMENT_COMPARISON",
+            measurement_document=apparatus,
+            measurement_bundle_sha256=measurement_bundle_hash,
+            trajectory_bundle_sha256=digest("trajectory-bundle"),
+            parameter_bindings=incomplete,
+            compatibility_evidence=compatibility_evidence,
+            compatibility_status=TORUS_READY,
+            missing_fields=[],
+        )
+
+    tampered = [dict(parameter_bindings[0])]
+    tampered[0]["derivation"] = dict(derivation)
+    tampered[0]["derivation"]["method_version"] = "2.0"
+    with pytest.raises(FormalAdapterError, match="derivation hash"):
+        model_input_binding(
+            REPOSITORY_ROOT,
+            model_id="FWD-TORUS-1.0",
+            purpose="EXPERIMENT_COMPARISON",
+            measurement_document=apparatus,
+            measurement_bundle_sha256=measurement_bundle_hash,
+            trajectory_bundle_sha256=digest("trajectory-bundle"),
+            parameter_bindings=tampered,
+            compatibility_evidence=compatibility_evidence,
+            compatibility_status=TORUS_READY,
+            missing_fields=[],
+        )

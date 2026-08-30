@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/yps/e0/detection_2d_bundle.schema.json",
-  "title": "YPS E0R hash-bound two-dimensional detection bundle",
+  "title": "YPS E0R2 timing- and provenance-bound two-dimensional detection bundle",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema_id", "data_origin", "run_id", "attempt_id", "apparatus_revision",
     "camera_rig_file", "camera_rig_sha256", "raw_video_files", "detector",
     "array_file", "array_sha256", "fields", "sample_count", "camera_ids",
-    "marker_ids", "covariance_convention"
+    "marker_ids", "timing_convention", "invalid_reason_codes", "covariance_convention"
   ],
   "properties": {
-    "schema_id": {"const": "YPS-E0-DETECTION-2D-BUNDLE-1.0"},
+    "schema_id": {"const": "YPS-E0-DETECTION-2D-BUNDLE-1.1"},
     "data_origin": {"enum": ["MEASURED", "SYNTHETIC_REAL_SHAPE_FIXTURE"]},
     "run_id": {"type": "string", "minLength": 1},
     "attempt_id": {"type": "string", "minLength": 1},
@@ -46,7 +46,7 @@
     "array_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "fields": {
       "type": "object",
-      "minProperties": 6,
+      "minProperties": 14,
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
@@ -61,6 +61,14 @@
     "sample_count": {"type": "integer", "minimum": 1},
     "camera_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
     "marker_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "timing_convention": {"const": "ALIGNED_SAMPLE_AXIS_WITH_PER_CAMERA_RAW_AND_SYNC_METADATA"},
+    "invalid_reason_codes": {
+      "const": [
+        "VALID", "OCCLUDED", "LOW_CONFIDENCE", "DROPPED_FRAME",
+        "OUTSIDE_CALIBRATION_DOMAIN", "BEHIND_CAMERA", "DETECTOR_FAILURE",
+        "SYNC_INVALID", "OTHER_INVALID"
+      ]
+    },
     "covariance_convention": {"const": "PIXEL_UV_2X2_PER_CAMERA_MARKER_SAMPLE"}
   }
 }

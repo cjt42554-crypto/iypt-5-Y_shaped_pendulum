@@ -15,7 +15,7 @@ E0 直接复用既有[实验门最小测量清单](../F0_正式整理与解析�
 | 四个振幅层、每级至少 5 次 | 直接引用 | 3:2 主矩阵与升级停止规则 |
 | 失张、接近和接触筛查 | 直接引用 | 事件代码、检测下限、第一事件截断与失败记录 |
 | 从低复杂度模型开始判别 | 直接引用 | Torus/Cable 只读适配和 `OUT_OF_MODEL_DOMAIN` |
-| 原始数据、配置、代码和结论可追踪 | 直接引用 | acquisition attempt、SHA-256、manifest 和原始/处理数据关系 |
+| 原始数据、配置、代码和结论可追踪 | 直接引用 | planned slot、actual attempt、逐帧时间、交叉核验身份与 SHA-256 链 |
 | 实验门五项通过条件 | 保持为最终实验门 | E0-A1 至 E0-A10 只验证准备包 |
 
 ## 3. E0 新增而既有清单未冻结的内容
@@ -24,12 +24,12 @@ E0 新增以下执行合同：
 
 1. 每一个测量量的机器字段、来源类型和条件必填关系；
 2. 第一轮 70 条结果型运行的 run ID、机器冻结的释放振幅、几何分配和分析预注册；
-3. 每个 pilot/full-round repeat、失败 attempt 与 retry parent 的采集 ledger；
-4. 世界坐标、完整 Brown--Conrady 相机、帧时间和双目三角化数据合同；
-5. 原始视频到 2D detection、逐帧 $2\times2$ covariance 和 3D $3\times3$ covariance 的哈希链；
+3. 每个 pilot/full-round repeat 的计划 slot、实际 attempt、进行中 campaign、硬停止 disposition 与 retry parent 的采集 ledger；
+4. 世界坐标、完整 Brown--Conrady 相机、逐相机原始/对齐帧时间、掉帧和双目三角化数据合同；
+5. 原始视频到 2D detection、逐帧 $2\times2$ covariance 和 3D $3\times3$ covariance 的 schema 校验、身份交叉核验与哈希链；
 6. 大型数组 NPZ 与紧凑 JSON manifest 的分离；
-7. `YPS-EXPERIMENT-COMMON-OBSERVABLES-1.1` 共同比较接口；
-8. 测量 ID、测量 bundle、派生方法、轨迹和兼容性证据到正式输入的绑定；
+7. `YPS-EXPERIMENT-COMMON-OBSERVABLES-1.2` 共同比较接口及 trajectory source identity 核验；
+8. 测量 ID、测量 bundle、实际派生内容及其 canonical hash、轨迹和兼容性证据到正式输入的绑定；
 9. 正式 Torus/Cable 输入不兼容时的失败关闭状态；
 10. 合成夹具不得升级为实验结论的机器检查。
 

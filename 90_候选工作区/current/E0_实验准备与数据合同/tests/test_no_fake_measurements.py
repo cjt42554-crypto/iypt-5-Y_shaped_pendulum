@@ -47,6 +47,6 @@ def test_synthetic_self_test_cannot_emit_experiment_pass():
     result = synthetic_self_test(REPOSITORY_ROOT)
     encoded = json.dumps(result, sort_keys=True)
     assert result["data_origin"] == "SYNTHETIC_REAL_SHAPE_FIXTURE"
-    assert result["status"].startswith("E0R_SYNTHETIC_REAL_SHAPE_SELF_TEST_PASS")
+    assert result["status"].startswith("E0R2_SYNTHETIC_REAL_SHAPE_SELF_TEST_PASS")
     assert "EXPERIMENT_PASS" not in encoded
     assert result["claim_ceiling"] == "IMPLEMENTATION_AND_SYNTHETIC_REAL_SHAPE_FIXTURE_ONLY"

@@ -171,91 +171,294 @@ def acquisition_document(camera_rig_sha256: str) -> dict:
         "apparatus_revision": APPARATUS_REVISION,
         "camera_rig_sha256": camera_rig_sha256,
     }
+    attempts = [
+        {
+            **common,
+            "attempt_id": "P02-R01-A00",
+            "repeat_index": 1,
+            "status": "COMPLETED",
+            "started_at": "2030-01-01T00:10:00Z",
+            "ended_at": "2030-01-01T00:10:09Z",
+            "raw_files": [
+                {
+                    "path": "cam_a_repeat_01.mp4",
+                    "media_type": "video/mp4",
+                    "sha256": digest("video-a-r1"),
+                },
+                {
+                    "path": "cam_b_repeat_01.mp4",
+                    "media_type": "video/mp4",
+                    "sha256": digest("video-b-r1"),
+                },
+            ],
+            "evidence_state": "COMPLETE_RAW_DATA_RETAINED",
+            "failure": None,
+            "retry_parent_id": None,
+            "corrective_action": None,
+        },
+        {
+            **common,
+            "attempt_id": "P02-R02-A00",
+            "repeat_index": 2,
+            "status": "FAILED",
+            "started_at": "2030-01-01T00:12:00Z",
+            "ended_at": "2030-01-01T00:12:02Z",
+            "raw_files": [
+                {
+                    "path": "cam_a_repeat_02_failed.mp4",
+                    "media_type": "video/mp4",
+                    "sha256": digest("video-a-r2-failed"),
+                },
+                {
+                    "path": "cam_b_repeat_02_failed.mp4",
+                    "media_type": "video/mp4",
+                    "sha256": digest("video-b-r2-failed"),
+                },
+            ],
+            "evidence_state": "PARTIAL_RAW_DATA_RETAINED",
+            "failure": {
+                "stage": "ACQUISITION",
+                "reason_code": "STOP_EXCESSIVE_OCCLUSION",
+                "occurred_at": "2030-01-01T00:12:02Z",
+                "operator_note": "Synthetic marker occlusion injected for retry-lineage coverage.",
+            },
+            "retry_parent_id": None,
+            "corrective_action": "Reposition the second camera before retrying the same repeat.",
+        },
+        {
+            **common,
+            "attempt_id": "P02-R02-A01",
+            "repeat_index": 2,
+            "status": "COMPLETED",
+            "started_at": "2030-01-01T00:14:00Z",
+            "ended_at": "2030-01-01T00:14:09Z",
+            "raw_files": [
+                {
+                    "path": "cam_a_repeat_02_retry.mp4",
+                    "media_type": "video/mp4",
+                    "sha256": digest("video-a-r2-retry"),
+                },
+                {
+                    "path": "cam_b_repeat_02_retry.mp4",
+                    "media_type": "video/mp4",
+                    "sha256": digest("video-b-r2-retry"),
+                },
+            ],
+            "evidence_state": "COMPLETE_RAW_DATA_RETAINED",
+            "failure": None,
+            "retry_parent_id": "P02-R02-A00",
+            "corrective_action": "Second camera repositioned; retry retained a new attempt identity.",
+        },
+    ]
     return {
-        "schema_id": "YPS-E0-ACQUISITION-ATTEMPTS-1.0",
+        "schema_id": "YPS-E0-ACQUISITION-LEDGER-1.1",
         "data_origin": "SYNTHETIC_REAL_SHAPE_FIXTURE",
         "contains_measured_values": False,
         "campaign_id": "SYNTHETIC_E0R_PILOT",
+        "campaign_status": "COMPLETED",
         "preregistration": {
             "plan_id": "E0_PILOT_V1",
             "plan_file": "04_GEOMETRY_AND_PILOT_PROTOCOL.md",
             "plan_sha256": digest("frozen-pilot-protocol"),
         },
         "apparatus_revision": APPARATUS_REVISION,
+        "planned_slots": [
+            {
+                "slot_id": "P02",
+                "repeat_index": 1,
+                "operation": common["operation"],
+                "release_target_id": common["release_target_id"],
+                "state": "COMPLETED",
+                "disposition_reason_code": None,
+                "governing_attempt_id": None,
+                "linked_attempt_ids": ["P02-R01-A00"],
+            },
+            {
+                "slot_id": "P02",
+                "repeat_index": 2,
+                "operation": common["operation"],
+                "release_target_id": common["release_target_id"],
+                "state": "COMPLETED",
+                "disposition_reason_code": None,
+                "governing_attempt_id": None,
+                "linked_attempt_ids": ["P02-R02-A00", "P02-R02-A01"],
+            },
+        ],
+        "attempts": attempts,
+    }
+
+
+def p00_failure_document() -> dict:
+    attempt_id = "P00-R01-A00"
+    reason = "STOP_CAMERA_CALIBRATION"
+    return {
+        "schema_id": "YPS-E0-ACQUISITION-LEDGER-1.1",
+        "data_origin": "SYNTHETIC_REAL_SHAPE_FIXTURE",
+        "contains_measured_values": False,
+        "campaign_id": "SYNTHETIC_P00_FAILURE",
+        "campaign_status": "HARD_STOPPED",
+        "preregistration": {
+            "plan_id": "E0_PILOT_V1",
+            "plan_file": "04_GEOMETRY_AND_PILOT_PROTOCOL.md",
+            "plan_sha256": digest("frozen-pilot-protocol"),
+        },
+        "apparatus_revision": APPARATUS_REVISION,
+        "planned_slots": [
+            {
+                "slot_id": "P00",
+                "repeat_index": 1,
+                "operation": "calibration_board_and_sync_flash_batch_start",
+                "release_target_id": "NO_RELEASE_CALIBRATION",
+                "state": "FAILED_FINAL",
+                "disposition_reason_code": reason,
+                "governing_attempt_id": attempt_id,
+                "linked_attempt_ids": [attempt_id],
+            },
+            {
+                "slot_id": "P01",
+                "repeat_index": 1,
+                "operation": "static_rig_recording_60_s",
+                "release_target_id": "NO_RELEASE_STATIC",
+                "state": "NOT_STARTED_DUE_TO_STOP",
+                "disposition_reason_code": reason,
+                "governing_attempt_id": attempt_id,
+                "linked_attempt_ids": [],
+            },
+        ],
         "attempts": [
             {
-                **common,
-                "attempt_id": "P02-R01-A00",
+                "slot_id": "P00",
+                "attempt_id": attempt_id,
                 "repeat_index": 1,
+                "operation": "calibration_board_and_sync_flash_batch_start",
+                "release_target_id": "NO_RELEASE_CALIBRATION",
+                "status": "FAILED",
+                "started_at": "2030-01-01T00:00:00Z",
+                "ended_at": "2030-01-01T00:00:03Z",
+                "operator_id": "SYNTHETIC_OPERATOR",
+                "raw_files": [],
+                "evidence_state": "NO_RAW_DATA_CREATED",
+                "failure": {
+                    "stage": "CALIBRATION",
+                    "reason_code": reason,
+                    "occurred_at": "2030-01-01T00:00:03Z",
+                    "operator_note": "Calibration failed before a valid rig or raw file existed.",
+                },
+                "retry_parent_id": None,
+                "corrective_action": "Inspect the calibration target before a new attempt.",
+                "apparatus_revision": APPARATUS_REVISION,
+                "camera_rig_sha256": None,
+            }
+        ],
+    }
+
+
+def mid_campaign_stop_document(camera_rig_sha256: str) -> dict:
+    p00_id = "P00-R01-A00"
+    stop_id = "P01-R01-A00"
+    reason = "STOP_SAFETY"
+    common_preregistration = {
+        "plan_id": "E0_PILOT_V1",
+        "plan_file": "04_GEOMETRY_AND_PILOT_PROTOCOL.md",
+        "plan_sha256": digest("frozen-pilot-protocol"),
+    }
+    return {
+        "schema_id": "YPS-E0-ACQUISITION-LEDGER-1.1",
+        "data_origin": "SYNTHETIC_REAL_SHAPE_FIXTURE",
+        "contains_measured_values": False,
+        "campaign_id": "SYNTHETIC_MID_CAMPAIGN_STOP",
+        "campaign_status": "HARD_STOPPED",
+        "preregistration": common_preregistration,
+        "apparatus_revision": APPARATUS_REVISION,
+        "planned_slots": [
+            {
+                "slot_id": "P00",
+                "repeat_index": 1,
+                "operation": "calibration_board_and_sync_flash_batch_start",
+                "release_target_id": "NO_RELEASE_CALIBRATION",
+                "state": "COMPLETED",
+                "disposition_reason_code": None,
+                "governing_attempt_id": None,
+                "linked_attempt_ids": [p00_id],
+            },
+            {
+                "slot_id": "P01",
+                "repeat_index": 1,
+                "operation": "static_rig_recording_60_s",
+                "release_target_id": "NO_RELEASE_STATIC",
+                "state": "FAILED_FINAL",
+                "disposition_reason_code": reason,
+                "governing_attempt_id": stop_id,
+                "linked_attempt_ids": [stop_id],
+            },
+            {
+                "slot_id": "P01",
+                "repeat_index": 2,
+                "operation": "static_rig_recording_60_s",
+                "release_target_id": "NO_RELEASE_STATIC",
+                "state": "NOT_STARTED_DUE_TO_STOP",
+                "disposition_reason_code": reason,
+                "governing_attempt_id": stop_id,
+                "linked_attempt_ids": [],
+            },
+            {
+                "slot_id": "P02",
+                "repeat_index": 1,
+                "operation": "small_near_fast_mode_release",
+                "release_target_id": "PILOT_FAST_SMALL",
+                "state": "NOT_STARTED_DUE_TO_STOP",
+                "disposition_reason_code": reason,
+                "governing_attempt_id": stop_id,
+                "linked_attempt_ids": [],
+            },
+        ],
+        "attempts": [
+            {
+                "slot_id": "P00",
+                "attempt_id": p00_id,
+                "repeat_index": 1,
+                "operation": "calibration_board_and_sync_flash_batch_start",
+                "release_target_id": "NO_RELEASE_CALIBRATION",
                 "status": "COMPLETED",
-                "started_at": "2030-01-01T00:10:00Z",
-                "ended_at": "2030-01-01T00:10:09Z",
+                "started_at": "2030-01-01T00:00:00Z",
+                "ended_at": "2030-01-01T00:00:10Z",
+                "operator_id": "SYNTHETIC_OPERATOR",
                 "raw_files": [
                     {
-                        "path": "cam_a_repeat_01.mp4",
+                        "path": "calibration_board.mp4",
                         "media_type": "video/mp4",
-                        "sha256": digest("video-a-r1"),
-                    },
-                    {
-                        "path": "cam_b_repeat_01.mp4",
-                        "media_type": "video/mp4",
-                        "sha256": digest("video-b-r1"),
-                    },
+                        "sha256": digest("p00-calibration-video"),
+                    }
                 ],
+                "evidence_state": "COMPLETE_RAW_DATA_RETAINED",
                 "failure": None,
                 "retry_parent_id": None,
                 "corrective_action": None,
+                "apparatus_revision": APPARATUS_REVISION,
+                "camera_rig_sha256": camera_rig_sha256,
             },
             {
-                **common,
-                "attempt_id": "P02-R02-A00",
-                "repeat_index": 2,
+                "slot_id": "P01",
+                "attempt_id": stop_id,
+                "repeat_index": 1,
+                "operation": "static_rig_recording_60_s",
+                "release_target_id": "NO_RELEASE_STATIC",
                 "status": "FAILED",
-                "started_at": "2030-01-01T00:12:00Z",
-                "ended_at": "2030-01-01T00:12:02Z",
-                "raw_files": [
-                    {
-                        "path": "cam_a_repeat_02_failed.mp4",
-                        "media_type": "video/mp4",
-                        "sha256": digest("video-a-r2-failed"),
-                    },
-                    {
-                        "path": "cam_b_repeat_02_failed.mp4",
-                        "media_type": "video/mp4",
-                        "sha256": digest("video-b-r2-failed"),
-                    },
-                ],
+                "started_at": "2030-01-01T00:01:00Z",
+                "ended_at": "2030-01-01T00:01:02Z",
+                "operator_id": "SYNTHETIC_OPERATOR",
+                "raw_files": [],
+                "evidence_state": "NO_RAW_DATA_CREATED",
                 "failure": {
-                    "stage": "ACQUISITION",
-                    "reason_code": "STOP_EXCESSIVE_OCCLUSION",
-                    "occurred_at": "2030-01-01T00:12:02Z",
-                    "operator_note": "Synthetic marker occlusion injected for retry-lineage coverage.",
+                    "stage": "SAFETY",
+                    "reason_code": reason,
+                    "occurred_at": "2030-01-01T00:01:02Z",
+                    "operator_note": "A synthetic safety stop occurred before recording began.",
                 },
                 "retry_parent_id": None,
-                "corrective_action": "Reposition the second camera before retrying the same repeat.",
-            },
-            {
-                **common,
-                "attempt_id": "P02-R02-A01",
-                "repeat_index": 2,
-                "status": "COMPLETED",
-                "started_at": "2030-01-01T00:14:00Z",
-                "ended_at": "2030-01-01T00:14:09Z",
-                "raw_files": [
-                    {
-                        "path": "cam_a_repeat_02_retry.mp4",
-                        "media_type": "video/mp4",
-                        "sha256": digest("video-a-r2-retry"),
-                    },
-                    {
-                        "path": "cam_b_repeat_02_retry.mp4",
-                        "media_type": "video/mp4",
-                        "sha256": digest("video-b-r2-retry"),
-                    },
-                ],
-                "failure": None,
-                "retry_parent_id": "P02-R02-A00",
-                "corrective_action": "Second camera repositioned; retry retained a new attempt identity.",
+                "corrective_action": "End the campaign and record all later slots as not started.",
+                "apparatus_revision": APPARATUS_REVISION,
+                "camera_rig_sha256": camera_rig_sha256,
             },
         ],
     }
@@ -299,21 +502,39 @@ def detection_arrays(camera_rig: dict) -> tuple[dict[str, np.ndarray], dict[str,
     covariance = np.zeros((sample_count, 2, marker_count, 2, 2), dtype=float)
     covariance[..., 0, 0] = 0.04
     covariance[..., 1, 1] = 0.04
+    aligned_time = np.repeat(truth["time_s"][:, None], 2, axis=1)
+    invalid_reason = np.where(valid, "VALID", "OUTSIDE_CALIBRATION_DOMAIN")
     arrays = {
         "time_s": truth["time_s"],
+        "frame_index": np.repeat(np.arange(sample_count, dtype=np.int64)[:, None], 2, axis=1),
+        "raw_timestamp_s": aligned_time.copy(),
+        "aligned_timestamp_s": aligned_time.copy(),
+        "sync_event_id": np.full((sample_count, 2), "SYNTHETIC_COMMON_EVENT"),
+        "sync_offset_s": np.zeros((sample_count, 2), dtype=float),
+        "sync_uncertainty_s": np.full((sample_count, 2), 2.0e-5),
+        "dropped_frame_flag": np.zeros((sample_count, 2), dtype=bool),
         "pixels_px": pixels,
         "pixel_covariance_px2": covariance,
         "valid_mask": valid,
         "occlusion_mask": np.zeros_like(valid),
         "detection_score": np.full(valid.shape, 0.99),
+        "invalid_reason": invalid_reason,
     }
     units = {
         "time_s": "s",
+        "frame_index": "1",
+        "raw_timestamp_s": "s",
+        "aligned_timestamp_s": "s",
+        "sync_event_id": "code",
+        "sync_offset_s": "s",
+        "sync_uncertainty_s": "s",
+        "dropped_frame_flag": "1",
         "pixels_px": "px",
         "pixel_covariance_px2": "px^2",
         "valid_mask": "1",
         "occlusion_mask": "1",
         "detection_score": "1",
+        "invalid_reason": "code",
     }
     return arrays, units
 
