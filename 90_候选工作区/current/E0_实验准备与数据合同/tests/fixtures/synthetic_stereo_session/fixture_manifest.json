@@ -1,8 +1,0 @@
-{
-  "schema_id": "YPS-E0-SYNTHETIC-FIXTURE-1.0",
-  "data_origin": "SYNTHETIC",
-  "fixture_id": "SYNTHETIC_STEREO_AND_TWO_MODE_V1",
-  "purpose": "Implementation test only; not experimental or physical evidence",
-  "generated_at_test_runtime": true,
-  "contains_measured_values": false
-}
