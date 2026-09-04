@@ -1,0 +1,220 @@
+baseline=7e137a8ddab6390d42303a1351f3dd5e7eb38bbb
+workflow=e5401c1db6eb262db70a87127a759ce24db51bc7
+run=33929505573
+Python=3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]
+Preserved README research/physics body verbatim; source theories, programs and existing evidence unchanged.
+Previous apply run 33929242540 passed 113 tests but did not publish: quoted UTF-8 filenames tripped the scope check. This run retains all scope checks and repeats validation.
+PASS: four active entry documents have existing local link targets and paired code fences. Not a full Markdown parser.
+$ python -m pip install -e . cwd=02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver
+Obtaining file:///home/runner/work/iypt-5-Y_shaped_pendulum/iypt-5-Y_shaped_pendulum/02_%E6%A8%A1%E6%8B%9F%E7%A8%8B%E5%BA%8F/01_%E5%89%8D%E5%90%91%E9%A2%84%E6%B5%8B%E6%95%B0%E5%80%BC%E6%B1%82%E8%A7%A3%E5%99%A8/y_pendulum_forward_solver
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting numpy>=1.24 (from y-pendulum-forward-solver==2.0.0)
+  Downloading numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting scipy>=1.10 (from y-pendulum-forward-solver==2.0.0)
+  Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting matplotlib>=3.6 (from y-pendulum-forward-solver==2.0.0)
+  Downloading matplotlib-3.11.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (80 kB)
+Collecting contourpy>=1.0.1 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading contourpy-1.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.28.2 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading fonttools-4.64.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (123 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading kiwisolver-1.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.2 kB)
+Collecting packaging>=20.0 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pillow>=9 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+Collecting pyparsing>=3 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib>=3.6->y-pendulum-forward-solver==2.0.0)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading matplotlib-3.11.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (10.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.0/10.0 MB 185.8 MB/s  0:00:00
+Downloading contourpy-1.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (362 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.64.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.4/5.4 MB 236.0 MB/s  0:00:00
+Downloading kiwisolver-1.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 217.6 MB/s  0:00:00
+Downloading numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 319.0 MB/s  0:00:00
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 285.9 MB/s  0:00:00
+Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 305.9 MB/s  0:00:00
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Building wheels for collected packages: y-pendulum-forward-solver
+  Building editable for y-pendulum-forward-solver (pyproject.toml): started
+  Building editable for y-pendulum-forward-solver (pyproject.toml): finished with status 'done'
+  Created wheel for y-pendulum-forward-solver: filename=y_pendulum_forward_solver-2.0.0-0.editable-py3-none-any.whl size=3408 sha256=d1392a405510bc37b2575087ed0ded5b227502de195bba2baf01ad6f67f6dde7
+  Stored in directory: /tmp/pip-ephem-wheel-cache-60pq6dhi/wheels/30/58/75/9ef41f40672d521f3edb11ae16d5bd06d61826becef4051711
+Successfully built y-pendulum-forward-solver
+Installing collected packages: six, pyparsing, pillow, packaging, numpy, kiwisolver, fonttools, cycler, scipy, python-dateutil, contourpy, matplotlib, y-pendulum-forward-solver
+
+Successfully installed contourpy-1.3.3 cycler-0.12.1 fonttools-4.64.0 kiwisolver-1.5.1 matplotlib-3.11.1 numpy-2.5.2 packaging-26.3 pillow-12.3.0 pyparsing-3.3.2 python-dateutil-2.9.0.post0 scipy-1.18.1 six-1.17.0 y-pendulum-forward-solver-2.0.0
+
+exit=0
+$ python -m pip freeze
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.64.0
+kiwisolver==1.5.1
+matplotlib==3.11.1
+numpy==2.5.2
+packaging==26.3
+pillow==12.3.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+scipy==1.18.1
+six==1.17.0
+-e git+https://github.com/cjt42554-crypto/iypt-5-Y_shaped_pendulum@e5401c1db6eb262db70a87127a759ce24db51bc7#egg=y_pendulum_forward_solver&subdirectory=02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver
+
+exit=0
+$ python -m unittest discover -s tests -v cwd=02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver
+test_derivative_matches_activation (test_activation.ActivationTests.test_derivative_matches_activation) ... ok
+test_piecewise_endpoints_and_primitive (test_activation.ActivationTests.test_piecewise_endpoints_and_primitive) ... ok
+test_tension_and_dissipation_are_nonnegative (test_activation.ActivationTests.test_tension_and_dissipation_are_nonnegative) ... ok
+test_actual_run_uses_solver_mesh_work_and_explicit_dynamic_scale (test_audit_energy.CableAuditTests.test_actual_run_uses_solver_mesh_work_and_explicit_dynamic_scale) ... ok
+test_spd_condition_number_reuses_eigenspectrum_without_svd (test_audit_energy.CableAuditTests.test_spd_condition_number_reuses_eigenspectrum_without_svd) ... ok
+test_empty_samples_and_zero_time (test_audit_energy.IndependentLedgerTests.test_empty_samples_and_zero_time) ... ok
+test_final_work_independent_of_output_grid (test_audit_energy.IndependentLedgerTests.test_final_work_independent_of_output_grid) ... ok
+test_polynomial_power_exact_on_nonuniform_accepted_mesh (test_audit_energy.IndependentLedgerTests.test_polynomial_power_exact_on_nonuniform_accepted_mesh) ... ok
+test_rejects_extrapolation_and_nonfinite_power (test_audit_energy.IndependentLedgerTests.test_rejects_extrapolation_and_nonfinite_power) ... ok
+test_air_time_envelope_overflow_is_physical_invalid_input (test_cable.CableTests.test_air_time_envelope_overflow_is_physical_invalid_input) ... ok
+test_cross_family_simultaneous_machine_zeros_are_all_reported (test_cable.CableTests.test_cross_family_simultaneous_machine_zeros_are_all_reported) ... ok
+test_custom_exit_guard_returns_half_open_interval (test_cable.CableTests.test_custom_exit_guard_returns_half_open_interval) ... ok
+test_exact_theory_identity_is_required (test_cable.CableTests.test_exact_theory_identity_is_required) ... ok
+test_force_envelope_overflow_is_physical_invalid_input (test_cable.CableTests.test_force_envelope_overflow_is_physical_invalid_input) ... ok
+test_identical_simultaneous_custom_guards_are_both_reported (test_cable.CableTests.test_identical_simultaneous_custom_guards_are_both_reported) ... ok
+test_internal_force_is_translation_covariant (test_cable.CableTests.test_internal_force_is_translation_covariant) ... ok
+test_internal_residual_is_axial_energy_gradient (test_cable.CableTests.test_internal_residual_is_axial_energy_gradient) ... ok
+test_large_rate_margin_does_not_inflate_material_root_tie (test_cable.CableTests.test_large_rate_margin_does_not_inflate_material_root_tie) ... ok
+test_large_unrelated_custom_margin_does_not_inflate_zero_tolerance (test_cable.CableTests.test_large_unrelated_custom_margin_does_not_inflate_zero_tolerance) ... ok
+test_mass_is_symmetric_positive_and_point_masses_once (test_cable.CableTests.test_mass_is_symmetric_positive_and_point_masses_once) ... ok
+test_moving_support_mass_coupling_is_present (test_cable.CableTests.test_moving_support_mass_coupling_is_present) ... ok
+test_multiple_physical_input_failures_are_aggregated (test_cable.CableTests.test_multiple_physical_input_failures_are_aggregated) ... ok
+test_noncanonical_numerics_is_not_mislabeled_physical_invalid_input (test_cable.CableTests.test_noncanonical_numerics_is_not_mislabeled_physical_invalid_input) ... ok
+test_nonpositive_initial_exit_guard_is_physical_invalid_input (test_cable.CableTests.test_nonpositive_initial_exit_guard_is_physical_invalid_input) ... ok
+test_numerical_config_failure_does_not_become_physical_invalid_input (test_cable.CableTests.test_numerical_config_failure_does_not_become_physical_invalid_input) ... ok
+test_postrun_guard_failure_keeps_only_samples_strictly_before_detection (test_cable.CableTests.test_postrun_guard_failure_keeps_only_samples_strictly_before_detection) ... ok
+test_shared_y_topology_is_exact (test_cable.CableTests.test_shared_y_topology_is_exact) ... ok
+test_short_whole_run_and_energy_power_account (test_cable.CableTests.test_short_whole_run_and_energy_power_account) ... ok
+test_slack_to_taut_transition_keeps_one_continuous_state (test_cable.CableTests.test_slack_to_taut_transition_keeps_one_continuous_state) ... ok
+test_small_positive_unrelated_guard_is_not_reported_as_simultaneous (test_cable.CableTests.test_small_positive_unrelated_guard_is_not_reported_as_simultaneous) ... ok
+test_software_envelope_errors_are_not_physical_invalid_input (test_cable.CableTests.test_software_envelope_errors_are_not_physical_invalid_input) ... ok
+test_static_hold_gradient_threshold_is_not_ignored (test_cable.CableTests.test_static_hold_gradient_threshold_is_not_ignored) ... ok
+test_static_hold_release_uses_frozen_potential_and_zero_velocity (test_cable.CableTests.test_static_hold_release_uses_frozen_potential_and_zero_velocity) ... ok
+test_strings_and_booleans_are_not_coerced_in_vector_or_field_inputs (test_cable.CableTests.test_strings_and_booleans_are_not_coerced_in_vector_or_field_inputs) ... ok
+test_support_motion_overflow_is_physical_invalid_input (test_cable.CableTests.test_support_motion_overflow_is_physical_invalid_input) ... ok
+test_unhashable_enum_values_are_structurally_rejected (test_cable.CableTests.test_unhashable_enum_values_are_structurally_rejected) ... ok
+test_unknown_or_malformed_numerical_field_is_rejected_without_crash (test_cable.CableTests.test_unknown_or_malformed_numerical_field_is_rejected_without_crash) ... ok
+test_unknown_physical_field_is_not_silently_ignored (test_cable.CableTests.test_unknown_physical_field_is_not_silently_ignored) ... ok
+test_upper_branch_label_exchange_preserves_bob_trajectory (test_cable.CableTests.test_upper_branch_label_exchange_preserves_bob_trajectory) ... ok
+test_canonical_invalid_ensemble_is_reported_without_partial_directory (test_cli.CLITests.test_canonical_invalid_ensemble_is_reported_without_partial_directory) ... ok
+test_duplicate_json_keys_are_rejected_without_output (test_cli.CLITests.test_duplicate_json_keys_are_rejected_without_output) ... ok
+test_malformed_json_is_a_friendly_input_rejection (test_cli.CLITests.test_malformed_json_is_a_friendly_input_rejection) ... ok
+test_nonstandard_nan_ensemble_is_rejected_without_output_or_traceback (test_cli.CLITests.test_nonstandard_nan_ensemble_is_rejected_without_output_or_traceback) ... ok
+test_nonstandard_nan_run_input_is_rejected_without_output_or_traceback (test_cli.CLITests.test_nonstandard_nan_run_input_is_rejected_without_output_or_traceback) ... ok
+test_all_three_dynamics_defect_budgets_are_independently_gated (test_convergence.ConvergenceTests.test_all_three_dynamics_defect_budgets_are_independently_gated) ... ok
+test_cable_event_signature_maps_material_location_across_meshes (test_convergence.ConvergenceTests.test_cable_event_signature_maps_material_location_across_meshes) ... ok
+test_cable_guard_registry_requires_element_material_and_custom_fields (test_convergence.ConvergenceTests.test_cable_guard_registry_requires_element_material_and_custom_fields) ... ok
+test_cable_same_sign_small_local_defects_accumulate (test_convergence.ConvergenceTests.test_cable_same_sign_small_local_defects_accumulate) ... ok
+test_cable_topology_and_full_field_shapes_cannot_hide_differences (test_convergence.ConvergenceTests.test_cable_topology_and_full_field_shapes_cannot_hide_differences) ... ok
+test_canonical_rate_difference_cannot_hide_behind_same_bob_output (test_convergence.ConvergenceTests.test_canonical_rate_difference_cannot_hide_behind_same_bob_output) ... ok
+test_completed_result_is_bound_to_candidate_horizon (test_convergence.ConvergenceTests.test_completed_result_is_bound_to_candidate_horizon) ... ok
+test_derived_invariants_and_summaries_are_recomputed_from_state (test_convergence.ConvergenceTests.test_derived_invariants_and_summaries_are_recomputed_from_state) ... ok
+test_duplicate_quadrature_levels_fail_closed (test_convergence.ConvergenceTests.test_duplicate_quadrature_levels_fail_closed) ... ok
+test_each_dynamics_certificate_has_its_own_time_trend_gate (test_convergence.ConvergenceTests.test_each_dynamics_certificate_has_its_own_time_trend_gate) ... ok
+test_event_contract_rejects_empty_or_inconsistent_root_evidence (test_convergence.ConvergenceTests.test_event_contract_rejects_empty_or_inconsistent_root_evidence) ... ok
+test_event_guard_budget_rejects_root_missing_from_trigger_set (test_convergence.ConvergenceTests.test_event_guard_budget_rejects_root_missing_from_trigger_set) ... ok
+test_event_guard_budget_still_checks_nontriggered_tangent_guard (test_convergence.ConvergenceTests.test_event_guard_budget_still_checks_nontriggered_tangent_guard) ... ok
+test_event_left_state_is_included_in_cross_level_cauchy_error (test_convergence.ConvergenceTests.test_event_left_state_is_included_in_cross_level_cauchy_error) ... ok
+test_event_payload_must_match_independently_recomputed_left_state (test_convergence.ConvergenceTests.test_event_payload_must_match_independently_recomputed_left_state) ... ok
+test_event_refinement_integration_passes_candidate_to_event_contract (test_convergence.ConvergenceTests.test_event_refinement_integration_passes_candidate_to_event_contract) ... ok
+test_fake_shared_identity_and_prefix_success_do_not_qualify (test_convergence.ConvergenceTests.test_fake_shared_identity_and_prefix_success_do_not_qualify) ... ok
+test_initial_binding_and_dynamics_defect_reject_frozen_false_trajectory (test_convergence.ConvergenceTests.test_initial_binding_and_dynamics_defect_reject_frozen_false_trajectory) ... ok
+test_missing_validation_thresholds_fail_closed (test_convergence.ConvergenceTests.test_missing_validation_thresholds_fail_closed) ... ok
+test_near_event_observation_uses_left_state_without_crashing (test_convergence.ConvergenceTests.test_near_event_observation_uses_left_state_without_crashing) ... ok
+test_non_json_or_cyclic_base_config_is_rejected_before_hashing (test_convergence.ConvergenceTests.test_non_json_or_cyclic_base_config_is_rejected_before_hashing) ... ok
+test_observation_cannot_be_deleted_or_detached_from_time_map (test_convergence.ConvergenceTests.test_observation_cannot_be_deleted_or_detached_from_time_map) ... ok
+test_only_finest_level_uses_absolute_accuracy_bounds (test_convergence.ConvergenceTests.test_only_finest_level_uses_absolute_accuracy_bounds) ... ok
+test_production_config_is_the_finest_level (test_convergence.ConvergenceTests.test_production_config_is_the_finest_level) ... ok
+test_refinement_study_separates_coarse_validity_from_finest_accuracy (test_convergence.ConvergenceTests.test_refinement_study_separates_coarse_validity_from_finest_accuracy) ... ok
+test_string_numerics_are_not_repaired_by_refinement_generation (test_convergence.ConvergenceTests.test_string_numerics_are_not_repaired_by_refinement_generation) ... ok
+test_string_validation_threshold_is_rejected (test_convergence.ConvergenceTests.test_string_validation_threshold_is_rejected) ... ok
+test_torus_guard_registry_cannot_consistently_omit_one_component (test_convergence.ConvergenceTests.test_torus_guard_registry_cannot_consistently_omit_one_component) ... ok
+test_unhashable_model_id_is_structurally_rejected (test_convergence.ConvergenceTests.test_unhashable_model_id_is_structurally_rejected) ... ok
+test_validation_grid_is_independent_of_sparse_presentation_output (test_convergence.ConvergenceTests.test_validation_grid_is_independent_of_sparse_presentation_output) ... ok
+test_wrong_result_model_cannot_qualify_refinement (test_convergence.ConvergenceTests.test_wrong_result_model_cannot_qualify_refinement) ... ok
+test_huge_json_integer_weight_is_rejected_without_exception (test_ensemble.EnsembleTests.test_huge_json_integer_weight_is_rejected_without_exception) ... ok
+test_invalid_physical_member_is_retained_with_trajectory_contract (test_ensemble.EnsembleTests.test_invalid_physical_member_is_retained_with_trajectory_contract) ... ok
+test_omitted_member_method_uses_closed_default_identity (test_ensemble.EnsembleTests.test_omitted_member_method_uses_closed_default_identity) ... ok
+test_recursive_non_json_or_nonfinite_metadata_is_rejected (test_ensemble.EnsembleTests.test_recursive_non_json_or_nonfinite_metadata_is_rejected) ... ok
+test_relative_weights_with_overflowing_sum_are_rejected (test_ensemble.EnsembleTests.test_relative_weights_with_overflowing_sum_are_rejected) ... ok
+test_unexpected_member_exception_is_retained_and_later_members_run (test_ensemble.EnsembleTests.test_unexpected_member_exception_is_retained_and_later_members_run) ... ok
+test_unsafe_or_duplicate_member_identity_rejects_entire_spec (test_ensemble.EnsembleTests.test_unsafe_or_duplicate_member_identity_rejects_entire_spec) ... ok
+test_writer_preserves_each_member_and_refuses_overwrite (test_ensemble.EnsembleTests.test_writer_preserves_each_member_and_refuses_overwrite) ... ok
+test_wrong_result_model_cannot_qualify_the_set (test_ensemble.EnsembleTests.test_wrong_result_model_cannot_qualify_the_set) ... ok
+test_cable_algebraic_reactions_live_in_diagnostics_not_derived (test_io.IOTests.test_cable_algebraic_reactions_live_in_diagnostics_not_derived) ... ok
+test_nonempty_unknown_output_directory_is_not_overwritten (test_io.IOTests.test_nonempty_unknown_output_directory_is_not_overwritten) ... ok
+test_result_round_trip_contains_identity_and_arrays (test_io.IOTests.test_result_round_trip_contains_identity_and_arrays) ... ok
+test_writer_rejects_config_mutated_after_run (test_io.IOTests.test_writer_rejects_config_mutated_after_run) ... ok
+test_camera_partial_domain_is_reported_per_sample (test_observations.ObservationTests.test_camera_partial_domain_is_reported_per_sample) ... ok
+test_invalid_camera_does_not_call_physical_state (test_observations.ObservationTests.test_invalid_camera_does_not_call_physical_state) ... ok
+test_nonfinite_distortion_output_is_never_marked_valid (test_observations.ObservationTests.test_nonfinite_distortion_output_is_never_marked_valid) ... ok
+test_equilibrium_is_stationary_and_tensions_match (test_torus.TorusTests.test_equilibrium_is_stationary_and_tensions_match) ... ok
+test_explicit_null_method_is_not_mislabeled_as_the_default (test_torus.TorusTests.test_explicit_null_method_is_not_mislabeled_as_the_default) ... ok
+test_extreme_time_grids_fail_closed_before_allocation_or_integration (test_torus.TorusTests.test_extreme_time_grids_fail_closed_before_allocation_or_integration) ... ok
+test_extreme_uniform_observation_grid_is_observation_invalid_only (test_torus.TorusTests.test_extreme_uniform_observation_grid_is_observation_invalid_only) ... ok
+test_first_tension_loss_stops_without_model_switch (test_torus.TorusTests.test_first_tension_loss_stops_without_model_switch) ... ok
+test_non_object_config_roots_are_structurally_rejected (test_torus.TorusTests.test_non_object_config_roots_are_structurally_rejected) ... ok
+test_noncanonical_numerics_is_not_mislabeled_physical_invalid_input (test_torus.TorusTests.test_noncanonical_numerics_is_not_mislabeled_physical_invalid_input) ... ok
+test_noncanonical_observation_is_not_a_physical_invalid_input (test_torus.TorusTests.test_noncanonical_observation_is_not_a_physical_invalid_input) ... ok
+test_nontrivial_run_geometry_energy_and_tension (test_torus.TorusTests.test_nontrivial_run_geometry_energy_and_tension) ... ok
+test_omitted_method_binds_the_actual_default_integrator_identity (test_torus.TorusTests.test_omitted_method_binds_the_actual_default_integrator_identity) ... ok
+test_sampled_tangency_audit_is_independent_of_root_finder (test_torus.TorusTests.test_sampled_tangency_audit_is_independent_of_root_finder) ... ok
+test_simultaneous_zero_tensions_are_all_reported (test_torus.TorusTests.test_simultaneous_zero_tensions_are_all_reported) ... ok
+test_small_mass_does_not_turn_nonzero_tensions_into_simultaneous_roots (test_torus.TorusTests.test_small_mass_does_not_turn_nonzero_tensions_into_simultaneous_roots) ... ok
+test_software_envelope_errors_are_not_physical_invalid_input (test_torus.TorusTests.test_software_envelope_errors_are_not_physical_invalid_input) ... ok
+test_strings_and_booleans_are_not_coerced_into_physical_numbers (test_torus.TorusTests.test_strings_and_booleans_are_not_coerced_into_physical_numbers) ... ok
+test_tangential_tension_touch_is_not_reported_as_completed (test_torus.TorusTests.test_tangential_tension_touch_is_not_reported_as_completed) ... ok
+test_tilted_support_axis_is_rejected (test_torus.TorusTests.test_tilted_support_axis_is_rejected) ... ok
+test_tiny_vertical_support_axis_is_not_hidden_by_absolute_tolerance (test_torus.TorusTests.test_tiny_vertical_support_axis_is_not_hidden_by_absolute_tolerance) ... ok
+test_unhashable_method_values_are_rejected_without_dispatch_crash (test_torus.TorusTests.test_unhashable_method_values_are_rejected_without_dispatch_crash) ... ok
+test_unhashable_observation_type_does_not_abort_physical_run (test_torus.TorusTests.test_unhashable_observation_type_does_not_abort_physical_run) ... ok
+test_unknown_or_malformed_numerical_field_is_rejected_without_crash (test_torus.TorusTests.test_unknown_or_malformed_numerical_field_is_rejected_without_crash) ... ok
+test_whole_config_must_be_finite_acyclic_canonical_json (test_torus.TorusTests.test_whole_config_must_be_finite_acyclic_canonical_json) ... ok
+
+----------------------------------------------------------------------
+Ran 113 tests in 116.762s
+
+OK
+
+exit=0
+$ git diff --exit-code -- 01_最终理论 02_模拟程序 90_候选工作区/交接说明_history.md
+
+exit=0
+NOT RUN: high-fidelity campaigns, numerical convergence, GPU hardware, apparatus experiments, Pandoc parse and visual rendering.
+$ git diff --check
+
+exit=0
+$ git fetch origin main
+From https://github.com/cjt42554-crypto/iypt-5-Y_shaped_pendulum
+ * branch            main       -> FETCH_HEAD
+
+exit=0
+PASS: bounded scope; no original evidence/theory/program changes; history is empty; remote main unchanged before commit.
