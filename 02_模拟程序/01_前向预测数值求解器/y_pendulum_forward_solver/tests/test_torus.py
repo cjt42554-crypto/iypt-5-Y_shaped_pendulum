@@ -349,11 +349,45 @@ class TorusTests(unittest.TestCase):
         )
         config["observation"] = None
         result = run_config(config)
-        self.assertEqual(result.contract_status, [])
-        self.assertEqual(result.numerical_status, "EVENT_UNRESOLVED")
-        self.assertAlmostEqual(result.tau, tangent_time, places=12)
+        # A double root is ill-conditioned: last-bit platform differences can
+        # either create a tiny sign change (located by SciPy) or leave the
+        # sampled guard at roundoff (caught by our completion audit). Both
+        # outcomes must exclude completion.
+        self.assertIn(
+            (tuple(result.contract_status), result.numerical_status),
+            (((), "EVENT_UNRESOLVED"), (("OUT_OF_SCOPE",), "SUCCESS_EVENT")),
+        )
+        if result.numerical_status == "EVENT_UNRESOLVED":
+            self.assertAlmostEqual(result.tau, tangent_time, places=12)
+        else:
+            self.assertLess(abs(result.tau - tangent_time), 1e-6)
+            event = result.events[0]
+            self.assertLessEqual(
+                abs(event["guard_values"]["T_B_ZERO"]),
+                event["guard_zero_tolerances"]["T_B_ZERO"],
+            )
         self.assertTrue(np.all(result.time < result.tau))
         self.assertIn("T_B_ZERO", result.events[0]["triggers"])
+
+    def test_sampled_tangency_audit_is_independent_of_root_finder(self):
+        from y_pendulum_forward.torus import (
+            _torus_completed_sample_failure, validate_torus_config, torus_derived,
+        )
+        issues, params = validate_torus_config(self.config)
+        self.assertEqual(issues, [])
+        assert params is not None
+        alpha = math.atan(params.a_A / params.h)
+        states = np.array([[0., 0., 0., 0.], [alpha, 0., 0., 0.]])
+        derived = torus_derived(params, states)
+        failure = _torus_completed_sample_failure(
+            params, np.array([0., 0.3]), states, derived,
+        )
+        self.assertIsNotNone(failure)
+        assert failure is not None
+        self.assertEqual(failure["numerical_status"], "EVENT_UNRESOLVED")
+        self.assertEqual(failure["sample_index"], 1)
+        self.assertEqual(failure["time"], 0.3)
+        self.assertIn("T_B_ZERO", failure["triggers"])
 
 
 if __name__ == "__main__":

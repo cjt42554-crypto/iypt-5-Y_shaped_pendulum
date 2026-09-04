@@ -593,10 +593,10 @@ class CableTests(unittest.TestCase):
         call_count = 0
         detected_bob = None
 
-        def inject_late_sample_failure(model, time, samples):
+        def inject_late_sample_failure(model, time, samples, **kwargs):
             nonlocal call_count, detected_bob
             state, derived, diagnostics = _sample_cable(
-                model, time, samples
+                model, time, samples, **kwargs
             )
             if call_count == 0:
                 self.assertGreater(time.size, 2)

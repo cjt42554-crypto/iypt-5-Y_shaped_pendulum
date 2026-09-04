@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Callable
 import warnings
+from time import perf_counter
 
 import numpy as np
 from scipy.integrate import cumulative_trapezoid, solve_ivp
@@ -17,6 +18,7 @@ from scipy.linalg import cho_factor, cho_solve
 from scipy.optimize import minimize
 
 from .activation import activation_primitive, tension_components
+from .energy_ledger import integrate_power_ledger
 from .contracts import (
     MAX_ELEMENTS_PER_BRANCH,
     MAX_STATIC_ITERATIONS,
@@ -801,15 +803,24 @@ class CableFEM:
         symmetry = np.linalg.norm(self.M_ff - self.M_ff.T, ord=np.inf)
         try:
             self.mass_factor = cho_factor(self.M_ff, lower=True, check_finite=True)
-            minimum_eigenvalue = float(np.linalg.eigvalsh(self.M_ff)[0])
+            eigenvalues = np.linalg.eigvalsh(self.M_ff)
+            minimum_eigenvalue = float(eigenvalues[0])
+            maximum_eigenvalue = float(eigenvalues[-1])
+            # For this symmetric positive-definite matrix, kappa_2 is exactly
+            # lambda_max/lambda_min. Do not repeat the diagnostic with an SVD.
+            condition_number = maximum_eigenvalue / minimum_eigenvalue
         except Exception as exc:
             self.numerical_issues.append(ValidationIssue("MASS_MATRIX", "assembled.M_ff", repr(exc), "symmetric positive definite"))
             self.mass_factor = None
             minimum_eigenvalue = float("nan")
+            maximum_eigenvalue = float("nan")
+            condition_number = float("nan")
         self.mass_diagnostics = {
             "symmetry_inf_norm": float(symmetry),
             "minimum_eigenvalue": minimum_eigenvalue,
-            "condition_number": float(np.linalg.cond(self.M_ff)) if self.M_ff.size else float("nan"),
+            "maximum_eigenvalue": maximum_eigenvalue,
+            "condition_number": condition_number,
+            "condition_number_method": "SPD_eigenvalue_ratio_2_norm",
         }
 
     def _initialize_state(self):
@@ -1336,7 +1347,9 @@ def run_cable(
     numerical_schema_issues = _validate_cable_numerics(numerics)
     if numerical_schema_issues:
         return _invalid_numerical_issues(config, numerical_schema_issues, identity)
+    setup_started = perf_counter()
     model = CableFEM(physical, numerics)
+    setup_elapsed = perf_counter() - setup_started
     if model.numerical_issues:
         issue_codes = {issue.code for issue in model.numerical_issues}
         if "INITIAL_GUARD" in issue_codes:
@@ -1423,6 +1436,7 @@ def run_cable(
         )
     )
     event_names, event_functions = model.event_functions()
+    integration_started = perf_counter()
     try:
         with warnings.catch_warnings(record=True) as caught_warnings:
             warnings.simplefilter("always")
@@ -1449,6 +1463,7 @@ def run_cable(
             diagnostics={"mass_matrix": model.mass_diagnostics},
             metadata=identity,
         )
+    integration_elapsed = perf_counter() - integration_started
     solver_warnings = [
         {"category": item.category.__name__, "message": str(item.message)}
         for item in caught_warnings
@@ -1520,8 +1535,22 @@ def run_cable(
     include_end = completed or not contract_status
     time = _output_times(tau, numeric_values["output_dt"], include_end=include_end)
     y_samples = np.asarray(sol.sol(time), dtype=float).T if time.size else np.empty((0, model.y0.size))
+    diagnostic_started = perf_counter()
+
+    def power_at(t_value: float) -> np.ndarray:
+        snapshot = model.diagnostic_snapshot(t_value, np.asarray(sol.sol(t_value), dtype=float))
+        dissipations = snapshot["D_ax"] + snapshot["D_string"] + snapshot["D_b"]
+        other = -dissipations + snapshot["P_air"] + snapshot["P_ext"]
+        physical_power = other + snapshot["P_base"]
+        algebraic_power = other + snapshot["P_base_algebraic"]
+        absolute_ports = (abs(snapshot["D_ax"]) + abs(snapshot["D_string"]) + abs(snapshot["D_b"])
+                          + abs(snapshot["P_air"]) + abs(snapshot["P_ext"])
+                          + max(abs(snapshot["P_base"]), abs(snapshot["P_base_algebraic"])))
+        return np.array([physical_power, algebraic_power, absolute_ports])
+
     try:
-        state, derived, diagnostics = _sample_cable(model, time, y_samples)
+        power_ledger, quadrature_evaluations = integrate_power_ledger(sol.t, time, power_at)
+        state, derived, diagnostics = _sample_cable(model, time, y_samples, power_ledger=power_ledger)
     except Exception as exc:
         return SimulationResult(
             model_id="FWD-CABLE-1.0",
@@ -1546,6 +1575,10 @@ def run_cable(
         )
     solver_diagnostic_fields = dict(
         solver_message=sol.message,
+        accepted_steps=max(0, int(sol.t.size) - 1),
+        power_quadrature_evaluations=quadrature_evaluations,
+        timings_seconds={"setup": setup_elapsed, "integration": integration_elapsed,
+                         "diagnostics_and_power_quadrature": perf_counter() - diagnostic_started},
         nfev=int(sol.nfev),
         njev=int(getattr(sol, "njev", 0)),
         nlu=int(getattr(sol, "nlu", 0)),
@@ -1594,7 +1627,7 @@ def run_cable(
         events = [numerical_sample_failure]
         time = time[:failure_index]
         y_samples = y_samples[:failure_index]
-        state, derived, diagnostics = _sample_cable(model, time, y_samples)
+        state, derived, diagnostics = _sample_cable(model, time, y_samples, power_ledger=power_ledger[:failure_index])
         diagnostics.update(solver_diagnostic_fields)
         diagnostics["postrun_failure"] = numerical_sample_failure
 
@@ -1710,7 +1743,7 @@ def _physical_derived_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray):
+def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, power_ledger: np.ndarray | None = None):
     sample_count = time.size
     node_count = len(model.node_ids)
     positions = np.empty((sample_count, node_count, 3))
@@ -1861,21 +1894,31 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray):
                 "triggers": violation_triggers,
             }
     derived: dict[str, Any] = {"branches": branch_output, **scalar, **vector}
-    if sample_count >= 2:
-        physical_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + scalar["P_base"] + scalar["P_ext"]
-        algebraic_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + algebraic_base_power + scalar["P_ext"]
-        physical_integral = cumulative_trapezoid(physical_power, time, initial=0.0)
-        algebraic_integral = cumulative_trapezoid(algebraic_power, time, initial=0.0)
-        physical_residual = scalar["E_F"] - scalar["E_F"][0] - physical_integral
-        algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - algebraic_integral
-        work_scale = max(
-            float(np.trapezoid(np.abs(physical_power), time)),
-            float(np.trapezoid(np.abs(algebraic_power), time)),
-        )
+    physical_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + scalar["P_base"] + scalar["P_ext"]
+    algebraic_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + algebraic_base_power + scalar["P_ext"]
+    sampled_physical_integral = (cumulative_trapezoid(physical_power, time, initial=0.0)
+                                 if sample_count >= 2 else np.zeros(sample_count))
+    sampled_algebraic_integral = (cumulative_trapezoid(algebraic_power, time, initial=0.0)
+                                  if sample_count >= 2 else np.zeros(sample_count))
+    if power_ledger is not None:
+        if power_ledger.shape != (sample_count, 3) or not np.isfinite(power_ledger).all():
+            raise ValueError("power_ledger must contain three finite cumulative powers per sample")
+        # Residuals and the independent integral share the first returned time.
+        ledger = power_ledger - power_ledger[0] if sample_count else power_ledger
+        physical_integral, algebraic_integral = ledger[:, 0], ledger[:, 1]
+        work_scale = float(ledger[-1, 2]) if sample_count else 0.0
+        power_method = "accepted_step_dense_output_gauss_legendre_3"
     else:
-        physical_residual = np.zeros(sample_count)
-        algebraic_residual = np.zeros(sample_count)
-        work_scale = 0.0
+        # Direct snapshot callers do not supply a dense solution. Label this
+        # lower-order fallback explicitly instead of implying solver-mesh work.
+        physical_integral, algebraic_integral = sampled_physical_integral, sampled_algebraic_integral
+        absolute_ports = (np.abs(scalar["D_ax"]) + np.abs(scalar["D_string"]) + np.abs(scalar["D_b"])
+                          + np.abs(scalar["P_air"]) + np.abs(scalar["P_ext"])
+                          + np.maximum(np.abs(scalar["P_base"]), np.abs(algebraic_base_power)))
+        work_scale = float(np.trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
+        power_method = "output_sample_trapezoid_fallback"
+    physical_residual = scalar["E_F"] - scalar["E_F"][0] - physical_integral if sample_count else np.empty(0)
+    algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - algebraic_integral if sample_count else np.empty(0)
     total_mass = (
         model.p.junction_mass
         + model.p.bob_mass
@@ -1900,11 +1943,20 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray):
         if sample_count
         else 0.0
     )
+    # The existing independent convergence checker reconstructs trapezoid
+    # work from stored state. Preserve those legacy fields with explicit labels;
+    # accepted-step work and its residuals are exported separately below.
+    legacy_work_scale = max(float(np.trapezoid(np.abs(physical_power), time)),
+                            float(np.trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
+    legacy_physical_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_physical_integral if sample_count else np.empty(0)
+    legacy_algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_algebraic_integral if sample_count else np.empty(0)
+    legacy_max_physical = float(np.max(np.abs(legacy_physical_residual))) if sample_count else None
+    legacy_max_algebraic = float(np.max(np.abs(legacy_algebraic_residual))) if sample_count else None
     energy_scale = max(
         gravitational_scale,
         energy_variation,
         stored_scale,
-        work_scale,
+        legacy_work_scale,
         np.finfo(float).tiny,
     )
     max_physical_residual = (
@@ -1913,18 +1965,38 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray):
     max_algebraic_residual = (
         float(np.max(np.abs(algebraic_residual))) if sample_count else None
     )
+    kinetic_scale = float(np.max(np.abs(scalar["T_kin"]))) if sample_count else 0.0
+    dynamic_scale = max(kinetic_scale, energy_variation, work_scale)
+    dynamic_resolved = dynamic_scale > 64 * np.finfo(float).eps * max(gravitational_scale, stored_scale, np.finfo(float).tiny)
     diagnostics = {
+        "power_quadrature_method": power_method,
+        "legacy_energy_residual_method": "output_sample_trapezoid_independently_recomputed_by_convergence_checker",
+        "absolute_port_exchange_work": float(work_scale),
+        "max_accepted_step_absolute_energy_power_residual_physical_traction": max_physical_residual if power_ledger is not None else None,
+        "max_accepted_step_absolute_energy_power_residual_algebraic_reaction": max_algebraic_residual if power_ledger is not None else None,
+        "power_integral_physical_traction": physical_integral,
+        "power_integral_algebraic_reaction": algebraic_integral,
+        "max_output_trapezoid_work_difference": (max(
+            float(np.max(np.abs(physical_integral - sampled_physical_integral))),
+            float(np.max(np.abs(algebraic_integral - sampled_algebraic_integral)))) if sample_count else None),
+        "dynamic_energy_scale": float(dynamic_scale),
+        "dynamic_energy_scale_definition": "max(peak kinetic energy, observed energy variation, absolute port work); not equilibrium excess energy",
+        "dynamic_energy_scale_resolved": bool(dynamic_resolved),
+        "max_dynamic_relative_energy_power_residual_physical_traction": float(max_physical_residual / dynamic_scale) if sample_count and dynamic_resolved else None,
+        "max_dynamic_relative_energy_power_residual_algebraic_reaction": float(max_algebraic_residual / dynamic_scale) if sample_count and dynamic_resolved else None,
+        "max_gravity_relative_energy_power_residual_physical_traction": float(max_physical_residual / gravitational_scale) if sample_count and gravitational_scale > 0 else None,
+        "max_gravity_relative_energy_power_residual_algebraic_reaction": float(max_algebraic_residual / gravitational_scale) if sample_count and gravitational_scale > 0 else None,
         "energy_scale": float(energy_scale),
         "energy_scale_components": {
             "gravitational": float(gravitational_scale),
             "energy_variation": float(energy_variation),
             "stored": float(stored_scale),
-            "absolute_work_integral": float(work_scale),
+            "absolute_work_integral": float(legacy_work_scale),
         },
-        "max_absolute_energy_power_residual_physical_traction": max_physical_residual,
-        "max_absolute_energy_power_residual_algebraic_reaction": max_algebraic_residual,
-        "max_relative_energy_power_residual_physical_traction": float(max_physical_residual / energy_scale) if sample_count else None,
-        "max_relative_energy_power_residual_algebraic_reaction": float(max_algebraic_residual / energy_scale) if sample_count else None,
+        "max_absolute_energy_power_residual_physical_traction": legacy_max_physical,
+        "max_absolute_energy_power_residual_algebraic_reaction": legacy_max_algebraic,
+        "max_relative_energy_power_residual_physical_traction": float(legacy_max_physical / energy_scale) if sample_count else None,
+        "max_relative_energy_power_residual_algebraic_reaction": float(legacy_max_algebraic / energy_scale) if sample_count else None,
         "min_D_ax": float(np.min(scalar["D_ax"])) if sample_count else None,
         "min_D_string": float(np.min(scalar["D_string"])) if sample_count else None,
         "min_D_b": float(np.min(scalar["D_b"])) if sample_count else None,
