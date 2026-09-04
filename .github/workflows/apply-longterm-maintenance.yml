@@ -1,0 +1,255 @@
+name: Apply long-term research maintenance
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/apply-longterm-maintenance.yml]
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Apply and check the maintenance revision
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess, os, sys
+          root=Path.cwd()
+          base='7e137a8ddab6390d42303a1351f3dd5e7eb38bbb'
+          def git(*a): return subprocess.check_output(['git',*a],text=True).strip()
+          assert git('rev-parse','HEAD^')==base, 'Concurrent update: reread main'
+          assert git('hash-object','AGENTS.md')=='3f086a7b1ed2f5d1210cb2d1eacb7b81b6effe03'
+          assert git('hash-object','README.md')=='9f65891510c51c218e08e5162cd51c3d9db583ed'
+          assert git('hash-object','90_候选工作区/交接说明_current.md')=='dae3126458a98138973a06fa9a0b8e4d0cfd304d'
+          assert Path('90_候选工作区/交接说明_history.md').stat().st_size==0
+          agents='''# 长期个人科研项目工作规范
+
+          本仓库是长期个人科研项目。目标是可持续积累、可复现的实验预测研究，不是一次性候选稿，也不按多人生产软件强加审批层。当前用户指令决定任务范围；科学结论由方程、代码、数据和验证证据决定。
+
+          ## 1. 入口与职责
+
+          先读本文件与 [当前交接](90_候选工作区/交接说明_current.md)，首次接手再读 [项目主页](README.md) 的定位和物理假设，其余内容按任务定位，不机械通读全部归档。
+
+          - README 是稳定介绍、物理假设和导航，不逐轮复制测试计数与提交流水账。
+          - AGENTS 是稳定规范，仅工作方式变化时更新，不在每轮追加任务状态。
+          - current 是唯一活动状态入口，保留未完成问题、理论/实现差距、下一步与验收条件，不能只描述最后一次操作。
+          - 理论、源码、配置与原始证据是各自事实来源。current 的摘要不能覆盖事实，“最终理论”的目录名不是验证证书。
+          - 旧报告、嵌套说明和归档中的授权、暂停、阶段口令与临时机器配置只是历史背景，不是当前全局权限。仍有效的科学限制须在 current 中保留。
+
+          ## 2. 修改与范围
+
+          开始时检查分支、HEAD、远端和未提交内容；连接器工作先读远端版本与目标文件。不要覆盖、暂存或提交他人的未完成改动。
+
+          用户要求修复、实现、接续或修改时，可以在任务范围内直接维护正式理论、源码、测试、配置和说明；不再默认把正式目录视为只读，不要求普通修复重复取得“提升正式”批准。仅要求审查或解释时，不擅自改科学内容。
+
+          候选区用于真正的替代模型、实验性实现与独立证据，不为普通修复复制整套正式代码。采用后指向唯一正式实现，并标明候选状态。不要仅为美观搬迁目录；必要重构同步修复活动引用。
+
+          一次任务围绕明确问题和验收推进。科学资格失败限制结论，但不禁止诊断、修复和小规模验证。昂贵计算先做有判别力的小试验。真实实验、费用或超出授权的长时设备占用另行确认，不把审批扩展到普通仓库编辑。
+
+          ## 3. 四层与验证
+
+          区分前向物理理论、数值实现、高保真参考与结构性研究。不同模型或后端不能无说明互换，高保真也不是实验真值。
+
+          修改方程或适用域时检查实现、配置、输出、测试与主页摘要。允许分阶段接入，但 current 必须写明“理论已改、程序未接入”和受影响输出，不能提前宣布功能完成。
+
+          - 管理/说明修改：差异、链接、格式和受影响脚本；不例行运行大型仿真。
+          - 理论修改：量纲、符号、能量、极限、适用条件及必要的独立代数或反例检查。
+          - 实现修改：针对原缺陷的回归与受影响测试；改变积分、事件、网格、通量或本构时补相应一致性和收敛检查。
+          - 定量结论：分别报告软件测试、数值收敛、标定、物理和留出实验验证。缺项不能用一个 PASS 总标签掩盖。
+
+          旧 PASS 仅绑定其源版本、输入、命令、环境与覆盖范围。通过、失败、跳过和未执行分别记录。不得删有效回归或放松物理阈值制造通过；阈值变更要有独立理由。校准与留出数据分离，不能用留出结果调参后仍称盲预测。
+
+          ## 4. 可复现证据
+
+          支撑结论的计算记录源 commit（有未提交差异时保存 patch）、模型标识、配置/哈希、初态或随机种子、工作目录和命令、实际依赖版本、相关硬件、结果/退出原因及证据路径。小任务可记在 current 或已有报告，不强制新增 manifest 或整套锁文件。
+
+          源码与轻量配置进入 Git。关键日志、最小反例、标定/留出划分要持久可取，不能只依赖会过期的 CI artifact 或个人绝对路径。大数据说明存储位置、校验和和恢复办法；Git 不是未入库数据的备份。冻结结果不原地改写，复算使用新位置并关联旧证据。
+
+          长时计算与自动提交分开，先确认版本、输入、资源与实际可用的续跑方式，结束后审阅结果再提交。保留关键失败原因，不随清理消失。
+
+          ## 5. 交接与历史
+
+          实质改变研究、实现、验证或留下接续工作时更新 current；只读说明和无后续影响的小格式修改不强制更新。current 应包含源基线、已有能力与边界、本轮改动、实际验证/证据、下一步及验收、阻塞项。没有新任务不等于研究问题已解决，不能用“无待交接”抹掉既有积压。
+
+          `交接说明_history.md` 按既有用户要求保持空白，默认不再追加或恢复旧内容。用 Git 与研究证据追溯，不维护第二套同义流水账：
+
+          ```bash
+          git log --oneline -- AGENTS.md README.md '90_候选工作区/交接说明_current.md'
+          git show <commit>:'90_候选工作区/交接说明_current.md'
+          ```
+
+          `90_候选工作区/current/` 是沿用的材料目录名，不代表其中所有历史任务仍活跃；材料管理见 [目录说明](90_候选工作区/README.md)。
+
+          ## 6. 提交与自动化
+
+          默认在 main 小步提交并直接 push，不强制分支、PR、签字或固定提交数量。确需隔离竞争方案时可短期分支，但交接合并目标，避免平行正式版本。
+
+          提交前审阅差异、明确暂存本轮文件并运行 `git diff --check`。push 前核对远端；遇到并发变动重新读取、整合并复验，不 force push，不重写他人历史，不用 reset/clean 消除未知改动。Git 数据 API 创建提交后，还须非强制更新远端 ref 才算发布。
+
+          CI 保持只读、有界。入口检查可每次运行；软件回归按相关文件变化触发并保留手动入口。大型收敛、GPU 与装置验证不自动随交接文字启动。临时修复工作流完成后移除，不留下定时写仓库的控制器。检查失败查原因，不简单删门禁。
+
+          最终报告使用简体中文，说明实际改动、验证边界、未完成项和 commit/push 结果。
+
+          ## 7. Markdown
+
+          默认 Zettlr、Pandoc Markdown；跨平台正文采用与 GFM 共同支持的普通语法。行内公式用 `$...$`，显示公式用独立成行的 `$$`。含未转义竖线的复杂公式不要放在表格中。不默认使用 GitHub Alerts、Obsidian、Mermaid 或网站专有扩展。列表、引用、围栏和表格前后保留空行。
+
+          运行适用文档检查；有 Pandoc 时对实质改写文档解析。复杂公式/表格按交付需要渲染，环境缺失时说明未执行项，不虚报验证。
+          '''
+          workspace='''# 候选工作与研究证据
+
+          本目录服务长期科研，保留既有路径。规则见 [AGENTS](../AGENTS.md)，活动工作只从 [current](交接说明_current.md) 进入。
+
+          current 是接手状态而非累积日志，必须保留未解决问题、理论/程序差距、证据位置与下一步验收。history 保持空白，历史查 Git 与对应证据，不恢复已清空的流水账。
+
+          `current/` 是历史沿用目录名，其中可有已完成修复、旧审查和证据；不是所有子目录都代表待办。未列为活动任务也不意味着材料可以删除。已有 archive 保持历史身份；没有 archive 的仓库不强建空目录。正式理论和程序分别在 `../01_最终理论/` 与 `../02_模拟程序/`。
+
+          普通修复直接改正式文件。独立候选或计算证据可沿用 `current/YYYY-MM-DD_主题/`，同日追加有意义后缀，不覆盖旧结果。在材料或 current 中注明待比较、已采用、未采用或历史证据，并提供源 commit、最小复现命令与结论边界。采用后链接唯一正式实现。
+
+          清理前检查活动引用、复现依赖和是否为唯一原始证据。归档不是每轮固定动作；移动时修复活动引用，不改写冻结快照。可重建缓存可按确认范围清理；实验原始数据、关键失败案例与支撑结论的日志必须有持久位置和校验信息，不能只依赖过期 CI artifact。
+          '''
+          current='''# 当前交接：Y 形摆
+
+          更新时间：2026-09-05。长期个人科研项目。本轮科学基线：`7e137a8ddab6390d42303a1351f3dd5e7eb38bbb`；管理修改不提升科学结论等级。
+
+          ## 已有能力与理论/程序差距
+
+          [前向理论](../01_最终理论/01-前向预测理论.md) 保留连续柔索与理想环面的核心方程、张力和能量结构。第 4.4、9.8 节已补张紧工作区、受载长度匹配、内部模态/初态、局部 Schur 补与观察窗相位预算；不是全非线性轨迹误差或全局适定性证明，也尚未针对目标装置计算。
+
+          [正式前向求解器](../02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/) 已有接受步功率积分、动态能量尺度和性能诊断。高保真空间/时间收敛、任意连续守卫完备性、松弛后强解延拓、接触后动力学和装置验证仍未完成。理想环面图谱、路径 F 限定结论和无接触静态参考不扩大适用范围。
+
+          ## 接续顺序与验收
+
+          1. **受载降阶对照，待实施**：指定张紧工况、参数来源和观察窗，计算受载平衡、内模频率及内部初态能量，同输入独立运行连续模型与环面。验收分别给数值细化、降阶轨迹和累计相位误差，不只比能量或短时图像。无装置参数时标明合成工况，不称实验预测。
+          2. **近失张与效率，未完成**：检查事件/输出步长敏感性、内部模态分离和实际时变伸长是否进入平滑带；先定位耗时再优化。验收包含有效步长/网格确实改变、首次退出工作区与未覆盖情况，不盲填稀疏 Jacobian 模式。
+          3. **扩模与装置验证，等待证据/测量**：仅在残差或量级预算需要时增加弯曲、接触等机制，分离标定与留出。缺测量不阻止前两项，也不生成虚构装置结果。
+
+          ## 既有证据与运行入口
+
+          [此前数值日志](current/2026-09-05_数值审查修复/validation.log) 记录 113 项求解器测试；[此前理论定稿复核](current/2026-09-05_前向理论修订/final-validation.txt) 记录 9 项代数/文档检查。旧记录不算本轮重跑。
+
+          在独立 Python 环境中，从仓库根目录执行：
+
+          ```bash
+          cd '02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver'
+          python -m pip install -e .
+          python -m unittest discover -s tests -v
+          ```
+
+          ## 本轮管理修改与验证
+
+          重写 AGENTS，取消正式目录默认只读；主页保留原物理假设，移除逐轮测试计数；新增候选区导航，使 current 保留跨轮未完成问题。history 继续零字节，原理论、程序与冻结证据不改。新增只读、有限时、可手动执行的 CPU 回归工作流，仅在前向程序或该工作流变化时触发，不宣称覆盖其他高保真程序或装置验证。
+
+          本轮实际检查、环境与结果见 [管理验证](current/2026-09-05_长期维护整理/validation.txt)。这是管理/软件检查，不是数值收敛或实验验证。详细变更查 Git；不为每轮更新 AGENTS，不新增重复台账。
+
+          ```bash
+          git log -3 --oneline
+          git log -1 --format='%H %s' -- '90_候选工作区/交接说明_current.md'
+          ```
+          '''
+          import textwrap
+          files={'AGENTS.md':textwrap.dedent(agents),'90_候选工作区/README.md':textwrap.dedent(workspace),'90_候选工作区/交接说明_current.md':textwrap.dedent(current)}
+          old=Path('README.md').read_text()
+          a,sep,b=old.partition('## 当前项目状态（截至 2026-09-05）\n'); assert sep
+          _,sep,body=b.partition('## 研究内容\n'); assert sep
+          status='''## 项目定位与阅读入口
+
+          这是**长期个人科研项目**，持续维护理论、实现、数值证据与实验预测能力，不是短期弃用原型，也不以生产软件式审批代替研究。
+
+          [当前交接](90_候选工作区/交接说明_current.md) 是动态进度、未解决问题、下一步与验证证据的唯一入口；[工作规范](AGENTS.md) 说明协作方式；[候选与证据目录](90_候选工作区/README.md) 说明材料归属。主页保留稳定研究介绍和物理假设，不逐轮复制测试计数或提交流水账。history 保持空白，历史用 Git 和原始证据追溯。
+
+          ## 当前研究边界
+
+          连续柔索和理想环面从初始时刻独立选定。实现已有接受步能量账本、动态能量尺度和性能诊断；理论已补张紧工作区、受载降阶与长时相位误差条件，但目标参数下的误差预算和自动认证尚未完成。
+
+          高保真收敛、任意连续守卫完备性、接触后动力学和装置验证不能由单元测试或代数检查推出。接续先做同输入、同观察窗的连续模型与环面对照，不默认堆叠弯曲、接触或混沌模型。
+
+          '''
+          files['README.md']=a+textwrap.dedent(status)+'## 研究内容\n'+body
+          wd='02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver'
+          ci='''name: CPU software regression
+          on:
+            push:
+              paths: ['02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/**', '.github/workflows/cpu-regression.yml']
+            pull_request:
+              paths: ['02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/**', '.github/workflows/cpu-regression.yml']
+            workflow_dispatch:
+          permissions:
+            contents: read
+          concurrency:
+            group: cpu-regression-${{ github.ref }}
+            cancel-in-progress: true
+          jobs:
+            cpu-tests:
+              runs-on: ubuntu-latest
+              timeout-minutes: 15
+              defaults:
+                run:
+                  working-directory: '02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver'
+              env:
+                MPLBACKEND: Agg
+                OMP_NUM_THREADS: '1'
+                OPENBLAS_NUM_THREADS: '1'
+              steps:
+                - uses: actions/checkout@v7
+                  with:
+                    persist-credentials: false
+                - uses: actions/setup-python@v7
+                  with:
+                    python-version: '3.12'
+                - run: python -m pip install -e .
+                - name: Record environment
+                  run: python --version && python -m pip freeze
+                - name: Software regression, not numerical or apparatus qualification
+                  run: python -m unittest discover -s tests -v
+          '''
+          files['.github/workflows/cpu-regression.yml']=textwrap.dedent(ci)
+          for p,t in files.items():
+              dest=Path(p); dest.parent.mkdir(parents=True,exist_ok=True); dest.write_text(t.rstrip()+'\n')
+          log=Path('90_候选工作区/current/2026-09-05_长期维护整理/validation.txt');log.parent.mkdir(parents=True,exist_ok=True)
+          logs=['baseline='+base,'workflow='+os.environ['GITHUB_SHA'],'run='+os.environ['GITHUB_RUN_ID'],'Python='+sys.version]
+          def record(s):
+              print(s,flush=True);logs.append(s);log.write_text('\n'.join(logs)+'\n')
+          def run(args,cwd=None):
+              record('$ '+' '.join(args)+((' cwd='+cwd) if cwd else ''))
+              r=subprocess.run(args,cwd=cwd,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+              record(r.stdout);record('exit='+str(r.returncode));assert r.returncode==0
+          record('Preserved README research/physics body verbatim; source theories, programs and existing evidence unchanged.')
+          import re
+          from urllib.parse import unquote,urlsplit
+          for p in ['AGENTS.md','README.md','90_候选工作区/README.md','90_候选工作区/交接说明_current.md']:
+              t=Path(p).read_text();assert sum(x.lstrip().startswith('```') for x in t.splitlines())%2==0
+              for target in re.findall(r'\]\(([^\s)]+)\)',t):
+                  u=urlsplit(target)
+                  if not u.scheme and not u.netloc and u.path: assert (Path(p).parent/unquote(u.path)).exists(),(p,target)
+          record('PASS: four active entry documents have existing local link targets and paired code fences. Not a full Markdown parser.')
+          run(['python','-m','pip','install','-e','.'],wd)
+          run(['python','-m','pip','freeze'])
+          env=os.environ;env['MPLBACKEND']='Agg';env['OMP_NUM_THREADS']='1';env['OPENBLAS_NUM_THREADS']='1'
+          run(['python','-m','unittest','discover','-s','tests','-v'],wd)
+          run(['git','diff','--exit-code','--','01_最终理论','02_模拟程序','90_候选工作区/交接说明_history.md'])
+          assert Path('90_候选工作区/交接说明_history.md').stat().st_size==0
+          record('NOT RUN: high-fidelity campaigns, numerical convergence, GPU hardware, apparatus experiments, Pandoc parse and visual rendering.')
+          tmp='.github/workflows/apply-longterm-maintenance.yml';Path(tmp).unlink()
+          run(['git','diff','--check'])
+          changed=set(git('diff','--name-only').splitlines());assert changed<=set(files)|{tmp}
+          assert not git('diff','--name-only','--','90_候选工作区/current')
+          run(['git','fetch','origin','main']);assert git('rev-parse','FETCH_HEAD')==os.environ['GITHUB_SHA'],'Concurrent main update; no force push'
+          record('PASS: bounded scope; no original evidence/theory/program changes; history is empty; remote main unchanged before commit.')
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+          subprocess.run(['git','add','--',*files,str(log)],check=True)
+          subprocess.run(['git','add','-u','--',tmp],check=True)
+          subprocess.run(['git','diff','--cached','--check'],check=True)
+          assert set(git('diff','--cached','--name-only').splitlines())==set(files)|{str(log),tmp}
+          subprocess.run(['git','commit','-m','chore: align long-term research workflow, handoff and scoped CPU CI'],check=True)
+          subprocess.run(['git','push','origin','HEAD:main'],check=True)
+          print('PUSHED_COMMIT='+git('rev-parse','HEAD'))
+          PY
