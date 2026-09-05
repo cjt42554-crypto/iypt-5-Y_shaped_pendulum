@@ -433,9 +433,8 @@ def main() -> None:
     project_root = script_path.parents[2]
     evidence_root = (
         project_root
-        / "90_候选工作区"
-        / "current"
-        / "验证与复现"
+        / "90_探索工作区"
+        / "_scratch"
         / "结构性理论"
     )
     results_dir = evidence_root / "results"

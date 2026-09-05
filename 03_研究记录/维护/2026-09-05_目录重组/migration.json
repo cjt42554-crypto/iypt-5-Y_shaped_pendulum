@@ -1,0 +1,2295 @@
+{
+  "schema": "iypt-layout-migration-v1",
+  "date": "2026-09-05",
+  "repository_problem": "5",
+  "reviewed_snapshot_commit": "4ff0301bee4ed214c935a39ad53c9449f15ec474",
+  "reviewed_content_sha256": "5991cb6f09fa9de27627c978051a6a37c2a09cd2167edc0dfcafc3ac6fec8a5f",
+  "executed_from_commit": "80f0664bd34e1c418a3d739ba5ad6cc6d8d8dd9e",
+  "prefixes": [
+    {
+      "old": "90_候选工作区/交接说明_current.md",
+      "new": "00_项目管理/交接说明_current.md"
+    },
+    {
+      "old": "90_候选工作区/交接说明_history.md",
+      "new": "00_项目管理/交接说明_history.md"
+    },
+    {
+      "old": "90_候选工作区/README.md",
+      "new": "03_研究记录/维护/2026-09-05_目录重组/旧候选区说明.md"
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_前向理论修订",
+      "new": "03_研究记录/维护/2026-09-05_前向理论修订"
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_数值审查修复",
+      "new": "03_研究记录/维护/2026-09-05_数值审查修复"
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_长期维护整理",
+      "new": "03_研究记录/维护/2026-09-05_长期维护整理"
+    },
+    {
+      "old": "90_候选工作区/current",
+      "new": "03_研究记录/专题"
+    },
+    {
+      "old": "90_候选工作区/archive",
+      "new": "03_研究记录/归档"
+    }
+  ],
+  "preserved_files": [
+    {
+      "old": "90_候选工作区/README.md",
+      "new": "03_研究记录/维护/2026-09-05_目录重组/旧候选区说明.md",
+      "sha256": "1b17e0e229da576f2b15d37d66159a167e21b86f206562c86a31aba533dcbc31",
+      "size": 1425
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_前向理论修订/check_theory.py",
+      "new": "03_研究记录/维护/2026-09-05_前向理论修订/check_theory.py",
+      "sha256": "9a7d624e234c382875140b777747d1e6fe3c80ee2869a718ca747983d2b92fbd",
+      "size": 3221
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_前向理论修订/final-validation.txt",
+      "new": "03_研究记录/维护/2026-09-05_前向理论修订/final-validation.txt",
+      "sha256": "c6c98a97b13fc0d966e85e1ecd882ae6da67d65503e8cbb2a7a1a58074d51d2a",
+      "size": 1001
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_前向理论修订/validation.txt",
+      "new": "03_研究记录/维护/2026-09-05_前向理论修订/validation.txt",
+      "sha256": "94d31c9498eaa57bf6bdcab240b2f888ae8a7bef7756f588ea7d37d712b092aa",
+      "size": 1108
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_数值审查修复/validation.log",
+      "new": "03_研究记录/维护/2026-09-05_数值审查修复/validation.log",
+      "sha256": "0751e729e9cdc725ec26f722058ad36ed68e32ada5533fffd8d4ddf227ab1649",
+      "size": 229
+    },
+    {
+      "old": "90_候选工作区/current/2026-09-05_长期维护整理/validation.txt",
+      "new": "03_研究记录/维护/2026-09-05_长期维护整理/validation.txt",
+      "sha256": "c966ed0d6c4903812550627ae78598b658019044f386403a1c46c9b2d5c94038",
+      "size": 24663
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/03-结构性理论_候选修订稿.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/03-结构性理论_候选修订稿.md",
+      "sha256": "ae176119f46841d67a201d5b848b3f786c159f56b255ef78e8f19904419e485f",
+      "size": 46535
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/03-结构性理论_证据等级勘误.patch",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/03-结构性理论_证据等级勘误.patch",
+      "sha256": "efb990109c7120dacfe616a35dd6186609afc6a8b496dd8d5836aaabf9f4023c",
+      "size": 14666
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/ERRATUM_README.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/ERRATUM_README.md",
+      "sha256": "dc01da4d63553204ae891a8334ff587abc440f448f6787bd012eb440425f3ea9",
+      "size": 2484
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/theory_patch_verification.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/theory_patch_verification.json",
+      "sha256": "8d74f1d05a40143998e3df1293d665c937d11a9f8af52ce539c0b26273c74937",
+      "size": 1225
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/verify_theory_erratum.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/01_正式理论证据勘误/verify_theory_erratum.py",
+      "sha256": "bed7f4011c24e2bb31294636e215ea9900258c01d721d17c7f89a0a0f33a4653",
+      "size": 4706
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/README.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/README.md",
+      "sha256": "2c599a176a8de954a9fcd3d10538e3d7b26790d4d1ff5491e80428812354e212",
+      "size": 3737
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/configs/atlas_v1.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/configs/atlas_v1.json",
+      "sha256": "77e3772badae667f22ed4a5ccd311b96bcfadeea54016d3ddefef5919524ca64",
+      "size": 1547
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/contracts/source_manifest_lock.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/contracts/source_manifest_lock.json",
+      "sha256": "043426361e3a3f418aa4f3370091589f9f5c4346724a90bdd5cff036abf39e2e",
+      "size": 4647
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/artifact_manifest.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/artifact_manifest.json",
+      "sha256": "8cb44a53a60002ea64294365e42c3a3c8700c66989e94e532338e7deab1cf414",
+      "size": 1399
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/atlas_results.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/atlas_results.json",
+      "sha256": "55a619b1e461532f70695bec537de4033eb90613392d215fb0ea008e1a0d010c",
+      "size": 45750
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/atlas_run_evidence.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/atlas_run_evidence.json",
+      "sha256": "3a773efd8f99067da3e970aa54e273ea6ba0d969d1e9573a73ca4e4580113162",
+      "size": 15836
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/atlas_summary.csv",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/atlas_summary.csv",
+      "sha256": "e4c59fc746a215d0b3cc6725c31d9a73d8439a9571aab8aa5126a61127fde8e4",
+      "size": 5103
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/compensation_accuracy.png",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/compensation_accuracy.png",
+      "sha256": "9a2282bb06cb98fc5fb7945b551f8f0ca7495cfd50c8103451c1fe424efa6a77",
+      "size": 80570
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/compensation_accuracy.svg",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/compensation_accuracy.svg",
+      "sha256": "a42d99cb309189a13f029bcd98c25f911cc9ea578828f5405dfc5a5916aa2166",
+      "size": 20666
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/phase_atlas_3to2.png",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/phase_atlas_3to2.png",
+      "sha256": "84d56868ff92f236b024098fc08ec58b549c23df15f4953c67526313f24975bd",
+      "size": 161519
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/phase_atlas_3to2.svg",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/figures/phase_atlas_3to2.svg",
+      "sha256": "89b8134a521d471580de57bcbe8c28d01349b2fed13fe9fe0f1a149bb2adac91",
+      "size": 70073
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/geometry_tolerance.csv",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full/geometry_tolerance.csv",
+      "sha256": "ab380a16c940509d6cdd9287eebca932abaeee9985ab2007d4078d0c5742163a",
+      "size": 370
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full_repeat_verification.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/outputs/full_repeat_verification.json",
+      "sha256": "f4fb1d58511730be974482e59e3cf60ff2b8db444c0a18110a4fb301459a3eb6",
+      "size": 2547
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/pyproject.toml",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/pyproject.toml",
+      "sha256": "8b3df442a61ea6373b1c394286c9cf5444aed591baafa62937d8fafeb68d2e89",
+      "size": 850
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/atlas_config.schema.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/atlas_config.schema.json",
+      "sha256": "0b8bdf92669163f9f1644b051fad88e62aa795706e244d047426ca867ad5f782",
+      "size": 5267
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/atlas_output.schema.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/atlas_output.schema.json",
+      "sha256": "c4eec1ebf55323c88a2edf03925c0c67f682f97816a495a4d3639bbc02ca8ed6",
+      "size": 10797
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/atlas_run_evidence.schema.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/atlas_run_evidence.schema.json",
+      "sha256": "a9ba0e875e41fc1ced907ac57a186ad6b3e0cd59546fa184cd8a3d8e0de9614c",
+      "size": 8751
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/source_manifest_lock.schema.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/schemas/source_manifest_lock.schema.json",
+      "sha256": "2d0e3402ae48a5978a54837023710682ea6c76c09f852e3b9b052feef65ef6cd",
+      "size": 2499
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/__init__.py",
+      "sha256": "1902bd7efdc8da5fdf8f198109e2a4790d7a02bb4b083df6b445c117c5fb4e01",
+      "size": 195
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/__main__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/__main__.py",
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "size": 30
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/atlas.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/atlas.py",
+      "sha256": "5a7f0ecb80ee56fecaa99b247e6ef8de20315cee55b4a6a1eb6cef9db3cfee09",
+      "size": 35691
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/backend.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/backend.py",
+      "sha256": "ab4dcfb7d2311fe9bae7fda1e0404a4d145575924a08ea99018309961f4d45bc",
+      "size": 5672
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/cli.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/cli.py",
+      "sha256": "626c25272a6665cdb5843c3b04e2ffb2ebfdbf66b3147eebf59604135d259674",
+      "size": 1067
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/source_manifest.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/src/y_pendulum_pattern_atlas/source_manifest.py",
+      "sha256": "850e829a422deda718e6de268589f83b52636ade12bc0a0e3eaabd11c09f0977",
+      "size": 8631
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/tests/test_atlas.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/tests/test_atlas.py",
+      "sha256": "0c4e9fdb5b2d2474a0f14d1dba5d44db1c85a1f8bd3cdb1d5606d2b7d6a866e7",
+      "size": 8233
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/tools/generate_source_manifest_lock.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/tools/generate_source_manifest_lock.py",
+      "sha256": "a783e9e0e02dcc20b6796b5fc6b79cf3e3caf3570bc5cc75ebc84c76668f8501",
+      "size": 1350
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/tools/verify_full_repeats.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/02_参数图谱正式化迁移稿/tools/verify_full_repeats.py",
+      "sha256": "8c8713a48e2e0dd7265bcc23f1695db196007db14c308c384593ef72dcc2f371",
+      "size": 6165
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/README.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/README.md",
+      "sha256": "29cb7e135350ef64729f29449c71568da1d4d2edb14227d783727ac8d2f446c5",
+      "size": 3756
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/contracts/static_reference_run_contract.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/contracts/static_reference_run_contract.json",
+      "sha256": "3146533908ee431dd3b04983fec9545f501ee19a140c2b2043be1a3c94c13425",
+      "size": 2312
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/migration_provenance.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/migration_provenance.json",
+      "sha256": "d9f4e8f51f2b0f6fe09a4e9362f2ba7affe530c9add221f3d428407e31b99482",
+      "size": 13145
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/model_identity.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/model_identity.json",
+      "sha256": "191eb0d07e15674cadf74a921f12af35bccb190a861d0eb475aef85c9f0af0d8",
+      "size": 1595
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/outputs/canonical_static_run_evidence.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/outputs/canonical_static_run_evidence.json",
+      "sha256": "6c938e39ae7eb763835d941ca005ee55ba09a23bc4242d9e29828632218bb441",
+      "size": 8825
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/pyproject.toml",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/pyproject.toml",
+      "sha256": "6c05daffb80590aee510b5148afda6dabda3d9fe0e50af7b270f1890406ef861",
+      "size": 790
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/runtime_matrix.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/runtime_matrix.json",
+      "sha256": "7d0d41752986763d30d0caa07ad3939052ff7ae1272a359cc9ab0182b2867cec",
+      "size": 3965
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/schemas/static_run_evidence.schema.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/schemas/static_run_evidence.schema.json",
+      "sha256": "62215ae5570b1785f326d103874c76448d65f858cdf6a4c36126856a6eda7188",
+      "size": 8393
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/__init__.py",
+      "sha256": "d2e9b0da1d20314e71f986106f6897ae11a9dad0bc9712f24b0d141781ba79fa",
+      "size": 1573
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/__init__.py",
+      "sha256": "dc054e41230cdf1db7331a2df3e4fc5a4b2ed79d3986ab19e628cf64f9303b74",
+      "size": 387
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/energy_gradient.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/energy_gradient.py",
+      "sha256": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
+      "size": 3100
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/statics.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/audit/statics.py",
+      "sha256": "89d520d67add050970e12dfd71d7ccf2fa83f236b447a5fabb18aab5705cdf13",
+      "size": 11367
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/__init__.py",
+      "sha256": "ff2f0745ab0a57f5b2d8d826995c07578066e7b0f00246e2cd8fe249fbaf9dea",
+      "size": 458
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/axial.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/axial.py",
+      "sha256": "4857ae8e917f874dc69591f5efd2c801f69472f0f161ce51afcdbc8e0d7806b7",
+      "size": 2619
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/bending.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/constitutive/bending.py",
+      "sha256": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
+      "size": 5277
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/identity.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/identity.py",
+      "sha256": "2210689022f685242bc828543719c84eb8e8baf18da34f71e0c1351e2eb2c170",
+      "size": 646
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/interface.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/interface.py",
+      "sha256": "659ceb8943928c9a798aac9386eec45eb1ca685f48b7283e34e58d2752e67b4b",
+      "size": 5862
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/loads.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/loads.py",
+      "sha256": "15d380e6eec7202c155cea1b52d25be868d9400dd28e72dd06904859301fa47b",
+      "size": 1604
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/mass.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/mass.py",
+      "sha256": "772901d8a7cc8c9ccdaacfdecb1461c93b6b6569a58809772b8dcc023668a351",
+      "size": 2105
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/__init__.py",
+      "sha256": "3fd49c83b7535f2fc00dbc560f4222bca73245bfe5e5e876f102d1d5c4de8145",
+      "size": 702
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/attachment.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/attachment.py",
+      "sha256": "ce59b2c9ce57e0232043de4216cbcccfc12c979c5b8247beabe5c27863cbbd0e",
+      "size": 2226
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/rotation.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/rigid/rotation.py",
+      "sha256": "6650a439c72afcf672eef74f2dc61fff92ecd8079c12a21856b13d198808c94f",
+      "size": 3398
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/state.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/state.py",
+      "sha256": "b30396df00b914ac5521f03bb2ef9ee732481924df0aaf205adc8349fa6e7491",
+      "size": 2550
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/__init__.py",
+      "sha256": "15ddae2d0c411ef194cb1c450f28f0e0970d74d00d0aba9dec09be03e3c6346d",
+      "size": 681
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/assembly.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/assembly.py",
+      "sha256": "7edb4a13ec87157d7840e7d0c98c60a0aa2a6b9e2b4a9ed6abea6ec5ba5be8df",
+      "size": 25462
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/contracts.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/contracts.py",
+      "sha256": "a772eb62b10c5f5ca8b1f210097011aa3a6885e08d1ba89cfbcdb80f7b0cb534",
+      "size": 5323
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/solver.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/statics/solver.py",
+      "sha256": "838ba8ad466b365a4f0029c1be855cc3c2bf409cd9e01126645a988fb40743bf",
+      "size": 4620
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/topology.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/src/ypendulum_static_reference/topology.py",
+      "sha256": "aa488bd668c66529c6dd866c20a6ca5512ef86c4752be4687baec44130cef460",
+      "size": 7617
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/__init__.py",
+      "sha256": "d55bee1a706656e8ba0e58242917ba40e78dde9379b9d9fe97f81ea1d9d5ec4e",
+      "size": 64
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/__init__.py",
+      "sha256": "ad8fdf00dd797cbb0865e5ef97390c3f86a6c5b1d5116535d4899546efffe8b3",
+      "size": 78
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/historical/g1r_acceptance_manifest.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/historical/g1r_acceptance_manifest.json",
+      "sha256": "591a1950d7e40ebaf277950883152f5a11d6b0bf301a1ae82365541f7c2b5cfc",
+      "size": 4342
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/historical/g2_acceptance_manifest.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/historical/g2_acceptance_manifest.json",
+      "sha256": "ba59e5ef8fb6b9f6a70ea3eefcb4536e192b6d6aff57185b2bcba38a64687a08",
+      "size": 8793
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/static_cases.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/fixtures/static_cases.py",
+      "sha256": "1a266b6f9cd4e9977b54da2a395bd35f6f184e005357926bbac6075ed177f6a9",
+      "size": 13185
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/helpers/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/helpers/__init__.py",
+      "sha256": "7c5c4b7a94b062ead9a0fcc5f0c5357eb93c27af09a95355108d32a701427ebd",
+      "size": 35
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/helpers/invariance.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/helpers/invariance.py",
+      "sha256": "841974a5f5bac5d39f0e22b5cfc58804e11a5318579b3a7ac0b45ac60e824998",
+      "size": 3077
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/test_run_evidence.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/test_run_evidence.py",
+      "sha256": "50fd60b5ba5d3732a68174c1c116a967f9b4e393dce40965b0b530493e200dd5",
+      "size": 2370
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/test_scope_and_interface.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/test_scope_and_interface.py",
+      "sha256": "dd68fcae95e17bcc036e0bd9e1af2bebe140c885ce6bc08fd43343f04b51b69c",
+      "size": 7309
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_axial.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_axial.py",
+      "sha256": "94321563dde6f9ed10f11ee8d6a8296110c62b57e4a2135838ae956e47412912",
+      "size": 4531
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_bending.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_bending.py",
+      "sha256": "dc446bf847cf3945e670985af654b0c3ea0a2b4021aa4d215bd0e4572ba92c8c",
+      "size": 7184
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_mass_loads.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_mass_loads.py",
+      "sha256": "f34c1149dc3d2ad373a60f2dab11bfe5dcb2a1597b11353436ab89af921f16bc",
+      "size": 2480
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_rigid.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_rigid.py",
+      "sha256": "c672debaac4d5569398c90090f549d3eeaa73c7a4f7d8950abd4b3faadc0e4b5",
+      "size": 3742
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_static_assembly.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_static_assembly.py",
+      "sha256": "1c7a7656af02f574b06cf5d30afff13147b4cac9c5ae7b5b52a37b3cec8d68ea",
+      "size": 10730
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_topology_state.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tests/unit/test_topology_state.py",
+      "sha256": "effc810971b1a4febf487ced92c33816e620b33cff75778bc47d262e80b79381",
+      "size": 6386
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tools/generate_migration_provenance.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tools/generate_migration_provenance.py",
+      "sha256": "cadf9def3952d7b1b6bae28b67ff53c721152b8c14b359233830344c82c80e9c",
+      "size": 6874
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tools/runtime_probe.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/03_无接触静态参考迁移稿/tools/runtime_probe.py",
+      "sha256": "84bdd7ba0ccc0ae4807f2488a99db1fa8895c10f8cdf227b1e5bb4d4262e504a",
+      "size": 9757
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/04_RC1正式状态说明草案/RC1_STATUS_NOTE_DRAFT.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/04_RC1正式状态说明草案/RC1_STATUS_NOTE_DRAFT.md",
+      "sha256": "e6c454cc2494120e53e9454fc0ce8ae5a197f14d50b7cf2c6deab42d9994eb93",
+      "size": 2008
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/05_正式提升清单/FORMAL_PROMOTION_FILE_DIFF_CHECKLIST.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/05_正式提升清单/FORMAL_PROMOTION_FILE_DIFF_CHECKLIST.md",
+      "sha256": "2656dd6674967dcdde8a4b47709c66800acf68b337c14ed4822ff57c617e01bb",
+      "size": 3674
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/05_正式提升清单/formal_promotion_file_map.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/05_正式提升清单/formal_promotion_file_map.json",
+      "sha256": "c49cd03ef809bf66691ba787477eb63574abd605561fb2db72bda506a1fe8ddf",
+      "size": 62203
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/05_正式提升清单/generate_formal_promotion_file_map.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/05_正式提升清单/generate_formal_promotion_file_map.py",
+      "sha256": "c564aa5e9d25aa059e15cf16f7f266b635c4398c0ba887dfd0a7d911f832e051",
+      "size": 8197
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/P3R5_NEGATIVE_CURVATURE_AND_REDUCED_HESSIAN_MAP.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/P3R5_NEGATIVE_CURVATURE_AND_REDUCED_HESSIAN_MAP.md",
+      "sha256": "ddb317d3fa5309b39c6915f430fc997ae16f2fafba28e2b809df3a96b535262f",
+      "size": 6144
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/config.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/config.json",
+      "sha256": "df134cf23bf5f1ed35cff0eae65c8449bf30cbde61982f3b3261ad356ccf9419",
+      "size": 1308
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/artifact_manifest.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/artifact_manifest.json",
+      "sha256": "3517716cba19f7839faf6c2d1bbfacc16a62c73ebf2f0d7daf4deee30dda1f06",
+      "size": 1537
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/observed_modes.csv",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/observed_modes.csv",
+      "sha256": "6b835b0fe3d7ebadb773d5d5a1256bcc1c0e2f3bf8019408502f821059b64e13",
+      "size": 1360
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/parameterized_map.csv",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/parameterized_map.csv",
+      "sha256": "888c81b308dc0ab1ab684fb605dce84e2406c89b67c00ff67d3fca1bba944684",
+      "size": 35543
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/reduced_hessian_stability_map.png",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/reduced_hessian_stability_map.png",
+      "sha256": "3fc06b54024f031d4f32115728a5e4e7e3928fd13bf14b498b9ca2a34727f773",
+      "size": 186934
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/reduced_hessian_stability_map.svg",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/reduced_hessian_stability_map.svg",
+      "sha256": "d8c2415e1b3a00091945bab1cf1857af097600b73511eb241bac357b93b104c6",
+      "size": 35306
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/stability_map.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/outputs/stability_map.json",
+      "sha256": "9fccd9f9d9445c8043721a5af47a6009576276dbc57ff7f0c48abd1652e5ac92",
+      "size": 208531
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/pyproject.toml",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/pyproject.toml",
+      "sha256": "986004126c9e6dd6ed628ed1c166874a72a33302c2c6ced10a13f9558ae417ed",
+      "size": 657
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/src/p3r5_stability_map/__init__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/src/p3r5_stability_map/__init__.py",
+      "sha256": "0eb0746ed64a02a5395119ee97116013c016c6e43564afbef9637a6dbeff0ff0",
+      "size": 147
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/src/p3r5_stability_map/__main__.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/src/p3r5_stability_map/__main__.py",
+      "sha256": "d23af8f3a0550a05fb3b7413b72b298af1cdaa144a50cf9b1a1ddd281b44aff4",
+      "size": 870
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/src/p3r5_stability_map/map.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/src/p3r5_stability_map/map.py",
+      "sha256": "e981eb794bee2bf21a487a33a2b5d8d5408a7fda88058c490661367b7fe5b588",
+      "size": 22179
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/tests/test_stability_map.py",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/06_解析稳定性图谱/tests/test_stability_map.py",
+      "sha256": "68037799a45cd5985bed17ca852dde5ecf83e7433fdbd6274886855a4d42620f",
+      "size": 7112
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/07_实验门最小测量清单/EXPERIMENT_GATE_MINIMUM_MEASUREMENTS.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/07_实验门最小测量清单/EXPERIMENT_GATE_MINIMUM_MEASUREMENTS.md",
+      "sha256": "feb75816a4e29ec2446c11b64f26ad09b3dbd10158d960b136cd5061862dae2e",
+      "size": 7383
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/F0_COMPLETION_REPORT.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/F0_COMPLETION_REPORT.md",
+      "sha256": "4b406ae8bd881c0db460334d3627ebc168de59ffb7202311d3360e90acf3b3b3",
+      "size": 16121
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/README.md",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/README.md",
+      "sha256": "047d9cca06a28b1bc09e96d7465f05bb1ae521170ee63c05494f4ffca4f17252",
+      "size": 2025
+    },
+    {
+      "old": "90_候选工作区/current/F0_正式整理与解析稳定性图谱/f0_machine_status.json",
+      "new": "03_研究记录/专题/F0_正式整理与解析稳定性图谱/f0_machine_status.json",
+      "sha256": "c2fbaf565e96def490863f176e5e7efe2c4c4fa6290179006ed42df22e433bd8",
+      "size": 13864
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/01_结构性理论/03-结构性理论_F1正式提升.patch",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/01_结构性理论/03-结构性理论_F1正式提升.patch",
+      "sha256": "0be7071c350736075f011e47b2334a4fabce87ca303f2508461464d76a98f333",
+      "size": 14995
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/01_结构性理论/03-结构性理论_F1正式稿.md",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/01_结构性理论/03-结构性理论_F1正式稿.md",
+      "sha256": "235666d7e7d1e23a4c4785e1b9721e1538f75ba9af24ed5e207e4ead77d77bdb",
+      "size": 46553
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/01_结构性理论/f1_theory_promotion_verification.json",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/01_结构性理论/f1_theory_promotion_verification.json",
+      "sha256": "e4e6a17b34e6238100b2e81ab8cb47abdc9a6d1cd7fabcb6f0ca15b41f7e17de",
+      "size": 2555
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/01_结构性理论/verify_f1_theory_promotion.py",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/01_结构性理论/verify_f1_theory_promotion.py",
+      "sha256": "48223a7b83d8c6606eda0a0f136edc69becb374c694fc6b1049702a20cb835c5",
+      "size": 12933
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/02_正式提升清单/f1_formal_promotion_manifest.json",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/02_正式提升清单/f1_formal_promotion_manifest.json",
+      "sha256": "dff7c4ed9a04923cefa4cf90ad814f5a50e0e5d9ae8776a83ce81b049072c99d",
+      "size": 99760
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/02_正式提升清单/generate_f1_formal_promotion_manifest.py",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/02_正式提升清单/generate_f1_formal_promotion_manifest.py",
+      "sha256": "191253c1bc05fc4f4483a050914c92d22155987e41658142e4f1a939d9cab885",
+      "size": 19192
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/03_运行证据/f1_runtime_evidence_status.json",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/03_运行证据/f1_runtime_evidence_status.json",
+      "sha256": "d512031afd97fc8fec040726aa468f0bdedda0b97dea1029ddb470d86641c62a",
+      "size": 2046
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/03_运行证据/formal_a_full_repeat_audit.json",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/03_运行证据/formal_a_full_repeat_audit.json",
+      "sha256": "8f548b4b2373059244e5a0946fda69850f8ef80ce3cc1d855b27c420dd2ecb0a",
+      "size": 7864
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/03_运行证据/formal_s_runtime_matrix.json",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/03_运行证据/formal_s_runtime_matrix.json",
+      "sha256": "7ae30ca56769e82fa612c911a55b905f1aa72d3b1694ab50269873077d27dc33",
+      "size": 4165
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/03_运行证据/generate_f1_runtime_evidence.py",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/03_运行证据/generate_f1_runtime_evidence.py",
+      "sha256": "94778ca21cc045068f922b49e95ace9431e0d2635c54fdb6973a56bd6ec68081",
+      "size": 17423
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/04_渲染审计/render.css",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/04_渲染审计/render.css",
+      "sha256": "f0af43778d2c6b20d65128fc8b732366b6056facc38760757b9a11474c2bcef8",
+      "size": 1172
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/04_渲染审计/render_markdown_pdf.mjs",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/04_渲染审计/render_markdown_pdf.mjs",
+      "sha256": "eabd5481d1c6ce9d4b583f448d056b7d5110c9c3486a7cb0a19da890427aed2f",
+      "size": 6992
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/05_待授权索引修订/02_模拟程序_README.same-target.patch",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/05_待授权索引修订/02_模拟程序_README.same-target.patch",
+      "sha256": "6936f8f436269255e982074676153dcb542d590730159c924da1689b39ed6f8f",
+      "size": 1778
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/05_待授权索引修订/README.md",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/05_待授权索引修订/README.md",
+      "sha256": "a516dd46702d96c1e984f4621cc412c3a9b2dd6f931ac61bb8c80ae902741be5",
+      "size": 2173
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/F1_FINAL_AUDIT_REPORT.md",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/F1_FINAL_AUDIT_REPORT.md",
+      "sha256": "26ca2846f384acc40183417077ee115b7998df71191dd2d4e7481d58546e3fbf",
+      "size": 10602
+    },
+    {
+      "old": "90_候选工作区/current/F1_正式提升与最终审计/F1_FINAL_PRO_REVIEW.md",
+      "new": "03_研究记录/专题/F1_正式提升与最终审计/F1_FINAL_PRO_REVIEW.md",
+      "sha256": "181f4455cb1717b7984f7d335e79e81cb7d801a24dbd40d3df02cb6260413a7e",
+      "size": 8740
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/.gitignore",
+      "new": "03_研究记录/专题/HF-v2-core/.gitignore",
+      "sha256": "f32261fa894f14ba263f31f2ff4f60da27a719cc50855c2f400d60c2804af9ba",
+      "size": 83
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/README.md",
+      "new": "03_研究记录/专题/HF-v2-core/README.md",
+      "sha256": "062db7fa7ce5480a67f5535592d18b26ad97ad87703dedabb5da31b5e46fa66f",
+      "size": 5357
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/G2R_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/G2R_FROZEN_PROTOCOL.md",
+      "sha256": "51d0306f66636718bd09305488d03984f66d5c343e6f406db58b8418a2ee48c2",
+      "size": 5627
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/G2R_PROTOCOL_DEVIATIONS.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/G2R_PROTOCOL_DEVIATIONS.md",
+      "sha256": "555bd2f46ada7db99351ab429f6b91e1b2d13a9a861916a432348026b5be9f7c",
+      "size": 2750
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/G2R_RUNTIME_AMENDMENT.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/G2R_RUNTIME_AMENDMENT.md",
+      "sha256": "6ae6ff04a7c166431e1b542ea387e43dba776f443fd938cc96681f3d89a35704",
+      "size": 2199
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/G2_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/G2_FROZEN_PROTOCOL.md",
+      "sha256": "dd3ee09fb238af2c834a6846ce8d47a2c9de37a2e5d886871ac33aa5abf395f7",
+      "size": 3046
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3R2_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3R2_FROZEN_PROTOCOL.md",
+      "sha256": "014894e9337f7810baa45292b07de421f0d65dcbaeabccf7ba2df693a28af1e1",
+      "size": 10735
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3R3_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3R3_FROZEN_PROTOCOL.md",
+      "sha256": "b77bdee8c24bbba5fd9af74a45ce6952babf51e812bb951ff80a09ffb6f35d26",
+      "size": 10997
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3R4_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3R4_FROZEN_PROTOCOL.md",
+      "sha256": "49b8b3a6cbe0d210c990015eeccb738cac8ea329c8280ac62c4b64ba40d02699",
+      "size": 12126
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3R5_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3R5_FROZEN_PROTOCOL.md",
+      "sha256": "838735ad87b901c8a8497b84a55c49d88433da8776159cf0e5107b1711f1503b",
+      "size": 14994
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3R_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3R_FROZEN_PROTOCOL.md",
+      "sha256": "8c084a0bde8035292b784305ce646e4f9881be4cd47179b25792786f5016bf30",
+      "size": 9324
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3_FROZEN_PROTOCOL.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3_FROZEN_PROTOCOL.md",
+      "sha256": "1ec3eb861bdb8ddd0e7c71b5bd351b29eb9aef99191e325191760ec32510c870",
+      "size": 7092
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/P3_PROTOCOL_AMENDMENT_A1.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/P3_PROTOCOL_AMENDMENT_A1.md",
+      "sha256": "a0215a72c856ea7e0b2cffb3cd227df016f5efdd0a154f2c80a55911c2a9560f",
+      "size": 2444
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/acceptance_manifest.json",
+      "sha256": "12f8c868dbb5f83ecc51f642f80b087ec6ad8e3b57eaddae6105af202085120e",
+      "size": 1714
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/baseline_sources.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/baseline_sources.json",
+      "sha256": "0bbbed505a1cc0ea9a50653739ac2078cbba3eaf453d2605bad075cb4475f70c",
+      "size": 2382
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g1r_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g1r_acceptance_manifest.json",
+      "sha256": "3c07424dcd269296ddcf2e78cdfb08c4626d7a458275af33d49d9ce7c3fb5b84",
+      "size": 4325
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g1r_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g1r_module_manifest.json",
+      "sha256": "88e9d1917a8abeb32c17d739bec3b2fc910259f3a8cfc2614e3e83db6e84d7af",
+      "size": 1649
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g2_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g2_acceptance_manifest.json",
+      "sha256": "a224356c1fa138547bb052023e3e5b457c8736e45339f60affad26280a9c304d",
+      "size": 8776
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g2_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g2_module_manifest.json",
+      "sha256": "b29793ecd4d2653a16dd5215bb7724250b8ad08c84f6e133a63d46f96834064b",
+      "size": 5149
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g2r_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g2r_acceptance_manifest.json",
+      "sha256": "506e38eb9d7c7fa9a9865b79786086f45db9a5fb6171c9f06bce135f02633106",
+      "size": 3605
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g2r_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g2r_module_manifest.json",
+      "sha256": "3f9f47e6f33c372f0b381883d2c0eeb0d193e6de0a38fdcff4b805fd7ebc4eb6",
+      "size": 5296
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/g2r_runtime_amendment.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/g2r_runtime_amendment.json",
+      "sha256": "1167a24bebb9955b05159ea665545a0a4af4a29550918d2ae34a142326dc6ac3",
+      "size": 1613
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity.json",
+      "sha256": "dd96a3b2d9a2744233d47363a9ff63ea4fa1f3baeff9b5462cfe6b2905603603",
+      "size": 1430
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_2.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_2.json",
+      "sha256": "ecd4aaee34838dd36152d8856f1ea7e7ec9273187d1b7b23d8577420abfd2dbc",
+      "size": 1711
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_3_contact.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_3_contact.json",
+      "sha256": "ec2539c0791572a789ed6577f523cdb19ba64d4ce56181b84b4836534c08922a",
+      "size": 1627
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_4_contact.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_4_contact.json",
+      "sha256": "74c8400938cb1112374f0dc3fe0f6843c05151c01b76716dc2dbccb33a9f1cc9",
+      "size": 1231
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_5_contact.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_5_contact.json",
+      "sha256": "9d1c22586f39055417c7e8e6ae6ebe3dae726e348e492c2ab03bcd034651582b",
+      "size": 1696
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_6_contact.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_6_contact.json",
+      "sha256": "1d01874dfec7e0e3faf802096dbb5b75d347fd815a9e025466b1ee066f7982a6",
+      "size": 2232
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_7_contact.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_7_contact.json",
+      "sha256": "1acbaf58264ae050a855eb01cf8b7fa20859dbf90985ad4a88cc8080ccd69d62",
+      "size": 2617
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/model_identity_0_8_contact.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/model_identity_0_8_contact.json",
+      "sha256": "7425febe20c0648786d32184e99271dea9cc662acc030ddb68b63eb6b0cf4bc1",
+      "size": 2616
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3_acceptance_manifest.json",
+      "sha256": "5af909115b8161dd78d80ca746d5dddf56617b73ed01469bc1599352c54cdc7d",
+      "size": 7392
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3_formal_contact_registration.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3_formal_contact_registration.json",
+      "sha256": "37fe00beeefbd6f51208c3b3476cb51acefc10ddc3c10c59122e0068400be221",
+      "size": 4084
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3_module_manifest.json",
+      "sha256": "474c1fdaa038b7e20b2ef0006700d5573d47eab49acc55276759c3afae445060",
+      "size": 7659
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3_protocol_amendment_a1.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3_protocol_amendment_a1.json",
+      "sha256": "28463583b48c8691325c49972a4d53926b30ae6d466b5d6ba4d77168fc5b9a41",
+      "size": 1617
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r2_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r2_acceptance_manifest.json",
+      "sha256": "b927d1ad895c20eee18b773c5e68f0e006e7ba7214d9e8953b1ab7e2f5e110a0",
+      "size": 27286
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r2_contact_adapter_contract.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r2_contact_adapter_contract.json",
+      "sha256": "07e93584f91d82b5bc799c233c819d8714cd1c203626670e0c17302c1c9247af",
+      "size": 6549
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r2_implementation_binding.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r2_implementation_binding.json",
+      "sha256": "b29220667e503b254c24293d1c87c4d65fb25f5aeab97c1f7e67d5c4c3db4270",
+      "size": 2343
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r2_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r2_module_manifest.json",
+      "sha256": "1f9575804651d02013d8d35f31bc28b850a4731bf918b8dfb42035daee6e61e8",
+      "size": 3015
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r3_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r3_acceptance_manifest.json",
+      "sha256": "456b5218890df2f11cc431638ebc8859febb8857392bee3a9461feae6a5603f2",
+      "size": 17964
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r3_contact_adapter_contract.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r3_contact_adapter_contract.json",
+      "sha256": "14072d70a1a75a25399b4d6acc90077ef3995124f5ccfde8775b2f7eb73cd795",
+      "size": 2487
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r3_design_cards.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r3_design_cards.json",
+      "sha256": "e281925e88ba2d844486e5eb5b178fbcab59a12c946352ec182ee2debb08b6ea",
+      "size": 7773
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r3_implementation_binding.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r3_implementation_binding.json",
+      "sha256": "aa7d5ddd06a16f3697eb16697ebe40b38a6910286c62dff1b7e87d1104f597e4",
+      "size": 2989
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r3_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r3_module_manifest.json",
+      "sha256": "1b061c2dc615a3e53df6020e192609886bf24f07313dd8200ea91802aad6b505",
+      "size": 3314
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r3_qualification_targets.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r3_qualification_targets.json",
+      "sha256": "1111a14837cf2e17cdcc630f05e7f56b8b843e117fdfada07137f6df36f86063",
+      "size": 909
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r4_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r4_acceptance_manifest.json",
+      "sha256": "035b289eb46913156f71b6920895bdf121f6e3e5745d43e69eaed9b432e4c96e",
+      "size": 22300
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r4_admissibility_selection.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r4_admissibility_selection.json",
+      "sha256": "ce1c882065a3dc64900a2e51b14157296d0558a38c23ffb70d8d53578dc34dce",
+      "size": 1269
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r4_contact_adapter_contract.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r4_contact_adapter_contract.json",
+      "sha256": "0233d47fd9f763574e8474eab70ea091a994d474917a09b1712b7497db33b0f0",
+      "size": 2553
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r4_design_cards.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r4_design_cards.json",
+      "sha256": "9c88f45def09933c023b5cae055f9da1e3d70d7ee474e87c09bcc0065e27a631",
+      "size": 11377
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r4_implementation_binding.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r4_implementation_binding.json",
+      "sha256": "2b97169a493aca3f4beaaf8221ac64e0d8049dc26b0c84528e6648a8f1c3a851",
+      "size": 4228
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r4_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r4_module_manifest.json",
+      "sha256": "df7832b5675066dbb24a534274c8c8e3ffaf602e5655663fdb9186d0776c9499",
+      "size": 3926
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_acceptance_manifest.json",
+      "sha256": "fe7cbe677640f6bcedd2fda54b4b38c9289e899fa13a9cd05a39aae8d00335a8",
+      "size": 24979
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_admissibility_selection.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_admissibility_selection.json",
+      "sha256": "2a8eab29bda268a87bf8e8c488690a4150225b8964562e440f79b328fa733ff4",
+      "size": 1278
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_contact_adapter_contract.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_contact_adapter_contract.json",
+      "sha256": "002765453a7affeed36dfe18918e097f8a77ed4d80f8e4f247ef96d5d6d3e101",
+      "size": 2560
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_cards.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_holdout_cards.json",
+      "sha256": "48f418094ef7ccaa595a63a080f65f82d5b0125eaec0fb25cc58acf823bcb0f0",
+      "size": 31787
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_domain.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_holdout_domain.json",
+      "sha256": "27defd95ab3cb84d022b1ec43ffa89bd142374591f97a15de93b17b3c5a96d17",
+      "size": 7495
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_implementation_binding.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_implementation_binding.json",
+      "sha256": "36d184ee00031cbc3b6ea4cb2c0c008783a7783c28ce1bf427b1ddded9e81619",
+      "size": 4868
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r5_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r5_module_manifest.json",
+      "sha256": "31a35e02ed42004ad849312d2f69564e55d8c630010c3852a59eab10a1379b00",
+      "size": 4484
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r_acceptance_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r_acceptance_manifest.json",
+      "sha256": "3caa54c1d19ea8f50f90e13039fed66383ea316c687645fd2fc6eaec0732a654",
+      "size": 14853
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r_contact_adapter_contract.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r_contact_adapter_contract.json",
+      "sha256": "94d85363e255a5ef5b16acd221df8ab0b1d7552255c7c399c0e492e3eada67bd",
+      "size": 6305
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/p3r_module_manifest.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/p3r_module_manifest.json",
+      "sha256": "7eec5e3f44e3ea1e62a976add307970a6c33cca8b007e335e4bf8d355587476c",
+      "size": 2870
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/rc1_characterization_case.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/rc1_characterization_case.json",
+      "sha256": "d7a8c815e3f43ae1ff627be579e6dbb40552142e36b8ca41a21ec1d59abd69a7",
+      "size": 1289
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/rc1_dependency_graph.md",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/rc1_dependency_graph.md",
+      "sha256": "90257090a4c6d4a8c3b13f9a28e24035061cf9b1317a4a8976d7bcff77e5e2ec",
+      "size": 1687
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/contracts/rc1_public_interface.json",
+      "new": "03_研究记录/专题/HF-v2-core/contracts/rc1_public_interface.json",
+      "sha256": "f07ca4588ba2cc70a428f83399b21dd9b2e6061c6ceea8500521ba1a5e496f98",
+      "size": 3185
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/pyproject.toml",
+      "new": "03_研究记录/专题/HF-v2-core/pyproject.toml",
+      "sha256": "12181da78095dddf44b2a12263bdd037a1afd1c0e74593076bb8f15aa3241a96",
+      "size": 713
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G1R_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G1R_REPORT.md",
+      "sha256": "74c878ade80e2eb2c1404d46acc4a75bfafbc2bb6411bd39f55c66d52adebf4b",
+      "size": 6741
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G1_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G1_REPORT.md",
+      "sha256": "71b9b95a98c6045f61712e968ccf9acde5c6ed987481204530564bc9d56664ce",
+      "size": 4283
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G2R_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G2R_REPORT.md",
+      "sha256": "2c91e61d9936dc8ffa0a8286077f90a504683d4b60664045c0ea072307fc6815",
+      "size": 8895
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G2_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G2_REPORT.md",
+      "sha256": "6a5e7a0e3b024eab82c489acf75f66141e197f2d0d29e084f873b5f367f209c3",
+      "size": 9632
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G3R2_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G3R2_REPORT.md",
+      "sha256": "b033326bb3b369b059656deb3276760cc9ef168dd185b573c0dcd5755504f307",
+      "size": 2119
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G3R2_REPORT_RAW.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G3R2_REPORT_RAW.md",
+      "sha256": "b033326bb3b369b059656deb3276760cc9ef168dd185b573c0dcd5755504f307",
+      "size": 2119
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G3R_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G3R_REPORT.md",
+      "sha256": "69490cda64ad3b40565389250921e2270104b83778d59fa984cec2a34b652e4c",
+      "size": 3781
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G3R_REPORT_RAW.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G3R_REPORT_RAW.md",
+      "sha256": "2d89747ab4780dc1c7f6e7fa3d6fb2cb4105d0c2bb6bcbf70483add458bb6569",
+      "size": 1632
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/G3_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/G3_REPORT.md",
+      "sha256": "e6c5b101823b0e4fc3a3e4f37d28a457a29acf10e1e5d468cf1211e3cf604841",
+      "size": 3418
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/P3R3_ADMISSIBILITY_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/P3R3_ADMISSIBILITY_REPORT.md",
+      "sha256": "afac89acdf32537af16a904c7320784e1056e51c6ac876266af0a4c4518d88e4",
+      "size": 1072
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/P3R4_ADMISSIBILITY_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/P3R4_ADMISSIBILITY_REPORT.md",
+      "sha256": "5657ab33fdd7453806131200a9bec0bd2f6215d491198ed4552ce2ac8095b20e",
+      "size": 1633
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/P3R5_ADMISSIBILITY_REPORT.md",
+      "new": "03_研究记录/专题/HF-v2-core/reports/P3R5_ADMISSIBILITY_REPORT.md",
+      "sha256": "8db7859639ac36920050d820776e513e941692ace5339bc619675923190122cd",
+      "size": 1688
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g1_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g1_metrics.json",
+      "sha256": "75f58854993631df2e24a78166603df822cf98f44aca4b727973e06f8cc6131d",
+      "size": 2876
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g1r_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g1r_metrics.json",
+      "sha256": "8533bf9b5d35ce92a53356179311eff4606291b6c803f3586241b7f813e90ea1",
+      "size": 12110
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g2_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g2_metrics.json",
+      "sha256": "235d5da615942f31e2dadf7b40de1d466a5d2ff3a2b84e9a210684c3d45e96a0",
+      "size": 102612
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g2r_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g2r_metrics.json",
+      "sha256": "c9fa31a59ab68ce83eae24760dfdf07be818dc10d2d79ce8487260de3c8967df",
+      "size": 136752
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g3_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g3_metrics.json",
+      "sha256": "97522f837822e2108bce9fe117ad5a5007e2d48a859a9b7f389481010072aa62",
+      "size": 46947
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g3r2_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g3r2_metrics.json",
+      "sha256": "b9580859b3eccbaf21ee240b911d2c83354ffe7a88916612f6993efdeab2bfe8",
+      "size": 317460
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/g3r_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/g3r_metrics.json",
+      "sha256": "4da70615db740ca345ae6032dfabac89a8188ffb374890126a41220ffb765241",
+      "size": 57805
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/p3r3_admissibility_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/p3r3_admissibility_metrics.json",
+      "sha256": "8ad318b0ae579f05af6c4b52450d42ffbc7f0d681bf7bb42e60cb94b60be139f",
+      "size": 229660
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/p3r4_admissibility_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/p3r4_admissibility_metrics.json",
+      "sha256": "87fe67e0f32dda0e508f86be18e796907ec71e22834c0826a9314454f817acdd",
+      "size": 613242
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/p3r5_admissibility_metrics.json",
+      "new": "03_研究记录/专题/HF-v2-core/reports/p3r5_admissibility_metrics.json",
+      "sha256": "e93eb9a0cb074ca1cc9a137149b89b8d2c4384f100c9a9eefaf5c0ff79a3f987",
+      "size": 1005473
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/reports/p3r5_attempt_ledger.jsonl",
+      "new": "03_研究记录/专题/HF-v2-core/reports/p3r5_attempt_ledger.jsonl",
+      "sha256": "f87c5aa3675ea792c2cbc6e24ae3b2daca8abdd4a7900a31f01de848316fd66c",
+      "size": 27861
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/__init__.py",
+      "sha256": "e18a3694a79be759f7c460bc7796e0d1d74eeca5e98516ac6b5b415b9ff1c7e5",
+      "size": 1230
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/__init__.py",
+      "sha256": "c509df5e594eb9053ef96bbe8b5b6c420ac94dddbb07fe0d24bc9409b23b88d9",
+      "size": 901
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/architecture.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/architecture.py",
+      "sha256": "5a085514d1fe32ac3d6d2db66b046344b81c48a506e81f867b68b46d28030bbb",
+      "size": 6145
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/clearance.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/clearance.py",
+      "sha256": "e467ecb9d6c1a9c2e8b4bdaa711b46ee01a878ea39c241f04d15e18275bc8661",
+      "size": 12501
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/contact.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/contact.py",
+      "sha256": "1b456eb0b648e591eaba6f6fadb86d143b8cd2d055ca8b8528d006d499cd0aad",
+      "size": 15386
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/dependency.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/dependency.py",
+      "sha256": "5c823b39d756044422d380f4366111a0af376dc3e258a52cfcfcd0c721e90438",
+      "size": 8358
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/energy_gradient.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/energy_gradient.py",
+      "sha256": "db3bf96cc9e4c6d4c790f6807c5ad867691b871ba9046393e2458a173d85cd18",
+      "size": 3100
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/evidence.py",
+      "sha256": "43f0f02739b50992155e87de7c317ffa5761bf534f016bb74abd618735a2c56e",
+      "size": 25536
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/g2_cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/g2_cases.py",
+      "sha256": "195f867560bdd22959a46ed23f1b720922cb918b3b13ca89b091479aac259553",
+      "size": 13328
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/g2_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/g2_evidence.py",
+      "sha256": "376e650251e9d6bdd0ade06a63e049f2582ac7ea98df70659a691087bccfc595",
+      "size": 34147
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/g2r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/g2r_evidence.py",
+      "sha256": "15faced37e1822d636c69296a9af4a18f10817cbb243cd11aeda0f9be79c8fe6",
+      "size": 27160
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/g3_cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/g3_cases.py",
+      "sha256": "357de57bedc0c288202df0aa7a9b70eabf0dad883f56e3cf77ea6d719b0b4338",
+      "size": 10172
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/g3_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/g3_evidence.py",
+      "sha256": "67d98389499b1203bf00d91b288c74b54ea12eb6c7a342e43bc14cadfc914b0d",
+      "size": 31065
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/invariance.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/invariance.py",
+      "sha256": "a0ed1428ed20195db059ae4cfbe53ce13eb81686cf988ee5d1358c2777ef4ad4",
+      "size": 3053
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/passivity.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/passivity.py",
+      "sha256": "cc351a071cef233bc22dbc8577f76b0c8f6791b535b883a2cc62141b6657f086",
+      "size": 1272
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/audit/statics.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/audit/statics.py",
+      "sha256": "eaf79ae69a96d1fa908bb3d2410c81679bf5b80442e7dd2b78d26ae0adece9e1",
+      "size": 11331
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/constitutive/__init__.py",
+      "sha256": "61cc0dd772b4d4d126da1afc1c8b82c3591049d79e2b7abed19f8684523f23c5",
+      "size": 436
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/axial.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/constitutive/axial.py",
+      "sha256": "c39ef3c9d9e0e07b85b49a418546e32ba20aa259e1279cfc102bf2d82ac156ae",
+      "size": 4959
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/constitutive/bending.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/constitutive/bending.py",
+      "sha256": "aa0b49993361887957eedd83518092ce5b94b8d8a8ad48e92328f65744f987c5",
+      "size": 5277
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/contact/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/contact/__init__.py",
+      "sha256": "f2a849c398896529d7ec1d9cd2baa2776c56c6a6beab222f61389d860cd6e2ef",
+      "size": 1129
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/contact/contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/contact/contracts.py",
+      "sha256": "7fe0c170d2fa8a17b21cfc09c7153898b00d6d498796f3c5657e00a7637a3ee5",
+      "size": 18918
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/contact/geometry.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/contact/geometry.py",
+      "sha256": "1f3d8a2de6a46c3c23243d9fafeb119e5a59d1ef1764f5ab2743a37695da59e6",
+      "size": 11047
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/contact/registration.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/contact/registration.py",
+      "sha256": "10f5e8bb4a6c88c6a4c050b76cfc600a161e0d85f33c2ac82419ae271ad70f45",
+      "size": 14186
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/loads.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/loads.py",
+      "sha256": "7f6e96b1d0ffbd1f623485948aa4e66835e39ed09f48cf582992af4dce01a5a1",
+      "size": 3712
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/mass.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/mass.py",
+      "sha256": "89c1401776b86c80555d84f86983c78ad4c7d98a5e5bcd7e81f58f75dd5dbbd1",
+      "size": 5368
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/rigid/__init__.py",
+      "sha256": "dcbe120a844a73513c513375f62d0d33210e6a46fc426a1239d6815b405c7888",
+      "size": 912
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/attachment.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/rigid/attachment.py",
+      "sha256": "2c55ba92f7cc5e5dde369080002053ecdca20cab82556824b8d3b7fb6edf7d31",
+      "size": 2860
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/rigid/rotation.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/rigid/rotation.py",
+      "sha256": "9f3646e1ff100c2ac69cdc0ac0b7a4e79f2c84c0eab3f398eb89f5c95f82354d",
+      "size": 4771
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/state.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/state.py",
+      "sha256": "6dbc92d5b2a305fc5769a49b15b99409ff527d11666afd71346a9683901e6975",
+      "size": 3600
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/statics/__init__.py",
+      "sha256": "0efee8bc1ce0762ff214e3656cb9d860590fcfc92d2704facb89b41f15b1d411",
+      "size": 64
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/statics/assembly.py",
+      "sha256": "3af7df8a1a8078b6f721f790314e6c176009dbc3dc94c5228558bdfacefc1332",
+      "size": 26287
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/contact_assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/statics/contact_assembly.py",
+      "sha256": "90539f8f9d557b36e932a084e7af1083566c154754d6ae177a94f27ca16b9d0c",
+      "size": 19302
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/contact_solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/statics/contact_solver.py",
+      "sha256": "4694a65eb9241361841539029906e9fe8a1b9ffa089ee0613add4cbdf674cf91",
+      "size": 4656
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/statics/contracts.py",
+      "sha256": "f032f6fb1110cfde96a31f3a99dcb7f8a4d022ade54b11f6144fb9c111a53981",
+      "size": 6187
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/statics/solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/statics/solver.py",
+      "sha256": "38a70a105e40ebfbd80c00e8eeef7eded01c02cb7270a00a3cc1ff47f67a33aa",
+      "size": 4555
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2/topology.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2/topology.py",
+      "sha256": "de8835cf85ea08e64fcbcf87d63a8084e4788b2746bd0612847b5990e8d4bd07",
+      "size": 7660
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/__init__.py",
+      "sha256": "604bf7ce81cbf532ef3d8edbbd1e46623df88dc3dadc10eb6b818d194d5322a4",
+      "size": 322
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/assembly.py",
+      "sha256": "fd760b100b6a5a2638cf0fe8ce41b7c88edbfc996fc0f2592bc56ea72a743ae7",
+      "size": 13653
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/cases.py",
+      "sha256": "d040baf63c39bb40b37bbe2d2809bdca21737e0bc5849d7a66b527d6f2293612",
+      "size": 9214
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/critical_cone.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/critical_cone.py",
+      "sha256": "9e737f988fff106338af94c91fa399643f4283cfbd22c2fa9c5493d565100cde",
+      "size": 11487
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/evidence.py",
+      "sha256": "3e17c3581b9c758915e16ff01d187cd7a014eca26389af235644e666b91587b6",
+      "size": 24641
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/evidence_support.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/evidence_support.py",
+      "sha256": "83fd80bf441cdd8328f4b8f56ad69950c7c3163b2d839ba7c4a327e621d3d584",
+      "size": 8943
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/jacobian_audit.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/jacobian_audit.py",
+      "sha256": "c77c0b00c17d616ae91d4a1255026ac437ca10b13aa6f16f7db5307e70a606d7",
+      "size": 4134
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/kkt.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/kkt.py",
+      "sha256": "ee3afe0df3412ea9e2013d3a364b558e5fdefd08a198ca41e6d9f26b905fc31e",
+      "size": 8715
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r/solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r/solver.py",
+      "sha256": "4f8b57fb71694c4f5edae73cc77218fa98a50e432bb2e3f3bd37c96ae2875202",
+      "size": 4648
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/__init__.py",
+      "sha256": "82dd9210ee580143fedfb136a8bbd770a06790c16d4b88979c6a4c78fee5c8f3",
+      "size": 538
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/assembly.py",
+      "sha256": "24f9d5d007da22efbc843af95c91af48f42f5079daaeff85078e0b287d53c1b2",
+      "size": 1647
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/cases.py",
+      "sha256": "fc12dd982559f742e5e41a9a61bd9d14d58dca9864f20458c6a819b9c5c2bcfc",
+      "size": 9089
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/certification.py",
+      "sha256": "0a0c25b2f2e5be9952fffc92a0df3700939c878e689a12004cdff347051ea1b6",
+      "size": 7931
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/evidence.py",
+      "sha256": "c49f2f890033fe06472a390a2cd853a0b23fa77310e5545d4ebeb5620fa6ab6f",
+      "size": 32206
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/evidence_support.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/evidence_support.py",
+      "sha256": "0d81e4cca3a8fa5bf5ef7e77bd452357c2563edc8f1efaf29be6b8018d361c2a",
+      "size": 8628
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/kkt.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/kkt.py",
+      "sha256": "78caf003f501aa300c7caea7ac82bcd7062f2bcb646fe5414e030cde555ddacf",
+      "size": 12604
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/restoration.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/restoration.py",
+      "sha256": "92f663b1e0552a279956f38f5e7a17a3126223b364998713289ed206cb528c37",
+      "size": 15791
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r2/solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r2/solver.py",
+      "sha256": "71a347bc184e121a4c9308d5902a75cffa8d8c64422d1792de1ad685688cbd19",
+      "size": 6964
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/__init__.py",
+      "sha256": "117c8f537af129d918742f14778b3e3d166cfdebc81deec34c8d6a3dc470f23d",
+      "size": 1122
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/admissibility.py",
+      "sha256": "14c6d343c18781df0e3cea8c0984844f27d72df3f2d26fbcc4b5ac0969716aa1",
+      "size": 29608
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/assembly.py",
+      "sha256": "6e62da91b50a4201002802280b82486de127018eb2e11d23d87fe711fb77c57a",
+      "size": 2056
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/cases.py",
+      "sha256": "7ab43745e1c1d1e877cc5cd82c84b7e538f3273d1fe154c7ca090501b965a75a",
+      "size": 20026
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/certification.py",
+      "sha256": "7c4c39e08cf51a83768a6df7a2fa91b206b324409bb7f148f25df47f90433cd5",
+      "size": 3969
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/dual_certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/dual_certification.py",
+      "sha256": "9e27b61da50bb3828a1729bfa5d58b1f16da5f889824f8bb0f0635f0c25d0c0f",
+      "size": 13591
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/evidence.py",
+      "sha256": "c5729230c1ac61cabc5710534de428a4a39c46204719ba6945f89b86bde6cbee",
+      "size": 25473
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/evidence_support.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/evidence_support.py",
+      "sha256": "1760f29049c5979c609c3c92a98ed306808d09ec5244932eafc4476a9b4fe547",
+      "size": 9151
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/restoration.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/restoration.py",
+      "sha256": "98642efeb188379118effffdd43ee3051a1b93fa9c487db220d01493d84f7119",
+      "size": 21800
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r3/solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r3/solver.py",
+      "sha256": "93c59d07c9593e818a68b19a5935aabc7d601dc4d91a80245457c35554fecb52",
+      "size": 7280
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/__init__.py",
+      "sha256": "4c17d5c8b5fd92102b493749f69fcab3b6bec2dad227414b98b2331528c2c633",
+      "size": 1414
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/admissibility.py",
+      "sha256": "93b0356fe7bd829036bde778796e1a4e1bd0a8f6d23235eadf499fbc2ee97aff",
+      "size": 24572
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/assembly.py",
+      "sha256": "3101e0b4df3f510d275d9a21c42b6c59dd3b5d92f758326ac4b3b28235414f74",
+      "size": 2273
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/cases.py",
+      "sha256": "c52dea530e30b650f7057c99969a2f956e57bfc8bcb775f19fe6ca0d150fc449",
+      "size": 18226
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/certification.py",
+      "sha256": "354fcb852893f7d87084176c1c49bf95193a1d4a3b783ee7c1665864e804e407",
+      "size": 951
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/dual_certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/dual_certification.py",
+      "sha256": "3ce78c127a15e766400f8d56d1a51f8d9ea9458e35cd2ed32c46ba245660721b",
+      "size": 660
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/evidence.py",
+      "sha256": "5713b889c44500a3343de0b8632164f972b41d697e1f95bac586b1b762f0c8e3",
+      "size": 26582
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/evidence_support.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/evidence_support.py",
+      "sha256": "f642f605151e979fedc1b786493cf37512ac50b0982986cef948fda7c33d71b6",
+      "size": 11967
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/manifold.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/manifold.py",
+      "sha256": "622f1734d3fdfdf2e8c6d60c927744cd10202344ca49a45bf940286f59c10e5e",
+      "size": 19648
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/restoration.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/restoration.py",
+      "sha256": "03923cd08e30dc43b671922de3da27e68a1bbdd315cbfbbe58b2779f9dc93888",
+      "size": 584
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/second_order.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/second_order.py",
+      "sha256": "9224595e366b8adb162bb37524dcb394190a4b58d7d42f0d022d50ee5a77f83f",
+      "size": 8988
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/solver.py",
+      "sha256": "0fde848e026ba7039e55e4c41f75496dea54760f88201b716bd14d56a77312fc",
+      "size": 1631
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r4/target_freeze.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r4/target_freeze.py",
+      "sha256": "e0019ad228a907922a3250f8eac4fb60b8586c47d48098c9c897d117ea63852e",
+      "size": 1628
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/__init__.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/__init__.py",
+      "sha256": "6ac016d039b8a30b24a3f8dbaa85b9ad2dcfa0ab21a6479df32d29573b315264",
+      "size": 1554
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/admissibility.py",
+      "sha256": "899427690fb1da7df89f3433539e92c3d596b363aa7703f29dfb9a76632d8d81",
+      "size": 29165
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/assembly.py",
+      "sha256": "a0dd16cc2af927546f4053d7e75ee373e48fc347e4e74f23a6f6e088fee5456b",
+      "size": 2573
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/attempt_ledger.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/attempt_ledger.py",
+      "sha256": "13d378f71403905112893f57e71e2f48f663734032f8b1c5bff8b9e403c4fd96",
+      "size": 4032
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/cases.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/cases.py",
+      "sha256": "d2b22a02b4b75eadae3a0e706d252a9e13638e9b0cd44062427ec9be4ff57e59",
+      "size": 17954
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/certification.py",
+      "sha256": "9bb3a9af3dba8d3b0b77fcb34e2497f788f19ee0a50291c18f72fe3c12bbc76f",
+      "size": 937
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/domain.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/domain.py",
+      "sha256": "d6aebbedcdc33bfa5e0dc8d46b072134430bc063668fc45fd805dcbcbd186fdf",
+      "size": 17474
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/dual_certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/dual_certification.py",
+      "sha256": "b6f17c79f839bac58abf30c40f5cd087ce64e042fa7ecfc13e026433ce789ea0",
+      "size": 2698
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/evidence.py",
+      "sha256": "b17e2a55c14e5bb4f232a54cd2adbe611487f2972db93428326425cea130b829",
+      "size": 25861
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/evidence_support.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/evidence_support.py",
+      "sha256": "a90bd7f58e7703d6ff94fd17bd6f3fcb8e7ab1effabbab3917ae6dbaa652076b",
+      "size": 13072
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/manifold.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/manifold.py",
+      "sha256": "93c75bddce314b310245ede6d3fa15a11559b74755ba4d03b4fca44b328a6a0b",
+      "size": 875
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/reference.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/reference.py",
+      "sha256": "6932feca632bff80eb44a7f4870af4996c3547dcbdbdc2a996c8accec2b03d71",
+      "size": 22469
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/second_order.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/second_order.py",
+      "sha256": "0f7277edeb8bb92bcb3354825a36e50ede770dd60f9ec88ceca910ab4c4d384b",
+      "size": 795
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/solver.py",
+      "sha256": "59737d1e46f96de6620003c2ecc7ff3420b474361932f4eea2ecd9664760389a",
+      "size": 1458
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/src/ypendulum_hfv2_p3r5/target_freeze.py",
+      "new": "03_研究记录/专题/HF-v2-core/src/ypendulum_hfv2_p3r5/target_freeze.py",
+      "sha256": "6f64b308c8aaaf33a33f5268648297d8b87f50099f498c9e9502675b96cbf7b4",
+      "size": 1635
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/characterization/test_p0_contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/characterization/test_p0_contracts.py",
+      "sha256": "9eccdcf3a3ad5fb7bbefea8dd5e4ba7e7e2b1d58da8ba3846294d348c9b04d43",
+      "size": 3023
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/characterization/test_rc1_characterization.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/characterization/test_rc1_characterization.py",
+      "sha256": "e14ad44f5160f5a369d289947ea456ef5415bc96a0b13d7cfa108cb94a9f5037",
+      "size": 2198
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r/test_g3r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r/test_g3r_evidence.py",
+      "sha256": "2777d2fc2a7468a467b81c58b5692c6f0d60f299c766c336e537b4751c3caddb",
+      "size": 2711
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r/test_p3r_core.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r/test_p3r_core.py",
+      "sha256": "20116f466087d2efcab577a971c7a5ab04a67989e70b40585b6adb46fdfb9ec3",
+      "size": 7100
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r/test_p3r_solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r/test_p3r_solver.py",
+      "sha256": "95d5b1989f520b8a9f4d9112b12e1a4442acde0fc7d7cdf108e2bdb9c3e26681",
+      "size": 2319
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r2/test_g3r2_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r2/test_g3r2_evidence.py",
+      "sha256": "f549382e5451585e9b59058ac1ead459a6466f347ee1044c2169a6354bea4732",
+      "size": 2669
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r2/test_p3r2_certification.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r2/test_p3r2_certification.py",
+      "sha256": "770b12b6a8d8442cb79670665a578fe6d8db4a44f6e5a9749ef17c2b2f2ed7d9",
+      "size": 2384
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r2/test_p3r2_contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r2/test_p3r2_contracts.py",
+      "sha256": "340d8417288bcf1db91fddaf58c781924a97d5c59ff57941b76fb19bca34b3f8",
+      "size": 2458
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r2/test_p3r2_solver.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r2/test_p3r2_solver.py",
+      "sha256": "e35b5c463b6ed9f055ff0274b0dd05ef79b580742dee92e57e9141c46569f006",
+      "size": 3574
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r3/test_g3r3_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r3/test_g3r3_evidence.py",
+      "sha256": "1df1dfa2a759d2f60ba913f9fb8e770868f80a8eac4740925ae5cbaef70132c6",
+      "size": 1809
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r3/test_p3r3_admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r3/test_p3r3_admissibility.py",
+      "sha256": "0098cd10c0cfcdfa0319cfa20fd167a618e1dc38a80f9b814073d1a08ddc457c",
+      "size": 3030
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r3/test_p3r3_contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r3/test_p3r3_contracts.py",
+      "sha256": "0ec1bd089464b44d5d8b00c3ec147ccbebb9935854e915a833c41c7367faadd9",
+      "size": 3848
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r3/test_p3r3_dual.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r3/test_p3r3_dual.py",
+      "sha256": "c6e4bfa18751f8d005b70649188a7a63c85269cb336d9765421aaa52324e0657",
+      "size": 2458
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r3/test_p3r3_restoration.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r3/test_p3r3_restoration.py",
+      "sha256": "d72cd6e3170a4ca5644da8713a6b7aa783f27df63594c0d3e111ba51ea6b25fc",
+      "size": 2784
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r4/test_g3r4_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r4/test_g3r4_evidence.py",
+      "sha256": "dbdc8ee3a877fac483ab7a096580effa50ed15705512f3fb50651e12e04d6fd8",
+      "size": 2239
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r4/test_p3r4_admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r4/test_p3r4_admissibility.py",
+      "sha256": "9175235858ac68305e63d8bfaaadd2f9231eeee2e02a3f710a4977e4ac454678",
+      "size": 3682
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r4/test_p3r4_contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r4/test_p3r4_contracts.py",
+      "sha256": "1cf48b72b1338438d46a337b549f71ad0a38e1efa39ad38320eda24851557ea1",
+      "size": 4602
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r4/test_p3r4_manifold.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r4/test_p3r4_manifold.py",
+      "sha256": "cfe0720fd2dceddf900324a53bf037f08395ef2528cf12ec794e76bb6c8c33da",
+      "size": 3184
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r4/test_p3r4_second_order.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r4/test_p3r4_second_order.py",
+      "sha256": "71c9bce379c3960771a594c4b7bff83a92ff9d0d3d7a3de9ed50bb7d11633653",
+      "size": 1732
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r4/test_p3r4_target_freeze.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r4/test_p3r4_target_freeze.py",
+      "sha256": "27c3732c603df69325e729e59a2f2fe77da3b5590018fc6b5b3298f5b05ce0ae",
+      "size": 3729
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_g3r5_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_g3r5_evidence.py",
+      "sha256": "aa75e17eb690a6602f410b60e399c3bcbf6d740f3144bc2f73b8a7daa3b61b40",
+      "size": 1984
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_p3r5_admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_p3r5_admissibility.py",
+      "sha256": "4e5adc6d14023cfc91d9bee5196d204ceaaf04ddf61b2bf18d86b178adc53bfc",
+      "size": 2828
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_p3r5_attempt_ledger.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_p3r5_attempt_ledger.py",
+      "sha256": "a3e5f2b4e2eb575f52e1f299f47d1736d9b8eec2f995d5a7e1b0d720e307f9f1",
+      "size": 2183
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_p3r5_contracts.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_p3r5_contracts.py",
+      "sha256": "2cb56e6a628698b516ab1d655c1c2ad55936c86b345c324d99ebab3d468ae60d",
+      "size": 5070
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_p3r5_domain.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_p3r5_domain.py",
+      "sha256": "69f593df9ad7c8fb37d5e4e90fe13bf4e9dd9a43d9b23be76654cce9ea6afff8",
+      "size": 2742
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_p3r5_reference.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_p3r5_reference.py",
+      "sha256": "8294defbe8e67297884f3ff4a88e07c436296579591779f0039c720213a6f611",
+      "size": 4290
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/p3r5/test_p3r5_target_freeze.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/p3r5/test_p3r5_target_freeze.py",
+      "sha256": "1dc958636f1849180ad70d7b07238de35365082f77f91a570dbaf4b96d645d64",
+      "size": 2986
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_architecture.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_architecture.py",
+      "sha256": "98e9863c9bec1a9dd47ba64c958938f308d52ad014b789c29afc39e4e018b2ad",
+      "size": 3660
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_axial.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_axial.py",
+      "sha256": "c9f9dc361c3049d31491c50ba3f9187d621fda40b304a6880b4b8a2766e92363",
+      "size": 5809
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_bending.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_bending.py",
+      "sha256": "7216187663851e902a4ac048b4fea8f596310bfe08ed4c2f08a26c32f55f4f45",
+      "size": 7168
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_contact_assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_contact_assembly.py",
+      "sha256": "980c1c22e65909fe3e5853bdb836f5acde0ffa01c2a059466bd6eb2095f1fd42",
+      "size": 7609
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_contact_geometry.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_contact_geometry.py",
+      "sha256": "a5cd3f3067015877361b652f8350b0d8751467d2876050ec7574452e5ec54502",
+      "size": 8704
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_contact_registration.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_contact_registration.py",
+      "sha256": "13b500cccc5f9989325dc04bc7cc911047754d2e4f7f67d574b0b3f6f0075927",
+      "size": 6095
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_contact_solver_audit.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_contact_solver_audit.py",
+      "sha256": "7ca34029ec96bd63f757eef7697e99252292e0ca73066ce4d82e87d0cab2c9aa",
+      "size": 5753
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_g1r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_g1r_evidence.py",
+      "sha256": "405750a947d961fe31794057bccb60e0b99b68c9001346b1943038d19d7aa4f0",
+      "size": 2360
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_g2_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_g2_evidence.py",
+      "sha256": "7a7c5ad9cd266760f5db77bbc8db16875b1ad31d5b24cb85e801b4416d308c40",
+      "size": 1433
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_g2r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_g2r_evidence.py",
+      "sha256": "f676cd1dee4dbc097e463d19809af1951f3dd5c9b68b7f80553881d38a2864b9",
+      "size": 3067
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_g3_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_g3_evidence.py",
+      "sha256": "78dca25ec4003e5a7b06c9284b6a6c587a328646cd0b8b998d5b9750a02780c4",
+      "size": 3018
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_mass_loads.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_mass_loads.py",
+      "sha256": "3e5079019ab33bc75b8ac7d66dc067a73ae18b619f396c45c25f8cf35c94067e",
+      "size": 3912
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_rigid.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_rigid.py",
+      "sha256": "ccd16108d01899bad14017cf2e727a63c24516ca5735c43750f056c332f2dc60",
+      "size": 5607
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_static_assembly.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_static_assembly.py",
+      "sha256": "556a46c54d4abaacee3025c537cef23468eb00e975bd506c7a4609867523e043",
+      "size": 10804
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tests/unit/test_topology_state.py",
+      "new": "03_研究记录/专题/HF-v2-core/tests/unit/test_topology_state.py",
+      "sha256": "62e7e8436e905af443d1a782ef84db2f82e1d16f9fc89c4930dffd30011c05da",
+      "size": 6883
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/freeze_p3r4_targets.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/freeze_p3r4_targets.py",
+      "sha256": "15238cf35a056b91d643e5f1455257c3087fa007ffa2d3ddf7ba038a92438f32",
+      "size": 2943
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/freeze_p3r5_holdouts.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/freeze_p3r5_holdouts.py",
+      "sha256": "1b4c25f9f8bc185bff4821f71967dcfd135fb421cf4a784c05432b66ab4446cc",
+      "size": 4614
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/freeze_p3r5_targets.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/freeze_p3r5_targets.py",
+      "sha256": "2d31033b6e9a02a164c52629634680e29c4ec55e704a2450e059e7021130ef1a",
+      "size": 1957
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g1r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g1r_evidence.py",
+      "sha256": "3fc40a54d115c57a9e806df6bd8d9e6c5b84766f7766a289794a68a2ac8aa57b",
+      "size": 1641
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g2_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g2_evidence.py",
+      "sha256": "31e8bd68c9a969f732e96b673f536856758c2ad87634aa4bde94f36052f8abd8",
+      "size": 1628
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g2r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g2r_evidence.py",
+      "sha256": "717ff222afd875bacce2f77f01d6ae1016bef38c26ed9f20058c4b7462080442",
+      "size": 1684
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g3_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g3_evidence.py",
+      "sha256": "f1e47c0b203de249123487dc16dcc4293230c2282c31cf1fdbb74fdf1a7c02ad",
+      "size": 6495
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g3r2_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g3r2_evidence.py",
+      "sha256": "24701f96a74f452a13469c2813823b62563e3ed25edbd6ebb6a2691e8d9b5042",
+      "size": 1700
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g3r3_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g3r3_evidence.py",
+      "sha256": "be0dda37066c062e52c6055aeb560d29f9389386a370d54fa604c48caf685ce1",
+      "size": 2646
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g3r4_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g3r4_evidence.py",
+      "sha256": "e210b88a55a28ae2acb16a802acc03d3aa7fcdcadde6162fbf5713ea0d633f22",
+      "size": 2646
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g3r5_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g3r5_evidence.py",
+      "sha256": "692f3ab7f1e810d5ade30d8ffe0eb347ec71dda13ab57ae61db438cb53266d42",
+      "size": 2507
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_g3r_evidence.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_g3r_evidence.py",
+      "sha256": "ac4408edebbb70e445dd7930bc1324a7c48e4815372891277c950ba26e39f4be",
+      "size": 1380
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_p3r3_admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_p3r3_admissibility.py",
+      "sha256": "9f104a9f1c01bba16f6ef08994dabc2be03498e48c8541d49f234ee46b4574ca",
+      "size": 4029
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_p3r4_admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_p3r4_admissibility.py",
+      "sha256": "c78c8a87d3551e08f965491ed60efde71ab9aaab233f4d95fae4e3b5af95b95d",
+      "size": 4443
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2-core/tools/generate_p3r5_admissibility.py",
+      "new": "03_研究记录/专题/HF-v2-core/tools/generate_p3r5_admissibility.py",
+      "sha256": "e19eb182d4d512587be603060765ab239068ae710a117e62a7f056b0b2731cdc",
+      "size": 7834
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/00_CODEX_EXECUTION_ENTRY.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/00_CODEX_EXECUTION_ENTRY.md",
+      "sha256": "ac506d127c40b826516d9037263926c1e5d2ca2feca0d5e34fe941dcf079dc8a",
+      "size": 8651
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/01_ARCHITECTURE_AND_PHYSICS_CONTRACT.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/01_ARCHITECTURE_AND_PHYSICS_CONTRACT.md",
+      "sha256": "c33c6655c49e00400a2554a907e3f1950f09925c3b6144df150a463e4d08a889",
+      "size": 8038
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/02_PHASED_IMPLEMENTATION_PLAN.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/02_PHASED_IMPLEMENTATION_PLAN.md",
+      "sha256": "3269a2d6425879b3dd2229423ba9212a5e10ee2441e52180d1f3a135b1d4a877",
+      "size": 6463
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/03_ACCEPTANCE_MATRIX.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/03_ACCEPTANCE_MATRIX.md",
+      "sha256": "e4536f10d9c047501fe4ad5df15c8388e186fbb43b8858ff9cce0348f301da41",
+      "size": 8701
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/04_MIGRATION_AND_ROLLBACK.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/04_MIGRATION_AND_ROLLBACK.md",
+      "sha256": "ef2477adf9629c967f8bc6e1ffe4cdecfe23eb22c29281b614f4dfb4ab0235ab",
+      "size": 5701
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/05_PRO_G1_REVIEW_AND_G1R.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/05_PRO_G1_REVIEW_AND_G1R.md",
+      "sha256": "85491c925bb4032ea5afa10c6cb086b37d04c6dce0d59c257e12d66a3d18fdd3",
+      "size": 9261
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/06_PRO_G1R_REVIEW_AND_P2_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/06_PRO_G1R_REVIEW_AND_P2_GATE.md",
+      "sha256": "51bb06b57cba0384207aeaccd6885bb04cba1b773c862e45b7067c4240891381",
+      "size": 8968
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/07_PRO_G2_REVIEW_AND_G2R.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/07_PRO_G2_REVIEW_AND_G2R.md",
+      "sha256": "043cf64a1052547961382b848caaa47c4a553b9daa63aefe11ab0a72571b391b",
+      "size": 11870
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/08_PRO_G2R_REVIEW_AND_P3_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/08_PRO_G2R_REVIEW_AND_P3_GATE.md",
+      "sha256": "5750fd5a1dae82f5ea7de2b7e2f465ef38f9230271b3032bbd0564f45b93e1ea",
+      "size": 9001
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/09_PRO_G3_REVIEW_AND_P3R_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/09_PRO_G3_REVIEW_AND_P3R_GATE.md",
+      "sha256": "d356a4e5f990bcbc0398096713db0113c85342e57bc8c740c9bb6ad653278a24",
+      "size": 10002
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/10_PRO_G3R_REVIEW_AND_P3R2_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/10_PRO_G3R_REVIEW_AND_P3R2_GATE.md",
+      "sha256": "04739ea4a7fa2f5c78ede047e5e3fba4ea7d80c94d1d1c54cd33532f95288cf4",
+      "size": 12135
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/11_PRO_G3R2_REVIEW_AND_P3R3_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/11_PRO_G3R2_REVIEW_AND_P3R3_GATE.md",
+      "sha256": "05ca35dd18364653eb0924da4338f2b61f57e3d253dbf1349307dc385817cf21",
+      "size": 14944
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/12_PRO_G3R3_REVIEW_AND_P3R4_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/12_PRO_G3R3_REVIEW_AND_P3R4_GATE.md",
+      "sha256": "eb0a86261f3cfab31106132958d62b4042cbd81754c80413b8b4ed5d4709fe9b",
+      "size": 14804
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/13_PRO_G3R4_REVIEW_AND_P3R5_GATE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/13_PRO_G3R4_REVIEW_AND_P3R5_GATE.md",
+      "sha256": "ba67f1b40292581347c831878288a7dc0ffcb80a208b23b811303dbc11ee7ecd",
+      "size": 14840
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/14_PRO_G3R5_REVIEW_AND_CERTIFICATION_CLOSURE.md",
+      "new": "03_研究记录/专题/HF-v2重构规划/14_PRO_G3R5_REVIEW_AND_CERTIFICATION_CLOSURE.md",
+      "sha256": "7b2b84c57264fdae11d3ff36860d130111e971275a9947595aa5054633aa1e15",
+      "size": 10223
+    },
+    {
+      "old": "90_候选工作区/current/HF-v2重构规划/plan_manifest.json",
+      "new": "03_研究记录/专题/HF-v2重构规划/plan_manifest.json",
+      "sha256": "53290ac11f76afba646f3ae8c0fb8a0363f126ca2b7e5ea34c72a970cf23c339",
+      "size": 11928
+    },
+    {
+      "old": "90_候选工作区/current/全项目正式提升审查/PROJECT_WIDE_FORMAL_PROMOTION_REVIEW.md",
+      "new": "03_研究记录/专题/全项目正式提升审查/PROJECT_WIDE_FORMAL_PROMOTION_REVIEW.md",
+      "sha256": "b6dd031bab8d5cca0fa31721bfacd8494247297e1a179561f6e8bdd0d22d82aa",
+      "size": 15384
+    },
+    {
+      "old": "90_候选工作区/current/全项目正式提升审查/formal_promotion_matrix.json",
+      "new": "03_研究记录/专题/全项目正式提升审查/formal_promotion_matrix.json",
+      "sha256": "6c8c2149397e1f4776d2c1e74d87b6e43943739a75c890818b595fadf1adc45c",
+      "size": 6110
+    },
+    {
+      "old": "90_候选工作区/交接说明_history.md",
+      "new": "00_项目管理/交接说明_history.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    }
+  ],
+  "note": "Hashes describe original tracked bytes, including LFS pointers, not hydrated LFS object validation. Current handoff was relocated and updated. Physics equations and numerical kernels were not modified."
+}
