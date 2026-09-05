@@ -20,14 +20,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import base64, hashlib, io, json, lzma, os, pathlib, subprocess, urllib.request, zipfile
+          import base64, hashlib, io, json, lzma, os, pathlib, subprocess, zipfile
           repo = 'cjt42554-crypto/iypt-5-Y_shaped_pendulum'
           api = 'https://api.github.com/repos/'+repo
-          headers = {'Authorization': 'Bearer '+os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'}
           def get(suffix):
-              with urllib.request.urlopen(urllib.request.Request(api+suffix,headers=headers),timeout=45) as response:
-                  return response.read()
-          assert subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip() == 'c1c4d7fc3dcac5cda9ec2a34309615075afe626e'
+              return subprocess.check_output(['curl','--fail','--silent','--show-error','--location','--retry','2','--max-time','45','-H','Authorization: Bearer '+os.environ['GH_TOKEN'],'-H','Accept: application/vnd.github+json',api+suffix])
+          assert subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip() == '299d8a6dbb27328b082affdda6ebbcd4233bb3ec'
           shas = ['9a14a12fac2b3f5e138792c72efc8705a88538e0','4703819ecc9c329e4ed5107ec86392b6377ec718','796b44261113b236e1c3127bb6bf9b99f4f7244c','473e6ae24a9583c994b98de18dc4a065b58c40ef']
           raw = b''.join(base64.b64decode(json.loads(get('/git/blobs/'+sha))['content']) for sha in shas)
           assert hashlib.sha256(raw).hexdigest() == '7c4fc605cd846ed2d2beaab64063c4ac497fe7968a20f61940487868d35dc7af'
@@ -68,7 +66,7 @@ jobs:
           assert (rec/'solver-regression-remote.txt').read_text().rstrip().endswith('OK')
           raw_logs = ['solver-regression-initial-timeout.txt','solver-regression-local-timeout.txt']
           digests = {name:hashlib.sha256((rec/name).read_bytes()).hexdigest() for name in raw_logs}
-          note = '# 发布收尾记录\n\n验证运行 `33935164378` 的 22 项理论核查、16 项文档自测、入口检查、113 项原求解器回归全部通过；其工作流整体失败发生在提交前，原因是两份本地超时原始日志的截断行保留了行末空格。未发生物理检查或求解器回归失败。\n\n本次恢复原始 artifact（SHA-256 `895010ff478f23f291814de41e2c4c6d88d138a9dd7a33a50d91e24c1e8acda3`），核对理论与检查脚本哈希、实际测试计数及退出码；不重复解释为新一次完整回归。只把上述两份原始日志排除在 Git 空白风格检查外，其余暂存文件照常检查，日志字节不改写，验证阈值不修改。\n\n原始日志 SHA-256：\n\n'
+          note = '# 发布收尾记录\n\n验证运行 `33935164378` 的 22 项理论核查、16 项文档自测、入口检查、113 项原求解器回归全部通过；其工作流整体失败发生在提交前，原因是两份本地超时原始日志的截断行保留了行末空格。未发生物理检查或求解器回归失败。\n\n本次恢复原始 artifact（SHA-256 `895010ff478f23f291814de41e2c4c6d88d138a9dd7a33a50d91e24c1e8acda3`），核对理论与检查脚本哈希、实际测试计数及退出码；不重复解释为新一次完整回归。只把上述两份原始日志排除在 Git 空白风格检查外，其余暂存文件照常检查，日志字节不改写，验证阈值不修改。初次恢复运行 `33935463006` 在 artifact 跨主机重定向处认证失败，未提交；改用不向跨主机重定向转发 API Authorization 的下载方式，仍校验同一 artifact 哈希。\n\n原始日志 SHA-256：\n\n'
           note += '\n'.join('- `'+name+'`：`'+digest+'`' for name,digest in digests.items())+'\n'
           (rec/'publication-note.md').write_text(note,encoding='utf-8')
           assert pathlib.Path('00_项目管理/交接说明_history.md').stat().st_size == 0
