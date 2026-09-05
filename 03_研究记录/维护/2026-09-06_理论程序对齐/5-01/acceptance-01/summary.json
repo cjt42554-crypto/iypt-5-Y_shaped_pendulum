@@ -1,0 +1,246 @@
+{
+  "status": "PASS",
+  "tests_run": 19,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "source_tree_sha256": "858526ec6c7c44ae588019424bf81a5768eb6ced3f097ba3074c2efbe08e76dc",
+  "source_tree_sha256_at_end": "858526ec6c7c44ae588019424bf81a5768eb6ced3f097ba3074c2efbe08e76dc",
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "matplotlib": "3.6.3",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39"
+  },
+  "command": [
+    "/home/cjt/Desktop/iypt/5 Y形摆/.venv/bin/python",
+    "03_研究记录/维护/2026-09-06_理论程序对齐/5-01/verify_junction.py",
+    "03_研究记录/维护/2026-09-06_理论程序对齐/5-01/acceptance-01"
+  ],
+  "cwd": "/home/cjt/Desktop/iypt/5 Y形摆",
+  "reference": "tests/junction_reference.py; independent Cartesian Newton/KKT; synthetic inputs only",
+  "test_files_sha256": {
+    "junction_reference.py": "b6d82589849cb71e1412f2252ef23a0b5d1c68a42a5f121f95b0db6498726433",
+    "test_junction.py": "815c42f96f68d26975b3b08e4c883dac32c0296fbbbdda3530b6eec63ae07f3a",
+    "test_junction_guards.py": "fa770e9a6e309ab769c3dd660ad218b1bb5a8709e71628831e41f34025a8f916",
+    "test_junction_integration.py": "690ce783aada39236108c0960a616bca49503a2098dfe99c281a390598dbb5f1"
+  },
+  "metrics": {
+    "5-B1-energy-structure": {
+      "mass_error": 1.6528475534848838e-16,
+      "potential_gradient_error": 7.008449968286992e-12,
+      "threshold": 1e-10
+    },
+    "5-B1": {
+      "seed": 20260905,
+      "accepted": 120,
+      "attempted": 120,
+      "rejected": 0,
+      "max_condition": 132.75911285542566,
+      "mass_ratios": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "max_scaled_errors": [
+        4.70206455758911e-15,
+        5.515150369436335e-16,
+        2.7764334837794825e-16
+      ],
+      "threshold": 1e-10
+    },
+    "5-B2": {
+      "independent_omega": [
+        3.3361018390104125,
+        4.043513323829954,
+        22.98739708013141
+      ],
+      "anchors": [
+        3.336101839011105,
+        4.043513323831146,
+        22.987397080133864
+      ],
+      "modes": [
+        [
+          {
+            "amplitude": 0.0001,
+            "frequency_rad_s": 3.3361018369570736,
+            "relative_frequency_error": 6.156979812056428e-10,
+            "scaled_trajectory_error": 6.102341548858392e-09,
+            "window_s": 5.650174014809508
+          },
+          {
+            "amplitude": 5e-05,
+            "frequency_rad_s": 3.336101838446696,
+            "relative_frequency_error": 1.6918217465966284e-10,
+            "scaled_trajectory_error": 1.5256224602640747e-09,
+            "window_s": 5.650174014809508
+          }
+        ],
+        [
+          {
+            "amplitude": 0.0001,
+            "frequency_rad_s": 4.043513321239692,
+            "relative_frequency_error": 6.40891708479709e-10,
+            "scaled_trajectory_error": 5.433770448160358e-09,
+            "window_s": 4.661677707464357
+          },
+          {
+            "amplitude": 5e-05,
+            "frequency_rad_s": 4.043513323121587,
+            "relative_frequency_error": 1.7548072115631865e-10,
+            "scaled_trajectory_error": 1.3584422689917848e-09,
+            "window_s": 4.661677707464357
+          }
+        ],
+        [
+          {
+            "amplitude": 0.0001,
+            "frequency_rad_s": 22.987395723762397,
+            "relative_frequency_error": 5.900500443657662e-08,
+            "scaled_trajectory_error": 5.411894056349948e-07,
+            "window_s": 0.8199952285084463
+          },
+          {
+            "amplitude": 5e-05,
+            "frequency_rad_s": 22.98739674045548,
+            "relative_frequency_error": 1.477672230634465e-08,
+            "scaled_trajectory_error": 1.3529791321638526e-07,
+            "window_s": 0.8199952285084463
+          }
+        ]
+      ],
+      "trajectory_threshold": 1e-06
+    },
+    "5-B3-grazing": {
+      "status": "EVENT_UNRESOLVED",
+      "last_valid_time": 0.7760000000000006,
+      "independent_touch_time": 0.7776461136610766,
+      "reason": "grazing event uses conservative interval rather than simple-root time precision"
+    },
+    "5-B3-other": {
+      "initial_loss": "INPUT_REJECTED",
+      "near_pole_status": "SUCCESS_SINGLE_RUN",
+      "contact_time": 0.039999999999999994,
+      "contact_reference_time": 0.04,
+      "contact_error": 6.938893903907228e-18
+    },
+    "5-B3-trajectory": {
+      "reference_max_constraint_m": 2.6645352591003757e-15,
+      "reference_steps": 2001,
+      "levels": [
+        {
+          "max_step": 0.01,
+          "actual_max_step": 0.00908337197858855,
+          "accepted_steps": 377,
+          "scaled_position_error": 1.1113770454738537e-08,
+          "constraint_norm": 3.7941039199296256e-10,
+          "constraint_tangent": 3.076176900013161e-09,
+          "relative_energy_drift": 4.611435463469741e-07
+        },
+        {
+          "max_step": 0.0075,
+          "actual_max_step": 0.007500000000000062,
+          "accepted_steps": 376,
+          "scaled_position_error": 9.824734848407864e-09,
+          "constraint_norm": 2.8493984949307105e-10,
+          "constraint_tangent": 2.066869196626353e-09,
+          "relative_energy_drift": 3.837578953251906e-07
+        },
+        {
+          "max_step": 0.005,
+          "actual_max_step": 0.0050000000000000044,
+          "accepted_steps": 417,
+          "scaled_position_error": 2.877233339108307e-09,
+          "constraint_norm": 1.233626534258292e-10,
+          "constraint_tangent": 1.1638546029701935e-09,
+          "relative_energy_drift": 1.5125194077040408e-07
+        },
+        {
+          "max_step": 0.0025,
+          "actual_max_step": 0.0025000000000000577,
+          "accepted_steps": 801,
+          "scaled_position_error": 6.823570577476464e-11,
+          "constraint_norm": 2.121014475164884e-11,
+          "constraint_tangent": 1.3676102264548184e-10,
+          "relative_energy_drift": 9.909030828962342e-09
+        }
+      ],
+      "observed_orders": [
+        0.6436262062277397,
+        3.028803117962605,
+        5.398011558405697
+      ],
+      "design_order": "Radau IIA fifth order accepted endpoints; dense trajectory order can differ"
+    },
+    "5-B3-tensions": [
+      {
+        "first_trigger": "T_A_ZERO",
+        "time": 0.08681438517773336,
+        "reference_time": 0.08681438517773342,
+        "absolute_time_error": 5.551115123125783e-17,
+        "root_bracket": [
+          0.085,
+          0.08681438517773336
+        ],
+        "T_star_s": 1.0
+      },
+      {
+        "first_trigger": "T_B_ZERO",
+        "time": 0.08681438517773336,
+        "reference_time": 0.08681438517773353,
+        "absolute_time_error": 1.6653345369377348e-16,
+        "root_bracket": [
+          0.085,
+          0.08681438517773336
+        ],
+        "T_star_s": 1.0
+      },
+      {
+        "first_trigger": "T_LOWER_ZERO",
+        "time": 0.4182539412080468,
+        "reference_time": 0.41825394120804743,
+        "absolute_time_error": 6.106226635438361e-16,
+        "root_bracket": [
+          0.4181250851227612,
+          0.4182539412080468
+        ],
+        "T_star_s": 1.0
+      }
+    ],
+    "5-B4": [
+      {
+        "mass_ratio": 0.1,
+        "omega_slow": 3.3361018390104125,
+        "omega_fast": 22.98739708013141,
+        "slow_frequency_error_to_torus": 0.010476110882891687,
+        "prepared_bob_max_error_m": 6.123345457294134e-05,
+        "prepared_fast_position_amplitude": 8.060253985025258e-20,
+        "unprepared_fast_junction_angle_amplitude": 0.001,
+        "unprepared_max_junction_speed_m_s": 0.006896219074699897
+      },
+      {
+        "mass_ratio": 0.01,
+        "omega_slow": 3.3051608910053147,
+        "omega_fast": 70.30736740543864,
+        "slow_frequency_error_to_torus": 0.0011043679577731336,
+        "prepared_bob_max_error_m": 6.658468007627294e-06,
+        "prepared_fast_position_amplitude": 8.111381657378422e-19,
+        "unprepared_fast_junction_angle_amplitude": 0.001,
+        "unprepared_max_junction_speed_m_s": 0.021092209776244375
+      },
+      {
+        "mass_ratio": 0.001,
+        "omega_slow": 3.3018814148005675,
+        "omega_fast": 221.55845183405503,
+        "slow_frequency_error_to_torus": 0.00011104325696331685,
+        "prepared_bob_max_error_m": 6.717511165441314e-07,
+        "prepared_fast_position_amplitude": 1.149927994390659e-18,
+        "unprepared_fast_junction_angle_amplitude": 0.001,
+        "unprepared_max_junction_speed_m_s": 0.06646750838801108
+      }
+    ]
+  }
+}

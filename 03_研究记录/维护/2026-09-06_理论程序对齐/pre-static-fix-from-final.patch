@@ -1,0 +1,16 @@
+--- a/y_pendulum_forward/cable.py
++++ b/y_pendulum_forward/cable.py
+@@ -944,12 +944,7 @@
+ 
+         for seed in seeds:
+             if optimization_nodes.size:
+-                # Near a held equilibrium the energy change is quadratic in
+-                # the remaining force residual. A fixed 1e-14 energy cutoff
+-                # can stop above the requested force tolerance. Continue to
+-                # floating-point energy resolution, then still check the
+-                # actual gradient explicitly; optimizer status is not a pass.
+-                result = minimize(objective, seed[optimization_nodes].ravel(), method="L-BFGS-B", jac=True, options={"maxiter": maxiter, "gtol": float(gradient_tolerance), "ftol": np.finfo(float).eps, "maxls": 50})
++                result = minimize(objective, seed[optimization_nodes].ravel(), method="L-BFGS-B", jac=True, options={"maxiter": maxiter, "gtol": float(gradient_tolerance), "ftol": 1e-14, "maxls": 50})
+                 candidate = positions.copy()
+                 candidate[optimization_nodes] = result.x.reshape((-1, 3))
+                 _energy, gradient = self._static_potential_gradient(candidate)

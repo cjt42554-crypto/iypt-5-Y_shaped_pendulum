@@ -9,11 +9,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any, Callable
+from types import SimpleNamespace
 import warnings
 from time import perf_counter
 
 import numpy as np
-from scipy.integrate import cumulative_trapezoid, solve_ivp
+from scipy.integrate import cumulative_trapezoid, solve_ivp, trapezoid
 from scipy.linalg import cho_factor, cho_solve
 from scipy.optimize import minimize
 
@@ -38,10 +39,12 @@ from .initial_fields import PolynomialField, build_polynomial_field
 from .observations import evaluate_observations
 from .providers import (
     AirVelocity,
+    HoldingForceRelease,
     MaterialForce,
     PointForce,
     PrescribedMotion,
     build_air,
+    build_holding_force_release,
     build_material_force,
     build_motion,
     build_point_force,
@@ -145,6 +148,7 @@ class CablePhysicalInput:
     distributed_forces: dict[str, MaterialForce]
     junction_force: PointForce
     bob_force: PointForce
+    hold_release: HoldingForceRelease
     guards: list[CableGuard]
     initial_mode: str
     initial_branches: dict[str, InitialBranch]
@@ -382,6 +386,7 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
             "distributed_forces",
             "junction_force",
             "bob_force",
+            "hold_release",
             "exit_guards",
         },
         "inputs",
@@ -402,6 +407,14 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
     }
     junction_force = build_point_force(inputs.get("junction_force"), "inputs.junction_force", issues)
     bob_force = build_point_force(inputs.get("bob_force"), "inputs.bob_force", issues)
+    hold_release = build_holding_force_release(
+        inputs.get("hold_release"), "inputs.hold_release", issues
+    )
+    if "hold_release" in inputs and inputs["hold_release"] is None:
+        issues.append(ValidationIssue(
+            "TYPE", "inputs.hold_release", None,
+            "explicit release object; omit the field for legacy instantaneous release",
+        ))
     for name in BRANCHES:
         validate_force_window(
             distributed[name],
@@ -456,6 +469,15 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
     initial_branches: dict[str, InitialBranch] = {}
     hold_fixed_nodes: dict[str, np.ndarray] = {}
     if initial_mode == "DIRECT_STATE":
+        if "hold_release" in inputs:
+            issues.append(
+                ValidationIssue(
+                    "HOLD_RELEASE_MODE",
+                    "inputs.hold_release",
+                    inputs.get("hold_release"),
+                    "requires initial_state.mode='STATIC_HOLD_RELEASE'",
+                )
+            )
         r_J0 = as_vector3(initial.get("r_J"), "initial_state.r_J", issues)
         v_J0 = as_vector3(initial.get("v_J"), "initial_state.v_J", issues)
         r_m0 = as_vector3(initial.get("r_m"), "initial_state.r_m", issues)
@@ -531,7 +553,7 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
     candidate = CablePhysicalInput(
         g, e_z, branches, junction_mass, bob_mass, rho_air, bob_volume,
         bob_c1, bob_c2, lambda_min, T, support_A, support_B, air, distributed,
-        junction_force, bob_force, guards, initial_mode, initial_branches,
+        junction_force, bob_force, hold_release, guards, initial_mode, initial_branches,
         hold_fixed_nodes, r_J0, v_J0, r_m0, v_m0,
     )
     if initial_mode == "DIRECT_STATE":
@@ -753,6 +775,10 @@ class CableFEM:
         points, weights = np.polynomial.legendre.leggauss(quadrature_order)
         self.gauss_xi = 0.5 * (points + 1.0)
         self.gauss_weights = 0.5 * weights
+        self.initial_hold_forces = {
+            "junction": np.zeros(3),
+            "bob": np.zeros(3),
+        }
         self._build_topology()
         self._assemble_mass()
         self._initialize_state()
@@ -918,7 +944,12 @@ class CableFEM:
 
         for seed in seeds:
             if optimization_nodes.size:
-                result = minimize(objective, seed[optimization_nodes].ravel(), method="L-BFGS-B", jac=True, options={"maxiter": maxiter, "gtol": float(gradient_tolerance), "ftol": 1e-14, "maxls": 50})
+                # Near a held equilibrium the energy change is quadratic in
+                # the remaining force residual. A fixed 1e-14 energy cutoff
+                # can stop above the requested force tolerance. Continue to
+                # floating-point energy resolution, then still check the
+                # actual gradient explicitly; optimizer status is not a pass.
+                result = minimize(objective, seed[optimization_nodes].ravel(), method="L-BFGS-B", jac=True, options={"maxiter": maxiter, "gtol": float(gradient_tolerance), "ftol": np.finfo(float).eps, "maxls": 50})
                 candidate = positions.copy()
                 candidate[optimization_nodes] = result.x.reshape((-1, 3))
                 _energy, gradient = self._static_potential_gradient(candidate)
@@ -977,6 +1008,38 @@ class CableFEM:
         self.initial_velocities = np.zeros_like(self.initial_positions)
         blocking = {"STATIC_PREPARATION_FAILED", "PREPARATION_NONUNIQUE"}
         if not any(issue.code in blocking for issue in self.numerical_issues):
+            applied, internal, _details = self.assemble(
+                0.0,
+                self.initial_positions,
+                self.initial_velocities,
+                diagnostics=False,
+            )
+            for node_name in self.p.hold_fixed_nodes:
+                node = self.node_index[node_name]
+                self.initial_hold_forces[node_name] = (
+                    internal[node] - applied[node]
+                )
+            held_residual = np.vstack(
+                [
+                    internal[self.node_index[node_name]]
+                    - applied[self.node_index[node_name]]
+                    - self.initial_hold_forces[node_name]
+                    for node_name in self.p.hold_fixed_nodes
+                ]
+            )
+            if not self.p.hold_release.description["implicit_legacy_default"]:
+                self.preparation_diagnostics.update(
+                    holding_force_source=self.p.hold_release.source,
+                    initial_holding_forces={
+                        name: value.copy()
+                        for name, value in self.initial_hold_forces.items()
+                        if name in self.p.hold_fixed_nodes
+                    },
+                    held_equilibrium_residual_inf=float(
+                        np.max(np.abs(held_residual)) if held_residual.size else 0.0
+                    ),
+                    release_protocol=dict(self.p.hold_release.description),
+                )
             self._finalize_initial_state(self.initial_positions, self.initial_velocities)
         else:
             self.y0 = np.concatenate((self.initial_positions[self.free].ravel(), self.initial_velocities[self.free].ravel()))
@@ -1133,23 +1196,37 @@ class CableFEM:
         F_ext_b = self.p.bob_force.value(t)
         applied[junction] += F_ext_J
         applied[bob] += F_ext_b
+        hold_multiplier = self.p.hold_release.multiplier(t)
+        F_hold_J = hold_multiplier * self.initial_hold_forces["junction"]
+        F_hold_b = hold_multiplier * self.initial_hold_forces["bob"]
+        applied[junction] += F_hold_J
+        applied[bob] += F_hold_b
         air_b = self.p.air.value(positions[bob], t)
         u_b = velocities[bob] - air_b
         F_drag_b = -self.p.bob_c1 * u_b - self.p.bob_c2 * np.linalg.norm(u_b) * u_b
         applied[bob] += F_drag_b
 
         if diagnostics:
+            P_hold = float(
+                F_hold_J @ velocities[junction] + F_hold_b @ velocities[bob]
+            )
+            P_ext_other = float(
+                total_P_ext_string
+                + F_ext_J @ velocities[junction]
+                + F_ext_b @ velocities[bob]
+            )
             details.update(
                 F_drag_b=F_drag_b,
+                F_hold_J=F_hold_J,
+                F_hold_b=F_hold_b,
+                holding_force_multiplier=float(hold_multiplier),
                 D_ax=float(total_D_ax),
                 D_string=float(total_D_string),
                 D_b=float(-F_drag_b @ u_b),
                 P_air=float(total_P_air_string + F_drag_b @ air_b),
-                P_ext=float(
-                    total_P_ext_string
-                    + F_ext_J @ velocities[junction]
-                    + F_ext_b @ velocities[bob]
-                ),
+                P_hold=P_hold,
+                P_ext_other=P_ext_other,
+                P_ext=float(P_ext_other + P_hold),
                 V_ax=float(total_V_ax),
             )
         return applied, internal, details
@@ -1326,6 +1403,65 @@ class CableFEM:
         return details
 
 
+def _solve_release_intervals(model, *, method, rtol, atol, max_step, events):
+    """Keep known force-history boundaries in the actual accepted mesh.
+
+    Positions and velocities pass unchanged between segments. This also makes
+    the accepted-step work quadrature respect the release's exact support.
+    """
+    protocol = model.p.hold_release
+    breaks = sorted({0.0, model.p.T, *[
+        value for value in (protocol.start, protocol.end)
+        if 0.0 < value < model.p.T
+    ]})
+    segments = []
+    current = model.y0
+    for left, right in zip(breaks, breaks[1:]):
+        def rhs(time, state):
+            # Use the left force limit at an instantaneous switch, then the
+            # right limit in the next segment; never reset the physical state.
+            query = (
+                np.nextafter(right, left)
+                if protocol.history == "instantaneous"
+                and right == protocol.start and time == right
+                else time
+            )
+            return model.rhs(query, state)
+
+        result = solve_ivp(rhs, (left, right), current, method=method,
+                           rtol=rtol, atol=atol, max_step=max_step,
+                           dense_output=True, events=events)
+        segments.append(result)
+        current = result.y[:, -1]
+        if not result.success or result.status == 1:
+            break
+    if len(segments) == 1:
+        return segments[0]
+    ends = np.array([segment.t[-1] for segment in segments])
+
+    def dense(time):
+        query = np.asarray(time, dtype=float)
+        values = np.empty((model.y0.size, query.size))
+        flat = query.ravel()
+        indices = np.minimum(np.searchsorted(ends, flat, side="left"), len(segments)-1)
+        for index, segment in enumerate(segments):
+            mask = indices == index
+            if np.any(mask):
+                values[:, mask] = segment.sol(flat[mask])
+        return values[:, 0] if query.ndim == 0 else values
+
+    return SimpleNamespace(
+        t=np.concatenate([segments[0].t, *[segment.t[1:] for segment in segments[1:]]]),
+        y=np.concatenate([segments[0].y, *[segment.y[:, 1:] for segment in segments[1:]]], axis=1),
+        sol=dense, success=segments[-1].success, status=segments[-1].status,
+        message=segments[-1].message,
+        t_events=[np.concatenate([segment.t_events[i] for segment in segments]) for i in range(len(events))],
+        nfev=sum(segment.nfev for segment in segments),
+        njev=sum(getattr(segment, "njev", 0) for segment in segments),
+        nlu=sum(getattr(segment, "nlu", 0) for segment in segments),
+    )
+
+
 def run_cable(
     config: dict[str, Any], *, identity: dict[str, Any]
 ) -> SimulationResult:
@@ -1440,15 +1576,12 @@ def run_cable(
     try:
         with warnings.catch_warnings(record=True) as caught_warnings:
             warnings.simplefilter("always")
-            sol = solve_ivp(
-                model.rhs,
-                (0.0, physical.T),
-                model.y0,
+            sol = _solve_release_intervals(
+                model,
                 method=method,
                 rtol=numeric_values["rtol"],
                 atol=atol_vector,
                 max_step=numeric_values["max_step"],
-                dense_output=True,
                 events=event_functions,
             )
     except Exception as exc:
@@ -1546,10 +1679,14 @@ def run_cable(
         absolute_ports = (abs(snapshot["D_ax"]) + abs(snapshot["D_string"]) + abs(snapshot["D_b"])
                           + abs(snapshot["P_air"]) + abs(snapshot["P_ext"])
                           + max(abs(snapshot["P_base"]), abs(snapshot["P_base_algebraic"])))
-        return np.array([physical_power, algebraic_power, absolute_ports])
+        return np.array(
+            [physical_power, algebraic_power, absolute_ports, snapshot["P_hold"]]
+        )
 
     try:
-        power_ledger, quadrature_evaluations = integrate_power_ledger(sol.t, time, power_at)
+        power_ledger, quadrature_evaluations = integrate_power_ledger(
+            sol.t, time, power_at, component_count=4
+        )
         state, derived, diagnostics = _sample_cable(model, time, y_samples, power_ledger=power_ledger)
     except Exception as exc:
         return SimulationResult(
@@ -1576,6 +1713,8 @@ def run_cable(
     solver_diagnostic_fields = dict(
         solver_message=sol.message,
         accepted_steps=max(0, int(sol.t.size) - 1),
+        max_actual_step=float(np.max(np.diff(sol.t))) if sol.t.size > 1 else 0.0,
+        min_actual_step=float(np.min(np.diff(sol.t))) if sol.t.size > 1 else 0.0,
         power_quadrature_evaluations=quadrature_evaluations,
         timings_seconds={"setup": setup_elapsed, "integration": integration_elapsed,
                          "diagnostics_and_power_quadrature": perf_counter() - diagnostic_started},
@@ -1697,6 +1836,21 @@ def run_cable(
                 if physical.initial_mode == "DIRECT_STATE"
                 else "discrete multistart static minimization; local uniqueness evidence only"
             ),
+            **(
+                {
+                    "release_protocol_id": physical.hold_release.description["protocol_id"],
+                    "extension_theory_sha256": physical.hold_release.description["extension_theory_sha256"],
+                    "theory_sections": physical.hold_release.description["theory_sections"],
+                    "hold_release": dict(physical.hold_release.description),
+                    "initial_holding_forces": {
+                        name: value.copy()
+                        for name, value in model.initial_hold_forces.items()
+                        if name in physical.hold_fixed_nodes
+                    },
+                }
+                if not physical.hold_release.description["implicit_legacy_default"]
+                else {}
+            ),
         },
     )
 
@@ -1750,12 +1904,15 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
     velocities = np.empty_like(positions)
     scalar_names = (
         "T_kin", "V_g", "V_buoy", "V_ax", "E_F", "D_ax", "D_string",
-        "D_b", "P_base", "P_air", "P_ext",
+        "D_b", "P_base", "P_air", "P_ext", "P_ext_other", "P_hold",
+        "holding_force_multiplier",
     )
     scalar = {name: np.empty(sample_count) for name in scalar_names}
     algebraic_base_power = np.empty(sample_count)
     vector = {
         "F_drag_b": np.empty((sample_count, 3)),
+        "F_hold_J": np.empty((sample_count, 3)),
+        "F_hold_b": np.empty((sample_count, 3)),
         "R_A": np.empty((sample_count, 3)),
         "R_B": np.empty((sample_count, 3)),
     }
@@ -1825,6 +1982,8 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
             scalar[name][index] = snapshot[name]
         algebraic_base_power[index] = snapshot["P_base_algebraic"]
         vector["F_drag_b"][index] = snapshot["F_drag_b"]
+        vector["F_hold_J"][index] = snapshot["F_hold_J"]
+        vector["F_hold_b"][index] = snapshot["F_hold_b"]
         vector["R_A"][index] = snapshot["R_A"]
         vector["R_B"][index] = snapshot["R_B"]
         algebraic_reaction_A[index] = snapshot["algebraic_reaction"][0]
@@ -1893,7 +2052,19 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
                 "sample_index": int(index),
                 "triggers": violation_triggers,
             }
-    derived: dict[str, Any] = {"branches": branch_output, **scalar, **vector}
+    release_explicit = not model.p.hold_release.description["implicit_legacy_default"]
+    derived_scalar = dict(scalar)
+    derived_vector = dict(vector)
+    if not release_explicit:
+        for name in ("P_ext_other", "P_hold", "holding_force_multiplier"):
+            derived_scalar.pop(name)
+        for name in ("F_hold_J", "F_hold_b"):
+            derived_vector.pop(name)
+    derived: dict[str, Any] = {
+        "branches": branch_output,
+        **derived_scalar,
+        **derived_vector,
+    }
     physical_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + scalar["P_base"] + scalar["P_ext"]
     algebraic_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + algebraic_base_power + scalar["P_ext"]
     sampled_physical_integral = (cumulative_trapezoid(physical_power, time, initial=0.0)
@@ -1901,21 +2072,27 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
     sampled_algebraic_integral = (cumulative_trapezoid(algebraic_power, time, initial=0.0)
                                   if sample_count >= 2 else np.zeros(sample_count))
     if power_ledger is not None:
-        if power_ledger.shape != (sample_count, 3) or not np.isfinite(power_ledger).all():
-            raise ValueError("power_ledger must contain three finite cumulative powers per sample")
+        if power_ledger.shape != (sample_count, 4) or not np.isfinite(power_ledger).all():
+            raise ValueError("power_ledger must contain four finite cumulative powers per sample")
         # Residuals and the independent integral share the first returned time.
         ledger = power_ledger - power_ledger[0] if sample_count else power_ledger
         physical_integral, algebraic_integral = ledger[:, 0], ledger[:, 1]
         work_scale = float(ledger[-1, 2]) if sample_count else 0.0
+        hold_work = ledger[:, 3]
         power_method = "accepted_step_dense_output_gauss_legendre_3"
     else:
         # Direct snapshot callers do not supply a dense solution. Label this
         # lower-order fallback explicitly instead of implying solver-mesh work.
         physical_integral, algebraic_integral = sampled_physical_integral, sampled_algebraic_integral
+        hold_work = (
+            cumulative_trapezoid(scalar["P_hold"], time, initial=0.0)
+            if sample_count >= 2
+            else np.zeros(sample_count)
+        )
         absolute_ports = (np.abs(scalar["D_ax"]) + np.abs(scalar["D_string"]) + np.abs(scalar["D_b"])
                           + np.abs(scalar["P_air"]) + np.abs(scalar["P_ext"])
                           + np.maximum(np.abs(scalar["P_base"]), np.abs(algebraic_base_power)))
-        work_scale = float(np.trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
+        work_scale = float(trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
         power_method = "output_sample_trapezoid_fallback"
     physical_residual = scalar["E_F"] - scalar["E_F"][0] - physical_integral if sample_count else np.empty(0)
     algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - algebraic_integral if sample_count else np.empty(0)
@@ -1946,8 +2123,8 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
     # The existing independent convergence checker reconstructs trapezoid
     # work from stored state. Preserve those legacy fields with explicit labels;
     # accepted-step work and its residuals are exported separately below.
-    legacy_work_scale = max(float(np.trapezoid(np.abs(physical_power), time)),
-                            float(np.trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
+    legacy_work_scale = max(float(trapezoid(np.abs(physical_power), time)),
+                            float(trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
     legacy_physical_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_physical_integral if sample_count else np.empty(0)
     legacy_algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_algebraic_integral if sample_count else np.empty(0)
     legacy_max_physical = float(np.max(np.abs(legacy_physical_residual))) if sample_count else None
@@ -2015,6 +2192,12 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
         },
         "P_base_algebraic": algebraic_base_power,
     }
+    if release_explicit:
+        diagnostics.update(
+            power_integral_hold=hold_work,
+            final_holding_force_work=float(hold_work[-1]) if sample_count else 0.0,
+            hold_release=dict(model.p.hold_release.description),
+        )
     state = {
         "node_positions": positions,
         "node_velocities": velocities,

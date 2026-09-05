@@ -143,12 +143,14 @@ def _write_series_csv(path: Path, result: SimulationResult) -> None:
     for key in (
         "E_F",
         "E_torus",
+        "E_junction",
         "D_ax",
         "D_string",
         "D_b",
         "P_base",
         "P_air",
         "P_ext",
+        "P_hold",
         "T_A",
         "T_B",
         "T_lower",
@@ -158,6 +160,9 @@ def _write_series_csv(path: Path, result: SimulationResult) -> None:
             if values.ndim == 1 and values.size == result.time.size:
                 headers.append(key)
                 columns.append(values)
+    if "power_integral_hold" in result.diagnostics:
+        headers.append("W_hold")
+        columns.append(np.asarray(result.diagnostics["power_integral_hold"]))
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(headers)
@@ -191,7 +196,9 @@ def _write_plots(output: Path, result: SimulationResult) -> None:
         fig.tight_layout()
         fig.savefig(output / "trajectory.png", dpi=160)
         plt.close(fig)
-    energy = result.derived.get("E_F", result.derived.get("E_torus"))
+    energy = result.derived.get(
+        "E_F", result.derived.get("E_torus", result.derived.get("E_junction"))
+    )
     if energy is not None:
         energy = np.asarray(energy)
         fig, ax = plt.subplots(figsize=(7, 4.2))

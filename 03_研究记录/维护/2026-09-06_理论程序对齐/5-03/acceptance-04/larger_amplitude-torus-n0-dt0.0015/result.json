@@ -1,0 +1,102 @@
+{
+  "contract_status": [
+    "COMPLETED"
+  ],
+  "diagnostics": {
+    "accepted_steps": 1334,
+    "array_fields_in_trajectory_npz": {
+      "sampled_guard_component_series": {
+        "R_ZERO": [
+          401
+        ],
+        "T_A_ZERO": [
+          401
+        ],
+        "T_B_ZERO": [
+          401
+        ],
+        "T_LOWER_ZERO": [
+          401
+        ]
+      }
+    },
+    "energy_scale": 0.47088,
+    "energy_scale_components": {
+      "energy_variation": 1.6653345369377348e-16,
+      "gravitational": 0.47088
+    },
+    "guard_component_scales": {
+      "R_ZERO": 0.6,
+      "T_A_ZERO": 0.7848,
+      "T_B_ZERO": 0.7848,
+      "T_LOWER_ZERO": 0.7848
+    },
+    "max_abs_physical_branch_residual": 2.220446049250313e-16,
+    "max_abs_torus_unsquared_residual": 1.6653345369377348e-16,
+    "max_absolute_energy_drift": 1.6653345369377348e-16,
+    "max_actual_step": 0.0015000000000000568,
+    "max_relative_energy_drift": 3.5366431722259063e-16,
+    "min_Q_T": 0.5399999999999996,
+    "min_actual_step": 0.0004999999999797389,
+    "nfev": 20012,
+    "njev": 0,
+    "nlu": 0,
+    "refinement_qualification": "SINGLE_RUN_CANDIDATE",
+    "solver_message": "The solver successfully reached the end of the integration interval.",
+    "solver_warnings": []
+  },
+  "events": [],
+  "metadata": {
+    "atol": 1e-10,
+    "atol_angle": 1e-10,
+    "atol_rate": 1e-10,
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "config_sha256": "5d926818c8aa145600f637731161accd1d2f11125f054ef158a7e2b729f6e49f",
+    "coordinate_note": "angles integrated on real representatives; no modulo during integration",
+    "effective_atol_vector": {
+      "angle": 1e-10,
+      "rate": 1e-10
+    },
+    "effective_rtol": 1e-08,
+    "event_cluster_tolerance": 1e-09,
+    "integrator": "DOP853",
+    "max_step": 0.0015,
+    "model_id": "FWD-TORUS-1.0",
+    "numerical_config_sha256": "ed98561b8e9bf9bdeea0eb1ad89a9d76d8709631a3e3b6243ee691b936c2eace",
+    "numerical_model_id": "NUM-FWD-TORUS-DOP853-1.0",
+    "observation_input_sha256": "c343853a90ec5cf2dab04de8dd0a968b64d89ebb56b1b0a3f548c21b10b5f51e",
+    "physical_input_sha256": "eb77e005eab61f30d221fc001eeeee4fd1da8e83943c0297aceb579db73452e6",
+    "program_version": "2.1.0-research",
+    "rtol": 1e-08,
+    "runtime_versions": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "scipy": "1.11.4"
+    },
+    "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_stable_during_run": true,
+    "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "units": "SI"
+  },
+  "model_id": "FWD-TORUS-1.0",
+  "numerical_model_id": "NUM-FWD-TORUS-DOP853-1.0",
+  "numerical_status": "SUCCESS_SINGLE_RUN",
+  "observations": {
+    "errors": [],
+    "operator": "orthographic",
+    "sample_count": 401,
+    "status": [
+      "OBSERVATION_INPUT_VALID"
+    ],
+    "valid_count": 401
+  },
+  "program_version": "2.1.0-research",
+  "returned_interval": "[0,2.0]",
+  "sample_count": 401,
+  "tau": 2.0,
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI"
+}

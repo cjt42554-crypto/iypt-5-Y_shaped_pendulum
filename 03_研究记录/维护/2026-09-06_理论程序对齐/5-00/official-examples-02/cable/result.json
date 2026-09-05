@@ -1,0 +1,2207 @@
+{
+  "contract_status": [
+    "COMPLETED"
+  ],
+  "diagnostics": {
+    "absolute_port_exchange_work": 7.475881065474278e-08,
+    "accepted_steps": 60,
+    "array_fields_in_trajectory_npz": {
+      "P_base_algebraic": [
+        129
+      ],
+      "reaction_algebraic": {
+        "A": [
+          129,
+          3
+        ],
+        "B": [
+          129,
+          3
+        ]
+      },
+      "sampled_guard_component_series": {
+        "LAMBDA_MIN:A:element:0": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:1": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:10": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:11": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:12": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:13": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:14": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:15": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:16": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:17": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:18": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:19": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:2": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:20": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:21": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:22": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:23": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:3": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:4": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:5": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:6": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:7": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:8": [
+          129
+        ],
+        "LAMBDA_MIN:A:element:9": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:0": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:1": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:10": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:11": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:12": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:13": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:14": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:15": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:16": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:17": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:18": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:19": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:2": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:20": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:21": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:22": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:23": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:3": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:4": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:5": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:6": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:7": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:8": [
+          129
+        ],
+        "LAMBDA_MIN:B:element:9": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:0": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:1": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:10": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:11": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:12": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:13": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:14": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:15": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:16": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:17": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:18": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:19": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:2": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:20": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:21": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:22": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:23": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:24": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:25": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:26": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:27": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:28": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:29": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:3": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:30": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:31": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:4": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:5": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:6": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:7": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:8": [
+          129
+        ],
+        "LAMBDA_MIN:lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:24": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:25": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:26": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:27": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:28": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:29": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:30": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:31": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:24": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:25": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:26": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:27": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:28": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:29": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:30": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:31": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:24": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:25": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:26": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:27": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:28": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:29": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:30": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:31": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:9": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:0": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:1": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:10": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:11": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:12": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:13": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:14": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:15": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:16": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:17": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:18": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:19": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:2": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:20": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:21": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:22": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:23": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:24": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:25": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:26": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:27": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:28": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:29": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:3": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:30": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:31": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:4": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:5": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:6": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:7": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:8": [
+          129
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:9": [
+          129
+        ]
+      },
+      "sampled_guard_series": {
+        "lambda": [
+          129
+        ],
+        "material_lambda": [
+          129
+        ],
+        "material_rate": [
+          129
+        ]
+      }
+    },
+    "custom_guard_length_scales": {},
+    "dynamic_energy_scale": 9.686430162990713e-06,
+    "dynamic_energy_scale_definition": "max(peak kinetic energy, observed energy variation, absolute port work); not equilibrium excess energy",
+    "dynamic_energy_scale_resolved": true,
+    "energy_scale": 0.8197392856575999,
+    "energy_scale_components": {
+      "absolute_work_integral": 7.475971643324586e-08,
+      "energy_variation": 7.475881069751722e-08,
+      "gravitational": 0.8197392856575999,
+      "stored": 0.0012793385287946442
+    },
+    "guard_component_scales": {
+      "LAMBDA_MIN:A:element:0": 1.0,
+      "LAMBDA_MIN:A:element:1": 1.0,
+      "LAMBDA_MIN:A:element:10": 1.0,
+      "LAMBDA_MIN:A:element:11": 1.0,
+      "LAMBDA_MIN:A:element:12": 1.0,
+      "LAMBDA_MIN:A:element:13": 1.0,
+      "LAMBDA_MIN:A:element:14": 1.0,
+      "LAMBDA_MIN:A:element:15": 1.0,
+      "LAMBDA_MIN:A:element:16": 1.0,
+      "LAMBDA_MIN:A:element:17": 1.0,
+      "LAMBDA_MIN:A:element:18": 1.0,
+      "LAMBDA_MIN:A:element:19": 1.0,
+      "LAMBDA_MIN:A:element:2": 1.0,
+      "LAMBDA_MIN:A:element:20": 1.0,
+      "LAMBDA_MIN:A:element:21": 1.0,
+      "LAMBDA_MIN:A:element:22": 1.0,
+      "LAMBDA_MIN:A:element:23": 1.0,
+      "LAMBDA_MIN:A:element:3": 1.0,
+      "LAMBDA_MIN:A:element:4": 1.0,
+      "LAMBDA_MIN:A:element:5": 1.0,
+      "LAMBDA_MIN:A:element:6": 1.0,
+      "LAMBDA_MIN:A:element:7": 1.0,
+      "LAMBDA_MIN:A:element:8": 1.0,
+      "LAMBDA_MIN:A:element:9": 1.0,
+      "LAMBDA_MIN:B:element:0": 1.0,
+      "LAMBDA_MIN:B:element:1": 1.0,
+      "LAMBDA_MIN:B:element:10": 1.0,
+      "LAMBDA_MIN:B:element:11": 1.0,
+      "LAMBDA_MIN:B:element:12": 1.0,
+      "LAMBDA_MIN:B:element:13": 1.0,
+      "LAMBDA_MIN:B:element:14": 1.0,
+      "LAMBDA_MIN:B:element:15": 1.0,
+      "LAMBDA_MIN:B:element:16": 1.0,
+      "LAMBDA_MIN:B:element:17": 1.0,
+      "LAMBDA_MIN:B:element:18": 1.0,
+      "LAMBDA_MIN:B:element:19": 1.0,
+      "LAMBDA_MIN:B:element:2": 1.0,
+      "LAMBDA_MIN:B:element:20": 1.0,
+      "LAMBDA_MIN:B:element:21": 1.0,
+      "LAMBDA_MIN:B:element:22": 1.0,
+      "LAMBDA_MIN:B:element:23": 1.0,
+      "LAMBDA_MIN:B:element:3": 1.0,
+      "LAMBDA_MIN:B:element:4": 1.0,
+      "LAMBDA_MIN:B:element:5": 1.0,
+      "LAMBDA_MIN:B:element:6": 1.0,
+      "LAMBDA_MIN:B:element:7": 1.0,
+      "LAMBDA_MIN:B:element:8": 1.0,
+      "LAMBDA_MIN:B:element:9": 1.0,
+      "LAMBDA_MIN:lower:element:0": 1.0,
+      "LAMBDA_MIN:lower:element:1": 1.0,
+      "LAMBDA_MIN:lower:element:10": 1.0,
+      "LAMBDA_MIN:lower:element:11": 1.0,
+      "LAMBDA_MIN:lower:element:12": 1.0,
+      "LAMBDA_MIN:lower:element:13": 1.0,
+      "LAMBDA_MIN:lower:element:14": 1.0,
+      "LAMBDA_MIN:lower:element:15": 1.0,
+      "LAMBDA_MIN:lower:element:16": 1.0,
+      "LAMBDA_MIN:lower:element:17": 1.0,
+      "LAMBDA_MIN:lower:element:18": 1.0,
+      "LAMBDA_MIN:lower:element:19": 1.0,
+      "LAMBDA_MIN:lower:element:2": 1.0,
+      "LAMBDA_MIN:lower:element:20": 1.0,
+      "LAMBDA_MIN:lower:element:21": 1.0,
+      "LAMBDA_MIN:lower:element:22": 1.0,
+      "LAMBDA_MIN:lower:element:23": 1.0,
+      "LAMBDA_MIN:lower:element:24": 1.0,
+      "LAMBDA_MIN:lower:element:25": 1.0,
+      "LAMBDA_MIN:lower:element:26": 1.0,
+      "LAMBDA_MIN:lower:element:27": 1.0,
+      "LAMBDA_MIN:lower:element:28": 1.0,
+      "LAMBDA_MIN:lower:element:29": 1.0,
+      "LAMBDA_MIN:lower:element:3": 1.0,
+      "LAMBDA_MIN:lower:element:30": 1.0,
+      "LAMBDA_MIN:lower:element:31": 1.0,
+      "LAMBDA_MIN:lower:element:4": 1.0,
+      "LAMBDA_MIN:lower:element:5": 1.0,
+      "LAMBDA_MIN:lower:element:6": 1.0,
+      "LAMBDA_MIN:lower:element:7": 1.0,
+      "LAMBDA_MIN:lower:element:8": 1.0,
+      "LAMBDA_MIN:lower:element:9": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:0": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:1": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:10": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:11": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:12": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:13": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:14": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:15": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:16": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:17": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:18": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:19": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:2": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:20": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:21": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:22": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:23": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:3": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:4": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:5": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:6": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:7": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:8": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:9": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:0": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:1": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:10": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:11": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:12": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:13": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:14": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:15": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:16": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:17": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:18": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:19": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:2": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:20": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:21": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:22": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:23": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:3": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:4": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:5": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:6": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:7": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:8": 1.5,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:9": 1.5,
+      "MATERIAL_DOMAIN:A:rate_lower:element:0": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:1": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:10": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:11": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:12": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:13": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:14": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:15": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:16": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:17": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:18": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:19": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:2": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:20": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:21": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:22": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:23": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:3": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:4": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:5": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:6": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:7": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:8": 100.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:9": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:0": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:1": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:10": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:11": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:12": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:13": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:14": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:15": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:16": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:17": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:18": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:19": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:2": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:20": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:21": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:22": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:23": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:3": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:4": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:5": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:6": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:7": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:8": 100.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:9": 100.0,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:0": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:1": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:10": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:11": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:12": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:13": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:14": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:15": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:16": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:17": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:18": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:19": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:2": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:20": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:21": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:22": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:23": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:3": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:4": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:5": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:6": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:7": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:8": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:9": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:0": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:1": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:10": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:11": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:12": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:13": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:14": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:15": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:16": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:17": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:18": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:19": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:2": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:20": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:21": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:22": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:23": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:3": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:4": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:5": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:6": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:7": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:8": 1.5,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:9": 1.5,
+      "MATERIAL_DOMAIN:B:rate_lower:element:0": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:1": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:10": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:11": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:12": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:13": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:14": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:15": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:16": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:17": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:18": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:19": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:2": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:20": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:21": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:22": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:23": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:3": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:4": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:5": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:6": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:7": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:8": 100.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:9": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:0": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:1": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:10": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:11": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:12": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:13": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:14": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:15": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:16": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:17": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:18": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:19": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:2": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:20": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:21": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:22": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:23": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:3": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:4": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:5": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:6": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:7": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:8": 100.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:9": 100.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:0": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:1": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:10": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:11": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:12": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:13": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:14": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:15": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:16": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:17": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:18": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:19": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:2": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:20": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:21": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:22": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:23": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:24": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:25": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:26": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:27": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:28": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:29": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:3": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:30": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:31": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:4": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:5": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:6": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:7": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:8": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:9": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:0": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:1": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:10": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:11": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:12": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:13": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:14": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:15": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:16": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:17": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:18": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:19": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:2": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:20": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:21": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:22": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:23": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:24": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:25": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:26": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:27": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:28": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:29": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:3": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:30": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:31": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:4": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:5": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:6": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:7": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:8": 1.5,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:9": 1.5,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:0": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:1": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:10": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:11": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:12": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:13": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:14": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:15": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:16": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:17": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:18": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:19": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:2": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:20": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:21": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:22": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:23": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:24": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:25": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:26": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:27": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:28": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:29": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:3": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:30": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:31": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:4": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:5": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:6": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:7": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:8": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:9": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:0": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:1": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:10": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:11": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:12": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:13": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:14": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:15": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:16": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:17": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:18": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:19": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:2": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:20": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:21": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:22": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:23": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:24": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:25": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:26": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:27": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:28": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:29": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:3": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:30": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:31": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:4": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:5": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:6": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:7": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:8": 100.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:9": 100.0
+    },
+    "legacy_energy_residual_method": "output_sample_trapezoid_independently_recomputed_by_convergence_checker",
+    "mass_matrix": {
+      "condition_number": 1984.0635616893733,
+      "condition_number_method": "SPD_eigenvalue_ratio_2_norm",
+      "maximum_eigenvalue": 0.08004075519190243,
+      "minimum_eigenvalue": 4.034183013963021e-05,
+      "symmetry_inf_norm": 0.0
+    },
+    "max_absolute_energy_power_residual_algebraic_reaction": 9.365798042570805e-13,
+    "max_absolute_energy_power_residual_physical_traction": 9.365798042570805e-13,
+    "max_accepted_step_absolute_energy_power_residual_algebraic_reaction": 8.199233599924059e-16,
+    "max_accepted_step_absolute_energy_power_residual_physical_traction": 8.199233599924059e-16,
+    "max_actual_step": 7.125598793854813e-05,
+    "max_boundary_reaction_difference": 0.0005489496221080348,
+    "max_dynamic_relative_energy_power_residual_algebraic_reaction": 8.464659799284118e-11,
+    "max_dynamic_relative_energy_power_residual_physical_traction": 8.464659799284118e-11,
+    "max_gravity_relative_energy_power_residual_algebraic_reaction": 1.0002245522912304e-15,
+    "max_gravity_relative_energy_power_residual_physical_traction": 1.0002245522912304e-15,
+    "max_output_trapezoid_work_difference": 9.360198620894e-13,
+    "max_relative_energy_power_residual_algebraic_reaction": 1.1425337551142866e-12,
+    "max_relative_energy_power_residual_physical_traction": 1.1425337551142866e-12,
+    "min_D_ax": 0.0,
+    "min_D_b": 0.0,
+    "min_D_string": 0.0,
+    "min_actual_step": 1.4405523412906194e-06,
+    "nfev": 497,
+    "njev": 7,
+    "nlu": 54,
+    "power_integral_algebraic_reaction": [
+      0.0,
+      -3.9014251526287e-13,
+      -2.6498715955545424e-12,
+      -7.865902185342375e-12,
+      -1.6782937058126303e-11,
+      -2.998574302481313e-11,
+      -4.796384140009424e-11,
+      -7.114147878439108e-11,
+      -9.989428541053017e-11,
+      -1.3455972087776472e-10,
+      -1.7544416254928239e-10,
+      -2.2282801573105237e-10,
+      -2.769695482360313e-10,
+      -3.3810784819069655e-10,
+      -4.0646518854116873e-10,
+      -4.822489411392411e-10,
+      -5.656531618143745e-10,
+      -6.568599162888175e-10,
+      -7.560403935090846e-10,
+      -8.633558863362267e-10,
+      -9.78958636035322e-10,
+      -1.102992524324e-09,
+      -1.2355937711194896e-09,
+      -1.3768914549178136e-09,
+      -1.527008055873087e-09,
+      -1.6860598952021097e-09,
+      -1.8541575475510555e-09,
+      -2.031406205871307e-09,
+      -2.2179060364347874e-09,
+      -2.41375245707198e-09,
+      -2.6190364515688032e-09,
+      -2.833844789340127e-09,
+      -3.0582603012032974e-09,
+      -3.292362053867743e-09,
+      -3.5362256100907926e-09,
+      -3.7899231435252684e-09,
+      -4.053523668532293e-09,
+      -4.3270931915122795e-09,
+      -4.610694826071502e-09,
+      -4.904388989832303e-09,
+      -5.208233488334881e-09,
+      -5.52228365482897e-09,
+      -5.846592485844687e-09,
+      -6.181210706343059e-09,
+      -6.526186913944582e-09,
+      -6.881567664799662e-09,
+      -7.247397529803765e-09,
+      -7.623719225990279e-09,
+      -8.010573689817752e-09,
+      -8.408000118492989e-09,
+      -8.816036077979416e-09,
+      -9.234717573080139e-09,
+      -9.664079078765577e-09,
+      -1.0104153629729386e-08,
+      -1.0554972884953559e-08,
+      -1.1016567152552677e-08,
+      -1.1488965463965629e-08,
+      -1.197219563271623e-08,
+      -1.2466284275056496e-08,
+      -1.297125686763177e-08,
+      -1.348713781319773e-08,
+      -1.4013950446182231e-08,
+      -1.4551717076995825e-08,
+      -1.5100459045942277e-08,
+      -1.56601967641513e-08,
+      -1.62309497152101e-08,
+      -1.6812736500959027e-08,
+      -1.7405574882987226e-08,
+      -1.8009481808672357e-08,
+      -1.8624473415896807e-08,
+      -1.9250565073425963e-08,
+      -1.988777141290123e-08,
+      -2.053610634234787e-08,
+      -2.1195583055318815e-08,
+      -2.186621406330779e-08,
+      -2.2548011220095845e-08,
+      -2.3240985725630684e-08,
+      -2.394514813863971e-08,
+      -2.46605084002182e-08,
+      -2.5387075851983866e-08,
+      -2.612485923280889e-08,
+      -2.6873866692996303e-08,
+      -2.7634105810334942e-08,
+      -2.840558360084575e-08,
+      -2.918830651268601e-08,
+      -2.998228043827848e-08,
+      -3.078751072422378e-08,
+      -3.1604002180409895e-08,
+      -3.243175906488992e-08,
+      -3.32707850937611e-08,
+      -3.4121083447304496e-08,
+      -3.498265677525304e-08,
+      -3.5855507187186544e-08,
+      -3.673963624606007e-08,
+      -3.7635044974172546e-08,
+      -3.854173385174693e-08,
+      -3.945970281748841e-08,
+      -4.0388951250555317e-08,
+      -4.132947796996134e-08,
+      -4.2281281233377026e-08,
+      -4.324435873372627e-08,
+      -4.421870758814628e-08,
+      -4.520432432423694e-08,
+      -4.620120487831114e-08,
+      -4.7209344588120095e-08,
+      -4.8228738188217924e-08,
+      -4.925937979034603e-08,
+      -5.03012628758096e-08,
+      -5.135438028944442e-08,
+      -5.241872423095133e-08,
+      -5.3494286243069254e-08,
+      -5.45810571943455e-08,
+      -5.567902727264732e-08,
+      -5.678818597508017e-08,
+      -5.790852210000103e-08,
+      -5.90400237285145e-08,
+      -6.018267821321411e-08,
+      -6.133647216995898e-08,
+      -6.250139146716296e-08,
+      -6.367742121458459e-08,
+      -6.486454574622767e-08,
+      -6.606274861197867e-08,
+      -6.727201256754664e-08,
+      -6.849231956527429e-08,
+      -6.97236507392421e-08,
+      -7.096598639361109e-08,
+      -7.221930599486211e-08,
+      -7.34835881619793e-08,
+      -7.475881065474278e-08
+    ],
+    "power_integral_physical_traction": [
+      0.0,
+      -3.9014251526287e-13,
+      -2.6498715955545424e-12,
+      -7.865902185342375e-12,
+      -1.6782937058126303e-11,
+      -2.998574302481313e-11,
+      -4.796384140009424e-11,
+      -7.114147878439108e-11,
+      -9.989428541053017e-11,
+      -1.3455972087776472e-10,
+      -1.7544416254928239e-10,
+      -2.2282801573105237e-10,
+      -2.769695482360313e-10,
+      -3.3810784819069655e-10,
+      -4.0646518854116873e-10,
+      -4.822489411392411e-10,
+      -5.656531618143745e-10,
+      -6.568599162888175e-10,
+      -7.560403935090846e-10,
+      -8.633558863362267e-10,
+      -9.78958636035322e-10,
+      -1.102992524324e-09,
+      -1.2355937711194896e-09,
+      -1.3768914549178136e-09,
+      -1.527008055873087e-09,
+      -1.6860598952021097e-09,
+      -1.8541575475510555e-09,
+      -2.031406205871307e-09,
+      -2.2179060364347874e-09,
+      -2.41375245707198e-09,
+      -2.6190364515688032e-09,
+      -2.833844789340127e-09,
+      -3.0582603012032974e-09,
+      -3.292362053867743e-09,
+      -3.5362256100907926e-09,
+      -3.7899231435252684e-09,
+      -4.053523668532293e-09,
+      -4.3270931915122795e-09,
+      -4.610694826071502e-09,
+      -4.904388989832303e-09,
+      -5.208233488334881e-09,
+      -5.52228365482897e-09,
+      -5.846592485844687e-09,
+      -6.181210706343059e-09,
+      -6.526186913944582e-09,
+      -6.881567664799662e-09,
+      -7.247397529803765e-09,
+      -7.623719225990279e-09,
+      -8.010573689817752e-09,
+      -8.408000118492989e-09,
+      -8.816036077979416e-09,
+      -9.234717573080139e-09,
+      -9.664079078765577e-09,
+      -1.0104153629729386e-08,
+      -1.0554972884953559e-08,
+      -1.1016567152552677e-08,
+      -1.1488965463965629e-08,
+      -1.197219563271623e-08,
+      -1.2466284275056496e-08,
+      -1.297125686763177e-08,
+      -1.348713781319773e-08,
+      -1.4013950446182231e-08,
+      -1.4551717076995825e-08,
+      -1.5100459045942277e-08,
+      -1.56601967641513e-08,
+      -1.62309497152101e-08,
+      -1.6812736500959027e-08,
+      -1.7405574882987226e-08,
+      -1.8009481808672357e-08,
+      -1.8624473415896807e-08,
+      -1.9250565073425963e-08,
+      -1.988777141290123e-08,
+      -2.053610634234787e-08,
+      -2.1195583055318815e-08,
+      -2.186621406330779e-08,
+      -2.2548011220095845e-08,
+      -2.3240985725630684e-08,
+      -2.394514813863971e-08,
+      -2.46605084002182e-08,
+      -2.5387075851983866e-08,
+      -2.612485923280889e-08,
+      -2.6873866692996303e-08,
+      -2.7634105810334942e-08,
+      -2.840558360084575e-08,
+      -2.918830651268601e-08,
+      -2.998228043827848e-08,
+      -3.078751072422378e-08,
+      -3.1604002180409895e-08,
+      -3.243175906488992e-08,
+      -3.32707850937611e-08,
+      -3.4121083447304496e-08,
+      -3.498265677525304e-08,
+      -3.5855507187186544e-08,
+      -3.673963624606007e-08,
+      -3.7635044974172546e-08,
+      -3.854173385174693e-08,
+      -3.945970281748841e-08,
+      -4.0388951250555317e-08,
+      -4.132947796996134e-08,
+      -4.2281281233377026e-08,
+      -4.324435873372627e-08,
+      -4.421870758814628e-08,
+      -4.520432432423694e-08,
+      -4.620120487831114e-08,
+      -4.7209344588120095e-08,
+      -4.8228738188217924e-08,
+      -4.925937979034603e-08,
+      -5.03012628758096e-08,
+      -5.135438028944442e-08,
+      -5.241872423095133e-08,
+      -5.3494286243069254e-08,
+      -5.45810571943455e-08,
+      -5.567902727264732e-08,
+      -5.678818597508017e-08,
+      -5.790852210000103e-08,
+      -5.90400237285145e-08,
+      -6.018267821321411e-08,
+      -6.133647216995898e-08,
+      -6.250139146716296e-08,
+      -6.367742121458459e-08,
+      -6.486454574622767e-08,
+      -6.606274861197867e-08,
+      -6.727201256754664e-08,
+      -6.849231956527429e-08,
+      -6.97236507392421e-08,
+      -7.096598639361109e-08,
+      -7.221930599486211e-08,
+      -7.34835881619793e-08,
+      -7.475881065474278e-08
+    ],
+    "power_quadrature_evaluations": 561,
+    "power_quadrature_method": "accepted_step_dense_output_gauss_legendre_3",
+    "preparation": {
+      "mode": "DIRECT_STATE"
+    },
+    "refinement_qualification": "SINGLE_RUN_CANDIDATE",
+    "sampled_guard_minima": {
+      "lambda_min:A": 0.8123151204864107,
+      "lambda_min:B": 0.8119991186790707,
+      "lambda_min:lower": 0.8196630954726223,
+      "material:A:lambda_lower": 0.8123151204864107,
+      "material:A:lambda_upper": 0.48732927308049767,
+      "material:A:rate_lower": 49.99481743604519,
+      "material:A:rate_upper": 49.769598998771805,
+      "material:B:lambda_lower": 0.8119991186790707,
+      "material:B:lambda_upper": 0.4873292734770487,
+      "material:B:rate_lower": 49.810987490039345,
+      "material:B:rate_upper": 49.769602563994965,
+      "material:lower:lambda_lower": 0.8196630954726223,
+      "material:lower:lambda_upper": 0.48005969399394477,
+      "material:lower:rate_lower": 49.91342186492985,
+      "material:lower:rate_upper": 49.915724416690445
+    },
+    "sampled_guard_violation": null,
+    "solver_message": "The solver successfully reached the end of the integration interval.",
+    "solver_warnings": [],
+    "timings_seconds": {
+      "diagnostics_and_power_quadrature": 7.809087587000249,
+      "integration": 37.291787513999225,
+      "setup": 0.001435617000424827
+    }
+  },
+  "events": [],
+  "metadata": {
+    "atol": 1.25e-10,
+    "atol_position": 1.25e-10,
+    "atol_velocity": 1.25e-10,
+    "branch_nodes": {
+      "A": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        2
+      ],
+      "B": [
+        1,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        2
+      ],
+      "lower": [
+        2,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        3
+      ]
+    },
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "config_sha256": "07d232ac57733b0f2536dff1335739c30412925dbd4d7d5eb1c84772544a2443",
+    "constitutive_positive_part": "exact max(candidate,0)",
+    "effective_atol_vector": {
+      "position": 1.25e-10,
+      "velocity": 1.25e-10
+    },
+    "effective_rtol": 1.25e-08,
+    "elements": {
+      "A": 24,
+      "B": 24,
+      "lower": 32
+    },
+    "event_cluster_tolerance": 1e-08,
+    "initial_regularization": "none",
+    "initial_trace_check": "analytic polynomial schema plus 2049-point material-domain audit; not an H2 proof",
+    "integrator": "Radau",
+    "max_step": 0.00025,
+    "model_id": "FWD-CABLE-1.0",
+    "node_ids": [
+      "support_A",
+      "support_B",
+      "junction",
+      "bob",
+      "A:node:1",
+      "A:node:2",
+      "A:node:3",
+      "A:node:4",
+      "A:node:5",
+      "A:node:6",
+      "A:node:7",
+      "A:node:8",
+      "A:node:9",
+      "A:node:10",
+      "A:node:11",
+      "A:node:12",
+      "A:node:13",
+      "A:node:14",
+      "A:node:15",
+      "A:node:16",
+      "A:node:17",
+      "A:node:18",
+      "A:node:19",
+      "A:node:20",
+      "A:node:21",
+      "A:node:22",
+      "A:node:23",
+      "B:node:1",
+      "B:node:2",
+      "B:node:3",
+      "B:node:4",
+      "B:node:5",
+      "B:node:6",
+      "B:node:7",
+      "B:node:8",
+      "B:node:9",
+      "B:node:10",
+      "B:node:11",
+      "B:node:12",
+      "B:node:13",
+      "B:node:14",
+      "B:node:15",
+      "B:node:16",
+      "B:node:17",
+      "B:node:18",
+      "B:node:19",
+      "B:node:20",
+      "B:node:21",
+      "B:node:22",
+      "B:node:23",
+      "lower:node:1",
+      "lower:node:2",
+      "lower:node:3",
+      "lower:node:4",
+      "lower:node:5",
+      "lower:node:6",
+      "lower:node:7",
+      "lower:node:8",
+      "lower:node:9",
+      "lower:node:10",
+      "lower:node:11",
+      "lower:node:12",
+      "lower:node:13",
+      "lower:node:14",
+      "lower:node:15",
+      "lower:node:16",
+      "lower:node:17",
+      "lower:node:18",
+      "lower:node:19",
+      "lower:node:20",
+      "lower:node:21",
+      "lower:node:22",
+      "lower:node:23",
+      "lower:node:24",
+      "lower:node:25",
+      "lower:node:26",
+      "lower:node:27",
+      "lower:node:28",
+      "lower:node:29",
+      "lower:node:30",
+      "lower:node:31"
+    ],
+    "numerical_config_sha256": "a190fabcf894f593b62fce90bcae5928bec6161a1374248c3942de83708682ed",
+    "numerical_model_id": "NUM-FWD-CABLE-P1-Radau-1.0",
+    "observation_input_sha256": "b05a417fe26594ab15bb0dbcc4efbf44ade96acecba0cf8e1e558cd1f6f1569b",
+    "physical_input_sha256": "82b254a6f515193e3f34e4c576ae770d681fe7380176572c14e1f243e4c70ec0",
+    "program_version": "2.1.0-research",
+    "quadrature_order": 7,
+    "rtol": 1.25e-08,
+    "runtime_versions": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "scipy": "1.11.4"
+    },
+    "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_stable_during_run": true,
+    "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "units": "SI"
+  },
+  "model_id": "FWD-CABLE-1.0",
+  "numerical_model_id": "NUM-FWD-CABLE-P1-Radau-1.0",
+  "numerical_status": "SUCCESS_SINGLE_RUN",
+  "observations": {
+    "errors": [],
+    "operator": "orthographic",
+    "sample_count": 2,
+    "status": [
+      "OBSERVATION_INPUT_VALID"
+    ],
+    "valid_count": 2
+  },
+  "program_version": "2.1.0-research",
+  "returned_interval": "[0,0.002]",
+  "sample_count": 129,
+  "tau": 0.002,
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI"
+}

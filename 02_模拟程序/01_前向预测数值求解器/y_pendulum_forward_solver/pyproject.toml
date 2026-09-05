@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "y-pendulum-forward-solver"
-version = "2.0.0"
-description = "Research-grade numerical implementation of FWD-CABLE-1.0 and FWD-TORUS-1.0"
+version = "2.1.0"
+description = "Research numerical implementations of cable, torus and finite-junction Y-pendulum models"
 requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.24",
@@ -18,4 +18,3 @@ y-pendulum-forward = "y_pendulum_forward.cli:main"
 
 [tool.setuptools]
 packages = ["y_pendulum_forward"]
-

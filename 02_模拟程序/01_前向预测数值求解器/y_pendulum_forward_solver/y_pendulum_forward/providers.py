@@ -21,6 +21,13 @@ from .contracts import (
 )
 
 
+HOLD_RELEASE_PROTOCOL_ID = "YP-HOLD-RELEASE-1.0"
+HOLD_RELEASE_EXTENSION_THEORY_SHA256 = (
+    "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd"
+)
+HOLD_RELEASE_THEORY_SECTIONS = ("7.4", "7.5")
+
+
 @dataclass(frozen=True)
 class PrescribedMotion:
     position_fn: Callable[[float], np.ndarray]
@@ -63,6 +70,39 @@ class PointForce:
 
     def value(self, t: float) -> np.ndarray:
         return np.asarray(self.value_fn(float(t)), dtype=float)
+
+
+@dataclass(frozen=True)
+class HoldingForceRelease:
+    """Prescribed multiplier for releasing a statically determined hold force.
+
+    The force vector itself is the constraint reaction required by the prepared
+    static state.  This provider only prescribes when and how that known force
+    is withdrawn, so solver tolerances cannot move the release times.
+    """
+
+    source: str
+    start: float
+    duration: float
+    history: str
+    description: dict[str, Any]
+
+    @property
+    def end(self) -> float:
+        return self.start + self.duration
+
+    def multiplier(self, t: float) -> float:
+        time = float(t)
+        if self.history == "instantaneous":
+            return 1.0 if time < self.start else 0.0
+        if time <= self.start:
+            return 1.0
+        if time >= self.end:
+            return 0.0
+        phase = (time - self.start) / self.duration
+        # C1 cubic smoothstep from one to zero.  The zero end slopes avoid a
+        # force-rate jump without introducing any extra damping term.
+        return float(1.0 - 3.0 * phase**2 + 2.0 * phase**3)
 
 
 MOTION_FACTORIES: dict[str, Callable[..., PrescribedMotion]] = {}
@@ -598,6 +638,116 @@ def build_point_force(spec: Any, path: str, issues: list[ValidationIssue]) -> Po
         factory = _point_registered
         spec = {"kind": "zero"}
     return factory(spec, path, issues)
+
+
+def build_holding_force_release(
+    spec: Any,
+    path: str,
+    issues: list[ValidationIssue],
+) -> HoldingForceRelease:
+    """Build the explicit static-reaction withdrawal protocol.
+
+    ``None`` retains the original ``STATIC_HOLD_RELEASE`` input semantics: the
+    compatible held state is released instantaneously at ``t=0``.  New inputs
+    should spell out all four fields so their provenance is present in the
+    exported configuration and diagnostics.
+    """
+
+    implicit_legacy = spec is None
+    if implicit_legacy:
+        spec = {
+            "source": "initial_static_reaction",
+            "start": 0.0,
+            "duration": 0.0,
+            "history": "instantaneous",
+        }
+    if not isinstance(spec, dict):
+        issues.append(ValidationIssue("TYPE", path, spec, "release protocol object"))
+        spec = {
+            "source": "initial_static_reaction",
+            "start": 0.0,
+            "duration": 0.0,
+            "history": "instantaneous",
+        }
+    reject_unknown_keys(
+        spec,
+        {"source", "start", "duration", "history"},
+        path,
+        issues,
+    )
+    source = spec.get("source")
+    if source != "initial_static_reaction":
+        issues.append(
+            ValidationIssue(
+                "HOLD_RELEASE_SOURCE",
+                f"{path}.source",
+                source,
+                "initial_static_reaction",
+            )
+        )
+        source = "initial_static_reaction"
+    history = spec.get("history")
+    if history not in ("instantaneous", "smoothstep_c1"):
+        issues.append(
+            ValidationIssue(
+                "HOLD_RELEASE_HISTORY",
+                f"{path}.history",
+                history,
+                "instantaneous or smoothstep_c1",
+            )
+        )
+        history = "instantaneous"
+    start = spec.get("start")
+    duration = spec.get("duration")
+    if not is_finite_number(start) or float(start) < 0.0:
+        issues.append(
+            ValidationIssue(
+                "HOLD_RELEASE_TIME", f"{path}.start", start, "finite and >= 0 s"
+            )
+        )
+        start = 0.0
+    if not is_finite_number(duration) or float(duration) < 0.0:
+        issues.append(
+            ValidationIssue(
+                "HOLD_RELEASE_TIME",
+                f"{path}.duration",
+                duration,
+                "finite and >= 0 s",
+            )
+        )
+        duration = 0.0
+    start = float(start)
+    duration = float(duration)
+    if history == "instantaneous" and duration != 0.0:
+        issues.append(
+            ValidationIssue(
+                "HOLD_RELEASE_TIME",
+                f"{path}.duration",
+                duration,
+                "exactly 0 s for instantaneous history",
+            )
+        )
+    if history == "smoothstep_c1" and duration <= 0.0:
+        issues.append(
+            ValidationIssue(
+                "HOLD_RELEASE_TIME",
+                f"{path}.duration",
+                duration,
+                "> 0 s for smoothstep_c1 history",
+            )
+        )
+        duration = 1.0
+    description = {
+        "protocol_id": HOLD_RELEASE_PROTOCOL_ID,
+        "extension_theory_sha256": HOLD_RELEASE_EXTENSION_THEORY_SHA256,
+        "theory_sections": list(HOLD_RELEASE_THEORY_SECTIONS),
+        "source": source,
+        "start": start,
+        "duration": duration,
+        "history": history,
+        "implicit_legacy_default": implicit_legacy,
+    }
+    return HoldingForceRelease(source, start, duration, history, description)
 
 
 def build_material_force(spec: Any, path: str, issues: list[ValidationIssue]) -> MaterialForce:

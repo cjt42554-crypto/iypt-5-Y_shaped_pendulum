@@ -1,0 +1,5 @@
+{
+  "status": "STOPPED_COST_AND_REFINEMENT_DIAGNOSTIC",
+  "reason": "first cable n4 accepted maximum 0.0006 s despite 0.003 s cap; unbounded repetition of nominal caps would not establish three actual refinements. Keep completed public outputs; retry bounded implicit study before extending runtime.",
+  "script_sha256": "6b3f34cd68d02d34b5ca59dc1a6f2755bcce7e28587cb2bd245973af35f7f91f"
+}

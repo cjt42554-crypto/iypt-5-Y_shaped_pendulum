@@ -1,0 +1,5954 @@
+{
+  "contract_status": [
+    "COMPLETED"
+  ],
+  "diagnostics": {
+    "absolute_port_exchange_work": 0.0,
+    "accepted_steps": 400,
+    "array_fields_in_trajectory_npz": {
+      "P_base_algebraic": [
+        5
+      ],
+      "reaction_algebraic": {
+        "A": [
+          5,
+          3
+        ],
+        "B": [
+          5,
+          3
+        ]
+      },
+      "sampled_guard_component_series": {
+        "LAMBDA_MIN:A:element:0": [
+          5
+        ],
+        "LAMBDA_MIN:B:element:0": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:0": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:1": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:10": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:100": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:101": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:102": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:103": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:104": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:105": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:106": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:107": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:108": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:109": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:11": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:110": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:111": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:112": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:113": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:114": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:115": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:116": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:117": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:118": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:119": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:12": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:120": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:121": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:122": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:123": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:124": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:125": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:126": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:127": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:128": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:129": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:13": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:130": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:131": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:132": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:133": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:134": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:135": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:136": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:137": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:138": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:139": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:14": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:140": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:141": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:142": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:143": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:144": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:145": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:146": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:147": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:148": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:149": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:15": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:150": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:151": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:152": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:153": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:154": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:155": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:156": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:157": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:158": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:159": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:16": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:160": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:161": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:162": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:163": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:164": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:165": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:166": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:167": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:168": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:169": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:17": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:170": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:171": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:172": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:173": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:174": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:175": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:176": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:177": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:178": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:179": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:18": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:180": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:181": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:182": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:183": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:184": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:185": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:186": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:187": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:188": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:189": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:19": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:190": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:191": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:192": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:193": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:194": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:195": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:196": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:197": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:198": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:199": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:2": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:20": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:200": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:201": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:202": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:203": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:204": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:205": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:206": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:207": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:208": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:209": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:21": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:210": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:211": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:212": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:213": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:214": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:215": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:216": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:217": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:218": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:219": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:22": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:220": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:221": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:222": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:223": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:224": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:225": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:226": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:227": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:228": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:229": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:23": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:230": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:231": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:232": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:233": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:234": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:235": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:236": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:237": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:238": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:239": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:24": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:240": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:241": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:242": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:243": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:244": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:245": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:246": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:247": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:248": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:249": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:25": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:250": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:251": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:252": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:253": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:254": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:255": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:26": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:27": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:28": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:29": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:3": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:30": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:31": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:32": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:33": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:34": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:35": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:36": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:37": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:38": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:39": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:4": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:40": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:41": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:42": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:43": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:44": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:45": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:46": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:47": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:48": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:49": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:5": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:50": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:51": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:52": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:53": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:54": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:55": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:56": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:57": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:58": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:59": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:6": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:60": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:61": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:62": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:63": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:64": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:65": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:66": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:67": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:68": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:69": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:7": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:70": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:71": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:72": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:73": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:74": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:75": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:76": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:77": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:78": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:79": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:8": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:80": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:81": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:82": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:83": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:84": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:85": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:86": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:87": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:88": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:89": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:9": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:90": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:91": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:92": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:93": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:94": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:95": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:96": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:97": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:98": [
+          5
+        ],
+        "LAMBDA_MIN:lower:element:99": [
+          5
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:1": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:10": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:100": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:101": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:102": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:103": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:104": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:105": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:106": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:107": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:108": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:109": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:11": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:110": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:111": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:112": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:113": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:114": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:115": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:116": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:117": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:118": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:119": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:12": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:120": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:121": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:122": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:123": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:124": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:125": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:126": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:127": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:128": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:129": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:13": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:130": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:131": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:132": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:133": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:134": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:135": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:136": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:137": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:138": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:139": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:14": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:140": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:141": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:142": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:143": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:144": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:145": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:146": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:147": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:148": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:149": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:15": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:150": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:151": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:152": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:153": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:154": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:155": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:156": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:157": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:158": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:159": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:16": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:160": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:161": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:162": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:163": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:164": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:165": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:166": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:167": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:168": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:169": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:17": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:170": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:171": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:172": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:173": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:174": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:175": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:176": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:177": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:178": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:179": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:18": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:180": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:181": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:182": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:183": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:184": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:185": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:186": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:187": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:188": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:189": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:19": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:190": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:191": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:192": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:193": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:194": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:195": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:196": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:197": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:198": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:199": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:2": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:20": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:200": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:201": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:202": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:203": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:204": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:205": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:206": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:207": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:208": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:209": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:21": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:210": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:211": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:212": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:213": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:214": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:215": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:216": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:217": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:218": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:219": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:22": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:220": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:221": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:222": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:223": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:224": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:225": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:226": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:227": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:228": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:229": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:23": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:230": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:231": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:232": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:233": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:234": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:235": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:236": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:237": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:238": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:239": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:24": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:240": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:241": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:242": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:243": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:244": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:245": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:246": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:247": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:248": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:249": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:25": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:250": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:251": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:252": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:253": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:254": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:255": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:26": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:27": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:28": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:29": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:3": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:30": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:31": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:32": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:33": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:34": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:35": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:36": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:37": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:38": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:39": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:4": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:40": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:41": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:42": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:43": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:44": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:45": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:46": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:47": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:48": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:49": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:5": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:50": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:51": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:52": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:53": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:54": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:55": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:56": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:57": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:58": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:59": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:6": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:60": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:61": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:62": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:63": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:64": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:65": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:66": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:67": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:68": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:69": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:7": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:70": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:71": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:72": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:73": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:74": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:75": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:76": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:77": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:78": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:79": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:8": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:80": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:81": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:82": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:83": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:84": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:85": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:86": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:87": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:88": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:89": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:9": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:90": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:91": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:92": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:93": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:94": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:95": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:96": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:97": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:98": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:99": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:1": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:10": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:100": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:101": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:102": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:103": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:104": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:105": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:106": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:107": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:108": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:109": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:11": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:110": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:111": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:112": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:113": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:114": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:115": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:116": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:117": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:118": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:119": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:12": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:120": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:121": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:122": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:123": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:124": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:125": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:126": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:127": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:128": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:129": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:13": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:130": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:131": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:132": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:133": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:134": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:135": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:136": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:137": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:138": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:139": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:14": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:140": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:141": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:142": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:143": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:144": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:145": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:146": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:147": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:148": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:149": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:15": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:150": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:151": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:152": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:153": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:154": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:155": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:156": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:157": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:158": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:159": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:16": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:160": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:161": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:162": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:163": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:164": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:165": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:166": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:167": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:168": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:169": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:17": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:170": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:171": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:172": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:173": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:174": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:175": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:176": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:177": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:178": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:179": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:18": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:180": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:181": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:182": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:183": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:184": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:185": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:186": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:187": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:188": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:189": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:19": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:190": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:191": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:192": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:193": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:194": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:195": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:196": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:197": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:198": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:199": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:2": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:20": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:200": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:201": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:202": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:203": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:204": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:205": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:206": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:207": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:208": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:209": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:21": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:210": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:211": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:212": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:213": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:214": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:215": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:216": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:217": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:218": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:219": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:22": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:220": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:221": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:222": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:223": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:224": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:225": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:226": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:227": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:228": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:229": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:23": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:230": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:231": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:232": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:233": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:234": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:235": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:236": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:237": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:238": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:239": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:24": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:240": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:241": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:242": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:243": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:244": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:245": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:246": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:247": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:248": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:249": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:25": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:250": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:251": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:252": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:253": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:254": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:255": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:26": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:27": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:28": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:29": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:3": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:30": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:31": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:32": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:33": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:34": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:35": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:36": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:37": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:38": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:39": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:4": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:40": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:41": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:42": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:43": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:44": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:45": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:46": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:47": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:48": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:49": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:5": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:50": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:51": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:52": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:53": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:54": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:55": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:56": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:57": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:58": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:59": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:6": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:60": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:61": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:62": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:63": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:64": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:65": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:66": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:67": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:68": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:69": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:7": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:70": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:71": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:72": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:73": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:74": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:75": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:76": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:77": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:78": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:79": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:8": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:80": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:81": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:82": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:83": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:84": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:85": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:86": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:87": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:88": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:89": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:9": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:90": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:91": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:92": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:93": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:94": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:95": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:96": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:97": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:98": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:99": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:1": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:10": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:100": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:101": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:102": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:103": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:104": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:105": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:106": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:107": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:108": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:109": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:11": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:110": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:111": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:112": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:113": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:114": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:115": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:116": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:117": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:118": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:119": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:12": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:120": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:121": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:122": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:123": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:124": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:125": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:126": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:127": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:128": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:129": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:13": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:130": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:131": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:132": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:133": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:134": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:135": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:136": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:137": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:138": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:139": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:14": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:140": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:141": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:142": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:143": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:144": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:145": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:146": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:147": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:148": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:149": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:15": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:150": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:151": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:152": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:153": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:154": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:155": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:156": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:157": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:158": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:159": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:16": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:160": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:161": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:162": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:163": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:164": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:165": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:166": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:167": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:168": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:169": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:17": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:170": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:171": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:172": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:173": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:174": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:175": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:176": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:177": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:178": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:179": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:18": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:180": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:181": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:182": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:183": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:184": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:185": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:186": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:187": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:188": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:189": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:19": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:190": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:191": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:192": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:193": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:194": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:195": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:196": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:197": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:198": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:199": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:2": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:20": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:200": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:201": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:202": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:203": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:204": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:205": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:206": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:207": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:208": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:209": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:21": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:210": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:211": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:212": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:213": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:214": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:215": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:216": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:217": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:218": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:219": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:22": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:220": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:221": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:222": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:223": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:224": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:225": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:226": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:227": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:228": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:229": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:23": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:230": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:231": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:232": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:233": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:234": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:235": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:236": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:237": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:238": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:239": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:24": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:240": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:241": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:242": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:243": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:244": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:245": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:246": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:247": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:248": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:249": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:25": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:250": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:251": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:252": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:253": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:254": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:255": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:26": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:27": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:28": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:29": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:3": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:30": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:31": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:32": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:33": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:34": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:35": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:36": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:37": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:38": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:39": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:4": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:40": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:41": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:42": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:43": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:44": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:45": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:46": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:47": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:48": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:49": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:5": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:50": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:51": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:52": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:53": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:54": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:55": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:56": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:57": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:58": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:59": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:6": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:60": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:61": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:62": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:63": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:64": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:65": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:66": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:67": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:68": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:69": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:7": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:70": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:71": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:72": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:73": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:74": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:75": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:76": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:77": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:78": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:79": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:8": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:80": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:81": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:82": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:83": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:84": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:85": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:86": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:87": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:88": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:89": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:9": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:90": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:91": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:92": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:93": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:94": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:95": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:96": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:97": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:98": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:99": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:0": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:1": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:10": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:100": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:101": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:102": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:103": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:104": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:105": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:106": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:107": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:108": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:109": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:11": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:110": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:111": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:112": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:113": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:114": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:115": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:116": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:117": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:118": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:119": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:12": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:120": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:121": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:122": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:123": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:124": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:125": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:126": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:127": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:128": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:129": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:13": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:130": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:131": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:132": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:133": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:134": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:135": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:136": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:137": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:138": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:139": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:14": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:140": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:141": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:142": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:143": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:144": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:145": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:146": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:147": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:148": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:149": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:15": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:150": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:151": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:152": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:153": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:154": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:155": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:156": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:157": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:158": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:159": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:16": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:160": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:161": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:162": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:163": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:164": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:165": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:166": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:167": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:168": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:169": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:17": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:170": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:171": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:172": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:173": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:174": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:175": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:176": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:177": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:178": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:179": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:18": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:180": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:181": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:182": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:183": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:184": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:185": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:186": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:187": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:188": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:189": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:19": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:190": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:191": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:192": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:193": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:194": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:195": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:196": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:197": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:198": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:199": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:2": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:20": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:200": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:201": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:202": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:203": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:204": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:205": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:206": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:207": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:208": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:209": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:21": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:210": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:211": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:212": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:213": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:214": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:215": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:216": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:217": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:218": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:219": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:22": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:220": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:221": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:222": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:223": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:224": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:225": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:226": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:227": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:228": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:229": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:23": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:230": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:231": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:232": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:233": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:234": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:235": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:236": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:237": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:238": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:239": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:24": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:240": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:241": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:242": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:243": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:244": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:245": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:246": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:247": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:248": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:249": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:25": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:250": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:251": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:252": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:253": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:254": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:255": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:26": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:27": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:28": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:29": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:3": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:30": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:31": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:32": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:33": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:34": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:35": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:36": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:37": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:38": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:39": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:4": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:40": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:41": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:42": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:43": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:44": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:45": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:46": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:47": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:48": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:49": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:5": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:50": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:51": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:52": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:53": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:54": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:55": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:56": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:57": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:58": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:59": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:6": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:60": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:61": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:62": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:63": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:64": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:65": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:66": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:67": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:68": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:69": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:7": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:70": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:71": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:72": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:73": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:74": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:75": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:76": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:77": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:78": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:79": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:8": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:80": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:81": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:82": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:83": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:84": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:85": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:86": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:87": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:88": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:89": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:9": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:90": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:91": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:92": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:93": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:94": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:95": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:96": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:97": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:98": [
+          5
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:99": [
+          5
+        ]
+      },
+      "sampled_guard_series": {
+        "lambda": [
+          5
+        ],
+        "material_lambda": [
+          5
+        ],
+        "material_rate": [
+          5
+        ]
+      }
+    },
+    "custom_guard_length_scales": {},
+    "dynamic_energy_scale": 8.790000827229868e-07,
+    "dynamic_energy_scale_definition": "max(peak kinetic energy, observed energy variation, absolute port work); not equilibrium excess energy",
+    "dynamic_energy_scale_resolved": true,
+    "energy_scale": 0.012000000384,
+    "energy_scale_components": {
+      "absolute_work_integral": 0.0,
+      "energy_variation": 4.824699667560495e-18,
+      "gravitational": 0.012000000384,
+      "stored": 0.0002624999999959977
+    },
+    "final_holding_force_work": 0.0,
+    "guard_component_scales": {
+      "LAMBDA_MIN:A:element:0": 1.0,
+      "LAMBDA_MIN:B:element:0": 1.0,
+      "LAMBDA_MIN:lower:element:0": 1.0,
+      "LAMBDA_MIN:lower:element:1": 1.0,
+      "LAMBDA_MIN:lower:element:10": 1.0,
+      "LAMBDA_MIN:lower:element:100": 1.0,
+      "LAMBDA_MIN:lower:element:101": 1.0,
+      "LAMBDA_MIN:lower:element:102": 1.0,
+      "LAMBDA_MIN:lower:element:103": 1.0,
+      "LAMBDA_MIN:lower:element:104": 1.0,
+      "LAMBDA_MIN:lower:element:105": 1.0,
+      "LAMBDA_MIN:lower:element:106": 1.0,
+      "LAMBDA_MIN:lower:element:107": 1.0,
+      "LAMBDA_MIN:lower:element:108": 1.0,
+      "LAMBDA_MIN:lower:element:109": 1.0,
+      "LAMBDA_MIN:lower:element:11": 1.0,
+      "LAMBDA_MIN:lower:element:110": 1.0,
+      "LAMBDA_MIN:lower:element:111": 1.0,
+      "LAMBDA_MIN:lower:element:112": 1.0,
+      "LAMBDA_MIN:lower:element:113": 1.0,
+      "LAMBDA_MIN:lower:element:114": 1.0,
+      "LAMBDA_MIN:lower:element:115": 1.0,
+      "LAMBDA_MIN:lower:element:116": 1.0,
+      "LAMBDA_MIN:lower:element:117": 1.0,
+      "LAMBDA_MIN:lower:element:118": 1.0,
+      "LAMBDA_MIN:lower:element:119": 1.0,
+      "LAMBDA_MIN:lower:element:12": 1.0,
+      "LAMBDA_MIN:lower:element:120": 1.0,
+      "LAMBDA_MIN:lower:element:121": 1.0,
+      "LAMBDA_MIN:lower:element:122": 1.0,
+      "LAMBDA_MIN:lower:element:123": 1.0,
+      "LAMBDA_MIN:lower:element:124": 1.0,
+      "LAMBDA_MIN:lower:element:125": 1.0,
+      "LAMBDA_MIN:lower:element:126": 1.0,
+      "LAMBDA_MIN:lower:element:127": 1.0,
+      "LAMBDA_MIN:lower:element:128": 1.0,
+      "LAMBDA_MIN:lower:element:129": 1.0,
+      "LAMBDA_MIN:lower:element:13": 1.0,
+      "LAMBDA_MIN:lower:element:130": 1.0,
+      "LAMBDA_MIN:lower:element:131": 1.0,
+      "LAMBDA_MIN:lower:element:132": 1.0,
+      "LAMBDA_MIN:lower:element:133": 1.0,
+      "LAMBDA_MIN:lower:element:134": 1.0,
+      "LAMBDA_MIN:lower:element:135": 1.0,
+      "LAMBDA_MIN:lower:element:136": 1.0,
+      "LAMBDA_MIN:lower:element:137": 1.0,
+      "LAMBDA_MIN:lower:element:138": 1.0,
+      "LAMBDA_MIN:lower:element:139": 1.0,
+      "LAMBDA_MIN:lower:element:14": 1.0,
+      "LAMBDA_MIN:lower:element:140": 1.0,
+      "LAMBDA_MIN:lower:element:141": 1.0,
+      "LAMBDA_MIN:lower:element:142": 1.0,
+      "LAMBDA_MIN:lower:element:143": 1.0,
+      "LAMBDA_MIN:lower:element:144": 1.0,
+      "LAMBDA_MIN:lower:element:145": 1.0,
+      "LAMBDA_MIN:lower:element:146": 1.0,
+      "LAMBDA_MIN:lower:element:147": 1.0,
+      "LAMBDA_MIN:lower:element:148": 1.0,
+      "LAMBDA_MIN:lower:element:149": 1.0,
+      "LAMBDA_MIN:lower:element:15": 1.0,
+      "LAMBDA_MIN:lower:element:150": 1.0,
+      "LAMBDA_MIN:lower:element:151": 1.0,
+      "LAMBDA_MIN:lower:element:152": 1.0,
+      "LAMBDA_MIN:lower:element:153": 1.0,
+      "LAMBDA_MIN:lower:element:154": 1.0,
+      "LAMBDA_MIN:lower:element:155": 1.0,
+      "LAMBDA_MIN:lower:element:156": 1.0,
+      "LAMBDA_MIN:lower:element:157": 1.0,
+      "LAMBDA_MIN:lower:element:158": 1.0,
+      "LAMBDA_MIN:lower:element:159": 1.0,
+      "LAMBDA_MIN:lower:element:16": 1.0,
+      "LAMBDA_MIN:lower:element:160": 1.0,
+      "LAMBDA_MIN:lower:element:161": 1.0,
+      "LAMBDA_MIN:lower:element:162": 1.0,
+      "LAMBDA_MIN:lower:element:163": 1.0,
+      "LAMBDA_MIN:lower:element:164": 1.0,
+      "LAMBDA_MIN:lower:element:165": 1.0,
+      "LAMBDA_MIN:lower:element:166": 1.0,
+      "LAMBDA_MIN:lower:element:167": 1.0,
+      "LAMBDA_MIN:lower:element:168": 1.0,
+      "LAMBDA_MIN:lower:element:169": 1.0,
+      "LAMBDA_MIN:lower:element:17": 1.0,
+      "LAMBDA_MIN:lower:element:170": 1.0,
+      "LAMBDA_MIN:lower:element:171": 1.0,
+      "LAMBDA_MIN:lower:element:172": 1.0,
+      "LAMBDA_MIN:lower:element:173": 1.0,
+      "LAMBDA_MIN:lower:element:174": 1.0,
+      "LAMBDA_MIN:lower:element:175": 1.0,
+      "LAMBDA_MIN:lower:element:176": 1.0,
+      "LAMBDA_MIN:lower:element:177": 1.0,
+      "LAMBDA_MIN:lower:element:178": 1.0,
+      "LAMBDA_MIN:lower:element:179": 1.0,
+      "LAMBDA_MIN:lower:element:18": 1.0,
+      "LAMBDA_MIN:lower:element:180": 1.0,
+      "LAMBDA_MIN:lower:element:181": 1.0,
+      "LAMBDA_MIN:lower:element:182": 1.0,
+      "LAMBDA_MIN:lower:element:183": 1.0,
+      "LAMBDA_MIN:lower:element:184": 1.0,
+      "LAMBDA_MIN:lower:element:185": 1.0,
+      "LAMBDA_MIN:lower:element:186": 1.0,
+      "LAMBDA_MIN:lower:element:187": 1.0,
+      "LAMBDA_MIN:lower:element:188": 1.0,
+      "LAMBDA_MIN:lower:element:189": 1.0,
+      "LAMBDA_MIN:lower:element:19": 1.0,
+      "LAMBDA_MIN:lower:element:190": 1.0,
+      "LAMBDA_MIN:lower:element:191": 1.0,
+      "LAMBDA_MIN:lower:element:192": 1.0,
+      "LAMBDA_MIN:lower:element:193": 1.0,
+      "LAMBDA_MIN:lower:element:194": 1.0,
+      "LAMBDA_MIN:lower:element:195": 1.0,
+      "LAMBDA_MIN:lower:element:196": 1.0,
+      "LAMBDA_MIN:lower:element:197": 1.0,
+      "LAMBDA_MIN:lower:element:198": 1.0,
+      "LAMBDA_MIN:lower:element:199": 1.0,
+      "LAMBDA_MIN:lower:element:2": 1.0,
+      "LAMBDA_MIN:lower:element:20": 1.0,
+      "LAMBDA_MIN:lower:element:200": 1.0,
+      "LAMBDA_MIN:lower:element:201": 1.0,
+      "LAMBDA_MIN:lower:element:202": 1.0,
+      "LAMBDA_MIN:lower:element:203": 1.0,
+      "LAMBDA_MIN:lower:element:204": 1.0,
+      "LAMBDA_MIN:lower:element:205": 1.0,
+      "LAMBDA_MIN:lower:element:206": 1.0,
+      "LAMBDA_MIN:lower:element:207": 1.0,
+      "LAMBDA_MIN:lower:element:208": 1.0,
+      "LAMBDA_MIN:lower:element:209": 1.0,
+      "LAMBDA_MIN:lower:element:21": 1.0,
+      "LAMBDA_MIN:lower:element:210": 1.0,
+      "LAMBDA_MIN:lower:element:211": 1.0,
+      "LAMBDA_MIN:lower:element:212": 1.0,
+      "LAMBDA_MIN:lower:element:213": 1.0,
+      "LAMBDA_MIN:lower:element:214": 1.0,
+      "LAMBDA_MIN:lower:element:215": 1.0,
+      "LAMBDA_MIN:lower:element:216": 1.0,
+      "LAMBDA_MIN:lower:element:217": 1.0,
+      "LAMBDA_MIN:lower:element:218": 1.0,
+      "LAMBDA_MIN:lower:element:219": 1.0,
+      "LAMBDA_MIN:lower:element:22": 1.0,
+      "LAMBDA_MIN:lower:element:220": 1.0,
+      "LAMBDA_MIN:lower:element:221": 1.0,
+      "LAMBDA_MIN:lower:element:222": 1.0,
+      "LAMBDA_MIN:lower:element:223": 1.0,
+      "LAMBDA_MIN:lower:element:224": 1.0,
+      "LAMBDA_MIN:lower:element:225": 1.0,
+      "LAMBDA_MIN:lower:element:226": 1.0,
+      "LAMBDA_MIN:lower:element:227": 1.0,
+      "LAMBDA_MIN:lower:element:228": 1.0,
+      "LAMBDA_MIN:lower:element:229": 1.0,
+      "LAMBDA_MIN:lower:element:23": 1.0,
+      "LAMBDA_MIN:lower:element:230": 1.0,
+      "LAMBDA_MIN:lower:element:231": 1.0,
+      "LAMBDA_MIN:lower:element:232": 1.0,
+      "LAMBDA_MIN:lower:element:233": 1.0,
+      "LAMBDA_MIN:lower:element:234": 1.0,
+      "LAMBDA_MIN:lower:element:235": 1.0,
+      "LAMBDA_MIN:lower:element:236": 1.0,
+      "LAMBDA_MIN:lower:element:237": 1.0,
+      "LAMBDA_MIN:lower:element:238": 1.0,
+      "LAMBDA_MIN:lower:element:239": 1.0,
+      "LAMBDA_MIN:lower:element:24": 1.0,
+      "LAMBDA_MIN:lower:element:240": 1.0,
+      "LAMBDA_MIN:lower:element:241": 1.0,
+      "LAMBDA_MIN:lower:element:242": 1.0,
+      "LAMBDA_MIN:lower:element:243": 1.0,
+      "LAMBDA_MIN:lower:element:244": 1.0,
+      "LAMBDA_MIN:lower:element:245": 1.0,
+      "LAMBDA_MIN:lower:element:246": 1.0,
+      "LAMBDA_MIN:lower:element:247": 1.0,
+      "LAMBDA_MIN:lower:element:248": 1.0,
+      "LAMBDA_MIN:lower:element:249": 1.0,
+      "LAMBDA_MIN:lower:element:25": 1.0,
+      "LAMBDA_MIN:lower:element:250": 1.0,
+      "LAMBDA_MIN:lower:element:251": 1.0,
+      "LAMBDA_MIN:lower:element:252": 1.0,
+      "LAMBDA_MIN:lower:element:253": 1.0,
+      "LAMBDA_MIN:lower:element:254": 1.0,
+      "LAMBDA_MIN:lower:element:255": 1.0,
+      "LAMBDA_MIN:lower:element:26": 1.0,
+      "LAMBDA_MIN:lower:element:27": 1.0,
+      "LAMBDA_MIN:lower:element:28": 1.0,
+      "LAMBDA_MIN:lower:element:29": 1.0,
+      "LAMBDA_MIN:lower:element:3": 1.0,
+      "LAMBDA_MIN:lower:element:30": 1.0,
+      "LAMBDA_MIN:lower:element:31": 1.0,
+      "LAMBDA_MIN:lower:element:32": 1.0,
+      "LAMBDA_MIN:lower:element:33": 1.0,
+      "LAMBDA_MIN:lower:element:34": 1.0,
+      "LAMBDA_MIN:lower:element:35": 1.0,
+      "LAMBDA_MIN:lower:element:36": 1.0,
+      "LAMBDA_MIN:lower:element:37": 1.0,
+      "LAMBDA_MIN:lower:element:38": 1.0,
+      "LAMBDA_MIN:lower:element:39": 1.0,
+      "LAMBDA_MIN:lower:element:4": 1.0,
+      "LAMBDA_MIN:lower:element:40": 1.0,
+      "LAMBDA_MIN:lower:element:41": 1.0,
+      "LAMBDA_MIN:lower:element:42": 1.0,
+      "LAMBDA_MIN:lower:element:43": 1.0,
+      "LAMBDA_MIN:lower:element:44": 1.0,
+      "LAMBDA_MIN:lower:element:45": 1.0,
+      "LAMBDA_MIN:lower:element:46": 1.0,
+      "LAMBDA_MIN:lower:element:47": 1.0,
+      "LAMBDA_MIN:lower:element:48": 1.0,
+      "LAMBDA_MIN:lower:element:49": 1.0,
+      "LAMBDA_MIN:lower:element:5": 1.0,
+      "LAMBDA_MIN:lower:element:50": 1.0,
+      "LAMBDA_MIN:lower:element:51": 1.0,
+      "LAMBDA_MIN:lower:element:52": 1.0,
+      "LAMBDA_MIN:lower:element:53": 1.0,
+      "LAMBDA_MIN:lower:element:54": 1.0,
+      "LAMBDA_MIN:lower:element:55": 1.0,
+      "LAMBDA_MIN:lower:element:56": 1.0,
+      "LAMBDA_MIN:lower:element:57": 1.0,
+      "LAMBDA_MIN:lower:element:58": 1.0,
+      "LAMBDA_MIN:lower:element:59": 1.0,
+      "LAMBDA_MIN:lower:element:6": 1.0,
+      "LAMBDA_MIN:lower:element:60": 1.0,
+      "LAMBDA_MIN:lower:element:61": 1.0,
+      "LAMBDA_MIN:lower:element:62": 1.0,
+      "LAMBDA_MIN:lower:element:63": 1.0,
+      "LAMBDA_MIN:lower:element:64": 1.0,
+      "LAMBDA_MIN:lower:element:65": 1.0,
+      "LAMBDA_MIN:lower:element:66": 1.0,
+      "LAMBDA_MIN:lower:element:67": 1.0,
+      "LAMBDA_MIN:lower:element:68": 1.0,
+      "LAMBDA_MIN:lower:element:69": 1.0,
+      "LAMBDA_MIN:lower:element:7": 1.0,
+      "LAMBDA_MIN:lower:element:70": 1.0,
+      "LAMBDA_MIN:lower:element:71": 1.0,
+      "LAMBDA_MIN:lower:element:72": 1.0,
+      "LAMBDA_MIN:lower:element:73": 1.0,
+      "LAMBDA_MIN:lower:element:74": 1.0,
+      "LAMBDA_MIN:lower:element:75": 1.0,
+      "LAMBDA_MIN:lower:element:76": 1.0,
+      "LAMBDA_MIN:lower:element:77": 1.0,
+      "LAMBDA_MIN:lower:element:78": 1.0,
+      "LAMBDA_MIN:lower:element:79": 1.0,
+      "LAMBDA_MIN:lower:element:8": 1.0,
+      "LAMBDA_MIN:lower:element:80": 1.0,
+      "LAMBDA_MIN:lower:element:81": 1.0,
+      "LAMBDA_MIN:lower:element:82": 1.0,
+      "LAMBDA_MIN:lower:element:83": 1.0,
+      "LAMBDA_MIN:lower:element:84": 1.0,
+      "LAMBDA_MIN:lower:element:85": 1.0,
+      "LAMBDA_MIN:lower:element:86": 1.0,
+      "LAMBDA_MIN:lower:element:87": 1.0,
+      "LAMBDA_MIN:lower:element:88": 1.0,
+      "LAMBDA_MIN:lower:element:89": 1.0,
+      "LAMBDA_MIN:lower:element:9": 1.0,
+      "LAMBDA_MIN:lower:element:90": 1.0,
+      "LAMBDA_MIN:lower:element:91": 1.0,
+      "LAMBDA_MIN:lower:element:92": 1.0,
+      "LAMBDA_MIN:lower:element:93": 1.0,
+      "LAMBDA_MIN:lower:element:94": 1.0,
+      "LAMBDA_MIN:lower:element:95": 1.0,
+      "LAMBDA_MIN:lower:element:96": 1.0,
+      "LAMBDA_MIN:lower:element:97": 1.0,
+      "LAMBDA_MIN:lower:element:98": 1.0,
+      "LAMBDA_MIN:lower:element:99": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:0": 2.0,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:0": 2.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:0": 200.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:0": 200.0,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:0": 2.0,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:0": 2.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:0": 200.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:0": 200.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:0": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:1": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:10": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:100": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:101": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:102": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:103": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:104": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:105": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:106": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:107": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:108": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:109": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:11": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:110": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:111": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:112": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:113": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:114": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:115": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:116": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:117": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:118": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:119": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:12": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:120": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:121": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:122": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:123": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:124": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:125": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:126": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:127": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:128": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:129": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:13": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:130": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:131": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:132": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:133": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:134": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:135": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:136": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:137": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:138": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:139": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:14": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:140": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:141": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:142": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:143": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:144": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:145": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:146": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:147": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:148": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:149": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:15": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:150": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:151": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:152": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:153": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:154": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:155": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:156": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:157": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:158": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:159": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:16": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:160": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:161": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:162": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:163": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:164": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:165": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:166": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:167": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:168": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:169": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:17": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:170": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:171": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:172": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:173": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:174": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:175": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:176": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:177": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:178": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:179": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:18": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:180": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:181": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:182": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:183": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:184": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:185": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:186": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:187": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:188": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:189": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:19": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:190": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:191": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:192": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:193": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:194": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:195": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:196": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:197": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:198": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:199": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:2": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:20": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:200": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:201": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:202": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:203": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:204": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:205": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:206": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:207": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:208": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:209": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:21": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:210": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:211": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:212": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:213": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:214": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:215": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:216": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:217": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:218": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:219": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:22": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:220": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:221": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:222": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:223": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:224": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:225": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:226": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:227": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:228": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:229": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:23": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:230": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:231": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:232": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:233": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:234": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:235": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:236": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:237": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:238": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:239": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:24": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:240": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:241": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:242": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:243": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:244": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:245": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:246": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:247": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:248": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:249": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:25": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:250": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:251": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:252": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:253": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:254": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:255": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:26": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:27": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:28": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:29": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:3": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:30": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:31": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:32": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:33": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:34": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:35": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:36": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:37": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:38": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:39": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:4": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:40": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:41": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:42": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:43": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:44": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:45": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:46": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:47": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:48": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:49": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:5": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:50": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:51": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:52": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:53": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:54": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:55": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:56": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:57": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:58": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:59": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:6": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:60": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:61": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:62": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:63": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:64": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:65": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:66": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:67": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:68": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:69": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:7": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:70": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:71": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:72": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:73": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:74": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:75": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:76": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:77": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:78": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:79": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:8": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:80": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:81": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:82": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:83": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:84": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:85": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:86": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:87": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:88": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:89": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:9": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:90": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:91": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:92": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:93": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:94": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:95": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:96": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:97": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:98": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:99": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:0": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:1": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:10": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:100": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:101": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:102": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:103": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:104": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:105": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:106": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:107": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:108": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:109": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:11": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:110": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:111": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:112": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:113": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:114": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:115": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:116": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:117": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:118": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:119": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:12": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:120": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:121": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:122": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:123": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:124": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:125": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:126": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:127": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:128": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:129": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:13": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:130": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:131": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:132": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:133": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:134": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:135": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:136": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:137": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:138": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:139": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:14": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:140": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:141": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:142": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:143": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:144": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:145": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:146": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:147": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:148": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:149": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:15": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:150": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:151": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:152": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:153": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:154": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:155": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:156": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:157": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:158": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:159": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:16": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:160": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:161": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:162": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:163": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:164": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:165": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:166": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:167": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:168": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:169": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:17": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:170": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:171": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:172": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:173": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:174": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:175": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:176": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:177": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:178": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:179": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:18": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:180": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:181": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:182": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:183": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:184": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:185": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:186": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:187": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:188": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:189": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:19": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:190": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:191": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:192": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:193": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:194": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:195": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:196": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:197": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:198": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:199": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:2": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:20": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:200": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:201": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:202": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:203": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:204": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:205": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:206": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:207": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:208": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:209": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:21": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:210": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:211": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:212": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:213": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:214": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:215": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:216": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:217": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:218": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:219": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:22": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:220": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:221": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:222": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:223": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:224": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:225": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:226": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:227": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:228": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:229": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:23": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:230": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:231": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:232": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:233": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:234": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:235": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:236": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:237": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:238": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:239": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:24": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:240": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:241": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:242": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:243": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:244": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:245": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:246": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:247": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:248": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:249": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:25": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:250": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:251": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:252": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:253": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:254": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:255": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:26": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:27": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:28": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:29": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:3": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:30": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:31": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:32": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:33": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:34": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:35": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:36": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:37": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:38": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:39": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:4": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:40": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:41": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:42": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:43": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:44": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:45": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:46": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:47": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:48": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:49": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:5": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:50": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:51": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:52": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:53": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:54": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:55": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:56": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:57": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:58": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:59": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:6": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:60": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:61": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:62": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:63": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:64": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:65": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:66": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:67": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:68": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:69": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:7": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:70": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:71": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:72": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:73": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:74": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:75": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:76": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:77": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:78": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:79": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:8": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:80": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:81": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:82": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:83": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:84": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:85": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:86": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:87": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:88": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:89": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:9": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:90": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:91": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:92": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:93": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:94": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:95": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:96": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:97": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:98": 2.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:99": 2.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:0": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:1": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:10": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:100": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:101": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:102": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:103": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:104": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:105": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:106": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:107": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:108": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:109": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:11": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:110": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:111": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:112": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:113": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:114": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:115": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:116": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:117": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:118": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:119": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:12": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:120": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:121": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:122": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:123": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:124": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:125": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:126": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:127": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:128": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:129": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:13": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:130": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:131": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:132": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:133": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:134": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:135": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:136": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:137": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:138": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:139": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:14": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:140": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:141": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:142": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:143": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:144": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:145": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:146": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:147": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:148": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:149": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:15": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:150": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:151": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:152": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:153": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:154": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:155": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:156": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:157": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:158": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:159": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:16": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:160": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:161": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:162": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:163": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:164": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:165": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:166": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:167": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:168": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:169": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:17": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:170": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:171": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:172": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:173": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:174": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:175": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:176": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:177": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:178": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:179": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:18": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:180": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:181": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:182": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:183": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:184": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:185": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:186": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:187": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:188": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:189": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:19": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:190": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:191": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:192": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:193": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:194": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:195": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:196": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:197": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:198": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:199": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:2": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:20": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:200": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:201": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:202": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:203": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:204": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:205": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:206": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:207": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:208": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:209": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:21": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:210": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:211": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:212": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:213": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:214": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:215": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:216": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:217": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:218": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:219": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:22": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:220": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:221": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:222": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:223": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:224": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:225": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:226": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:227": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:228": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:229": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:23": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:230": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:231": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:232": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:233": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:234": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:235": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:236": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:237": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:238": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:239": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:24": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:240": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:241": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:242": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:243": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:244": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:245": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:246": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:247": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:248": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:249": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:25": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:250": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:251": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:252": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:253": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:254": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:255": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:26": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:27": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:28": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:29": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:3": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:30": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:31": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:32": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:33": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:34": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:35": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:36": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:37": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:38": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:39": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:4": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:40": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:41": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:42": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:43": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:44": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:45": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:46": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:47": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:48": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:49": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:5": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:50": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:51": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:52": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:53": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:54": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:55": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:56": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:57": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:58": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:59": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:6": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:60": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:61": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:62": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:63": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:64": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:65": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:66": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:67": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:68": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:69": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:7": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:70": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:71": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:72": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:73": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:74": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:75": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:76": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:77": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:78": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:79": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:8": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:80": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:81": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:82": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:83": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:84": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:85": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:86": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:87": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:88": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:89": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:9": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:90": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:91": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:92": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:93": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:94": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:95": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:96": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:97": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:98": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:99": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:0": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:1": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:10": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:100": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:101": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:102": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:103": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:104": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:105": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:106": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:107": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:108": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:109": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:11": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:110": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:111": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:112": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:113": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:114": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:115": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:116": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:117": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:118": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:119": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:12": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:120": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:121": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:122": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:123": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:124": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:125": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:126": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:127": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:128": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:129": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:13": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:130": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:131": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:132": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:133": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:134": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:135": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:136": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:137": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:138": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:139": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:14": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:140": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:141": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:142": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:143": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:144": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:145": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:146": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:147": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:148": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:149": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:15": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:150": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:151": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:152": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:153": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:154": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:155": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:156": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:157": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:158": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:159": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:16": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:160": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:161": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:162": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:163": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:164": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:165": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:166": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:167": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:168": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:169": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:17": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:170": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:171": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:172": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:173": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:174": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:175": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:176": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:177": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:178": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:179": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:18": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:180": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:181": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:182": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:183": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:184": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:185": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:186": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:187": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:188": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:189": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:19": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:190": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:191": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:192": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:193": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:194": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:195": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:196": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:197": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:198": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:199": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:2": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:20": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:200": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:201": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:202": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:203": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:204": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:205": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:206": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:207": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:208": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:209": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:21": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:210": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:211": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:212": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:213": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:214": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:215": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:216": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:217": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:218": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:219": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:22": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:220": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:221": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:222": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:223": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:224": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:225": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:226": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:227": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:228": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:229": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:23": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:230": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:231": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:232": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:233": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:234": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:235": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:236": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:237": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:238": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:239": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:24": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:240": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:241": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:242": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:243": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:244": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:245": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:246": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:247": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:248": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:249": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:25": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:250": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:251": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:252": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:253": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:254": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:255": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:26": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:27": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:28": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:29": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:3": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:30": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:31": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:32": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:33": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:34": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:35": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:36": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:37": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:38": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:39": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:4": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:40": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:41": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:42": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:43": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:44": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:45": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:46": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:47": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:48": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:49": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:5": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:50": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:51": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:52": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:53": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:54": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:55": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:56": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:57": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:58": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:59": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:6": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:60": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:61": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:62": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:63": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:64": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:65": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:66": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:67": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:68": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:69": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:7": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:70": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:71": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:72": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:73": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:74": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:75": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:76": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:77": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:78": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:79": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:8": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:80": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:81": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:82": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:83": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:84": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:85": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:86": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:87": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:88": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:89": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:9": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:90": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:91": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:92": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:93": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:94": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:95": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:96": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:97": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:98": 200.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:99": 200.0
+    },
+    "hold_release": {
+      "duration": 0.0,
+      "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+      "history": "instantaneous",
+      "implicit_legacy_default": false,
+      "protocol_id": "YP-HOLD-RELEASE-1.0",
+      "source": "initial_static_reaction",
+      "start": 0.0,
+      "theory_sections": [
+        "7.4",
+        "7.5"
+      ]
+    },
+    "legacy_energy_residual_method": "output_sample_trapezoid_independently_recomputed_by_convergence_checker",
+    "mass_matrix": {
+      "condition_number": 76794217603.55975,
+      "condition_number_method": "SPD_eigenvalue_ratio_2_norm",
+      "maximum_eigenvalue": 1000000.0006796875,
+      "minimum_eigenvalue": 1.302181377564205e-05,
+      "symmetry_inf_norm": 0.0
+    },
+    "max_absolute_energy_power_residual_algebraic_reaction": 4.824699667560495e-18,
+    "max_absolute_energy_power_residual_physical_traction": 4.824699667560495e-18,
+    "max_accepted_step_absolute_energy_power_residual_algebraic_reaction": 4.824699667560495e-18,
+    "max_accepted_step_absolute_energy_power_residual_physical_traction": 4.824699667560495e-18,
+    "max_actual_step": 5.000000000000143e-05,
+    "max_boundary_reaction_difference": 3.726780024255521e-12,
+    "max_dynamic_relative_energy_power_residual_algebraic_reaction": 5.48885007224849e-12,
+    "max_dynamic_relative_energy_power_residual_physical_traction": 5.48885007224849e-12,
+    "max_gravity_relative_energy_power_residual_algebraic_reaction": 4.0205829276417584e-16,
+    "max_gravity_relative_energy_power_residual_physical_traction": 4.0205829276417584e-16,
+    "max_output_trapezoid_work_difference": 0.0,
+    "max_relative_energy_power_residual_algebraic_reaction": 4.0205829276417584e-16,
+    "max_relative_energy_power_residual_physical_traction": 4.0205829276417584e-16,
+    "min_D_ax": 0.0,
+    "min_D_b": 0.0,
+    "min_D_string": 0.0,
+    "min_actual_step": 4.999999999994245e-05,
+    "nfev": 6002,
+    "njev": 0,
+    "nlu": 0,
+    "power_integral_algebraic_reaction": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "power_integral_hold": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "power_integral_physical_traction": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "power_quadrature_evaluations": 1209,
+    "power_quadrature_method": "accepted_step_dense_output_gauss_legendre_3",
+    "preparation": {
+      "accepted_candidate_count": 1,
+      "candidate_count": 3,
+      "held_equilibrium_residual_inf": 0.0,
+      "holding_force_source": "initial_static_reaction",
+      "initial_holding_forces": {
+        "bob": [
+          0.009999999999990905,
+          0.0,
+          -2.001953125e-10
+        ],
+        "junction": [
+          -0.009999999999999787,
+          0.0,
+          -0.010000000010195314
+        ]
+      },
+      "mode": "STATIC_HOLD_RELEASE",
+      "release_protocol": {
+        "duration": 0.0,
+        "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+        "history": "instantaneous",
+        "implicit_legacy_default": false,
+        "protocol_id": "YP-HOLD-RELEASE-1.0",
+        "source": "initial_static_reaction",
+        "start": 0.0,
+        "theory_sections": [
+          "7.4",
+          "7.5"
+        ]
+      },
+      "required_gradient_inf": 1e-07,
+      "selected_energy": 0.0002624999999959977,
+      "selected_gradient_inf": 3.90625e-13,
+      "selected_iterations": 0,
+      "static_energy_scale": 0.012000000383999992,
+      "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+    },
+    "refinement_qualification": "SINGLE_RUN_CANDIDATE",
+    "sampled_guard_minima": {
+      "lambda_min:A": 1.02,
+      "lambda_min:B": 1.01999999998,
+      "lambda_min:lower": 0.9970488276749973,
+      "material:A:lambda_lower": 1.02,
+      "material:A:lambda_upper": 0.9749999999800001,
+      "material:A:rate_lower": 100.0,
+      "material:A:rate_upper": 99.999999998,
+      "material:B:lambda_lower": 1.01999999998,
+      "material:B:lambda_upper": 0.9750000000000001,
+      "material:B:rate_lower": 99.999999998,
+      "material:B:rate_upper": 100.0,
+      "material:lower:lambda_lower": 0.9970488276749973,
+      "material:lower:lambda_upper": 0.9974974362457658,
+      "material:lower:rate_lower": 99.97488163610244,
+      "material:lower:rate_upper": 99.99355804444927
+    },
+    "sampled_guard_violation": null,
+    "solver_message": "The solver successfully reached the end of the integration interval.",
+    "solver_warnings": [],
+    "timings_seconds": {
+      "diagnostics_and_power_quadrature": 17.0826075519999,
+      "integration": 57.53093900499971,
+      "setup": 13.756673378000414
+    }
+  },
+  "events": [],
+  "metadata": {
+    "atol": 2e-12,
+    "atol_position": 2e-12,
+    "atol_velocity": 2e-12,
+    "branch_nodes": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "lower": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        3
+      ]
+    },
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "config_sha256": "61828f9b515a15bf97ab102c1403f00fda7ac6d36918d9c193735ae22a89196f",
+    "constitutive_positive_part": "exact max(candidate,0)",
+    "effective_atol_vector": {
+      "position": 2e-12,
+      "velocity": 2e-12
+    },
+    "effective_rtol": 2e-09,
+    "elements": {
+      "A": 1,
+      "B": 1,
+      "lower": 256
+    },
+    "event_cluster_tolerance": 1e-10,
+    "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+    "hold_release": {
+      "duration": 0.0,
+      "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+      "history": "instantaneous",
+      "implicit_legacy_default": false,
+      "protocol_id": "YP-HOLD-RELEASE-1.0",
+      "source": "initial_static_reaction",
+      "start": 0.0,
+      "theory_sections": [
+        "7.4",
+        "7.5"
+      ]
+    },
+    "initial_holding_forces": {
+      "bob": [
+        0.009999999999990905,
+        0.0,
+        -2.001953125e-10
+      ],
+      "junction": [
+        -0.009999999999999787,
+        0.0,
+        -0.010000000010195314
+      ]
+    },
+    "initial_regularization": "none",
+    "initial_trace_check": "discrete multistart static minimization; local uniqueness evidence only",
+    "integrator": "DOP853",
+    "max_step": 5e-05,
+    "model_id": "FWD-CABLE-1.0",
+    "node_ids": [
+      "support_A",
+      "support_B",
+      "junction",
+      "bob",
+      "lower:node:1",
+      "lower:node:2",
+      "lower:node:3",
+      "lower:node:4",
+      "lower:node:5",
+      "lower:node:6",
+      "lower:node:7",
+      "lower:node:8",
+      "lower:node:9",
+      "lower:node:10",
+      "lower:node:11",
+      "lower:node:12",
+      "lower:node:13",
+      "lower:node:14",
+      "lower:node:15",
+      "lower:node:16",
+      "lower:node:17",
+      "lower:node:18",
+      "lower:node:19",
+      "lower:node:20",
+      "lower:node:21",
+      "lower:node:22",
+      "lower:node:23",
+      "lower:node:24",
+      "lower:node:25",
+      "lower:node:26",
+      "lower:node:27",
+      "lower:node:28",
+      "lower:node:29",
+      "lower:node:30",
+      "lower:node:31",
+      "lower:node:32",
+      "lower:node:33",
+      "lower:node:34",
+      "lower:node:35",
+      "lower:node:36",
+      "lower:node:37",
+      "lower:node:38",
+      "lower:node:39",
+      "lower:node:40",
+      "lower:node:41",
+      "lower:node:42",
+      "lower:node:43",
+      "lower:node:44",
+      "lower:node:45",
+      "lower:node:46",
+      "lower:node:47",
+      "lower:node:48",
+      "lower:node:49",
+      "lower:node:50",
+      "lower:node:51",
+      "lower:node:52",
+      "lower:node:53",
+      "lower:node:54",
+      "lower:node:55",
+      "lower:node:56",
+      "lower:node:57",
+      "lower:node:58",
+      "lower:node:59",
+      "lower:node:60",
+      "lower:node:61",
+      "lower:node:62",
+      "lower:node:63",
+      "lower:node:64",
+      "lower:node:65",
+      "lower:node:66",
+      "lower:node:67",
+      "lower:node:68",
+      "lower:node:69",
+      "lower:node:70",
+      "lower:node:71",
+      "lower:node:72",
+      "lower:node:73",
+      "lower:node:74",
+      "lower:node:75",
+      "lower:node:76",
+      "lower:node:77",
+      "lower:node:78",
+      "lower:node:79",
+      "lower:node:80",
+      "lower:node:81",
+      "lower:node:82",
+      "lower:node:83",
+      "lower:node:84",
+      "lower:node:85",
+      "lower:node:86",
+      "lower:node:87",
+      "lower:node:88",
+      "lower:node:89",
+      "lower:node:90",
+      "lower:node:91",
+      "lower:node:92",
+      "lower:node:93",
+      "lower:node:94",
+      "lower:node:95",
+      "lower:node:96",
+      "lower:node:97",
+      "lower:node:98",
+      "lower:node:99",
+      "lower:node:100",
+      "lower:node:101",
+      "lower:node:102",
+      "lower:node:103",
+      "lower:node:104",
+      "lower:node:105",
+      "lower:node:106",
+      "lower:node:107",
+      "lower:node:108",
+      "lower:node:109",
+      "lower:node:110",
+      "lower:node:111",
+      "lower:node:112",
+      "lower:node:113",
+      "lower:node:114",
+      "lower:node:115",
+      "lower:node:116",
+      "lower:node:117",
+      "lower:node:118",
+      "lower:node:119",
+      "lower:node:120",
+      "lower:node:121",
+      "lower:node:122",
+      "lower:node:123",
+      "lower:node:124",
+      "lower:node:125",
+      "lower:node:126",
+      "lower:node:127",
+      "lower:node:128",
+      "lower:node:129",
+      "lower:node:130",
+      "lower:node:131",
+      "lower:node:132",
+      "lower:node:133",
+      "lower:node:134",
+      "lower:node:135",
+      "lower:node:136",
+      "lower:node:137",
+      "lower:node:138",
+      "lower:node:139",
+      "lower:node:140",
+      "lower:node:141",
+      "lower:node:142",
+      "lower:node:143",
+      "lower:node:144",
+      "lower:node:145",
+      "lower:node:146",
+      "lower:node:147",
+      "lower:node:148",
+      "lower:node:149",
+      "lower:node:150",
+      "lower:node:151",
+      "lower:node:152",
+      "lower:node:153",
+      "lower:node:154",
+      "lower:node:155",
+      "lower:node:156",
+      "lower:node:157",
+      "lower:node:158",
+      "lower:node:159",
+      "lower:node:160",
+      "lower:node:161",
+      "lower:node:162",
+      "lower:node:163",
+      "lower:node:164",
+      "lower:node:165",
+      "lower:node:166",
+      "lower:node:167",
+      "lower:node:168",
+      "lower:node:169",
+      "lower:node:170",
+      "lower:node:171",
+      "lower:node:172",
+      "lower:node:173",
+      "lower:node:174",
+      "lower:node:175",
+      "lower:node:176",
+      "lower:node:177",
+      "lower:node:178",
+      "lower:node:179",
+      "lower:node:180",
+      "lower:node:181",
+      "lower:node:182",
+      "lower:node:183",
+      "lower:node:184",
+      "lower:node:185",
+      "lower:node:186",
+      "lower:node:187",
+      "lower:node:188",
+      "lower:node:189",
+      "lower:node:190",
+      "lower:node:191",
+      "lower:node:192",
+      "lower:node:193",
+      "lower:node:194",
+      "lower:node:195",
+      "lower:node:196",
+      "lower:node:197",
+      "lower:node:198",
+      "lower:node:199",
+      "lower:node:200",
+      "lower:node:201",
+      "lower:node:202",
+      "lower:node:203",
+      "lower:node:204",
+      "lower:node:205",
+      "lower:node:206",
+      "lower:node:207",
+      "lower:node:208",
+      "lower:node:209",
+      "lower:node:210",
+      "lower:node:211",
+      "lower:node:212",
+      "lower:node:213",
+      "lower:node:214",
+      "lower:node:215",
+      "lower:node:216",
+      "lower:node:217",
+      "lower:node:218",
+      "lower:node:219",
+      "lower:node:220",
+      "lower:node:221",
+      "lower:node:222",
+      "lower:node:223",
+      "lower:node:224",
+      "lower:node:225",
+      "lower:node:226",
+      "lower:node:227",
+      "lower:node:228",
+      "lower:node:229",
+      "lower:node:230",
+      "lower:node:231",
+      "lower:node:232",
+      "lower:node:233",
+      "lower:node:234",
+      "lower:node:235",
+      "lower:node:236",
+      "lower:node:237",
+      "lower:node:238",
+      "lower:node:239",
+      "lower:node:240",
+      "lower:node:241",
+      "lower:node:242",
+      "lower:node:243",
+      "lower:node:244",
+      "lower:node:245",
+      "lower:node:246",
+      "lower:node:247",
+      "lower:node:248",
+      "lower:node:249",
+      "lower:node:250",
+      "lower:node:251",
+      "lower:node:252",
+      "lower:node:253",
+      "lower:node:254",
+      "lower:node:255"
+    ],
+    "numerical_config_sha256": "8bde836805ad591cb544ead84855e338af5dccddff245c9a94a778eddb962dfa",
+    "numerical_model_id": "NUM-FWD-CABLE-P1-DOP853-1.0",
+    "observation_input_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "physical_input_sha256": "555494da7b0724722d5a5773ce8f56f633ec03b81db9f8a6e23b5d81ae1c5d40",
+    "program_version": "2.1.0-research",
+    "quadrature_order": 2,
+    "release_protocol_id": "YP-HOLD-RELEASE-1.0",
+    "rtol": 2e-09,
+    "runtime_versions": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "scipy": "1.11.4"
+    },
+    "source_tree_sha256": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427",
+    "source_tree_sha256_at_end": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427",
+    "source_tree_stable_during_run": true,
+    "theory_sections": [
+      "7.4",
+      "7.5"
+    ],
+    "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "units": "SI"
+  },
+  "model_id": "FWD-CABLE-1.0",
+  "numerical_model_id": "NUM-FWD-CABLE-P1-DOP853-1.0",
+  "numerical_status": "SUCCESS_SINGLE_RUN",
+  "observations": {},
+  "program_version": "2.1.0-research",
+  "returned_interval": "[0,0.02]",
+  "sample_count": 5,
+  "tau": 0.02,
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI"
+}

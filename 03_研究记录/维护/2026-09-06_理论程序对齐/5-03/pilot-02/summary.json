@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "matplotlib": "3.6.3",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39"
+  },
+  "command": [
+    "/home/cjt/Desktop/iypt/5 Y形摆/.venv/bin/python",
+    "03_研究记录/维护/2026-09-06_理论程序对齐/5-03/compare_models.py",
+    "03_研究记录/维护/2026-09-06_理论程序对齐/5-03/pilot-02",
+    "--pilot"
+  ],
+  "cases": [],
+  "errors": [],
+  "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c"
+}

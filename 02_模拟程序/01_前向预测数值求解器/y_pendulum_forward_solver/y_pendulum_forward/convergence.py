@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import Any
 
 import numpy as np
-from scipy.integrate import cumulative_trapezoid
+from scipy.integrate import cumulative_trapezoid, trapezoid
 from scipy.linalg import cho_factor, cho_solve
 
 from .activation import activation_primitive, tension_components
@@ -2860,8 +2860,8 @@ def _recompute_cable_output(
             scalar["E_F"] - scalar["E_F"][0] - algebraic_integral
         )
         work_scale = max(
-            float(np.trapezoid(np.abs(physical_power), time)),
-            float(np.trapezoid(np.abs(algebraic_power), time)),
+            float(trapezoid(np.abs(physical_power), time)),
+            float(trapezoid(np.abs(algebraic_power), time)),
         )
     else:
         physical_residual = np.zeros(sample_count)

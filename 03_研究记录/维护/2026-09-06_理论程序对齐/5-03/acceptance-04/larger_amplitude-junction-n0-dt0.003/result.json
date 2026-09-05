@@ -1,0 +1,117 @@
+{
+  "contract_status": [
+    "COMPLETED"
+  ],
+  "diagnostics": {
+    "accepted_steps": 668,
+    "array_fields_in_trajectory_npz": {
+      "sampled_guard_component_series": {
+        "T_A_ZERO": [
+          401
+        ],
+        "T_B_ZERO": [
+          401
+        ],
+        "T_LOWER_ZERO": [
+          401
+        ]
+      }
+    },
+    "constraint_projection_applied": false,
+    "dense_guard_audit": "bounded scalar minimization plus endpoints on every accepted step",
+    "dense_guard_audit_scope": "conservative screen for missed sign changes and grazing minima under the configured step/fast-mode bound; not a proof for arbitrary continuous guards",
+    "energy_scale": 0.03165188677080465,
+    "energy_scale_basis": "absolute initial J.7 excitation energy",
+    "event_root_bracket": null,
+    "event_root_bracket_basis": null,
+    "initial_energy": 0.03165188677080465,
+    "max_abs_lower_length_error": 7.771561172376096e-16,
+    "max_abs_n_dot_eta": 6.6058269965196814e-15,
+    "max_abs_n_norm_error": 1.1102230246251565e-15,
+    "max_abs_upper_length_error": 5.551115123125783e-17,
+    "max_absolute_energy_drift": 5.48172618408671e-16,
+    "max_actual_fast_mode_phase_step": 0.21092210221634233,
+    "max_actual_step": 0.0030000000000000027,
+    "max_bob_force_residual": 3.3422138886441676e-16,
+    "max_junction_force_residual": 3.433175098891678e-16,
+    "max_relative_energy_drift": 1.7318797529450892e-14,
+    "min_tensions": {
+      "T_A": 0.4547234065536528,
+      "T_B": 0.4547234065536528,
+      "T_lower": 0.7492072935497746
+    },
+    "nfev": 10022,
+    "njev": 0,
+    "nlu": 0,
+    "omega_plus": 70.30736740544738,
+    "projection_energy_correction_J": null,
+    "refinement_qualification": "SINGLE_RUN_CANDIDATE",
+    "solver_message": "The solver successfully reached the end of the integration interval.",
+    "solver_warnings": []
+  },
+  "events": [],
+  "metadata": {
+    "atol": 1e-10,
+    "atol_angle": 1e-10,
+    "atol_rate": 1e-10,
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "config_sha256": "122b64384abf89af563951af617932e1f14c4e94baf5e48c77f0ca826a12ddaf",
+    "constraint_projection_applied": false,
+    "coordinate_note": "theta is an unwrapped real representative; n and eta are global Cartesian coordinates; no constraint projection is applied",
+    "effective_atol_vector": [
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10
+    ],
+    "effective_max_step": 0.003,
+    "effective_rtol": 1e-08,
+    "event_cluster_tolerance": 1e-09,
+    "fast_mode_max_phase_step": 0.21092210221634214,
+    "integration_retry": null,
+    "integrator": "DOP853",
+    "max_step": 0.003,
+    "model_id": "YP-FWD-J3-v1",
+    "numerical_config_sha256": "8112c74e5e3768926bb0a10df02cd3440b8c014167f560efad78bdd3cd3fe0c3",
+    "numerical_model_id": "NUM-YP-FWD-J3-DOP853-1.0",
+    "observation_input_sha256": "c343853a90ec5cf2dab04de8dd0a968b64d89ebb56b1b0a3f548c21b10b5f51e",
+    "omega_plus": 70.30736740544738,
+    "physical_input_sha256": "e3aa36d327a487412ba9593654a6a01a723ffbd2222a8b1643d84f642d40807c",
+    "program_version": "2.1.0-research",
+    "rtol": 1e-08,
+    "runtime_versions": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "scipy": "1.11.4"
+    },
+    "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_stable_during_run": true,
+    "theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+    "units": "SI"
+  },
+  "model_id": "YP-FWD-J3-v1",
+  "numerical_model_id": "NUM-YP-FWD-J3-DOP853-1.0",
+  "numerical_status": "SUCCESS_SINGLE_RUN",
+  "observations": {
+    "errors": [],
+    "operator": "orthographic",
+    "sample_count": 401,
+    "status": [
+      "OBSERVATION_INPUT_VALID"
+    ],
+    "valid_count": 401
+  },
+  "program_version": "2.1.0-research",
+  "returned_interval": "[0,2.0]",
+  "sample_count": 401,
+  "tau": 2.0,
+  "theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+  "units": "SI"
+}

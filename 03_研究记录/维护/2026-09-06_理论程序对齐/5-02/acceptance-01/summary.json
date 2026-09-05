@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "source_tree_sha256": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427",
+  "source_tree_sha256_at_end": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427",
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "matplotlib": "3.6.3",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39"
+  },
+  "command": [
+    "/home/cjt/Desktop/iypt/5 Y形摆/.venv/bin/python",
+    "03_研究记录/维护/2026-09-06_理论程序对齐/5-02/verify_release.py",
+    "03_研究记录/维护/2026-09-06_理论程序对齐/5-02/acceptance-01"
+  ],
+  "cwd": "/home/cjt/Desktop/iypt/5 Y形摆",
+  "plan": {
+    "spatial_elements": [
+      32,
+      64,
+      256
+    ],
+    "space_max_step_s": 5e-05,
+    "time_elements": 64,
+    "time_max_step_s": [
+      0.0001,
+      5e-05,
+      2.5e-05
+    ],
+    "window_s": 0.02,
+    "endpoint_relative_threshold": 0.001,
+    "time_position_scale_m": 0.0001,
+    "time_velocity_scale_m_s": 0.01,
+    "time_error_threshold": 1e-06,
+    "scope": "synthetic longitudinal strictly taut subproblem before first reflection; no device accuracy claim"
+  },
+  "spatial": [
+    {
+      "elements": 32,
+      "max_step": 5e-05,
+      "accepted_steps": 400,
+      "actual_max_step": 5.000000000000143e-05,
+      "endpoint_q_error": 8.89236359455881e-05,
+      "endpoint_v_error": 3.701892474733329e-05,
+      "endpoint_traction_error": 0.006442958543136958,
+      "full_field_L2_q_m": 8.462704432784526e-08,
+      "full_field_L2_v_m_s": 5.773413476690228e-05,
+      "element_midpoint_L2_traction_N": 1.0525577557625403e-05,
+      "front_region_L2_q_m": 8.094602319527304e-08,
+      "front_region_L2_v_m_s": 4.144779707176326e-05,
+      "junction_displacement_m": 2.828427118525307e-12,
+      "max_transverse_motion_m": 2.000000000536585e-12,
+      "traction_reference_N": 0.008187307530779819,
+      "artifact": "n32-dt5e-05"
+    },
+    {
+      "elements": 64,
+      "max_step": 5e-05,
+      "accepted_steps": 400,
+      "actual_max_step": 5.000000000000143e-05,
+      "endpoint_q_error": 2.2232298054594884e-05,
+      "endpoint_v_error": 9.215783485049864e-06,
+      "endpoint_traction_error": 0.0032102038157589066,
+      "full_field_L2_q_m": 2.6724054948665697e-08,
+      "full_field_L2_v_m_s": 2.832566075463675e-05,
+      "element_midpoint_L2_traction_N": 5.8365864369239855e-06,
+      "front_region_L2_q_m": 2.5143940822407014e-08,
+      "front_region_L2_v_m_s": 1.814489135427452e-05,
+      "junction_displacement_m": 2.828427118525215e-12,
+      "max_transverse_motion_m": 2.0000000005365853e-12,
+      "traction_reference_N": 0.008187307530779819,
+      "artifact": "n64-dt5e-05"
+    },
+    {
+      "elements": 256,
+      "max_step": 5e-05,
+      "accepted_steps": 400,
+      "actual_max_step": 5.000000000000143e-05,
+      "endpoint_q_error": 1.3895185687921408e-06,
+      "endpoint_v_error": 5.742235389788263e-07,
+      "endpoint_traction_error": 0.0008003169209203423,
+      "full_field_L2_q_m": 2.651549950998481e-09,
+      "full_field_L2_v_m_s": 7.258949401676651e-06,
+      "element_midpoint_L2_traction_N": 1.4550367469571944e-06,
+      "front_region_L2_q_m": 2.2708109603694185e-09,
+      "front_region_L2_v_m_s": 3.919274443120042e-06,
+      "junction_displacement_m": 2.828427118525877e-12,
+      "max_transverse_motion_m": 2.000000000536585e-12,
+      "traction_reference_N": 0.008187307530779819,
+      "artifact": "n256-dt5e-05"
+    }
+  ],
+  "temporal": [
+    {
+      "elements": 64,
+      "max_step": 0.0001,
+      "accepted_steps": 201,
+      "actual_max_step": 0.00010000000000000026,
+      "endpoint_q_error": 2.2232309909142534e-05,
+      "endpoint_v_error": 9.215782590075443e-06,
+      "endpoint_traction_error": 0.003210203793021539,
+      "full_field_L2_q_m": 2.6724054948729356e-08,
+      "full_field_L2_v_m_s": 2.8325660851540023e-05,
+      "element_midpoint_L2_traction_N": 5.836586437270304e-06,
+      "front_region_L2_q_m": 2.514394086126454e-08,
+      "front_region_L2_v_m_s": 1.8144891719071953e-05,
+      "junction_displacement_m": 2.828427118525184e-12,
+      "max_transverse_motion_m": 2.0000000005365857e-12,
+      "traction_reference_N": 0.008187307530779819,
+      "artifact": "n64-dt0.0001",
+      "independent_semidiscrete_q_error": 1.5559859715789937e-11,
+      "independent_semidiscrete_v_error": 6.487172344443737e-10
+    },
+    {
+      "elements": 64,
+      "max_step": 5e-05,
+      "accepted_steps": 400,
+      "actual_max_step": 5.000000000000143e-05,
+      "endpoint_q_error": 2.2232298054594884e-05,
+      "endpoint_v_error": 9.215783485049864e-06,
+      "endpoint_traction_error": 0.0032102038157589066,
+      "full_field_L2_q_m": 2.6724054948665697e-08,
+      "full_field_L2_v_m_s": 2.832566075463675e-05,
+      "element_midpoint_L2_traction_N": 5.8365864369239855e-06,
+      "front_region_L2_q_m": 2.5143940822407014e-08,
+      "front_region_L2_v_m_s": 1.814489135427452e-05,
+      "junction_displacement_m": 2.828427118525215e-12,
+      "max_transverse_motion_m": 2.0000000005365853e-12,
+      "traction_reference_N": 0.008187307530779819,
+      "artifact": "n64-dt5e-05",
+      "independent_semidiscrete_q_error": 2.722133499513668e-11,
+      "independent_semidiscrete_v_error": 3.577857628223047e-10
+    },
+    {
+      "elements": 64,
+      "max_step": 2.5e-05,
+      "accepted_steps": 800,
+      "actual_max_step": 2.5000000000000716e-05,
+      "endpoint_q_error": 2.223233124732831e-05,
+      "endpoint_v_error": 9.215780518198172e-06,
+      "endpoint_traction_error": 0.003210203838496274,
+      "full_field_L2_q_m": 2.672405484514861e-08,
+      "full_field_L2_v_m_s": 2.832566088171783e-05,
+      "element_midpoint_L2_traction_N": 5.83658642626822e-06,
+      "front_region_L2_q_m": 2.514394069077702e-08,
+      "front_region_L2_v_m_s": 1.8144891385596467e-05,
+      "junction_displacement_m": 2.828427118525269e-12,
+      "max_transverse_motion_m": 2.000000000536586e-12,
+      "traction_reference_N": 0.008187307530779819,
+      "artifact": "n64-dt2.5e-05",
+      "independent_semidiscrete_q_error": 1.356120077344869e-11,
+      "independent_semidiscrete_v_error": 3.6180529058849054e-10
+    }
+  ],
+  "reference_quadrature_scaled_error": 7.806255641895632e-15,
+  "measured_departure_from_longitudinal_limit": 4.828427119062462e-08,
+  "5-C2": {
+    "5-C2-output": {
+      "absolute_work_difference_J": 0.0,
+      "exchange_scale_J": 1e-06,
+      "relative_threshold": 1e-06,
+      "start_s": 0.0027,
+      "end_s": 0.011,
+      "output_dt_s": [
+        0.006,
+        0.003
+      ]
+    },
+    "5-C2-modal": [
+      {
+        "duration": 0.002,
+        "scaled_position_error": 7.843999430025284e-12,
+        "scaled_velocity_error": 3.0323139832422186e-11,
+        "reference_quadrature_error": 3.2959746043559335e-15,
+        "holding_work_J": -4.910246518395658e-10,
+        "after_release_work_range_J": 0.0
+      },
+      {
+        "duration": 0.006,
+        "scaled_position_error": 5.799126370081842e-12,
+        "scaled_velocity_error": 3.006718138354181e-11,
+        "reference_quadrature_error": 2.0816681711721685e-15,
+        "holding_work_J": -4.4112807479878574e-09,
+        "after_release_work_range_J": 0.0
+      },
+      {
+        "duration": 0.012,
+        "scaled_position_error": 9.989148485429426e-12,
+        "scaled_velocity_error": 3.077474256332757e-11,
+        "reference_quadrature_error": 1.3877787807814457e-15,
+        "holding_work_J": -1.7550233249605353e-08,
+        "after_release_work_range_J": 0.0
+      }
+    ],
+    "5-C2-zero": {
+      "holding_force_N": 1.1102230246251565e-15,
+      "maximum_bob_displacement_m": 0.0,
+      "holding_work_abs_J": 1.4126525612168785e-34,
+      "absolute_bounds": [
+        1e-07,
+        1e-08,
+        1e-14
+      ],
+      "basis": "independent discrete gravity/axial static balance; floating-point preparation tolerance"
+    }
+  },
+  "tests_run": 5,
+  "failures": 0,
+  "unit_errors": 0,
+  "skipped": 0
+}

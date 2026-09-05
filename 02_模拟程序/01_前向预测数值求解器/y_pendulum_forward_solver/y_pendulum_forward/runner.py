@@ -1,4 +1,4 @@
-"""Model dispatch for the two frozen forward-theory numerical backends."""
+"""Model dispatch for independently selected forward-theory backends."""
 
 from __future__ import annotations
 
@@ -12,12 +12,12 @@ from .cable import run_cable
 from .contracts import (
     CONFIG_SCHEMA_VERSION,
     SimulationResult,
-    THEORY_SHA256,
     ValidationIssue,
     json_input_issues,
     load_json,
     run_identity_hashes,
     source_tree_sha256,
+    theory_sha256_for_model,
 )
 from .torus import run_torus
 
@@ -138,11 +138,16 @@ def run_config(config: dict[str, Any]) -> SimulationResult:
     if model_id == "FWD-TORUS-1.0":
         result = run_torus(frozen_config, identity=identity)
         return _fail_on_source_drift(result, identity)
+    if model_id == "YP-FWD-J3-v1":
+        from .junction import run_junction
+
+        result = run_junction(frozen_config, identity=identity)
+        return _fail_on_source_drift(result, identity)
     issue = ValidationIssue(
         "MODEL_ID",
         "model_id",
         model_id,
-        "FWD-CABLE-1.0 or FWD-TORUS-1.0",
+        "FWD-CABLE-1.0, FWD-TORUS-1.0 or YP-FWD-J3-v1",
     )
     return SimulationResult(
         model_id=str(model_id) if model_id is not None else "UNSPECIFIED",
@@ -198,13 +203,14 @@ def _config_envelope_issues(
                 CONFIG_SCHEMA_VERSION,
             )
         )
-    if config.get("theory_sha256") != THEORY_SHA256:
+    expected_theory = theory_sha256_for_model(model_id)
+    if config.get("theory_sha256") != expected_theory:
         issues.append(
             ValidationIssue(
                 "THEORY_IDENTITY",
                 "theory_sha256",
                 config.get("theory_sha256"),
-                THEORY_SHA256,
+                expected_theory,
             )
         )
     common = {

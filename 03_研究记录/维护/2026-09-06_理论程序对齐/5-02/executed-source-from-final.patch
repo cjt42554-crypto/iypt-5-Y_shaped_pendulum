@@ -1,0 +1,12 @@
+--- a/y_pendulum_forward/torus.py
++++ b/y_pendulum_forward/torus.py
+@@ -552,9 +552,6 @@
+     }
+     return {
+         "solver_message": sol.message,
+-        "accepted_steps": int(max(0, len(sol.t) - 1)),
+-        "max_actual_step": float(np.max(np.diff(sol.t))) if len(sol.t) > 1 else 0.0,
+-        "min_actual_step": float(np.min(np.diff(sol.t))) if len(sol.t) > 1 else 0.0,
+         "nfev": int(sol.nfev),
+         "njev": int(getattr(sol, "njev", 0)),
+         "nlu": int(getattr(sol, "nlu", 0)),

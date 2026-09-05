@@ -1,0 +1,20 @@
+{
+  "spatial_elements": [
+    32,
+    64,
+    256
+  ],
+  "space_max_step_s": 5e-05,
+  "time_elements": 64,
+  "time_max_step_s": [
+    0.0001,
+    5e-05,
+    2.5e-05
+  ],
+  "window_s": 0.02,
+  "endpoint_relative_threshold": 0.001,
+  "time_position_scale_m": 0.0001,
+  "time_velocity_scale_m_s": 0.01,
+  "time_error_threshold": 1e-06,
+  "scope": "synthetic longitudinal strictly taut subproblem before first reflection; no device accuracy claim"
+}

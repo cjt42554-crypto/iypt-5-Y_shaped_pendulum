@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "method": "git archive baseline into temporary directory; git apply patches; independently recompute the complete executable-package digest; temporary directory removed afterwards",
+  "checks": [
+    {
+      "stage": "final",
+      "source_tree_sha256": "fe6933788611c909f58b4f219f60c11904a5b2f7bf254a4b5998911d0536c32a",
+      "patches": [
+        "implementation.patch"
+      ]
+    },
+    {
+      "stage": "5-01",
+      "source_tree_sha256": "858526ec6c7c44ae588019424bf81a5768eb6ced3f097ba3074c2efbe08e76dc",
+      "patches": [
+        "implementation.patch",
+        "pre-static-fix-from-final.patch",
+        "5-01/executed-source-from-final.patch"
+      ]
+    },
+    {
+      "stage": "5-02",
+      "source_tree_sha256": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427",
+      "patches": [
+        "implementation.patch",
+        "pre-static-fix-from-final.patch",
+        "5-02/executed-source-from-final.patch"
+      ]
+    }
+  ]
+}

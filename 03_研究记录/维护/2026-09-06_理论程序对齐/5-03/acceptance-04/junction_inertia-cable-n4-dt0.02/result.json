@@ -1,0 +1,109 @@
+{
+  "contract_status": [],
+  "diagnostics": {
+    "mass_matrix": {
+      "condition_number": 2757.5250464442374,
+      "condition_number_method": "SPD_eigenvalue_ratio_2_norm",
+      "maximum_eigenvalue": 0.08003710549717953,
+      "minimum_eigenvalue": 2.9024978612754748e-05,
+      "symmetry_inf_norm": 0.0
+    },
+    "preparation": {
+      "accepted_candidate_count": 0,
+      "candidate_count": 8,
+      "mode": "STATIC_HOLD_RELEASE",
+      "required_gradient_inf": 2e-07,
+      "selected_energy": -0.7877068624177854,
+      "selected_gradient_inf": 2.674474219241385e-07,
+      "selected_iterations": 21,
+      "static_energy_scale": null,
+      "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+    }
+  },
+  "events": [
+    {
+      "failures": [
+        {
+          "actual": [
+            {
+              "energy": -0.7877068624177854,
+              "gradient_inf": 2.674474219241385e-07,
+              "iterations": 21
+            },
+            {
+              "energy": -0.787706862417767,
+              "gradient_inf": 6.696496175369717e-07,
+              "iterations": 69
+            },
+            {
+              "energy": -0.7877068624177652,
+              "gradient_inf": 4.857284490196847e-07,
+              "iterations": 65
+            },
+            {
+              "energy": -0.7877068624177647,
+              "gradient_inf": 3.0774407709532646e-07,
+              "iterations": 69
+            },
+            {
+              "energy": -0.7877068624177428,
+              "gradient_inf": 3.5660375341712864e-07,
+              "iterations": 66
+            },
+            {
+              "energy": -0.7877068624177515,
+              "gradient_inf": 1.760424845183295e-06,
+              "iterations": 68
+            },
+            {
+              "energy": -0.78770686241776,
+              "gradient_inf": 4.12425996689403e-07,
+              "iterations": 64
+            },
+            {
+              "energy": -0.787706862417769,
+              "gradient_inf": 2.560754164289804e-07,
+              "iterations": 68
+            }
+          ],
+          "code": "STATIC_PREPARATION_FAILED",
+          "expected": "at least one converged discrete minimizer",
+          "path": "initial_state.hold"
+        }
+      ],
+      "kind": "numerical_input"
+    }
+  ],
+  "metadata": {
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "config_sha256": "d4bd682b18651ce1ee60675bcfbbc6d311121646fa06034844fe216479052e09",
+    "model_id": "FWD-CABLE-1.0",
+    "numerical_config_sha256": "e218df6e96eae677706a0c55180afa2e2e00b3433f0896cb44413224b06553d1",
+    "numerical_model_id": "NUM-FWD-CABLE-P1-Radau-1.0",
+    "observation_input_sha256": "c343853a90ec5cf2dab04de8dd0a968b64d89ebb56b1b0a3f548c21b10b5f51e",
+    "physical_input_sha256": "84cc77408880e73e1e9b3d6737ee547cdef332cdb6e649c522921927488e3826",
+    "program_version": "2.1.0-research",
+    "runtime_versions": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "scipy": "1.11.4"
+    },
+    "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_stable_during_run": true,
+    "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "units": "SI"
+  },
+  "model_id": "FWD-CABLE-1.0",
+  "numerical_model_id": "NUM-FWD-CABLE-P1-Radau-1.0",
+  "numerical_status": "NUMERICAL_SETUP_UNRESOLVED",
+  "observations": {},
+  "program_version": "2.1.0-research",
+  "returned_interval": "empty",
+  "sample_count": 0,
+  "tau": 0.0,
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI"
+}

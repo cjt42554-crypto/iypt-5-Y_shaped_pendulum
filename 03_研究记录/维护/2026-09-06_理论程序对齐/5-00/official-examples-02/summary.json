@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+  "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "matplotlib": "3.6.3",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39"
+  },
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "rows": [
+    {
+      "example": "cable",
+      "command": [
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/.venv/bin/python",
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/run.py",
+        "run",
+        "03_\u7814\u7a76\u8bb0\u5f55/\u7ef4\u62a4/2026-09-06_\u7406\u8bba\u7a0b\u5e8f\u5bf9\u9f50/5-00/official-examples-02/cable-bounded.config.json",
+        "--output",
+        "03_\u7814\u7a76\u8bb0\u5f55/\u7ef4\u62a4/2026-09-06_\u7406\u8bba\u7a0b\u5e8f\u5bf9\u9f50/5-00/official-examples-02/cable",
+        "--no-plots"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 45.36959688800016,
+      "original_config": "02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/configs/cable_example.json",
+      "scope": "original cable configuration restricted to [0,0.002] s for compatibility; other examples unchanged",
+      "model_id": "FWD-CABLE-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "samples": 129,
+      "observation_valid": true,
+      "artifact": "cable"
+    },
+    {
+      "example": "torus",
+      "command": [
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/.venv/bin/python",
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/run.py",
+        "run",
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/configs/torus_example.json",
+        "--output",
+        "03_\u7814\u7a76\u8bb0\u5f55/\u7ef4\u62a4/2026-09-06_\u7406\u8bba\u7a0b\u5e8f\u5bf9\u9f50/5-00/official-examples-02/torus",
+        "--no-plots"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.2136667619997752,
+      "original_config": "02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/configs/torus_example.json",
+      "scope": "complete original example",
+      "model_id": "FWD-TORUS-1.0",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "samples": 1001,
+      "observation_valid": true,
+      "artifact": "torus"
+    },
+    {
+      "example": "junction",
+      "command": [
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/.venv/bin/python",
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/run.py",
+        "run",
+        "/home/cjt/Desktop/iypt/5 Y\u5f62\u6446/02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/configs/junction_example.json",
+        "--output",
+        "03_\u7814\u7a76\u8bb0\u5f55/\u7ef4\u62a4/2026-09-06_\u7406\u8bba\u7a0b\u5e8f\u5bf9\u9f50/5-00/official-examples-02/junction",
+        "--no-plots"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 9.364496475999658,
+      "original_config": "02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/configs/junction_example.json",
+      "scope": "complete original example",
+      "model_id": "YP-FWD-J3-v1",
+      "numerical_status": "SUCCESS_SINGLE_RUN",
+      "samples": 1001,
+      "observation_valid": true,
+      "artifact": "junction"
+    }
+  ]
+}

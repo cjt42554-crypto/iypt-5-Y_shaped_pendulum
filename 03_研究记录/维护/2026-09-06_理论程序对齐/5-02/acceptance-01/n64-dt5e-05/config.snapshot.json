@@ -1,0 +1,175 @@
+{
+  "initial_state": {
+    "hold": {
+      "fixed_nodes": {
+        "bob": [
+          1.0025,
+          0.0,
+          0.0
+        ],
+        "junction": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "mode": "STATIC_HOLD_RELEASE",
+    "seed": {
+      "r_J": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "r_m": [
+        1.0025,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "inputs": {
+    "air_velocity": {
+      "kind": "zero"
+    },
+    "bob_force": {
+      "kind": "zero"
+    },
+    "distributed_forces": {
+      "A": {
+        "kind": "zero"
+      },
+      "B": {
+        "kind": "zero"
+      },
+      "lower": {
+        "kind": "zero"
+      }
+    },
+    "exit_guards": [],
+    "hold_release": {
+      "duration": 0.0,
+      "history": "instantaneous",
+      "source": "initial_static_reaction",
+      "start": 0.0
+    },
+    "junction_force": {
+      "kind": "zero"
+    },
+    "support_A": {
+      "kind": "constant",
+      "value": [
+        -0.1025,
+        0.0,
+        0.0
+      ]
+    },
+    "support_B": {
+      "kind": "constant",
+      "value": [
+        0.1025,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "metadata": {
+    "purpose": "synthetic longitudinal strictly taut subproblem before first reflection; no device accuracy claim"
+  },
+  "model_id": "FWD-CABLE-1.0",
+  "numerics": {
+    "atol": 2e-12,
+    "elements": {
+      "A": 1,
+      "B": 1,
+      "lower": 64
+    },
+    "event_cluster_tolerance": 1e-10,
+    "max_step": 5e-05,
+    "method": "DOP853",
+    "output_dt": 0.005,
+    "quadrature_order": 2,
+    "rtol": 2e-09,
+    "static_energy_tolerance": 1e-10,
+    "static_gradient_tolerance": 1e-07,
+    "static_maxiter": 500,
+    "static_multistart": 3,
+    "static_uniqueness_tolerance": 0.0001
+  },
+  "observation": null,
+  "physical": {
+    "T": 0.02,
+    "bob_c1": 0.0,
+    "bob_c2": 0.0,
+    "bob_mass": 0.02,
+    "bob_volume": 0.0,
+    "branches": {
+      "A": {
+        "Ca": 0.0,
+        "EA": 4.0,
+        "L0": 0.1,
+        "c_parallel": 0.0,
+        "c_perp": 0.0,
+        "d_parallel": 0.0,
+        "d_perp": 0.0,
+        "delta": 1e-07,
+        "material_domain": {
+          "kind": "open_box",
+          "lambda_lower": 0.005,
+          "lambda_upper": 2.0,
+          "rate_lower": -100.0,
+          "rate_upper": 100.0
+        },
+        "mu": 0.01
+      },
+      "B": {
+        "Ca": 0.0,
+        "EA": 4.0,
+        "L0": 0.1,
+        "c_parallel": 0.0,
+        "c_perp": 0.0,
+        "d_parallel": 0.0,
+        "d_perp": 0.0,
+        "delta": 1e-07,
+        "material_domain": {
+          "kind": "open_box",
+          "lambda_lower": 0.005,
+          "lambda_upper": 2.0,
+          "rate_lower": -100.0,
+          "rate_upper": 100.0
+        },
+        "mu": 0.01
+      },
+      "lower": {
+        "Ca": 0.0,
+        "EA": 4.0,
+        "L0": 1.0,
+        "c_parallel": 0.0,
+        "c_perp": 0.0,
+        "d_parallel": 0.0,
+        "d_perp": 0.0,
+        "delta": 1e-07,
+        "material_domain": {
+          "kind": "open_box",
+          "lambda_lower": 0.005,
+          "lambda_upper": 2.0,
+          "rate_lower": -100.0,
+          "rate_upper": 100.0
+        },
+        "mu": 0.01
+      }
+    },
+    "e_z": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "g": 1e-08,
+    "junction_mass": 1000000.0,
+    "lambda_min": 0.005,
+    "rho_air": 0.0
+  },
+  "schema_version": "YPS-FWD-CONFIG-1.0",
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI"
+}

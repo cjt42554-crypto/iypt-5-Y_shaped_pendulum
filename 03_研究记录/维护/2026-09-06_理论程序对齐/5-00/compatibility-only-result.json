@@ -1,0 +1,9 @@
+{
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "patch": "numpy-compatibility-only.patch",
+  "returncode": 0,
+  "command": "python3 -m unittest discover -s tests -v",
+  "cwd_relative": "02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver",
+  "environment": "baseline-environment.json",
+  "snapshot_directory": "/tmp/yp5-compatibility-9ykah8yw"
+}

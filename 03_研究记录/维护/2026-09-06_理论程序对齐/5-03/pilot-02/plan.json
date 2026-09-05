@@ -1,0 +1,59 @@
+{
+  "window_s": 4.0,
+  "output_dt_s": 0.005,
+  "mesh_levels": [
+    1,
+    2,
+    4
+  ],
+  "time_steps_s": [
+    0.004,
+    0.002,
+    0.001
+  ],
+  "numerical_budget": {
+    "bob_position_m": 2e-05,
+    "junction_position_m": 0.0001,
+    "frequency_relative": 0.002,
+    "phase_rad": 0.03,
+    "minimum_tension_difference_N": 0.02,
+    "axial_energy_range_difference_J": 0.001
+  },
+  "good_match": {
+    "bob_position_m": 0.002,
+    "frequency_relative": 0.01,
+    "phase_rad": 0.15
+  },
+  "counterexample_bob_position_m": 0.003,
+  "cases": [
+    {
+      "id": "small_taut",
+      "theta": 0.02,
+      "junction_mass": 0.0008,
+      "EA": 10.0,
+      "mu": 0.0008
+    },
+    {
+      "id": "larger_amplitude",
+      "theta": 0.3,
+      "junction_mass": 0.0008,
+      "EA": 10.0,
+      "mu": 0.0008
+    },
+    {
+      "id": "junction_inertia",
+      "theta": 0.12,
+      "junction_mass": 0.04,
+      "EA": 10.0,
+      "mu": 0.0008
+    },
+    {
+      "id": "finite_flexibility",
+      "theta": 0.12,
+      "junction_mass": 0.0008,
+      "EA": 2.5,
+      "mu": 0.005
+    }
+  ],
+  "scope": "synthetic gravity-only matched held endpoints; numerical budgets are finite-window resolutions, not experimental uncertainty"
+}

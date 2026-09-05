@@ -1,0 +1,55 @@
+--- a/y_pendulum_forward/cable.py
++++ b/y_pendulum_forward/cable.py
+@@ -410,11 +410,6 @@
+     hold_release = build_holding_force_release(
+         inputs.get("hold_release"), "inputs.hold_release", issues
+     )
+-    if "hold_release" in inputs and inputs["hold_release"] is None:
+-        issues.append(ValidationIssue(
+-            "TYPE", "inputs.hold_release", None,
+-            "explicit release object; omit the field for legacy instantaneous release",
+-        ))
+     for name in BRANCHES:
+         validate_force_window(
+             distributed[name],
+@@ -1708,8 +1703,6 @@
+     solver_diagnostic_fields = dict(
+         solver_message=sol.message,
+         accepted_steps=max(0, int(sol.t.size) - 1),
+-        max_actual_step=float(np.max(np.diff(sol.t))) if sol.t.size > 1 else 0.0,
+-        min_actual_step=float(np.min(np.diff(sol.t))) if sol.t.size > 1 else 0.0,
+         power_quadrature_evaluations=quadrature_evaluations,
+         timings_seconds={"setup": setup_elapsed, "integration": integration_elapsed,
+                          "diagnostics_and_power_quadrature": perf_counter() - diagnostic_started},
+--- a/y_pendulum_forward/io.py
++++ b/y_pendulum_forward/io.py
+@@ -150,7 +150,6 @@
+         "P_base",
+         "P_air",
+         "P_ext",
+-        "P_hold",
+         "T_A",
+         "T_B",
+         "T_lower",
+@@ -160,9 +159,6 @@
+             if values.ndim == 1 and values.size == result.time.size:
+                 headers.append(key)
+                 columns.append(values)
+-    if "power_integral_hold" in result.diagnostics:
+-        headers.append("W_hold")
+-        columns.append(np.asarray(result.diagnostics["power_integral_hold"]))
+     with path.open("w", encoding="utf-8", newline="") as handle:
+         writer = csv.writer(handle)
+         writer.writerow(headers)
+--- a/y_pendulum_forward/torus.py
++++ b/y_pendulum_forward/torus.py
+@@ -552,9 +552,6 @@
+     }
+     return {
+         "solver_message": sol.message,
+-        "accepted_steps": int(max(0, len(sol.t) - 1)),
+-        "max_actual_step": float(np.max(np.diff(sol.t))) if len(sol.t) > 1 else 0.0,
+-        "min_actual_step": float(np.min(np.diff(sol.t))) if len(sol.t) > 1 else 0.0,
+         "nfev": int(sol.nfev),
+         "njev": int(getattr(sol, "njev", 0)),
+         "nlu": int(getattr(sol, "nlu", 0)),

@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "source_tree_sha256": "fe6933788611c909f58b4f219f60c11904a5b2f7bf254a4b5998911d0536c32a",
+  "scope": "static-ftol-only solver change; reconstructed production initial arrays are compared bitwise to all archived C1 runs. Dynamics/integrator/output code is unchanged. This is a prerequisite audit, not a new wave integration.",
+  "rows": [
+    {
+      "case": "n256-dt5e-05",
+      "exact_initial_positions_equal": true,
+      "max_position_difference_m": 0.0,
+      "issues": [],
+      "selected_iterations": 0
+    },
+    {
+      "case": "n32-dt5e-05",
+      "exact_initial_positions_equal": true,
+      "max_position_difference_m": 0.0,
+      "issues": [],
+      "selected_iterations": 0
+    },
+    {
+      "case": "n64-dt0.0001",
+      "exact_initial_positions_equal": true,
+      "max_position_difference_m": 0.0,
+      "issues": [],
+      "selected_iterations": 0
+    },
+    {
+      "case": "n64-dt2.5e-05",
+      "exact_initial_positions_equal": true,
+      "max_position_difference_m": 0.0,
+      "issues": [],
+      "selected_iterations": 0
+    },
+    {
+      "case": "n64-dt5e-05",
+      "exact_initial_positions_equal": true,
+      "max_position_difference_m": 0.0,
+      "issues": [],
+      "selected_iterations": 0
+    }
+  ]
+}

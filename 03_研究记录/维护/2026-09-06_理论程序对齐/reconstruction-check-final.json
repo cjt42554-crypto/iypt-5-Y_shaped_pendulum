@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "method": "actual git archive and git apply in disposable directory, exact complete executable-package digest comparison",
+  "patch_sha256": {
+    "implementation.patch": "a1a69cc963bfe40d9adea23d5f09099d70133ced41d3de8388a8d7e23e5a005b",
+    "pre-static-fix-from-final.patch": "465a985c6058ab85f45dc0dc9344c1badc49575a224bc82ab4c5bb2f9ca9185b",
+    "5-01/executed-source-from-final.patch": "f78de5d8dc2d24ce44c76f28173d3a4164f7d52d724fc813f3354b3584428b7e",
+    "5-02/executed-source-from-final.patch": "d73c8dc7f88a12c93d79a74badc76f82a7a914d4faa8afab6835657566fd30ba"
+  },
+  "checks": [
+    {
+      "stage": "final",
+      "source_tree_sha256": "fe6933788611c909f58b4f219f60c11904a5b2f7bf254a4b5998911d0536c32a"
+    },
+    {
+      "stage": "5-01",
+      "source_tree_sha256": "858526ec6c7c44ae588019424bf81a5768eb6ced3f097ba3074c2efbe08e76dc"
+    },
+    {
+      "stage": "5-02",
+      "source_tree_sha256": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427"
+    }
+  ]
+}

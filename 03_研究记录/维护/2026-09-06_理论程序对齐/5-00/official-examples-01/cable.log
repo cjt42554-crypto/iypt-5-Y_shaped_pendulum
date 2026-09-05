@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/run.py", line 8, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cli.py", line 116, in main
+    result = run_config(config)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/runner.py", line 136, in run_config
+    result = run_cable(frozen_config, identity=identity)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py", line 1685, in run_cable
+    state, derived, diagnostics = _sample_cable(model, time, y_samples, power_ledger=power_ledger)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py", line 1973, in _sample_cable
+    snapshot = model.diagnostic_snapshot(float(t_value), y_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py", line 1366, in diagnostic_snapshot
+    acceleration, details = self.acceleration(t, positions, velocities, diagnostics=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py", line 1230, in acceleration
+    applied, internal, details = self.assemble(t, positions, velocities, diagnostics=diagnostics)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py", line 1150, in assemble
+    total_P_ext_string += h * weight * float(external @ v_q)
+                                       ^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

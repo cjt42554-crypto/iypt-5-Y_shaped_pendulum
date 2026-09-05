@@ -1,0 +1,16 @@
+test_5_b3_non_coplanar_cartesian_trajectory_four_real_steps (test_junction.JunctionQualificationTests.test_5_b3_non_coplanar_cartesian_trajectory_four_real_steps) ... FAIL
+test_5_b3_initial_loss_contact_and_spherical_pole (test_junction.JunctionQualificationTests.test_5_b3_initial_loss_contact_and_spherical_pole) ... ok
+test_5_b4_prepared_limit_and_unprepared_fast_mode_counterexample (test_junction.JunctionQualificationTests.test_5_b4_prepared_limit_and_unprepared_fast_mode_counterexample) ... ok
+
+======================================================================
+FAIL: test_5_b3_non_coplanar_cartesian_trajectory_four_real_steps (test_junction.JunctionQualificationTests.test_5_b3_non_coplanar_cartesian_trajectory_four_real_steps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/cjt/Desktop/iypt/5 Y形摆/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/tests/test_junction.py", line 159, in test_5_b3_non_coplanar_cartesian_trajectory_four_real_steps
+    self.assertGreater(d['max_actual_step'],.99*step)
+AssertionError: 0.00908337197858855 not greater than 0.0099
+
+----------------------------------------------------------------------
+Ran 3 tests in 24.342s
+
+FAILED (failures=1)

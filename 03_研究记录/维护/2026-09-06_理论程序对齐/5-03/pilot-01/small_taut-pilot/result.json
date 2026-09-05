@@ -1,0 +1,466 @@
+{
+  "contract_status": [
+    "COMPLETED"
+  ],
+  "diagnostics": {
+    "absolute_port_exchange_work": 0.0,
+    "accepted_steps": 5436,
+    "array_fields_in_trajectory_npz": {
+      "P_base_algebraic": [
+        21
+      ],
+      "reaction_algebraic": {
+        "A": [
+          21,
+          3
+        ],
+        "B": [
+          21,
+          3
+        ]
+      },
+      "sampled_guard_component_series": {
+        "LAMBDA_MIN:A:element:0": [
+          21
+        ],
+        "LAMBDA_MIN:A:element:1": [
+          21
+        ],
+        "LAMBDA_MIN:B:element:0": [
+          21
+        ],
+        "LAMBDA_MIN:B:element:1": [
+          21
+        ],
+        "LAMBDA_MIN:lower:element:0": [
+          21
+        ],
+        "LAMBDA_MIN:lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:lambda_lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:lambda_upper:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:rate_lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:A:rate_upper:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:lambda_lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:lambda_upper:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:rate_lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:B:rate_upper:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:lambda_upper:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:rate_lower:element:1": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:0": [
+          21
+        ],
+        "MATERIAL_DOMAIN:lower:rate_upper:element:1": [
+          21
+        ]
+      },
+      "sampled_guard_series": {
+        "lambda": [
+          21
+        ],
+        "material_lambda": [
+          21
+        ],
+        "material_rate": [
+          21
+        ]
+      }
+    },
+    "custom_guard_length_scales": {},
+    "dynamic_energy_scale": 1.4957935741471258e-05,
+    "dynamic_energy_scale_definition": "max(peak kinetic energy, observed energy variation, absolute port work); not equilibrium excess energy",
+    "dynamic_energy_scale_resolved": true,
+    "energy_scale": 1.0346188010928101,
+    "energy_scale_components": {
+      "absolute_work_integral": 0.0,
+      "energy_variation": 2.220446049250313e-16,
+      "gravitational": 1.0346188010928101,
+      "stored": 0.006575455978286595
+    },
+    "final_holding_force_work": 0.0,
+    "guard_component_scales": {
+      "LAMBDA_MIN:A:element:0": 1.0,
+      "LAMBDA_MIN:A:element:1": 1.0,
+      "LAMBDA_MIN:B:element:0": 1.0,
+      "LAMBDA_MIN:B:element:1": 1.0,
+      "LAMBDA_MIN:lower:element:0": 1.0,
+      "LAMBDA_MIN:lower:element:1": 1.0,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:0": 3.0,
+      "MATERIAL_DOMAIN:A:lambda_lower:element:1": 3.0,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:0": 3.0,
+      "MATERIAL_DOMAIN:A:lambda_upper:element:1": 3.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:0": 2000.0,
+      "MATERIAL_DOMAIN:A:rate_lower:element:1": 2000.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:0": 2000.0,
+      "MATERIAL_DOMAIN:A:rate_upper:element:1": 2000.0,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:0": 3.0,
+      "MATERIAL_DOMAIN:B:lambda_lower:element:1": 3.0,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:0": 3.0,
+      "MATERIAL_DOMAIN:B:lambda_upper:element:1": 3.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:0": 2000.0,
+      "MATERIAL_DOMAIN:B:rate_lower:element:1": 2000.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:0": 2000.0,
+      "MATERIAL_DOMAIN:B:rate_upper:element:1": 2000.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:0": 3.0,
+      "MATERIAL_DOMAIN:lower:lambda_lower:element:1": 3.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:0": 3.0,
+      "MATERIAL_DOMAIN:lower:lambda_upper:element:1": 3.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:0": 2000.0,
+      "MATERIAL_DOMAIN:lower:rate_lower:element:1": 2000.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:0": 2000.0,
+      "MATERIAL_DOMAIN:lower:rate_upper:element:1": 2000.0
+    },
+    "hold_release": {
+      "duration": 0.0,
+      "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+      "history": "instantaneous",
+      "implicit_legacy_default": false,
+      "protocol_id": "YP-HOLD-RELEASE-1.0",
+      "source": "initial_static_reaction",
+      "start": 0.0,
+      "theory_sections": [
+        "7.4",
+        "7.5"
+      ]
+    },
+    "legacy_energy_residual_method": "output_sample_trapezoid_independently_recomputed_by_convergence_checker",
+    "mass_matrix": {
+      "condition_number": 3380.999689807387,
+      "condition_number_method": "SPD_eigenvalue_ratio_2_norm",
+      "maximum_eigenvalue": 0.080019616353394,
+      "minimum_eigenvalue": 2.3667442678160275e-05,
+      "symmetry_inf_norm": 0.0
+    },
+    "max_absolute_energy_power_residual_algebraic_reaction": 2.220446049250313e-16,
+    "max_absolute_energy_power_residual_physical_traction": 2.220446049250313e-16,
+    "max_accepted_step_absolute_energy_power_residual_algebraic_reaction": 2.220446049250313e-16,
+    "max_accepted_step_absolute_energy_power_residual_physical_traction": 2.220446049250313e-16,
+    "max_actual_step": 3.300420152959477e-05,
+    "max_boundary_reaction_difference": 0.0001930807460205467,
+    "max_dynamic_relative_energy_power_residual_algebraic_reaction": 1.4844602140481655e-11,
+    "max_dynamic_relative_energy_power_residual_physical_traction": 1.4844602140481655e-11,
+    "max_gravity_relative_energy_power_residual_algebraic_reaction": 2.146148945780784e-16,
+    "max_gravity_relative_energy_power_residual_physical_traction": 2.146148945780784e-16,
+    "max_output_trapezoid_work_difference": 0.0,
+    "max_relative_energy_power_residual_algebraic_reaction": 2.146148945780784e-16,
+    "max_relative_energy_power_residual_physical_traction": 2.146148945780784e-16,
+    "min_D_ax": 0.0,
+    "min_D_b": 0.0,
+    "min_D_string": 0.0,
+    "min_actual_step": 1.105101779724782e-06,
+    "nfev": 39186,
+    "njev": 2,
+    "nlu": 856,
+    "power_integral_algebraic_reaction": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "power_integral_hold": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "power_integral_physical_traction": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "power_quadrature_evaluations": 16365,
+    "power_quadrature_method": "accepted_step_dense_output_gauss_legendre_3",
+    "preparation": {
+      "accepted_candidate_count": 3,
+      "candidate_count": 3,
+      "held_equilibrium_residual_inf": 0.0,
+      "holding_force_source": "initial_static_reaction",
+      "initial_holding_forces": {
+        "bob": [
+          5.892701513125854e-10,
+          0.015694956575936843,
+          -0.0007342213905574546
+        ],
+        "junction": [
+          1.1136831371595088e-08,
+          0.0001569901260082343,
+          -0.0012766149357541206
+        ]
+      },
+      "mode": "STATIC_HOLD_RELEASE",
+      "release_protocol": {
+        "duration": 0.0,
+        "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+        "history": "instantaneous",
+        "implicit_legacy_default": false,
+        "protocol_id": "YP-HOLD-RELEASE-1.0",
+        "source": "initial_static_reaction",
+        "start": 0.0,
+        "theory_sections": [
+          "7.4",
+          "7.5"
+        ]
+      },
+      "required_gradient_inf": 2e-07,
+      "selected_energy": -0.7028834783429908,
+      "selected_gradient_inf": 1.1637588368922916e-07,
+      "selected_iterations": 25,
+      "static_energy_scale": 1.0346188010928103,
+      "uniqueness_scope": "deterministic multistart discrete check; not a global mathematical proof"
+    },
+    "refinement_qualification": "SINGLE_RUN_CANDIDATE",
+    "sampled_guard_minima": {
+      "lambda_min:A": 0.8119044391012271,
+      "lambda_min:B": 0.8119044387006134,
+      "lambda_min:lower": 0.8195946555229534,
+      "material:A:lambda_lower": 0.8119044391012271,
+      "material:A:lambda_upper": 1.9880444834267395,
+      "material:A:rate_lower": 999.9939192287175,
+      "material:A:rate_upper": 999.9930994167441,
+      "material:B:lambda_lower": 0.8119044387006134,
+      "material:B:lambda_upper": 1.9880444836926299,
+      "material:B:rate_lower": 999.9939196750819,
+      "material:B:rate_upper": 999.9930990372817,
+      "material:lower:lambda_lower": 0.8195946555229534,
+      "material:lower:lambda_upper": 1.9803436793186757,
+      "material:lower:rate_lower": 999.9948952856919,
+      "material:lower:rate_upper": 999.9937355953354
+    },
+    "sampled_guard_violation": null,
+    "solver_message": "The solver successfully reached the end of the integration interval.",
+    "solver_warnings": [],
+    "timings_seconds": {
+      "diagnostics_and_power_quadrature": 7.538369763999981,
+      "integration": 13.556978479999998,
+      "setup": 0.034682966000218585
+    }
+  },
+  "events": [],
+  "metadata": {
+    "atol": 1e-11,
+    "atol_position": 1e-11,
+    "atol_velocity": 1e-11,
+    "branch_nodes": {
+      "A": [
+        0,
+        4,
+        2
+      ],
+      "B": [
+        1,
+        5,
+        2
+      ],
+      "lower": [
+        2,
+        6,
+        3
+      ]
+    },
+    "config_schema_version": "YPS-FWD-CONFIG-1.0",
+    "config_sha256": "f8a4396dec9f959f9cf65ec0e20b71f96d0d9c89f521677276b4a63fcd3ad965",
+    "constitutive_positive_part": "exact max(candidate,0)",
+    "effective_atol_vector": {
+      "position": 1e-11,
+      "velocity": 1e-11
+    },
+    "effective_rtol": 1e-09,
+    "elements": {
+      "A": 2,
+      "B": 2,
+      "lower": 2
+    },
+    "event_cluster_tolerance": 1e-09,
+    "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+    "hold_release": {
+      "duration": 0.0,
+      "extension_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+      "history": "instantaneous",
+      "implicit_legacy_default": false,
+      "protocol_id": "YP-HOLD-RELEASE-1.0",
+      "source": "initial_static_reaction",
+      "start": 0.0,
+      "theory_sections": [
+        "7.4",
+        "7.5"
+      ]
+    },
+    "initial_holding_forces": {
+      "bob": [
+        5.892701513125854e-10,
+        0.015694956575936843,
+        -0.0007342213905574546
+      ],
+      "junction": [
+        1.1136831371595088e-08,
+        0.0001569901260082343,
+        -0.0012766149357541206
+      ]
+    },
+    "initial_regularization": "none",
+    "initial_trace_check": "discrete multistart static minimization; local uniqueness evidence only",
+    "integrator": "Radau",
+    "max_step": 0.004,
+    "model_id": "FWD-CABLE-1.0",
+    "node_ids": [
+      "support_A",
+      "support_B",
+      "junction",
+      "bob",
+      "A:node:1",
+      "B:node:1",
+      "lower:node:1"
+    ],
+    "numerical_config_sha256": "7387ca8cf5d6cd0c77ef6b969b54658191e7bf0baa40ec6878f2df6e49ee8b88",
+    "numerical_model_id": "NUM-FWD-CABLE-P1-Radau-1.0",
+    "observation_input_sha256": "fce8f5cce8611984c98644ab645c5ff28fc152791b525137ea3c85256c727eb7",
+    "physical_input_sha256": "87734f005710870552f877fd4240d84298c65872dedfba28d8006da87957030c",
+    "program_version": "2.1.0-research",
+    "quadrature_order": 2,
+    "release_protocol_id": "YP-HOLD-RELEASE-1.0",
+    "rtol": 1e-09,
+    "runtime_versions": {
+      "matplotlib": "3.6.3",
+      "numpy": "1.26.4",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "scipy": "1.11.4"
+    },
+    "source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_sha256_at_end": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+    "source_tree_stable_during_run": true,
+    "theory_sections": [
+      "7.4",
+      "7.5"
+    ],
+    "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+    "units": "SI"
+  },
+  "model_id": "FWD-CABLE-1.0",
+  "numerical_model_id": "NUM-FWD-CABLE-P1-Radau-1.0",
+  "numerical_status": "SUCCESS_SINGLE_RUN",
+  "observations": {
+    "errors": [],
+    "operator": "orthographic",
+    "sample_count": 21,
+    "status": [
+      "OBSERVATION_INPUT_VALID"
+    ],
+    "valid_count": 21
+  },
+  "program_version": "2.1.0-research",
+  "returned_interval": "[0,0.1]",
+  "sample_count": 21,
+  "tau": 0.1,
+  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
+  "units": "SI"
+}

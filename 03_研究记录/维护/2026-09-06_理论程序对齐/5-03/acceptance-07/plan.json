@@ -1,0 +1,104 @@
+{
+  "window_s": 2.0,
+  "output_dt_s": 0.005,
+  "mesh_levels": [
+    1,
+    2,
+    4
+  ],
+  "case_mesh_levels": {
+    "larger_amplitude": [
+      2,
+      4,
+      8
+    ],
+    "finite_flexibility": [
+      2,
+      4,
+      8
+    ]
+  },
+  "time_steps_s": [
+    0.003,
+    0.0015,
+    0.00075
+  ],
+  "cable_time_steps_s": [
+    0.02,
+    0.01,
+    0.005
+  ],
+  "numerical_budget": {
+    "bob_position_m": 2e-05,
+    "junction_position_m": 0.0001,
+    "frequency_relative": 0.002,
+    "phase_rad": 0.03,
+    "minimum_tension_difference_N": 0.02,
+    "axial_energy_range_difference_J": 0.001
+  },
+  "good_match": {
+    "bob_position_m": 0.002,
+    "frequency_relative": 0.01,
+    "phase_rad": 0.15
+  },
+  "counterexample_bob_position_m": 0.003,
+  "cases": [
+    {
+      "id": "small_taut",
+      "theta": 0.02,
+      "junction_mass": 0.0008,
+      "EA": 10.0,
+      "mu": 0.0008
+    },
+    {
+      "id": "larger_amplitude",
+      "theta": 0.3,
+      "junction_mass": 0.0008,
+      "EA": 10.0,
+      "mu": 0.0008
+    },
+    {
+      "id": "junction_inertia",
+      "theta": 0.12,
+      "junction_mass": 0.04,
+      "EA": 10.0,
+      "mu": 0.0008
+    },
+    {
+      "id": "finite_flexibility",
+      "theta": 0.12,
+      "junction_mass": 0.0008,
+      "EA": 2.5,
+      "mu": 0.0008
+    }
+  ],
+  "cable_tolerance_levels": {
+    "rtol": [
+      1.6e-05,
+      4e-06,
+      1e-06
+    ],
+    "atol": [
+      1.6e-07,
+      4e-08,
+      1e-08
+    ]
+  },
+  "outside_qualified_domain": [
+    {
+      "case": "additional heavy flexible rope",
+      "theta": 0.12,
+      "junction_mass": 0.0008,
+      "EA": 2.5,
+      "mu": 0.005,
+      "status": "JUNCTION_SPATIAL_RESOLUTION_NOT_MET",
+      "J_mesh_difference_m_4_to_8": 0.0002273108270857179,
+      "J_mesh_difference_m_8_to_16": 0.00015388890921892183,
+      "budget_m": 0.0001,
+      "evidence": "acceptance-05 and acceptance-06",
+      "decision": "retain failed stress case; do not broaden high-cost mesh work for short-term personal use. Required compliance representative keeps the same light-rope density as the other cases and changes stiffness."
+    }
+  ],
+  "window_basis": "two-second bounded personal-use comparison; cycle estimates use consecutive opposite-direction zero crossings, not statistical frequency confidence",
+  "scope": "synthetic gravity-only matched held endpoints; numerical budgets are finite-window resolutions, not experimental uncertainty"
+}

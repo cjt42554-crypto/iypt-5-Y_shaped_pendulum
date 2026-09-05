@@ -1,0 +1,51 @@
+--- a/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py
++++ b/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/cable.py
+@@ -13,6 +13,7 @@
+ from time import perf_counter
+ 
+ import numpy as np
++from scipy.integrate import trapezoid
+ from scipy.integrate import cumulative_trapezoid, solve_ivp
+ from scipy.linalg import cho_factor, cho_solve
+ from scipy.optimize import minimize
+@@ -1915,7 +1916,7 @@
+         absolute_ports = (np.abs(scalar["D_ax"]) + np.abs(scalar["D_string"]) + np.abs(scalar["D_b"])
+                           + np.abs(scalar["P_air"]) + np.abs(scalar["P_ext"])
+                           + np.maximum(np.abs(scalar["P_base"]), np.abs(algebraic_base_power)))
+-        work_scale = float(np.trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
++        work_scale = float(trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
+         power_method = "output_sample_trapezoid_fallback"
+     physical_residual = scalar["E_F"] - scalar["E_F"][0] - physical_integral if sample_count else np.empty(0)
+     algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - algebraic_integral if sample_count else np.empty(0)
+@@ -1946,8 +1947,8 @@
+     # The existing independent convergence checker reconstructs trapezoid
+     # work from stored state. Preserve those legacy fields with explicit labels;
+     # accepted-step work and its residuals are exported separately below.
+-    legacy_work_scale = max(float(np.trapezoid(np.abs(physical_power), time)),
+-                            float(np.trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
++    legacy_work_scale = max(float(trapezoid(np.abs(physical_power), time)),
++                            float(trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
+     legacy_physical_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_physical_integral if sample_count else np.empty(0)
+     legacy_algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_algebraic_integral if sample_count else np.empty(0)
+     legacy_max_physical = float(np.max(np.abs(legacy_physical_residual))) if sample_count else None
+--- a/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/convergence.py
++++ b/02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/y_pendulum_forward/convergence.py
+@@ -13,6 +13,7 @@
+ from typing import Any
+ 
+ import numpy as np
++from scipy.integrate import trapezoid
+ from scipy.integrate import cumulative_trapezoid
+ from scipy.linalg import cho_factor, cho_solve
+ 
+@@ -2860,8 +2861,8 @@
+             scalar["E_F"] - scalar["E_F"][0] - algebraic_integral
+         )
+         work_scale = max(
+-            float(np.trapezoid(np.abs(physical_power), time)),
+-            float(np.trapezoid(np.abs(algebraic_power), time)),
++            float(trapezoid(np.abs(physical_power), time)),
++            float(trapezoid(np.abs(algebraic_power), time)),
+         )
+     else:
+         physical_residual = np.zeros(sample_count)

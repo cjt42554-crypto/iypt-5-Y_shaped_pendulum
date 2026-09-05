@@ -1,0 +1,5 @@
+{
+  "status": "STOPPED_FIXTURE_PRELOAD_DIAGNOSTIC",
+  "reason": "crude preload omitted rope self weight, leaving vertical holding reactions and avoidable high-frequency axial excitation in the intended matched slow release. Retain attempted result; construct material lengths from independent elastic-catenary equilibrium before continuing.",
+  "script_sha256": "af388a0e493fb15772a40d46d8a1a6720a4e9e993e4d5fbd4f75b99944ef66a9"
+}

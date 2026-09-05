@@ -14,7 +14,10 @@ import numpy as np
 
 
 THEORY_SHA256 = "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2"
-PROGRAM_VERSION = "2.0.0-research"
+# Existing cable/torus configurations retain their original theory contract.
+# J3 binds the adopted forward-theory document containing section 9.9.
+JUNCTION_THEORY_SHA256 = "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd"
+PROGRAM_VERSION = "2.1.0-research"
 CONFIG_SCHEMA_VERSION = "YPS-FWD-CONFIG-1.0"
 MIN_SOLVER_RTOL = 100.0 * np.finfo(float).eps
 MAX_UNIFORM_SAMPLES = 2_000_001
@@ -52,7 +55,7 @@ class ValidationIssue:
 
 @dataclass
 class SimulationResult:
-    """Common result container used by both forward-theory backends.
+    """Common result container used by the forward-theory backends.
 
     ``contract_status`` is populated only when the numerical run can map to a
     frozen physical-contract outcome.  A solver failure leaves it empty; it is
@@ -77,7 +80,9 @@ class SimulationResult:
             "model_id": self.model_id,
             "program_version": PROGRAM_VERSION,
             "numerical_model_id": self.metadata.get("numerical_model_id"),
-            "theory_sha256": THEORY_SHA256,
+            "theory_sha256": self.metadata.get(
+                "theory_sha256", theory_sha256_for_model(self.model_id)
+            ),
             "units": "SI",
             "contract_status": list(self.contract_status),
             "numerical_status": self.numerical_status,
@@ -257,7 +262,26 @@ def numerical_model_id(config: dict[str, Any]) -> str:
             else "UNRESOLVED"
         )
         return f"NUM-FWD-TORUS-{suffix}-1.0"
+    if config.get("model_id") == "YP-FWD-J3-v1":
+        if "numerics" not in config or (
+            isinstance(numerics, dict) and "method" not in numerics
+        ):
+            method = "DOP853"
+        suffix = (
+            method
+            if isinstance(method, str) and method in {"DOP853", "Radau"}
+            else "UNRESOLVED"
+        )
+        return f"NUM-YP-FWD-J3-{suffix}-1.0"
     return "NUM-FWD-UNRESOLVED-1.0"
+
+
+def theory_sha256_for_model(model_id: Any) -> str:
+    """Select the branch contract without relabeling existing configurations."""
+
+    if model_id == "YP-FWD-J3-v1":
+        return JUNCTION_THEORY_SHA256
+    return THEORY_SHA256
 
 
 def run_identity_hashes(config: dict[str, Any]) -> dict[str, Any]:
@@ -277,7 +301,8 @@ def run_identity_hashes(config: dict[str, Any]) -> dict[str, Any]:
         "program_version": PROGRAM_VERSION,
         "config_schema_version": CONFIG_SCHEMA_VERSION,
         "numerical_model_id": numerical_model_id(config),
-        "theory_sha256": THEORY_SHA256,
+        "model_id": config.get("model_id", "UNSPECIFIED"),
+        "theory_sha256": theory_sha256_for_model(config.get("model_id")),
         "units": "SI",
         "config_sha256": _safe_payload_hash(config),
         "physical_input_sha256": _safe_payload_hash(physical_payload),
@@ -566,13 +591,14 @@ def base_validation(config: dict[str, Any], model_id: str) -> list[ValidationIss
         issues.append(
             ValidationIssue("MODEL_ID", "model_id", config.get("model_id"), model_id)
         )
-    if config.get("theory_sha256") != THEORY_SHA256:
+    expected_theory = theory_sha256_for_model(model_id)
+    if config.get("theory_sha256") != expected_theory:
         issues.append(
             ValidationIssue(
                 "THEORY_IDENTITY",
                 "theory_sha256",
                 config.get("theory_sha256"),
-                THEORY_SHA256,
+                expected_theory,
             )
         )
     return issues

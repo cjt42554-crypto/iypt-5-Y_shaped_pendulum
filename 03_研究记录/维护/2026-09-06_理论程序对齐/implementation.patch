@@ -1,0 +1,3785 @@
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/README.md" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/README.md"
+new file mode 100644
+index 0000000..8cd308b
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/README.md"
+@@ -0,0 +1,40 @@
++# 前向预测求解器
++
++一个入口执行三种独立模型：`FWD-CABLE-1.0`（有质量、可伸长柔索）、`FWD-TORUS-1.0`（理想环面）和 `YP-FWD-J3-v1`（有限结点质量、无质量定长绳）。配置中的模型 ID 与理论哈希须相符；J3 的哈希与两个旧分支不同。数值收敛、标定和实验有效性分别判断，见[当前交接](../../../00_项目管理/交接说明_current.md)。
++
++从仓库根目录安装和运行（Python 3.10 或以上）：
++
++```bash
++python3 -m venv .venv
++.venv/bin/python -m pip install -e '02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver'
++.venv/bin/python '02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/run.py' run \
++  '02_模拟程序/01_前向预测数值求解器/y_pendulum_forward_solver/configs/junction_example.json' \
++  --output runs/junction-example
++```
++
++另两个示例是同目录的 `torus_example.json`、`cable_example.json`。输出目录必须为空；每次复算用新目录。导出包括输入快照、身份/状态/事件/诊断 JSON、轨迹与观测 NPZ、CSV 和图。只要输入被拒绝或数值未判定，就应查看具体原因，不能使用一条返回曲线宣称预测完成。J3/环面不导出材料应变或绳波能量。
++
++J3 初态为 `[theta, nu, n_x, n_y, n_z, eta_x, eta_y, eta_z]`，其中方向 `n` 和方向速度 `eta` 均用全局坐标；输入须单位长、切向且三张力为正。实际最大步长同时受快模态频率限制。首次失张或指定障碍接触终止，不延拓松绳接触轨迹。
++
++柔索有限时间撤力在 `STATIC_HOLD_RELEASE` 配置中增加：
++
++```json
++"hold_release": {
++  "source": "initial_static_reaction",
++  "start": 0.0,
++  "duration": 0.01,
++  "history": "smoothstep_c1"
++}
++```
++
++该对象放在 `inputs` 中。保持力来自生产静力求解得到的结点/摆球反力，以 `1-3u²+2u³` 撤去；实际保持力功率 `P_hold` 和接受步累计外功 `W_hold` 随结果导出。瞬时释放用 `history: "instantaneous"`、`duration: 0`；省略整个字段保留旧输入的零时刻瞬时释放语义。`start` 和 `duration` 是物理输入，不随积分容差改变。
++
++四类受载三模型对照可从仓库根目录用一条命令完成配置、正式求解、导出、观测回读和误差比较：
++
++```bash
++OPENBLAS_NUM_THREADS=1 .venv/bin/python \
++  '03_研究记录/维护/2026-09-06_理论程序对齐/5-03/compare_models.py' \
++  runs/matched-models
++```
++
++默认比较四个工况的两秒窗口；运行前会保存合成参数、网格/步长档位、观察窗和误差预算。对照区分无载材料长度、受载弧长和定长模型的端点弦长；频率与累计相位是给定窗内的观测量估计。材料参数和释放方式换成实测值后，须重新验证所选分支及其数值误差，不能把合成误差界直接当装置精度。开始实测前按[实验准备](../../../04_实验与数据/实验前准备与首轮验证.md)填写输入、固定标定和留出批次。
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/configs/junction_example.json" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/configs/junction_example.json"
+new file mode 100644
+index 0000000..1b55f9c
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/configs/junction_example.json"
+@@ -0,0 +1,74 @@
++{
++  "schema_version": "YPS-FWD-CONFIG-1.0",
++  "model_id": "YP-FWD-J3-v1",
++  "theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
++  "units": "SI",
++  "physical": {
++    "A": [-0.2, 0.0, 0.0],
++    "B": [0.2, 0.0, 0.0],
++    "e_z": [0.0, 0.0, 1.0],
++    "g": 9.81,
++    "mass": 1.0,
++    "junction_mass": 0.1,
++    "s_A": 0.3605551275463989,
++    "s_B": 0.3605551275463989,
++    "lower_length": 0.6,
++    "initial_state": [
++      0.025,
++      0.0,
++      0.015,
++      0.019997416759895872,
++      0.9996875028342261,
++      0.0,
++      0.0,
++      0.0
++    ],
++    "T": 2.0,
++    "obstacles": [
++      {
++        "id": "floor",
++        "kind": "plane",
++        "target": "bob",
++        "point": [0.0, 0.0, -1.0],
++        "normal": [0.0, 0.0, 1.0],
++        "allowed_side": 1
++      }
++    ]
++  },
++  "numerics": {
++    "method": "DOP853",
++    "rtol": 1e-10,
++    "atol": 1e-12,
++    "max_step": 0.002,
++    "output_dt": 0.002,
++    "event_cluster_tolerance": 1e-9
++  },
++  "observation": {
++    "type": "orthographic",
++    "axis_1": [1.0, 0.0, 0.0],
++    "axis_2": [0.0, 1.0, 0.0],
++    "t0": 0.0,
++    "record_times": {
++      "kind": "uniform",
++      "start": 0.0,
++      "stop": 2.0,
++      "step": 0.01
++    }
++  },
++  "metadata": {
++    "purpose": "synthetic finite-mass junction example for YP-FWD-J3-v1; no experiment is represented",
++    "state_coordinates": "theta, nu, n and eta; n and eta are global Cartesian vectors",
++    "claim_boundary": "software and numerical example only; not apparatus validation"
++  },
++  "validation": {
++    "schema_version": "YPS-FWD-VALIDATION-1.0",
++    "expected_contract_status": ["COMPLETED"],
++    "physics_checks": {
++      "maximum_abs_unit_direction_error": 1e-8,
++      "maximum_abs_tangent_velocity_error": 1e-8,
++      "maximum_relative_energy_drift": 1e-6,
++      "minimum_completed_tension": 1e-6,
++      "minimum_completed_obstacle_clearance": 1e-6
++    }
++  }
++}
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/pyproject.toml" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/pyproject.toml"
+index 5762a9a..8dcbb94 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/pyproject.toml"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/pyproject.toml"
+@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "y-pendulum-forward-solver"
+-version = "2.0.0"
+-description = "Research-grade numerical implementation of FWD-CABLE-1.0 and FWD-TORUS-1.0"
++version = "2.1.0"
++description = "Research numerical implementations of cable, torus and finite-junction Y-pendulum models"
+ requires-python = ">=3.10"
+ dependencies = [
+   "numpy>=1.24",
+@@ -18,4 +18,3 @@ y-pendulum-forward = "y_pendulum_forward.cli:main"
+ 
+ [tool.setuptools]
+ packages = ["y_pendulum_forward"]
+-
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/fixtures/held_equilibrium_energy_cutoff.json" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/fixtures/held_equilibrium_energy_cutoff.json"
+new file mode 100644
+index 0000000..e61a60a
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/fixtures/held_equilibrium_energy_cutoff.json"
+@@ -0,0 +1,175 @@
++{
++  "initial_state": {
++    "hold": {
++      "fixed_nodes": {
++        "bob": [
++          0.0,
++          0.10774098656002741,
++          0.8935277722684796
++        ],
++        "junction": [
++          0.0,
++          0.035913662186675806,
++          0.2978425907561599
++        ]
++      }
++    },
++    "mode": "STATIC_HOLD_RELEASE",
++    "seed": {
++      "r_J": [
++        0.0,
++        0.035913662186675806,
++        0.2978425907561599
++      ],
++      "r_m": [
++        0.0,
++        0.10774098656002741,
++        0.8935277722684796
++      ]
++    }
++  },
++  "inputs": {
++    "air_velocity": {
++      "kind": "zero"
++    },
++    "bob_force": {
++      "kind": "zero"
++    },
++    "distributed_forces": {
++      "A": {
++        "kind": "zero"
++      },
++      "B": {
++        "kind": "zero"
++      },
++      "lower": {
++        "kind": "zero"
++      }
++    },
++    "exit_guards": [],
++    "hold_release": {
++      "duration": 0.0,
++      "history": "instantaneous",
++      "source": "initial_static_reaction",
++      "start": 0.0
++    },
++    "junction_force": {
++      "kind": "zero"
++    },
++    "support_A": {
++      "kind": "constant",
++      "value": [
++        -0.2,
++        0.0,
++        0.0
++      ]
++    },
++    "support_B": {
++      "kind": "constant",
++      "value": [
++        0.2,
++        0.0,
++        0.0
++      ]
++    }
++  },
++  "metadata": {
++    "purpose": "regression: L-BFGS energy cutoff stopped above the explicitly required holding-equilibrium force residual"
++  },
++  "model_id": "FWD-CABLE-1.0",
++  "numerics": {
++    "atol": 1.6e-07,
++    "elements": {
++      "A": 4,
++      "B": 4,
++      "lower": 4
++    },
++    "event_cluster_tolerance": 1e-09,
++    "max_step": 0.02,
++    "method": "Radau",
++    "output_dt": 0.005,
++    "quadrature_order": 2,
++    "rtol": 1.6e-05,
++    "static_energy_tolerance": 1e-10,
++    "static_gradient_tolerance": 2e-07,
++    "static_maxiter": 800,
++    "static_multistart": 8,
++    "static_uniqueness_tolerance": 0.0001
++  },
++  "observation": null,
++  "physical": {
++    "T": 0.002,
++    "bob_c1": 0.0,
++    "bob_c2": 0.0,
++    "bob_mass": 0.08,
++    "bob_volume": 0.0,
++    "branches": {
++      "A": {
++        "Ca": 0.0,
++        "EA": 10.0,
++        "L0": 0.3367627581233163,
++        "c_parallel": 0.0,
++        "c_perp": 0.0,
++        "d_parallel": 0.0,
++        "d_perp": 0.0,
++        "delta": 1e-06,
++        "material_domain": {
++          "kind": "open_box",
++          "lambda_lower": 0.2,
++          "lambda_upper": 3.0,
++          "rate_lower": -1000.0,
++          "rate_upper": 1000.0
++        },
++        "mu": 0.0008
++      },
++      "B": {
++        "Ca": 0.0,
++        "EA": 10.0,
++        "L0": 0.3367627581233163,
++        "c_parallel": 0.0,
++        "c_perp": 0.0,
++        "d_parallel": 0.0,
++        "d_perp": 0.0,
++        "delta": 1e-06,
++        "material_domain": {
++          "kind": "open_box",
++          "lambda_lower": 0.2,
++          "lambda_upper": 3.0,
++          "rate_lower": -1000.0,
++          "rate_upper": 1000.0
++        },
++        "mu": 0.0008
++      },
++      "lower": {
++        "Ca": 0.0,
++        "EA": 10.0,
++        "L0": 0.5565179043848906,
++        "c_parallel": 0.0,
++        "c_perp": 0.0,
++        "d_parallel": 0.0,
++        "d_perp": 0.0,
++        "delta": 1e-06,
++        "material_domain": {
++          "kind": "open_box",
++          "lambda_lower": 0.2,
++          "lambda_upper": 3.0,
++          "rate_lower": -1000.0,
++          "rate_upper": 1000.0
++        },
++        "mu": 0.0008
++      }
++    },
++    "e_z": [
++      0.0,
++      0.0,
++      1.0
++    ],
++    "g": 9.81,
++    "junction_mass": 0.04,
++    "lambda_min": 0.2,
++    "rho_air": 0.0
++  },
++  "schema_version": "YPS-FWD-CONFIG-1.0",
++  "theory_sha256": "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2",
++  "units": "SI"
++}
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/junction_reference.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/junction_reference.py"
+new file mode 100644
+index 0000000..0074131
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/junction_reference.py"
+@@ -0,0 +1,364 @@
++"""Independent Cartesian reference for the finite-mass junction tests.
++
++This module deliberately does not import :mod:`y_pendulum_forward.junction`.
++The production backend eliminates the holonomic constraints in manifold
++coordinates.  Here the junction and bob are instead advanced as two Cartesian
++particles and the three constraint multipliers are obtained from a 9 by 9 KKT
++solve at every right-hand-side evaluation.
++"""
++
++from __future__ import annotations
++
++from dataclasses import dataclass
++from typing import Any, Callable
++
++import numpy as np
++from scipy.integrate import solve_ivp
++from scipy.linalg import eigh
++
++
++@dataclass(frozen=True)
++class CartesianParameters:
++    """Physical data and independently reconstructed intersection geometry."""
++
++    A: np.ndarray
++    B: np.ndarray
++    e_z: np.ndarray
++    g: float
++    mass: float
++    junction_mass: float
++    s_A: float
++    s_B: float
++    lower_length: float
++    O: np.ndarray
++    e_x: np.ndarray
++    e_y: np.ndarray
++    d: float
++    x_C: float
++    a_A: float
++    a_B: float
++    h: float
++
++    @classmethod
++    def from_physical(cls, physical: dict[str, Any]) -> "CartesianParameters":
++        A = np.asarray(physical["A"], dtype=float)
++        B = np.asarray(physical["B"], dtype=float)
++        e_z = np.asarray(physical["e_z"], dtype=float)
++        e_z = e_z / np.linalg.norm(e_z)
++        support = B - A
++        d = float(np.linalg.norm(support))
++        e_x = support / d
++        e_y = np.cross(e_z, e_x)
++        O = 0.5 * (A + B)
++        s_A = float(physical["s_A"])
++        s_B = float(physical["s_B"])
++        x_C = (s_A * s_A - s_B * s_B) / (2.0 * d)
++        a_A = x_C + 0.5 * d
++        a_B = 0.5 * d - x_C
++        h = float(np.sqrt(s_A * s_A - a_A * a_A))
++        return cls(
++            A=A,
++            B=B,
++            e_z=e_z,
++            g=float(physical["g"]),
++            mass=float(physical["mass"]),
++            junction_mass=float(physical["junction_mass"]),
++            s_A=s_A,
++            s_B=s_B,
++            lower_length=float(physical["lower_length"]),
++            O=O,
++            e_x=e_x,
++            e_y=e_y,
++            d=d,
++            x_C=x_C,
++            a_A=a_A,
++            a_B=a_B,
++            h=h,
++        )
++
++
++def moving_frame(params: CartesianParameters, theta: float) -> tuple[np.ndarray, np.ndarray]:
++    """Return the intersection-circle radial and tangent vectors."""
++
++    e_r = np.sin(theta) * params.e_y + np.cos(theta) * params.e_z
++    e_theta = np.cos(theta) * params.e_y - np.sin(theta) * params.e_z
++    return e_r, e_theta
++
++
++def state_to_cartesian(params: CartesianParameters, state: np.ndarray) -> np.ndarray:
++    """Map the eight stored coordinates to two Cartesian particles."""
++
++    state = np.asarray(state, dtype=float)
++    theta, nu = state[:2]
++    n = state[2:5]
++    eta = state[5:8]
++    e_r, e_theta = moving_frame(params, float(theta))
++    junction = params.O + params.x_C * params.e_x + params.h * e_r
++    bob = junction + params.lower_length * n
++    v_junction = params.h * nu * e_theta
++    v_bob = v_junction + params.lower_length * eta
++    return np.concatenate((junction, bob, v_junction, v_bob))
++
++
++def cartesian_to_state(params: CartesianParameters, cartesian: np.ndarray) -> np.ndarray:
++    """Recover manifold coordinates from a constraint-consistent Cartesian state."""
++
++    junction, bob, v_junction, v_bob = np.asarray(cartesian, dtype=float).reshape(4, 3)
++    center = params.O + params.x_C * params.e_x
++    radial = (junction - center) / params.h
++    theta = float(np.arctan2(radial @ params.e_y, radial @ params.e_z))
++    _, e_theta = moving_frame(params, theta)
++    nu = float(v_junction @ e_theta / params.h)
++    n = (bob - junction) / params.lower_length
++    eta = (v_bob - v_junction) / params.lower_length
++    return np.concatenate(([theta, nu], n, eta))
++
++
++def constraint_values(params: CartesianParameters, cartesian: np.ndarray) -> np.ndarray:
++    junction, bob = np.asarray(cartesian, dtype=float).reshape(4, 3)[:2]
++    lower = bob - junction
++    return np.array(
++        [
++            np.linalg.norm(junction - params.A) - params.s_A,
++            np.linalg.norm(junction - params.B) - params.s_B,
++            np.linalg.norm(lower) - params.lower_length,
++        ]
++    )
++
++
++def constraint_velocity_values(
++    params: CartesianParameters, cartesian: np.ndarray
++) -> np.ndarray:
++    junction, bob, v_junction, v_bob = np.asarray(cartesian, dtype=float).reshape(4, 3)
++    lower = bob - junction
++    return np.array(
++        [
++            (junction - params.A) @ v_junction / params.s_A,
++            (junction - params.B) @ v_junction / params.s_B,
++            lower @ (v_bob - v_junction) / params.lower_length,
++        ]
++    )
++
++
++def kkt_accelerations(
++    params: CartesianParameters, cartesian: np.ndarray
++) -> tuple[np.ndarray, np.ndarray, float]:
++    """Solve Newton's equations and all three differentiated constraints.
++
++    The constraints are half squared lengths.  With the sign convention in
++    ``M a + G.T lambda = f``, multiplying each KKT multiplier by its branch
++    length gives the physical tensile force.
++    """
++
++    junction, bob, v_junction, v_bob = np.asarray(cartesian, dtype=float).reshape(4, 3)
++    lower = bob - junction
++    relative_velocity = v_bob - v_junction
++    G = np.zeros((3, 6))
++    G[0, :3] = junction - params.A
++    G[1, :3] = junction - params.B
++    G[2, :3] = -lower
++    G[2, 3:] = lower
++    mass_matrix = np.diag(
++        [params.junction_mass] * 3 + [params.mass] * 3
++    )
++    KKT = np.block(
++        [[mass_matrix, G.T], [G, np.zeros((3, 3), dtype=float)]]
++    )
++    gravity = np.concatenate(
++        (
++            params.junction_mass * params.g * params.e_z,
++            params.mass * params.g * params.e_z,
++        )
++    )
++    curvature = -np.array(
++        [
++            v_junction @ v_junction,
++            v_junction @ v_junction,
++            relative_velocity @ relative_velocity,
++        ]
++    )
++    solution = np.linalg.solve(KKT, np.concatenate((gravity, curvature)))
++    tensions = solution[6:] * np.array(
++        [params.s_A, params.s_B, params.lower_length]
++    )
++    return solution[:6], tensions, float(np.linalg.cond(KKT))
++
++
++def cartesian_rhs(
++    params: CartesianParameters, _time: float, cartesian: np.ndarray
++) -> np.ndarray:
++    accelerations, _, _ = kkt_accelerations(params, cartesian)
++    velocities = np.asarray(cartesian, dtype=float)[6:12]
++    return np.concatenate((velocities, accelerations))
++
++
++def cartesian_energy(params: CartesianParameters, cartesian: np.ndarray) -> float:
++    """Mechanical energy from particle positions and velocities only."""
++
++    junction, bob, v_junction, v_bob = np.asarray(cartesian, dtype=float).reshape(4, 3)
++    junction_eq = params.O + params.x_C * params.e_x + params.h * params.e_z
++    bob_eq = junction_eq + params.lower_length * params.e_z
++    kinetic = 0.5 * params.junction_mass * (v_junction @ v_junction)
++    kinetic += 0.5 * params.mass * (v_bob @ v_bob)
++    potential = -params.junction_mass * params.g * (
++        (junction - junction_eq) @ params.e_z
++    )
++    potential -= params.mass * params.g * ((bob - bob_eq) @ params.e_z)
++    return float(kinetic + potential)
++
++
++def integrate_cartesian(
++    params: CartesianParameters,
++    initial_state: np.ndarray,
++    final_time: float,
++    *,
++    rtol: float = 2e-12,
++    atol: float = 2e-14,
++    max_step: float = 0.001,
++    dense_output: bool = True,
++    events: list[Callable[[float, np.ndarray], float]] | None = None,
++):
++    return solve_ivp(
++        lambda time, value: cartesian_rhs(params, time, value),
++        (0.0, float(final_time)),
++        state_to_cartesian(params, initial_state),
++        method="DOP853",
++        rtol=rtol,
++        atol=atol,
++        max_step=max_step,
++        dense_output=dense_output,
++        events=events,
++    )
++
++
++def tension_events(params: CartesianParameters):
++    """Create independent terminal zero-tension event functions."""
++
++    events = []
++    for index in range(3):
++        def event(_time, cartesian, component=index):
++            return float(kkt_accelerations(params, cartesian)[1][component])
++
++        event.direction = -1
++        event.terminal = True
++        events.append(event)
++    return events
++
++
++def _small_displacement_positions(
++    params: CartesianParameters, q: np.ndarray
++) -> tuple[np.ndarray, np.ndarray]:
++    """Cartesian placement for q=(theta,n_x,n_y) near equilibrium."""
++
++    theta, n_x, n_y = np.asarray(q, dtype=float)
++    if n_x * n_x + n_y * n_y >= 1.0:
++        raise ValueError("local direction chart left its unit disk")
++    n_z = np.sqrt(1.0 - n_x * n_x - n_y * n_y)
++    e_r, _ = moving_frame(params, float(theta))
++    junction = params.O + params.x_C * params.e_x + params.h * e_r
++    direction = n_x * params.e_x + n_y * params.e_y + n_z * params.e_z
++    return junction, junction + params.lower_length * direction
++
++
++def independent_linear_modes(
++    params: CartesianParameters,
++) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
++    """Build M and K from Cartesian particle geometry, then solve K v=w2 M v.
++
++    The Jacobians use centered position differences.  The stiffness is the
++    centered finite-difference Hessian of the Cartesian gravitational
++    potential; neither matrix is taken from the angular equations in J.8 or
++    J.11.
++    """
++
++    # Long-double, fourth-order differences control cancellation without
++    # importing the production angular mass/stiffness formulas.
++    dtype = np.longdouble
++    step = dtype("0.001")
++    origin = np.zeros(3, dtype=dtype)
++    center = np.asarray(params.O + params.x_C * params.e_x, dtype=dtype)
++    ex, ey, ez = [np.asarray(x, dtype=dtype) for x in (params.e_x, params.e_y, params.e_z)]
++
++    def positions(q):
++        theta, nx, ny = q
++        j = center + dtype(params.h) * (np.sin(theta) * ey + np.cos(theta) * ez)
++        n = nx * ex + ny * ey + np.sqrt(1 - nx * nx - ny * ny) * ez
++        return j, j + dtype(params.lower_length) * n
++
++    j0, b0 = positions(origin)
++    def potential(q):
++        j, bob = positions(q)
++        return -dtype(params.g) * (dtype(params.junction_mass) * ((j-j0) @ ez)
++                                  + dtype(params.mass) * ((bob-b0) @ ez))
++
++    jj, jb = np.empty((3, 3), dtype=dtype), np.empty((3, 3), dtype=dtype)
++    K = np.empty((3, 3), dtype=dtype)
++    for i in range(3):
++        delta = origin.copy(); delta[i] = step
++        jm2, bm2 = positions(-2*delta); jm1, bm1 = positions(-delta)
++        jp1, bp1 = positions(delta); jp2, bp2 = positions(2*delta)
++        jj[:,i] = (jm2 - 8*jm1 + 8*jp1 - jp2)/(12*step)
++        jb[:,i] = (bm2 - 8*bm1 + 8*bp1 - bp2)/(12*step)
++        K[i,i] = (-potential(2*delta)+16*potential(delta)-30*potential(origin)
++                  +16*potential(-delta)-potential(-2*delta))/(12*step**2)
++        for j in range(i):
++            other=origin.copy(); other[j]=step
++            mixed=dtype(0)
++            for ci,wi in [(-2,1),(-1,-8),(1,8),(2,-1)]:
++                for cj,wj in [(-2,1),(-1,-8),(1,8),(2,-1)]:
++                    mixed += wi*wj*potential(ci*delta+cj*other)
++            K[i,j]=K[j,i]=mixed/(144*step**2)
++    M = dtype(params.junction_mass) * jj.T @ jj + dtype(params.mass) * jb.T @ jb
++    M, K = np.asarray(M, dtype=float), np.asarray(K, dtype=float)
++    eigenvalues, eigenvectors = eigh(K, M)
++    return np.sqrt(eigenvalues), eigenvectors, M, K
++
++
++def local_cartesian_mass(
++    params: CartesianParameters, q: np.ndarray, *, step: float = 2e-6
++) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
++    """Return the local mass matrix and both Cartesian position Jacobians."""
++
++    q = np.asarray(q, dtype=float)
++    jac_junction = np.empty((3, 3))
++    jac_bob = np.empty((3, 3))
++    for index in range(3):
++        delta = np.zeros(3)
++        delta[index] = step
++        jp, bp = _small_displacement_positions(params, q + delta)
++        jm, bm = _small_displacement_positions(params, q - delta)
++        jac_junction[:, index] = (jp - jm) / (2.0 * step)
++        jac_bob[:, index] = (bp - bm) / (2.0 * step)
++    mass_matrix = params.junction_mass * jac_junction.T @ jac_junction
++    mass_matrix += params.mass * jac_bob.T @ jac_bob
++    return mass_matrix, jac_junction, jac_bob
++
++
++def finite_difference_potential_gradient(
++    params: CartesianParameters, q: np.ndarray, *, step: float = 2e-6
++) -> np.ndarray:
++    """Finite-difference the Cartesian gravitational potential in a local chart."""
++
++    equilibrium_junction, equilibrium_bob = _small_displacement_positions(
++        params, np.zeros(3)
++    )
++
++    def potential(value):
++        junction, bob = _small_displacement_positions(params, value)
++        return float(
++            -params.junction_mass
++            * params.g
++            * ((junction - equilibrium_junction) @ params.e_z)
++            - params.mass
++            * params.g
++            * ((bob - equilibrium_bob) @ params.e_z)
++        )
++
++    gradient = np.empty(3)
++    for index in range(3):
++        delta = np.zeros(3)
++        delta[index] = step
++        gradient[index] = (
++            potential(q + delta) - potential(q - delta)
++        ) / (2.0 * step)
++    return gradient
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/release_reference.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/release_reference.py"
+new file mode 100644
+index 0000000..18c6e78
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/release_reference.py"
+@@ -0,0 +1,70 @@
++"""Synthetic longitudinal release fixtures and independent linear references."""
++from copy import deepcopy
++import numpy as np
++from scipy.linalg import eigh
++from scipy.integrate import quad
++from y_pendulum_forward.contracts import THEORY_SHA256
++
++
++def wave_config(elements=32, max_step=1e-4, *, duration=0., start=0., final_time=.02, output_dt=.005):
++    def branch(length):
++        return {'L0':length,'mu':.01,'EA':4.,'Ca':0.,'delta':1e-7,
++                'c_parallel':0.,'c_perp':0.,'d_parallel':0.,'d_perp':0.,
++                'material_domain':{'kind':'open_box','lambda_lower':.005,'lambda_upper':2.,'rate_lower':-100.,'rate_upper':100.}}
++    return {'schema_version':'YPS-FWD-CONFIG-1.0','model_id':'FWD-CABLE-1.0','theory_sha256':THEORY_SHA256,'units':'SI',
++            'physical':{'g':1e-8,'e_z':[0.,0.,1.],'junction_mass':1e6,'bob_mass':.02,'rho_air':0.,'bob_volume':0.,'bob_c1':0.,'bob_c2':0.,'lambda_min':.005,'T':final_time,'branches':{'A':branch(.1),'B':branch(.1),'lower':branch(1.)}},
++            'inputs':{'support_A':{'kind':'constant','value':[-.1025,0.,0.]},'support_B':{'kind':'constant','value':[.1025,0.,0.]},'air_velocity':{'kind':'zero'},'distributed_forces':{k:{'kind':'zero'} for k in ('A','B','lower')},'junction_force':{'kind':'zero'},'bob_force':{'kind':'zero'},'hold_release':{'source':'initial_static_reaction','start':start,'duration':duration,'history':'instantaneous' if duration==0 else 'smoothstep_c1'},'exit_guards':[]},
++            'initial_state':{'mode':'STATIC_HOLD_RELEASE','hold':{'fixed_nodes':{'junction':[0.,0.,0.],'bob':[1.0025,0.,0.]}},'seed':{'r_J':[0.,0.,0.],'r_m':[1.0025,0.,0.]}},
++            'numerics':{'elements':{'A':1,'B':1,'lower':elements},'quadrature_order':2,'method':'DOP853','rtol':2e-9,'atol':2e-12,'max_step':max_step,'output_dt':output_dt,'event_cluster_tolerance':1e-10,'static_multistart':3,'static_maxiter':500,'static_gradient_tolerance':1e-7,'static_energy_tolerance':1e-10,'static_uniqueness_tolerance':1e-4},'observation':None}
++
++
++def semi_infinite_wave(xi, time):
++    """Positive displacement/velocity point back toward the root; xi starts there."""
++    xi=np.asarray(xi)
++    delay=time-(1-xi)/20.
++    active=np.maximum(delay,0.)
++    velocity=.05*(-np.expm1(-active/.1))
++    displacement=.05*(active+.1*np.expm1(-active/.1))
++    tension=.01*np.exp(-active/.1)
++    return displacement,velocity,tension
++
++
++def hold_fraction(time, start, duration):
++    value=np.asarray(time,dtype=float)
++    if duration==0:
++        return (value<start).astype(float)
++    u=np.clip((value-start)/duration,0.,1.)
++    return 1-3*u*u+2*u*u*u
++
++
++def modal_chain(elements):
++    """1D scalar P1 mass/stiffness from local quadratic energies, no cable imports."""
++    n=elements+1
++    M=np.zeros((n,n));K=np.zeros((n,n));M[0,0]=1e6;M[-1,-1]=.02
++    h=1/elements
++    for i in range(elements):
++        ix=np.ix_([i,i+1],[i,i+1])
++        M[ix]+=.01*h/6*np.array([[2.,1.],[1.,2.]])
++        K[ix]+=4/h*np.array([[1.,-1.],[-1.,1.]])
++    # Each anchored upper element contributes its free endpoint coefficient.
++    M[0,0]+=2*.01*.1/3;K[0,0]+=2*4/.1
++    eigenvalues,V=eigh(K,M)
++    force=np.zeros(n);force[0]=.01;force[-1]=-.01
++    return np.sqrt(eigenvalues),V,V.T@force,M,K
++
++
++def modal_release(elements, times, start, duration, *, quadrature=128):
++    omega,V,projection,M,K=modal_chain(elements)
++    nodes,weights=np.polynomial.legendre.leggauss(quadrature)
++    q=[];v=[]
++    for time in times:
++        modal_q=np.zeros_like(omega);modal_v=np.zeros_like(omega)
++        breaks=sorted({0.,float(time),*[x for x in (start,start+duration) if 0.<x<time]})
++        for left,right in zip(breaks,breaks[1:]):
++            s=(right+left)/2+(right-left)/2*nodes
++            load=1-hold_fraction(s,start,duration)
++            phase=omega[:,None]*(time-s)
++            modal_q+=(right-left)/2*(np.sin(phase)/omega[:,None])@(weights*load)
++            modal_v+=(right-left)/2*np.cos(phase)@(weights*load)
++        q.append(V@(projection*modal_q));v.append(V@(projection*modal_v))
++    return np.asarray(q),np.asarray(v)
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction.py"
+new file mode 100644
+index 0000000..2dba5be
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction.py"
+@@ -0,0 +1,253 @@
++"""Independent synthetic qualification of the production J3 branch (5-B1--B4)."""
++from copy import deepcopy
++from pathlib import Path
++import unittest
++
++import numpy as np
++from scipy.optimize import minimize_scalar, brentq
++
++from y_pendulum_forward.contracts import load_json, THEORY_SHA256
++from y_pendulum_forward.junction import junction_rhs, junction_derived, validate_junction_config
++from y_pendulum_forward.runner import run_config
++from junction_reference import (
++    CartesianParameters, state_to_cartesian, kkt_accelerations,
++    cartesian_energy, integrate_cartesian, tension_events, constraint_values,
++    independent_linear_modes, local_cartesian_mass, finite_difference_potential_gradient,
++)
++from test_junction_guards import first_upper_a_loss_config
++
++PROJECT = Path(__file__).resolve().parents[1]
++METRICS = {}
++
++
++def config():
++    c = load_json(PROJECT / 'configs/junction_example.json')
++    c['physical']['obstacles'] = []
++    c['observation'] = None
++    return c
++
++
++def state(theta, alpha, beta, nu=0., ad=0., bd=0.):
++    n = np.array([np.sin(alpha), np.cos(alpha)*np.sin(beta), np.cos(alpha)*np.cos(beta)])
++    eta = ad*np.array([np.cos(alpha), -np.sin(alpha)*np.sin(beta), -np.sin(alpha)*np.cos(beta)])
++    eta += bd*np.array([0., np.cos(alpha)*np.cos(beta), -np.cos(alpha)*np.sin(beta)])
++    return np.r_[theta, nu, n, eta]
++
++
++def modal_state(vector, amplitude):
++    q = amplitude * vector / np.max(np.abs(vector))
++    n = np.array([q[1], q[2], np.sqrt(1-q[1]**2-q[2]**2)])
++    return np.r_[q[0], 0., n, [0., 0., 0.]]
++
++
++def omega_formula(p):
++    eta = p.junction_mass/(p.junction_mass+p.mass)
++    disc = np.sqrt((p.h+p.lower_length)**2 - 4*eta*p.h*p.lower_length)
++    return np.sort(np.sqrt([p.g/p.lower_length, 2*p.g/(p.h+p.lower_length+disc),
++                           p.g*(p.h+p.lower_length+disc)/(2*eta*p.h*p.lower_length)]))
++
++
++def positions(result):
++    return np.c_[result.state['r_J'], result.state['r_m']]
++
++
++class JunctionQualificationTests(unittest.TestCase):
++    def test_5_b1_independent_cartesian_acceleration_tensions_and_energy(self):
++        rng = np.random.default_rng(20260905)
++        errors=[]; conditions=[]; ratios=[]; rejected=0; attempts=0
++        while len(errors)<120 and attempts<5000:
++            attempts += 1
++            c=config(); a,b,h=rng.uniform(.16,.24),rng.uniform(.16,.24),rng.uniform(.25,.35)
++            ratio=(.01,.1,1.)[len(errors)%3]
++            c['physical'].update(A=[-a,0.,0.],B=[b,0.,0.],s_A=float(np.hypot(a,h)),
++                                 s_B=float(np.hypot(b,h)),junction_mass=ratio)
++            y=state(*rng.uniform(-.5,.5,3),*rng.uniform(-2.,2.,3))
++            c['physical']['initial_state']=y.tolist()
++            rp=CartesianParameters.from_physical(c['physical']); z=state_to_cartesian(rp,y)
++            acceleration,tensions,condition=kkt_accelerations(rp,z)
++            if np.min(tensions)<=1e-5 or condition>1e6:
++                rejected+=1; continue
++            issues,p=validate_junction_config(c)
++            self.assertEqual(issues,[])
++            dy=junction_rhs(p,0.,y); d=junction_derived(p,y)
++            actual_acc=np.r_[d['a_J'][0],d['a_m'][0]]
++            actual_t=np.array([d[k][0] for k in ('T_A','T_B','T_lower')])
++            e_a=np.linalg.norm(actual_acc-acceleration)/(rp.g+np.linalg.norm(acceleration))
++            e_t=np.linalg.norm(actual_t-tensions)/(rp.mass*rp.g+np.linalg.norm(tensions))
++            reference_e=cartesian_energy(rp,z)
++            e_energy=abs(d['E_junction'][0]-reference_e)/(rp.mass*rp.g*rp.lower_length+abs(reference_e))
++            self.assertEqual(dy.shape,(8,))
++            self.assertLessEqual(max(e_a,e_t,e_energy),1e-10)
++            errors.append([float(e_a),float(e_t),float(e_energy)]); conditions.append(condition); ratios.append(ratio)
++        self.assertEqual(len(errors),120)
++        self.assertEqual(set(ratios),{.01,.1,1.})
++        METRICS['5-B1']={'seed':20260905,'accepted':120,'attempted':attempts,'rejected':rejected,
++                         'max_condition':max(conditions),'mass_ratios':sorted(set(ratios)),
++                         'max_scaled_errors':np.max(errors,axis=0).tolist(),'threshold':1e-10}
++
++    def test_5_b1_cartesian_mass_and_potential_gradient(self):
++        c=config(); rp=CartesianParameters.from_physical(c['physical'])
++        q=np.array([.12,.08,-.05]); rates=np.array([.04,.03,-.02])
++        M,jj,jb=local_cartesian_mass(rp,q)
++        n=np.r_[q[1:3],np.sqrt(1-q[1]**2-q[2]**2)]
++        eta=np.r_[rates[1:3],-np.dot(q[1:3],rates[1:3])/n[2]]
++        y=np.r_[q[0],rates[0],n,eta]
++        c['physical']['initial_state']=y.tolist(); issues,p=validate_junction_config(c); self.assertEqual(issues,[])
++        d=junction_derived(p,y)
++        kinetic=.5*rp.junction_mass*np.dot(d['v_J'][0],d['v_J'][0])+.5*rp.mass*np.dot(d['v_m'][0],d['v_m'][0])
++        mass_error=abs(.5*rates@M@rates-kinetic)/(1+kinetic)
++        y_zero=y.copy(); y_zero[1]=0.;y_zero[5:]=0.
++        dy=junction_rhs(p,0.,y_zero)
++        gradient=finite_difference_potential_gradient(rp,q)
++        residual=M@np.array([dy[1],dy[5],dy[6]])+gradient
++        gradient_error=np.linalg.norm(residual)/(rp.mass*rp.g*rp.lower_length+np.linalg.norm(gradient))
++        self.assertGreater(np.min(np.linalg.eigvalsh(M)),0.)
++        self.assertLessEqual(mass_error,1e-10);self.assertLessEqual(gradient_error,1e-10)
++        METRICS['5-B1-energy-structure']={'mass_error':float(mass_error),'potential_gradient_error':float(gradient_error),'threshold':1e-10}
++
++    def test_5_b2_independent_frequencies_and_actual_modal_trajectories(self):
++        c=config();rp=CartesianParameters.from_physical(c['physical'])
++        freq,vectors,M,K=independent_linear_modes(rp)
++        anchors=np.array([3.336101839011105,4.043513323831146,22.987397080133864])
++        self.assertLessEqual(np.max(np.abs(freq-anchors)/(1+anchors)),1e-10)
++        rows=[]
++        for mode in range(3):
++            mode_rows=[]
++            for amplitude in (1e-4,5e-5):
++                case=deepcopy(c); y0=modal_state(vectors[:,mode],amplitude)
++                T=6*np.pi/anchors[mode]
++                case['physical'].update(initial_state=y0.tolist(),T=float(T))
++                case['numerics'].update(max_step=.008,output_dt=float(T/600),rtol=1e-11,atol=1e-13)
++                result=run_config(case)
++                self.assertEqual(result.numerical_status,'SUCCESS_SINGLE_RUN',result.events)
++                X=result.state['X_junction']; q=X[:,[0,2,3]]
++                observable=q@M@vectors[:,mode]
++                t=result.time
++                def objective(w):
++                    design=np.c_[np.cos(w*t),np.sin(w*t),np.ones(t.size)]
++                    fit=np.linalg.lstsq(design,observable,rcond=None)[0]
++                    return np.mean((design@fit-observable)**2)
++                opt=minimize_scalar(objective,bounds=(anchors[mode]*.999,anchors[mode]*1.001),method='bounded',options={'xatol':1e-12})
++                self.assertTrue(opt.success)
++                frequency_error=abs(opt.x-anchors[mode])/anchors[mode]
++                qref=np.cos(anchors[mode]*t)[:,None]*y0[[0,2,3]]
++                trajectory_error=np.max(np.linalg.norm(q-qref,axis=1))/(amplitude+np.max(np.linalg.norm(qref,axis=1)))
++                self.assertLessEqual(frequency_error,1e-6)
++                self.assertLessEqual(trajectory_error,1e-6)
++                mode_rows.append({'amplitude':amplitude,'frequency_rad_s':float(opt.x),'relative_frequency_error':float(frequency_error),'scaled_trajectory_error':float(trajectory_error),'window_s':float(T)})
++            rows.append(mode_rows)
++        METRICS['5-B2']={'independent_omega':freq.tolist(),'anchors':anchors.tolist(),'modes':rows,'trajectory_threshold':1e-6}
++
++    def test_5_b3_non_coplanar_cartesian_trajectory_four_real_steps(self):
++        c=config();c['physical']['initial_state']=state(.06,.04,-.03,.12,-.07,.09).tolist()
++        c['physical']['T']=2.;rp=CartesianParameters.from_physical(c['physical'])
++        ref=integrate_cartesian(rp,np.array(c['physical']['initial_state']),2.,rtol=3e-13,atol=3e-15,max_step=.001)
++        self.assertTrue(ref.success)
++        reference_constraint=max(np.max(np.abs(constraint_values(rp,z))) for z in ref.y.T)
++        self.assertLessEqual(reference_constraint,1e-10)
++        rows=[]
++        for step in (.01,.0075,.005,.0025):
++            case=deepcopy(c);case['numerics'].update(method='Radau',rtol=1e-5,atol=1e-8,max_step=step,output_dt=.01)
++            r=run_config(case);self.assertEqual(r.numerical_status,'SUCCESS_SINGLE_RUN',r.events)
++            reference=ref.sol(r.time).T[:,:6]
++            error=float(np.max(np.linalg.norm(positions(r)-reference,axis=1))/(rp.lower_length+np.max(np.linalg.norm(reference,axis=1))))
++            self.assertLessEqual(error,1e-6)
++            d=r.diagnostics
++            self.assertLessEqual(d['max_abs_n_norm_error'],1e-8)
++            self.assertLessEqual(d['max_abs_n_dot_eta'],1e-8)
++            self.assertLessEqual(d['max_relative_energy_drift'],1e-6)
++            self.assertLessEqual(d['max_actual_step'],step*(1+1e-12))
++            rows.append({'max_step':step,'actual_max_step':d['max_actual_step'],'accepted_steps':d['accepted_steps'],'scaled_position_error':error,'constraint_norm':d['max_abs_n_norm_error'],'constraint_tangent':d['max_abs_n_dot_eta'],'relative_energy_drift':d['max_relative_energy_drift']})
++        self.assertTrue(all(rows[i]['actual_max_step'] > 1.15*rows[i+1]['actual_max_step'] for i in range(3)))
++        observed=[np.log(rows[i]['scaled_position_error']/rows[i+1]['scaled_position_error'])/np.log(rows[i]['actual_max_step']/rows[i+1]['actual_max_step']) for i in range(3)]
++        self.assertLess(rows[-1]['scaled_position_error'],rows[0]['scaled_position_error'])
++        METRICS['5-B3-trajectory']={'reference_max_constraint_m':float(reference_constraint),'reference_steps':ref.t.size-1,'levels':rows,'observed_orders':observed,'design_order':'Radau IIA fifth order accepted endpoints; dense trajectory order can differ'}
++
++    def test_5_b3_three_first_loss_events_against_cartesian_reference(self):
++        upper_a=first_upper_a_loss_config(); upper_a['physical']['obstacles']=[]
++        upper_b=deepcopy(upper_a);upper_b['physical']['initial_state'][2]*=-1;upper_b['physical']['initial_state'][5]*=-1
++        lower=config();lower['physical'].update(junction_mass=10.,initial_state=[0.,0.,0.,0.,1.,0.,7.,0.],T=1.)
++        lower['numerics'].update(max_step=.005,output_dt=.01)
++        rows=[]
++        for case,expected in [(upper_a,'T_A_ZERO'),(upper_b,'T_B_ZERO'),(lower,'T_LOWER_ZERO')]:
++            rp=CartesianParameters.from_physical(case['physical'])
++            ref=integrate_cartesian(rp,np.array(case['physical']['initial_state']),case['physical']['T'],max_step=.0005,events=tension_events(rp))
++            self.assertTrue(ref.success)
++            times=[x[0] for x in ref.t_events if len(x)];self.assertTrue(times)
++            reference_time=min(times)
++            r=run_config(case);self.assertEqual(r.numerical_status,'SUCCESS_EVENT',r.events)
++            self.assertIn(expected,r.events[0]['triggers'])
++            self.assertLessEqual(abs(r.tau-reference_time),1e-7)
++            self.assertTrue(np.all(r.time<r.tau))
++            for name in ('T_A','T_B','T_lower'): self.assertGreater(np.min(r.derived[name]),0.)
++            rows.append({'first_trigger':expected,'time':r.tau,'reference_time':float(reference_time),'absolute_time_error':float(abs(r.tau-reference_time)),'root_bracket':r.events[0]['root_bracket'],'T_star_s':1.})
++        METRICS['5-B3-tensions']=rows
++
++    def test_5_b3_initial_loss_contact_and_spherical_pole(self):
++        c=config();c['physical']['initial_state']=[0.,0.,0.,0.,-1.,0.,0.,0.]
++        invalid=run_config(c);self.assertEqual(invalid.numerical_status,'INPUT_REJECTED');self.assertEqual(invalid.time.size,0)
++        c=config();c['physical'].update(junction_mass=100.,initial_state=[0.,0.,float(np.sqrt(1-1e-16)),0.,1e-8,0.,1.,0.],T=.02)
++        c['numerics'].update(max_step=.001,output_dt=.002)
++        polar=run_config(c);self.assertEqual(polar.numerical_status,'SUCCESS_SINGLE_RUN',polar.events)
++        c=config();c['physical'].update(initial_state=state(0.,.12,0.,0.,-.7,0.).tolist(),T=.1)
++        rp=CartesianParameters.from_physical(c['physical'])
++        ref=integrate_cartesian(rp,np.array(c['physical']['initial_state']),.1,max_step=.0005)
++        crossing_time=.04;plane_x=float(ref.sol(crossing_time)[3])
++        c['physical']['obstacles']=[{'id':'screen','kind':'plane','target':'bob','point':[plane_x,0.,0.],'normal':[1.,0.,0.],'allowed_side':1}]
++        r=run_config(c);self.assertEqual(r.numerical_status,'SUCCESS_EVENT',r.events)
++        self.assertIn('CONTACT_screen',r.events[0]['triggers']);self.assertLessEqual(abs(r.tau-crossing_time),1e-7)
++        METRICS['5-B3-other']={'initial_loss':'INPUT_REJECTED','near_pole_status':polar.numerical_status,'contact_time':r.tau,'contact_reference_time':crossing_time,'contact_error':abs(r.tau-crossing_time)}
++
++    def test_5_b3_grazing_contact_has_a_conservative_valid_interval(self):
++        c=config(); c['physical'].update(initial_state=state(0.,.12,0.).tolist(),T=1.2)
++        rp=CartesianParameters.from_physical(c['physical'])
++        ref=integrate_cartesian(rp,np.array(c['physical']['initial_state']),1.2,max_step=.0005)
++        touch=brentq(lambda t: ref.sol(t)[9],.5,1.1,xtol=1e-13)
++        wall_x=-rp.lower_length*np.sin(.12)
++        c['physical']['obstacles']=[{'id':'tangent','kind':'plane','target':'bob','point':[float(wall_x),0.,0.],'normal':[1.,0.,0.],'allowed_side':1}]
++        r=run_config(c)
++        self.assertIn(r.numerical_status,('SUCCESS_EVENT','EVENT_UNRESOLVED'))
++        self.assertLessEqual(r.tau,touch+1e-7)
++        self.assertTrue(np.all(r.time<=r.tau))
++        self.assertGreaterEqual(np.min(r.state['r_m'][:,0]-wall_x),-1e-10)
++        METRICS['5-B3-grazing']={'status':r.numerical_status,'last_valid_time':r.tau,'independent_touch_time':touch,'reason':'grazing event uses conservative interval rather than simple-root time precision'}
++
++    def test_5_a_illegal_physical_inputs_are_rejected(self):
++        mutations=[lambda c:c['physical'].update(junction_mass=0.),
++                   lambda c:c['physical'].update(junction_mass=-1.),
++                   lambda c:c['physical'].update(s_A=.01,s_B=.01),
++                   lambda c:c['physical']['initial_state'].__setitem__(4,2.),
++                   lambda c:c['physical']['initial_state'].__setitem__(7,.2),
++                   lambda c:c['physical'].update(initial_state=[0.,0.,1.,0.,0.,0.,0.,0.])]
++        for index,mutate in enumerate(mutations):
++            with self.subTest(index=index):
++                c=config();mutate(c);r=run_config(c)
++                self.assertEqual(r.numerical_status,'INPUT_REJECTED')
++                self.assertEqual(r.time.size,0)
++                self.assertTrue(r.events[0]['failures'])
++
++    def test_5_b4_prepared_limit_and_unprepared_fast_mode_counterexample(self):
++        rows=[]
++        for ratio in (.1,.01,.001):
++            c=config();c['physical']['junction_mass']=ratio
++            rp=CartesianParameters.from_physical(c['physical']);omega,vectors,M,K=independent_linear_modes(rp)
++            slow=modal_state(vectors[:,0],.001)
++            c['physical'].update(initial_state=slow.tolist(),T=2.)
++            c['numerics'].update(max_step=float(min(.008,.2/omega[-1])),output_dt=.005,rtol=1e-11,atol=1e-13)
++            r=run_config(c);self.assertEqual(r.numerical_status,'SUCCESS_SINGLE_RUN',r.events)
++            torus=load_json(PROJECT/'configs/torus_example.json')
++            torus['physical'].update(A=c['physical']['A'],B=c['physical']['B'],s_A=rp.s_A,s_B=rp.s_B,lower_length=rp.lower_length,mass=rp.mass,g=rp.g,initial_state=[0.,float(slow[0]),0.,0.],T=2.)
++            torus['observation']=None;torus['numerics'].update(output_dt=.005,max_step=.008)
++            tr=run_config(torus);self.assertEqual(tr.numerical_status,'SUCCESS_SINGLE_RUN')
++            difference=float(np.max(np.linalg.norm(r.state['r_m']-tr.derived['r_m'],axis=1)))
++            fast=modal_state(vectors[:,-1],.001)
++            unprepared=deepcopy(c);unprepared['physical']['initial_state']=fast.tolist();unprepared['physical']['T']=float(4*np.pi/omega[-1]);unprepared['numerics']['output_dt']=float(unprepared['physical']['T']/160)
++            ur=run_config(unprepared);self.assertEqual(ur.numerical_status,'SUCCESS_SINGLE_RUN',ur.events)
++            speed=float(np.max(np.linalg.norm(ur.state['v_J'],axis=1)))
++            rows.append({'mass_ratio':ratio,'omega_slow':float(omega[0]),'omega_fast':float(omega[-1]),'slow_frequency_error_to_torus':float(omega[0]/np.sqrt(rp.g/(rp.h+rp.lower_length))-1),'prepared_bob_max_error_m':difference,'prepared_fast_position_amplitude':float(abs(vectors[:,-1]@M@slow[[0,2,3]])),'unprepared_fast_junction_angle_amplitude':float(abs(fast[0])),'unprepared_max_junction_speed_m_s':speed})
++        self.assertTrue(all(rows[i+1]['prepared_bob_max_error_m']<rows[i]['prepared_bob_max_error_m'] for i in range(2)))
++        self.assertTrue(all(rows[i+1]['slow_frequency_error_to_torus']<rows[i]['slow_frequency_error_to_torus'] for i in range(2)))
++        self.assertGreater(rows[-1]['unprepared_max_junction_speed_m_s'],2*rows[0]['unprepared_max_junction_speed_m_s'])
++        METRICS['5-B4']=rows
++
++if __name__=='__main__': unittest.main()
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction_guards.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction_guards.py"
+new file mode 100644
+index 0000000..cb82129
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction_guards.py"
+@@ -0,0 +1,124 @@
++"""J3 event-classification and fail-closed guard regressions."""
++
++from copy import deepcopy
++from pathlib import Path
++from types import SimpleNamespace
++import unittest
++from unittest.mock import patch
++
++import numpy as np
++
++from y_pendulum_forward.contracts import load_json
++from y_pendulum_forward.junction import (
++    _audit_dense_guards,
++    validate_junction_config,
++)
++from y_pendulum_forward.runner import run_config
++
++
++PROJECT = Path(__file__).resolve().parents[1]
++
++
++def first_upper_a_loss_config():
++    """Return a deterministic positive-tension input whose first exit is T_A=0."""
++
++    config = load_json(PROJECT / "configs/junction_example.json")
++    config["physical"].update(
++        {
++            "T": 1.0,
++            "initial_state": [
++                0.12040829855911506,
++                -2.981024009140075,
++                -0.04531561866814682,
++                -0.56573993779363,
++                -0.8233376084511037,
++                -4.244000641003405,
++                -1.7858752587747921,
++                1.4607136369538702,
++            ],
++            "obstacles": [],
++        }
++    )
++    config["numerics"].update({"max_step": 0.005, "output_dt": 0.01})
++    config["observation"] = None
++    return config
++
++
++class JunctionGuardTests(unittest.TestCase):
++    def test_small_positive_unrelated_guard_is_not_a_simultaneous_event(self):
++        config = first_upper_a_loss_config()
++        # This plane has a 9.6e-10 m positive margin at the independently
++        # located T_A exit.  The margin is intentionally below the dense-audit
++        # length tolerance, but it never reaches contact before the run stops.
++        config["physical"]["obstacles"] = [
++            {
++                "id": "nearby",
++                "kind": "plane",
++                "target": "bob",
++                "point": [
++                    -0.24760556838917844,
++                    -0.47125917499846104,
++                    -0.07100022425397015,
++                ],
++                "normal": [
++                    0.7250151393442396,
++                    0.5521106926476977,
++                    -0.41173636077681086,
++                ],
++                "allowed_side": 1,
++            }
++        ]
++
++        result = run_config(config)
++
++        self.assertEqual(result.numerical_status, "SUCCESS_EVENT")
++        self.assertEqual(result.contract_status, ["OUT_OF_SCOPE"])
++        self.assertEqual(result.events[0]["triggers"], ["T_A_ZERO"])
++        clearance = result.events[0]["guard_values"]["CONTACT_nearby"]
++        tolerance = result.events[0]["guard_zero_tolerances"]["CONTACT_nearby"]
++        self.assertGreater(clearance, 0.0)
++        self.assertLess(clearance, tolerance)
++        self.assertIn("accepted solver times", result.events[0]["root_bracket_basis"])
++
++    def test_failed_dense_guard_minimization_is_numerically_unresolved(self):
++        config = first_upper_a_loss_config()
++        issues, params = validate_junction_config(config)
++        self.assertEqual(issues, [])
++        self.assertIsNotNone(params)
++        assert params is not None
++
++        class ConstantDenseSolution:
++            t = np.array([0.0, 0.001])
++
++            @staticmethod
++            def sol(_time):
++                return params.initial_state
++
++        failed = SimpleNamespace(
++            success=False,
++            x=0.0005,
++            fun=1.0,
++            message="forced audit failure",
++        )
++        with patch(
++            "y_pendulum_forward.junction.minimize_scalar", return_value=failed
++        ):
++            issue = _audit_dense_guards(
++                params,
++                ConstantDenseSolution(),
++                ["T_A_ZERO", "T_B_ZERO", "T_LOWER_ZERO"],
++                known_event_tau=np.inf,
++                known_triggers=set(),
++                event_tolerance=1.0e-9,
++                rtol=1.0e-10,
++            )
++
++        self.assertIsNotNone(issue)
++        assert issue is not None
++        self.assertEqual(issue["numerical_status"], "EVENT_UNRESOLVED")
++        self.assertEqual(issue["reason"], "guard minimum search failed")
++        self.assertEqual(issue["root_bracket"], [0.0, 0.001])
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction_integration.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction_integration.py"
+new file mode 100644
+index 0000000..b9330d8
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_junction_integration.py"
+@@ -0,0 +1,148 @@
++"""Public-entry and serialization regression for the third physical model."""
++
++from copy import deepcopy
++import csv
++import json
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++import unittest
++
++import numpy as np
++
++from y_pendulum_forward.contracts import (
++    JUNCTION_THEORY_SHA256,
++    THEORY_SHA256,
++    load_json,
++)
++from y_pendulum_forward.io import write_result
++from y_pendulum_forward.runner import run_config
++
++
++PROJECT = Path(__file__).resolve().parents[1]
++
++
++def short_junction():
++    config = load_json(PROJECT / "configs/junction_example.json")
++    config["physical"]["T"] = 0.04
++    config["observation"] = None
++    config["numerics"]["output_dt"] = 0.002
++    return config
++
++
++class JunctionIntegrationTests(unittest.TestCase):
++    def test_public_dispatch_binds_distinct_physical_and_numerical_identity(self):
++        config = short_junction()
++        result = run_config(config)
++        self.assertEqual(result.contract_status, ["COMPLETED"])
++        self.assertEqual(result.numerical_status, "SUCCESS_SINGLE_RUN")
++        summary = result.summary_dict()
++        self.assertEqual(summary["model_id"], "YP-FWD-J3-v1")
++        self.assertEqual(summary["theory_sha256"], JUNCTION_THEORY_SHA256)
++        self.assertNotEqual(summary["theory_sha256"], THEORY_SHA256)
++        self.assertEqual(
++            summary["numerical_model_id"], "NUM-YP-FWD-J3-DOP853-1.0"
++        )
++        self.assertTrue(result.metadata["source_tree_stable_during_run"])
++        self.assertEqual(result.metadata["model_id"], config["model_id"])
++
++    def test_export_round_trip_preserves_states_observations_and_energy(self):
++        config = short_junction()
++        config["observation"] = {
++            "type": "orthographic",
++            "axis_1": [1.0, 0.0, 0.0],
++            "axis_2": [0.0, 1.0, 0.0],
++            "t0": 0.0,
++            "record_times": {"kind": "uniform", "start": 0.0, "stop": 0.04, "step": 0.002},
++        }
++        result = run_config(config)
++        self.assertEqual(result.numerical_status, "SUCCESS_SINGLE_RUN")
++        with tempfile.TemporaryDirectory() as temporary:
++            output = write_result(Path(temporary) / "j3", config, result, plots=False)
++            summary = json.loads((output / "result.json").read_text())
++            snapshot = load_json(output / "config.snapshot.json")
++            self.assertEqual(snapshot, config)
++            self.assertEqual(summary["theory_sha256"], config["theory_sha256"])
++            with np.load(output / "trajectory.npz", allow_pickle=False) as arrays:
++                np.testing.assert_array_equal(arrays["state__X_junction"], result.state["X_junction"])
++                np.testing.assert_array_equal(arrays["derived__E_junction"], result.derived["E_junction"])
++                np.testing.assert_allclose(arrays["observations__values"], arrays["state__r_m"][:, :2], atol=1e-12)
++                self.assertNotIn("derived__branches", arrays.files)
++                self.assertNotIn("state__X_torus", arrays.files)
++            with (output / "series.csv").open(newline="") as handle:
++                rows = csv.DictReader(handle)
++                self.assertIn("E_junction", rows.fieldnames)
++                self.assertIn("r_J_x", rows.fieldnames)
++                self.assertIn("T_lower", rows.fieldnames)
++                self.assertEqual(len(list(rows)), result.time.size)
++
++    def test_omitted_numerics_records_actual_default_integrator(self):
++        config = short_junction()
++        del config["numerics"]
++        result = run_config(config)
++        self.assertEqual(result.numerical_status, "SUCCESS_SINGLE_RUN")
++        self.assertEqual(result.metadata["integrator"], "DOP853")
++        self.assertEqual(
++            result.metadata["numerical_model_id"], "NUM-YP-FWD-J3-DOP853-1.0"
++        )
++
++    def test_output_sampling_does_not_change_physical_identity_or_integration(self):
++        fine = short_junction()
++        coarse = deepcopy(fine)
++        coarse["numerics"]["output_dt"] *= 2
++        fine_result, coarse_result = run_config(fine), run_config(coarse)
++        self.assertEqual(fine_result.numerical_status, "SUCCESS_SINGLE_RUN")
++        self.assertEqual(coarse_result.numerical_status, "SUCCESS_SINGLE_RUN")
++        self.assertEqual(fine_result.metadata["physical_input_sha256"], coarse_result.metadata["physical_input_sha256"])
++        self.assertNotEqual(fine_result.metadata["numerical_config_sha256"], coarse_result.metadata["numerical_config_sha256"])
++        np.testing.assert_allclose(fine_result.time[::2], coarse_result.time, atol=1e-15)
++        np.testing.assert_allclose(fine_result.state["X_junction"][::2], coarse_result.state["X_junction"], rtol=1e-12, atol=1e-13)
++
++    def test_legacy_theory_hash_is_not_accepted_as_junction_identity(self):
++        config = short_junction()
++        config["theory_sha256"] = THEORY_SHA256
++        result = run_config(config)
++        self.assertEqual(result.numerical_status, "INPUT_REJECTED")
++        self.assertEqual(result.time.size, 0)
++        self.assertIn("THEORY_IDENTITY", str(result.events))
++
++    def test_junction_hash_does_not_relabel_old_models(self):
++        for name in ("torus", "cable"):
++            with self.subTest(model=name):
++                config = load_json(PROJECT / f"configs/{name}_example.json")
++                config["theory_sha256"] = JUNCTION_THEORY_SHA256
++                result = run_config(config)
++                self.assertEqual(result.numerical_status, "INPUT_REJECTED")
++                self.assertEqual(result.time.size, 0)
++
++    def test_unknown_model_is_rejected_without_a_curve(self):
++        config = short_junction()
++        config["model_id"] = "YP-FWD-J3-UNKNOWN"
++        config["theory_sha256"] = THEORY_SHA256
++        result = run_config(config)
++        self.assertEqual(result.numerical_status, "INPUT_REJECTED")
++        self.assertEqual(result.time.size, 0)
++        self.assertIn("MODEL_ID", str(result.events))
++
++    def test_cli_runs_and_exports_junction_from_same_public_entry(self):
++        with tempfile.TemporaryDirectory() as temporary:
++            root = Path(temporary)
++            path = root / "j3.json"
++            path.write_text(json.dumps(short_junction()))
++            output = root / "export"
++            completed = subprocess.run(
++                [sys.executable, str(PROJECT / "run.py"), "run", str(path), "--output", str(output), "--no-plots"],
++                cwd=temporary,
++                capture_output=True,
++                text=True,
++                check=False,
++            )
++            self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
++            summary = json.loads((output / "result.json").read_text())
++            self.assertEqual(summary["model_id"], "YP-FWD-J3-v1")
++            self.assertEqual(summary["contract_status"], ["COMPLETED"])
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_release_protocol.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_release_protocol.py"
+new file mode 100644
+index 0000000..a5b0aac
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/tests/test_release_protocol.py"
+@@ -0,0 +1,96 @@
++"""Bounded release regression; large spatial studies have a separate runner."""
++from copy import deepcopy
++import unittest
++import json
++from pathlib import Path
++import numpy as np
++from scipy.optimize import brentq
++from y_pendulum_forward.runner import run_config
++from y_pendulum_forward.providers import build_holding_force_release
++from release_reference import wave_config, modal_release
++
++METRICS={}
++
++
++class ReleaseProtocolTests(unittest.TestCase):
++    def test_held_equilibrium_does_not_stop_on_energy_change_before_force_tolerance(self):
++        path=Path(__file__).with_name('fixtures')/'held_equilibrium_energy_cutoff.json'
++        config=json.loads(path.read_text())
++        result=run_config(config)
++        self.assertEqual(result.numerical_status,'SUCCESS_SINGLE_RUN',result.events)
++        preparation=result.diagnostics['preparation']
++        self.assertLessEqual(preparation['selected_gradient_inf'],2e-7)
++        self.assertGreaterEqual(preparation['accepted_candidate_count'],1)
++        for name,key in [('junction','r_J'),('bob','r_m')]:
++            np.testing.assert_allclose(result.state[key][0],config['initial_state']['hold']['fixed_nodes'][name],atol=1e-14,rtol=0)
++
++    def test_three_durations_match_independent_linear_modal_convolution(self):
++        rows=[]
++        for duration in (.002,.006,.012):
++            c=wave_config(8,.0005,start=.0027,duration=duration,final_time=.03,output_dt=.003)
++            r=run_config(c);self.assertEqual(r.numerical_status,'SUCCESS_SINGLE_RUN',r.events)
++            ids=r.metadata['branch_nodes']['lower']
++            q=r.state['node_positions'][:,ids,0]-r.state['node_positions'][0,ids,0]
++            v=r.state['node_velocities'][:,ids,0]
++            qr,vr=modal_release(8,r.time,.0027,duration)
++            qr2,vr2=modal_release(8,r.time,.0027,duration,quadrature=256)
++            q_error=float(np.max(np.abs(q-qr))/1e-4)
++            v_error=float(np.max(np.abs(v-vr))/.01)
++            quadrature_error=float(max(np.max(np.abs(qr-qr2))/1e-4,np.max(np.abs(vr-vr2))/.01))
++            self.assertLess(q_error,1e-6);self.assertLess(v_error,1e-6);self.assertLess(quadrature_error,1e-10)
++            work=r.diagnostics['power_integral_hold'];after=r.time>=.0027+duration
++            self.assertTrue(np.all(r.derived['P_hold'][after]==0.))
++            self.assertLessEqual(np.ptp(work[after]),1e-18)
++            rows.append({'duration':duration,'scaled_position_error':q_error,'scaled_velocity_error':v_error,'reference_quadrature_error':quadrature_error,'holding_work_J':float(work[-1]),'after_release_work_range_J':float(np.ptp(work[after]))})
++        METRICS['5-C2-modal']=rows
++
++    def test_output_grid_does_not_change_release_work_across_breakpoints(self):
++        c=wave_config(8,.0005,start=.0027,duration=.0083,final_time=.03,output_dt=.006)
++        fine=deepcopy(c);fine['numerics']['output_dt']=.003
++        a,b=run_config(c),run_config(fine)
++        self.assertEqual(a.numerical_status,'SUCCESS_SINGLE_RUN');self.assertEqual(b.numerical_status,'SUCCESS_SINGLE_RUN')
++        work_a=a.diagnostics['power_integral_hold'];work_b=b.diagnostics['power_integral_hold'][::2]
++        error=float(np.max(np.abs(work_a-work_b)))
++        self.assertLessEqual(error,1e-6*1e-6)
++        self.assertEqual(a.metadata['physical_input_sha256'],b.metadata['physical_input_sha256'])
++        METRICS['5-C2-output']={'absolute_work_difference_J':error,'exchange_scale_J':1e-6,'relative_threshold':1e-6,'start_s':.0027,'end_s':.011,'output_dt_s':[.006,.003]}
++
++    def test_explicit_instantaneous_release_preserves_legacy_input(self):
++        c=wave_config(8,.0005,final_time=.01,output_dt=.002)
++        old=deepcopy(c);del old['inputs']['hold_release']
++        a,b=run_config(c),run_config(old)
++        self.assertEqual(a.numerical_status,'SUCCESS_SINGLE_RUN');self.assertEqual(b.numerical_status,'SUCCESS_SINGLE_RUN')
++        np.testing.assert_array_equal(a.state['node_positions'],b.state['node_positions'])
++        np.testing.assert_array_equal(a.state['node_velocities'],b.state['node_velocities'])
++        self.assertNotIn('P_hold',b.derived)
++        self.assertNotIn('power_integral_hold',b.diagnostics)
++        self.assertTrue(np.all(a.diagnostics['power_integral_hold']==0.))
++
++    def test_zero_holding_force_equilibrium_is_a_stationary_limit(self):
++        c=wave_config(1,.001,start=.0027,duration=.0083,final_time=.03,output_dt=.003)
++        p=c['physical'];p.update(g=9.81,junction_mass=.1,bob_mass=.02)
++        length=float(np.hypot(.2,.3));mu=.01;EA=100.
++        for name,L in [('A',length),('B',length),('lower',.6)]:
++            p['branches'][name].update(L0=L,EA=EA)
++        lower_tension=9.81*(.02+mu*.6/2)
++        needed=lower_tension+9.81*(.1+mu*length+mu*.6/2)
++        h=brentq(lambda h:2*EA*(np.hypot(.2,h)/length-1)*h/np.hypot(.2,h)-needed,.3,.6,xtol=1e-14)
++        ell=.6*(1+lower_tension/EA)
++        c['inputs']['support_A']['value']=[-.2,0.,0.];c['inputs']['support_B']['value']=[.2,0.,0.]
++        c['initial_state']['hold']['fixed_nodes']={'bob':[0.,0.,h+ell]}
++        c['initial_state']['seed']={'r_J':[0.,0.,h],'r_m':[0.,0.,h+ell]}
++        c['numerics'].update(static_gradient_tolerance=1e-10,static_energy_tolerance=1e-12)
++        r=run_config(c);self.assertEqual(r.numerical_status,'SUCCESS_SINGLE_RUN',r.events)
++        force=float(np.max(np.linalg.norm(r.derived['F_hold_b'],axis=1)))
++        displacement=float(np.max(np.linalg.norm(r.state['r_m']-r.state['r_m'][0],axis=1)))
++        work=float(np.max(np.abs(r.diagnostics['power_integral_hold'])))
++        self.assertLessEqual(force,1e-7);self.assertLessEqual(displacement,1e-8);self.assertLessEqual(work,1e-14)
++        METRICS['5-C2-zero']={'holding_force_N':force,'maximum_bob_displacement_m':displacement,'holding_work_abs_J':work,'absolute_bounds':[1e-7,1e-8,1e-14],'basis':'independent discrete gravity/axial static balance; floating-point preparation tolerance'}
++
++    def test_invalid_protocols_are_rejected(self):
++        for updates in ({'duration':-.1},{'history':'mystery'},{'source':'fit_to_future'},{'duration':0.,'history':'smoothstep_c1'}):
++            with self.subTest(updates=updates):
++                c=wave_config(1);c['inputs']['hold_release'].update(updates)
++                r=run_config(c);self.assertEqual(r.numerical_status,'INPUT_REJECTED');self.assertEqual(r.time.size,0)
++
++if __name__=='__main__': unittest.main()
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/cable.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/cable.py"
+index a1d3964..1fcafd1 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/cable.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/cable.py"
+@@ -9,11 +9,12 @@ from __future__ import annotations
+ 
+ from dataclasses import dataclass
+ from typing import Any, Callable
++from types import SimpleNamespace
+ import warnings
+ from time import perf_counter
+ 
+ import numpy as np
+-from scipy.integrate import cumulative_trapezoid, solve_ivp
++from scipy.integrate import cumulative_trapezoid, solve_ivp, trapezoid
+ from scipy.linalg import cho_factor, cho_solve
+ from scipy.optimize import minimize
+ 
+@@ -38,10 +39,12 @@ from .initial_fields import PolynomialField, build_polynomial_field
+ from .observations import evaluate_observations
+ from .providers import (
+     AirVelocity,
++    HoldingForceRelease,
+     MaterialForce,
+     PointForce,
+     PrescribedMotion,
+     build_air,
++    build_holding_force_release,
+     build_material_force,
+     build_motion,
+     build_point_force,
+@@ -145,6 +148,7 @@ class CablePhysicalInput:
+     distributed_forces: dict[str, MaterialForce]
+     junction_force: PointForce
+     bob_force: PointForce
++    hold_release: HoldingForceRelease
+     guards: list[CableGuard]
+     initial_mode: str
+     initial_branches: dict[str, InitialBranch]
+@@ -382,6 +386,7 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
+             "distributed_forces",
+             "junction_force",
+             "bob_force",
++            "hold_release",
+             "exit_guards",
+         },
+         "inputs",
+@@ -402,6 +407,14 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
+     }
+     junction_force = build_point_force(inputs.get("junction_force"), "inputs.junction_force", issues)
+     bob_force = build_point_force(inputs.get("bob_force"), "inputs.bob_force", issues)
++    hold_release = build_holding_force_release(
++        inputs.get("hold_release"), "inputs.hold_release", issues
++    )
++    if "hold_release" in inputs and inputs["hold_release"] is None:
++        issues.append(ValidationIssue(
++            "TYPE", "inputs.hold_release", None,
++            "explicit release object; omit the field for legacy instantaneous release",
++        ))
+     for name in BRANCHES:
+         validate_force_window(
+             distributed[name],
+@@ -456,6 +469,15 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
+     initial_branches: dict[str, InitialBranch] = {}
+     hold_fixed_nodes: dict[str, np.ndarray] = {}
+     if initial_mode == "DIRECT_STATE":
++        if "hold_release" in inputs:
++            issues.append(
++                ValidationIssue(
++                    "HOLD_RELEASE_MODE",
++                    "inputs.hold_release",
++                    inputs.get("hold_release"),
++                    "requires initial_state.mode='STATIC_HOLD_RELEASE'",
++                )
++            )
+         r_J0 = as_vector3(initial.get("r_J"), "initial_state.r_J", issues)
+         v_J0 = as_vector3(initial.get("v_J"), "initial_state.v_J", issues)
+         r_m0 = as_vector3(initial.get("r_m"), "initial_state.r_m", issues)
+@@ -531,7 +553,7 @@ def parse_cable_physical(config: dict[str, Any]) -> tuple[list[ValidationIssue],
+     candidate = CablePhysicalInput(
+         g, e_z, branches, junction_mass, bob_mass, rho_air, bob_volume,
+         bob_c1, bob_c2, lambda_min, T, support_A, support_B, air, distributed,
+-        junction_force, bob_force, guards, initial_mode, initial_branches,
++        junction_force, bob_force, hold_release, guards, initial_mode, initial_branches,
+         hold_fixed_nodes, r_J0, v_J0, r_m0, v_m0,
+     )
+     if initial_mode == "DIRECT_STATE":
+@@ -753,6 +775,10 @@ class CableFEM:
+         points, weights = np.polynomial.legendre.leggauss(quadrature_order)
+         self.gauss_xi = 0.5 * (points + 1.0)
+         self.gauss_weights = 0.5 * weights
++        self.initial_hold_forces = {
++            "junction": np.zeros(3),
++            "bob": np.zeros(3),
++        }
+         self._build_topology()
+         self._assemble_mass()
+         self._initialize_state()
+@@ -918,7 +944,12 @@ class CableFEM:
+ 
+         for seed in seeds:
+             if optimization_nodes.size:
+-                result = minimize(objective, seed[optimization_nodes].ravel(), method="L-BFGS-B", jac=True, options={"maxiter": maxiter, "gtol": float(gradient_tolerance), "ftol": 1e-14, "maxls": 50})
++                # Near a held equilibrium the energy change is quadratic in
++                # the remaining force residual. A fixed 1e-14 energy cutoff
++                # can stop above the requested force tolerance. Continue to
++                # floating-point energy resolution, then still check the
++                # actual gradient explicitly; optimizer status is not a pass.
++                result = minimize(objective, seed[optimization_nodes].ravel(), method="L-BFGS-B", jac=True, options={"maxiter": maxiter, "gtol": float(gradient_tolerance), "ftol": np.finfo(float).eps, "maxls": 50})
+                 candidate = positions.copy()
+                 candidate[optimization_nodes] = result.x.reshape((-1, 3))
+                 _energy, gradient = self._static_potential_gradient(candidate)
+@@ -977,6 +1008,38 @@ class CableFEM:
+         self.initial_velocities = np.zeros_like(self.initial_positions)
+         blocking = {"STATIC_PREPARATION_FAILED", "PREPARATION_NONUNIQUE"}
+         if not any(issue.code in blocking for issue in self.numerical_issues):
++            applied, internal, _details = self.assemble(
++                0.0,
++                self.initial_positions,
++                self.initial_velocities,
++                diagnostics=False,
++            )
++            for node_name in self.p.hold_fixed_nodes:
++                node = self.node_index[node_name]
++                self.initial_hold_forces[node_name] = (
++                    internal[node] - applied[node]
++                )
++            held_residual = np.vstack(
++                [
++                    internal[self.node_index[node_name]]
++                    - applied[self.node_index[node_name]]
++                    - self.initial_hold_forces[node_name]
++                    for node_name in self.p.hold_fixed_nodes
++                ]
++            )
++            if not self.p.hold_release.description["implicit_legacy_default"]:
++                self.preparation_diagnostics.update(
++                    holding_force_source=self.p.hold_release.source,
++                    initial_holding_forces={
++                        name: value.copy()
++                        for name, value in self.initial_hold_forces.items()
++                        if name in self.p.hold_fixed_nodes
++                    },
++                    held_equilibrium_residual_inf=float(
++                        np.max(np.abs(held_residual)) if held_residual.size else 0.0
++                    ),
++                    release_protocol=dict(self.p.hold_release.description),
++                )
+             self._finalize_initial_state(self.initial_positions, self.initial_velocities)
+         else:
+             self.y0 = np.concatenate((self.initial_positions[self.free].ravel(), self.initial_velocities[self.free].ravel()))
+@@ -1133,23 +1196,37 @@ class CableFEM:
+         F_ext_b = self.p.bob_force.value(t)
+         applied[junction] += F_ext_J
+         applied[bob] += F_ext_b
++        hold_multiplier = self.p.hold_release.multiplier(t)
++        F_hold_J = hold_multiplier * self.initial_hold_forces["junction"]
++        F_hold_b = hold_multiplier * self.initial_hold_forces["bob"]
++        applied[junction] += F_hold_J
++        applied[bob] += F_hold_b
+         air_b = self.p.air.value(positions[bob], t)
+         u_b = velocities[bob] - air_b
+         F_drag_b = -self.p.bob_c1 * u_b - self.p.bob_c2 * np.linalg.norm(u_b) * u_b
+         applied[bob] += F_drag_b
+ 
+         if diagnostics:
++            P_hold = float(
++                F_hold_J @ velocities[junction] + F_hold_b @ velocities[bob]
++            )
++            P_ext_other = float(
++                total_P_ext_string
++                + F_ext_J @ velocities[junction]
++                + F_ext_b @ velocities[bob]
++            )
+             details.update(
+                 F_drag_b=F_drag_b,
++                F_hold_J=F_hold_J,
++                F_hold_b=F_hold_b,
++                holding_force_multiplier=float(hold_multiplier),
+                 D_ax=float(total_D_ax),
+                 D_string=float(total_D_string),
+                 D_b=float(-F_drag_b @ u_b),
+                 P_air=float(total_P_air_string + F_drag_b @ air_b),
+-                P_ext=float(
+-                    total_P_ext_string
+-                    + F_ext_J @ velocities[junction]
+-                    + F_ext_b @ velocities[bob]
+-                ),
++                P_hold=P_hold,
++                P_ext_other=P_ext_other,
++                P_ext=float(P_ext_other + P_hold),
+                 V_ax=float(total_V_ax),
+             )
+         return applied, internal, details
+@@ -1326,6 +1403,65 @@ class CableFEM:
+         return details
+ 
+ 
++def _solve_release_intervals(model, *, method, rtol, atol, max_step, events):
++    """Keep known force-history boundaries in the actual accepted mesh.
++
++    Positions and velocities pass unchanged between segments. This also makes
++    the accepted-step work quadrature respect the release's exact support.
++    """
++    protocol = model.p.hold_release
++    breaks = sorted({0.0, model.p.T, *[
++        value for value in (protocol.start, protocol.end)
++        if 0.0 < value < model.p.T
++    ]})
++    segments = []
++    current = model.y0
++    for left, right in zip(breaks, breaks[1:]):
++        def rhs(time, state):
++            # Use the left force limit at an instantaneous switch, then the
++            # right limit in the next segment; never reset the physical state.
++            query = (
++                np.nextafter(right, left)
++                if protocol.history == "instantaneous"
++                and right == protocol.start and time == right
++                else time
++            )
++            return model.rhs(query, state)
++
++        result = solve_ivp(rhs, (left, right), current, method=method,
++                           rtol=rtol, atol=atol, max_step=max_step,
++                           dense_output=True, events=events)
++        segments.append(result)
++        current = result.y[:, -1]
++        if not result.success or result.status == 1:
++            break
++    if len(segments) == 1:
++        return segments[0]
++    ends = np.array([segment.t[-1] for segment in segments])
++
++    def dense(time):
++        query = np.asarray(time, dtype=float)
++        values = np.empty((model.y0.size, query.size))
++        flat = query.ravel()
++        indices = np.minimum(np.searchsorted(ends, flat, side="left"), len(segments)-1)
++        for index, segment in enumerate(segments):
++            mask = indices == index
++            if np.any(mask):
++                values[:, mask] = segment.sol(flat[mask])
++        return values[:, 0] if query.ndim == 0 else values
++
++    return SimpleNamespace(
++        t=np.concatenate([segments[0].t, *[segment.t[1:] for segment in segments[1:]]]),
++        y=np.concatenate([segments[0].y, *[segment.y[:, 1:] for segment in segments[1:]]], axis=1),
++        sol=dense, success=segments[-1].success, status=segments[-1].status,
++        message=segments[-1].message,
++        t_events=[np.concatenate([segment.t_events[i] for segment in segments]) for i in range(len(events))],
++        nfev=sum(segment.nfev for segment in segments),
++        njev=sum(getattr(segment, "njev", 0) for segment in segments),
++        nlu=sum(getattr(segment, "nlu", 0) for segment in segments),
++    )
++
++
+ def run_cable(
+     config: dict[str, Any], *, identity: dict[str, Any]
+ ) -> SimulationResult:
+@@ -1440,15 +1576,12 @@ def run_cable(
+     try:
+         with warnings.catch_warnings(record=True) as caught_warnings:
+             warnings.simplefilter("always")
+-            sol = solve_ivp(
+-                model.rhs,
+-                (0.0, physical.T),
+-                model.y0,
++            sol = _solve_release_intervals(
++                model,
+                 method=method,
+                 rtol=numeric_values["rtol"],
+                 atol=atol_vector,
+                 max_step=numeric_values["max_step"],
+-                dense_output=True,
+                 events=event_functions,
+             )
+     except Exception as exc:
+@@ -1546,10 +1679,14 @@ def run_cable(
+         absolute_ports = (abs(snapshot["D_ax"]) + abs(snapshot["D_string"]) + abs(snapshot["D_b"])
+                           + abs(snapshot["P_air"]) + abs(snapshot["P_ext"])
+                           + max(abs(snapshot["P_base"]), abs(snapshot["P_base_algebraic"])))
+-        return np.array([physical_power, algebraic_power, absolute_ports])
++        return np.array(
++            [physical_power, algebraic_power, absolute_ports, snapshot["P_hold"]]
++        )
+ 
+     try:
+-        power_ledger, quadrature_evaluations = integrate_power_ledger(sol.t, time, power_at)
++        power_ledger, quadrature_evaluations = integrate_power_ledger(
++            sol.t, time, power_at, component_count=4
++        )
+         state, derived, diagnostics = _sample_cable(model, time, y_samples, power_ledger=power_ledger)
+     except Exception as exc:
+         return SimulationResult(
+@@ -1576,6 +1713,8 @@ def run_cable(
+     solver_diagnostic_fields = dict(
+         solver_message=sol.message,
+         accepted_steps=max(0, int(sol.t.size) - 1),
++        max_actual_step=float(np.max(np.diff(sol.t))) if sol.t.size > 1 else 0.0,
++        min_actual_step=float(np.min(np.diff(sol.t))) if sol.t.size > 1 else 0.0,
+         power_quadrature_evaluations=quadrature_evaluations,
+         timings_seconds={"setup": setup_elapsed, "integration": integration_elapsed,
+                          "diagnostics_and_power_quadrature": perf_counter() - diagnostic_started},
+@@ -1697,6 +1836,21 @@ def run_cable(
+                 if physical.initial_mode == "DIRECT_STATE"
+                 else "discrete multistart static minimization; local uniqueness evidence only"
+             ),
++            **(
++                {
++                    "release_protocol_id": physical.hold_release.description["protocol_id"],
++                    "extension_theory_sha256": physical.hold_release.description["extension_theory_sha256"],
++                    "theory_sections": physical.hold_release.description["theory_sections"],
++                    "hold_release": dict(physical.hold_release.description),
++                    "initial_holding_forces": {
++                        name: value.copy()
++                        for name, value in model.initial_hold_forces.items()
++                        if name in physical.hold_fixed_nodes
++                    },
++                }
++                if not physical.hold_release.description["implicit_legacy_default"]
++                else {}
++            ),
+         },
+     )
+ 
+@@ -1750,12 +1904,15 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
+     velocities = np.empty_like(positions)
+     scalar_names = (
+         "T_kin", "V_g", "V_buoy", "V_ax", "E_F", "D_ax", "D_string",
+-        "D_b", "P_base", "P_air", "P_ext",
++        "D_b", "P_base", "P_air", "P_ext", "P_ext_other", "P_hold",
++        "holding_force_multiplier",
+     )
+     scalar = {name: np.empty(sample_count) for name in scalar_names}
+     algebraic_base_power = np.empty(sample_count)
+     vector = {
+         "F_drag_b": np.empty((sample_count, 3)),
++        "F_hold_J": np.empty((sample_count, 3)),
++        "F_hold_b": np.empty((sample_count, 3)),
+         "R_A": np.empty((sample_count, 3)),
+         "R_B": np.empty((sample_count, 3)),
+     }
+@@ -1825,6 +1982,8 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
+             scalar[name][index] = snapshot[name]
+         algebraic_base_power[index] = snapshot["P_base_algebraic"]
+         vector["F_drag_b"][index] = snapshot["F_drag_b"]
++        vector["F_hold_J"][index] = snapshot["F_hold_J"]
++        vector["F_hold_b"][index] = snapshot["F_hold_b"]
+         vector["R_A"][index] = snapshot["R_A"]
+         vector["R_B"][index] = snapshot["R_B"]
+         algebraic_reaction_A[index] = snapshot["algebraic_reaction"][0]
+@@ -1893,7 +2052,19 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
+                 "sample_index": int(index),
+                 "triggers": violation_triggers,
+             }
+-    derived: dict[str, Any] = {"branches": branch_output, **scalar, **vector}
++    release_explicit = not model.p.hold_release.description["implicit_legacy_default"]
++    derived_scalar = dict(scalar)
++    derived_vector = dict(vector)
++    if not release_explicit:
++        for name in ("P_ext_other", "P_hold", "holding_force_multiplier"):
++            derived_scalar.pop(name)
++        for name in ("F_hold_J", "F_hold_b"):
++            derived_vector.pop(name)
++    derived: dict[str, Any] = {
++        "branches": branch_output,
++        **derived_scalar,
++        **derived_vector,
++    }
+     physical_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + scalar["P_base"] + scalar["P_ext"]
+     algebraic_power = -scalar["D_ax"] - scalar["D_string"] - scalar["D_b"] + scalar["P_air"] + algebraic_base_power + scalar["P_ext"]
+     sampled_physical_integral = (cumulative_trapezoid(physical_power, time, initial=0.0)
+@@ -1901,21 +2072,27 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
+     sampled_algebraic_integral = (cumulative_trapezoid(algebraic_power, time, initial=0.0)
+                                   if sample_count >= 2 else np.zeros(sample_count))
+     if power_ledger is not None:
+-        if power_ledger.shape != (sample_count, 3) or not np.isfinite(power_ledger).all():
+-            raise ValueError("power_ledger must contain three finite cumulative powers per sample")
++        if power_ledger.shape != (sample_count, 4) or not np.isfinite(power_ledger).all():
++            raise ValueError("power_ledger must contain four finite cumulative powers per sample")
+         # Residuals and the independent integral share the first returned time.
+         ledger = power_ledger - power_ledger[0] if sample_count else power_ledger
+         physical_integral, algebraic_integral = ledger[:, 0], ledger[:, 1]
+         work_scale = float(ledger[-1, 2]) if sample_count else 0.0
++        hold_work = ledger[:, 3]
+         power_method = "accepted_step_dense_output_gauss_legendre_3"
+     else:
+         # Direct snapshot callers do not supply a dense solution. Label this
+         # lower-order fallback explicitly instead of implying solver-mesh work.
+         physical_integral, algebraic_integral = sampled_physical_integral, sampled_algebraic_integral
++        hold_work = (
++            cumulative_trapezoid(scalar["P_hold"], time, initial=0.0)
++            if sample_count >= 2
++            else np.zeros(sample_count)
++        )
+         absolute_ports = (np.abs(scalar["D_ax"]) + np.abs(scalar["D_string"]) + np.abs(scalar["D_b"])
+                           + np.abs(scalar["P_air"]) + np.abs(scalar["P_ext"])
+                           + np.maximum(np.abs(scalar["P_base"]), np.abs(algebraic_base_power)))
+-        work_scale = float(np.trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
++        work_scale = float(trapezoid(absolute_ports, time)) if sample_count >= 2 else 0.0
+         power_method = "output_sample_trapezoid_fallback"
+     physical_residual = scalar["E_F"] - scalar["E_F"][0] - physical_integral if sample_count else np.empty(0)
+     algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - algebraic_integral if sample_count else np.empty(0)
+@@ -1946,8 +2123,8 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
+     # The existing independent convergence checker reconstructs trapezoid
+     # work from stored state. Preserve those legacy fields with explicit labels;
+     # accepted-step work and its residuals are exported separately below.
+-    legacy_work_scale = max(float(np.trapezoid(np.abs(physical_power), time)),
+-                            float(np.trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
++    legacy_work_scale = max(float(trapezoid(np.abs(physical_power), time)),
++                            float(trapezoid(np.abs(algebraic_power), time))) if sample_count >= 2 else 0.0
+     legacy_physical_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_physical_integral if sample_count else np.empty(0)
+     legacy_algebraic_residual = scalar["E_F"] - scalar["E_F"][0] - sampled_algebraic_integral if sample_count else np.empty(0)
+     legacy_max_physical = float(np.max(np.abs(legacy_physical_residual))) if sample_count else None
+@@ -2015,6 +2192,12 @@ def _sample_cable(model: CableFEM, time: np.ndarray, y_samples: np.ndarray, *, p
+         },
+         "P_base_algebraic": algebraic_base_power,
+     }
++    if release_explicit:
++        diagnostics.update(
++            power_integral_hold=hold_work,
++            final_holding_force_work=float(hold_work[-1]) if sample_count else 0.0,
++            hold_release=dict(model.p.hold_release.description),
++        )
+     state = {
+         "node_positions": positions,
+         "node_velocities": velocities,
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/contracts.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/contracts.py"
+index 55c9b89..9ae380e 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/contracts.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/contracts.py"
+@@ -14,7 +14,10 @@ import numpy as np
+ 
+ 
+ THEORY_SHA256 = "7eaf18e30087438507aef73c481b49e5b1427a146d79c0fd2b35ca10dc02cdb2"
+-PROGRAM_VERSION = "2.0.0-research"
++# Existing cable/torus configurations retain their original theory contract.
++# J3 binds the adopted forward-theory document containing section 9.9.
++JUNCTION_THEORY_SHA256 = "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd"
++PROGRAM_VERSION = "2.1.0-research"
+ CONFIG_SCHEMA_VERSION = "YPS-FWD-CONFIG-1.0"
+ MIN_SOLVER_RTOL = 100.0 * np.finfo(float).eps
+ MAX_UNIFORM_SAMPLES = 2_000_001
+@@ -52,7 +55,7 @@ class ValidationIssue:
+ 
+ @dataclass
+ class SimulationResult:
+-    """Common result container used by both forward-theory backends.
++    """Common result container used by the forward-theory backends.
+ 
+     ``contract_status`` is populated only when the numerical run can map to a
+     frozen physical-contract outcome.  A solver failure leaves it empty; it is
+@@ -77,7 +80,9 @@ class SimulationResult:
+             "model_id": self.model_id,
+             "program_version": PROGRAM_VERSION,
+             "numerical_model_id": self.metadata.get("numerical_model_id"),
+-            "theory_sha256": THEORY_SHA256,
++            "theory_sha256": self.metadata.get(
++                "theory_sha256", theory_sha256_for_model(self.model_id)
++            ),
+             "units": "SI",
+             "contract_status": list(self.contract_status),
+             "numerical_status": self.numerical_status,
+@@ -257,9 +262,28 @@ def numerical_model_id(config: dict[str, Any]) -> str:
+             else "UNRESOLVED"
+         )
+         return f"NUM-FWD-TORUS-{suffix}-1.0"
++    if config.get("model_id") == "YP-FWD-J3-v1":
++        if "numerics" not in config or (
++            isinstance(numerics, dict) and "method" not in numerics
++        ):
++            method = "DOP853"
++        suffix = (
++            method
++            if isinstance(method, str) and method in {"DOP853", "Radau"}
++            else "UNRESOLVED"
++        )
++        return f"NUM-YP-FWD-J3-{suffix}-1.0"
+     return "NUM-FWD-UNRESOLVED-1.0"
+ 
+ 
++def theory_sha256_for_model(model_id: Any) -> str:
++    """Select the branch contract without relabeling existing configurations."""
++
++    if model_id == "YP-FWD-J3-v1":
++        return JUNCTION_THEORY_SHA256
++    return THEORY_SHA256
++
++
+ def run_identity_hashes(config: dict[str, Any]) -> dict[str, Any]:
+     physical_keys = {
+         "schema_version",
+@@ -277,7 +301,8 @@ def run_identity_hashes(config: dict[str, Any]) -> dict[str, Any]:
+         "program_version": PROGRAM_VERSION,
+         "config_schema_version": CONFIG_SCHEMA_VERSION,
+         "numerical_model_id": numerical_model_id(config),
+-        "theory_sha256": THEORY_SHA256,
++        "model_id": config.get("model_id", "UNSPECIFIED"),
++        "theory_sha256": theory_sha256_for_model(config.get("model_id")),
+         "units": "SI",
+         "config_sha256": _safe_payload_hash(config),
+         "physical_input_sha256": _safe_payload_hash(physical_payload),
+@@ -566,13 +591,14 @@ def base_validation(config: dict[str, Any], model_id: str) -> list[ValidationIss
+         issues.append(
+             ValidationIssue("MODEL_ID", "model_id", config.get("model_id"), model_id)
+         )
+-    if config.get("theory_sha256") != THEORY_SHA256:
++    expected_theory = theory_sha256_for_model(model_id)
++    if config.get("theory_sha256") != expected_theory:
+         issues.append(
+             ValidationIssue(
+                 "THEORY_IDENTITY",
+                 "theory_sha256",
+                 config.get("theory_sha256"),
+-                THEORY_SHA256,
++                expected_theory,
+             )
+         )
+     return issues
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/convergence.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/convergence.py"
+index 687fc7e..783f19d 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/convergence.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/convergence.py"
+@@ -13,7 +13,7 @@ from copy import deepcopy
+ from typing import Any
+ 
+ import numpy as np
+-from scipy.integrate import cumulative_trapezoid
++from scipy.integrate import cumulative_trapezoid, trapezoid
+ from scipy.linalg import cho_factor, cho_solve
+ 
+ from .activation import activation_primitive, tension_components
+@@ -2860,8 +2860,8 @@ def _recompute_cable_output(
+             scalar["E_F"] - scalar["E_F"][0] - algebraic_integral
+         )
+         work_scale = max(
+-            float(np.trapezoid(np.abs(physical_power), time)),
+-            float(np.trapezoid(np.abs(algebraic_power), time)),
++            float(trapezoid(np.abs(physical_power), time)),
++            float(trapezoid(np.abs(algebraic_power), time)),
+         )
+     else:
+         physical_residual = np.zeros(sample_count)
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/energy_ledger.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/energy_ledger.py"
+index 3f1eba8..4531449 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/energy_ledger.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/energy_ledger.py"
+@@ -14,21 +14,27 @@ def integrate_power_ledger(
+     accepted_times: np.ndarray,
+     sample_times: np.ndarray,
+     power_at: Callable[[float], np.ndarray],
++    *,
++    component_count: int = 3,
+ ) -> tuple[np.ndarray, int]:
+     """Integrate physical power, algebraic power and absolute port exchange.
+ 
+-    ``power_at(t)`` returns those three finite values in watts. Three-point
++    ``power_at(t)`` returns ``component_count`` finite values in watts. The
++    legacy/default three values are physical power, algebraic power and
++    absolute port exchange; release runs append holding-force power. Three-point
+     Gauss-Legendre quadrature is exact for polynomials up to degree five; a
+     nonsmooth power history still requires time refinement.
+     """
+     mesh = np.asarray(accepted_times, dtype=float)
+     samples = np.asarray(sample_times, dtype=float)
++    if not isinstance(component_count, int) or isinstance(component_count, bool) or component_count < 1:
++        raise ValueError("component_count must be a positive integer")
+     if mesh.ndim != 1 or mesh.size == 0 or not np.isfinite(mesh).all() or np.any(np.diff(mesh) <= 0):
+         raise ValueError("accepted_times must be finite and strictly increasing")
+     if samples.ndim != 1 or not np.isfinite(samples).all() or np.any(np.diff(samples) < 0):
+         raise ValueError("sample_times must be finite and nondecreasing")
+     if samples.size == 0:
+-        return np.empty((0, 3)), 0
++        return np.empty((0, component_count)), 0
+     if samples[0] < mesh[0] or samples[-1] > mesh[-1]:
+         raise ValueError("power quadrature cannot extrapolate beyond accepted solver times")
+     nodes = np.array([-np.sqrt(3.0 / 5.0), 0.0, np.sqrt(3.0 / 5.0)])
+@@ -38,21 +44,23 @@ def integrate_power_ledger(
+     def integral(left: float, right: float) -> np.ndarray:
+         nonlocal evaluations
+         if right == left:
+-            return np.zeros(3)
++            return np.zeros(component_count)
+         half = (right - left) / 2.0
+         values = np.asarray([power_at(float((right + left) / 2.0 + half * x)) for x in nodes])
+         evaluations += 3
+-        if values.shape != (3, 3) or not np.isfinite(values).all():
+-            raise FloatingPointError("power callback must return three finite components")
++        if values.shape != (3, component_count) or not np.isfinite(values).all():
++            raise FloatingPointError(
++                f"power callback must return {component_count} finite components"
++            )
+         return half * (weights @ values)
+ 
+     # Only integrate the accepted intervals preceding the last requested sample.
+     indices = np.searchsorted(mesh, samples, side="right") - 1
+     last = int(indices[-1])
+-    prefix = np.zeros((last + 1, 3))
++    prefix = np.zeros((last + 1, component_count))
+     for index in range(last):
+         prefix[index + 1] = prefix[index] + integral(mesh[index], mesh[index + 1])
+-    values = np.empty((samples.size, 3))
++    values = np.empty((samples.size, component_count))
+     for row, (sample, index) in enumerate(zip(samples, indices)):
+         values[row] = prefix[index] + integral(mesh[index], sample)
+     return values, evaluations
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/io.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/io.py"
+index 11f8537..9434a81 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/io.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/io.py"
+@@ -143,12 +143,14 @@ def _write_series_csv(path: Path, result: SimulationResult) -> None:
+     for key in (
+         "E_F",
+         "E_torus",
++        "E_junction",
+         "D_ax",
+         "D_string",
+         "D_b",
+         "P_base",
+         "P_air",
+         "P_ext",
++        "P_hold",
+         "T_A",
+         "T_B",
+         "T_lower",
+@@ -158,6 +160,9 @@ def _write_series_csv(path: Path, result: SimulationResult) -> None:
+             if values.ndim == 1 and values.size == result.time.size:
+                 headers.append(key)
+                 columns.append(values)
++    if "power_integral_hold" in result.diagnostics:
++        headers.append("W_hold")
++        columns.append(np.asarray(result.diagnostics["power_integral_hold"]))
+     with path.open("w", encoding="utf-8", newline="") as handle:
+         writer = csv.writer(handle)
+         writer.writerow(headers)
+@@ -191,7 +196,9 @@ def _write_plots(output: Path, result: SimulationResult) -> None:
+         fig.tight_layout()
+         fig.savefig(output / "trajectory.png", dpi=160)
+         plt.close(fig)
+-    energy = result.derived.get("E_F", result.derived.get("E_torus"))
++    energy = result.derived.get(
++        "E_F", result.derived.get("E_torus", result.derived.get("E_junction"))
++    )
+     if energy is not None:
+         energy = np.asarray(energy)
+         fig, ax = plt.subplots(figsize=(7, 4.2))
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/junction.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/junction.py"
+new file mode 100644
+index 0000000..d60cf27
+--- /dev/null
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/junction.py"
+@@ -0,0 +1,1466 @@
++"""Finite-mass junction backend for the ``YP-FWD-J3-v1`` model.
++
++The integrated coordinates are ``[theta, nu, n_x, n_y, n_z,
++eta_x, eta_y, eta_z]``.  Both ``n`` and ``eta`` use the global Cartesian
++frame.  The exact vector field preserves ``|n| = 1`` and ``n dot eta = 0``;
++the numerical backend deliberately applies no projection, so the reported
++constraint and energy residuals expose the actual integration error.
++"""
++
++from __future__ import annotations
++
++from dataclasses import dataclass
++import re
++from typing import Any, Callable
++import warnings
++
++import numpy as np
++from scipy.integrate import solve_ivp
++from scipy.optimize import minimize_scalar
++
++from .contracts import (
++    MAX_UNIFORM_SAMPLES,
++    MIN_SOLVER_RTOL,
++    SimulationResult,
++    ValidationIssue,
++    as_vector3,
++    base_validation,
++    is_finite_number,
++    numerical_time_resource_issues,
++    reject_unknown_keys,
++    require_number,
++    safe_uniform_sample_count,
++    strict_finite_array,
++)
++from .observations import evaluate_observations
++
++
++JUNCTION_MODEL_ID = "YP-FWD-J3-v1"
++JUNCTION_NUMERICAL_FIELDS = {
++    "method",
++    "rtol",
++    "atol",
++    "atol_angle",
++    "atol_rate",
++    "max_step",
++    "output_dt",
++    "event_cluster_tolerance",
++}
++_OBSTACLE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,63}\Z")
++_MAX_OBSTACLES = 64
++_MAX_FAST_MODE_PHASE_STEP = 0.25
++_CONSTRAINT_TOLERANCE = 1.0e-8
++_RELATIVE_ENERGY_TOLERANCE = 1.0e-6
++
++
++@dataclass(frozen=True)
++class JunctionObstacle:
++    """A signed-clearance contact guard.
++
++    A sphere admits points outside its surface.  A plane admits the half-space
++    ``allowed_side * normal dot (position - point) > 0``.
++    """
++
++    id: str
++    kind: str
++    target: str
++    center: np.ndarray | None = None
++    radius: float | None = None
++    point: np.ndarray | None = None
++    normal: np.ndarray | None = None
++    allowed_side: float = 1.0
++
++
++@dataclass(frozen=True)
++class JunctionParameters:
++    """Validated J3 parameters, using the TorusParameters geometry names."""
++
++    A: np.ndarray
++    B: np.ndarray
++    e_z: np.ndarray
++    g: float
++    mass: float
++    junction_mass: float
++    s_A: float
++    s_B: float
++    lower_length: float
++    T: float
++    initial_state: np.ndarray
++    O: np.ndarray
++    e_x: np.ndarray
++    e_y: np.ndarray
++    d: float
++    x_C: float
++    a_A: float
++    a_B: float
++    h: float
++    obstacles: tuple[JunctionObstacle, ...] = ()
++
++
++def validate_junction_config(
++    config: dict[str, Any],
++) -> tuple[list[ValidationIssue], JunctionParameters | None]:
++    """Validate J.1, the support-circle geometry, and the initial guards."""
++
++    issues = base_validation(config, JUNCTION_MODEL_ID)
++    reject_unknown_keys(
++        config,
++        {
++            "schema_version",
++            "model_id",
++            "theory_sha256",
++            "units",
++            "physical",
++            "numerics",
++            "observation",
++            "validation",
++            "metadata",
++        },
++        "",
++        issues,
++    )
++    if config.get("units") != "SI":
++        issues.append(ValidationIssue("UNITS", "units", config.get("units"), "SI"))
++
++    physical = config.get("physical")
++    if not isinstance(physical, dict):
++        issues.append(ValidationIssue("TYPE", "physical", physical, "object"))
++        physical = {}
++    reject_unknown_keys(
++        physical,
++        {
++            "A",
++            "B",
++            "e_z",
++            "g",
++            "mass",
++            "junction_mass",
++            "s_A",
++            "s_B",
++            "lower_length",
++            "initial_state",
++            "T",
++            "obstacles",
++        },
++        "physical",
++        issues,
++    )
++    A = as_vector3(physical.get("A"), "physical.A", issues)
++    B = as_vector3(physical.get("B"), "physical.B", issues)
++    e_z = as_vector3(physical.get("e_z"), "physical.e_z", issues)
++    g = require_number(physical, "g", "physical", issues, positive=True)
++    mass = require_number(physical, "mass", "physical", issues, positive=True)
++    junction_mass = require_number(
++        physical, "junction_mass", "physical", issues, positive=True
++    )
++    s_A = require_number(physical, "s_A", "physical", issues, positive=True)
++    s_B = require_number(physical, "s_B", "physical", issues, positive=True)
++    lower_length = require_number(
++        physical, "lower_length", "physical", issues, positive=True
++    )
++    T = require_number(physical, "T", "physical", issues, positive=True)
++
++    initial_raw = physical.get("initial_state")
++    initial_state = strict_finite_array(initial_raw)
++    if initial_state is None or initial_state.shape != (8,):
++        issues.append(
++            ValidationIssue(
++                "TYPE",
++                "physical.initial_state",
++                initial_raw,
++                (
++                    "eight finite reals [theta,nu,nx,ny,nz,"
++                    "etax,etay,etaz]"
++                ),
++            )
++        )
++        initial_state = np.zeros(8)
++
++    geometry_ok = True
++    d_vector = B - A
++    d = float(np.linalg.norm(d_vector))
++    if not d > 0.0:
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_GEOMETRY",
++                "physical.A,B",
++                [A, B],
++                "distinct support points",
++            )
++        )
++        geometry_ok = False
++        e_x = np.array([1.0, 0.0, 0.0])
++    else:
++        e_x = d_vector / d
++    e_z_norm = float(np.linalg.norm(e_z))
++    if abs(e_z_norm - 1.0) > 1.0e-10:
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_GEOMETRY", "physical.e_z", e_z, "unit vector"
++            )
++        )
++        geometry_ok = False
++    support_vertical_cosine = (
++        abs(float(d_vector @ e_z)) / (d * e_z_norm)
++        if d > 0.0 and e_z_norm > 0.0
++        else np.inf
++    )
++    if support_vertical_cosine > 1.0e-10:
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_GEOMETRY",
++                "physical.A,B,e_z",
++                support_vertical_cosine,
++                "dimensionless support-axis vertical cosine <= 1e-10",
++            )
++        )
++        geometry_ok = False
++    e_y = np.cross(e_z, e_x)
++    if not (abs(s_A - s_B) < d < s_A + s_B):
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_GEOMETRY",
++                "physical.s_A,s_B,A,B",
++                [s_A, s_B, d],
++                "strict sphere-intersection inequalities",
++            )
++        )
++        geometry_ok = False
++    x_C = (s_A * s_A - s_B * s_B) / (2.0 * d) if d > 0.0 else 0.0
++    a_A = x_C + d / 2.0
++    a_B = d / 2.0 - x_C
++    h2 = s_A * s_A - a_A * a_A
++    if not (a_A > 0.0 and a_B > 0.0):
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_WORKING_BAND",
++                "derived.a_A,a_B",
++                [a_A, a_B],
++                "both > 0",
++            )
++        )
++        geometry_ok = False
++    if not h2 > 0.0:
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_GEOMETRY", "derived.h2", h2, "> 0"
++            )
++        )
++        geometry_ok = False
++    h = float(np.sqrt(max(h2, 0.0)))
++    O = (A + B) / 2.0
++    obstacles = _validate_obstacles(physical.get("obstacles", []), issues)
++
++    if initial_state.shape == (8,):
++        n0 = initial_state[2:5]
++        eta0 = initial_state[5:8]
++        n_error = abs(float(np.linalg.norm(n0)) - 1.0)
++        tangent_error = abs(float(n0 @ eta0))
++        tangent_scale = max(1.0, float(np.linalg.norm(eta0)))
++        if n_error > 1.0e-10:
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_INITIAL_CONSTRAINT",
++                    "physical.initial_state.n",
++                    float(np.linalg.norm(n0)),
++                    "unit norm within 1e-10; no projection is applied",
++                )
++            )
++        if tangent_error > 1.0e-10 * tangent_scale:
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_INITIAL_CONSTRAINT",
++                    "physical.initial_state.n_dot_eta",
++                    float(n0 @ eta0),
++                    "absolute value <= 1e-10 max(1, |eta|)",
++                )
++            )
++
++    params: JunctionParameters | None = None
++    if geometry_ok and not any(
++        issue.path.startswith("physical.initial_state")
++        or issue.path.startswith("physical.obstacles")
++        or issue.path
++        in {
++            "physical.g",
++            "physical.mass",
++            "physical.junction_mass",
++            "physical.s_A",
++            "physical.s_B",
++            "physical.lower_length",
++            "physical.T",
++        }
++        for issue in issues
++    ):
++        params = JunctionParameters(
++            A=A,
++            B=B,
++            e_z=e_z,
++            g=g,
++            mass=mass,
++            junction_mass=junction_mass,
++            s_A=s_A,
++            s_B=s_B,
++            lower_length=lower_length,
++            T=T,
++            initial_state=initial_state,
++            O=O,
++            e_x=e_x,
++            e_y=e_y,
++            d=d,
++            x_C=x_C,
++            a_A=a_A,
++            a_B=a_B,
++            h=h,
++            obstacles=obstacles,
++        )
++        derived0 = junction_derived(params, initial_state[None, :])
++        initial_tensions = [
++            float(derived0[name][0])
++            for name in ("T_A", "T_B", "T_lower")
++        ]
++        if not min(initial_tensions) > 0.0:
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_INITIAL_TENSION",
++                    "physical.initial_state.tensions",
++                    initial_tensions,
++                    "all three initial tensions strictly positive",
++                )
++            )
++        initial_clearance = {
++            obstacle.id: float(derived0["obstacle_clearance"][obstacle.id][0])
++            for obstacle in obstacles
++        }
++        for obstacle_id, clearance in initial_clearance.items():
++            if not clearance > 0.0:
++                issues.append(
++                    ValidationIssue(
++                        "JUNCTION_INITIAL_CONTACT",
++                        f"physical.obstacles.{obstacle_id}",
++                        clearance,
++                        "strictly positive initial signed clearance",
++                    )
++                )
++    return issues, params
++
++
++def junction_rhs(
++    params: JunctionParameters, _t: float, state: np.ndarray
++) -> np.ndarray:
++    """Evaluate the projection-free J.3 vector field."""
++
++    state = np.asarray(state, dtype=float)
++    if state.shape != (8,) or not np.all(np.isfinite(state)):
++        raise ValueError("junction state must contain eight finite reals")
++    theta, nu = state[:2]
++    n = state[2:5]
++    eta = state[5:8]
++    e_r, e_theta = _frame(params, np.asarray([theta]))
++    e_r = e_r[0]
++    e_theta = e_theta[0]
++    n_theta = float(n @ e_theta)
++    n_r = float(n @ e_r)
++    n_z = float(n @ params.e_z)
++    eta2 = float(eta @ eta)
++    denominator = params.h * (
++        params.junction_mass + params.mass * n_theta * n_theta
++    )
++    if not np.isfinite(denominator) or denominator <= 0.0:
++        raise FloatingPointError("J3 acceleration denominator left its positive domain")
++    nu_dot = (
++        -params.junction_mass * params.g * np.sin(theta)
++        + params.mass
++        * n_theta
++        * (params.g * n_z + params.h * nu * nu * n_r + params.lower_length * eta2)
++    ) / denominator
++    a_J = params.h * (nu_dot * e_theta - nu * nu * e_r)
++    eta_dot = (
++        (np.eye(3) - np.outer(n, n))
++        @ (params.g * params.e_z - a_J)
++        / params.lower_length
++        - eta2 * n
++    )
++    result = np.concatenate(([nu, nu_dot], eta, eta_dot))
++    if not np.all(np.isfinite(result)):
++        raise FloatingPointError("J3 right-hand side became non-finite")
++    return result
++
++
++def junction_derived(
++    params: JunctionParameters, states: np.ndarray
++) -> dict[str, Any]:
++    """Return J.2 positions/velocities, J.4--J.6 forces, and J.7 energy."""
++
++    states = np.asarray(states, dtype=float)
++    if states.ndim == 1:
++        states = states[None, :]
++    if states.ndim != 2 or states.shape[1] != 8:
++        raise ValueError("junction states must have shape (sample_count, 8)")
++    if not np.all(np.isfinite(states)):
++        raise ValueError("junction states must be finite")
++    theta = states[:, 0]
++    nu = states[:, 1]
++    n = states[:, 2:5]
++    eta = states[:, 5:8]
++    e_r, e_theta = _frame(params, theta)
++    n_theta = np.einsum("ij,ij->i", n, e_theta)
++    n_r = np.einsum("ij,ij->i", n, e_r)
++    n_z = n @ params.e_z
++    eta2 = np.einsum("ij,ij->i", eta, eta)
++    denominator = params.h * (
++        params.junction_mass + params.mass * n_theta * n_theta
++    )
++    nu_dot = (
++        -params.junction_mass * params.g * np.sin(theta)
++        + params.mass
++        * n_theta
++        * (
++            params.g * n_z
++            + params.h * nu * nu * n_r
++            + params.lower_length * eta2
++        )
++    ) / denominator
++    a_J = params.h * (
++        nu_dot[:, None] * e_theta - (nu * nu)[:, None] * e_r
++    )
++    projector_force = params.g * params.e_z[None, :] - a_J
++    n_dot_force = np.einsum("ij,ij->i", n, projector_force)
++    eta_dot = (
++        (projector_force - n * n_dot_force[:, None])
++        / params.lower_length
++        - eta2[:, None] * n
++    )
++    a_m = a_J + params.lower_length * eta_dot
++
++    J = (
++        params.O
++        + params.x_C * params.e_x
++        + params.h * e_r
++    )
++    r_m = J + params.lower_length * n
++    v_J = params.h * nu[:, None] * e_theta
++    v_m = v_J + params.lower_length * eta
++    T_lower = params.mass * (
++        n_dot_force + params.lower_length * eta2
++    )
++    W = (
++        params.junction_mass * projector_force
++        + T_lower[:, None] * n
++    )
++    W_x = W @ params.e_x
++    W_r = np.einsum("ij,ij->i", W, e_r)
++    T_A = params.s_A / params.d * (
++        W_x + params.a_B / params.h * W_r
++    )
++    T_B = params.s_B / params.d * (
++        params.a_A / params.h * W_r - W_x
++    )
++    energy = (
++        0.5 * params.junction_mass * params.h**2 * nu**2
++        + 0.5 * params.mass * np.einsum("ij,ij->i", v_m, v_m)
++        + (params.junction_mass + params.mass)
++        * params.g
++        * params.h
++        * (1.0 - np.cos(theta))
++        + params.mass
++        * params.g
++        * params.lower_length
++        * (1.0 - n_z)
++    )
++    n_norm = np.linalg.norm(n, axis=1)
++    n_dot_eta = np.einsum("ij,ij->i", n, eta)
++    obstacle_clearance = {
++        obstacle.id: _obstacle_clearance(obstacle, J, r_m)
++        for obstacle in params.obstacles
++    }
++    upper_A_error = np.linalg.norm(J - params.A, axis=1) - params.s_A
++    upper_B_error = np.linalg.norm(J - params.B, axis=1) - params.s_B
++    lower_error = np.linalg.norm(r_m - J, axis=1) - params.lower_length
++    junction_force_residual = (
++        params.junction_mass * a_J
++        - params.junction_mass * params.g * params.e_z
++        - T_lower[:, None] * n
++        - T_A[:, None] * (params.A - J) / params.s_A
++        - T_B[:, None] * (params.B - J) / params.s_B
++    )
++    bob_force_residual = (
++        params.mass * a_m
++        - params.mass * params.g * params.e_z
++        + T_lower[:, None] * n
++    )
++    return {
++        "J": J,
++        "r_m": r_m,
++        "v_J": v_J,
++        "v_m": v_m,
++        "a_J": a_J,
++        "a_m": a_m,
++        "nu_dot": nu_dot,
++        "eta_dot": eta_dot,
++        "T_A": T_A,
++        "T_B": T_B,
++        "T_lower": T_lower,
++        "E_junction": energy,
++        "n_norm_error": n_norm - 1.0,
++        "n_norm_squared_minus_one": np.einsum("ij,ij->i", n, n) - 1.0,
++        "n_dot_eta": n_dot_eta,
++        "constraint_position_error": n_norm - 1.0,
++        "constraint_velocity_error": n_dot_eta,
++        "upper_A_length_error": upper_A_error,
++        "upper_B_length_error": upper_B_error,
++        "lower_length_error": lower_error,
++        "junction_force_residual": junction_force_residual,
++        "bob_force_residual": bob_force_residual,
++        "W_theta_residual": np.einsum("ij,ij->i", W, e_theta),
++        "obstacle_clearance": obstacle_clearance,
++    }
++
++
++def run_junction(
++    config: dict[str, Any], *, identity: dict[str, Any]
++) -> SimulationResult:
++    """Validate, integrate, guard, diagnose, and observe one J3 input."""
++
++    issues, params = validate_junction_config(config)
++    if issues or params is None:
++        return SimulationResult(
++            model_id=JUNCTION_MODEL_ID,
++            contract_status=["INVALID_INPUT"],
++            numerical_status="INPUT_REJECTED",
++            tau=0.0,
++            returned_interval="empty",
++            time=np.empty(0),
++            events=[
++                {
++                    "kind": "input",
++                    "failures": [issue.as_dict() for issue in issues],
++                }
++            ],
++            metadata=identity,
++        )
++
++    numerics = config.get("numerics", {})
++    if not isinstance(numerics, dict):
++        return _invalid_numerical(
++            identity,
++            [ValidationIssue("NUMERICAL_CONFIG", "numerics", numerics, "object")],
++        )
++    numerical_issues = _validate_junction_numerics(numerics)
++    method = numerics.get("method", "DOP853")
++    rtol = _positive_value(numerics.get("rtol", 1.0e-10), 1.0e-10)
++    atol = _positive_value(numerics.get("atol", 1.0e-12), 1.0e-12)
++    atol_angle = _positive_value(numerics.get("atol_angle", atol), atol)
++    atol_rate = _positive_value(numerics.get("atol_rate", atol), atol)
++    omega_plus = _omega_plus(params)
++    default_max_step = min(
++        params.T / 200.0,
++        _MAX_FAST_MODE_PHASE_STEP / omega_plus,
++    )
++    max_step = _positive_value(
++        numerics.get("max_step", default_max_step), default_max_step
++    )
++    output_dt = _positive_value(
++        numerics.get("output_dt", params.T / 1000.0), params.T / 1000.0
++    )
++    event_tolerance = _positive_value(
++        numerics.get("event_cluster_tolerance", 1.0e-9), 1.0e-9
++    )
++    numerical_issues.extend(
++        numerical_time_resource_issues(params.T, max_step, output_dt)
++    )
++    if max_step * omega_plus > _MAX_FAST_MODE_PHASE_STEP * (1.0 + 1.0e-14):
++        numerical_issues.append(
++            ValidationIssue(
++                "JUNCTION_FAST_MODE_RESOLUTION",
++                "numerics.max_step",
++                max_step,
++                (
++                    "max_step * Omega_plus <= "
++                    f"{_MAX_FAST_MODE_PHASE_STEP}; Omega_plus={omega_plus:.17g}"
++                ),
++            )
++        )
++    if numerical_issues:
++        return _invalid_numerical(identity, numerical_issues)
++
++    atol_vector = np.array(
++        [atol_angle, atol_rate, atol_angle, atol_angle, atol_angle,
++         atol_rate, atol_rate, atol_rate],
++        dtype=float,
++    )
++    guard_names = ["T_A_ZERO", "T_B_ZERO", "T_LOWER_ZERO"] + [
++        f"CONTACT_{obstacle.id}" for obstacle in params.obstacles
++    ]
++    guards = [
++        _make_guard(params, index)
++        for index in range(len(guard_names))
++    ]
++    effective_max_step = max_step
++    integration_retry = None
++
++    def integrate(step_bound):
++        return solve_ivp(
++            lambda t, state: junction_rhs(params, t, state),
++            (0.0, params.T),
++            params.initial_state,
++            method=str(method),
++            rtol=rtol,
++            atol=atol_vector,
++            max_step=step_bound,
++            dense_output=True,
++            events=guards,
++        )
++
++    try:
++        with warnings.catch_warnings(record=True) as caught_warnings:
++            warnings.simplefilter("always")
++            try:
++                sol = integrate(max_step)
++            except ValueError as exc:
++                # SciPy 1.11 can append a terminal root equal to an accepted
++                # mesh point twice, then reject its own OdeSolution mesh.
++                # One explicitly recorded, finer-mesh retry avoids that mesh
++                # coincidence without changing the physical input or tolerances.
++                if str(exc) != "`ts` must be strictly increasing or decreasing.":
++                    raise
++                effective_max_step = 0.9 * max_step
++                integration_retry = {
++                    "reason": "scipy_duplicate_terminal_dense_time",
++                    "original_exception": str(exc),
++                    "requested_max_step": max_step,
++                    "retry_max_step": effective_max_step,
++                }
++                sol = integrate(effective_max_step)
++    except Exception as exc:
++        return SimulationResult(
++            model_id=JUNCTION_MODEL_ID,
++            contract_status=[],
++            numerical_status="SOLVER_FAILURE",
++            tau=0.0,
++            returned_interval="unresolved",
++            time=np.empty(0),
++            events=[{"kind": "numerical_failure", "message": repr(exc)}],
++            metadata={
++                **identity,
++                "integrator": method,
++                "omega_plus": omega_plus,
++                "constraint_projection_applied": False,
++            },
++        )
++
++    solver_warnings = [
++        {"category": warning.category.__name__, "message": str(warning.message)}
++        for warning in caught_warnings
++    ]
++    event_times = [float(times[0]) for times in sol.t_events if len(times)]
++    event_tau = min(event_times) if event_times else np.inf
++    event_root_bracket = (
++        _root_bracket(np.asarray(sol.t), event_tau)
++        if np.isfinite(event_tau)
++        else None
++    )
++    known_triggers: list[str] = []
++    if np.isfinite(event_tau):
++        known_triggers = [
++            name
++            for name, times in zip(guard_names, sol.t_events)
++            if len(times) and abs(float(times[0]) - event_tau) <= event_tolerance
++        ]
++        # A small positive value is still inside the physical domain.  Do not
++        # relabel it as a simultaneous root merely because it falls below a
++        # numerical audit tolerance.  Only roots actually located by the
++        # integrator establish trigger identity; an unlocated nonpositive
++        # guard is handled conservatively by ``_audit_dense_guards`` below.
++        known_triggers = sorted(set(known_triggers))
++
++    dense_guard_issue = None
++    invariant_issue = None
++    if sol.t.size and sol.sol is not None:
++        dense_guard_issue = _audit_dense_guards(
++            params,
++            sol,
++            guard_names,
++            known_event_tau=event_tau,
++            known_triggers=set(known_triggers),
++            event_tolerance=event_tolerance,
++            rtol=rtol,
++        )
++        invariant_issue = _accepted_invariant_issue(params, sol)
++
++    if solver_warnings:
++        tau = float(sol.t[-1]) if sol.t.size else 0.0
++        completed = False
++        contract_status: list[str] = []
++        numerical_status = "SOLVER_WARNING"
++        returned_interval = f"[0,{tau}] candidate only; warning made status unresolved"
++        events = [{"kind": "numerical_warning", "warnings": solver_warnings}]
++    elif not sol.success:
++        tau = float(sol.t[-1]) if sol.t.size else 0.0
++        completed = False
++        contract_status = []
++        numerical_status = "SOLVER_FAILURE"
++        returned_interval = f"[0,{tau}] last accepted; physical status unresolved"
++        events = [{"kind": "numerical_failure", "message": sol.message}]
++    elif dense_guard_issue is not None:
++        tau = float(dense_guard_issue["root_bracket"][0])
++        completed = False
++        contract_status = []
++        numerical_status = "EVENT_UNRESOLVED"
++        returned_interval = f"[0,{tau}] last interval boundary before unresolved guard"
++        events = [dense_guard_issue]
++        event_root_bracket = dense_guard_issue["root_bracket"]
++    elif invariant_issue is not None:
++        tau = float(invariant_issue["last_certified_time"])
++        completed = False
++        contract_status = []
++        numerical_status = str(invariant_issue["numerical_status"])
++        returned_interval = f"[0,{tau}] candidate only; invariant qualification failed"
++        events = [invariant_issue]
++    elif np.isfinite(event_tau) and event_tau <= params.T + event_tolerance:
++        tau = min(event_tau, params.T)
++        completed = False
++        contract_status = ["OUT_OF_SCOPE"]
++        numerical_status = "SUCCESS_EVENT"
++        returned_interval = f"[0,{tau})"
++        event_state = np.asarray(sol.sol(tau), dtype=float)
++        event_derived = junction_derived(params, event_state)
++        guard_values = _guard_values(params, event_state)
++        tolerances = _guard_zero_tolerances(params, rtol)
++        events = [
++            {
++                "kind": "physical_exit",
++                "time": tau,
++                "triggers": known_triggers,
++                "state_left": event_state,
++                "derived_left": _first_sample(event_derived),
++                "guard_values": dict(zip(guard_names, guard_values)),
++                "guard_zero_tolerances": dict(zip(guard_names, tolerances)),
++                "root_bracket": event_root_bracket,
++                "root_bracket_basis": (
++                    "adjacent accepted solver times; not an independent "
++                    "event-time error bound"
++                ),
++            }
++        ]
++    else:
++        tau = params.T
++        completed = True
++        contract_status = ["COMPLETED"]
++        numerical_status = "SUCCESS_SINGLE_RUN"
++        returned_interval = f"[0,{params.T}]"
++        events = []
++
++    include_end = completed or not contract_status
++    time = _output_times(tau, output_dt, include_end=include_end)
++    states = (
++        np.asarray(sol.sol(time), dtype=float).T
++        if time.size
++        else np.empty((0, 8))
++    )
++    derived = junction_derived(params, states) if time.size else {}
++    diagnostics = _run_diagnostics(
++        params,
++        sol,
++        derived,
++        omega_plus=omega_plus,
++        solver_warnings=solver_warnings,
++        event_root_bracket=event_root_bracket,
++    )
++
++    def position_at(times: np.ndarray) -> np.ndarray:
++        query = np.atleast_1d(np.asarray(times, dtype=float))
++        query_states = np.asarray(sol.sol(query), dtype=float).T
++        return junction_derived(params, query_states)["r_m"]
++
++    numerically_resolved = numerical_status in {
++        "SUCCESS_SINGLE_RUN",
++        "SUCCESS_EVENT",
++    }
++    observations = (
++        evaluate_observations(
++            config.get("observation"),
++            position_at=position_at,
++            interval_end=tau,
++            completed=completed,
++            e_z=params.e_z,
++            event_time_tolerance=event_tolerance,
++        )
++        if numerically_resolved
++        else _unresolved_observations(config.get("observation"), numerical_status, tau)
++    )
++    state_payload: dict[str, Any] = {"X_junction": states}
++    if time.size:
++        state_payload.update(
++            {
++                "theta": states[:, 0],
++                "nu": states[:, 1],
++                "n": states[:, 2:5],
++                "eta": states[:, 5:8],
++                "r_J": derived["J"],
++                "r_m": derived["r_m"],
++                "v_J": derived["v_J"],
++                "v_m": derived["v_m"],
++            }
++        )
++    return SimulationResult(
++        model_id=JUNCTION_MODEL_ID,
++        contract_status=contract_status,
++        numerical_status=numerical_status,
++        tau=tau,
++        returned_interval=returned_interval,
++        time=time,
++        state=state_payload,
++        derived=derived,
++        events=events,
++        diagnostics=diagnostics,
++        observations=observations,
++        metadata={
++            **identity,
++            "integrator": method,
++            "rtol": rtol,
++            "effective_rtol": rtol,
++            "atol": atol,
++            "atol_angle": atol_angle,
++            "atol_rate": atol_rate,
++            "effective_atol_vector": atol_vector,
++            "max_step": max_step,
++            "effective_max_step": effective_max_step,
++            "integration_retry": integration_retry,
++            "fast_mode_max_phase_step": float(max_step * omega_plus),
++            "omega_plus": omega_plus,
++            "event_cluster_tolerance": event_tolerance,
++            "constraint_projection_applied": False,
++            "coordinate_note": (
++                "theta is an unwrapped real representative; n and eta are global "
++                "Cartesian coordinates; no constraint projection is applied"
++            ),
++        },
++    )
++
++
++def _frame(
++    params: JunctionParameters, theta: np.ndarray
++) -> tuple[np.ndarray, np.ndarray]:
++    theta = np.asarray(theta, dtype=float)
++    e_r = (
++        np.sin(theta)[:, None] * params.e_y
++        + np.cos(theta)[:, None] * params.e_z
++    )
++    e_theta = (
++        np.cos(theta)[:, None] * params.e_y
++        - np.sin(theta)[:, None] * params.e_z
++    )
++    return e_r, e_theta
++
++
++def _validate_obstacles(
++    raw: Any, issues: list[ValidationIssue]
++) -> tuple[JunctionObstacle, ...]:
++    if not isinstance(raw, list):
++        issues.append(
++            ValidationIssue("TYPE", "physical.obstacles", raw, "array of obstacle objects")
++        )
++        return ()
++    if len(raw) > _MAX_OBSTACLES:
++        issues.append(
++            ValidationIssue(
++                "JUNCTION_OBSTACLE_COUNT",
++                "physical.obstacles",
++                len(raw),
++                f"at most {_MAX_OBSTACLES} obstacles",
++            )
++        )
++    result: list[JunctionObstacle] = []
++    ids: set[str] = set()
++    for index, item in enumerate(raw[:_MAX_OBSTACLES]):
++        path = f"physical.obstacles[{index}]"
++        if not isinstance(item, dict):
++            issues.append(ValidationIssue("TYPE", path, item, "obstacle object"))
++            continue
++        obstacle_id = item.get("id")
++        kind = item.get("kind")
++        target = item.get("target")
++        if not isinstance(obstacle_id, str) or not _OBSTACLE_ID.fullmatch(obstacle_id):
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_OBSTACLE_ID",
++                    f"{path}.id",
++                    obstacle_id,
++                    "unique 1--64 character ASCII identifier",
++                )
++            )
++            obstacle_id = f"invalid_{index}"
++        elif obstacle_id in ids:
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_OBSTACLE_ID",
++                    f"{path}.id",
++                    obstacle_id,
++                    "unique obstacle identifier",
++                )
++            )
++        ids.add(obstacle_id)
++        if target not in {"junction", "bob"}:
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_OBSTACLE_TARGET",
++                    f"{path}.target",
++                    target,
++                    "junction or bob",
++                )
++            )
++            target = "bob"
++        if kind == "sphere":
++            reject_unknown_keys(
++                item, {"id", "kind", "target", "center", "radius"}, path, issues
++            )
++            center = as_vector3(item.get("center"), f"{path}.center", issues)
++            radius = require_number(item, "radius", path, issues, positive=True)
++            result.append(
++                JunctionObstacle(
++                    id=obstacle_id,
++                    kind="sphere",
++                    target=str(target),
++                    center=center,
++                    radius=radius,
++                )
++            )
++        elif kind == "plane":
++            reject_unknown_keys(
++                item,
++                {"id", "kind", "target", "point", "normal", "allowed_side"},
++                path,
++                issues,
++            )
++            point = as_vector3(item.get("point"), f"{path}.point", issues)
++            normal = as_vector3(item.get("normal"), f"{path}.normal", issues)
++            if abs(float(np.linalg.norm(normal)) - 1.0) > 1.0e-10:
++                issues.append(
++                    ValidationIssue(
++                        "JUNCTION_OBSTACLE_GEOMETRY",
++                        f"{path}.normal",
++                        normal,
++                        "unit vector",
++                    )
++                )
++            side_raw = item.get("allowed_side", 1)
++            if not is_finite_number(side_raw) or float(side_raw) not in {-1.0, 1.0}:
++                issues.append(
++                    ValidationIssue(
++                        "JUNCTION_OBSTACLE_GEOMETRY",
++                        f"{path}.allowed_side",
++                        side_raw,
++                        "+1 or -1",
++                    )
++                )
++                side = 1.0
++            else:
++                side = float(side_raw)
++            result.append(
++                JunctionObstacle(
++                    id=obstacle_id,
++                    kind="plane",
++                    target=str(target),
++                    point=point,
++                    normal=normal,
++                    allowed_side=side,
++                )
++            )
++        else:
++            reject_unknown_keys(item, {"id", "kind", "target"}, path, issues)
++            issues.append(
++                ValidationIssue(
++                    "JUNCTION_OBSTACLE_KIND",
++                    f"{path}.kind",
++                    kind,
++                    "sphere or plane",
++                )
++            )
++    return tuple(result)
++
++
++def _obstacle_clearance(
++    obstacle: JunctionObstacle, J: np.ndarray, r_m: np.ndarray
++) -> np.ndarray:
++    position = J if obstacle.target == "junction" else r_m
++    if obstacle.kind == "sphere":
++        assert obstacle.center is not None and obstacle.radius is not None
++        return np.linalg.norm(position - obstacle.center, axis=1) - obstacle.radius
++    assert obstacle.point is not None and obstacle.normal is not None
++    return obstacle.allowed_side * ((position - obstacle.point) @ obstacle.normal)
++
++
++def _omega_plus(params: JunctionParameters) -> float:
++    eta_J = params.junction_mass / (params.junction_mass + params.mass)
++    h = params.h
++    ell = params.lower_length
++    D_J = np.sqrt((h + ell) ** 2 - 4.0 * eta_J * h * ell)
++    return float(
++        np.sqrt(params.g * (h + ell + D_J) / (2.0 * eta_J * h * ell))
++    )
++
++
++def _validate_junction_numerics(
++    numerics: dict[str, Any]
++) -> list[ValidationIssue]:
++    issues: list[ValidationIssue] = []
++    reject_unknown_keys(
++        numerics, JUNCTION_NUMERICAL_FIELDS, "numerics", issues
++    )
++    method = numerics.get("method", "DOP853")
++    if method not in {"DOP853", "Radau"}:
++        issues.append(
++            ValidationIssue(
++                "INTEGRATOR", "numerics.method", method, "DOP853 or Radau"
++            )
++        )
++    for field, default in {
++        "rtol": 1.0e-10,
++        "atol": 1.0e-12,
++        "atol_angle": numerics.get("atol", 1.0e-12),
++        "atol_rate": numerics.get("atol", 1.0e-12),
++        "max_step": None,
++        "output_dt": None,
++        "event_cluster_tolerance": 1.0e-9,
++    }.items():
++        value = numerics.get(field, default)
++        if value is None:
++            continue
++        if not is_finite_number(value) or float(value) <= 0.0:
++            issues.append(
++                ValidationIssue(
++                    "NUMERICAL_CONFIG",
++                    f"numerics.{field}",
++                    value,
++                    "positive finite real",
++                )
++            )
++    rtol = numerics.get("rtol", 1.0e-10)
++    if is_finite_number(rtol) and 0.0 < float(rtol) < MIN_SOLVER_RTOL:
++        issues.append(
++            ValidationIssue(
++                "NUMERICAL_CONFIG",
++                "numerics.rtol",
++                rtol,
++                f">= SciPy machine floor {MIN_SOLVER_RTOL:.17g}",
++            )
++        )
++    return issues
++
++
++def _positive_value(value: Any, fallback: float) -> float:
++    return float(value) if is_finite_number(value) and float(value) > 0.0 else fallback
++
++
++def _invalid_numerical(
++    identity: dict[str, Any], issues: list[ValidationIssue]
++) -> SimulationResult:
++    return SimulationResult(
++        model_id=JUNCTION_MODEL_ID,
++        contract_status=[],
++        numerical_status="INVALID_NUMERICAL_CONFIG",
++        tau=0.0,
++        returned_interval="empty",
++        time=np.empty(0),
++        events=[
++            {
++                "kind": "numerical_input",
++                "failures": [issue.as_dict() for issue in issues],
++            }
++        ],
++        metadata=identity,
++    )
++
++
++def _guard_values(params: JunctionParameters, state: np.ndarray) -> np.ndarray:
++    derived = junction_derived(params, np.asarray(state)[None, :])
++    values = [
++        float(derived["T_A"][0]),
++        float(derived["T_B"][0]),
++        float(derived["T_lower"][0]),
++    ]
++    values.extend(
++        float(derived["obstacle_clearance"][obstacle.id][0])
++        for obstacle in params.obstacles
++    )
++    return np.asarray(values, dtype=float)
++
++
++def _make_guard(
++    params: JunctionParameters, index: int
++) -> Callable[[float, np.ndarray], float]:
++    def event(_time: float, state: np.ndarray) -> float:
++        return float(_guard_values(params, state)[index])
++
++    event.terminal = True  # type: ignore[attr-defined]
++    event.direction = -1.0  # type: ignore[attr-defined]
++    return event
++
++
++def _guard_zero_tolerances(
++    params: JunctionParameters, rtol: float
++) -> np.ndarray:
++    eps_factor = max(4096.0 * np.finfo(float).eps, 32.0 * rtol)
++    force_scale = max(
++        (params.mass + params.junction_mass) * params.g,
++        np.finfo(float).tiny,
++    )
++    length_scale = max(
++        params.s_A,
++        params.s_B,
++        params.lower_length,
++        params.d,
++        params.h,
++        np.finfo(float).tiny,
++    )
++    return np.asarray(
++        [eps_factor * force_scale] * 3
++        + [eps_factor * length_scale] * len(params.obstacles),
++        dtype=float,
++    )
++
++
++def _root_bracket(times: np.ndarray, root: float) -> list[float]:
++    if times.size == 0:
++        return [0.0, float(root)]
++    index = int(np.searchsorted(times, root, side="left"))
++    upper_index = min(index, times.size - 1)
++    lower_index = max(0, upper_index - 1)
++    return [float(times[lower_index]), float(times[upper_index])]
++
++
++def _audit_dense_guards(
++    params: JunctionParameters,
++    sol: Any,
++    guard_names: list[str],
++    *,
++    known_event_tau: float,
++    known_triggers: set[str],
++    event_tolerance: float,
++    rtol: float,
++) -> dict[str, Any] | None:
++    """Find non-sign-changing touches that ``solve_ivp`` events can miss."""
++
++    times = np.asarray(sol.t, dtype=float)
++    if times.size < 2:
++        return None
++    zero_tolerances = _guard_zero_tolerances(params, rtol)
++    for interval in range(times.size - 1):
++        left = float(times[interval])
++        right = float(times[interval + 1])
++        if not right > left:
++            continue
++        left_values = _guard_values(params, np.asarray(sol.sol(left), dtype=float))
++        right_values = _guard_values(params, np.asarray(sol.sol(right), dtype=float))
++        for guard_index, (name, tolerance) in enumerate(
++            zip(guard_names, zero_tolerances)
++        ):
++            objective = lambda query: float(
++                _guard_values(
++                    params, np.asarray(sol.sol(float(query)), dtype=float)
++                )[guard_index]
++            )
++            optimum = minimize_scalar(
++                objective,
++                bounds=(left, right),
++                method="bounded",
++                options={
++                    "xatol": max(
++                        event_tolerance / 4.0,
++                        32.0 * np.finfo(float).eps * max(1.0, abs(right)),
++                    ),
++                    "maxiter": 48,
++                },
++            )
++            if (
++                not bool(getattr(optimum, "success", False))
++                or not np.isfinite(float(getattr(optimum, "x", np.nan)))
++                or not np.isfinite(float(getattr(optimum, "fun", np.nan)))
++            ):
++                return {
++                    "kind": "numerical_event_unresolved",
++                    "numerical_status": "EVENT_UNRESOLVED",
++                    "reason": "guard minimum search failed",
++                    "trigger": name,
++                    "optimizer_message": str(
++                        getattr(optimum, "message", "no optimizer status")
++                    ),
++                    "root_bracket": [left, right],
++                    "root_bracket_basis": (
++                        "accepted solver interval containing the failed guard audit"
++                    ),
++                }
++            candidates = [
++                (left, float(left_values[guard_index])),
++                (right, float(right_values[guard_index])),
++                (float(optimum.x), float(optimum.fun)),
++            ]
++            minimum_time, minimum_value = min(candidates, key=lambda item: item[1])
++            if minimum_value > tolerance:
++                continue
++            ends_at_known_exit = (
++                np.isfinite(known_event_tau)
++                and abs(right - known_event_tau) <= event_tolerance
++                and abs(minimum_time - right)
++                <= max(event_tolerance, 1.0e-6 * (right - left))
++            )
++            if ends_at_known_exit and minimum_value > 0.0:
++                # The trajectory is no longer interpreted after the already
++                # located physical exit at ``right``.  Another guard that is
++                # still strictly positive there cannot have triggered first,
++                # even when its margin is below the audit uncertainty scale.
++                continue
++            matches_known_root = (
++                np.isfinite(known_event_tau)
++                and name in known_triggers
++                and right >= known_event_tau - event_tolerance
++                and abs(minimum_time - known_event_tau)
++                <= max(event_tolerance, 1.0e-6 * (right - left))
++            )
++            if matches_known_root:
++                continue
++            return {
++                "kind": "numerical_event_unresolved",
++                "numerical_status": "EVENT_UNRESOLVED",
++                "reason": "grazing or unbracketed guard minimum",
++                "trigger": name,
++                "suspected_time": minimum_time,
++                "minimum_guard_value": minimum_value,
++                "guard_zero_tolerance": float(tolerance),
++                "root_bracket": [left, right],
++                "root_bracket_basis": (
++                    "accepted solver interval; grazing screen, not an "
++                    "independent event-time error bound"
++                ),
++            }
++    return None
++
++
++def _accepted_invariant_issue(
++    params: JunctionParameters, sol: Any
++) -> dict[str, Any] | None:
++    states = np.asarray(sol.y, dtype=float).T
++    times = np.asarray(sol.t, dtype=float)
++    if states.shape != (times.size, 8) or not np.all(np.isfinite(states)):
++        return {
++            "kind": "numerical_nonfinite_state",
++            "numerical_status": "NONFINITE_STATE",
++            "time": float(times[-1]) if times.size else 0.0,
++            "last_certified_time": float(times[-2]) if times.size > 1 else 0.0,
++        }
++    derived = junction_derived(params, states)
++    position_error = np.abs(derived["n_norm_error"])
++    velocity_error = np.abs(derived["n_dot_eta"])
++    invalid = (position_error > _CONSTRAINT_TOLERANCE) | (
++        velocity_error > _CONSTRAINT_TOLERANCE
++    )
++    indices = np.flatnonzero(invalid)
++    if indices.size:
++        index = int(indices[0])
++        return {
++            "kind": "numerical_invariant_failure",
++            "numerical_status": "INVARIANT_FAILURE",
++            "time": float(times[index]),
++            "last_certified_time": float(times[max(0, index - 1)]),
++            "max_abs_n_norm_error_at_detection": float(position_error[index]),
++            "max_abs_n_dot_eta_at_detection": float(velocity_error[index]),
++            "constraint_tolerance": _CONSTRAINT_TOLERANCE,
++        }
++    energy = np.asarray(derived["E_junction"], dtype=float)
++    if energy.size:
++        drift = np.abs(energy - energy[0])
++        gravitational_scale = (
++            (params.mass + params.junction_mass) * params.g * params.h
++            + params.mass * params.g * params.lower_length
++        )
++        excitation_floor = 4096.0 * np.finfo(float).eps * gravitational_scale
++        if abs(float(energy[0])) > excitation_floor:
++            invalid_energy = drift > _RELATIVE_ENERGY_TOLERANCE * abs(float(energy[0]))
++        else:
++            invalid_energy = drift > 1.0e-10 * gravitational_scale
++        indices = np.flatnonzero(invalid_energy)
++        if indices.size:
++            index = int(indices[0])
++            return {
++                "kind": "numerical_energy_failure",
++                "numerical_status": "ENERGY_INVARIANT_FAILURE",
++                "time": float(times[index]),
++                "last_certified_time": float(times[max(0, index - 1)]),
++                "absolute_energy_drift_at_detection": float(drift[index]),
++                "initial_excitation_energy": float(energy[0]),
++                "relative_tolerance": _RELATIVE_ENERGY_TOLERANCE,
++            }
++    return None
++
++
++def _run_diagnostics(
++    params: JunctionParameters,
++    sol: Any,
++    derived: dict[str, Any],
++    *,
++    omega_plus: float,
++    solver_warnings: list[dict[str, str]],
++    event_root_bracket: list[float] | None,
++) -> dict[str, Any]:
++    accepted_states = np.asarray(sol.y, dtype=float).T
++    accepted = junction_derived(params, accepted_states) if accepted_states.size else {}
++    energy = np.asarray(accepted.get("E_junction", np.empty(0)), dtype=float)
++    energy_drift = (
++        np.abs(energy - energy[0]) if energy.size else np.empty(0)
++    )
++    energy_scale = abs(float(energy[0])) if energy.size else 0.0
++    gravitational_scale = (
++        (params.mass + params.junction_mass) * params.g * params.h
++        + params.mass * params.g * params.lower_length
++    )
++    relative_energy_drift = (
++        float(np.max(energy_drift) / energy_scale)
++        if energy.size and energy_scale > 4096.0 * np.finfo(float).eps * gravitational_scale
++        else None
++    )
++    sampled_guards: dict[str, Any] = {}
++    if derived:
++        sampled_guards = {
++            "T_A_ZERO": np.asarray(derived["T_A"], dtype=float),
++            "T_B_ZERO": np.asarray(derived["T_B"], dtype=float),
++            "T_LOWER_ZERO": np.asarray(derived["T_lower"], dtype=float),
++        }
++        sampled_guards.update(
++            {
++                f"CONTACT_{obstacle.id}": np.asarray(
++                    derived["obstacle_clearance"][obstacle.id], dtype=float
++                )
++                for obstacle in params.obstacles
++            }
++        )
++    accepted_differences = np.diff(np.asarray(sol.t, dtype=float))
++    min_tensions = {
++        name: (
++            float(np.min(accepted[name]))
++            if accepted and np.asarray(accepted[name]).size
++            else None
++        )
++        for name in ("T_A", "T_B", "T_lower")
++    }
++    force_residual = np.asarray(
++        accepted.get("junction_force_residual", np.empty((0, 3))), dtype=float
++    )
++    bob_residual = np.asarray(
++        accepted.get("bob_force_residual", np.empty((0, 3))), dtype=float
++    )
++    return {
++        "solver_message": sol.message,
++        "nfev": int(sol.nfev),
++        "njev": int(getattr(sol, "njev", 0)),
++        "nlu": int(getattr(sol, "nlu", 0)),
++        "accepted_steps": max(0, int(np.asarray(sol.t).size) - 1),
++        "max_actual_step": (
++            float(np.max(accepted_differences)) if accepted_differences.size else 0.0
++        ),
++        "omega_plus": omega_plus,
++        "max_actual_fast_mode_phase_step": (
++            float(np.max(accepted_differences) * omega_plus)
++            if accepted_differences.size
++            else 0.0
++        ),
++        "initial_energy": float(energy[0]) if energy.size else None,
++        "energy_scale": energy_scale if energy.size else None,
++        "energy_scale_basis": "absolute initial J.7 excitation energy",
++        "max_absolute_energy_drift": (
++            float(np.max(energy_drift)) if energy_drift.size else None
++        ),
++        "max_relative_energy_drift": relative_energy_drift,
++        "max_abs_n_norm_error": (
++            float(np.max(np.abs(accepted["n_norm_error"]))) if accepted else None
++        ),
++        "max_abs_n_dot_eta": (
++            float(np.max(np.abs(accepted["n_dot_eta"]))) if accepted else None
++        ),
++        "max_abs_upper_length_error": (
++            max(
++                float(np.max(np.abs(accepted["upper_A_length_error"]))),
++                float(np.max(np.abs(accepted["upper_B_length_error"]))),
++            )
++            if accepted
++            else None
++        ),
++        "max_abs_lower_length_error": (
++            float(np.max(np.abs(accepted["lower_length_error"])))
++            if accepted
++            else None
++        ),
++        "max_junction_force_residual": (
++            float(np.max(np.linalg.norm(force_residual, axis=1)))
++            if force_residual.size
++            else None
++        ),
++        "max_bob_force_residual": (
++            float(np.max(np.linalg.norm(bob_residual, axis=1)))
++            if bob_residual.size
++            else None
++        ),
++        "min_tensions": min_tensions,
++        "event_root_bracket": event_root_bracket,
++        "event_root_bracket_basis": (
++            "adjacent accepted solver times; not an independent event-time error bound"
++            if event_root_bracket is not None
++            else None
++        ),
++        "dense_guard_audit": (
++            "bounded scalar minimization plus endpoints on every accepted step"
++        ),
++        "dense_guard_audit_scope": (
++            "conservative screen for missed sign changes and grazing minima under "
++            "the configured step/fast-mode bound; not a proof for arbitrary "
++            "continuous guards"
++        ),
++        "sampled_guard_component_series": sampled_guards,
++        "constraint_projection_applied": False,
++        "projection_energy_correction_J": None,
++        "refinement_qualification": "SINGLE_RUN_CANDIDATE",
++        "solver_warnings": solver_warnings,
++    }
++
++
++def _first_sample(value: Any) -> Any:
++    if isinstance(value, dict):
++        return {key: _first_sample(child) for key, child in value.items()}
++    array = np.asarray(value)
++    return array[0] if array.ndim else array
++
++
++def _output_times(end: float, step: float, *, include_end: bool) -> np.ndarray:
++    if end < 0.0:
++        return np.empty(0)
++    count = safe_uniform_sample_count(
++        end, step, maximum_samples=MAX_UNIFORM_SAMPLES
++    )
++    if count is None:
++        raise ValueError("unsafe uniform output grid")
++    values = step * np.arange(count)
++    if include_end and (
++        not values.size
++        or values[-1] < end - 1.0e-13 * max(1.0, abs(end))
++    ):
++        values = np.append(values, end)
++    if not include_end:
++        values = values[values < end]
++    return values
++
++
++def _unresolved_observations(
++    spec: Any, numerical_status: str, time: float
++) -> dict[str, Any]:
++    if spec is None:
++        return {}
++    return {
++        "status": ["OBSERVATION_UNRESOLVED_DUE_TO_NUMERICS"],
++        "operator": None,
++        "time": np.empty(0),
++        "values": np.empty((0, 2)),
++        "valid_mask": np.empty(0, dtype=bool),
++        "errors": [
++            {"code": numerical_status, "detected_at_sample": float(time)}
++        ],
++    }
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/providers.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/providers.py"
+index c246c8b..e822cc4 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/providers.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/providers.py"
+@@ -21,6 +21,13 @@ from .contracts import (
+ )
+ 
+ 
++HOLD_RELEASE_PROTOCOL_ID = "YP-HOLD-RELEASE-1.0"
++HOLD_RELEASE_EXTENSION_THEORY_SHA256 = (
++    "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd"
++)
++HOLD_RELEASE_THEORY_SECTIONS = ("7.4", "7.5")
++
++
+ @dataclass(frozen=True)
+ class PrescribedMotion:
+     position_fn: Callable[[float], np.ndarray]
+@@ -65,6 +72,39 @@ class PointForce:
+         return np.asarray(self.value_fn(float(t)), dtype=float)
+ 
+ 
++@dataclass(frozen=True)
++class HoldingForceRelease:
++    """Prescribed multiplier for releasing a statically determined hold force.
++
++    The force vector itself is the constraint reaction required by the prepared
++    static state.  This provider only prescribes when and how that known force
++    is withdrawn, so solver tolerances cannot move the release times.
++    """
++
++    source: str
++    start: float
++    duration: float
++    history: str
++    description: dict[str, Any]
++
++    @property
++    def end(self) -> float:
++        return self.start + self.duration
++
++    def multiplier(self, t: float) -> float:
++        time = float(t)
++        if self.history == "instantaneous":
++            return 1.0 if time < self.start else 0.0
++        if time <= self.start:
++            return 1.0
++        if time >= self.end:
++            return 0.0
++        phase = (time - self.start) / self.duration
++        # C1 cubic smoothstep from one to zero.  The zero end slopes avoid a
++        # force-rate jump without introducing any extra damping term.
++        return float(1.0 - 3.0 * phase**2 + 2.0 * phase**3)
++
++
+ MOTION_FACTORIES: dict[str, Callable[..., PrescribedMotion]] = {}
+ AIR_FACTORIES: dict[str, Callable[..., AirVelocity]] = {}
+ MATERIAL_FORCE_FACTORIES: dict[str, Callable[..., MaterialForce]] = {}
+@@ -600,6 +640,116 @@ def build_point_force(spec: Any, path: str, issues: list[ValidationIssue]) -> Po
+     return factory(spec, path, issues)
+ 
+ 
++def build_holding_force_release(
++    spec: Any,
++    path: str,
++    issues: list[ValidationIssue],
++) -> HoldingForceRelease:
++    """Build the explicit static-reaction withdrawal protocol.
++
++    ``None`` retains the original ``STATIC_HOLD_RELEASE`` input semantics: the
++    compatible held state is released instantaneously at ``t=0``.  New inputs
++    should spell out all four fields so their provenance is present in the
++    exported configuration and diagnostics.
++    """
++
++    implicit_legacy = spec is None
++    if implicit_legacy:
++        spec = {
++            "source": "initial_static_reaction",
++            "start": 0.0,
++            "duration": 0.0,
++            "history": "instantaneous",
++        }
++    if not isinstance(spec, dict):
++        issues.append(ValidationIssue("TYPE", path, spec, "release protocol object"))
++        spec = {
++            "source": "initial_static_reaction",
++            "start": 0.0,
++            "duration": 0.0,
++            "history": "instantaneous",
++        }
++    reject_unknown_keys(
++        spec,
++        {"source", "start", "duration", "history"},
++        path,
++        issues,
++    )
++    source = spec.get("source")
++    if source != "initial_static_reaction":
++        issues.append(
++            ValidationIssue(
++                "HOLD_RELEASE_SOURCE",
++                f"{path}.source",
++                source,
++                "initial_static_reaction",
++            )
++        )
++        source = "initial_static_reaction"
++    history = spec.get("history")
++    if history not in ("instantaneous", "smoothstep_c1"):
++        issues.append(
++            ValidationIssue(
++                "HOLD_RELEASE_HISTORY",
++                f"{path}.history",
++                history,
++                "instantaneous or smoothstep_c1",
++            )
++        )
++        history = "instantaneous"
++    start = spec.get("start")
++    duration = spec.get("duration")
++    if not is_finite_number(start) or float(start) < 0.0:
++        issues.append(
++            ValidationIssue(
++                "HOLD_RELEASE_TIME", f"{path}.start", start, "finite and >= 0 s"
++            )
++        )
++        start = 0.0
++    if not is_finite_number(duration) or float(duration) < 0.0:
++        issues.append(
++            ValidationIssue(
++                "HOLD_RELEASE_TIME",
++                f"{path}.duration",
++                duration,
++                "finite and >= 0 s",
++            )
++        )
++        duration = 0.0
++    start = float(start)
++    duration = float(duration)
++    if history == "instantaneous" and duration != 0.0:
++        issues.append(
++            ValidationIssue(
++                "HOLD_RELEASE_TIME",
++                f"{path}.duration",
++                duration,
++                "exactly 0 s for instantaneous history",
++            )
++        )
++    if history == "smoothstep_c1" and duration <= 0.0:
++        issues.append(
++            ValidationIssue(
++                "HOLD_RELEASE_TIME",
++                f"{path}.duration",
++                duration,
++                "> 0 s for smoothstep_c1 history",
++            )
++        )
++        duration = 1.0
++    description = {
++        "protocol_id": HOLD_RELEASE_PROTOCOL_ID,
++        "extension_theory_sha256": HOLD_RELEASE_EXTENSION_THEORY_SHA256,
++        "theory_sections": list(HOLD_RELEASE_THEORY_SECTIONS),
++        "source": source,
++        "start": start,
++        "duration": duration,
++        "history": history,
++        "implicit_legacy_default": implicit_legacy,
++    }
++    return HoldingForceRelease(source, start, duration, history, description)
++
++
+ def build_material_force(spec: Any, path: str, issues: list[ValidationIssue]) -> MaterialForce:
+     if not isinstance(spec, dict):
+         issues.append(ValidationIssue("TYPE", path, spec, "provider object"))
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/runner.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/runner.py"
+index 93a081c..ffbabdd 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/runner.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/runner.py"
+@@ -1,4 +1,4 @@
+-"""Model dispatch for the two frozen forward-theory numerical backends."""
++"""Model dispatch for independently selected forward-theory backends."""
+ 
+ from __future__ import annotations
+ 
+@@ -12,12 +12,12 @@ from .cable import run_cable
+ from .contracts import (
+     CONFIG_SCHEMA_VERSION,
+     SimulationResult,
+-    THEORY_SHA256,
+     ValidationIssue,
+     json_input_issues,
+     load_json,
+     run_identity_hashes,
+     source_tree_sha256,
++    theory_sha256_for_model,
+ )
+ from .torus import run_torus
+ 
+@@ -138,11 +138,16 @@ def run_config(config: dict[str, Any]) -> SimulationResult:
+     if model_id == "FWD-TORUS-1.0":
+         result = run_torus(frozen_config, identity=identity)
+         return _fail_on_source_drift(result, identity)
++    if model_id == "YP-FWD-J3-v1":
++        from .junction import run_junction
++
++        result = run_junction(frozen_config, identity=identity)
++        return _fail_on_source_drift(result, identity)
+     issue = ValidationIssue(
+         "MODEL_ID",
+         "model_id",
+         model_id,
+-        "FWD-CABLE-1.0 or FWD-TORUS-1.0",
++        "FWD-CABLE-1.0, FWD-TORUS-1.0 or YP-FWD-J3-v1",
+     )
+     return SimulationResult(
+         model_id=str(model_id) if model_id is not None else "UNSPECIFIED",
+@@ -198,13 +203,14 @@ def _config_envelope_issues(
+                 CONFIG_SCHEMA_VERSION,
+             )
+         )
+-    if config.get("theory_sha256") != THEORY_SHA256:
++    expected_theory = theory_sha256_for_model(model_id)
++    if config.get("theory_sha256") != expected_theory:
+         issues.append(
+             ValidationIssue(
+                 "THEORY_IDENTITY",
+                 "theory_sha256",
+                 config.get("theory_sha256"),
+-                THEORY_SHA256,
++                expected_theory,
+             )
+         )
+     common = {
+diff --git "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/torus.py" "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/torus.py"
+index 6db6745..b0d9f3c 100644
+--- "a/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/torus.py"
++++ "b/02_\346\250\241\346\213\237\347\250\213\345\272\217/01_\345\211\215\345\220\221\351\242\204\346\265\213\346\225\260\345\200\274\346\261\202\350\247\243\345\231\250/y_pendulum_forward_solver/y_pendulum_forward/torus.py"
+@@ -552,6 +552,9 @@ def _torus_run_diagnostics(
+     }
+     return {
+         "solver_message": sol.message,
++        "accepted_steps": int(max(0, len(sol.t) - 1)),
++        "max_actual_step": float(np.max(np.diff(sol.t))) if len(sol.t) > 1 else 0.0,
++        "min_actual_step": float(np.min(np.diff(sol.t))) if len(sol.t) > 1 else 0.0,
+         "nfev": int(sol.nfev),
+         "njev": int(getattr(sol, "njev", 0)),
+         "nlu": int(getattr(sol, "nlu", 0)),

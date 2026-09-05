@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "source_commit": "8476b3f6f8eae7ff439b11576a5ae2004375958a",
+  "source_tree_sha256": "fe6933788611c909f58b4f219f60c11904a5b2f7bf254a4b5998911d0536c32a",
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "matplotlib": "3.6.3",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39"
+  },
+  "solver_regression": {
+    "command": "OPENBLAS_NUM_THREADS=1 .venv/bin/python -m unittest discover -s '02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver/tests' -v",
+    "exit_code": 0,
+    "tests": 138,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_s": 122.52,
+    "log": "integrated-final-02.log"
+  },
+  "docs": {
+    "unit_tests": 16,
+    "exit_code": 0,
+    "entry_documents": 12,
+    "entry_command": ".venv/bin/python tools/check_repository_docs.py",
+    "log": "docs-final.log"
+  },
+  "pandoc": {
+    "command": "pandoc '01_\u6700\u7ec8\u7406\u8bba/02-\u524d\u5411\u9884\u6d4b\u7406\u8bba\u7684\u6570\u503c\u8ba1\u7b97\u7406\u8bba.md' -f markdown -t native -o /tmp/yp5-numerical-theory-final.native",
+    "exit_code": 0
+  },
+  "source_files_sha256": {
+    "y_pendulum_forward/__init__.py": "2fe33bb408523f6f26ed1337a74d08f494c0e5b079837018a2c0e5b10d3d8ded",
+    "y_pendulum_forward/activation.py": "94861d622aa46995fa173bb52afebe0308f594e19aa0eb9b66eca94346898a9f",
+    "y_pendulum_forward/cable.py": "3ec6bbec716e2a249502ab9a8509eeab161f013c3663b893dcefab1e729c62ef",
+    "y_pendulum_forward/cli.py": "32d498ae40c048c2169ef868b7750a38ef852d5f0ca75c144d45df73753cbc2e",
+    "y_pendulum_forward/contracts.py": "72f370fa2439c1a2538fbf6000eb44f4be89cca3d289f84f97afc135079b13d4",
+    "y_pendulum_forward/convergence.py": "59558c78bf9ae18d1b5b00edb933a8ffd825f1c1f2ee8bdda9b4f6755eac1926",
+    "y_pendulum_forward/energy_ledger.py": "be2769b0846e67b93efa37b38149115f502ba875adad509f3b194345a2bf0e35",
+    "y_pendulum_forward/ensemble.py": "c3f9100b27f66f7fd7a97e80c96c7dad5623908b22d9ebc6f55828bf6726d394",
+    "y_pendulum_forward/initial_fields.py": "84bd4fd57fac2fc45cab35ad05d7ef535d5d05d41b1dfd9f2bcdca77c275e46f",
+    "y_pendulum_forward/io.py": "98adc2f05a1e5445522002911199f0e728e91cbccb2f26d57b8861e725aa8346",
+    "y_pendulum_forward/junction.py": "83eed363e2509cd635402abfc211b609c9c8f5c72ab901a40066de4b62a658dd",
+    "y_pendulum_forward/observations.py": "72cb2d30017e46593a95e5909a405c1c18f4dd7dda822649254cf1a9eb1097c4",
+    "y_pendulum_forward/providers.py": "72598657dbb7fa8e95fd69a2ef572f4d0d4a19af170d103d1f9d3e51794ae0fd",
+    "y_pendulum_forward/runner.py": "a4c65c83210b6cc6236fda0304755b7981166ee2e44c2782a9ea2aec01c5d484",
+    "y_pendulum_forward/torus.py": "704804213a2576a5b14171a0749c5303967ff931e598ee6e42a6ee9a0a4511c7"
+  },
+  "test_files_sha256": {
+    "junction_reference.py": "b6d82589849cb71e1412f2252ef23a0b5d1c68a42a5f121f95b0db6498726433",
+    "release_reference.py": "7a1d9416f6c47566357ea1c177ad871941a6f3ac8bbe689133679cbfe32dc770",
+    "test_activation.py": "3f7990c40823fd4a67acb69893554a7d24ea49310ef86cd32e4fabe3471d032d",
+    "test_audit_energy.py": "d29a5284457d57979d930a34f3a3c71a9706b282d6d7b7a48d99670b697c16b9",
+    "test_cable.py": "eb4707aaee4ed761c61032949e90c76ae552dbbb0ca475d1c7767f469940dfcd",
+    "test_cli.py": "c9664d37ee8d7bd8d775649a73ef691b06676e604e1e96816f0b40bfb905f5ba",
+    "test_convergence.py": "f66572441aa7777eb2017189f084a03ef69b445d4acf7d1f398bc86030f9ed9d",
+    "test_ensemble.py": "841fe709d029ad4b6d5819b9026dd8fbe559bf5d32ad3979a3b677bd2563a6ef",
+    "test_io.py": "fc71952b1029dc63fa120464dff23065850dab3773ae6770539e4f3a83ecf58f",
+    "test_junction.py": "815c42f96f68d26975b3b08e4c883dac32c0296fbbbdda3530b6eec63ae07f3a",
+    "test_junction_guards.py": "fa770e9a6e309ab769c3dd660ad218b1bb5a8709e71628831e41f34025a8f916",
+    "test_junction_integration.py": "690ce783aada39236108c0960a616bca49503a2098dfe99c281a390598dbb5f1",
+    "test_observations.py": "86c708312f4a9e004bbca6885c99eed29ed0ebaaec213296ca766079ecdb1c09",
+    "test_release_protocol.py": "372f2ecb484e4a3632cbcffabc7848a8a962bdb33dab3d9c43f5ffab31ada95f",
+    "test_torus.py": "a1bb129ea3731c116b4c7d807fc84f0cd75590bc094423153824704c56e326bf"
+  },
+  "scope": "Final solver after the static minimizer energy stopping fix; all 138 tests passed once. Only documentation/evidence code changed afterwards. Software verification, not apparatus certification.",
+  "regression_fixture_sha256": "80fdaa27d79a7ad3e0bc9f01fb9261b9176f1019bce419aec9f3397da62b2cc7"
+}

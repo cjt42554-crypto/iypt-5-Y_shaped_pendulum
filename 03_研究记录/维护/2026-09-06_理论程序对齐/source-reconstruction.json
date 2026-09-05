@@ -1,0 +1,25 @@
+{
+  "stages": {
+    "5-02": {
+      "hash": "475366498bef4eb9f622d4188ebc0f184fcee138c4cc3e762518e1986aca1427",
+      "removed_groups": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "patch": "executed-source-from-final.patch",
+      "apply_directory": "02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver"
+    },
+    "5-01": {
+      "hash": "858526ec6c7c44ae588019424bf81a5768eb6ced3f097ba3074c2efbe08e76dc",
+      "patch": "executed-source-from-final.patch",
+      "apply_directory": "02_\u6a21\u62df\u7a0b\u5e8f/01_\u524d\u5411\u9884\u6d4b\u6570\u503c\u6c42\u89e3\u5668/y_pendulum_forward_solver",
+      "changes_after_run": "added explicit-null hold-release rejection, cable/torus accepted-step statistics, CSV holding power/work; J3 core unchanged"
+    }
+  },
+  "basis": "apply implementation.patch to baseline for final package. To recover early stage source, first apply pre-static-fix-from-final.patch, then the stage executed-source-from-final.patch, all from package directory. Exact hashes were checked.",
+  "pre_static_fix_source_tree_sha256": "5b5d81e4bba4d693712b5903ffc01ffb3ec7dcdf58c9a0b79e7702ed705fec0c",
+  "pre_static_fix_patch": "pre-static-fix-from-final.patch",
+  "final_source_tree_sha256": "fe6933788611c909f58b4f219f60c11904a5b2f7bf254a4b5998911d0536c32a"
+}
