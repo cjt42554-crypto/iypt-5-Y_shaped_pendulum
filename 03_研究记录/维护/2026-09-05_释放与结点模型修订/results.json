@@ -1,0 +1,97 @@
+{
+  "random_KKT_max_acceleration_error_m_s2": 1.7763568394002505e-14,
+  "random_KKT_max_tension_error_N": 8.881784197001252e-16,
+  "random_seed": 520260905,
+  "max_energy_derivative_residual_W": 7.719519468096792e-17,
+  "linear_frequencies_rad_s": {
+    "formula": [
+      3.928335913216085,
+      4.9522722057657536,
+      26.191280551987845
+    ],
+    "KKT_jacobian": [
+      3.9283359132057534,
+      4.952272205764514,
+      26.191280551851555
+    ]
+  },
+  "synthetic_10_percent_junction_example": {
+    "parameters_SI": {
+      "m": 0.1,
+      "mj": 0.01,
+      "h": 0.25,
+      "ell": 0.4,
+      "a": 0.2,
+      "b": 0.2,
+      "g": 9.81
+    },
+    "relative_low_frequency_change": 0.01118540364739884,
+    "20s_linear_phase_difference_rad": 0.869079452559367,
+    "high_frequency_rad_s": 26.191280551987845
+  },
+  "2s_nonlinear_reference": {
+    "absolute_energy_drift_J": 2.0860049798621105e-16,
+    "unit_constraint_error": 5.551115123125783e-16,
+    "tangent_constraint_error": 3.4881190321236622e-15,
+    "minimum_sampled_tension_N": 0.6575960039612959,
+    "accepted_steps": 401
+  },
+  "RK4_refinement": {
+    "steps": [
+      200,
+      400,
+      800,
+      1600
+    ],
+    "final_state_errors": [
+      9.914304640061773e-05,
+      8.11709013080387e-06,
+      5.64754073595672e-07,
+      3.705172948089077e-08
+    ],
+    "observed_orders": [
+      3.610477051490591,
+      3.84526795605509,
+      3.930009981311873
+    ],
+    "state_scaling": "angles and n dimensionless; angular rates multiplied by 1 second"
+  },
+  "release_energy_error_J": 0.0,
+  "velocity_derivative_norms_H1_H2": [
+    [
+      3.107763567863319,
+      262.8496733966033
+    ],
+    [
+      3.11055116984208,
+      372.2015719524119
+    ],
+    [
+      3.1119451159356712,
+      526.7093186292334
+    ],
+    [
+      3.1126421252019907,
+      745.1177005701073
+    ]
+  ],
+  "ramp_modal_amplitude": {
+    "ode": 0.5586573775064003,
+    "filter": 0.5586573775064002
+  },
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "sympy": "1.14.0"
+  },
+  "forward_theory_sha256": "073ce907b4adcb9daca9bb41d9e275bc6c683472a326d113a1ee04eb9a634dcd",
+  "verification_script_sha256": "9d3db1588f40e399848d3d9c6fa79632cd8747a9561185acb2015e9b7560aa1e",
+  "tests": {
+    "run": 22,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

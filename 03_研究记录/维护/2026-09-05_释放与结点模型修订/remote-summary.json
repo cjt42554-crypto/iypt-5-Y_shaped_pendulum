@@ -1,0 +1,22 @@
+[
+  {
+    "log": "theory-remote.txt",
+    "returncode": 0,
+    "test_count": 22
+  },
+  {
+    "log": "docs-unit-remote.txt",
+    "returncode": 0,
+    "test_count": 16
+  },
+  {
+    "log": "docs-entry-remote.txt",
+    "returncode": 0,
+    "test_count": null
+  },
+  {
+    "log": "solver-regression-remote.txt",
+    "returncode": 0,
+    "test_count": 113
+  }
+]
