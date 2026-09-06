@@ -1,5 +1,7 @@
 # P3R5 四点冻结观测与约化 Hessian 描述图
 
+2026-09-06 路径维护：`config.json` 的两个输入路径已指向现有研究记录，冻结输入的 SHA-256 不变。现存 `outputs/` 仍是原配置绑定的历史输出；复算写入新的目录，不能覆盖它。旧停止口令只反映当时流程，当前规范见根 AGENTS。
+
 ## 1. 结论
 
 四张冻结 P3R5 尺度卡中的负方向不是任意六自由度混合，也不是单独的摆球平移。按每张冻结卡的归一化坐标，它只包含：
@@ -135,7 +137,7 @@ $$
 PYTHONPATH=src python -m p3r5_stability_map \
   --config config.json \
   --repository-root ../../../.. \
-  --output outputs
+  --output /tmp/yp5-stability-map-new
 ```
 
 输出 JSON、CSV、SVG、PNG 和 SHA-256 工件清单。`stability_map.json` 同时记录配置与全部分析源码的源清单、CPython/NumPy/SciPy/Matplotlib 运行时身份及其哈希；工件清单把字节确定性范围限定为同一已记录源码、配置和运行时。本轮在绑定的 CPython 3.12.3、NumPy 1.26.4、SciPy 1.11.4、Matplotlib 3.6.3 环境中完成三份输出逐字节对照。

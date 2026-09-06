@@ -1,11 +1,11 @@
 {
   "schema": "YPS-P3R5-READONLY-STABILITY-MAP-CONFIG-1.1",
   "source_cards": {
-    "path": "90_候选工作区/current/HF-v2-core/contracts/p3r5_holdout_cards.json",
+    "path": "03_研究记录/专题/HF-v2-core/contracts/p3r5_holdout_cards.json",
     "sha256": "48f418094ef7ccaa595a63a080f65f82d5b0125eaec0fb25cc58acf823bcb0f0"
   },
   "source_metrics": {
-    "path": "90_候选工作区/current/HF-v2-core/reports/p3r5_admissibility_metrics.json",
+    "path": "03_研究记录/专题/HF-v2-core/reports/p3r5_admissibility_metrics.json",
     "sha256": "e93eb9a0cb074ca1cc9a137149b89b8d2c4384f100c9a9eefaf5c0ff79a3f987"
   },
   "source_category": "changed_geometry_and_load_scale",

@@ -1,6 +1,0 @@
-Pandoc: pandoc 3.1.11.1
-Forward theory and numerical theory parsed to Pandoc JSON: PASS
-Forward theory all math converted to HTML MathML: PASS, zero warnings
-git diff --check: PASS
-Local repository-docs checker self-tests: 16 PASS (docs-unit.txt)
-Complete source-tree link checker deferred to remote full checkout; local source archive is partial.
